@@ -6,43 +6,38 @@
   <title>RICD — Painel de Estudos</title>
   <style>
     :root{
-      --bg: #f6f8fb;
+      --bg: #f0f4f8;
       --card: #ffffff;
       --ink: #0f172a;
       --muted: #475569;
       --navy:#0b1b2a;
-      --accent-1:#243b53; 
-      --accent-2:#334155;
-      --accent-3:#5b2b2f; /* Vinho para seções especiais */
+      --accent-primary:#1e40af; /* Azul forte para os títulos */
+      --accent-especial:#7f1d1d; /* Vinho para módulos transversais */
       --shadow: 0 10px 24px rgba(15, 23, 42, .08);
-      --radius-xl: 18px;
       --radius-lg: 14px;
       --max: 1060px;
     }
 
     *{ box-sizing: border-box; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.5;
-    }
-
+    body{ margin:0; font-family: ui-sans-serif, system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; }
     .wrap{ max-width: var(--max); margin: 0 auto; padding: 40px 18px; }
 
-    header { margin-bottom: 40px; text-align: center; }
-    h1 { font-size: 32px; letter-spacing: -1px; margin-bottom: 10px; }
-    .sub { color: var(--muted); font-size: 16px; }
+    header { margin-bottom: 40px; text-align: center; border-bottom: 3px solid var(--navy); padding-bottom: 20px; }
+    h1 { font-size: 32px; letter-spacing: -1px; margin-bottom: 10px; color: var(--navy); }
+    .sub { color: var(--muted); font-size: 16px; font-weight: 600; }
 
-    h2 { font-size: 18px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 40px 0 20px; border-bottom: 1px solid rgba(15,23,42,0.1); padding-bottom: 8px;}
-
-    /* Grid de Cards */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 16px;
+    /* ALTERAÇÃO DE CORES DOS TÍTULOS DE SEÇÃO */
+    h2 { 
+      font-size: 20px; 
+      text-transform: uppercase; 
+      letter-spacing: 1.5px; 
+      color: var(--accent-primary); /* Agora em Azul */
+      margin: 40px 0 20px; 
+      border-bottom: 2px solid var(--accent-primary); 
+      padding-bottom: 8px;
     }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
 
     .card {
       background: var(--card);
@@ -50,64 +45,47 @@
       color: inherit;
       padding: 20px;
       border-radius: var(--radius-lg);
-      border: 1px solid rgba(15, 23, 42, .08);
-      box-shadow: 0 2px 10px rgba(15, 23, 42, .04);
+      border: 1px solid rgba(15, 23, 42, .1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
-      position: relative;
-      overflow: hidden;
+      border-left: 6px solid var(--accent-primary);
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-      border-color: var(--accent-1);
-    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 
-    .card::before {
-      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent-1);
-    }
-
-    .card.especial::before { background: var(--accent-3); }
+    .card.especial { border-left-color: var(--accent-especial); }
+    .card.especial h2_card { color: var(--accent-especial); }
 
     .card span { font-weight: 800; font-size: 12px; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
-    .card p { margin: 0; font-weight: 700; font-size: 15px; color: var(--navy); line-height: 1.2; }
+    .card p { margin: 0; font-weight: 700; font-size: 15px; color: var(--navy); }
     
-    footer { margin-top: 60px; text-align: center; font-size: 13px; color: var(--muted); }
+    footer { margin-top: 60px; text-align: center; font-size: 13px; color: var(--muted); border-top: 1px solid #ccc; padding-top: 20px; }
   </style>
 </head>
 <body>
 
 <div class="wrap">
   <header>
-    <h1>Regimento Interno da Câmara dos Deputados</h1>
-    <p class="sub">Gestão de Resumos Literais e Mapas de Padrões</p>
+    <h1>Regimento Interno - Câmara</h1>
+    <p class="sub">Painel de Memorização Literal</p>
   </header>
 
   <h2>Títulos do Regimento</h2>
   <div class="grid">
-    <a href="titulo1.html" class="card"><span>Título I</span><p>Deputados, Órgãos e Funcionamento</p></a>
-    <a href="titulo2.html" class="card"><span>Título II</span><p>Das Sessões e Reuniões</p></a>
-    <a href="titulo3.html" class="card"><span>Título III</span><p>Proposições</p></a>
-    <a href="titulo4.html" class="card"><span>Título IV</span><p>Debates e Deliberações</p></a>
-    <a href="titulo5.html" class="card"><span>Título V</span><p>Regras de Votação</p></a>
-    <a href="titulo6.html" class="card"><span>Título VI</span><p>Tramitação e Prazos</p></a>
-    <a href="titulo7.html" class="card"><span>Título VII</span><p>Fiscalização e Controle</p></a>
-    <a href="titulo8.html" class="card"><span>Título VIII</span><p>Participação da Sociedade Civil</p></a>
-    <a href="titulo9.html" class="card"><span>Título IX</span><p>Ética e Decoro Parlamentar</p></a>
-    <a href="titulo10.html" class="card"><span>Título X</span><p>Disposições Gerais</p></a>
+    <a href="titulo1.html" class="card"><span>Título I</span><p>Deputados e Órgãos</p></a>
+    <a href="titulo2.html" class="card"><span>Título II</span><p>Sessões e Reuniões</p></a>
+    <a href="titulo8.html" class="card"><span>Título VIII</span><p>Sociedade Civil</p></a>
   </div>
 
-  <h2>Módulos Transversais (Confronto)</h2>
+  <h2>Módulos de Confronto</h2>
   <div class="grid">
-    <a href="confronto-comissoes.html" class="card especial"><span>Comparativo</span><p>Comissões (Reuniões) vs. Plenário (Sessões)</p></a>
-    <a href="prazos-gerais.html" class="card especial"><span>Tabela Master</span><p>Prazos, Interstícios e Silêncio Regimental</p></a>
-    <a href="medidas-cautelares.html" class="card especial"><span>Sanções</span><p>Suspensão Cautelar e Processo Ético</p></a>
+    <a href="confronto-comissoes.html" class="card especial"><span>Comparativo</span><p>Comissões vs. Plenário</p></a>
   </div>
 
   <footer>
-    <b>Repositório Pessoal de Estudos</b> • Atualizado conforme EC 76/2013 e Práticas da Mesa.
+    <b>Uso Pessoal</b> • Foco na Aprovação
   </footer>
 </div>
 
