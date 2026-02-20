@@ -140,7 +140,17 @@ textarea.notearea:focus{
         (posse e eleição da Mesa), <span class="k">Líderes</span>, <span class="k">Blocos Parlamentares</span>,
         <span class="k">Maioria/Minoria</span> e <span class="k">Bancada Negra</span>.
       </p>
+<div class="top-actions">
+  <a class="btn" href="index.html" aria-label="Voltar ao menu principal (index)">
+    <span class="dot" aria-hidden="true"></span>
+    Menu principal
+  </a>
 
+  <a class="btn" href="#notas" aria-label="Ir para anotações deste título">
+    <span class="dot" aria-hidden="true"></span>
+    Anotações
+  </a>
+</div>
       <nav class="chips" aria-label="Navegação por seções">
         <a class="chip" href="#cap1"><b>Cap. I</b> <small>Sede</small></a>
         <a class="chip" href="#cap2"><b>Cap. II</b> <small>Sessões Legislativas</small></a>
@@ -724,7 +734,24 @@ textarea.notearea:focus{
         </article>
       </div>
     </section>
+<section class="notes" id="notas">
+  <div class="notes-head">
+    <h2>Anotações do Título I</h2>
+    <p class="hint">Salva automaticamente neste navegador (local). Ideal para erros, bizus, pegadinhas e revisões.</p>
+  </div>
 
+  <div class="notes-body">
+    <textarea class="notearea" id="notesBox" placeholder="• Erros que cometi
+• Pegadinhas que caíram
+• Bizus (prazos, quóruns, competências)
+• Dúvidas para revisar depois..."></textarea>
+
+    <div class="notes-actions">
+      <button class="smallbtn" type="button" id="clearNotes">Limpar</button>
+      <button class="smallbtn" type="button" id="copyNotes">Copiar</button>
+    </div>
+  </div>
+</section>
     <!-- ANÁLISE FINAL -->
     <section class="analysis" id="analise">
       <div class="analysis-head">
@@ -776,5 +803,48 @@ textarea.notearea:focus{
     </footer>
 
   </div>
+  <script>
+  (function(){
+    const key = "RICD_NOTES_titulo1";
+    const box = document.getElementById("notesBox");
+    const btnClear = document.getElementById("clearNotes");
+    const btnCopy = document.getElementById("copyNotes");
+
+    if(!box) return;
+
+    // carregar
+    try{
+      const saved = localStorage.getItem(key);
+      if(saved) box.value = saved;
+    }catch(e){}
+
+    // salvar automático (debounce)
+    let t = null;
+    box.addEventListener("input", () => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        try{ localStorage.setItem(key, box.value); }catch(e){}
+      }, 200);
+    });
+
+    // limpar
+    btnClear?.addEventListener("click", () => {
+      if(!confirm("Limpar as anotações deste título?")) return;
+      box.value = "";
+      try{ localStorage.removeItem(key); }catch(e){}
+    });
+
+    // copiar
+    btnCopy?.addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(box.value || "");
+        btnCopy.textContent = "Copiado!";
+        setTimeout(()=> btnCopy.textContent = "Copiar", 900);
+      }catch(e){
+        alert("Não consegui copiar automaticamente. Selecione o texto e copie manualmente.");
+      }
+    });
+  })();
+</script>
 </body>
 </html>
