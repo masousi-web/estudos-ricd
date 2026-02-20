@@ -4,44 +4,54 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>RICD — Índice (Títulos 1 a 10)</title>
+
+  <!-- Literata (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --ink:#0b1b2b;
       --navy:#0f2742;
-      --navy-2:#163654;
       --slate:#4a6075;
       --muted:#6b7f93;
 
       --paper:#f6f8fb;
       --card:#ffffff;
       --line:rgba(15,39,66,.10);
-      --shadow:0 10px 30px rgba(12, 26, 43, .08);
 
-      --accent:#17395b;
+      --shadow: 0 10px 26px rgba(12,26,43,.08);
+      --shadow-hover: 0 16px 34px rgba(12,26,43,.12);
+
+      /* “cores por semântica” (usadas nos resumos, mantidas no index) */
       --orgao:#1e4f7a;
       --prazo:#c77819;
       --alert:#b11f2e;
 
+      --radius-xl:22px;
+      --radius-lg:18px;
+      --radius-md:14px;
+
+      --serif: "Literata", ui-serif, Georgia, "Times New Roman", Times, serif;
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      --radius-xl:20px;
-      --radius-lg:16px;
-      --radius-md:12px;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
+
     body{
       margin:0;
-      font-family:var(--sans);
+      font-family:var(--serif);
       color:var(--ink);
       background:
-        radial-gradient(1200px 700px at 15% 10%, rgba(23,57,91,.16), transparent 60%),
+        radial-gradient(1200px 700px at 15% 10%, rgba(23,57,91,.15), transparent 60%),
         radial-gradient(900px 600px at 85% 20%, rgba(15,39,66,.10), transparent 55%),
-        linear-gradient(180deg, #f9fbff 0%, var(--paper) 70%);
+        linear-gradient(180deg, #fbfcff 0%, var(--paper) 70%);
     }
 
-    a{color:inherit; text-decoration:none}
-    a:focus{outline:3px solid rgba(30,79,122,.25); outline-offset:3px; border-radius:14px}
+    a{color:inherit;text-decoration:none}
+    a:focus{outline:3px solid rgba(30,79,122,.25); outline-offset:3px; border-radius:18px}
 
     .wrap{
       max-width:1100px;
@@ -49,13 +59,14 @@
       padding:28px 18px 60px;
     }
 
-    /* ===== Header ===== */
+    /* ===== Header (mais editorial) ===== */
     .hero{
-      border:1px solid var(--line);
-      background: linear-gradient(135deg, rgba(15,39,66,.90) 0%, rgba(22,54,84,.92) 55%, rgba(15,39,66,.88) 100%);
+      border:1px solid rgba(255,255,255,.14);
+      background:
+        linear-gradient(135deg, rgba(15,39,66,.92) 0%, rgba(22,54,84,.92) 55%, rgba(15,39,66,.90) 100%);
       color:#fff;
       border-radius:var(--radius-xl);
-      box-shadow:var(--shadow);
+      box-shadow: var(--shadow);
       padding:26px 24px;
       position:relative;
       overflow:hidden;
@@ -64,9 +75,9 @@
       content:"";
       position:absolute; inset:-2px;
       background:
-        radial-gradient(600px 240px at 15% 15%, rgba(255,255,255,.14), transparent 60%),
-        radial-gradient(450px 260px at 85% 10%, rgba(255,255,255,.10), transparent 60%),
-        radial-gradient(420px 280px at 70% 85%, rgba(255,255,255,.08), transparent 55%);
+        radial-gradient(680px 260px at 12% 18%, rgba(255,255,255,.14), transparent 62%),
+        radial-gradient(520px 260px at 86% 10%, rgba(255,255,255,.10), transparent 62%),
+        radial-gradient(520px 280px at 72% 90%, rgba(255,255,255,.08), transparent 60%);
       pointer-events:none;
     }
     .hero-top{
@@ -78,20 +89,20 @@
       z-index:1;
       flex-wrap:wrap;
     }
-    .brand{ min-width:260px; }
+    .brand{min-width:260px}
     .brand h1{
       margin:0 0 6px;
       font-size:22px;
-      letter-spacing:.3px;
-      font-weight:760;
+      font-weight:700;
+      letter-spacing:.2px;
     }
     .brand p{
       margin:0;
-      opacity:.92;
       color:rgba(255,255,255,.86);
-      line-height:1.4;
-      max-width:68ch;
+      line-height:1.45;
+      max-width:72ch;
       font-size:13.5px;
+      font-family:var(--sans);
     }
 
     .meta{
@@ -100,8 +111,9 @@
       gap:10px;
       min-width:270px;
       flex:1;
-      max-width:420px;
+      max-width:430px;
       align-items:flex-end;
+      font-family:var(--sans);
     }
 
     .search{
@@ -117,15 +129,16 @@
       white-space:nowrap;
     }
     .search input{
-      width:min(420px, 100%);
+      width:min(430px, 100%);
       padding:12px 14px;
-      border-radius:14px;
+      border-radius:16px;
       border:1px solid rgba(255,255,255,.18);
       background:rgba(255,255,255,.10);
       color:#fff;
       font-size:13.5px;
       outline:none;
       box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);
+      font-family:var(--sans);
     }
     .search input::placeholder{color:rgba(255,255,255,.75)}
     .search input:focus{
@@ -166,13 +179,14 @@
       gap:10px;
       margin:14px 2px 12px;
       flex-wrap:wrap;
+      font-family:var(--sans);
     }
     .section-head h2{
       margin:0;
       font-size:16px;
       letter-spacing:.2px;
       color:var(--navy);
-      font-weight:820;
+      font-weight:800;
     }
     .section-head p{
       margin:0;
@@ -182,7 +196,7 @@
       line-height:1.4;
     }
 
-    /* ===== Grid & Clean Cards ===== */
+    /* ===== Grid & Luxury clean cards ===== */
     .grid{
       display:grid;
       grid-template-columns:repeat(12, 1fr);
@@ -193,52 +207,56 @@
       grid-column:span 6;
       display:block;
       border-radius:var(--radius-lg);
-      background:var(--card);
+      background:linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
       border:1px solid var(--line);
-      box-shadow:0 8px 24px rgba(12, 26, 43, .06);
+      box-shadow: var(--shadow);
       overflow:hidden;
       transition: transform .10s ease, box-shadow .12s ease, border-color .12s ease;
       position:relative;
     }
     @media (max-width:900px){ .cardlink{grid-column:span 12;} }
 
+    /* barra vertical por “cor do título” */
     .cardlink::before{
       content:"";
-      position:absolute; left:0; right:0; top:0;
-      height:5px;
-      background:linear-gradient(90deg, rgba(23,57,91,.95), rgba(30,79,122,.85), rgba(23,57,91,.95));
-      opacity:.92;
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:8px;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--c) 90%, #ffffff 10%), var(--c));
+      opacity:.95;
     }
+
     .cardlink:hover{
       transform: translateY(-1px);
-      box-shadow:0 14px 28px rgba(12, 26, 43, .10);
-      border-color:rgba(23,57,91,.22);
+      box-shadow: var(--shadow-hover);
+      border-color: color-mix(in srgb, var(--c) 22%, rgba(15,39,66,.12));
     }
 
     .card-inner{
-      padding:16px 16px 16px;
+      padding:16px 16px 16px 18px;
       display:flex;
       gap:14px;
       align-items:flex-start;
       justify-content:space-between;
     }
 
-    .card-text{ min-width:0; }
+    .card-text{ min-width:0; padding-left:8px; }
     .card-text h3{
       margin:2px 0 8px;
-      font-size:14.4px;
-      line-height:1.25;
-      letter-spacing:.2px;
-      font-weight:820;
+      font-size:14.6px;
+      line-height:1.22;
+      letter-spacing:.22px;
+      font-weight:700;
       color:var(--ink);
       text-transform:uppercase;
     }
     .card-text p{
       margin:0;
       color:var(--slate);
-      font-size:12.8px;
-      line-height:1.45;
-      max-width:70ch;
+      font-size:12.9px;
+      line-height:1.5;
+      max-width:72ch;
+      font-family:var(--sans);
     }
 
     .badge{
@@ -249,17 +267,23 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      font-weight:900;
+      font-weight:800;
       letter-spacing:.8px;
       font-size:12.8px;
-      color:rgba(15,39,66,.78);
-      background:rgba(23,57,91,.08);
-      border:1px solid rgba(23,57,91,.16);
+      color: color-mix(in srgb, var(--c) 70%, #0b1b2b 30%);
+      background: color-mix(in srgb, var(--c) 10%, #ffffff 90%);
+      border:1px solid color-mix(in srgb, var(--c) 28%, rgba(15,39,66,.10));
       margin-top:2px;
       user-select:none;
+      font-family:var(--sans);
     }
 
-    /* Outros módulos: mesma estética */
+    /* fallback p/ navegadores sem color-mix */
+    @supports not (color: color-mix(in srgb, #000 50%, #fff 50%)){
+      .cardlink::before{ background: var(--c); }
+      .badge{ color: var(--navy); background: rgba(23,57,91,.08); border-color: rgba(23,57,91,.16); }
+    }
+
     .note{
       margin-top:18px;
       background:rgba(23,57,91,.06);
@@ -269,6 +293,7 @@
       color:rgba(15,39,66,.82);
       line-height:1.45;
       font-size:12.8px;
+      font-family:var(--sans);
     }
     .mono{
       font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -293,7 +318,7 @@
         <div class="brand">
           <h1>RICD — Índice de Estudos</h1>
           <p>
-            Hub central dos resumos (Títulos 1–10). Visual clean, navy suave, cards sem botões e sem tags.
+            Visual editorial (Literata) + cards minimalistas. Cada título tem uma cor suave própria apenas para diferenciar.
             Clique no card para abrir o arquivo do título.
           </p>
         </div>
@@ -314,7 +339,6 @@
       </div>
     </header>
 
-    <!-- ===================== TÍTULOS 1–10 ===================== -->
     <section class="section" aria-labelledby="titulacao">
       <div class="section-head">
         <h2 id="titulacao">Títulos do RICD (1 a 10)</h2>
@@ -322,8 +346,8 @@
       </div>
 
       <div class="grid" id="cards">
-
-        <a class="cardlink" href="titulo1.html" data-keywords="titulo 1 i disposicoes preliminares sede sessoes legislativas sessoes preparatorias posse">
+        <!-- Paleta suave por título (navy/azulado/cinza/vinho/pastel profissional) -->
+        <a class="cardlink" href="titulo1.html" style="--c:#1c3f63" data-keywords="titulo 1 i disposicoes preliminares sede sessoes legislativas sessoes preparatorias posse">
           <div class="card-inner">
             <div class="card-text">
               <h3>TÍTULO I — DISPOSIÇÕES PRELIMINARES</h3>
@@ -333,7 +357,7 @@
           </div>
         </a>
 
-        <a class="cardlink" href="titulo2.html" data-keywords="titulo 2 ii orgaos da camara mesa comissoes liderancas secretaria">
+        <a class="cardlink" href="titulo2.html" style="--c:#254a78" data-keywords="titulo 2 ii orgaos da camara mesa comissoes liderancas secretaria">
           <div class="card-inner">
             <div class="card-text">
               <h3>TÍTULO II — DOS ÓRGÃOS DA CÂMARA</h3>
@@ -343,7 +367,7 @@
           </div>
         </a>
 
-        <a class="cardlink" href="titulo3.html" data-keywords="titulo 3 iii sessoes da camara plenarias ordem do dia expediente ata quoruns">
+        <a class="cardlink" href="titulo3.html" style="--c:#2f5f6e" data-keywords="titulo 3 iii sessoes da camara plenarias ordem do dia expediente ata quoruns">
           <div class="card-inner">
             <div class="card-text">
               <h3>TÍTULO III — DAS SESSÕES DA CÂMARA</h3>
@@ -353,7 +377,7 @@
           </div>
         </a>
 
-        <a class="cardlink" href="titulo4.html" data-keywords="titulo 4 iv proposicoes pec projeto emenda indicacao requerimento recurso parecer">
+        <a class="cardlink" href="titulo4.html" style="--c:#3a5c8a" data-keywords="titulo 4 iv proposicoes pec projeto emenda indicacao requerimento recurso parecer">
           <div class="card-inner">
             <div class="card-text">
               <h3>TÍTULO IV — DAS PROPOSIÇÕES</h3>
@@ -363,7 +387,7 @@
           </div>
         </a>
 
-        <a class="cardlink" href="titulo5.html" data-keywords="titulo 5 v apreciacao das proposicoes tramitacao urgencia comissoes plenarios prazos pareceres">
+        <a class="cardlink" href="titulo5.html" style="--c:#406d7a" data-keywords="titulo 5 v apreciacao das proposicoes tramitacao urgencia comissoes plenarios prazos pareceres">
           <div class="card-inner">
             <div class="card-text">
               <h3>TÍTULO V — DA APRECIAÇÃO DAS PROPOSIÇÕES</h3>
@@ -373,17 +397,17 @@
           </div>
         </a>
 
-        <a class="cardlink" href="titulo6.html" data-keywords="titulo 6 vi materias sujeitas disposicoes especiais rito proprio excecoes">
+        <a class="cardlink" href="titulo6.html" style="--c:#566a86" data-keywords="titulo 6 vi materias sujeitas disposicoes especiais rito proprio excecoes">
           <div class="card-inner">
             <div class="card-text">
-              <h3>TÍTULO VI — MATÉRIAS SUJEITAS A DISPOSIÇÕES ESPECIAIS</h3>
+              <h3>TÍTULO VI — DISPOSIÇÕES ESPECIAIS</h3>
               <p>Matérias com rito próprio e tratamento regimental diferenciado.</p>
             </div>
             <div class="badge">VI</div>
           </div>
         </a>
 
-        <a class="cardlink" href="titulo7.html" data-keywords="titulo 7 vii deputados mandato prerrogativas deveres vedacoes licencas decoro">
+        <a class="cardlink" href="titulo7.html" style="--c:#5a4b6e" data-keywords="titulo 7 vii deputados mandato prerrogativas deveres vedacoes licencas decoro">
           <div class="card-inner">
             <div class="card-text">
               <h3>TÍTULO VII — DOS DEPUTADOS</h3>
@@ -393,27 +417,27 @@
           </div>
         </a>
 
-        <a class="cardlink" href="titulo8.html" data-keywords="titulo 8 viii participacao sociedade civil iniciativa popular peticoes representacoes">
+        <a class="cardlink" href="titulo8.html" style="--c:#7a4a53" data-keywords="titulo 8 viii participacao sociedade civil iniciativa popular peticoes representacoes">
           <div class="card-inner">
             <div class="card-text">
-              <h3>TÍTULO VIII — PARTICIPAÇÃO DA SOCIEDADE CIVIL</h3>
+              <h3>TÍTULO VIII — SOCIEDADE CIVIL</h3>
               <p>Iniciativa popular, petições/representações e outras formas de participação.</p>
             </div>
             <div class="badge">VIII</div>
           </div>
         </a>
 
-        <a class="cardlink" href="titulo9.html" data-keywords="titulo 9 ix administracao economia interna servicos administrativos transparencia">
+        <a class="cardlink" href="titulo9.html" style="--c:#4c5f73" data-keywords="titulo 9 ix administracao economia interna servicos administrativos transparencia">
           <div class="card-inner">
             <div class="card-text">
-              <h3>TÍTULO IX — ADMINISTRAÇÃO E ECONOMIA INTERNA</h3>
+              <h3>TÍTULO IX — ADMINISTRAÇÃO INTERNA</h3>
               <p>Serviços administrativos, regime interno e diretrizes de funcionamento.</p>
             </div>
             <div class="badge">IX</div>
           </div>
         </a>
 
-        <a class="cardlink" href="titulo10.html" data-keywords="titulo 10 x disposicoes finais transicao vigencia interpretacao">
+        <a class="cardlink" href="titulo10.html" style="--c:#2b3f57" data-keywords="titulo 10 x disposicoes finais transicao vigencia interpretacao">
           <div class="card-inner">
             <div class="card-text">
               <h3>TÍTULO X — DISPOSIÇÕES FINAIS</h3>
@@ -422,20 +446,17 @@
             <div class="badge">X</div>
           </div>
         </a>
-
       </div>
     </section>
 
-    <!-- ===================== OUTROS MÓDULOS ===================== -->
     <section class="section" aria-labelledby="outros">
       <div class="section-head">
         <h2 id="outros">Outros módulos</h2>
-        <p>Área para páginas temáticas e aprofundamentos (você adiciona aos poucos).</p>
+        <p>Área para páginas temáticas e aprofundamentos (adicione aos poucos).</p>
       </div>
 
       <div class="grid">
-
-        <a class="cardlink" href="modulo-padroes.html" data-keywords="modulo comparativos prazos quoruns competencias pegadinhas">
+        <a class="cardlink" href="modulo-padroes.html" style="--c:#1f6b4a" data-keywords="modulo comparativos prazos quoruns competencias pegadinhas">
           <div class="card-inner">
             <div class="card-text">
               <h3>MÓDULO — PADRÕES, PRAZOS E PEGADINHAS</h3>
@@ -445,7 +466,7 @@
           </div>
         </a>
 
-        <a class="cardlink" href="modulo-questoes.html" data-keywords="modulo questoes exercicios cebraspe certo errado revisao">
+        <a class="cardlink" href="modulo-questoes.html" style="--c:#6b4a1f" data-keywords="modulo questoes exercicios cebraspe certo errado revisao">
           <div class="card-inner">
             <div class="card-text">
               <h3>MÓDULO — QUESTÕES E TREINO (CEBRASPE)</h3>
@@ -454,7 +475,6 @@
             <div class="badge">M</div>
           </div>
         </a>
-
       </div>
 
       <div class="note">
