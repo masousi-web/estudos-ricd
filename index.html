@@ -3,34 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>RICD — Índice (Títulos I a X)</title>
+  <title>RICD — Índice (Títulos 1 a 10)</title>
   <style>
     :root{
-      /* Base (navy suave + cinzas azulados) */
       --ink:#0b1b2b;
       --navy:#0f2742;
       --navy-2:#163654;
       --slate:#4a6075;
       --muted:#6b7f93;
 
-      /* Superfícies */
       --paper:#f6f8fb;
       --card:#ffffff;
       --line:rgba(15,39,66,.10);
       --shadow:0 10px 30px rgba(12, 26, 43, .08);
 
-      /* Acentos (mesma lógica dos resumos) */
-      --accent:#17395b;           /* azul-marinho */
-      --accent-soft:rgba(23,57,91,.10);
-      --orgao:#1e4f7a;            /* órgãos */
-      --prazo:#c77819;            /* prazos (laranja elegante) */
-      --alert:#b11f2e;            /* alerta/exceções (vermelho clássico) */
-      --ok:#1f6b4a;
+      --accent:#17395b;
+      --orgao:#1e4f7a;
+      --prazo:#c77819;
+      --alert:#b11f2e;
 
-      /* Tipografia */
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      --serif: ui-serif, Georgia, "Times New Roman", Times, serif;
-
       --radius-xl:20px;
       --radius-lg:16px;
       --radius-md:12px;
@@ -49,7 +41,7 @@
     }
 
     a{color:inherit; text-decoration:none}
-    a:focus{outline:3px solid rgba(30,79,122,.25); outline-offset:3px; border-radius:10px}
+    a:focus{outline:3px solid rgba(30,79,122,.25); outline-offset:3px; border-radius:14px}
 
     .wrap{
       max-width:1100px;
@@ -57,11 +49,10 @@
       padding:28px 18px 60px;
     }
 
-    /* Header */
+    /* ===== Header ===== */
     .hero{
       border:1px solid var(--line);
-      background:
-        linear-gradient(135deg, rgba(15,39,66,.90) 0%, rgba(22,54,84,.92) 55%, rgba(15,39,66,.88) 100%);
+      background: linear-gradient(135deg, rgba(15,39,66,.90) 0%, rgba(22,54,84,.92) 55%, rgba(15,39,66,.88) 100%);
       color:#fff;
       border-radius:var(--radius-xl);
       box-shadow:var(--shadow);
@@ -87,23 +78,22 @@
       z-index:1;
       flex-wrap:wrap;
     }
-    .brand{
-      min-width:260px;
-    }
+    .brand{ min-width:260px; }
     .brand h1{
       margin:0 0 6px;
       font-size:22px;
       letter-spacing:.3px;
-      font-weight:750;
+      font-weight:760;
     }
     .brand p{
       margin:0;
       opacity:.92;
       color:rgba(255,255,255,.86);
       line-height:1.4;
-      max-width:62ch;
+      max-width:68ch;
       font-size:13.5px;
     }
+
     .meta{
       display:flex;
       flex-direction:column;
@@ -114,7 +104,6 @@
       align-items:flex-end;
     }
 
-    /* Search */
     .search{
       width:100%;
       display:flex;
@@ -144,7 +133,6 @@
       box-shadow:0 0 0 3px rgba(255,255,255,.10), inset 0 0 0 1px rgba(255,255,255,.08);
     }
 
-    /* Legend */
     .legend{
       display:flex;
       gap:10px;
@@ -163,24 +151,14 @@
       color:rgba(255,255,255,.92);
       user-select:none;
     }
-    .dot{
-      width:10px; height:10px;
-      border-radius:99px;
-      display:inline-block;
-      background:#fff;
-      opacity:.95;
-    }
+    .dot{width:10px;height:10px;border-radius:99px;display:inline-block}
     .dot.orgao{background:var(--orgao)}
     .dot.prazo{background:var(--prazo)}
     .dot.alert{background:var(--alert)}
     .dot.keyword{background:#c9d6e6}
 
-    /* Sections */
-    .section{
-      margin-top:18px;
-      border-radius:var(--radius-xl);
-      padding:18px 0 0;
-    }
+    /* ===== Sections ===== */
+    .section{ margin-top:18px; }
     .section-head{
       display:flex;
       align-items:flex-end;
@@ -194,143 +172,94 @@
       font-size:16px;
       letter-spacing:.2px;
       color:var(--navy);
+      font-weight:820;
     }
     .section-head p{
       margin:0;
       font-size:12.5px;
       color:var(--muted);
-      max-width:80ch;
+      max-width:85ch;
       line-height:1.4;
     }
 
-    /* Grid cards */
+    /* ===== Grid & Clean Cards ===== */
     .grid{
       display:grid;
       grid-template-columns:repeat(12, 1fr);
       gap:14px;
     }
-    .card{
+
+    .cardlink{
       grid-column:span 6;
+      display:block;
+      border-radius:var(--radius-lg);
       background:var(--card);
       border:1px solid var(--line);
-      border-radius:var(--radius-lg);
       box-shadow:0 8px 24px rgba(12, 26, 43, .06);
       overflow:hidden;
+      transition: transform .10s ease, box-shadow .12s ease, border-color .12s ease;
       position:relative;
     }
-    @media (max-width:900px){ .card{grid-column:span 12;} }
+    @media (max-width:900px){ .cardlink{grid-column:span 12;} }
 
-    .card-top{
-      padding:16px 16px 14px;
-      position:relative;
-    }
-    .card-top::before{
+    .cardlink::before{
       content:"";
-      position:absolute; inset:0 0 auto 0;
-      height:6px;
+      position:absolute; left:0; right:0; top:0;
+      height:5px;
       background:linear-gradient(90deg, rgba(23,57,91,.95), rgba(30,79,122,.85), rgba(23,57,91,.95));
-      opacity:.95;
+      opacity:.92;
     }
-    .titleline{
+    .cardlink:hover{
+      transform: translateY(-1px);
+      box-shadow:0 14px 28px rgba(12, 26, 43, .10);
+      border-color:rgba(23,57,91,.22);
+    }
+
+    .card-inner{
+      padding:16px 16px 16px;
       display:flex;
+      gap:14px;
       align-items:flex-start;
       justify-content:space-between;
-      gap:10px;
-      margin-top:6px;
     }
-    .roman{
-      font-weight:800;
-      letter-spacing:.6px;
-      font-size:12.5px;
-      color:rgba(15,39,66,.78);
-      background:rgba(23,57,91,.08);
-      border:1px solid rgba(23,57,91,.12);
-      padding:6px 10px;
-      border-radius:999px;
-      user-select:none;
-      white-space:nowrap;
-    }
-    .card h3{
-      margin:0;
-      font-size:14.2px;
+
+    .card-text{ min-width:0; }
+    .card-text h3{
+      margin:2px 0 8px;
+      font-size:14.4px;
       line-height:1.25;
+      letter-spacing:.2px;
+      font-weight:820;
       color:var(--ink);
-      font-weight:780;
-      letter-spacing:.2px;
-      max-width:55ch;
+      text-transform:uppercase;
     }
-    .card .subtitle{
-      margin:8px 0 0;
+    .card-text p{
+      margin:0;
       color:var(--slate);
-      font-size:12.6px;
+      font-size:12.8px;
       line-height:1.45;
+      max-width:70ch;
     }
 
-    .tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin:12px 0 0;
-    }
-    .tag{
-      font-size:11.5px;
-      padding:6px 10px;
+    .badge{
+      flex:0 0 auto;
+      width:38px;
+      height:38px;
       border-radius:999px;
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, #fff, #fbfcfe);
-      color:rgba(15,39,66,.78);
-      user-select:none;
-    }
-    .tag strong{
-      font-weight:800;
-      letter-spacing:.2px;
-    }
-
-    .card-actions{
       display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      padding:12px 16px 16px;
-      border-top:1px dashed rgba(15,39,66,.14);
-      background:linear-gradient(180deg, rgba(246,248,251,.35), rgba(246,248,251,.60));
-    }
-    .btn{
-      display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid rgba(15,39,66,.16);
-      background:#fff;
+      font-weight:900;
+      letter-spacing:.8px;
       font-size:12.8px;
-      font-weight:700;
-      letter-spacing:.2px;
-      color:var(--navy);
-      transition:transform .08s ease, box-shadow .12s ease, border-color .12s ease;
-      white-space:nowrap;
-    }
-    .btn:hover{
-      transform:translateY(-1px);
-      box-shadow:0 10px 18px rgba(12, 26, 43, .08);
-      border-color:rgba(23,57,91,.25);
-    }
-    .btn.primary{
-      background:linear-gradient(135deg, rgba(15,39,66,.94), rgba(22,54,84,.94));
-      color:#fff;
-      border-color:rgba(255,255,255,.14);
-      box-shadow:0 10px 24px rgba(12, 26, 43, .14);
-    }
-    .btn.primary:hover{
-      box-shadow:0 14px 28px rgba(12, 26, 43, .18);
-      border-color:rgba(255,255,255,.22);
-    }
-    .btn.ghost{
-      background:transparent;
-      border-style:dashed;
-      color:rgba(15,39,66,.85);
+      color:rgba(15,39,66,.78);
+      background:rgba(23,57,91,.08);
+      border:1px solid rgba(23,57,91,.16);
+      margin-top:2px;
+      user-select:none;
     }
 
-    /* Footer note */
+    /* Outros módulos: mesma estética */
     .note{
       margin-top:18px;
       background:rgba(23,57,91,.06);
@@ -340,11 +269,6 @@
       color:rgba(15,39,66,.82);
       line-height:1.45;
       font-size:12.8px;
-    }
-    .note strong{
-      font-weight:850;
-      letter-spacing:.2px;
-      color:var(--navy);
     }
     .mono{
       font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -357,7 +281,6 @@
       margin:2px 0;
     }
 
-    /* Filtering */
     .hidden{display:none !important;}
   </style>
 </head>
@@ -368,20 +291,20 @@
     <header class="hero">
       <div class="hero-top">
         <div class="brand">
-          <h1>RICD — Índice de Estudos (Títulos I a X)</h1>
+          <h1>RICD — Índice de Estudos</h1>
           <p>
-            Navegação central dos resumos em HTML, mantendo a <em>mesma identidade visual</em>:
-            cards limpos, cores sóbrias e destaque sem ícones.
+            Hub central dos resumos (Títulos 1–10). Visual clean, navy suave, cards sem botões e sem tags.
+            Clique no card para abrir o arquivo do título.
           </p>
         </div>
 
         <div class="meta">
           <div class="search">
             <label for="q">Filtrar:</label>
-            <input id="q" type="search" placeholder="ex.: proposições, deputados, disposições finais…" autocomplete="off" />
+            <input id="q" type="search" placeholder="ex.: comissões, prazos, proposições, sessão…" autocomplete="off" />
           </div>
 
-          <div class="legend" aria-label="Legenda de cores">
+          <div class="legend" aria-label="Legenda de cores (usada nos resumos)">
             <span class="chip"><span class="dot orgao"></span>ÓRGÃOS</span>
             <span class="chip"><span class="dot prazo"></span>PRAZOS</span>
             <span class="chip"><span class="dot alert"></span>EXCEÇÕES / ALERTA</span>
@@ -391,247 +314,114 @@
       </div>
     </header>
 
-    <!-- ===================== TÍTULOS I–X ===================== -->
+    <!-- ===================== TÍTULOS 1–10 ===================== -->
     <section class="section" aria-labelledby="titulacao">
       <div class="section-head">
-        <h2 id="titulacao">Títulos do Regimento Interno (I a X)</h2>
-        <p>
-          Cada card tem dois atalhos: <strong>Visual</strong> (layout completo) e <strong>Kindle</strong> (versão simplificada).
-          Você pode ir adicionando/atualizando os arquivos aos poucos.
-        </p>
+        <h2 id="titulacao">Títulos do RICD (1 a 10)</h2>
+        <p>Arquivos: <span class="mono">titulo1.html</span> … <span class="mono">titulo10.html</span>.</p>
       </div>
 
       <div class="grid" id="cards">
 
-        <!-- TÍTULO I -->
-        <article class="card" data-keywords="titulo i disposicoes preliminares sede sessoes legislativas sessoes preparatorias posse">
-          <div class="card-top">
-            <div class="titleline">
-              <div>
-                <h3>TÍTULO I — DISPOSIÇÕES PRELIMINARES</h3>
-                <p class="subtitle">Sede; sessões legislativas; sessões preparatórias; posse e organização inicial.</p>
-                <div class="tags">
-                  <span class="tag"><strong class="mono">I</strong> Base</span>
-                  <span class="tag">Definições</span>
-                  <span class="tag">Estrutura inicial</span>
-                </div>
-              </div>
-              <span class="roman">I</span>
+        <a class="cardlink" href="titulo1.html" data-keywords="titulo 1 i disposicoes preliminares sede sessoes legislativas sessoes preparatorias posse">
+          <div class="card-inner">
+            <div class="card-text">
+              <h3>TÍTULO I — DISPOSIÇÕES PRELIMINARES</h3>
+              <p>Sede; sessões legislativas; sessões preparatórias; posse e organização inicial.</p>
             </div>
+            <div class="badge">I</div>
           </div>
-          <div class="card-actions">
-            <a class="btn primary" href="titulo-i.html">Abrir (Visual)</a>
-            <a class="btn" href="titulo-i-kindle.html">Abrir (Kindle)</a>
-            <a class="btn ghost" href="#" onclick="return false" title="Você pode trocar o link quando quiser.">Editar link</a>
-          </div>
-        </article>
+        </a>
 
-        <!-- TÍTULO II -->
-        <article class="card" data-keywords="titulo ii orgaos da camara mesa comissoes liderancas secretaria">
-          <div class="card-top">
-            <div class="titleline">
-              <div>
-                <h3>TÍTULO II — DOS ÓRGÃOS DA CÂMARA</h3>
-                <p class="subtitle">Estrutura orgânica: Mesa; lideranças; comissões e demais órgãos internos.</p>
-                <div class="tags">
-                  <span class="tag"><strong class="mono">II</strong> Organização</span>
-                  <span class="tag">Competências</span>
-                  <span class="tag">Composição</span>
-                </div>
-              </div>
-              <span class="roman">II</span>
+        <a class="cardlink" href="titulo2.html" data-keywords="titulo 2 ii orgaos da camara mesa comissoes liderancas secretaria">
+          <div class="card-inner">
+            <div class="card-text">
+              <h3>TÍTULO II — DOS ÓRGÃOS DA CÂMARA</h3>
+              <p>Estrutura orgânica: Mesa; lideranças; comissões e demais órgãos internos.</p>
             </div>
+            <div class="badge">II</div>
           </div>
-          <div class="card-actions">
-            <a class="btn primary" href="titulo-ii.html">Abrir (Visual)</a>
-            <a class="btn" href="titulo-ii-kindle.html">Abrir (Kindle)</a>
-            <a class="btn ghost" href="#" onclick="return false">Editar link</a>
-          </div>
-        </article>
+        </a>
 
-        <!-- TÍTULO III -->
-        <article class="card" data-keywords="titulo iii sessoes da camara plenarias ordem do dia expediente ata quoruns">
-          <div class="card-top">
-            <div class="titleline">
-              <div>
-                <h3>TÍTULO III — DAS SESSÕES DA CÂMARA</h3>
-                <p class="subtitle">Regras de funcionamento das sessões: dinâmica, ordem, debates e registros.</p>
-                <div class="tags">
-                  <span class="tag"><strong class="mono">III</strong> Sessões</span>
-                  <span class="tag">Ritos</span>
-                  <span class="tag">Quóruns</span>
-                </div>
-              </div>
-              <span class="roman">III</span>
+        <a class="cardlink" href="titulo3.html" data-keywords="titulo 3 iii sessoes da camara plenarias ordem do dia expediente ata quoruns">
+          <div class="card-inner">
+            <div class="card-text">
+              <h3>TÍTULO III — DAS SESSÕES DA CÂMARA</h3>
+              <p>Regras de funcionamento das sessões: dinâmica, ordem, debates e registros.</p>
             </div>
+            <div class="badge">III</div>
           </div>
-          <div class="card-actions">
-            <a class="btn primary" href="titulo-iii.html">Abrir (Visual)</a>
-            <a class="btn" href="titulo-iii-kindle.html">Abrir (Kindle)</a>
-            <a class="btn ghost" href="#" onclick="return false">Editar link</a>
-          </div>
-        </article>
+        </a>
 
-        <!-- TÍTULO IV -->
-        <article class="card" data-keywords="titulo iv proposicoes pec projeto emenda indicacao requerimento recurso parecer fiscalizacao controle">
-          <div class="card-top">
-            <div class="titleline">
-              <div>
-                <h3>TÍTULO IV — DAS PROPOSIÇÕES</h3>
-                <p class="subtitle">Conceito e espécies de proposições; regras formais e diretrizes de apresentação.</p>
-                <div class="tags">
-                  <span class="tag"><strong class="mono">IV</strong> Proposições</span>
-                  <span class="tag">Formas</span>
-                  <span class="tag">Técnica legislativa</span>
-                </div>
-              </div>
-              <span class="roman">IV</span>
+        <a class="cardlink" href="titulo4.html" data-keywords="titulo 4 iv proposicoes pec projeto emenda indicacao requerimento recurso parecer">
+          <div class="card-inner">
+            <div class="card-text">
+              <h3>TÍTULO IV — DAS PROPOSIÇÕES</h3>
+              <p>Espécies de proposições e regras formais de apresentação.</p>
             </div>
+            <div class="badge">IV</div>
           </div>
-          <div class="card-actions">
-            <a class="btn primary" href="titulo-iv.html">Abrir (Visual)</a>
-            <a class="btn" href="titulo-iv-kindle.html">Abrir (Kindle)</a>
-            <a class="btn ghost" href="#" onclick="return false">Editar link</a>
-          </div>
-        </article>
+        </a>
 
-        <!-- TÍTULO V -->
-        <article class="card" data-keywords="titulo v apreciacao das proposicoes tramitacao urgencia comissoes plenarios prazos pareceres">
-          <div class="card-top">
-            <div class="titleline">
-              <div>
-                <h3>TÍTULO V — DA APRECIAÇÃO DAS PROPOSIÇÕES</h3>
-                <p class="subtitle">Tramitação, distribuição, regimes, prazos e deliberação ao longo do processo.</p>
-                <div class="tags">
-                  <span class="tag"><strong class="mono">V</strong> Processo</span>
-                  <span class="tag">Tramitação</span>
-                  <span class="tag">Regimes</span>
-                </div>
-              </div>
-              <span class="roman">V</span>
+        <a class="cardlink" href="titulo5.html" data-keywords="titulo 5 v apreciacao das proposicoes tramitacao urgencia comissoes plenarios prazos pareceres">
+          <div class="card-inner">
+            <div class="card-text">
+              <h3>TÍTULO V — DA APRECIAÇÃO DAS PROPOSIÇÕES</h3>
+              <p>Tramitação, regimes, prazos, pareceres e deliberação.</p>
             </div>
+            <div class="badge">V</div>
           </div>
-          <div class="card-actions">
-            <a class="btn primary" href="titulo-v.html">Abrir (Visual)</a>
-            <a class="btn" href="titulo-v-kindle.html">Abrir (Kindle)</a>
-            <a class="btn ghost" href="#" onclick="return false">Editar link</a>
-          </div>
-        </article>
+        </a>
 
-        <!-- TÍTULO VI -->
-        <article class="card" data-keywords="titulo vi materias sujeitas a disposicoes especiais proposta emenda constituicao codigo orcamento autorizacoes">
-          <div class="card-top">
-            <div class="titleline">
-              <div>
-                <h3>TÍTULO VI — DAS MATÉRIAS SUJEITAS A DISPOSIÇÕES ESPECIAIS</h3>
-                <p class="subtitle">Regras específicas para matérias com rito próprio (tratamento diferenciado).</p>
-                <div class="tags">
-                  <span class="tag"><strong class="mono">VI</strong> Especial</span>
-                  <span class="tag">Ritos próprios</span>
-                  <span class="tag">Exceções</span>
-                </div>
-              </div>
-              <span class="roman">VI</span>
+        <a class="cardlink" href="titulo6.html" data-keywords="titulo 6 vi materias sujeitas disposicoes especiais rito proprio excecoes">
+          <div class="card-inner">
+            <div class="card-text">
+              <h3>TÍTULO VI — MATÉRIAS SUJEITAS A DISPOSIÇÕES ESPECIAIS</h3>
+              <p>Matérias com rito próprio e tratamento regimental diferenciado.</p>
             </div>
+            <div class="badge">VI</div>
           </div>
-          <div class="card-actions">
-            <a class="btn primary" href="titulo-vi.html">Abrir (Visual)</a>
-            <a class="btn" href="titulo-vi-kindle.html">Abrir (Kindle)</a>
-            <a class="btn ghost" href="#" onclick="return false">Editar link</a>
-          </div>
-        </article>
+        </a>
 
-        <!-- TÍTULO VII -->
-        <article class="card" data-keywords="titulo vii deputados mandato prerrogativas deveres vedações licencas decoro">
-          <div class="card-top">
-            <div class="titleline">
-              <div>
-                <h3>TÍTULO VII — DOS DEPUTADOS</h3>
-                <p class="subtitle">Direitos, deveres, prerrogativas, vedações e hipóteses correlatas ao mandato.</p>
-                <div class="tags">
-                  <span class="tag"><strong class="mono">VII</strong> Mandato</span>
-                  <span class="tag">Prerrogativas</span>
-                  <span class="tag">Decoro</span>
-                </div>
-              </div>
-              <span class="roman">VII</span>
+        <a class="cardlink" href="titulo7.html" data-keywords="titulo 7 vii deputados mandato prerrogativas deveres vedacoes licencas decoro">
+          <div class="card-inner">
+            <div class="card-text">
+              <h3>TÍTULO VII — DOS DEPUTADOS</h3>
+              <p>Direitos, deveres, prerrogativas, vedações e hipóteses do mandato.</p>
             </div>
+            <div class="badge">VII</div>
           </div>
-          <div class="card-actions">
-            <a class="btn primary" href="titulo-vii.html">Abrir (Visual)</a>
-            <a class="btn" href="titulo-vii-kindle.html">Abrir (Kindle)</a>
-            <a class="btn ghost" href="#" onclick="return false">Editar link</a>
-          </div>
-        </article>
+        </a>
 
-        <!-- TÍTULO VIII -->
-        <article class="card" data-keywords="titulo viii participacao sociedade civil iniciativa popular peticoes representacoes credenciamento">
-          <div class="card-top">
-            <div class="titleline">
-              <div>
-                <h3>TÍTULO VIII — DA PARTICIPAÇÃO DA SOCIEDADE CIVIL</h3>
-                <p class="subtitle">Iniciativa popular, petições/representações e outras formas de participação.</p>
-                <div class="tags">
-                  <span class="tag"><strong class="mono">VIII</strong> Participação</span>
-                  <span class="tag">Iniciativa popular</span>
-                  <span class="tag">CLP / Ouvidoria</span>
-                </div>
-              </div>
-              <span class="roman">VIII</span>
+        <a class="cardlink" href="titulo8.html" data-keywords="titulo 8 viii participacao sociedade civil iniciativa popular peticoes representacoes">
+          <div class="card-inner">
+            <div class="card-text">
+              <h3>TÍTULO VIII — PARTICIPAÇÃO DA SOCIEDADE CIVIL</h3>
+              <p>Iniciativa popular, petições/representações e outras formas de participação.</p>
             </div>
+            <div class="badge">VIII</div>
           </div>
-          <div class="card-actions">
-            <a class="btn primary" href="titulo-viii.html">Abrir (Visual)</a>
-            <a class="btn" href="titulo-viii-kindle.html">Abrir (Kindle)</a>
-            <a class="btn ghost" href="#" onclick="return false">Editar link</a>
-          </div>
-        </article>
+        </a>
 
-        <!-- TÍTULO IX -->
-        <article class="card" data-keywords="titulo ix administracao economia interna servicos administrativos transparencia secretaria mesa">
-          <div class="card-top">
-            <div class="titleline">
-              <div>
-                <h3>TÍTULO IX — DA ADMINISTRAÇÃO E DA ECONOMIA INTERNA</h3>
-                <p class="subtitle">Serviços administrativos, regime interno e diretrizes de funcionamento.</p>
-                <div class="tags">
-                  <span class="tag"><strong class="mono">IX</strong> Administração</span>
-                  <span class="tag">Serviços</span>
-                  <span class="tag">Regulamentos</span>
-                </div>
-              </div>
-              <span class="roman">IX</span>
+        <a class="cardlink" href="titulo9.html" data-keywords="titulo 9 ix administracao economia interna servicos administrativos transparencia">
+          <div class="card-inner">
+            <div class="card-text">
+              <h3>TÍTULO IX — ADMINISTRAÇÃO E ECONOMIA INTERNA</h3>
+              <p>Serviços administrativos, regime interno e diretrizes de funcionamento.</p>
             </div>
+            <div class="badge">IX</div>
           </div>
-          <div class="card-actions">
-            <a class="btn primary" href="titulo-ix.html">Abrir (Visual)</a>
-            <a class="btn" href="titulo-ix-kindle.html">Abrir (Kindle)</a>
-            <a class="btn ghost" href="#" onclick="return false">Editar link</a>
-          </div>
-        </article>
+        </a>
 
-        <!-- TÍTULO X -->
-        <article class="card" data-keywords="titulo x disposicoes finais transicao vigencia interpretacao">
-          <div class="card-top">
-            <div class="titleline">
-              <div>
-                <h3>TÍTULO X — DAS DISPOSIÇÕES FINAIS</h3>
-                <p class="subtitle">Cláusulas finais: regras de fechamento, disposições residuais e ajustes.</p>
-                <div class="tags">
-                  <span class="tag"><strong class="mono">X</strong> Final</span>
-                  <span class="tag">Fechamento</span>
-                  <span class="tag">Regras finais</span>
-                </div>
-              </div>
-              <span class="roman">X</span>
+        <a class="cardlink" href="titulo10.html" data-keywords="titulo 10 x disposicoes finais transicao vigencia interpretacao">
+          <div class="card-inner">
+            <div class="card-text">
+              <h3>TÍTULO X — DISPOSIÇÕES FINAIS</h3>
+              <p>Regras de encerramento: disposições residuais, ajustes e fechamento.</p>
             </div>
+            <div class="badge">X</div>
           </div>
-          <div class="card-actions">
-            <a class="btn primary" href="titulo-x.html">Abrir (Visual)</a>
-            <a class="btn" href="titulo-x-kindle.html">Abrir (Kindle)</a>
-            <a class="btn ghost" href="#" onclick="return false">Editar link</a>
-          </div>
-        </article>
+        </a>
 
       </div>
     </section>
@@ -640,67 +430,38 @@
     <section class="section" aria-labelledby="outros">
       <div class="section-head">
         <h2 id="outros">Outros módulos</h2>
-        <p>
-          Espaço para páginas temáticas (aprofundamentos, quadros comparativos, “pegadinhas”, exercícios, mapas mentais).
-          É só duplicar um card e apontar para o novo arquivo.
-        </p>
+        <p>Área para páginas temáticas e aprofundamentos (você adiciona aos poucos).</p>
       </div>
 
       <div class="grid">
-        <article class="card" data-keywords="modulo pegadinhas comparativos prazos">
-          <div class="card-top">
-            <div class="titleline">
-              <div>
-                <h3>MÓDULO — Padrões, prazos e pegadinhas (geral)</h3>
-                <p class="subtitle">Página transversal para comparação rápida de prazos, quóruns, competências e exceções.</p>
-                <div class="tags">
-                  <span class="tag"><strong class="mono">M1</strong> Revisão</span>
-                  <span class="tag" style="border-color:rgba(193,120,25,.35); background:rgba(199,120,25,.08); color:rgba(140,80,15,.95);">
-                    PRAZOS
-                  </span>
-                  <span class="tag" style="border-color:rgba(177,31,46,.30); background:rgba(177,31,46,.08); color:rgba(150,20,32,.95);">
-                    EXCEÇÕES
-                  </span>
-                </div>
-              </div>
-              <span class="roman">M</span>
-            </div>
-          </div>
-          <div class="card-actions">
-            <a class="btn primary" href="modulo-padroes.html">Abrir (Visual)</a>
-            <a class="btn" href="modulo-padroes-kindle.html">Abrir (Kindle)</a>
-            <a class="btn ghost" href="#" onclick="return false">Editar link</a>
-          </div>
-        </article>
 
-        <article class="card" data-keywords="modulo exercicios questoes ccs cebraspe certo errado">
-          <div class="card-top">
-            <div class="titleline">
-              <div>
-                <h3>MÓDULO — Questões e treino (estilo CEBRASPE)</h3>
-                <p class="subtitle">Banco de questões, certo/errado e notas de atenção por tema, alinhado aos resumos.</p>
-                <div class="tags">
-                  <span class="tag"><strong class="mono">M2</strong> Treino</span>
-                  <span class="tag">C/E</span>
-                  <span class="tag">Comentários</span>
-                </div>
-              </div>
-              <span class="roman">M</span>
+        <a class="cardlink" href="modulo-padroes.html" data-keywords="modulo comparativos prazos quoruns competencias pegadinhas">
+          <div class="card-inner">
+            <div class="card-text">
+              <h3>MÓDULO — PADRÕES, PRAZOS E PEGADINHAS</h3>
+              <p>Comparações transversais: prazos, quóruns, competências e exceções.</p>
             </div>
+            <div class="badge">M</div>
           </div>
-          <div class="card-actions">
-            <a class="btn primary" href="modulo-questoes.html">Abrir (Visual)</a>
-            <a class="btn" href="modulo-questoes-kindle.html">Abrir (Kindle)</a>
-            <a class="btn ghost" href="#" onclick="return false">Editar link</a>
+        </a>
+
+        <a class="cardlink" href="modulo-questoes.html" data-keywords="modulo questoes exercicios cebraspe certo errado revisao">
+          <div class="card-inner">
+            <div class="card-text">
+              <h3>MÓDULO — QUESTÕES E TREINO (CEBRASPE)</h3>
+              <p>Banco de questões C/E com comentários e pontos de atenção por tema.</p>
+            </div>
+            <div class="badge">M</div>
           </div>
-        </article>
+        </a>
+
       </div>
 
       <div class="note">
-        <strong>Como usar (bem simples):</strong><br/>
-        1) Salve este arquivo como <span class="mono">index.html</span> na mesma pasta dos resumos.<br/>
-        2) Para cada título, crie (ou adicione depois) os arquivos no formato: <span class="mono">titulo-i.html</span> e <span class="mono">titulo-i-kindle.html</span> (e assim por diante).<br/>
-        3) Para criar um “Outro módulo”, duplique um card e troque o <span class="mono">href</span> para o nome do seu novo HTML.
+        <strong>Estrutura da pasta (exemplo):</strong><br/>
+        <span class="mono">index.html</span><br/>
+        <span class="mono">titulo1.html</span> … <span class="mono">titulo10.html</span><br/>
+        módulos: <span class="mono">modulo-padroes.html</span>, <span class="mono">modulo-questoes.html</span> etc.
       </div>
     </section>
 
@@ -709,17 +470,13 @@
   <script>
     (function(){
       const input = document.getElementById('q');
-      const cards = Array.from(document.querySelectorAll('#cards .card, .section .card'));
-      function norm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
-
+      const cards = Array.from(document.querySelectorAll('.cardlink'));
+      const norm = (s)=> (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
       input.addEventListener('input', function(){
         const q = norm(input.value.trim());
-        if(!q){
-          cards.forEach(c=>c.classList.remove('hidden'));
-          return;
-        }
+        if(!q){ cards.forEach(c=>c.classList.remove('hidden')); return; }
         cards.forEach(card=>{
-          const hay = norm(card.getAttribute('data-keywords') + ' ' + card.innerText);
+          const hay = norm((card.getAttribute('data-keywords')||'') + ' ' + card.innerText);
           card.classList.toggle('hidden', !hay.includes(q));
         });
       });
