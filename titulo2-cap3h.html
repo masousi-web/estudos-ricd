@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RICD — Título II (Cap. III-H — Secretaria do Empreendedorismo Legislativo)</title>
+
+  <!-- Literata (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --ink:#0f172a;
+      --muted:#475569;
+      --muted2:#64748b;
+      --slate:#2b3442;
+      --navy:#0b1b2a;
+
+      --shadow: 0 10px 24px rgba(15, 23, 42, .08);
+      --shadow2: 0 2px 10px rgba(15, 23, 42, .06);
+
+      --radius-xl:18px;
+      --radius-lg:14px;
+
+      --max:1100px;
+
+      /* ====== DESTAQUES SEMÂNTICOS ====== */
+      --org:#1e3a8a;        /* órgãos/instâncias */
+      --prazo:#b45309;      /* prazos */
+      --exc:#dc2626;        /* exceções/alerta */
+      --num:#334155;        /* números/frações/quóruns */
+      --mark: rgba(15, 23, 42, .08);
+
+      /* acento do capítulo (empreendedorismo) */
+      --accent: rgba(16, 185, 129, .62);       /* emerald */
+      --accent-soft: rgba(16, 185, 129, .10);
+
+      --serif: "Literata", ui-serif, Georgia, "Times New Roman", Times, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--serif);
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.55;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:26px 18px 70px; }
+
+    /* Header */
+    .hero{
+      border-radius:var(--radius-xl);
+      padding:26px 22px 18px;
+      background:
+        radial-gradient(900px 280px at 18% 0%, rgba(16, 185, 129, .18), transparent 62%),
+        radial-gradient(900px 280px at 82% 0%, rgba(36, 59, 83, .12), transparent 60%),
+        linear-gradient(180deg, #ecfdf5 0%, #f7fafc 60%, #f6f8fb 100%);
+      border:1px solid rgba(15, 23, 42, .06);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    .kicker{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(16, 185, 129, .22);
+      color: #064e3b;
+      font-weight:650;
+      letter-spacing:.2px;
+      font-size:12.5px;
+      font-family: var(--sans);
+    }
+    h1{
+      margin:12px 0 8px;
+      font-size:clamp(25px, 3.1vw, 37px);
+      line-height:1.08;
+      letter-spacing:-0.6px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      max-width:120ch;
+      font-size:14.5px;
+      font-family: var(--sans);
+    }
+
+    .top-actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.70);
+      color: var(--ink);
+      padding:10px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:750;
+      font-size:13px;
+      box-shadow: 0 1px 0 rgba(15, 23, 42, .03);
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-family: var(--sans);
+      transition: transform .10s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .btn:hover{ box-shadow: 0 10px 18px rgba(15,23,42,.10); transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0px); }
+    .btn .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: rgba(15,23,42,.35);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.65);
+    }
+    .btn.primary{
+      background: rgba(15, 23, 42, .92);
+      color: #fff;
+      border-color: rgba(15, 23, 42, .92);
+    }
+    .btn.primary .dot{ background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 2px rgba(15,23,42,.55); }
+    .btn.green{
+      background: rgba(16,185,129,.10);
+      border-color: rgba(16,185,129,.22);
+      color: #064e3b;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+      font-family: var(--sans);
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.70);
+      border:1px solid rgba(15,23,42,.10);
+      color:var(--slate);
+      font-size:13px;
+      box-shadow:0 1px 0 rgba(15, 23, 42, .03);
+      transition: transform .08s ease, box-shadow .08s ease;
+      white-space:nowrap;
+    }
+    .chip:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(15,23,42,.08); }
+    .chip b{ font-weight:800; }
+    .chip small{ color:var(--muted2); font-weight:650; }
+
+    .section{
+      margin-top:18px;
+      border-radius:var(--radius-xl);
+      background:rgba(255,255,255,.55);
+      border:1px solid rgba(15, 23, 42, .07);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+    }
+    .section-head{
+      padding:16px 18px 14px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.55));
+      border-bottom:1px solid rgba(15, 23, 42, .06);
+      font-family: var(--sans);
+    }
+    .section-head h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-0.2px;
+    }
+    .meta{
+      color:var(--muted2);
+      font-size:12.5px;
+      font-weight:650;
+      white-space:nowrap;
+    }
+    .grid{
+      padding:16px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+
+    .card{
+      grid-column: span 12;
+      background:var(--card);
+      border:1px solid rgba(15, 23, 42, .08);
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    @media (min-width: 860px){
+      .card.half{ grid-column: span 6; }
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:6px;
+      background: var(--accent);
+    }
+
+    .card-inner{ padding:14px 14px 14px; }
+    .card-top{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      margin-bottom:8px;
+      font-family: var(--sans);
+    }
+    .tag{
+      width:44px; height:44px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      letter-spacing:.6px;
+      font-size:13px;
+      color:#064e3b;
+      background: rgba(16,185,129,.10);
+      border:1px solid rgba(16,185,129,.22);
+      flex:0 0 auto;
+      user-select:none;
+    }
+
+    .title{
+      margin:0;
+      font-weight:820;
+      letter-spacing:-0.25px;
+      font-size:15.5px;
+      line-height:1.22;
+    }
+    .lead{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13.8px;
+      font-family: var(--sans);
+    }
+
+    .list{
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      font-family: var(--sans);
+    }
+    .li{
+      padding:10px 10px;
+      border-radius:12px;
+      background:#f8fafc;
+      border:1px solid rgba(15, 23, 42, .06);
+      color:var(--slate);
+      font-size:13.7px;
+    }
+    .li b{ font-weight:900; }
+
+    .k{
+      font-weight:900;
+      color:var(--navy);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, var(--mark) 55%);
+    }
+    .org{
+      font-weight:900;
+      color:var(--org);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(30,58,138,.10) 55%);
+    }
+    .prazo{
+      font-weight:950;
+      color:var(--prazo);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(180,83,9,.12) 55%);
+      white-space:nowrap;
+    }
+    .exc{
+      font-weight:950;
+      color:var(--exc);
+      padding:0 .20em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(220,38,38,.14) 55%);
+    }
+    .num{ font-weight:950; color:var(--num); white-space:nowrap; letter-spacing:.2px; }
+
+    .note{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background: rgba(16,185,129,.06);
+      border: 1px solid rgba(16,185,129,.12);
+      color:#064e3b;
+      font-size:13.2px;
+      font-family: var(--sans);
+    }
+
+    .refs{
+      margin-top:10px;
+      padding:12px 12px;
+      border-radius:14px;
+      background: rgba(15,23,42,.03);
+      border: 1px solid rgba(15,23,42,.08);
+      font-family: var(--sans);
+      color: var(--slate);
+    }
+    .refs h3{
+      margin:0 0 8px;
+      font-size:13.5px;
+      letter-spacing:.1px;
+    }
+    .refs ul{ margin:0; padding-left:18px; }
+    .refs li{ margin:6px 0; font-size:13.2px; line-height:1.45; }
+
+    footer{
+      margin-top:14px;
+      color:var(--muted2);
+      font-size:12.5px;
+      text-align:center;
+      font-family: var(--sans);
+    }
+
+    /* Drawer: Anotações */
+    .drawer{
+      position: fixed;
+      inset: 0;
+      display:none;
+      background: rgba(15,23,42,.35);
+      backdrop-filter: blur(3px);
+      z-index: 50;
+      padding: 18px;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .drawer.open{ display:flex; }
+    .drawer-panel{
+      width: min(880px, 100%);
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: 0 24px 50px rgba(15,23,42,.20);
+      overflow:hidden;
+    }
+    .drawer-head{
+      padding: 14px 16px 12px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      background:
+        radial-gradient(820px 220px at 10% 0%, rgba(16,185,129,.18), transparent 62%),
+        radial-gradient(820px 220px at 90% 0%, rgba(36, 59, 83, .10), transparent 58%),
+        linear-gradient(180deg, rgba(248,250,252,.92), rgba(255,255,255,.75));
+      border-bottom: 1px solid rgba(15,23,42,.08);
+      font-family: var(--sans);
+    }
+    .drawer-head h2{ margin:0; font-size: 15px; letter-spacing: .1px; }
+    .drawer-head p{
+      margin:4px 0 0;
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.35;
+      max-width: 78ch;
+    }
+    .drawer-body{ padding: 12px 14px 14px; font-family: var(--sans); }
+    textarea{
+      width:100%;
+      min-height: 240px;
+      resize: vertical;
+      border-radius: 16px;
+      border: 1px solid rgba(15,23,42,.14);
+      padding: 12px 12px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      outline:none;
+      background: #fbfcfe;
+    }
+    textarea:focus{
+      border-color: rgba(16,185,129,.40);
+      box-shadow: 0 0 0 3px rgba(16,185,129,.12);
+      background: #ffffff;
+    }
+    .drawer-actions{
+      margin-top: 10px;
+      display:flex;
+      gap: 10px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    @media print{
+      body{ background:#fff; }
+      .hero,.section{ box-shadow:none; }
+      .chips, .top-actions{ display:none !important; }
+      .wrap{ padding:0; }
+      .grid{ padding:10px; }
+      .drawer{ display:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="hero" id="topo">
+      <span class="kicker">RICD • Título II • Capítulo III-H</span>
+      <h1>Capítulo III-H — Secretaria do Empreendedorismo Legislativo</h1>
+
+      <p class="sub">
+        Síntese técnica dos Arts. <span class="k">21-P</span> e <span class="k">21-Q</span>:
+        competências voltadas a <span class="k">estudos</span>, <span class="k">cultura do conhecimento</span>,
+        <span class="k">fiscalização e acompanhamento</span> de projetos/programas, <span class="k">cooperação</span>
+        institucional e <span class="k">participação/promoção de eventos</span> sobre <span class="k">empreendedorismo</span>,
+        com investidura pelo <span class="org">PCD</span> e possibilidade de <span class="exc">substituição a qualquer tempo</span>.
+      </p>
+
+      <div class="top-actions" role="group" aria-label="Ações principais">
+        <a class="btn" href="titulo2.html" title="Voltar ao Título II (página principal)">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Voltar</b> (Título II)</span>
+        </a>
+
+        <a class="btn" href="index.html" title="Voltar ao índice">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Menu principal</b> (index)</span>
+        </a>
+
+        <button class="btn primary" id="btnNotes" type="button" title="Abrir bloco de anotações">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Anotações</b> (salvar e fechar)</span>
+        </button>
+      </div>
+
+      <nav class="chips" aria-label="Navegação por tópicos">
+        <a class="chip" href="#competencias"><b>Competências</b> <small>I a V</small></a>
+        <a class="chip" href="#investidura"><b>Investidura</b> <small>PCD</small></a>
+        <a class="chip" href="#correlatos"><b>Artigos correlatos</b> <small>Art. 32</small></a>
+      </nav>
+    </header>
+
+    <!-- Competências -->
+    <section class="section" id="competencias">
+      <div class="section-head">
+        <h2>Secretaria do Empreendedorismo Legislativo (Arts. 21-P e 21-Q)</h2>
+        <div class="meta">empreendedorismo • fomento • estudos</div>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">21-P</div>
+              <div>
+                <p class="title">Competências</p>
+                <p class="lead">
+                  A Secretaria atua de forma <span class="k">transversal</span> na produção de conhecimento, fomento cultural,
+                  fiscalização de programas e articulação/cooperação, com foco em <span class="k">empreendedorismo</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li">
+                <b>I</b> ➜ <span class="k">REALIZAR</span> estudos e pesquisas para identificar/propor
+                <span class="k">aprimoramento</span> na legislação relativa ao <span class="k">EMPREENDEDORISMO</span>
+                (setores público e privado).
+              </li>
+              <li class="li">
+                <b>II</b> ➜ <span class="k">PROMOVER</span> e fomentar a cultura do
+                <span class="k">CONHECIMENTO</span>, da <span class="k">CRIATIVIDADE</span> e da construção estruturada do futuro.
+              </li>
+              <li class="li">
+                <b>III</b> ➜ <span class="k">FISCALIZAR</span>, apoiar e acompanhar a execução de projetos/programas do governo federal e sociedade civil
+                visando a promoção do <span class="k">empreendedorismo</span>.
+              </li>
+              <li class="li">
+                <b>IV</b> ➜ <span class="k">COOPERAR</span> com entidades e organismos <span class="k">nacionais</span>/<span class="k">internacionais</span>.
+              </li>
+              <li class="li">
+                <b>V</b> ➜ <span class="k">PARTICIPAR</span> de eventos sobre empreendedorismo no Poder Legislativo e <span class="k">PROMOVÊ-LOS</span>.
+              </li>
+            </ul>
+
+            <div class="note">
+              <b>Fórmula de prova:</b> estudos/pesquisas → fomento cultural (conhecimento/criatividade) → fiscalização de programas → cooperação → eventos.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Investidura -->
+    <section class="section" id="investidura">
+      <div class="section-head">
+        <h2>Investidura e estabilidade</h2>
+        <div class="meta">PCD • mandato • substituição</div>
+      </div>
+
+      <div class="grid">
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">PCD</div>
+              <div>
+                <p class="title">Escolha</p>
+                <p class="lead">Escolha: pelo <span class="org">PCD</span>.</p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Autoridade:</b> <span class="org">PCD</span>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">OK</div>
+              <div>
+                <p class="title">Elegíveis</p>
+                <p class="lead">Entre os Deputados no <span class="k">EXERCÍCIO DO MANDATO</span>.</p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Condição:</b> estar no <span class="k">exercício do mandato</span>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">⚠</div>
+              <div>
+                <p class="title">Estabilidade</p>
+                <p class="lead">Poderá ser <span class="exc">SUBSTITUÍDO</span> a <span class="exc">QUALQUER TEMPO</span>.</p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Expressão-chave:</b> <span class="exc">a qualquer tempo</span> (cai fácil).</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Correlatos -->
+    <section class="section" id="correlatos">
+      <div class="section-head">
+        <h2>Artigos correlatos</h2>
+        <div class="meta">Art. 32</div>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">32</div>
+              <div>
+                <p class="title">Conexões de competência (Comissões)</p>
+                <p class="lead">
+                  Comparativo orientador: as Comissões possuem competência temática; a Secretaria atua de modo
+                  <span class="k">transversal</span> (fomento cultural + estudos + articulação), sem substituir a análise de mérito das comissões.
+                </p>
+              </div>
+            </div>
+
+            <div class="refs">
+              <h3>Referências citadas</h3>
+              <ul>
+                <li>
+                  <span class="k">Art. 32, VI</span> — Comissão de <span class="k">Desenvolvimento Econômico</span>:
+                  ordem econômica nacional, atividade econômica estatal e fiscalização/incentivo às atividades econômicas.
+                </li>
+                <li>
+                  <span class="k">Art. 32, XXVIII</span> — Comissão de <span class="k">Indústria, Comércio e Serviços</span>:
+                  política e atividade industrial/comercial e tratamento preferencial para <span class="k">microempresas</span>.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+     Bons estudos!
+    </footer>
+
+  </div>
+
+  <!-- Drawer: Anotações -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="drawer-head">
+        <div>
+          <h2 id="drawerTitle">Anotações — Capítulo III-H (Empreendedorismo)</h2>
+          <p>
+            Arts. <span class="k">21-P</span> e <span class="k">21-Q</span>:
+            I (estudos/pesquisas → aprimoramento legislativo),
+            II (cultura do <span class="k">conhecimento</span>/<span class="k">criatividade</span>),
+            III (fiscalizar/apoiar/acompanhAR programas),
+            IV (cooperar nacional/internacional),
+            V (participar e <span class="k">promover</span> eventos).
+            Investidura: <span class="org">PCD</span>; elegíveis: Deputados no <span class="k">exercício do mandato</span>;
+            estabilidade: <span class="exc">substituição a qualquer tempo</span>.
+          </p>
+        </div>
+        <button class="btn" type="button" id="btnCloseTop" title="Fechar">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Fechar</b></span>
+        </button>
+      </div>
+
+      <div class="drawer-body">
+        <textarea id="notes" placeholder="Escreva aqui…"></textarea>
+
+        <div class="drawer-actions">
+          <button class="btn green" type="button" id="btnClear">Limpar</button>
+          <button class="btn primary" type="button" id="btnSaveClose">Salvar e fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const KEY = "notes_titulo2_cap3h_empreendedorismo";
+      const btnNotes = document.getElementById("btnNotes");
+      const drawer = document.getElementById("drawer");
+      const notes = document.getElementById("notes");
+      const btnSaveClose = document.getElementById("btnSaveClose");
+      const btnClear = document.getElementById("btnClear");
+      const btnCloseTop = document.getElementById("btnCloseTop");
+
+      function openDrawer(){
+        drawer.classList.add("open");
+        drawer.setAttribute("aria-hidden","false");
+        notes.value = localStorage.getItem(KEY) || "";
+        notes.focus();
+      }
+      function closeDrawer(){
+        drawer.classList.remove("open");
+        drawer.setAttribute("aria-hidden","true");
+      }
+      function saveNotes(){
+        localStorage.setItem(KEY, notes.value || "");
+      }
+
+      btnNotes.addEventListener("click", openDrawer);
+      btnCloseTop.addEventListener("click", closeDrawer);
+
+      btnSaveClose.addEventListener("click", function(){
+        saveNotes();
+        closeDrawer();
+      });
+
+      btnClear.addEventListener("click", function(){
+        if(confirm("Tem certeza que deseja limpar suas anotações deste capítulo?")){
+          notes.value = "";
+          localStorage.removeItem(KEY);
+          notes.focus();
+        }
+      });
+
+      drawer.addEventListener("click", function(e){
+        if(e.target === drawer){ closeDrawer(); }
+      });
+
+      window.addEventListener("keydown", function(e){
+        if(e.key === "Escape" && drawer.classList.contains("open")){
+          closeDrawer();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
