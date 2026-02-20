@@ -1,0 +1,991 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RICD — Capítulo IV • Seção II (Comissões Permanentes)</title>
+
+  <!-- Literata (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --ink:#0f172a;
+      --muted:#475569;
+      --muted2:#64748b;
+      --slate:#2b3442;
+      --navy:#0b1b2a;
+
+      --shadow: 0 10px 24px rgba(15, 23, 42, .08);
+      --shadow2: 0 2px 10px rgba(15, 23, 42, .06);
+
+      --radius-xl:18px;
+      --radius-lg:14px;
+
+      --max:1100px;
+
+      /* ====== DESTAQUES SEMÂNTICOS ====== */
+      --org:#1e3a8a;        /* órgãos/instâncias */
+      --prazo:#b45309;      /* prazos */
+      --exc:#dc2626;        /* exceções/alerta */
+      --num:#334155;        /* números/frações/quóruns */
+      --mark: rgba(15, 23, 42, .08);
+
+      /* acento do capítulo (comissões permanentes) */
+      --accent: rgba(30, 58, 138, .62);       /* indigo/blue */
+      --accent-soft: rgba(30, 58, 138, .10);
+
+      --serif: "Literata", ui-serif, Georgia, "Times New Roman", Times, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--serif);
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.55;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:26px 18px 70px; }
+
+    /* Header */
+    .hero{
+      border-radius:var(--radius-xl);
+      padding:26px 22px 18px;
+      background:
+        radial-gradient(900px 280px at 18% 0%, rgba(30, 58, 138, .16), transparent 62%),
+        radial-gradient(900px 280px at 82% 0%, rgba(36, 59, 83, .12), transparent 60%),
+        linear-gradient(180deg, #eef2ff 0%, #f7fafc 60%, #f6f8fb 100%);
+      border:1px solid rgba(15, 23, 42, .06);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    .kicker{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(30, 58, 138, .20);
+      color: #1e3a8a;
+      font-weight:650;
+      letter-spacing:.2px;
+      font-size:12.5px;
+      font-family: var(--sans);
+    }
+    h1{
+      margin:12px 0 8px;
+      font-size:clamp(25px, 3.1vw, 37px);
+      line-height:1.08;
+      letter-spacing:-0.6px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      max-width:120ch;
+      font-size:14.5px;
+      font-family: var(--sans);
+    }
+
+    .top-actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.70);
+      color: var(--ink);
+      padding:10px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:750;
+      font-size:13px;
+      box-shadow: 0 1px 0 rgba(15, 23, 42, .03);
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-family: var(--sans);
+      transition: transform .10s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .btn:hover{ box-shadow: 0 10px 18px rgba(15,23,42,.10); transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0px); }
+    .btn .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: rgba(15,23,42,.35);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.65);
+    }
+    .btn.primary{
+      background: rgba(15, 23, 42, .92);
+      color: #fff;
+      border-color: rgba(15, 23, 42, .92);
+    }
+    .btn.primary .dot{ background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 2px rgba(15,23,42,.55); }
+    .btn.blue{
+      background: rgba(30,58,138,.10);
+      border-color: rgba(30,58,138,.20);
+      color: #1e3a8a;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+      font-family: var(--sans);
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.70);
+      border:1px solid rgba(15,23,42,.10);
+      color:var(--slate);
+      font-size:13px;
+      box-shadow:0 1px 0 rgba(15, 23, 42, .03);
+      transition: transform .08s ease, box-shadow .08s ease;
+      white-space:nowrap;
+    }
+    .chip:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(15,23,42,.08); }
+    .chip b{ font-weight:800; }
+    .chip small{ color:var(--muted2); font-weight:650; }
+
+    .section{
+      margin-top:18px;
+      border-radius:var(--radius-xl);
+      background:rgba(255,255,255,.55);
+      border:1px solid rgba(15, 23, 42, .07);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+    }
+    .section-head{
+      padding:16px 18px 14px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.55));
+      border-bottom:1px solid rgba(15, 23, 42, .06);
+      font-family: var(--sans);
+    }
+    .section-head h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-0.2px;
+    }
+    .meta{
+      color:var(--muted2);
+      font-size:12.5px;
+      font-weight:650;
+      white-space:nowrap;
+    }
+    .grid{
+      padding:16px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+
+    .card{
+      grid-column: span 12;
+      background:var(--card);
+      border:1px solid rgba(15, 23, 42, .08);
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    @media (min-width: 860px){
+      .card.half{ grid-column: span 6; }
+      .card.third{ grid-column: span 4; }
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:6px;
+      background: var(--accent);
+    }
+
+    .card-inner{ padding:14px 14px 14px; }
+    .card-top{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      margin-bottom:8px;
+      font-family: var(--sans);
+    }
+    .tag{
+      width:44px; height:44px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      letter-spacing:.6px;
+      font-size:13px;
+      color:#1e3a8a;
+      background: rgba(30,58,138,.10);
+      border:1px solid rgba(30,58,138,.20);
+      flex:0 0 auto;
+      user-select:none;
+    }
+
+    .title{
+      margin:0;
+      font-weight:820;
+      letter-spacing:-0.25px;
+      font-size:15.5px;
+      line-height:1.22;
+    }
+    .lead{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13.8px;
+      font-family: var(--sans);
+    }
+
+    .list{
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      font-family: var(--sans);
+    }
+    .li{
+      padding:10px 10px;
+      border-radius:12px;
+      background:#f8fafc;
+      border:1px solid rgba(15, 23, 42, .06);
+      color:var(--slate);
+      font-size:13.7px;
+    }
+    .li b{ font-weight:900; }
+
+    .k{
+      font-weight:900;
+      color:var(--navy);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, var(--mark) 55%);
+    }
+    .org{
+      font-weight:900;
+      color:var(--org);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(30,58,138,.10) 55%);
+      white-space:nowrap;
+    }
+    .prazo{
+      font-weight:950;
+      color:var(--prazo);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(180,83,9,.12) 55%);
+      white-space:nowrap;
+    }
+    .exc{
+      font-weight:950;
+      color:var(--exc);
+      padding:0 .20em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(220,38,38,.14) 55%);
+    }
+    .num{ font-weight:950; color:var(--num); white-space:nowrap; letter-spacing:.2px; }
+
+    .note{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background: rgba(30,58,138,.06);
+      border: 1px solid rgba(30,58,138,.12);
+      color:#1e3a8a;
+      font-size:13.2px;
+      font-family: var(--sans);
+    }
+
+    .refs{
+      margin-top:10px;
+      padding:12px 12px;
+      border-radius:14px;
+      background: rgba(15,23,42,.03);
+      border: 1px solid rgba(15,23,42,.08);
+      font-family: var(--sans);
+      color: var(--slate);
+    }
+    .refs h3{
+      margin:0 0 8px;
+      font-size:13.5px;
+      letter-spacing:.1px;
+    }
+    .refs ul{ margin:0; padding-left:18px; }
+    .refs li{ margin:6px 0; font-size:13.2px; line-height:1.45; }
+
+    footer{
+      margin-top:14px;
+      color:var(--muted2);
+      font-size:12.5px;
+      text-align:center;
+      font-family: var(--sans);
+    }
+
+    /* Drawer: Anotações */
+    .drawer{
+      position: fixed;
+      inset: 0;
+      display:none;
+      background: rgba(15,23,42,.35);
+      backdrop-filter: blur(3px);
+      z-index: 50;
+      padding: 18px;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .drawer.open{ display:flex; }
+    .drawer-panel{
+      width: min(880px, 100%);
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: 0 24px 50px rgba(15,23,42,.20);
+      overflow:hidden;
+    }
+    .drawer-head{
+      padding: 14px 16px 12px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      background:
+        radial-gradient(820px 220px at 10% 0%, rgba(30,58,138,.16), transparent 62%),
+        radial-gradient(820px 220px at 90% 0%, rgba(36, 59, 83, .10), transparent 58%),
+        linear-gradient(180deg, rgba(248,250,252,.92), rgba(255,255,255,.75));
+      border-bottom: 1px solid rgba(15,23,42,.08);
+      font-family: var(--sans);
+    }
+    .drawer-head h2{ margin:0; font-size: 15px; letter-spacing: .1px; }
+    .drawer-head p{
+      margin:4px 0 0;
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.35;
+      max-width: 78ch;
+    }
+    .drawer-body{ padding: 12px 14px 14px; font-family: var(--sans); }
+    textarea{
+      width:100%;
+      min-height: 240px;
+      resize: vertical;
+      border-radius: 16px;
+      border: 1px solid rgba(15,23,42,.14);
+      padding: 12px 12px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      outline:none;
+      background: #fbfcfe;
+    }
+    textarea:focus{
+      border-color: rgba(30,58,138,.40);
+      box-shadow: 0 0 0 3px rgba(30,58,138,.12);
+      background: #ffffff;
+    }
+    .drawer-actions{
+      margin-top: 10px;
+      display:flex;
+      gap: 10px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    @media print{
+      body{ background:#fff; }
+      .hero,.section{ box-shadow:none; }
+      .chips, .top-actions{ display:none !important; }
+      .wrap{ padding:0; }
+      .grid{ padding:10px; }
+      .drawer{ display:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="hero" id="topo">
+      <span class="kicker">RICD • Capítulo IV • Seção II</span>
+      <h1>Seção II — Das Comissões Permanentes</h1>
+
+      <p class="sub">
+        SubSeção I (Composição e Instalação): Arts. <span class="k">25 a 28</span>.
+        SubSeção II (Subcomissões e Turmas): Arts. <span class="k">29 a 31</span>.
+        Foco em <span class="k">fixação de vagas</span>, <span class="k">limites numéricos</span>, <span class="k">proporcionalidade</span>,
+        <span class="k">opção em 48h</span>, <span class="k">prazos em sessões</span>, e estruturas <span class="k">sem poder decisório</span>.
+      </p>
+
+      <div class="top-actions" role="group" aria-label="Ações principais">
+        <a class="btn" href="cap4_sec1.html" title="Voltar à Seção I">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Voltar</b> (Seção I)</span>
+        </a>
+
+        <a class="btn" href="titulo2-cap4.html" title="Voltar ao Capítulo IV (página principal)">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Voltar</b> (Cap. IV)</span>
+        </a>
+
+        <a class="btn" href="index.html" title="Voltar ao índice">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Menu principal</b> (index)</span>
+        </a>
+
+        <button class="btn primary" id="btnNotes" type="button" title="Abrir bloco de anotações">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Anotações</b> (salvar e fechar)</span>
+        </button>
+      </div>
+
+      <nav class="chips" aria-label="Navegação por tópicos">
+        <a class="chip" href="#art25"><b>Art. 25</b> <small>vagas & limites</small></a>
+        <a class="chip" href="#art26"><b>Art. 26</b> <small>suplentes & acumulação</small></a>
+        <a class="chip" href="#art27"><b>Art. 27</b> <small>proporcionalidade & opção</small></a>
+        <a class="chip" href="#art28"><b>Art. 28</b> <small>indicação & designação</small></a>
+        <a class="chip" href="#art29_31"><b>Arts. 29–31</b> <small>subcomissões & turmas</small></a>
+      </nav>
+    </header>
+
+    <!-- Art. 25 -->
+    <section class="section" id="art25">
+      <div class="section-head">
+        <h2>Fixação de vagas e limites numéricos — Art. 25</h2>
+        <div class="meta">ato da mesa • colegiado de líderes • frações</div>
+      </div>
+
+      <div class="grid">
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">25</div>
+              <div>
+                <p class="title">Competência (fixação)</p>
+                <p class="lead">
+                  O número de membros efetivos será fixado por <span class="org">ATO DA MESA</span>, ouvido o
+                  <span class="org">COLÉGIO DE LÍDERES</span>, no <span class="k">início dos trabalhos</span> de cada legislatura.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Quem fixa:</b> <span class="org">Mesa</span> (ato formal).</li>
+              <li class="li"><b>Consulta obrigatória:</b> <span class="org">Colégio de Líderes</span>.</li>
+              <li class="li"><b>Momento:</b> início dos trabalhos de cada <span class="k">legislatura</span>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">§2º</div>
+              <div>
+                <p class="title">Limites de composição</p>
+                <p class="lead">
+                  Nenhuma Comissão terá <span class="k">mais</span> que <span class="num">13/100</span> nem
+                  <span class="k">menos</span> que <span class="num">3,5/100</span> do total de Deputados.
+                  <span class="k">Despreza-se a fração</span>.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Máximo:</b> <span class="num">13/100</span> do total.</li>
+              <li class="li"><b>Mínimo:</b> <span class="num">3,5/100</span> do total.</li>
+              <li class="li"><b>Regra prática:</b> <span class="k">desprezar</span> fração (arredondamento por truncamento).</li>
+            </ul>
+            <div class="note">
+              <b>Alerta de prova:</b> a banca adora cobrar <span class="num">13/100</span> e <span class="num">3,5/100</span> + “<span class="k">despreza-se a fração</span>”.
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">§3º</div>
+              <div>
+                <p class="title">Teto global de vagas</p>
+                <p class="lead">
+                  O número total de vagas nas Comissões <span class="exc">não excederá</span> o da composição da Câmara,
+                  <span class="k">não computados</span> os membros da <span class="org">Mesa</span>.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Teto:</b> total de vagas ≤ composição da Câmara.</li>
+              <li class="li"><b>Exclusão:</b> não se contam membros da <span class="org">Mesa</span>.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Art. 26 -->
+    <section class="section" id="art26">
+      <div class="section-head">
+        <h2>Distribuição e acumulação de vagas — Art. 26, §§ 1º a 4º</h2>
+        <div class="meta">suplentes • titularidade • exceções • estabilidade</div>
+      </div>
+
+      <div class="grid">
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">§1º</div>
+              <div>
+                <p class="title">Suplentes</p>
+                <p class="lead">
+                  Cada Partido/Bloco terá tantos <span class="k">SUPLENTES</span> quantos forem os seus membros efetivos.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Regra:</b> <span class="k">suplentes = efetivos</span> por Partido/Bloco.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">§2º</div>
+              <div>
+                <p class="title">Regra de acumulação</p>
+                <p class="lead">
+                  Nenhum Deputado poderá ser membro <span class="k">TITULAR</span> de <span class="k">mais de uma</span>
+                  Comissão Permanente.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Vedação:</b> titular em <span class="exc">mais de uma</span> Comissão Permanente.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">EXC</div>
+              <div>
+                <p class="title">Exceção (acumulação permitida) — § 2º</p>
+                <p class="lead">
+                  Há Comissões em que a acumulação de titularidade é <span class="k">permitida</span> (rol indicado no resumo).
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Rol (comissões cumulativas):</b>
+                Legislação Participativa; Segurança Pública; Cultura; Defesa dos Direitos das Pessoas com Deficiência;
+                Direitos Humanos; Esporte; Meio Ambiente; Relações Exteriores; Turismo; Integração Nacional; Amazônia;
+                Comunicação; Defesa dos Direitos da Mulher; Defesa dos Direitos da Pessoa Idosa; Desenvolvimento Econômico;
+                Administração e Serviço Público.
+              </li>
+            </ul>
+
+            <div class="note">
+              <b>Estratégia:</b> memorize como “comissões temáticas sociais/territoriais/direitos + relações exteriores + economia/administração” (cai por lista).
+            </div>
+          </div>
+        </article>
+
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">§3º</div>
+              <div>
+                <p class="title">Garantia de participação</p>
+                <p class="lead">
+                  Ao Deputado (salvo se membro da <span class="org">Mesa</span>) será <span class="k">sempre assegurado</span>
+                  o direito de integrar, como titular, <span class="k">pelo menos uma</span> Comissão.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Direito mínimo:</b> titular em <span class="k">1</span> Comissão Permanente.</li>
+              <li class="li"><b>Alcance:</b> mesmo sem legenda partidária ou se não couber vaga pela proporcionalidade.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card half" id="art26_4">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">§4º</div>
+              <div>
+                <p class="title">Estabilidade da composição (troca de partido)</p>
+                <p class="lead">
+                  Mudanças de filiação partidária <span class="exc">não importarão</span> modificação na composição das Comissões.
+                  Base: resultado final das <span class="k">eleições</span>. Duração: <span class="k">toda a legislatura</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Imutabilidade:</b> troca de partido <span class="exc">não altera</span> composição.</li>
+              <li class="li"><b>Base de cálculo:</b> resultado final das <span class="k">eleições</span>.</li>
+              <li class="li"><b>Vigência:</b> mantém-se inalterado durante <span class="k">toda a legislatura</span>.</li>
+            </ul>
+
+            <div class="refs">
+              <h3>Artigos correlatos</h3>
+              <ul>
+                <li><span class="k">Art. 8º, § 4º</span>: vagas definidas pelo número de eleitos (desconsideradas mudanças posteriores).</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Art. 27 -->
+    <section class="section" id="art27">
+      <div class="section-head">
+        <h2>Cálculo da proporcionalidade e opção — Art. 27</h2>
+        <div class="meta">quociente • frações • 48 horas • preferência</div>
+      </div>
+
+      <div class="grid">
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">27</div>
+              <div>
+                <p class="title">Quociente partidário e sobras</p>
+                <p class="lead">
+                  As vagas remanescentes serão destinadas a Partidos/Blocos levando-se em conta as <span class="k">FRAÇÕES</span>
+                  do quociente partidário, da <span class="k">maior</span> para a <span class="k">menor</span>.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Sobra:</b> distribuição por <span class="k">frações</span>.</li>
+              <li class="li"><b>Ordem:</b> <span class="k">maior → menor</span>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">§2º</div>
+              <div>
+                <p class="title">Preenchimento por opção</p>
+                <p class="lead">
+                  Se houver Partido/Bloco sem lugares suficientes ou Deputado sem legenda:
+                  a <span class="org">Mesa</span> fixa <span class="prazo">48 (quarenta e oito) horas</span> para declaração de
+                  <span class="k">OPÇÃO</span> por Comissão onde não esteja representado.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Prazo:</b> <span class="prazo">48 horas</span> (Mesa fixa).</li>
+              <li class="li"><b>Objeto:</b> opção por Comissão em que não haja representação.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">PRIO</div>
+              <div>
+                <p class="title">Preferência (coincidência de opções)</p>
+                <p class="lead">
+                  Critérios de preferência quando houver coincidência de opções:
+                  <span class="k">Partidos</span> e <span class="k">Deputados</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Entre Partidos:</b> o de <span class="k">maior quociente</span>.</li>
+              <li class="li"><b>Entre Deputados:</b> o <span class="k">mais idoso</span> (dentre os de maior nº de legislaturas).</li>
+            </ul>
+
+            <div class="note">
+              <b>Regra de distribuição:</b> primeiro preenche-se a <span class="k">1ª vaga</span>;
+              só haverá <span class="k">2ª vaga</span> por opção na <span class="k">mesma</span> Comissão quando em <span class="k">todas as outras</span>
+              já tiver sido preenchida uma <span class="k">1ª vaga</span>.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Art. 28 -->
+    <section class="section" id="art28">
+      <div class="section-head">
+        <h2>Indicação e designação de membros — Art. 28</h2>
+        <div class="meta">líderes • 5 sessões • de ofício • convocação</div>
+      </div>
+
+      <div class="grid">
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">28</div>
+              <div>
+                <p class="title">Indicação pelos Líderes</p>
+                <p class="lead">
+                  Definida a representação numérica, os <span class="k">LÍDERES</span> comunicarão à Presidência os nomes
+                  dos membros (<span class="k">titulares</span> e <span class="k">suplentes</span>).
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Prazo:</b> <span class="prazo">5 sessões</span>.</li>
+              <li class="li"><b>Contagem:</b> do dia da definição (1ª sessão legislativa) ou do início das demais sessões.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">§1º</div>
+              <div>
+                <p class="title">Designação de ofício</p>
+                <p class="lead">
+                  Se a Liderança não comunicar no prazo:
+                  o <span class="org">Presidente</span> fará, <span class="k">de ofício</span>, a designação
+                  (conforme Art. <span class="k">45, § 3º</span>).
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Gatilho:</b> omissão da Liderança no prazo.</li>
+              <li class="li"><b>Ato:</b> designação <span class="k">de ofício</span> pelo Presidente.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">§2º</div>
+              <div>
+                <p class="title">Publicação e convocação</p>
+                <p class="lead">
+                  Com a composição nominal, o Presidente mandará publicar a <span class="k">CONVOCAÇÃO</span> para eleger
+                  <span class="k">Presidentes</span> e <span class="k">Vice-Presidentes</span> das Comissões (forma do Art. <span class="k">39</span>).
+                </p>
+              </div>
+            </div>
+
+            <div class="refs">
+              <h3>Artigos correlatos</h3>
+              <ul>
+                <li><span class="k">Art. 39</span>: 1 Presidente e 3 Vice-Presidentes; eleição por seus pares; vedada reeleição; eleição até <span class="prazo">5 sessões</span> depois de constituídas.</li>
+                <li><span class="k">Art. 45, § 3º</span>: vaga preenchida por designação do Presidente no interregno de <span class="prazo">3 sessões</span> (com indicação do Líder ou independentemente, se não houver).</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Arts. 29 a 31 -->
+    <section class="section" id="art29_31">
+      <div class="section-head">
+        <h2>Subcomissões e Turmas — Arts. 29 a 31</h2>
+        <div class="meta">sem poder decisório • limites • quórum • relatório</div>
+      </div>
+
+      <div class="grid">
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">29</div>
+              <div>
+                <p class="title">Subcomissões (natureza e espécies)</p>
+                <p class="lead">
+                  Comissões Permanentes podem constituir <span class="k">Subcomissões</span> <span class="exc">sem poder decisório</span>.
+                  Há <span class="k">permanentes</span> e <span class="k">especiais</span>, com limites quantitativos.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Permanentes:</b> proposta da <span class="k">maioria</span> dos membros (matérias reservadas do campo temático).</li>
+              <li class="li"><b>Especiais:</b> proposta de <span class="k">qualquer</span> membro (atividades/assuntos definidos).</li>
+              <li class="li"><b>Limites:</b> máximo de <span class="num">3</span> permanentes e <span class="num">3</span> especiais em funcionamento simultâneo.</li>
+              <li class="li"><b>Funcionamento:</b> plenário da Comissão fixa nº de membros, respeitada a <span class="k">proporcionalidade</span>.</li>
+            </ul>
+
+            <div class="note">
+              <b>Fórmula de prova:</b> Subcomissão = existe, mas <span class="exc">não decide</span>.
+            </div>
+          </div>
+        </article>
+
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">30</div>
+              <div>
+                <p class="title">Turmas (divisão interna)</p>
+                <p class="lead">
+                  Se a Comissão <span class="exc">não</span> constituir Subcomissões Permanentes, pode dividir-se em
+                  <span class="num">2</span> Turmas, ambas <span class="exc">sem poder decisório</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Condição:</b> somente se <span class="exc">não</span> houver Subcomissões Permanentes.</li>
+              <li class="li"><b>Número:</b> <span class="num">2 (duas)</span> Turmas.</li>
+              <li class="li"><b>Exclusão:</b> o <span class="org">Presidente</span> da Comissão <span class="exc">não participa</span>.</li>
+              <li class="li"><b>Presidência:</b> um <span class="k">Vice-Presidente</span> (substituído pelo membro <span class="k">mais idoso</span>).</li>
+              <li class="li"><b>Suplência:</b> uma Turma é suplente preferencial da outra.</li>
+              <li class="li"><b>Quórum de discussão:</b> presente <span class="k">mais da metade</span> dos seus membros.</li>
+            </ul>
+
+            <div class="note">
+              <b>Atenção:</b> Turma só aparece como alternativa à Subcomissão Permanente + Presidente <span class="exc">fora</span> da Turma.
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">31</div>
+              <div>
+                <p class="title">Conclusão dos trabalhos</p>
+                <p class="lead">
+                  Matéria apreciada em Subcomissão (permanente/especial) ou por Turma concluirá por um <span class="k">RELATÓRIO</span>,
+                  sujeito à <span class="k">deliberação</span> do <span class="k">Plenário</span> da respectiva Comissão.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Produto final:</b> <span class="k">relatório</span>.</li>
+              <li class="li"><b>Destino:</b> <span class="k">Plenário da Comissão</span> (deliberação).</li>
+            </ul>
+
+            <div class="note">
+              <b>Resumo lógico:</b> Subcomissão/Turma instruem → relatório → <span class="k">decisão</span> é do Plenário da Comissão.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      Bons estudos!
+    </footer>
+
+  </div>
+
+  <!-- Drawer: Anotações -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="drawer-head">
+        <div>
+          <h2 id="drawerTitle">Anotações — Capítulo IV • Seção II</h2>
+          <p>
+            Arts. <span class="k">25</span> (ato da Mesa + Colégio de Líderes; limites <span class="num">13/100</span> e <span class="num">3,5/100</span>; despreza fração; teto global),
+            <span class="k">26</span> (suplentes = efetivos; vedação de acumulação; rol de exceções; garantia 1 comissão; estabilidade na legislatura),
+            <span class="k">27</span> (frações: maior→menor; opção em <span class="prazo">48h</span>; critérios de preferência),
+            <span class="k">28</span> (Líderes em <span class="prazo">5 sessões</span>; designação de ofício; convocação),
+            <span class="k">29–31</span> (subcomissões/turmas <span class="exc">sem poder decisório</span>; relatório ao plenário da comissão).
+          </p>
+        </div>
+        <button class="btn" type="button" id="btnCloseTop" title="Fechar">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Fechar</b></span>
+        </button>
+      </div>
+
+      <div class="drawer-body">
+        <textarea id="notes" placeholder="Escreva aqui…"></textarea>
+
+        <div class="drawer-actions">
+          <button class="btn blue" type="button" id="btnClear">Limpar</button>
+          <button class="btn primary" type="button" id="btnSaveClose">Salvar e fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const KEY = "notes_cap4_sec2_comissoes_permanentes";
+      const btnNotes = document.getElementById("btnNotes");
+      const drawer = document.getElementById("drawer");
+      const notes = document.getElementById("notes");
+      const btnSaveClose = document.getElementById("btnSaveClose");
+      const btnClear = document.getElementById("btnClear");
+      const btnCloseTop = document.getElementById("btnCloseTop");
+
+      function openDrawer(){
+        drawer.classList.add("open");
+        drawer.setAttribute("aria-hidden","false");
+        notes.value = localStorage.getItem(KEY) || "";
+        notes.focus();
+      }
+      function closeDrawer(){
+        drawer.classList.remove("open");
+        drawer.setAttribute("aria-hidden","true");
+      }
+      function saveNotes(){
+        localStorage.setItem(KEY, notes.value || "");
+      }
+
+      btnNotes.addEventListener("click", openDrawer);
+      btnCloseTop.addEventListener("click", closeDrawer);
+
+      btnSaveClose.addEventListener("click", function(){
+        saveNotes();
+        closeDrawer();
+      });
+
+      btnClear.addEventListener("click", function(){
+        if(confirm("Tem certeza que deseja limpar suas anotações desta seção?")){
+          notes.value = "";
+          localStorage.removeItem(KEY);
+          notes.focus();
+        }
+      });
+
+      drawer.addEventListener("click", function(e){
+        if(e.target === drawer){ closeDrawer(); }
+      });
+
+      window.addEventListener("keydown", function(e){
+        if(e.key === "Escape" && drawer.classList.contains("open")){
+          closeDrawer();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
