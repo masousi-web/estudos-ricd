@@ -1,0 +1,1456 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RICD — Título IV (Resumo técnico) + Menu + Notas</title>
+  <meta name="description" content="Resumo técnico (fiel) — RICD: Título IV — Das Proposições. Com menu, destaques e notas." />
+  <style>
+    :root{
+      --bg1:#0b1020;
+      --bg2:#111a33;
+      --bg3:#1b2a4a;
+      --card: rgba(255,255,255,.08);
+      --card2: rgba(255,255,255,.06);
+      --stroke: rgba(255,255,255,.16);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --muted2: rgba(255,255,255,.62);
+      --chip: rgba(255,255,255,.10);
+      --accent: #9fd3ff;
+      --accent2:#c7b3ff;
+      --warn: #ffd38a;
+      --ok: #9dffcf;
+      --shadow: 0 18px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 14px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    }
+
+    /* ===== Base ===== */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 18% 8%, rgba(159,211,255,.22), transparent 60%),
+        radial-gradient(900px 600px at 78% 18%, rgba(199,179,255,.18), transparent 60%),
+        radial-gradient(1000px 700px at 70% 82%, rgba(157,255,207,.10), transparent 62%),
+        linear-gradient(145deg, var(--bg1), var(--bg2) 55%, var(--bg3));
+      overflow-x:hidden;
+    }
+
+    a{color:inherit}
+    .wrap{
+      display:grid;
+      grid-template-columns: 320px 1fr 360px;
+      gap: 18px;
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 18px 14px 28px;
+    }
+
+    /* ===== Header ===== */
+    .topbar{
+      grid-column: 1 / -1;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width: 240px;
+    }
+    .logo{
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background:
+        radial-gradient(18px 18px at 30% 30%, rgba(159,211,255,.9), rgba(159,211,255,.0) 70%),
+        radial-gradient(18px 18px at 70% 70%, rgba(199,179,255,.85), rgba(199,179,255,.0) 70%),
+        linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.22);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    .brand h1{
+      margin:0;
+      font-size: 15px;
+      line-height: 1.1;
+      letter-spacing: .2px;
+    }
+    .brand .sub{
+      margin: 2px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .actions{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap: 8px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      appearance:none;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.07);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.25)}
+    .btn:active{transform: translateY(0px)}
+    .btn.primary{border-color: rgba(159,211,255,.45); background: rgba(159,211,255,.14)}
+    .btn.warn{border-color: rgba(255,211,138,.45); background: rgba(255,211,138,.12)}
+    .btn.ok{border-color: rgba(157,255,207,.45); background: rgba(157,255,207,.10)}
+    .pill{
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ===== Panels ===== */
+    .panel{
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+      min-width: 0;
+    }
+    .panel .hd{
+      padding: 14px 16px 10px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .panel .hd h2{
+      margin:0;
+      font-size: 13px;
+      letter-spacing: .2px;
+    }
+    .panel .hd .hint{
+      margin: 4px 0 0;
+      font-size: 12px;
+      color: var(--muted2);
+      line-height: 1.35;
+    }
+    .panel .bd{padding: 12px 16px 16px}
+
+    /* ===== Left menu ===== */
+    .nav{
+      position: sticky;
+      top: 14px;
+      height: calc(100vh - 28px);
+      overflow:auto;
+    }
+    .nav .bd{padding: 10px 12px 14px}
+    .nav .sectionTitle{
+      margin: 10px 6px 8px;
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .nav a{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      text-decoration:none;
+      padding: 10px 10px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      color: var(--text);
+      background: transparent;
+      transition: background .12s ease, border-color .12s ease;
+    }
+    .nav a:hover{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.10);
+    }
+    .dot{
+      width: 10px; height: 10px; border-radius: 999px;
+      margin-top: 4px;
+      background: rgba(159,211,255,.75);
+      box-shadow: 0 0 0 3px rgba(159,211,255,.12);
+      flex: 0 0 auto;
+    }
+    .dot.v2{background: rgba(199,179,255,.75); box-shadow: 0 0 0 3px rgba(199,179,255,.12)}
+    .dot.v3{background: rgba(255,211,138,.80); box-shadow: 0 0 0 3px rgba(255,211,138,.12)}
+    .dot.v4{background: rgba(157,255,207,.75); box-shadow: 0 0 0 3px rgba(157,255,207,.12)}
+    .nav .itemTitle{font-size: 12.5px; line-height: 1.2; margin:0}
+    .nav .itemMeta{font-size: 11.5px; color: var(--muted2); margin: 3px 0 0; line-height: 1.25}
+    .nav .search{
+      padding: 10px 12px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .nav input{
+      width:100%;
+      padding: 11px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.18);
+      color: var(--text);
+      outline:none;
+      font-size: 12px;
+    }
+    .nav input::placeholder{color: rgba(255,255,255,.50)}
+
+    /* ===== Main content ===== */
+    .content{
+      min-width: 0;
+    }
+    .hero{
+      padding: 18px 18px 14px;
+    }
+    .hero h2{
+      margin: 0 0 6px;
+      font-size: 18px;
+      letter-spacing: .2px;
+    }
+    .hero p{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .chip{
+      font-size: 11.5px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: var(--chip);
+      color: var(--muted);
+    }
+    .chip b{color: var(--text)}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 14px 14px 18px;
+    }
+    .card{
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow: 0 16px 34px rgba(0,0,0,.28);
+      overflow:hidden;
+    }
+    .card .chd{
+      padding: 14px 16px 10px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .card h3{
+      margin:0;
+      font-size: 14px;
+      letter-spacing: .2px;
+      line-height: 1.25;
+    }
+    .tag{
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.16);
+      color: var(--muted);
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+    .card .cbd{padding: 12px 16px 16px}
+    .lead{
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.55;
+      margin: 0 0 10px;
+    }
+    .bullets{
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      display:grid;
+      gap: 10px;
+    }
+    .bullets li{
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      line-height: 1.52;
+      font-size: 13px;
+    }
+    .bullets li .k{
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: rgba(255,255,255,.78);
+      display:block;
+      margin-bottom: 6px;
+      opacity: .95;
+    }
+    strong{font-weight: 800}
+    .quote{
+      margin-top: 10px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px dashed rgba(159,211,255,.35);
+      background: rgba(159,211,255,.08);
+      color: rgba(255,255,255,.86);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .quote em{color: rgba(255,255,255,.75)}
+    .cols{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .mini{
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      font-size: 12.8px;
+      line-height: 1.55;
+      color: rgba(255,255,255,.86);
+    }
+    .mini .t{
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted2);
+      margin: 0 0 6px;
+    }
+
+    /* ===== Notes ===== */
+    .notes{
+      position: sticky;
+      top: 14px;
+      height: calc(100vh - 28px);
+      overflow:auto;
+    }
+    .notes .tools{
+      display:flex; gap: 8px; flex-wrap:wrap; padding: 10px 16px 0;
+    }
+    .notesArea{
+      margin: 12px 16px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.16);
+      padding: 12px 12px;
+      min-height: 260px;
+      outline:none;
+      color: rgba(255,255,255,.90);
+      line-height: 1.6;
+      font-size: 13px;
+      white-space: pre-wrap;
+    }
+    .notesArea:empty:before{
+      content: "Escreva aqui suas notas (salva automaticamente neste navegador)…";
+      color: rgba(255,255,255,.55);
+    }
+    .kbd{
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(255,255,255,.70);
+      padding: 2px 6px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 8px;
+      background: rgba(0,0,0,.16);
+      display:inline-block;
+    }
+
+    /* ===== Kindle mode ===== */
+    body.kindle{
+      background: #fff !important;
+      color: #111 !important;
+    }
+    body.kindle .topbar,
+    body.kindle .panel,
+    body.kindle .card{
+      background: #fff !important;
+      border-color: #ddd !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+    }
+    body.kindle .logo{display:none}
+    body.kindle .brand .sub,
+    body.kindle .pill,
+    body.kindle .chip,
+    body.kindle .tag{
+      color:#333 !important;
+      background:#f4f4f4 !important;
+      border-color:#ddd !important;
+    }
+    body.kindle .lead,
+    body.kindle .hint,
+    body.kindle .nav .itemMeta{
+      color:#444 !important;
+    }
+    body.kindle .nav input{
+      background:#fff !important;
+      color:#111 !important;
+      border-color:#ddd !important;
+    }
+    body.kindle .bullets li,
+    body.kindle .mini,
+    body.kindle .quote{
+      background:#fff !important;
+      border-color:#ddd !important;
+      color:#111 !important;
+    }
+    body.kindle .quote{border-style: solid}
+    body.kindle .notesArea{
+      background:#fff !important;
+      color:#111 !important;
+      border-color:#ddd !important;
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+    body.kindle .content,
+    body.kindle .card .cbd{
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+    body.kindle a{color:#111 !important; text-decoration:none}
+    body.kindle .btn{background:#f4f4f4 !important; color:#111 !important; border-color:#ddd !important}
+
+    /* ===== Print ===== */
+    @media print{
+      body{background:#fff !important; color:#111 !important}
+      .wrap{grid-template-columns: 1fr; max-width: 900px}
+      .nav,.notes,.actions{display:none !important}
+      .topbar{box-shadow:none}
+      .panel,.card{box-shadow:none; background:#fff; border-color:#ddd}
+      .bullets li,.mini,.quote{background:#fff}
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1150px){
+      .wrap{grid-template-columns: 300px 1fr}
+      .notes{display:none}
+    }
+    @media (max-width: 860px){
+      .wrap{grid-template-columns: 1fr}
+      .nav{position: relative; height:auto}
+      .content{order: 2}
+      .nav{order: 1}
+      .cols{grid-template-columns: 1fr}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- Topbar -->
+    <header class="topbar" role="banner">
+      <div class="brand" aria-label="Cabeçalho do documento">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>RICD — <span style="color:var(--accent)">Título IV</span> (Resumo técnico)</h1>
+          <div class="sub">Identidade visual em gradiente • Menu principal • Destaques • Notas (com salvamento local)</div>
+        </div>
+      </div>
+
+      <div class="actions" aria-label="Ações">
+        <span class="pill">Destaques: <b>prazos</b>, <b>frações</b>, <b>números</b></span>
+        <button class="btn primary" id="btnKindle" type="button" title="Alterna para uma versão limpa e legível no Kindle/Leitores">
+          ☰ Modo Kindle
+        </button>
+        <button class="btn" id="btnExpandAll" type="button" title="Expande todos os blocos recolhíveis">
+          ⤢ Expandir tudo
+        </button>
+        <button class="btn" id="btnCollapseAll" type="button" title="Recolhe todos os blocos recolhíveis">
+          ⤡ Recolher tudo
+        </button>
+        <button class="btn ok" id="btnPrint" type="button" title="Imprimir / Salvar em PDF">
+          ⎙ Imprimir
+        </button>
+      </div>
+    </header>
+
+    <!-- Left Nav -->
+    <aside class="panel nav" aria-label="Menu principal">
+      <div class="search">
+        <input id="navSearch" type="search" placeholder="Buscar no menu (ex: Art. 105, emendas, retirada, prazo)…" />
+      </div>
+
+      <div class="bd" id="navList">
+        <div class="sectionTitle">Visão geral</div>
+        <a href="#intro" data-key="intro visão geral título iv proposições">
+          <span class="dot"></span>
+          <div>
+            <p class="itemTitle">Introdução e chaves de leitura</p>
+            <p class="itemMeta">Como usar o resumo • padrões de prova</p>
+          </div>
+        </a>
+
+        <div class="sectionTitle">Antes do Título IV</div>
+        <a href="#ata" data-key="ata art 97 sessão sinopse lista nominal presença ausência anais arquivo">
+          <span class="dot v3"></span>
+          <div>
+            <p class="itemTitle">Seção III — Da Ata (Arts. 97–99)</p>
+            <p class="itemMeta">Ata • publicidade • sigilo • censura • Voz do Brasil</p>
+          </div>
+        </a>
+
+        <div class="sectionTitle">Título IV — Das Proposições</div>
+        <a href="#art100" data-key="art 100 proposição definição espécies rol taxativo pec projeto emenda indicação requerimento recurso parecer fiscalização controle">
+          <span class="dot"></span>
+          <div>
+            <p class="itemTitle">Art. 100 — Definição e espécies</p>
+            <p class="itemMeta">Rol taxativo • requisitos • vedação de matéria estranha</p>
+          </div>
+        </a>
+        <a href="#art101" data-key="art 101 processo legislativo digital segurança autenticidade integridade temporalidade não repúdio conservação disponibilidade confidencialidade">
+          <span class="dot v2"></span>
+          <div>
+            <p class="itemTitle">Art. 101 — Processo legislativo digital</p>
+            <p class="itemMeta">Meio digital • padrões • inclusão no sistema</p>
+          </div>
+        </a>
+        <a href="#art102-103" data-key="art 102 autoria iniciativa coletiva assinaturas líder prerrogativas art 103 fundamentação justificação oral dcd relator">
+          <span class="dot v4"></span>
+          <div>
+            <p class="itemTitle">Arts. 102–103 — Autoria e justificação</p>
+            <p class="itemMeta">Assinaturas • preclusão • juntada de justificação</p>
+          </div>
+        </a>
+        <a href="#art104" data-key="art 104 retirada proposição competência presidente plenário metade mais um subscritores recurso">
+          <span class="dot v3"></span>
+          <div>
+            <p class="itemTitle">Art. 104 — Retirada de proposição</p>
+            <p class="itemMeta">Regras por autoria • vedação de reapresentação</p>
+          </div>
+        </a>
+        <a href="#art105-107" data-key="art 105 arquivamento fim legislatura exceções iniciativa popular 3 legislaturas código tratados radiodifusão contas presidente revisadas senado art 106 extravio reconstituir art 107 publicação dcd avulsos">
+          <span class="dot"></span>
+          <div>
+            <p class="itemTitle">Arts. 105–107 — Arquivamento, extravio e publicação</p>
+            <p class="itemMeta">Rol de exceções • reconstituição • itens obrigatórios</p>
+          </div>
+        </a>
+        <a href="#art108-112" data-key="art 108 109 espécies projetos lei decreto legislativo resolução pec sanção iniciativa art 110 reapresentação maioria absoluta art 111 ementa artigos jabutis art 112 instrução incompleta">
+          <span class="dot v2"></span>
+          <div>
+            <p class="itemTitle">Arts. 108–112 — Projetos: espécies, iniciativa e redação</p>
+            <p class="itemMeta">Sanção • maioria absoluta • vedação de matérias diversas</p>
+          </div>
+        </a>
+        <a href="#art113" data-key="art 113 indicação conceito espécies tramitação 20 sessões comissão consulta vedação arquivamento">
+          <span class="dot v4"></span>
+          <div>
+            <p class="itemTitle">Art. 113 — Indicações</p>
+            <p class="itemMeta">Sugestão a outro Poder • sugestão à Comissão • <b>20 (VINTE) sessões</b></p>
+          </div>
+        </a>
+        <a href="#art114-117" data-key="art 114 requerimentos despacho presidente rol art 115 ouvida a mesa 5 sessões art 116 pedido informação ministro 30 dias crime responsabilidade art 117 plenário rito 3 minutos votos pesar regozijo louvor">
+          <span class="dot v3"></span>
+          <div>
+            <p class="itemTitle">Arts. 114–117 — Requerimentos</p>
+            <p class="itemMeta">Despacho do Presidente/Mesa/Plenário • prazos e ritos</p>
+          </div>
+        </a>
+        <a href="#art118-125" data-key="art 118 emendas supressiva aglutinativa substitutiva modificativa aditiva subemenda redação art 119 em comissão 5 sessões art 120 plenário 1/10 1/5 art 122 1 sessão art 124 aumento despesa art 125 recusa">
+          <span class="dot"></span>
+          <div>
+            <p class="itemTitle">Arts. 118–125 — Emendas</p>
+            <p class="itemMeta">Tipos • momentos • frações (<b>1/10</b>, <b>1/5</b>) • vedações</p>
+          </div>
+        </a>
+        <a href="#art126-130" data-key="art 126 parecer definição competência art 127 128 unicidade obrigatoriedade escrito art 129 estrutura relatório voto parecer comissão art 130 devolução não escrito">
+          <span class="dot v2"></span>
+          <div>
+            <p class="itemTitle">Arts. 126–130 — Pareceres</p>
+            <p class="itemMeta">Competência • obrigatoriedade • estrutura • controle</p>
+          </div>
+        </a>
+        <a href="#art131-133" data-key="art 131 tramitação curso próprio exceção emenda recurso parecer art 132 decisão presidente mesa comissões plenário 1/10 5 sessões art 133 rejeição arquivamento definitivo">
+          <span class="dot v4"></span>
+          <div>
+            <p class="itemTitle">Arts. 131–133 — Tramitação e decisão</p>
+            <p class="itemMeta">Poder conclusivo • <b>1/10</b> • <b>5 sessões</b> • arquivamento definitivo</p>
+          </div>
+        </a>
+
+        <div class="sectionTitle">Atalhos</div>
+        <a href="#notas" data-key="notas observações pegadinhas">
+          <span class="dot v3"></span>
+          <div>
+            <p class="itemTitle">Notas e pegadinhas</p>
+            <p class="itemMeta">Seu espaço de estudo (salvo no navegador)</p>
+          </div>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="content" role="main">
+      <section class="panel hero" id="intro">
+        <h2>Resumo técnico (fiel) — <span style="color:var(--accent)">Título IV — Das Proposições</span></h2>
+        <p>
+          Este material preserva a terminologia do RICD e do seu resumo técnico, com redução leve (≈ <strong>10%–15%</strong>) e
+          <strong>destaque</strong> de palavras-chave, <strong>prazos</strong>, <strong>frações</strong> e <strong>números</strong>.
+        </p>
+        <div class="chips" aria-label="Chips informativos">
+          <div class="chip"><b>Foco:</b> tramitação • prazos • competências</div>
+          <div class="chip"><b>Enfase:</b> rol taxativo • vedações • recursos</div>
+          <div class="chip"><b>Leitura:</b> cards por artigo • tópicos objetivos</div>
+        </div>
+      </section>
+
+      <div class="grid">
+
+        <!-- SEÇÃO III - DA ATA (Arts. 97-99) -->
+        <article class="card" id="ata">
+          <div class="chd">
+            <h3>Seção III — Da Ata (Arts. <strong>97</strong> a <strong>99</strong>)</h3>
+            <span class="tag">Antes do Título IV</span>
+          </div>
+          <div class="cbd">
+            <p class="lead">
+              Regras sobre <strong>ata da sessão</strong>, <strong>publicidade</strong> e <strong>revisão de discursos</strong>,
+              além de hipóteses de <strong>sigilo</strong>/<strong>censura</strong> e <strong>divulgação radiofônica</strong>. 
+            </p>
+
+            <details class="block" open>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">📌 Art. 97 — Ata da sessão</summary>
+              <ul class="bullets">
+                <li><span class="k">Forma e conteúdo</span>
+                  Lavrar-se-á ata com a <strong>SINOPSE</strong> dos trabalhos de cada sessão (padrão uniforme adotado pela <strong>MESA</strong>).
+                  No <strong>§ 2º</strong>, constará a <strong>LISTA NOMINAL</strong> de <strong>presença</strong> e de <strong>ausência</strong> (sessões ordinárias e extraordinárias).
+                </li>
+                <li><span class="k">Arquivamento</span>
+                  Pelo <strong>§ 1º</strong>, atas impressas/datilografadas organizadas em <strong>ANAIS</strong> (ordem cronológica),
+                  com <strong>encadernação</strong> por <strong>SESSÃO LEGISLATIVA</strong> e destino ao <strong>ARQUIVO</strong>.
+                </li>
+                <li><span class="k">Ata da última sessão</span>
+                  Ao encerrar-se a sessão legislativa (<strong>§ 3º</strong>), a ata será: <strong>1)</strong> redigida em <strong>RESUMO</strong>;
+                  <strong>2)</strong> submetida a discussão e aprovação; <strong>3)</strong> quórum: presente <strong>QUALQUER NÚMERO</strong> de Deputados;
+                  <strong>4)</strong> momento: <strong>ANTES</strong> de se levantar a sessão.
+                </li>
+              </ul>
+            </details>
+
+            <details class="block">
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">🗞️ Art. 98 — Publicidade, revisão, sigilo e censura</summary>
+              <ul class="bullets">
+                <li><span class="k">Publicação e discursos</span>
+                  Publicação no <strong>Diário da Câmara dos Deputados</strong> (ata da sessão do <strong>DIA ANTERIOR</strong>).
+                  Discursos (<strong>§ 1º</strong>) publicados <strong>POR EXTENSO</strong> (salvo restrições regimentais).
+                </li>
+                <li><span class="k">Correções e “errata”</span>
+                  Vedação: <strong>NÃO</strong> permitidas reproduções no DCD para corrigir erros/omissões; correções constarão da seção <strong>"ERRATA"</strong>.
+                </li>
+                <li><span class="k">Revisão pelo orador</span>
+                  Lícito retirar o discurso na <strong>TAQUIGRAFIA</strong> para revisão (<strong>§ 2º</strong>), bloqueando publicação na ata respectiva.
+                  <strong>Prazo</strong> de devolução: dentro de <strong>5 SESSÕES</strong>. Sanção: se não devolver, a taquigrafia publica o texto <strong>SEM REVISÃO</strong>.
+                </li>
+                <li><span class="k">Documentos não lidos integralmente</span>
+                  Informações/discursos de outro Poder não lidos integralmente (<strong>§ 3º</strong>) serão apenas <strong>INDICADOS</strong> na ata (com objeto),
+                  salvo autorização de publicação integral pela <strong>MESA</strong> (requerimento do orador).
+                  Do indeferimento cabe recurso ao <strong>PLENÁRIO</strong> (aplica-se art. 115, parágrafo único: <strong>5 SESSÕES</strong>).
+                </li>
+                <li><span class="k">Sigilo</span>
+                  Informações/documentos <strong>RESERVADOS</strong> (<strong>§ 5º</strong>) — <strong>NÃO</strong> se dará publicidade.
+                  Procedimento: lidos pelo PCD ao Presidente da Comissão ou ao Deputado; arquivamento em invólucro <strong>LACRADO</strong>, etiquetado, datado e rubricado por <strong>2 (DOIS) SECRETÁRIOS</strong>.
+                </li>
+                <li><span class="k">Censura</span>
+                  <strong>NÃO</strong> será autorizada a publicação de pronunciamentos atentatórios do <strong>DECORO PARLAMENTAR</strong> (<strong>§ 6º</strong>), com recurso do orador ao <strong>PLENÁRIO</strong>.
+                </li>
+              </ul>
+            </details>
+
+            <details class="block">
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">📻 Art. 99 — Divulgação radiofônica</summary>
+              <ul class="bullets">
+                <li><span class="k">Voz do Brasil</span>
+                  Serão divulgados: <strong>1)</strong> atividades das <strong>COMISSÕES</strong> e do <strong>PLENÁRIO</strong>;
+                  <strong>2)</strong> pronunciamentos lidos/proferidos da tribuna, desde que em <strong>TERMOS REGIMENTAIS</strong>.
+                </li>
+              </ul>
+            </details>
+          </div>
+        </article>
+
+        <!-- Art. 100 -->
+        <article class="card" id="art100">
+          <div class="chd">
+            <h3>Art. <strong>100</strong> — Definição e espécies de proposição</h3>
+            <span class="tag">Cap. I — Disposições gerais</span>
+          </div>
+          <div class="cbd">
+            <p class="lead">
+              Proposição é toda matéria sujeita à <strong>DELIBERAÇÃO</strong> da Câmara, com <strong>rol taxativo</strong> de espécies,
+              requisitos formais e vedação de matéria estranha à <strong>EMENTA</strong>.
+            </p>
+            <ul class="bullets">
+              <li><span class="k">Conceito</span>
+                Proposição é <strong>TODA</strong> matéria sujeita à <strong>DELIBERAÇÃO</strong> da Câmara.
+              </li>
+              <li><span class="k">Espécies (rol taxativo)</span>
+                <strong>PEC</strong>; <strong>Projeto</strong>; <strong>Emenda</strong>; <strong>Indicação</strong>; <strong>Requerimento</strong>;
+                <strong>Recurso</strong>; <strong>Parecer</strong>; <strong>Proposta de fiscalização e controle</strong>.
+              </li>
+              <li><span class="k">Requisitos formais (§ 2º)</span>
+                Redação <strong>CLARA</strong>, explícita e concisa; apresentação conforme <strong>Ato da Mesa</strong>.
+              </li>
+              <li><span class="k">Vedação material (§ 3º)</span>
+                Nenhuma proposição poderá conter <strong>MATÉRIA ESTRANHA</strong> ao enunciado objetivamente declarado na <strong>EMENTA</strong> (ou dele decorrente).
+                (Correlato: vedação de <strong>2 (DUAS)</strong> ou mais matérias diversas em projeto.)
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Art. 101 -->
+        <article class="card" id="art101">
+          <div class="chd">
+            <h3>Art. <strong>101</strong> — Processo legislativo digital</h3>
+            <span class="tag">Cap. I — Disposições gerais</span>
+          </div>
+          <div class="cbd">
+            <p class="lead">
+              Regra geral de prática de atos por <strong>MEIO DIGITAL</strong> e requisitos de segurança (padrões preferencialmente <strong>ABERTOS</strong>).
+            </p>
+            <ul class="bullets">
+              <li><span class="k">Regra geral</span>
+                Atos do processo legislativo (apresentação/subscrição) serão praticados por <strong>MEIO DIGITAL</strong> (forma: <strong>Ato da Mesa</strong>).
+              </li>
+              <li><span class="k">Segurança (§ 1º)</span>
+                Padrões preferencialmente <strong>ABERTOS</strong>, atendendo a: <strong>Autenticidade</strong>, <strong>Integridade</strong>,
+                <strong>Temporalidade</strong>, <strong>Não repúdio</strong>, <strong>Conservação</strong>, <strong>Disponibilidade</strong> e <strong>Confidencialidade</strong>.
+              </li>
+              <li><span class="k">Inclusão no sistema (§ 2º)</span>
+                Incluem-se proposições oriundas de: <strong>Senado Federal</strong>, <strong>Poder Executivo</strong>, <strong>Judiciário</strong>;
+                <strong>TCU</strong>, <strong>PGR</strong>, <strong>DPU</strong>; <strong>Assembleias Legislativas</strong> e <strong>CIDADÃOS</strong>.
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Arts. 102–103 -->
+        <article class="card" id="art102-103">
+          <div class="chd">
+            <h3>Arts. <strong>102</strong>–<strong>103</strong> — Autoria, iniciativa coletiva e justificação</h3>
+            <span class="tag">Cap. I — Disposições gerais</span>
+          </div>
+          <div class="cbd">
+            <p class="lead">
+              Critérios de <strong>autoria</strong>, exercício de prerrogativas por <strong>UM SÓ</strong> signatário e
+              regras de <strong>assinaturas</strong> (preclusão após apresentação). Formas de <strong>fundamentação</strong>.
+            </p>
+            <div class="cols">
+              <div class="mini">
+                <div class="t">Art. 102 — Autoria</div>
+                <div>
+                  Consideram-se <strong>AUTORES</strong> todos os seus signatários (assinaturas eletrônicas). Prerrogativas em Plenário (<strong>§ 2º</strong>)
+                  exercidas por <strong>UM SÓ</strong> dos signatários; precedência: ordem de subscrição. Quórum de iniciativa (<strong>§ 3º</strong>):
+                  por assinaturas de cada Deputado ou por <strong>LÍDER(ES)</strong> (representando exclusivamente o número de sua legenda), quando expressamente permitido.
+                  Estabilidade (<strong>§ 4º</strong>): se necessárias ao trâmite, assinaturas <strong>NÃO PODERÃO</strong> ser retiradas ou acrescentadas após a
+                  <strong>APRESENTAÇÃO</strong> à Mesa.
+                </div>
+              </div>
+              <div class="mini">
+                <div class="t">Art. 103 — Fundamentação e justificação</div>
+                <div>
+                  Fundamentação por <strong>ESCRITO</strong> ou <strong>VERBALMENTE</strong> (pelo Autor, mediante prévia inscrição).
+                  Se coletiva: pelo <strong>PRIMEIRO SIGNATÁRIO</strong> (ou quem este indicar). Juntada ao processo (parágrafo único):
+                  o <strong>RELATOR</strong> fará juntar a justificação oral (extraída do <strong>DCD</strong>), de ofício ou a requerimento do Autor.
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Art. 104 -->
+        <article class="card" id="art104">
+          <div class="chd">
+            <h3>Art. <strong>104</strong> — Retirada de proposição</h3>
+            <span class="tag">Cap. II — Dos projetos</span>
+          </div>
+          <div class="cbd">
+            <p class="lead">
+              Competência para deferimento, hipótese de deliberação do <strong>PLENÁRIO</strong>, regras de autoria e
+              vedação de reapresentação na mesma sessão legislativa.
+            </p>
+            <ul class="bullets">
+              <li><span class="k">Competência</span>
+                Regra geral: requerida pelo <strong>AUTOR</strong> ao <strong>PCD</strong> (cabe recurso ao <strong>PLENÁRIO</strong>).
+                Competência do Plenário (<strong>§ 1º</strong>): se a proposição já tiver ao menos <strong>UM PARECER FAVORÁVEL</strong>.
+              </li>
+              <li><span class="k">Autoria coletiva (§ 2º)</span>
+                Requerimento de, pelo menos, <strong>METADE MAIS UM</strong> dos subscritores.
+              </li>
+              <li><span class="k">Comissão ou Mesa (§ 3º)</span>
+                Requerimento do respectivo <strong>PRESIDENTE</strong> + prévia autorização do colegiado.
+              </li>
+              <li><span class="k">Vedação de reapresentação (§ 4º)</span>
+                Proposição retirada <strong>NÃO PODE</strong> ser reapresentada na <strong>MESMA SESSÃO LEGISLATIVA</strong>,
+                salvo deliberação do <strong>PLENÁRIO</strong>.
+              </li>
+              <li><span class="k">Abrangência (§ 5º)</span>
+                Aplica-se também a proposições do Senado, outros Poderes, <strong>PGR</strong> ou <strong>Cidadãos</strong>.
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Arts. 105–107 -->
+        <article class="card" id="art105-107">
+          <div class="chd">
+            <h3>Arts. <strong>105</strong>–<strong>107</strong> — Arquivamento, extravio e publicação</h3>
+            <span class="tag">Cap. II — Dos projetos</span>
+          </div>
+          <div class="cbd">
+            <p class="lead">
+              Regra geral de arquivamento ao fim da <strong>LEGISLATURA</strong>, com exceções em rol taxativo.
+              Medidas em caso de <strong>extravio</strong> e itens de publicação obrigatória.
+            </p>
+
+            <details open>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">🗄️ Art. 105 — Arquivamento (fim da legislatura)</summary>
+              <ul class="bullets">
+                <li><span class="k">Regra geral</span>
+                  Finda a <strong>LEGISLATURA</strong>, arquivar-se-ão todas as proposições em tramitação.
+                </li>
+                <li><span class="k">Exceções (rol taxativo)</span>
+                  <strong>IV</strong> — iniciativa <strong>POPULAR</strong>; <strong>VI</strong> — espécies normativas do art. 59 da CF que <strong>NÃO TENHAM</strong>
+                  tramitado por <strong>3 LEGISLATURAS COMPLETAS</strong>; <strong>VII</strong> — projetos de <strong>CÓDIGO</strong>;
+                  <strong>VIII</strong> — tratados internacionais e concessão de <strong>RADIODIFUSÃO</strong> (som e imagem);
+                  <strong>IX</strong> — contas do <strong>PRESIDENTE DA REPÚBLICA</strong>; <strong>X</strong> — aprovadas pela Câmara e revisadas pelo <strong>SENADO FEDERAL</strong>.
+                </li>
+                <li><span class="k">Tramitação conjunta (§ 2º)</span>
+                  No arquivamento de proposição apensada, permanecem <strong>VÁLIDOS</strong> os pareceres aprovados (instruem as remanescentes) e mantém-se a distribuição às Comissões.
+                </li>
+              </ul>
+            </details>
+
+            <details>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">🧩 Arts. 106–107 — Extravio e publicação</summary>
+              <ul class="bullets">
+                <li><span class="k">Art. 106 — Extravio</span>
+                  Por extravio ou retenção indevida (vencidos prazos regimentais), a <strong>MESA</strong> fará <strong>RECONSTITUIR</strong> o respectivo processo, pelos meios ao alcance.
+                </li>
+                <li><span class="k">Art. 107 — Publicação obrigatória</span>
+                  No <strong>DCD</strong> e em avulsos (volta das Comissões) constará: <strong>Autor</strong> / número de autores; <strong>Turnos</strong>;
+                  <strong>Ementa</strong>; conclusão dos <strong>PARECERES</strong> (favoráveis/contrários/emendas/substitutivos);
+                  votos em separado/vencidos; relação de <strong>EMENDAS</strong>.
+                  Em matéria conclusiva, a publicação deve <strong>RESSALTAR</strong> a fluência do prazo para eventual apresentação de recurso (<strong>5 SESSÕES</strong> da publicação do anúncio).
+                </li>
+              </ul>
+            </details>
+          </div>
+        </article>
+
+        <!-- Arts. 108–112 -->
+        <article class="card" id="art108-112">
+          <div class="chd">
+            <h3>Arts. <strong>108</strong>–<strong>112</strong> — Projetos: espécies, iniciativa, redação e instrução</h3>
+            <span class="tag">Cap. II — Dos projetos</span>
+          </div>
+          <div class="cbd">
+            <p class="lead">
+              Instrumentos legislativos e efeitos de <strong>sanção</strong>, iniciativa (Art. 61 CF) e regras de redação (ementa + artigos),
+              com vedação de “<strong>jabutis</strong>” (matérias diversas) e atraso por instrução incompleta.
+            </p>
+
+            <details open>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">📚 Arts. 108–109 — Espécies e iniciativa</summary>
+              <ul class="bullets">
+                <li><span class="k">Art. 108 — Instrumentos</span>
+                  A Câmara exerce função legislativa via projeto de: <strong>Lei Ordinária</strong>, <strong>Lei Complementar</strong>,
+                  <strong>Decreto Legislativo</strong>, <strong>Resolução</strong> e <strong>PEC</strong>.
+                </li>
+                <li><span class="k">Art. 109 — Definições e sanção</span>
+                  <strong>LEI</strong>: matérias de competência do Poder Legislativo, <strong>COM SANÇÃO</strong> do Presidente da República.
+                  <strong>DECRETO LEGISLATIVO</strong>: matérias de <strong>EXCLUSIVA COMPETÊNCIA</strong> do Poder Legislativo, <strong>SEM SANÇÃO</strong>.
+                  <strong>RESOLUÇÃO</strong>: matérias de competência <strong>PRIVATIVA</strong> da Câmara (caráter político/processual/legislativo/administrativo ou casos concretos).
+                </li>
+                <li><span class="k">Iniciativa (§§ 1º e 2º)</span>
+                  Projetos de lei (Art. 61 CF): <strong>1)</strong> Deputados (individual ou coletivamente); <strong>2)</strong> Comissão ou Mesa;
+                  <strong>3)</strong> Senado; <strong>4)</strong> Presidente; <strong>5)</strong> STF; <strong>6)</strong> Tribunais Superiores;
+                  <strong>7)</strong> PGR; <strong>8)</strong> Cidadãos. PDL e Resolução: por <strong>QUALQUER DEPUTADO</strong> ou Comissão,
+                  salvo iniciativa privativa da Mesa ou de colegiado específico.
+                </li>
+              </ul>
+            </details>
+
+            <details>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">♻️ Art. 110 — Reapresentação de matéria rejeitada</summary>
+              <ul class="bullets">
+                <li><span class="k">Regra geral</span>
+                  Matéria de projeto rejeitado somente poderá constituir novo projeto na <strong>MESMA SESSÃO LEGISLATIVA</strong>
+                  mediante proposta da <strong>MAIORIA ABSOLUTA</strong> dos membros da Câmara.
+                </li>
+                <li><span class="k">Iniciativa externa</span>
+                  Se a iniciativa for do Senado, Presidente, Judiciário, PGR ou Cidadãos, exige iniciativa do <strong>AUTOR</strong> + aprovação da <strong>MAIORIA ABSOLUTA</strong>.
+                </li>
+              </ul>
+            </details>
+
+            <details>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">🧱 Arts. 111–112 — Redação e instrução</summary>
+              <ul class="bullets">
+                <li><span class="k">Art. 111 — Forma e conteúdo</span>
+                  Projetos divididos em <strong>ARTIGOS</strong> numerados, redação concisa e clara, precedidos de <strong>EMENTA</strong>.
+                  Conteúdo: conter simplesmente a enunciação da vontade legislativa; vedação de matérias diversas (<strong>2 (DUAS)</strong> ou mais).
+                </li>
+                <li><span class="k">Art. 112 — Instrução incompleta</span>
+                  Projetos apresentados sem observância do Art. 111; com referências a leis/atos <strong>SEM TRANSCRIÇÃO</strong>; ou incompletos/sem esclarecimentos
+                  só serão enviados às Comissões após <strong>COMPLETADA</strong> a instrução (Autores cientes do <strong>RETARDAMENTO</strong>).
+                </li>
+              </ul>
+            </details>
+          </div>
+        </article>
+
+        <!-- Art. 113 -->
+        <article class="card" id="art113">
+          <div class="chd">
+            <h3>Art. <strong>113</strong> — Indicação (conceito, espécies e tramitação)</h3>
+            <span class="tag">Cap. III — Das indicações</span>
+          </div>
+          <div class="cbd">
+            <p class="lead">
+              Indicação é a proposição pela qual o Deputado sugere providências (a outro Poder) ou sugere manifestação de Comissão.
+              Há <strong>vedações</strong> (consultas interpretativas) e rito próprio.
+            </p>
+            <ul class="bullets">
+              <li><span class="k">Conceito e espécies</span>
+                <strong>I</strong> — sugere a outro Poder a adoção de providência, realização de ato administrativo/gestão, ou envio de projeto (iniciativa exclusiva);
+                <strong>II</strong> — sugere manifestação de Comissão sobre assunto (visando elaboração de projeto de iniciativa da Câmara).
+              </li>
+              <li><span class="k">Vedações (inciso V)</span>
+                <strong>NÃO SERÃO ACEITAS</strong> proposições que objetivem <strong>CONSULTA</strong> à Comissão sobre interpretação/aplicação de lei
+                ou sobre atos de qualquer Poder/órgãos/autoridades.
+              </li>
+              <li><span class="k">Tramitação</span>
+                Sugestão a outro Poder (<strong>§ 1º</strong>): requerimento escrito → despacho do Presidente → publicação no DCD.
+                Sugestão à Comissão (<strong>§ 2º</strong>): lidas em súmula → publicadas → encaminhadas às Comissões competentes.
+                Parecer no prazo de <strong>20 (VINTE) SESSÕES</strong> (prorrogação a critério da Presidência da Comissão).
+              </li>
+              <li><span class="k">Conclusão</span>
+                Se Comissão opinar pelo projeto: seguem trâmites das proposições congêneres.
+                Se nenhuma opinar: Presidente determina <strong>ARQUIVAMENTO</strong> (Autor cientificado; se quiser, oferece projeto próprio).
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Arts. 114–117 -->
+        <article class="card" id="art114-117">
+          <div class="chd">
+            <h3>Arts. <strong>114</strong>–<strong>117</strong> — Requerimentos (competência, prazos e ritos)</h3>
+            <span class="tag">Cap. IV — Dos requerimentos</span>
+          </div>
+          <div class="cbd">
+            <p class="lead">
+              Diferenciação por competência: despacho apenas do <strong>PRESIDENTE</strong>, despacho do Presidente ouvido a <strong>MESA</strong> e
+              deliberação do <strong>PLENÁRIO</strong>. Atenção aos prazos de <strong>5 SESSÕES</strong> e <strong>30 (TRINTA) DIAS</strong>.
+            </p>
+
+            <details open>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">⚖️ Art. 114 — Despacho apenas do Presidente</summary>
+              <ul class="bullets">
+                <li><span class="k">Forma e competência</span>
+                  Requerimentos verbais ou escritos despachados <strong>IMEDIATAMENTE</strong> pelo <strong>PRESIDENTE</strong>.
+                </li>
+                <li><span class="k">Rol taxativo (principais hipóteses)</span>
+                  <strong>I/II</strong> — a palavra (ou desistência); falar sentado ou da bancada.
+                  <strong>III/IV</strong> — leitura de matéria; observância de disposição regimental.
+                  <strong>V/VII</strong> — retirada de requerimento ou de proposição (pelo Autor), quando com parecer <strong>CONTRÁRIO</strong>, sem parecer,
+                  ou apenas com parecer de <strong>ADMISSIBILIDADE</strong>.
+                  <strong>VIII</strong> — verificação de votação.
+                  <strong>X/XI</strong> — prorrogação de prazo (tribuna); dispensa do avulso.
+                  <strong>XII/XIII</strong> — requisição de documentos; preenchimento de lugar em Comissão.
+                  <strong>XIV</strong> — inclusão na Ordem do Dia (com parecer/condições).
+                  <strong>XV</strong> — reabertura de discussão.
+                  <strong>XVII</strong> — licença a Deputado (art. 235, § 3º).
+                </li>
+                <li><span class="k">Recurso (parágrafo único)</span>
+                  Em caso de <strong>INDEFERIMENTO</strong> e a pedido do Autor: Plenário consultado, <strong>SEM</strong> discussão e <strong>SEM</strong> encaminhamento; votação <strong>SIMBÓLICA</strong>.
+                </li>
+              </ul>
+            </details>
+
+            <details>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">🧾 Art. 115 — Despacho do Presidente, ouvida a Mesa</summary>
+              <ul class="bullets">
+                <li><span class="k">Prazo</span>
+                  Requerimentos escritos despachados em <strong>5 SESSÕES</strong> pelo Presidente, ouvida a <strong>MESA</strong>.
+                </li>
+                <li><span class="k">Hipóteses</span>
+                  <strong>I</strong> — informação a Ministro de Estado.
+                  <strong>II</strong> — inserção nos Anais de informações/documentos/discurso de outro Poder quando <strong>NÃO LIDOS</strong> integralmente.
+                </li>
+                <li><span class="k">Recurso (parágrafo único)</span>
+                  Do indeferimento cabe recurso ao Plenário dentro de <strong>5 SESSÕES</strong> (da publicação), por votação <strong>SIMBÓLICA</strong>, <strong>SEM</strong> discussão.
+                  Encaminhamento: Autor e Líderes, <strong>5 MINUTOS</strong> cada.
+                </li>
+              </ul>
+            </details>
+
+            <details>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">📨 Art. 116 — Pedido de informação a Ministro</summary>
+              <ul class="bullets">
+                <li><span class="k">Trâmite</span>
+                  Encaminhados pelo <strong>PRIMEIRO-SECRETÁRIO</strong>.
+                </li>
+                <li><span class="k">Sanção</span>
+                  Recusa/não atendimento em <strong>30 (TRINTA) DIAS</strong> ou prestação falsa → <strong>CRIME DE RESPONSABILIDADE</strong>.
+                </li>
+                <li><span class="k">Admissibilidade</span>
+                  Prejudicialidade: se a informação chegar espontaneamente ou já tiver sido prestada/publicada → proposição <strong>PREJUDICADA</strong>.
+                  Objeto: ato/fato na competência do Ministério (incluída Adm. indireta) relacionado a matéria legislativa em trâmite; fiscalização e controle; atribuições do Congresso.
+                  Vedações: não cabem providências a tomar, consulta, sugestão, conselho ou interrogação sobre propósitos.
+                </li>
+                <li><span class="k">Controle da Mesa</span>
+                  Faculdade de recusar requerimento inconveniente ou contrário ao artigo; cabe recurso do art. 115, parágrafo único.
+                </li>
+              </ul>
+            </details>
+
+            <details>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">🏛️ Art. 117 — Requerimentos sujeitos ao Plenário</summary>
+              <ul class="bullets">
+                <li><span class="k">Formalidade</span>
+                  Escritos e dependentes de <strong>DELIBERAÇÃO DO PLENÁRIO</strong>.
+                </li>
+                <li><span class="k">Hipóteses (exemplos principais)</span>
+                  Comissão externa; convocação de Ministro; sessão extraordinária/secreta; retirada de proposição da Ordem do Dia; prorrogação de prazo de Comissão;
+                  destaque (art. 161); adiamento (discussão/votação); encerramento de discussão; dispensa de publicação; urgência/preferência/prioridade;
+                  voto de pesar/regozijo/louvor.
+                </li>
+                <li><span class="k">Rito (§ 1º)</span>
+                  Não sofrerão discussão; encaminhamento: <strong>1</strong> orador favorável e <strong>1</strong> contrário; tempo: <strong>3 MINUTOS</strong> cada.
+                </li>
+                <li><span class="k">Votos de pesar e regozijo ( §§ 2º a 4º )</span>
+                  Voto de pesar: admissível apenas por falecimento de autoridades listadas ou luto nacional oficialmente declarado.
+                  Regozijo/Louvor: acontecimentos de alta significação nacional.
+                  Regozijo internacional: se concernente a ato internacional → só de autoria da Comissão de Relações Exteriores, previamente aprovada pela <strong>MAIORIA ABSOLUTA</strong> de seus membros.
+                </li>
+              </ul>
+            </details>
+          </div>
+        </article>
+
+        <!-- Arts. 118–125 -->
+        <article class="card" id="art118-125">
+          <div class="chd">
+            <h3>Arts. <strong>118</strong>–<strong>125</strong> — Emendas (tipos, momentos, frações e vedações)</h3>
+            <span class="tag">Cap. V — Das emendas</span>
+          </div>
+          <div class="cbd">
+            <p class="lead">
+              Emenda é proposição <strong>ACESSÓRIA</strong> de outra. Atenção aos tipos (supressiva, aglutinativa, substitutiva etc.),
+              aos momentos de apresentação e às frações <strong>1/10</strong>, <strong>1/5</strong> e “<strong>MAIORIA ABSOLUTA</strong>”.
+            </p>
+
+            <details open>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">🧷 Art. 118 — Definição e espécies</summary>
+              <ul class="bullets">
+                <li><span class="k">Conceito</span>
+                  Emenda: proposição <strong>ACESSÓRIA</strong> de outra (principal: proposições do art. 138, I, a a e).
+                </li>
+                <li><span class="k">Espécies</span>
+                  <strong>SUPRESSIVA</strong> (erradica parte); <strong>AGLUTINATIVA</strong> (fusão); <strong>SUBSTITUTIVA</strong> (sucedânea a parte; substitutivo altera o conjunto);
+                  <strong>MODIFICATIVA</strong>; <strong>ADITIVA</strong>.
+                  Outras: <strong>SUBEMENDA</strong> (em Comissão) e <strong>EMENDA DE REDAÇÃO</strong> (sana vício de linguagem/técnica/lapso).
+                </li>
+              </ul>
+            </details>
+
+            <details>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">🧑‍⚖️ Arts. 119–122 — Emenda em Comissão/Plenário e aglutinativa</summary>
+              <ul class="bullets">
+                <li><span class="k">Art. 119 — Emendas em Comissão (apreciação conclusiva)</span>
+                  Cabimento: projeto sujeito à apreciação conclusiva. A partir da designação do Relator (prazo: <strong>5 SESSÕES</strong> do anúncio na Ordem do Dia),
+                  podem apresentar: <strong>1)</strong> qualquer Deputado; <strong>2)</strong> CLP; <strong>3)</strong> membro da Comissão (apenas substitutivo do Relator).
+                  Requisito: versar sobre campo temático e ser aprovada; sanção: emendas/substitutivos em desconformidade podem ser tidos como <strong>NÃO ESCRITOS</strong> (desde que provida reclamação antes da aprovação definitiva).
+                </li>
+                <li><span class="k">Art. 120 — Emendas de Plenário (momentos e frações)</span>
+                  I) apreciação preliminar/turno único/1º turno: qualquer Deputado ou Comissão (restrição: preliminar só para escoimar vícios).
+                  II) discussão em 2º turno: Comissão (aprovada por <strong>MAIORIA ABSOLUTA</strong>) ou subscritas por <strong>1/10 (UM DÉCIMO)</strong> dos membros (ou Líderes).
+                  III) redação final: até o início da votação (quórum: <strong>1/10</strong> ou Comissão por maioria absoluta), para evitar lapso formal/incorreção/defeito técnico.
+                  IV) regime de urgência: até o início da votação; legitimidade: Comissão ou <strong>1/5 (UM QUINTO)</strong> dos membros (ou Líderes).
+                </li>
+                <li><span class="k">Art. 122 — Emenda aglutinativa</span>
+                  Momento: na votação da parte/dispositivo a que se refira; objeto: apreciação em turno único; autoria: Líderes que representem a <strong>MAIORIA ABSOLUTA</strong>.
+                  Publicidade: Mesa pode adiar votação por <strong>UMA SESSÃO</strong> para publicar/distribuir o texto resultante da fusão.
+                </li>
+              </ul>
+            </details>
+
+            <details>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">🚫 Arts. 123–125 — Emendas do Senado e vedações</summary>
+              <ul class="bullets">
+                <li><span class="k">Art. 123 — Emendas do Senado</span>
+                  Distribuídas, juntamente com os projetos, às Comissões competentes.
+                </li>
+                <li><span class="k">Art. 124 — Vedação de aumento de despesa</span>
+                  <strong>NÃO ADMITIDAS</strong> emendas que impliquem aumento de despesa prevista em projetos de iniciativa exclusiva do Presidente da República
+                  (ressalvas constitucionais) ou sobre organização de serviços administrativos da Câmara/Senado/Tribunais Federais/MP.
+                </li>
+                <li><span class="k">Art. 125 — Controle de admissibilidade</span>
+                  Presidente (Câmara ou Comissão) pode recusar emenda inconveniente, estranha ao projeto ou contrária ao Regimento; recurso ao Plenário:
+                  sem discussão/encaminhamento; votação <strong>SIMBÓLICA</strong>.
+                </li>
+              </ul>
+            </details>
+          </div>
+        </article>
+
+        <!-- Arts. 126–130 -->
+        <article class="card" id="art126-130">
+          <div class="chd">
+            <h3>Arts. <strong>126</strong>–<strong>130</strong> — Pareceres (conceito, forma e controle)</h3>
+            <span class="tag">Cap. VI — Dos pareceres</span>
+          </div>
+          <div class="cbd">
+            <p class="lead">
+              Parecer é a proposição com que a Comissão se pronuncia; regra de <strong>parecer escrito</strong> antes de discussão/votação
+              e estrutura obrigatória (relatório, voto do relator e parecer da comissão).
+            </p>
+
+            <details open>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">🧠 Arts. 126–128 — Definição e obrigatoriedade</summary>
+              <ul class="bullets">
+                <li><span class="k">Art. 126 — Conceito e competência</span>
+                  Parecer: proposição com que uma Comissão se pronuncia sobre matéria sujeita a seu estudo.
+                  Limitação: Comissão cinge-se à matéria de sua <strong>EXCLUSIVA COMPETÊNCIA</strong> (proposição principal/acessória ou matéria ainda não objetivada).
+                </li>
+                <li><span class="k">Art. 127 — Independência / exceção</span>
+                  Cada proposição terá parecer <strong>INDEPENDENTE</strong>.
+                  Exceção: apensadas (arts. 139, I e 142) terão <strong>UM SÓ PARECER</strong>.
+                </li>
+                <li><span class="k">Art. 128 — Regra do parecer escrito</span>
+                  Nenhuma proposição será submetida a discussão/votação sem parecer <strong>ESCRITO</strong> da Comissão competente.
+                  Exceção: excepcionalmente, quando o Regimento admitir, parecer poderá ser <strong>VERBAL</strong>.
+                </li>
+              </ul>
+            </details>
+
+            <details>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">🧩 Art. 129 — Estrutura do parecer</summary>
+              <ul class="bullets">
+                <li><span class="k">Partes obrigatórias</span>
+                  <strong>I</strong> — relatório (exposição circunstanciada); <strong>II</strong> — voto do relator (opinião objetiva sobre aprovação/rejeição total ou parcial,
+                  necessidade de substitutivo/emenda); <strong>III</strong> — parecer da Comissão (conclusões + indicação dos Deputados votantes e votos).
+                </li>
+                <li><span class="k">Parecer a emenda</span>
+                  Pode constar apenas das partes <strong>II</strong> (voto) e <strong>III</strong> (parecer), dispensado o relatório.
+                </li>
+                <li><span class="k">Formulação de proposição (§ 2º)</span>
+                  Quando houver parecer sobre matéria que não seja projeto do Executivo/Judiciário/MP, nem proposição da Câmara/Senado,
+                  e das conclusões deva resultar resolução/decreto legislativo/lei, deverá conter a proposição necessária devidamente formulada.
+                </li>
+              </ul>
+            </details>
+
+            <details>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">🛂 Art. 130 — Remessa e controle</summary>
+              <ul class="bullets">
+                <li><span class="k">Remessa</span>
+                  Pareceres aprovados (após opinar a última Comissão) são remetidos com a proposição à <strong>MESA</strong>.
+                </li>
+                <li><span class="k">Devolução (parágrafo único)</span>
+                  O Presidente devolverá à Comissão o parecer que contrarie disposições regimentais (reformulação) ou em razão de regra de “<strong>NÃO ESCRITO</strong>”
+                  (violação de competência/pertinência temática, mediante reclamação provida antes da aprovação definitiva).
+                </li>
+              </ul>
+            </details>
+          </div>
+        </article>
+
+        <!-- Arts. 131–133 -->
+        <article class="card" id="art131-133">
+          <div class="chd">
+            <h3>Arts. <strong>131</strong>–<strong>133</strong> — Tramitação, decisão e arquivamento definitivo</h3>
+            <span class="tag">Título V (início) — Tramitação</span>
+          </div>
+          <div class="cbd">
+            <p class="lead">
+              Regra geral: cada proposição tem <strong>CURSO PRÓPRIO</strong>. Competências para decisão variam (Presidente/Mesa/Comissões/Plenário),
+              com destaque ao recurso contra apreciação conclusiva: <strong>1/10</strong> e <strong>5 SESSÕES</strong>.
+            </p>
+
+            <details open>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">🛣️ Art. 131 — Regra geral da tramitação</summary>
+              <ul class="bullets">
+                <li><span class="k">Curso próprio</span>
+                  Cada proposição terá <strong>CURSO PRÓPRIO</strong>. Exceção: <strong>EMENDA</strong>, <strong>RECURSO</strong> ou <strong>PARECER</strong>.
+                </li>
+              </ul>
+            </details>
+
+            <details>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">🧭 Art. 132 — Competência para decisão + recurso</summary>
+              <ul class="bullets">
+                <li><span class="k">Decisão (caput)</span>
+                  Apresentada e lida em Plenário, a proposição será objeto de decisão:
+                  <strong>I</strong> do Presidente (casos do art. 114);
+                  <strong>II</strong> da Mesa (art. 115);
+                  <strong>III</strong> das Comissões, em projeto de lei com poder conclusivo (art. 24, II);
+                  <strong>IV</strong> do Plenário, nos demais casos.
+                </li>
+                <li><span class="k">Manifestação prévia (§ 1º)</span>
+                  Antes da deliberação do Plenário, haverá manifestação das Comissões competentes, exceto quando se tratar de <strong>REQUERIMENTO</strong>.
+                </li>
+                <li><span class="k">Recurso contra poder conclusivo (§ 2º)</span>
+                  Não se dispensará a competência do Plenário para discutir e votar projeto de lei apreciado conclusivamente se houver <strong>RECURSO</strong>:
+                  <strong>QUÓRUM</strong> de <strong>1/10</strong> dos membros; <strong>PRAZO</strong> de <strong>5 SESSÕES</strong> (da publicação do anúncio no DCD e no avulso);
+                  condição: apresentado em sessão e provido por decisão do Plenário.
+                </li>
+              </ul>
+
+              <div class="quote">
+                <strong>Trecho-regra</strong> (síntese fiel do dispositivo): não se dispensa a competência do Plenário para discutir e votar (globalmente ou em parte)
+                projeto apreciado conclusivamente se, no prazo de <strong>5 sessões</strong> da publicação do anúncio no <strong>DCD</strong> e no avulso,
+                houver recurso de <strong>1/10</strong> dos membros, apresentado em sessão e provido pelo Plenário. <em>(parafraseado sem alterar o sentido normativo)</em>
+              </div>
+            </details>
+
+            <details>
+              <summary class="btn" style="margin:0 0 10px; display:inline-flex;">🧨 Art. 133 — Rejeição e arquivamento definitivo</summary>
+              <ul class="bullets">
+                <li><span class="k">Regra</span>
+                  Proposição que receber pareceres <strong>CONTRÁRIOS</strong> quanto ao <strong>MÉRITO</strong> de <strong>TODAS</strong> as Comissões a que for distribuída
+                  será tida como <strong>REJEITADA</strong> e <strong>ARQUIVADA DEFINITIVAMENTE</strong> por despacho do Presidente, dando-se conhecimento ao Plenário
+                  (e ao Senado, se matéria em revisão).
+                </li>
+                <li><span class="k">Exceções</span>
+                  Hipótese de interposição de recurso (art. 132, <strong>§ 2º</strong>) e casos em que deliberações não têm eficácia conclusiva.
+                </li>
+              </ul>
+            </details>
+          </div>
+        </article>
+
+        <!-- Notes anchor in main -->
+        <article class="card" id="notas">
+          <div class="chd">
+            <h3>Notas e pegadinhas (atalho)</h3>
+            <span class="tag">Estudo ativo</span>
+          </div>
+          <div class="cbd">
+            <p class="lead">
+              Use o painel “Notas” à direita para registrar: <strong>prazos</strong>, <strong>quóruns</strong>, <strong>competências</strong> e
+              comparações (“Presidente” vs “Mesa” vs “Plenário”). Atalho de teclado: <span class="kbd">Ctrl</span> + <span class="kbd">S</span> salva as notas.
+            </p>
+            <ul class="bullets">
+              <li><span class="k">Sugestão de checklist</span>
+                (1) Quem decide? <strong>Presidente/Mesa/Plenário/Comissões</strong> • (2) Há <strong>prazo</strong>? • (3) Há <strong>fração/quórum</strong>? •
+                (4) Cabe <strong>recurso</strong>? • (5) Há <strong>vedação</strong> (matéria estranha, aumento de despesa, consulta etc.)?
+              </li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </main>
+
+    <!-- Notes -->
+    <aside class="panel notes" aria-label="Painel de notas">
+      <div class="hd">
+        <div>
+          <h2>Notas (salvas no navegador)</h2>
+          <div class="hint">
+            Ideal para “pegadinhas”: <strong>5 SESSÕES</strong>, <strong>30 DIAS</strong>, <strong>1/10</strong>, <strong>1/5</strong>, <strong>maioria absoluta</strong>.
+            <br/>Dica: copie e cole suas notas depois, se quiser guardar em outro lugar.
+          </div>
+        </div>
+        <span class="tag" style="align-self:flex-start;">Auto-save</span>
+      </div>
+
+      <div class="tools">
+        <button class="btn" id="btnCopyNotes" type="button" title="Copia suas notas para a área de transferência">⎘ Copiar</button>
+        <button class="btn warn" id="btnClearNotes" type="button" title="Limpa o campo (com confirmação)">⌫ Limpar</button>
+        <button class="btn ok" id="btnSaveNotes" type="button" title="Força salvamento agora">✓ Salvar</button>
+      </div>
+
+      <div class="bd">
+        <div id="notesArea" class="notesArea" contenteditable="true" spellcheck="true"></div>
+        <div style="margin-top:10px; color:var(--muted2); font-size:12px; line-height:1.45;">
+          <strong>Privacidade:</strong> as notas ficam somente neste navegador (LocalStorage).  
+          <br/><strong>Exportar:</strong> clique em <span class="kbd">Copiar</span> e cole onde quiser.
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <script>
+    (function(){
+      const STORAGE_KEY = "ricd_titulo_iv_notas_v1";
+      const UI_KEY = "ricd_titulo_iv_ui_v1";
+
+      const notesArea = document.getElementById("notesArea");
+      const btnSaveNotes = document.getElementById("btnSaveNotes");
+      const btnClearNotes = document.getElementById("btnClearNotes");
+      const btnCopyNotes = document.getElementById("btnCopyNotes");
+
+      const btnKindle = document.getElementById("btnKindle");
+      const btnPrint = document.getElementById("btnPrint");
+      const btnExpandAll = document.getElementById("btnExpandAll");
+      const btnCollapseAll = document.getElementById("btnCollapseAll");
+
+      const navSearch = document.getElementById("navSearch");
+      const navList = document.getElementById("navList");
+
+      // ===== Notes load/save =====
+      function loadNotes(){
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if(saved && saved.trim().length){
+          notesArea.textContent = saved;
+        }
+      }
+      function saveNotes(){
+        localStorage.setItem(STORAGE_KEY, notesArea.textContent || "");
+        flash(btnSaveNotes, "Salvo ✓");
+      }
+
+      // ===== UI prefs =====
+      function loadUI(){
+        try{
+          const raw = localStorage.getItem(UI_KEY);
+          if(!raw) return;
+          const prefs = JSON.parse(raw);
+          if(prefs.kindle) document.body.classList.add("kindle");
+        }catch(e){}
+      }
+      function saveUI(prefs){
+        localStorage.setItem(UI_KEY, JSON.stringify(prefs));
+      }
+
+      // ===== Helpers =====
+      function flash(btn, text){
+        const old = btn.textContent;
+        btn.textContent = text;
+        setTimeout(()=> btn.textContent = old, 700);
+      }
+
+      // ===== Buttons =====
+      btnSaveNotes.addEventListener("click", saveNotes);
+
+      btnClearNotes.addEventListener("click", function(){
+        const ok = confirm("Quer mesmo LIMPAR suas notas? Isso também limpa o salvamento local deste navegador.");
+        if(!ok) return;
+        notesArea.textContent = "";
+        localStorage.setItem(STORAGE_KEY, "");
+      });
+
+      btnCopyNotes.addEventListener("click", async function(){
+        try{
+          await navigator.clipboard.writeText(notesArea.textContent || "");
+          flash(btnCopyNotes, "Copiado ✓");
+        }catch(e){
+          alert("Não consegui copiar automaticamente. Selecione o texto e use Ctrl+C.");
+        }
+      });
+
+      btnKindle.addEventListener("click", function(){
+        document.body.classList.toggle("kindle");
+        const kindle = document.body.classList.contains("kindle");
+        saveUI({ kindle });
+        flash(btnKindle, kindle ? "Modo Kindle ✓" : "Modo Kindle");
+      });
+
+      btnPrint.addEventListener("click", function(){
+        window.print();
+      });
+
+      btnExpandAll.addEventListener("click", function(){
+        document.querySelectorAll("details").forEach(d => d.open = true);
+      });
+      btnCollapseAll.addEventListener("click", function(){
+        document.querySelectorAll("details").forEach(d => d.open = false);
+      });
+
+      // ===== Autosave notes (debounce) =====
+      let t = null;
+      notesArea.addEventListener("input", function(){
+        clearTimeout(t);
+        t = setTimeout(()=> {
+          localStorage.setItem(STORAGE_KEY, notesArea.textContent || "");
+        }, 350);
+      });
+
+      // Ctrl+S save
+      window.addEventListener("keydown", function(e){
+        if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s"){
+          e.preventDefault();
+          saveNotes();
+        }
+      });
+
+      // ===== Nav search filter =====
+      navSearch.addEventListener("input", function(){
+        const q = (navSearch.value || "").trim().toLowerCase();
+        const links = navList.querySelectorAll("a[data-key]");
+        links.forEach(a => {
+          const key = (a.getAttribute("data-key") || "").toLowerCase();
+          const show = !q || key.includes(q);
+          a.style.display = show ? "flex" : "none";
+        });
+      });
+
+      // ===== Smooth scroll =====
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener("click", function(e){
+          const id = a.getAttribute("href");
+          const el = document.querySelector(id);
+          if(!el) return;
+          e.preventDefault();
+          el.scrollIntoView({behavior:"smooth", block:"start"});
+          history.replaceState(null, "", id);
+        });
+      });
+
+      // init
+      loadUI();
+      loadNotes();
+    })();
+  </script>
+</body>
+</html>
