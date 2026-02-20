@@ -3,89 +3,72 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RICD — Resumo Visual (Título I)</title>
-
+  <title>RICD — Título I (Anotações Funcionais)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#f6f8fb; --card:#ffffff; --ink:#0f172a; --muted:#475569;
-      --muted2:#64748b; --slate:#2b3442; --navy:#0b1b2a;
-      --shadow: 0 10px 24px rgba(15, 23, 42, .08);
-      --shadow2: 0 2px 10px rgba(15, 23, 42, .06);
-      --radius-xl:18px; --radius-lg:14px; --max:1060px;
-
-      /* DESTAQUES SEMÂNTICOS */
-      --org:#1e3a8a; --prazo:#b45309; --exc:#dc2626; --num:#334155;
-      --mark: rgba(15, 23, 42, .08);
-      --accentA: rgba(36, 59, 83, .48); --accentB: rgba(51, 65, 85, .40);
-
-      --serif: "Literata", serif;
-      --sans: ui-sans-serif, system-ui, sans-serif;
+      --bg: #f6f8fb; --card: #ffffff; --ink: #0f172a; --muted: #475569;
+      --navy:#0b1b2a; --accent-1:#1e40af; --prazo:#b45309; --exc:#dc2626;
+      --radius-xl: 18px; --max: 1060px; --serif: 'Literata', serif;
     }
-
-    *{ box-sizing:border-box; }
-    body{ margin:0; font-family: var(--serif); background:var(--bg); color:var(--ink); line-height:1.52; }
-    .wrap{ max-width:var(--max); margin:0 auto; padding:26px 18px 46px; }
+    *{ box-sizing: border-box; }
+    body{ margin:0; font-family: var(--serif); background: var(--bg); color: var(--ink); line-height: 1.5; }
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 26px 18px; }
 
     /* Header */
     .hero{
-      border-radius:var(--radius-xl); padding:26px 22px 22px;
-      background: linear-gradient(180deg, #ecf3ff 0%, #f7fafc 60%, #f6f8fb 100%);
-      border:1px solid rgba(15, 23, 42, .06); box-shadow:var(--shadow2);
+      border-radius: var(--radius-xl); padding: 26px;
+      background: linear-gradient(180deg, #ecf3ff 0%, #f6f8fb 100%);
+      border: 1px solid rgba(15, 23, 42, .06); box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
-    .kicker{ display:inline-block; padding:6px 10px; border-radius:999px; background: rgba(30, 58, 138, .06); border: 1px solid rgba(30, 58, 138, .10); color:#1e3a8a; font-weight:650; font-size:12.5px; font-family: var(--sans); }
-    h1{ margin:12px 0 8px; font-size:clamp(26px, 3.2vw, 38px); line-height:1.06; letter-spacing:-0.6px; }
+    h1{ margin: 12px 0 5px; font-size: 32px; letter-spacing: -0.6px; color: var(--navy); }
     
-    /* Botões abaixo do Título */
-    .btn-container { margin-top: 15px; display: flex; gap: 10px; font-family: var(--sans); }
+    /* Botões de Ação abaixo do Título */
+    .btn-container { margin: 15px 0; display: flex; gap: 10px; font-family: sans-serif; }
     .btn{
-      display:inline-flex; align-items:center; gap:10px; padding:10px 16px;
-      border-radius:999px; background:#fff; border:1px solid rgba(15,23,42,.12);
-      color:var(--navy); font-weight:800; font-size:13px; text-decoration:none;
-      cursor:pointer; transition: 0.2s;
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px;
+      border-radius: 999px; background: #fff; border: 1px solid #cbd5e1;
+      color: var(--navy); font-weight: 700; font-size: 13px; text-decoration: none;
+      cursor: pointer; transition: 0.2s;
     }
-    .btn:hover{ background: #f1f5f9; transform: translateY(-1px); }
-    .btn .dot{ width:8px; height:8px; border-radius:50%; background: #1e3a8a; }
+    .btn:hover{ background: #f1f5f9; border-color: #1e40af; }
+    .btn .dot{ width: 8px; height: 8px; border-radius: 50%; background: #1e40af; }
 
-    /* Área de Notas */
-    .notes{ display:none; margin-top:20px; animation: slideIn 0.3s ease-out; }
-    .notes.is-open{ display:block; }
-    @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    /* Área de Anotações */
+    .notes-section { display: none; margin-top: 15px; }
+    .notes-section.is-open { display: block; }
+    .notes-card { 
+      background: #fff; border-radius: 14px; padding: 20px; 
+      border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+    .notearea { 
+      width: 100%; min-height: 150px; padding: 15px; border-radius: 10px;
+      border: 1px solid #cbd5e1; font-family: sans-serif; font-size: 14px; outline: none;
+    }
+    .notearea:focus { border-color: #1e40af; box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1); }
+    .notes-footer { display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; }
 
-    .notes-card{ background: #fff; border-radius: var(--radius-xl); border: 1px solid #e2e8f0; padding: 20px; box-shadow: var(--shadow); }
-    .notearea{ width:100%; min-height:150px; border: 1px solid #cbd5e1; border-radius: 12px; padding: 15px; font-family: var(--sans); font-size: 14px; outline: none; }
-    .notearea:focus { border-color: #1e3a8a; }
-    .notes-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; }
-
-    /* Chips */
-    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; font-family: var(--sans); }
-    .chip{ padding:8px 12px; border-radius:999px; background:#fff; border:1px solid #e2e8f0; color:var(--slate); font-size:13px; text-decoration:none; }
-    
-    /* Cards de Conteúdo */
+    /* Chips e Conteúdo */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; font-family: sans-serif; }
+    .chip { padding: 8px 12px; border-radius: 20px; background: #fff; border: 1px solid #e2e8f0; text-decoration: none; color: var(--muted); font-size: 12px; }
     .section { margin-top: 30px; }
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 15px; margin-top: 15px; }
-    .card { grid-column: span 12; background: #fff; border-radius: var(--radius-lg); padding: 20px; border: 1px solid #e2e8f0; position: relative; border-left: 6px solid #1e3a8a; }
-    @media (min-width: 860px) { .card.half { grid-column: span 6; } }
-    .title { font-weight: 800; font-size: 16px; margin: 0 0 10px 0; }
-    .list { list-style: none; padding: 0; font-family: var(--sans); font-size: 14px; }
-    .li { background: #f8fafc; padding: 8px; border-radius: 8px; margin-bottom: 5px; border: 1px solid #f1f5f9; }
-    
-    .k { font-weight: 900; background: rgba(15, 23, 42, .08); padding: 2px 4px; border-radius: 4px; }
+    .card { background: #fff; border-radius: 14px; padding: 20px; border-left: 6px solid #1e40af; margin-top: 15px; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee; }
+    .k { font-weight: 700; background: #f1f5f9; padding: 2px 4px; border-radius: 4px; }
   </style>
 </head>
 
 <body>
   <div class="wrap">
     <header class="hero">
-      <span class="kicker">RICD • Resumo Visual</span>
+      <span style="font-family: sans-serif; font-size: 12px; color: #1e40af; font-weight: 700;">RICD • Material de Revisão</span>
       <h1>Título I — Disposições Preliminares</h1>
       
       <div class="btn-container">
         <a href="index.html" class="btn"><span class="dot"></span> Menu Principal</a>
-        <button class="btn" id="toggleNotes"><span class="dot"></span> Anotações</button>
+        <button class="btn" id="btnNotas"><span class="dot"></span> Anotações</button>
       </div>
 
       <nav class="chips">
@@ -94,63 +77,59 @@
       </nav>
     </header>
 
-    <div class="notes" id="notasWrap">
+    <div class="notes-section" id="containerNotas">
       <div class="notes-card">
-        <h3 style="margin-top:0; font-family: var(--sans);">Minhas Anotações</h3>
-        <textarea class="notearea" id="notesBox" placeholder="Escreva seus bizus aqui..."></textarea>
-        <div class="notes-actions">
-          <button class="btn" id="clearNotes" style="font-size:12px;">Limpar</button>
-          <button class="btn" id="saveCloseNotes" style="font-size:12px; background: #1e3a8a; color: #fff;">Salvar e Fechar</button>
+        <h3 style="margin-top:0; font-family: sans-serif; font-size: 16px;">Minhas Anotações (Salvas Automaticamente)</h3>
+        <textarea class="notearea" id="caixaTexto" placeholder="Anote bizus, erros de simulados e pegadinhas aqui..."></textarea>
+        <div class="notes-footer">
+          <button class="btn" id="btnLimpar" style="font-size: 11px;">Apagar Tudo</button>
+          <button class="btn" id="btnSalvar" style="background: #1e40af; color: #fff; font-size: 11px;">Salvar e Fechar</button>
         </div>
       </div>
     </div>
 
     <section class="section" id="cap1">
-      <h2 style="font-family: var(--sans); font-size: 18px; color: #1e3a8a; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px;">Capítulo I — Da Sede</h2>
-      <div class="grid">
-        <article class="card half">
-          <p class="title">Sede e Funcionamento</p>
-          <ul class="list">
-            <li class="li"><b>Sede:</b> <span class="k">Capital Federal</span>.</li>
-            <li class="li"><b>Funcionamento:</b> <span class="k">Palácio do Congresso</span>.</li>
-          </ul>
-        </article>
+      <h2 style="font-family: sans-serif; font-size: 18px; color: #1e40af;">Capítulo I — Da Sede</h2>
+      <div class="card">
+        <p style="font-weight: 700; margin-top: 0;">Sede e Funcionamento (Art. 1º e 2º)</p>
+        <p style="font-size: 14px; font-family: sans-serif;">A Câmara tem sua sede na <span class="k">Capital Federal</span> e funciona no Palácio do Congresso Nacional.</p>
       </div>
     </section>
-
   </div>
 
   <script>
-    // Gerenciamento de Notas
-    const key = "RICD_NOTES_T1";
-    const notesWrap = document.getElementById("notasWrap");
-    const toggleBtn = document.getElementById("toggleNotes");
-    const box = document.getElementById("notesBox");
-    const btnSave = document.getElementById("saveCloseNotes");
-    const btnClear = document.getElementById("clearNotes");
+    // Seleção de elementos
+    const btnNotas = document.getElementById('btnNotas');
+    const containerNotas = document.getElementById('containerNotas');
+    const caixaTexto = document.getElementById('caixaTexto');
+    const btnSalvar = document.getElementById('btnSalvar');
+    const btnLimpar = document.getElementById('btnLimpar');
+    
+    // Chave única para este título (não mistura com outros resumos)
+    const CHAVE_STORAGE = "NOTAS_RICD_TITULO_1";
 
-    // Carregar notas salvas
-    box.value = localStorage.getItem(key) || "";
+    // 1. Carregar notas do navegador ao abrir a página
+    caixaTexto.value = localStorage.getItem(CHAVE_STORAGE) || "";
 
-    // Abrir/Fechar
-    toggleBtn.addEventListener("click", () => {
-      notesWrap.classList.toggle("is-open");
-    });
+    // 2. Abrir e Fechar área de anotações
+    btnNotas.onclick = function() {
+      containerNotas.classList.toggle('is-open');
+    };
 
-    // Salvar e Fechar
-    btnSave.addEventListener("click", () => {
-      localStorage.setItem(key, box.value);
-      notesWrap.classList.remove("is-open");
-      alert("Anotações salvas com sucesso!");
-    });
+    // 3. Salvar e Fechar
+    btnSalvar.onclick = function() {
+      localStorage.setItem(CHAVE_STORAGE, caixaTexto.value);
+      containerNotas.classList.remove('is-open');
+      alert("Anotações salvas!");
+    };
 
-    // Limpar
-    btnClear.addEventListener("click", () => {
-      if(confirm("Deseja apagar todas as anotações deste título?")) {
-        box.value = "";
-        localStorage.removeItem(key);
+    // 4. Limpar tudo
+    btnLimpar.onclick = function() {
+      if(confirm("Tem certeza que deseja apagar todas as anotações deste Título?")) {
+        caixaTexto.value = "";
+        localStorage.removeItem(CHAVE_STORAGE);
       }
-    });
+    };
   </script>
 </body>
 </html>
