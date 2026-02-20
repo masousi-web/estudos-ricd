@@ -1,0 +1,794 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RICD — Título II (Cap. III — Procuradoria Parlamentar)</title>
+
+  <!-- Literata (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --ink:#0f172a;
+      --muted:#475569;
+      --muted2:#64748b;
+      --slate:#2b3442;
+      --navy:#0b1b2a;
+
+      --shadow: 0 10px 24px rgba(15, 23, 42, .08);
+      --shadow2: 0 2px 10px rgba(15, 23, 42, .06);
+
+      --radius-xl:18px;
+      --radius-lg:14px;
+
+      --max:1100px;
+
+      /* ====== DESTAQUES SEMÂNTICOS ====== */
+      --org:#1e3a8a;        /* órgãos/instâncias */
+      --prazo:#b45309;      /* prazos */
+      --exc:#dc2626;        /* exceções/alerta */
+      --num:#334155;        /* números/frações/quóruns */
+      --mark: rgba(15, 23, 42, .08);
+
+      /* acentos estruturais (navy suave) */
+      --accentA: rgba(36, 59, 83, .48);
+      --accentB: rgba(51, 65, 85, .40);
+      --accentC: rgba(36, 59, 83, .32);
+      --accentD: rgba(51, 65, 85, .32);
+
+      --serif: "Literata", ui-serif, Georgia, "Times New Roman", Times, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--serif);
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.55;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:26px 18px 70px; }
+
+    /* Header */
+    .hero{
+      border-radius:var(--radius-xl);
+      padding:26px 22px 18px;
+      background:
+        radial-gradient(900px 280px at 18% 0%, rgba(36, 59, 83, .16), transparent 62%),
+        radial-gradient(900px 280px at 82% 0%, rgba(51, 65, 85, .14), transparent 60%),
+        linear-gradient(180deg, #ecf3ff 0%, #f7fafc 60%, #f6f8fb 100%);
+      border:1px solid rgba(15, 23, 42, .06);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    .kicker{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(30, 58, 138, .06);
+      border: 1px solid rgba(30, 58, 138, .10);
+      color:#1e3a8a;
+      font-weight:650;
+      letter-spacing:.2px;
+      font-size:12.5px;
+      font-family: var(--sans);
+    }
+    h1{
+      margin:12px 0 8px;
+      font-size:clamp(25px, 3.1vw, 37px);
+      line-height:1.08;
+      letter-spacing:-0.6px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      max-width:115ch;
+      font-size:14.5px;
+      font-family: var(--sans);
+    }
+
+    /* Top actions */
+    .top-actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.70);
+      color: var(--ink);
+      padding:10px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:750;
+      font-size:13px;
+      box-shadow: 0 1px 0 rgba(15, 23, 42, .03);
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-family: var(--sans);
+      transition: transform .10s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .btn:hover{ box-shadow: 0 10px 18px rgba(15,23,42,.10); transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0px); }
+    .btn .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: rgba(15,23,42,.35);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.65);
+    }
+    .btn.primary{
+      background: rgba(15, 23, 42, .92);
+      color: #fff;
+      border-color: rgba(15, 23, 42, .92);
+    }
+    .btn.primary .dot{ background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 2px rgba(15,23,42,.55); }
+    .btn.danger{
+      background: rgba(220,38,38,.06);
+      border-color: rgba(220,38,38,.18);
+      color: #7f1d1d;
+    }
+
+    /* Chips */
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+      font-family: var(--sans);
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.70);
+      border:1px solid rgba(15,23,42,.10);
+      color:var(--slate);
+      font-size:13px;
+      box-shadow:0 1px 0 rgba(15, 23, 42, .03);
+      transition: transform .08s ease, box-shadow .08s ease;
+      white-space:nowrap;
+    }
+    .chip:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(15,23,42,.08); }
+    .chip b{ font-weight:800; }
+    .chip small{ color:var(--muted2); font-weight:650; }
+
+    /* Sections */
+    .section{
+      margin-top:18px;
+      border-radius:var(--radius-xl);
+      background:rgba(255,255,255,.55);
+      border:1px solid rgba(15, 23, 42, .07);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+    }
+    .section-head{
+      padding:16px 18px 14px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.55));
+      border-bottom:1px solid rgba(15, 23, 42, .06);
+      font-family: var(--sans);
+    }
+    .section-head h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-0.2px;
+    }
+    .meta{
+      color:var(--muted2);
+      font-size:12.5px;
+      font-weight:650;
+      white-space:nowrap;
+    }
+    .grid{
+      padding:16px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+
+    /* Cards */
+    .card{
+      grid-column: span 12;
+      background:var(--card);
+      border:1px solid rgba(15, 23, 42, .08);
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    @media (min-width: 860px){
+      .card.half{ grid-column: span 6; }
+      .card.third{ grid-column: span 4; }
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:6px;
+      background: rgba(15,23,42,.10);
+    }
+    .accent-1::before{ background: var(--accentA); }
+    .accent-2::before{ background: var(--accentB); }
+    .accent-3::before{ background: var(--accentC); }
+    .accent-4::before{ background: var(--accentD); }
+
+    .card-inner{ padding:14px 14px 14px; }
+    .card-top{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      margin-bottom:8px;
+      font-family: var(--sans);
+    }
+    .roman{
+      width:38px; height:38px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      letter-spacing:.5px;
+      font-size:13px;
+      color:#0b1220;
+      background:#f1f5f9;
+      border:1px solid rgba(15, 23, 42, .10);
+      flex:0 0 auto;
+      user-select:none;
+    }
+    .accent-1 .roman{ background: rgba(36,59,83,.10); border-color: rgba(36,59,83,.22); }
+    .accent-2 .roman{ background: rgba(51,65,85,.10); border-color: rgba(51,65,85,.22); }
+    .accent-3 .roman{ background: rgba(36,59,83,.08); border-color: rgba(36,59,83,.18); }
+    .accent-4 .roman{ background: rgba(51,65,85,.08); border-color: rgba(51,65,85,.18); }
+
+    .title{
+      margin:0;
+      font-weight:820;
+      letter-spacing:-0.25px;
+      font-size:15.5px;
+      line-height:1.22;
+    }
+    .lead{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13.8px;
+      font-family: var(--sans);
+    }
+    .list{
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      font-family: var(--sans);
+    }
+    .li{
+      padding:10px 10px;
+      border-radius:12px;
+      background:#f8fafc;
+      border:1px solid rgba(15, 23, 42, .06);
+      color:var(--slate);
+      font-size:13.7px;
+    }
+    .li b{ font-weight:900; }
+    .note{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background: rgba(30,58,138,.05);
+      border: 1px solid rgba(30,58,138,.10);
+      color:#1f2a44;
+      font-size:13.2px;
+      font-family: var(--sans);
+    }
+    .note b{ font-weight:900; }
+
+    /* Destaques */
+    .k{
+      font-weight:900;
+      color:var(--navy);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, var(--mark) 55%);
+    }
+    .org{
+      font-weight:900;
+      color:var(--org);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(30,58,138,.10) 55%);
+    }
+    .prazo{
+      font-weight:950;
+      color:var(--prazo);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(180,83,9,.12) 55%);
+      white-space:nowrap;
+    }
+    .exc{
+      font-weight:950;
+      color:var(--exc);
+      padding:0 .20em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(220,38,38,.14) 55%);
+    }
+    .num{
+      font-weight:950;
+      color:var(--num);
+      letter-spacing:.2px;
+      white-space:nowrap;
+    }
+    .uc{ text-transform:uppercase; letter-spacing:.55px; font-weight:950; }
+
+    /* Drawer: Anotações */
+    .drawer{
+      position: fixed;
+      inset: 0;
+      display:none;
+      background: rgba(15,23,42,.35);
+      backdrop-filter: blur(3px);
+      z-index: 50;
+      padding: 18px;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .drawer.open{ display:flex; }
+    .drawer-panel{
+      width: min(880px, 100%);
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: 0 24px 50px rgba(15,23,42,.20);
+      overflow:hidden;
+    }
+    .drawer-head{
+      padding: 14px 16px 12px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      background:
+        radial-gradient(820px 220px at 10% 0%, rgba(36, 59, 83, .12), transparent 62%),
+        radial-gradient(820px 220px at 90% 0%, rgba(51, 65, 85, .10), transparent 58%),
+        linear-gradient(180deg, rgba(248,250,252,.92), rgba(255,255,255,.75));
+      border-bottom: 1px solid rgba(15,23,42,.08);
+      font-family: var(--sans);
+    }
+    .drawer-head h2{
+      margin:0;
+      font-size: 15px;
+      letter-spacing: .1px;
+    }
+    .drawer-head p{
+      margin:4px 0 0;
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.35;
+      max-width: 78ch;
+    }
+    .drawer-body{
+      padding: 12px 14px 14px;
+      font-family: var(--sans);
+    }
+    textarea{
+      width:100%;
+      min-height: 240px;
+      resize: vertical;
+      border-radius: 16px;
+      border: 1px solid rgba(15,23,42,.14);
+      padding: 12px 12px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      outline:none;
+      background: #fbfcfe;
+    }
+    textarea:focus{
+      border-color: rgba(30,58,138,.35);
+      box-shadow: 0 0 0 3px rgba(30,58,138,.12);
+      background: #ffffff;
+    }
+    .drawer-actions{
+      margin-top: 10px;
+      display:flex;
+      gap: 10px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    footer{
+      margin-top:14px;
+      color:var(--muted2);
+      font-size:12.5px;
+      text-align:center;
+      font-family: var(--sans);
+    }
+
+    @media print{
+      body{ background:#fff; }
+      .hero,.section{ box-shadow:none; }
+      .chips, .top-actions{ display:none !important; }
+      .wrap{ padding:0; }
+      .grid{ padding:10px; }
+      .drawer{ display:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="hero" id="topo">
+      <span class="kicker">RICD • Título II • Capítulo III</span>
+      <h1>Capítulo III — Da Procuradoria Parlamentar</h1>
+
+      <p class="sub">
+        Finalidade e composição (<span class="k">Art. 21</span>, caput e § <span class="k">1º</span>), medidas reparadoras e representação
+        (<span class="k">Art. 21</span>, §§ <span class="k">2º</span> e <span class="k">3º</span>), com alertas de prova e artigos correlatos
+        (<span class="k">Art. 243</span>; <span class="k">Art. 21-T</span>, parágrafo único; Código de Ética — Res. <span class="k">25/2001</span>, Art. <span class="k">15</span>, parágrafo único).
+      </p>
+
+      <div class="top-actions" role="group" aria-label="Ações principais">
+        <a class="btn" href="titulo2.html" title="Voltar ao Título II (página principal)">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Voltar</b> (Título II)</span>
+        </a>
+
+        <a class="btn" href="index.html" title="Voltar ao índice">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Menu principal</b> (index)</span>
+        </a>
+
+        <button class="btn primary" id="btnNotes" type="button" title="Abrir bloco de anotações">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Anotações</b> (salvar e fechar)</span>
+        </button>
+      </div>
+
+      <nav class="chips" aria-label="Navegação por tópicos">
+        <a class="chip" href="#finalidade"><b>Art. 21</b> <small>Finalidade</small></a>
+        <a class="chip" href="#compos"><b>§1º</b> <small>Composição</small></a>
+        <a class="chip" href="#medidas"><b>§§2º–3º</b> <small>Reparação</small></a>
+        <a class="chip" href="#repres"><b>Representação</b> <small>MP/AGU</small></a>
+        <a class="chip" href="#correl"><b>Correlatos</b> <small>Art. 243 / 21-T</small></a>
+      </nav>
+    </header>
+
+    <!-- 1) Finalidade e composição -->
+    <section class="section" id="finalidade">
+      <div class="section-head">
+        <h2>Finalidade (Art. 21, caput)</h2>
+        <div class="meta">defesa • honra • imagem</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-1">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">21</div>
+              <div>
+                <p class="title">Defesa institucional da Câmara</p>
+                <p class="lead">
+                  A Procuradoria Parlamentar promove, em colaboração com a <span class="org">MESA</span>, a <span class="k">DEFESA</span> da Câmara,
+                  de seus órgãos e de seus <span class="k">MEMBROS</span>, quando atingidos em sua <span class="k">HONRA</span> ou <span class="k">IMAGEM</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li">
+                <b>Âmbito da defesa:</b> Câmara + seus <span class="org">ÓRGÃOS</span> + seus <span class="k">MEMBROS</span>.
+              </li>
+              <li class="li">
+                <b>Hipótese 1:</b> quando atingidos em sua <span class="k">HONRA</span> ou <span class="k">IMAGEM</span> perante a sociedade.
+              </li>
+              <li class="li">
+                <b>Hipótese 2:</b> em razão do <span class="k">EXERCÍCIO DO MANDATO</span> ou das <span class="k">FUNÇÕES INSTITUCIONAIS</span>.
+              </li>
+            </ul>
+
+            <div class="note">
+              <b>⚠ Atenção:</b> <span class="k">Procuradoria PARLAMENTAR</span> ≠ <span class="k">Procuradoria da MULHER</span>.
+              <br>
+              <b>Parlamentar:</b> defende a <span class="k">CASA</span>. • <b>Mulher:</b> defende <span class="k">MULHERES</span>.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="compos">
+      <div class="section-head">
+        <h2>Composição e designação (Art. 21, § 1º)</h2>
+        <div class="meta">11 membros • PCD • 2 anos</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-2 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">§1º</div>
+              <div>
+                <p class="title">Estrutura</p>
+                <p class="lead">
+                  Composição numérica e forma de designação, com cuidado para a proporcionalidade partidária.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Composição:</b> <span class="num">11 (ONZE)</span> <span class="k">MEMBROS</span>.</li>
+              <li class="li"><b>Designação:</b> pelo <span class="org">PCD</span>.</li>
+              <li class="li">
+                <b>Periodicidade:</b> a cada <span class="prazo">2 (DOIS) ANOS</span>
+                (<span class="k">no início</span> da sessão legislativa).
+              </li>
+              <li class="li">
+                <b>Critério:</b> observância, tanto quanto possível, do princípio da <span class="k">PROPORCIONALIDADE PARTIDÁRIA</span>.
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-3 half" id="correl">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">↔</div>
+              <div>
+                <p class="title">Artigos correlatos (prova)</p>
+                <p class="lead">
+                  Vedações e regra de convivência de competências com outra Secretaria.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li">
+                <b>Art. 243:</b> o <span class="k">suplente</span> convocado em substituição <span class="exc">NÃO PODERÁ</span> ser escolhido para integrar a Procuradoria Parlamentar.
+              </li>
+              <li class="li">
+                <b>Art. 21-T, par. único:</b> a Secretaria de <span class="k">Defesa das Prerrogativas Parlamentares</span>
+                exercerá suas atribuições <span class="k">SEM PREJUÍZO</span> das competências da Procuradoria Parlamentar.
+              </li>
+            </ul>
+
+            <div class="note">
+              <b>Ponto de atenção:</b> “<span class="k">SEM PREJUÍZO</span>” = coexistência: a nova Secretaria atua <span class="k">sem retirar</span> competências da Procuradoria.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 2) Medidas reparadoras e representação -->
+    <section class="section" id="medidas">
+      <div class="section-head">
+        <h2>Medidas reparadoras e publicidade (Art. 21, § 2º)</h2>
+        <div class="meta">publicidade reparadora</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-4">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">§2º</div>
+              <div>
+                <p class="title">Ampla publicidade reparadora</p>
+                <p class="lead">
+                  A Procuradoria providencia <span class="k">AMPLA PUBLICIDADE REPARADORA</span>, além da divulgação a que estiver sujeito o órgão de imprensa por lei ou decisão judicial.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li">
+                <b>Dever:</b> providenciar <span class="k">AMPLA PUBLICIDADE REPARADORA</span>.
+              </li>
+              <li class="li">
+                <b>Além:</b> da divulgação obrigatória (por <span class="k">lei</span> ou <span class="k">decisão judicial</span>) do órgão de imprensa que veicular a matéria ofensiva.
+              </li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="repres">
+      <div class="section-head">
+        <h2>Medidas judiciais/extrajudiciais e representação (Art. 21, § 3º)</h2>
+        <div class="meta">reparação • MP/AGU</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-1 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">§3º</div>
+              <div>
+                <p class="title">Medidas cabíveis para reparação</p>
+                <p class="lead">
+                  Promoção de medidas <span class="k">JUDICIAIS</span> e <span class="k">EXTRAJUDICIAIS</span> para obter ampla reparação, inclusive <span class="k">moral</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li">
+                <b>Atuação:</b> promover medidas <span class="k">JUDICIAIS</span> e <span class="k">EXTRAJUDICIAIS</span> cabíveis.
+              </li>
+              <li class="li">
+                <b>Finalidade:</b> obter <span class="k">ampla REPARAÇÃO</span> (<span class="k">inclusive moral</span> — referência ao <span class="k">Art. 5º, X, CF</span>).
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-2 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">⚖</div>
+              <div>
+                <p class="title">Representação processual</p>
+                <p class="lead">
+                  Atuação por intermédio de órgãos/atores específicos previstos no resumo.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Intermédio de:</b> <span class="org">MINISTÉRIO PÚBLICO</span>.</li>
+              <li class="li"><b>Intermédio de:</b> <span class="org">ADVOCACIA-GERAL DA UNIÃO (AGU)</span>.</li>
+              <li class="li"><b>Intermédio de:</b> <span class="k">MANDATÁRIOS ADVOCATÍCIOS</span>.</li>
+            </ul>
+
+            <div class="note">
+              <b>Pegadinha:</b> a banca pode sugerir atuação “direta” por advogado da Procuradoria; no seu resumo, a atuação é <span class="k">por intermédio</span> de MP/AGU/mandatários.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3) Correlato do Código de Ética -->
+    <section class="section">
+      <div class="section-head">
+        <h2>Correlato: Código de Ética (Res. 25/2001, Art. 15, parágrafo único)</h2>
+        <div class="meta">representação leviana/ofensiva</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-3">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">CE</div>
+              <div>
+                <p class="title">Autos encaminhados à Procuradoria Parlamentar</p>
+                <p class="lead">
+                  Se a representação contra Deputado for considerada <span class="k">LEVIANA</span> ou <span class="k">OFENSIVA</span> à sua imagem (ou da Casa),
+                  os autos são encaminhados à Procuradoria para providências reparadoras.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li">
+                <b>Condição:</b> representação contra Deputado considerada <span class="k">LEVIANA</span> ou <span class="k">OFENSIVA</span> à imagem do Deputado <span class="k">(ou da Casa)</span>.
+              </li>
+              <li class="li">
+                <b>Consequência:</b> autos encaminhados à <span class="k">PROCURADORIA PARLAMENTAR</span> para providências reparadoras de sua alçada.
+              </li>
+            </ul>
+
+            <div class="note">
+              <b>Leitura rápida para prova:</b> “leviana/ofensiva” ➜ <span class="k">encaminha autos</span> ➜ <span class="k">providências reparadoras</span>.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      HTML único • Salve como <b>titulo2-cap3-procuradoria-parlamentar.html</b> • Identidade visual + Menu principal + Anotações (Salvar e fechar).
+    </footer>
+
+  </div>
+
+  <!-- Drawer: Anotações -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="drawer-head">
+        <div>
+          <h2 id="drawerTitle">Anotações — Capítulo III (Procuradoria Parlamentar)</h2>
+          <p>
+            Sugestões: grife <span class="num">11</span> membros, a designação pelo <span class="org">PCD</span>, a periodicidade de <span class="prazo">2 ANOS</span>,
+            e a diferença “<span class="k">Procuradoria Parlamentar</span> ≠ <span class="k">Procuradoria da Mulher</span>”.
+          </p>
+        </div>
+        <button class="btn" type="button" id="btnCloseTop" title="Fechar">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Fechar</b></span>
+        </button>
+      </div>
+
+      <div class="drawer-body">
+        <textarea id="notes" placeholder="Escreva aqui…"></textarea>
+
+        <div class="drawer-actions">
+          <button class="btn danger" type="button" id="btnClear">Limpar</button>
+          <button class="btn primary" type="button" id="btnSaveClose">Salvar e fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const KEY = "notes_titulo2_cap3_procuradoria_parlamentar";
+      const btnNotes = document.getElementById("btnNotes");
+      const drawer = document.getElementById("drawer");
+      const notes = document.getElementById("notes");
+      const btnSaveClose = document.getElementById("btnSaveClose");
+      const btnClear = document.getElementById("btnClear");
+      const btnCloseTop = document.getElementById("btnCloseTop");
+
+      function openDrawer(){
+        drawer.classList.add("open");
+        drawer.setAttribute("aria-hidden","false");
+        notes.value = localStorage.getItem(KEY) || "";
+        notes.focus();
+      }
+      function closeDrawer(){
+        drawer.classList.remove("open");
+        drawer.setAttribute("aria-hidden","true");
+      }
+      function saveNotes(){
+        localStorage.setItem(KEY, notes.value || "");
+      }
+
+      btnNotes.addEventListener("click", openDrawer);
+      btnCloseTop.addEventListener("click", closeDrawer);
+
+      btnSaveClose.addEventListener("click", function(){
+        saveNotes();
+        closeDrawer();
+      });
+
+      btnClear.addEventListener("click", function(){
+        if(confirm("Tem certeza que deseja limpar suas anotações deste capítulo?")){
+          notes.value = "";
+          localStorage.removeItem(KEY);
+          notes.focus();
+        }
+      });
+
+      drawer.addEventListener("click", function(e){
+        if(e.target === drawer){ closeDrawer(); }
+      });
+
+      window.addEventListener("keydown", function(e){
+        if(e.key === "Escape" && drawer.classList.contains("open")){
+          closeDrawer();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
