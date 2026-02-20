@@ -1,0 +1,1180 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RICD — Título II (Cap. II-A — Secretaria da Mulher)</title>
+
+  <!-- Literata (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --ink:#0f172a;
+      --muted:#475569;
+      --muted2:#64748b;
+      --slate:#2b3442;
+      --navy:#0b1b2a;
+
+      --shadow: 0 10px 24px rgba(15, 23, 42, .08);
+      --shadow2: 0 2px 10px rgba(15, 23, 42, .06);
+
+      --radius-xl:18px;
+      --radius-lg:14px;
+
+      --max:1100px;
+
+      /* ====== DESTAQUES SEMÂNTICOS ====== */
+      --org:#1e3a8a;        /* órgãos/instâncias */
+      --prazo:#b45309;      /* prazos */
+      --exc:#dc2626;        /* exceções/alerta (vermelho clássico) */
+      --num:#334155;        /* números/frações/quóruns */
+      --mark: rgba(15, 23, 42, .08);
+
+      /* acentos estruturais (navy suave) */
+      --accentA: rgba(36, 59, 83, .48);
+      --accentB: rgba(51, 65, 85, .40);
+      --accentC: rgba(36, 59, 83, .32);
+      --accentD: rgba(51, 65, 85, .32);
+
+      --serif: "Literata", ui-serif, Georgia, "Times New Roman", Times, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--serif);
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.55;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:26px 18px 70px; }
+
+    /* Header */
+    .hero{
+      border-radius:var(--radius-xl);
+      padding:26px 22px 18px;
+      background:
+        radial-gradient(900px 280px at 18% 0%, rgba(36, 59, 83, .16), transparent 62%),
+        radial-gradient(900px 280px at 82% 0%, rgba(51, 65, 85, .14), transparent 60%),
+        linear-gradient(180deg, #ecf3ff 0%, #f7fafc 60%, #f6f8fb 100%);
+      border:1px solid rgba(15, 23, 42, .06);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    .kicker{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(30, 58, 138, .06);
+      border: 1px solid rgba(30, 58, 138, .10);
+      color:#1e3a8a;
+      font-weight:650;
+      letter-spacing:.2px;
+      font-size:12.5px;
+      font-family: var(--sans);
+    }
+    h1{
+      margin:12px 0 8px;
+      font-size:clamp(26px, 3.2vw, 38px);
+      line-height:1.08;
+      letter-spacing:-0.6px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      max-width:100ch;
+      font-size:14.5px;
+      font-family: var(--sans);
+    }
+
+    /* Top actions */
+    .top-actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.70);
+      color: var(--ink);
+      padding:10px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:750;
+      font-size:13px;
+      box-shadow: 0 1px 0 rgba(15, 23, 42, .03);
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-family: var(--sans);
+    }
+    .btn:hover{ box-shadow: 0 10px 18px rgba(15,23,42,.10); transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0px); }
+    .btn .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: rgba(15,23,42,.35);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.65);
+    }
+    .btn.primary{
+      background: rgba(15, 23, 42, .92);
+      color: #fff;
+      border-color: rgba(15, 23, 42, .92);
+    }
+    .btn.primary .dot{ background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 2px rgba(15,23,42,.55); }
+    .btn.danger{
+      background: rgba(220,38,38,.06);
+      border-color: rgba(220,38,38,.18);
+      color: #7f1d1d;
+    }
+
+    /* Chips */
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+      font-family: var(--sans);
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.70);
+      border:1px solid rgba(15,23,42,.10);
+      color:var(--slate);
+      font-size:13px;
+      box-shadow:0 1px 0 rgba(15, 23, 42, .03);
+      transition: transform .08s ease, box-shadow .08s ease;
+      white-space:nowrap;
+    }
+    .chip:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(15,23,42,.08); }
+    .chip b{ font-weight:800; }
+    .chip small{ color:var(--muted2); font-weight:650; }
+
+    /* Sections */
+    .section{
+      margin-top:18px;
+      border-radius:var(--radius-xl);
+      background:rgba(255,255,255,.55);
+      border:1px solid rgba(15, 23, 42, .07);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+    }
+    .section-head{
+      padding:16px 18px 14px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.55));
+      border-bottom:1px solid rgba(15, 23, 42, .06);
+      font-family: var(--sans);
+    }
+    .section-head h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-0.2px;
+    }
+    .meta{
+      color:var(--muted2);
+      font-size:12.5px;
+      font-weight:650;
+      white-space:nowrap;
+    }
+    .grid{
+      padding:16px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+
+    /* Cards */
+    .card{
+      grid-column: span 12;
+      background:var(--card);
+      border:1px solid rgba(15, 23, 42, .08);
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    @media (min-width: 860px){
+      .card.half{ grid-column: span 6; }
+      .card.third{ grid-column: span 4; }
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:6px;
+      background: rgba(15,23,42,.10);
+    }
+    .accent-1::before{ background: var(--accentA); }
+    .accent-2::before{ background: var(--accentB); }
+    .accent-3::before{ background: var(--accentC); }
+    .accent-4::before{ background: var(--accentD); }
+
+    .card-inner{ padding:14px 14px 14px; }
+    .card-top{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      margin-bottom:8px;
+      font-family: var(--sans);
+    }
+    .roman{
+      width:38px; height:38px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      letter-spacing:.5px;
+      font-size:13px;
+      color:#0b1220;
+      background:#f1f5f9;
+      border:1px solid rgba(15, 23, 42, .10);
+      flex:0 0 auto;
+      user-select:none;
+    }
+    .accent-1 .roman{ background: rgba(36,59,83,.10); border-color: rgba(36,59,83,.22); }
+    .accent-2 .roman{ background: rgba(51,65,85,.10); border-color: rgba(51,65,85,.22); }
+    .accent-3 .roman{ background: rgba(36,59,83,.08); border-color: rgba(36,59,83,.18); }
+    .accent-4 .roman{ background: rgba(51,65,85,.08); border-color: rgba(51,65,85,.18); }
+
+    .title{
+      margin:0;
+      font-weight:820;
+      letter-spacing:-0.25px;
+      font-size:15.5px;
+      line-height:1.22;
+    }
+    .lead{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13.8px;
+      font-family: var(--sans);
+    }
+    .list{
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      font-family: var(--sans);
+    }
+    .li{
+      padding:10px 10px;
+      border-radius:12px;
+      background:#f8fafc;
+      border:1px solid rgba(15, 23, 42, .06);
+      color:var(--slate);
+      font-size:13.7px;
+    }
+    .li b{ font-weight:900; }
+    .note{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background: rgba(30,58,138,.05);
+      border: 1px solid rgba(30,58,138,.10);
+      color:#1f2a44;
+      font-size:13.2px;
+      font-family: var(--sans);
+    }
+    .note b{ font-weight:900; }
+
+    /* “Callout” para novidades */
+    .callout{
+      margin-top:12px;
+      padding:12px 12px;
+      border-radius:14px;
+      background: rgba(220,38,38,.05);
+      border: 1px solid rgba(220,38,38,.14);
+      font-family: var(--sans);
+      color: #7f1d1d;
+      font-size: 13.4px;
+    }
+    .callout b{ font-weight:900; }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.75);
+      color: var(--slate);
+      font-size: 12.2px;
+      font-family: var(--sans);
+      margin-right:8px;
+      margin-top:6px;
+    }
+    .tag .dot{
+      width:9px; height:9px; border-radius:99px;
+      background: rgba(220,38,38,.55);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.75);
+    }
+
+    footer{
+      margin-top:14px;
+      color:var(--muted2);
+      font-size:12.5px;
+      text-align:center;
+      font-family: var(--sans);
+    }
+
+    /* Destaques */
+    .k{
+      font-weight:900;
+      color:var(--navy);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, var(--mark) 55%);
+    }
+    .org{
+      font-weight:900;
+      color:var(--org);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(30,58,138,.10) 55%);
+    }
+    .prazo{
+      font-weight:950;
+      color:var(--prazo);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(180,83,9,.12) 55%);
+      white-space:nowrap;
+    }
+    .exc{
+      font-weight:950;
+      color:var(--exc);
+      padding:0 .20em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(220,38,38,.14) 55%);
+    }
+    .num{
+      font-weight:950;
+      color:var(--num);
+      letter-spacing:.2px;
+      white-space:nowrap;
+    }
+    .uc{ text-transform:uppercase; letter-spacing:.55px; font-weight:950; }
+
+    /* Drawer: Anotações */
+    .drawer{
+      position: fixed;
+      inset: 0;
+      display:none;
+      background: rgba(15,23,42,.35);
+      backdrop-filter: blur(3px);
+      z-index: 50;
+      padding: 18px;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .drawer.open{ display:flex; }
+    .drawer-panel{
+      width: min(880px, 100%);
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: 0 24px 50px rgba(15,23,42,.20);
+      overflow:hidden;
+    }
+    .drawer-head{
+      padding: 14px 16px 12px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      background:
+        radial-gradient(820px 220px at 10% 0%, rgba(36, 59, 83, .12), transparent 62%),
+        radial-gradient(820px 220px at 90% 0%, rgba(51, 65, 85, .10), transparent 58%),
+        linear-gradient(180deg, rgba(248,250,252,.92), rgba(255,255,255,.75));
+      border-bottom: 1px solid rgba(15,23,42,.08);
+      font-family: var(--sans);
+    }
+    .drawer-head h2{
+      margin:0;
+      font-size: 15px;
+      letter-spacing: .1px;
+    }
+    .drawer-head p{
+      margin:4px 0 0;
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.35;
+      max-width: 78ch;
+    }
+    .drawer-body{
+      padding: 12px 14px 14px;
+      font-family: var(--sans);
+    }
+    textarea{
+      width:100%;
+      min-height: 240px;
+      resize: vertical;
+      border-radius: 16px;
+      border: 1px solid rgba(15,23,42,.14);
+      padding: 12px 12px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      outline:none;
+      background: #fbfcfe;
+    }
+    textarea:focus{
+      border-color: rgba(30,58,138,.35);
+      box-shadow: 0 0 0 3px rgba(30,58,138,.12);
+      background: #ffffff;
+    }
+    .drawer-actions{
+      margin-top: 10px;
+      display:flex;
+      gap: 10px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    @media print{
+      body{ background:#fff; }
+      .hero,.section{ box-shadow:none; }
+      .chips, .top-actions{ display:none !important; }
+      .wrap{ padding:0; }
+      .grid{ padding:10px; }
+      .drawer{ display:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="hero" id="topo">
+      <span class="kicker">RICD • Resumo Visual (Material de Revisão)</span>
+      <h1>Capítulo II-A — Da Secretaria da Mulher</h1>
+
+      <p class="sub">
+        Estrutura e natureza (<span class="k">Art. 20-A</span>), Comitê de Defesa da Mulher contra assédio
+        (<span class="k">§§ 3º a 7º</span>), Observatório Nacional da Mulher na Política
+        (<span class="k">§§ 9º a 11</span>), Procuradoria da Mulher (<span class="k">Art. 20-B</span>),
+        Coordenadoria dos Direitos da Mulher (<span class="k">Art. 20-C</span>) e competências
+        (<span class="k">Arts. 20-D</span> e <span class="k">20-E</span>), com destaques em quóruns, prazos e exceções.
+      </p>
+
+      <div class="callout" role="note" aria-label="Novidades (2025)">
+        <span class="tag"><span class="dot" aria-hidden="true"></span><b>NOVIDADES (2025)</b></span>
+        <div style="margin-top:6px; color:#7f1d1d;">
+          <b>Cap. III-H</b> — <span class="k">Secretaria do Empreendedorismo Legislativo</span> • <span class="exc">NOVA (2025)</span><br/>
+          <b>Cap. III-I</b> — <span class="k">Secretaria da Inovação Legislativa</span> • <span class="exc">NOVA (2025)</span><br/>
+          <b>Cap. III-J</b> — <span class="k">Secretaria de Defesa das Prerrogativas Parlamentares</span> • <span class="exc">NOVA (2025)</span>
+        </div>
+      </div>
+
+      <div class="top-actions" role="group" aria-label="Ações principais">
+        <a class="btn" href="titulo2.html" title="Voltar ao Título II (página principal)">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Voltar</b> (Título II)</span>
+        </a>
+
+        <a class="btn" href="index.html" title="Voltar ao índice">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Menu principal</b> (index)</span>
+        </a>
+
+        <button class="btn primary" id="btnNotes" type="button" title="Abrir bloco de anotações">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Anotações</b> (salvas neste navegador)</span>
+        </button>
+      </div>
+
+      <nav class="chips" aria-label="Navegação por tópicos">
+        <a class="chip" href="#estr"><b>Art. 20-A</b> <small>Estrutura</small></a>
+        <a class="chip" href="#comite"><b>§§ 3º–7º</b> <small>Comitê</small></a>
+        <a class="chip" href="#obs"><b>§§ 9º–11</b> <small>Observatório</small></a>
+        <a class="chip" href="#proc"><b>Art. 20-B</b> <small>Procuradoria</small></a>
+        <a class="chip" href="#coord"><b>Art. 20-C</b> <small>Coordenadoria</small></a>
+        <a class="chip" href="#comp"><b>20-D/20-E</b> <small>Competências</small></a>
+      </nav>
+    </header>
+
+    <!-- 1) Estrutura e natureza -->
+    <section class="section" id="estr">
+      <div class="section-head">
+        <h2>Secretaria da Mulher — estrutura e natureza (Art. 20-A, caput)</h2>
+        <div class="meta">4 estruturas paralelas</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-1 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">20-A</div>
+              <div>
+                <p class="title">Definição (natureza do órgão)</p>
+                <p class="lead">
+                  Órgão <span class="k">político</span> e <span class="k">institucional</span> que atua em benefício da
+                  <span class="k">população feminina brasileira</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Natureza:</b> <span class="k">político</span> e <span class="k">institucional</span>.</li>
+              <li class="li"><b>Foco:</b> <span class="k">benefício da população feminina</span>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-2 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">≠</div>
+              <div>
+                <p class="title">Composição e relação entre estruturas</p>
+                <p class="lead">
+                  A Secretaria compõe-se de <span class="org">PROCURADORIA DA MULHER</span> e
+                  <span class="org">COORDENADORIA DOS DIREITOS DA MULHER</span>,
+                  <span class="exc">SEM RELAÇÃO DE SUBORDINAÇÃO</span> entre elas.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Compõe-se de:</b> <span class="org">Procuradoria da Mulher</span>.</li>
+              <li class="li"><b>Compõe-se de:</b> <span class="org">Coordenadoria dos Direitos da Mulher</span>.</li>
+              <li class="li"><b>Regra:</b> <span class="exc uc">SEM SUBORDINAÇÃO</span> entre Procuradoria e Coordenadoria.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-3">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">+</div>
+              <div>
+                <p class="title">Estruturas adicionais (autônomas)</p>
+                <p class="lead">
+                  Duas estruturas adicionais e <span class="k">autônomas</span>, também
+                  <span class="exc">SEM RELAÇÃO DE SUBORDINAÇÃO</span> com as demais.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Comitê de Defesa</b> contra assédio moral/sexual: <span class="k">Art. 20-A, § 2º</span> (no seu resumo).</li>
+              <li class="li"><b>Observatório Nacional</b> da Mulher na Política: <span class="k">Art. 20-A, § 8º</span> (no seu resumo).</li>
+              <li class="li"><b>Leitura-chave:</b> são <span class="num">4</span> estruturas <span class="k">PARALELAS</span>, <span class="exc">não hierárquicas</span>.</li>
+            </ul>
+
+            <div class="note">
+              <b>Pegadinha:</b> prova tenta induzir “estrutura em cadeia”. Aqui, o ponto é <span class="k">paralelismo</span> e
+              <span class="exc">ausência de subordinação</span>.
+            </div>
+          </div>
+        </article>
+
+        <article class="card accent-4">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">↔</div>
+              <div>
+                <p class="title">Artigos correlatos (simetria de estrutura)</p>
+                <p class="lead">
+                  Procuradoria (<span class="k">Art. 20-B</span>) e Coordenadoria (<span class="k">Art. 20-C</span>) têm
+                  <span class="k">estrutura idêntica</span> e regras eleitorais espelhadas no seu material.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Art. 20-B:</b> <span class="num">1</span> <span class="org">PROCURADORA</span> + <span class="num">3</span> <span class="org">ADJUNTAS</span> • eleitas • mandato <span class="prazo">2 anos</span> • <span class="exc">vedada recondução</span>.</li>
+              <li class="li"><b>Art. 20-C:</b> <span class="num">1</span> <span class="org">COORDENADORA-GERAL</span> + <span class="num">3</span> <span class="org">ADJUNTAS</span> • eleitas • mandato <span class="prazo">2 anos</span> • <span class="exc">vedada recondução</span>.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 2) Comitê -->
+    <section class="section" id="comite">
+      <div class="section-head">
+        <h2>Comitê de Defesa da Mulher contra Assédio (Art. 20-A, §§ 3º a 7º)</h2>
+        <div class="meta">composição • eleição • competência</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-1 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">§§3–6</div>
+              <div>
+                <p class="title">Membros e mandato</p>
+                <p class="lead">
+                  Composição mista, com <span class="k">deputadas</span> e <span class="k">servidoras efetivas</span>,
+                  e regra de <span class="k">recondução</span> específica.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Membros:</b> <span class="num">3</span> <span class="k">DEPUTADAS</span> • mandato <span class="prazo">2 (DOIS) ANOS</span> • <span class="k">RECONDUÇÃO</span> permitida <span class="k">por uma única vez</span>.</li>
+              <li class="li"><b>Membros:</b> <span class="num">2</span> <span class="k">SERVIDORAS EFETIVAS</span>.</li>
+              <li class="li"><b>Atenção:</b> regra de recondução aqui é <span class="exc">diferente</span> da Procuradoria/Coordenadoria.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-2 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">§4º</div>
+              <div>
+                <p class="title">Processo eleitoral</p>
+                <p class="lead">
+                  Quem vota, quando ocorre e critérios obrigatórios de pluralidade e minoria.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Quem vota:</b> <span class="k">DEPUTADAS</span> da Casa.</li>
+              <li class="li"><b>Quando:</b> início da <span class="k">PRIMEIRA</span> e da <span class="k">TERCEIRA</span> sessão legislativa.</li>
+              <li class="li"><b>Critérios:</b> assegurada <span class="k">PLURALIDADE partidária</span> e participação da <span class="k">MINORIA</span>.</li>
+            </ul>
+
+            <div class="note">
+              <b>Mapa de prova:</b> “<span class="k">1ª e 3ª</span> sessão legislativa + <span class="k">pluralidade</span> + <span class="k">minoria</span>”.
+            </div>
+          </div>
+        </article>
+
+        <article class="card accent-3">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">J</div>
+              <div>
+                <p class="title">Acumulação e jornada</p>
+                <p class="lead">
+                  Regras específicas para <span class="k">servidoras</span> e para <span class="k">deputadas</span> que integrem o Comitê.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Servidoras:</b> atividades consideradas na <span class="k">computação da jornada</span> (sem necessidade de compensação).</li>
+              <li class="li"><b>Deputadas:</b> <span class="exc">NÃO PODERÃO</span> acumular o exercício de <span class="k">OUTRO CARGO</span> no âmbito da Secretaria.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-4" id="comite-comp">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">§7º</div>
+              <div>
+                <p class="title">Competência e fluxo procedimental</p>
+                <p class="lead">
+                  Recebimento de denúncias e encaminhamentos distintos conforme o tipo de denunciado, com garantias e exceção do denunciante homem.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li">
+                <b>Competência:</b> receber denúncias de <span class="k">Parlamentares</span>, <span class="k">servidoras</span> (efetivas/comissionadas),
+                <span class="k">terceirizadas</span>, <span class="k">estagiárias</span> e <span class="k">visitantes</span> contra
+                <span class="exc">ASSÉDIO MORAL</span> ou <span class="exc">SEXUAL</span>.
+              </li>
+              <li class="li">
+                <b>Recebimento:</b> se <span class="k">fundamentadas</span> as queixas ➜ Comitê produz <span class="k">RELATÓRIO</span> + <span class="k">DOCUMENTOS</span>.
+              </li>
+              <li class="li">
+                <b>Encaminhamento:</b> contra <span class="k">Parlamentar</span> ➜ à <span class="org">MESA DIRETORA</span>.
+              </li>
+              <li class="li">
+                <b>Encaminhamento:</b> demais casos ➜ ao <span class="org">DIRETOR-GERAL</span>.
+              </li>
+              <li class="li">
+                <b>Arquivamento:</b> se <span class="exc">não houver</span> fundados motivos.
+              </li>
+              <li class="li">
+                <b>Garantia:</b> preservação da <span class="k">IDENTIDADE</span> das partes/depoentes.
+              </li>
+              <li class="li">
+                <b>Exceção (denunciante homem):</b> Comitê <span class="k">PODE</span> receber denúncia e designar, a pedido,
+                integrante <span class="k">ad hoc</span> do <span class="k">SEXO MASCULINO</span> para compor <span class="k">transitoriamente</span> o colegiado.
+              </li>
+            </ul>
+
+            <div class="note">
+              <b>Ponto sensível:</b> distinguir “contra <span class="k">Parlamentar</span>” (<span class="org">Mesa Diretora</span>) e “demais casos”
+              (<span class="org">Diretor-Geral</span>).
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3) Observatório -->
+    <section class="section" id="obs">
+      <div class="section-head">
+        <h2>Observatório Nacional da Mulher na Política (Art. 20-A, §§ 9º a 11)</h2>
+        <div class="meta">direção • finalidade • competências</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-1 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">§9º</div>
+              <div>
+                <p class="title">Direção e eleição</p>
+                <p class="lead">
+                  Coordenação exercida por deputada federal e adjuntas, eleitas no mesmo “pacote” de cargos da Secretaria.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Coordenação-Geral:</b> exercida por <span class="num">1</span> <span class="k">DEPUTADA FEDERAL</span>.</li>
+              <li class="li"><b>Adjuntas:</b> <span class="num">3</span> <span class="k">COORDENADORAS</span>.</li>
+              <li class="li"><b>Eleição:</b> pelas <span class="k">deputadas federais</span>, <span class="k">juntamente</span> com demais cargos da Secretaria.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-2 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">§10</div>
+              <div>
+                <p class="title">Finalidade</p>
+                <p class="lead">
+                  Produzir, agregar e disseminar <span class="k">CONHECIMENTO</span> sobre atuação política de mulheres e fortalecimento do protagonismo.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Finalidade:</b> produzir/agregar/disseminar <span class="k">CONHECIMENTO</span>.</li>
+              <li class="li"><b>Eixo:</b> atuação política e fortalecimento do <span class="k">protagonismo político</span>.</li>
+            </ul>
+
+            <div class="note">
+              <b>Correlato:</b> Art. <span class="num">20-D</span>, V — pesquisas e estudos sobre direitos da mulher e sobre o <span class="k">DÉFICE</span> de representação política.
+            </div>
+          </div>
+        </article>
+
+        <article class="card accent-3">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">§11</div>
+              <div>
+                <p class="title">Competências específicas</p>
+                <p class="lead">
+                  Rol de competências com foco em pesquisa, articulação, monitoramento e parcerias.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>I:</b> elaborar/divulgar <span class="k">PESQUISAS</span> e <span class="k">ÍNDICES ANALÍTICOS</span> (participação no poder, aplicação de leis, boas práticas, produção legislativa).</li>
+              <li class="li"><b>II:</b> articular ações para ampliar <span class="k">participação política</span>.</li>
+              <li class="li"><b>III:</b> monitorar a <span class="exc">VIOLÊNCIA POLÍTICA</span> contra a mulher.</li>
+              <li class="li"><b>IV:</b> realizar <span class="k">PARCERIAS</span> (instituições de ensino, ONGs, governos).</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4) Procuradoria -->
+    <section class="section" id="proc">
+      <div class="section-head">
+        <h2>Procuradoria da Mulher (Art. 20-B)</h2>
+        <div class="meta">composição • eleição • quóruns • vacância</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-1 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">20-B</div>
+              <div>
+                <p class="title">Composição, eleição e mandato (caput e § 1º)</p>
+                <p class="lead">
+                  Estrutura básica, quando ocorre a eleição e regras de recondução.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Estrutura:</b> <span class="num">1</span> <span class="org">PROCURADORA</span> + <span class="num">3</span> <span class="org">PROCURADORAS ADJUNTAS</span>.</li>
+              <li class="li"><b>Quem elege:</b> as <span class="k">DEPUTADAS</span> da Casa.</li>
+              <li class="li"><b>Quando:</b> na <span class="k">PRIMEIRA QUINZENA</span> da <span class="k">PRIMEIRA</span> e da <span class="k">TERCEIRA</span> sessões legislativas da legislatura.</li>
+              <li class="li"><b>Mandato:</b> <span class="prazo">2 (DOIS) ANOS</span>.</li>
+              <li class="li"><b>Vedação:</b> <span class="exc uc">VEDADA A RECONDUÇÃO</span>.</li>
+              <li class="li"><b>§ 1º (conceito):</b> <span class="exc">NÃO SE CONSIDERA</span> recondução a eleição para o mesmo cargo em <span class="k">LEGISLATURAS DIFERENTES</span> (ainda que sucessivas).</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-2 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">§2º</div>
+              <div>
+                <p class="title">Procuradoras adjuntas (requisito partidário e ordem)</p>
+                <p class="lead">
+                  Atenção para o requisito: <span class="k">somente</span> das <span class="org">adjuntas</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Partidos distintos:</b> as <span class="org">ADJUNTAS</span> deverão pertencer a <span class="k">PARTIDOS DISTINTOS</span> (<span class="k">atenção: somente das adjuntas</span>).</li>
+              <li class="li"><b>Designação:</b> <span class="k">PRIMEIRA</span>, <span class="k">SEGUNDA</span> e <span class="k">TERCEIRA</span>, nessa ordem.</li>
+              <li class="li"><b>Funções (na ordem):</b> <span class="k">substituir</span> a Procuradora; <span class="k">colaborar</span>; receber <span class="k">delegações</span>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-3">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">§3º</div>
+              <div>
+                <p class="title">Rito de votação e quóruns</p>
+                <p class="lead">
+                  Votação por <span class="k">ESCRUTÍNIO SECRETO</span> e quóruns de presença/aprovação em dois escrutínios.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Modalidade:</b> votação por <span class="k">ESCRUTÍNIO SECRETO</span>.</li>
+              <li class="li"><b>Presença:</b> <span class="k">MAIORIA ABSOLUTA</span> das <span class="k">DEPUTADAS</span> da Casa.</li>
+              <li class="li"><b>Aprovação:</b> <span class="num">1º</span> escrutínio ➜ <span class="k">MAIORIA ABSOLUTA</span> de votos.</li>
+              <li class="li"><b>Aprovação:</b> <span class="num">2º</span> escrutínio ➜ <span class="k">MAIORIA SIMPLES</span>.</li>
+              <li class="li"><b>Correlato:</b> Art. <span class="num">188</span>, III — escrutínio secreto, pelo <span class="k">SISTEMA ELETRÔNICO</span>, nas eleições indicadas.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-4">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">§4º</div>
+              <div>
+                <p class="title">Vacância e sucessão</p>
+                <p class="lead">
+                  Regra geral é nova eleição; exceção temporal leva à substituição automática pela ordem das adjuntas.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Regra geral:</b> vagando Procuradora ou Adjunta ➜ <span class="k">NOVA ELEIÇÃO</span> para a sucessora.</li>
+              <li class="li"><b>Exceção:</b> se faltarem <span class="exc">MENOS DE</span> <span class="prazo">3 MESES</span> para o término do mandato.</li>
+              <li class="li"><b>Efeito:</b> cargo provido por <span class="k">substituição automática</span> (ordem do <span class="k">§ 2º</span>).</li>
+            </ul>
+
+            <div class="note">
+              <b>Correlato (competências):</b> Art. <span class="num">20-D</span> — inclui preservação de imagem, denúncias, fiscalização de programas, cooperação e pesquisas sobre <span class="k">dÉFICE</span> de representação.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5) Coordenadoria -->
+    <section class="section" id="coord">
+      <div class="section-head">
+        <h2>Coordenadoria dos Direitos da Mulher (Art. 20-C)</h2>
+        <div class="meta">simetria com a Procuradoria</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-1 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">20-C</div>
+              <div>
+                <p class="title">Constituição, eleição e mandato (caput e §§ 1º a 3º)</p>
+                <p class="lead">
+                  Estrutura idêntica e mesmas regras eleitorais (mandato e vedação de recondução).
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Constituição:</b> <span class="num">1</span> <span class="org">COORDENADORA-GERAL</span> + <span class="num">3</span> <span class="org">ADJUNTAS</span>.</li>
+              <li class="li"><b>Quem elege:</b> as <span class="k">DEPUTADAS</span> da Casa.</li>
+              <li class="li"><b>Quando:</b> na <span class="k">PRIMEIRA QUINZENA</span> da <span class="k">PRIMEIRA</span> e da <span class="k">TERCEIRA</span> sessões legislativas da legislatura.</li>
+              <li class="li"><b>Mandato:</b> <span class="prazo">2 (DOIS) ANOS</span>.</li>
+              <li class="li"><b>Vedação:</b> <span class="exc uc">VEDADA A RECONDUÇÃO</span>.</li>
+              <li class="li"><b>Exceção:</b> não se considera recondução a eleição para o mesmo cargo em <span class="k">LEGISLATURAS DIFERENTES</span> (ainda que sucessivas).</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-2 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">§2º/§3º</div>
+              <div>
+                <p class="title">Adjuntas e rito de votação</p>
+                <p class="lead">
+                  Partidos distintos, substituição/colaboração/delegações, e escrutínio secreto com quóruns.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Partidos distintos:</b> Adjuntas deverão pertencer a <span class="k">PARTIDOS DISTINTOS</span>.</li>
+              <li class="li"><b>Funções:</b> <span class="k">substituir</span> a Coordenadora-Geral, <span class="k">colaborar</span> e receber <span class="k">delegações</span>.</li>
+              <li class="li"><b>Modalidade:</b> <span class="k">ESCRUTÍNIO SECRETO</span>.</li>
+              <li class="li"><b>Presença:</b> <span class="k">MAIORIA ABSOLUTA</span> das deputadas.</li>
+              <li class="li"><b>Aprovação:</b> <span class="num">1º</span> ➜ <span class="k">MAIORIA ABSOLUTA</span>; <span class="num">2º</span> ➜ <span class="k">MAIORIA SIMPLES</span>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-3">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">§4º</div>
+              <div>
+                <p class="title">Vacância na Coordenadoria</p>
+                <p class="lead">
+                  Regra geral de nova eleição e exceção temporal (menos de 3 meses) com substituição automática.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Regra geral:</b> se vagar Coordenadora-Geral ou Adjunta ➜ <span class="k">NOVA ELEIÇÃO</span> para a sucessora.</li>
+              <li class="li"><b>Exceção:</b> se faltarem <span class="exc">MENOS DE</span> <span class="prazo">3 MESES</span> para o término do mandato.</li>
+              <li class="li"><b>Efeito:</b> cargo provido por <span class="k">substituição automática</span> (regra do <span class="k">§ 2º</span>).</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-4">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">⚠</div>
+              <div>
+                <p class="title">Diferença-chave: Colégio de Líderes</p>
+                <p class="lead">
+                  No seu resumo: <span class="org">Coordenadoria</span> tem <span class="k">VOZ</span> e <span class="k">VOTO</span> com os Líderes;
+                  <span class="org">Procuradoria</span> <span class="exc">NÃO</span> tem.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Coordenadoria:</b> <span class="k">VOZ E VOTO</span> com os Líderes (<span class="k">Art. 20-E, I</span>).</li>
+              <li class="li"><b>Procuradoria:</b> <span class="exc">NÃO</span> possui o mesmo direito no Colégio (no seu resumo).</li>
+              <li class="li"><b>Conexão:</b> Art. <span class="num">20</span>, <span class="k">§ 1º</span> (Colégio de Líderes) — regra de “voz sem voto” para casos específicos, mas a Coordenadoria tem <span class="k">exceção</span> regimental no seu material.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 6) Competências -->
+    <section class="section" id="comp">
+      <div class="section-head">
+        <h2>Competências (Arts. 20-D e 20-E)</h2>
+        <div class="meta">procuradoria x coordenadoria</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-1 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">20-D</div>
+              <div>
+                <p class="title">Competências da Procuradoria da Mulher</p>
+                <p class="lead">
+                  Além de <span class="k">zelar</span> pela participação das deputadas, há um rol amplo de atuação institucional e técnica.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>I:</b> propor medidas de <span class="k">preservação</span> e promoção da <span class="k">imagem</span> e atuação da mulher.</li>
+              <li class="li"><b>II:</b> <span class="k">receber</span> e <span class="k">examinar</span> denúncias de <span class="exc">violência</span> e <span class="exc">discriminação</span> (encaminhar aos órgãos competentes).</li>
+              <li class="li"><b>III:</b> <span class="k">fiscalizar</span> e <span class="k">acompanhar</span> execução de programas federais de igualdade de gênero.</li>
+              <li class="li"><b>IV:</b> cooperar com organismos nacionais/internacionais.</li>
+              <li class="li"><b>V:</b> promover <span class="k">pesquisas</span> e estudos sobre o <span class="k">DÉFICE</span> de representação política.</li>
+              <li class="li"><b>VII:</b> atender autoridades e encaminhar demandas.</li>
+              <li class="li"><b>IX:</b> representar a Câmara em solenidades externas (mediante designação da <span class="org">PRESIDÊNCIA</span>).</li>
+            </ul>
+
+            <div class="note">
+              <b>Correlato:</b> Art. 20-A, <span class="k">§ 10</span> — Observatório em consonância com o <span class="k">INCISO V</span> do Art. 20-D.
+            </div>
+          </div>
+        </article>
+
+        <article class="card accent-2 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">20-E</div>
+              <div>
+                <p class="title">Atuação política e organização dos trabalhos (Coordenadoria)</p>
+                <p class="lead">
+                  Prerrogativas de liderança e regras internas: voz/voto com líderes, comunicações e deliberação por maioria.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>I:</b> participar, com os Líderes, de reuniões convocadas pelo <span class="org">PRESIDENTE</span> ➜ <span class="k">VOZ E VOTO</span>.</li>
+              <li class="li"><b>II:</b> usar da palavra nas <span class="org">COMUNICAÇÕES DE LIDERANÇA</span> (pessoalmente ou por delegação) por <span class="prazo">5 MINUTOS</span>, para expressar posição e divulgar ações.</li>
+              <li class="li"><b>IV:</b> convocar periodicamente reunião das deputadas para debate.</li>
+              <li class="li"><b>V:</b> elaborar <span class="k">prioridades</span> e <span class="k">calendário</span> de reuniões.</li>
+              <li class="li"><b>Quórum de aprovação:</b> <span class="k">MAIORIA</span> das deputadas da Casa.</li>
+              <li class="li"><b>VI–VII:</b> organizar e coordenar programa de atividades; constituir grupos de trabalho temáticos.</li>
+              <li class="li"><b>X:</b> promover <span class="k">divulgação</span> das atividades (no Parlamento e sociedade).</li>
+            </ul>
+
+            <div class="note">
+              <b>Correlatos:</b> Art. 89 — regra geral de tempo proporcional (<span class="num">3</span> a <span class="num">10</span> min), mas aqui há <span class="prazo">tempo fixo</span> de <span class="prazo">5 MIN</span>.
+            </div>
+          </div>
+        </article>
+
+        <article class="card accent-3">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">20-E</div>
+              <div>
+                <p class="title">Representação e atribuições técnicas (incisos III, VIII, IX, XI e XII)</p>
+                <p class="lead">
+                  Funções administrativas e representação institucional interna/externa, com requisito de designação para eventos externos.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Administrativas:</b> receber convites e responder correspondências; examinar estudos/pareceres/teses (subsídios).</li>
+              <li class="li"><b>IX:</b> atender autoridades (especialmente parlamentares mulheres/delegações) e encaminhar demandas.</li>
+              <li class="li"><b>Interna:</b> participar (com a <span class="org">PROCURADORIA</span>) de solenidades/eventos de valorização.</li>
+              <li class="li"><b>Externa:</b> representar a Câmara em solenidades/eventos nacionais ou internacionais, <span class="exc">mediante</span> <span class="k">DESIGNAÇÃO</span> da <span class="org">PRESIDÊNCIA</span>.</li>
+              <li class="li"><b>Espelho:</b> Art. 20-D, VIII e IX — competências espelhadas (representação e atendimento), com a mesma lógica de designação.</li>
+            </ul>
+
+            <div class="note">
+              <b>Leitura rápida:</b> “sem designação da Presidência, não há representação externa”.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      HTML único • Salve como <b>titulo2-cap2a-secretaria-mulher.html</b> • Identidade visual + Menu principal + Anotações (Salvar e fechar).
+    </footer>
+
+  </div>
+
+  <!-- Drawer: Anotações -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="drawer-head">
+        <div>
+          <h2 id="drawerTitle">Anotações — Capítulo II-A (Secretaria da Mulher)</h2>
+          <p>
+            Ao clicar em <b>Salvar e fechar</b>, as notas ficam guardadas no <b>seu navegador</b>.
+            Sugestão: registre as diferenças de <span class="k">recondução</span> (Comitê x Procuradoria/Coordenadoria),
+            e a regra “<span class="k">Coordenadoria</span> tem <span class="k">VOZ E VOTO</span> com Líderes”.
+          </p>
+        </div>
+        <button class="btn" type="button" id="btnCloseTop" title="Fechar">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Fechar</b></span>
+        </button>
+      </div>
+
+      <div class="drawer-body">
+        <textarea id="notes" placeholder="Escreva aqui…"></textarea>
+
+        <div class="drawer-actions">
+          <button class="btn danger" type="button" id="btnClear">Limpar</button>
+          <button class="btn primary" type="button" id="btnSaveClose">Salvar e fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const KEY = "notes_titulo2_cap2a_secretaria_mulher";
+      const btnNotes = document.getElementById("btnNotes");
+      const drawer = document.getElementById("drawer");
+      const notes = document.getElementById("notes");
+      const btnSaveClose = document.getElementById("btnSaveClose");
+      const btnClear = document.getElementById("btnClear");
+      const btnCloseTop = document.getElementById("btnCloseTop");
+
+      function openDrawer(){
+        drawer.classList.add("open");
+        drawer.setAttribute("aria-hidden","false");
+        notes.value = localStorage.getItem(KEY) || "";
+        notes.focus();
+      }
+      function closeDrawer(){
+        drawer.classList.remove("open");
+        drawer.setAttribute("aria-hidden","true");
+      }
+      function saveNotes(){
+        localStorage.setItem(KEY, notes.value || "");
+      }
+
+      btnNotes.addEventListener("click", openDrawer);
+      btnCloseTop.addEventListener("click", closeDrawer);
+
+      btnSaveClose.addEventListener("click", function(){
+        saveNotes();
+        closeDrawer();
+      });
+
+      btnClear.addEventListener("click", function(){
+        if(confirm("Tem certeza que deseja limpar suas anotações deste capítulo?")){
+          notes.value = "";
+          localStorage.removeItem(KEY);
+          notes.focus();
+        }
+      });
+
+      drawer.addEventListener("click", function(e){
+        if(e.target === drawer){ closeDrawer(); }
+      });
+
+      window.addEventListener("keydown", function(e){
+        if(e.key === "Escape" && drawer.classList.contains("open")){
+          closeDrawer();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
