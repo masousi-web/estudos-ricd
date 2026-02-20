@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RICD — Título II (Cap. II-B — Secretaria da Primeira Infância, Infância, Adolescência e Juventude)</title>
+
+  <!-- Literata (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --ink:#0f172a;
+      --muted:#475569;
+      --muted2:#64748b;
+      --slate:#2b3442;
+      --navy:#0b1b2a;
+
+      --shadow: 0 10px 24px rgba(15, 23, 42, .08);
+      --shadow2: 0 2px 10px rgba(15, 23, 42, .06);
+
+      --radius-xl:18px;
+      --radius-lg:14px;
+
+      --max:1100px;
+
+      /* ====== DESTAQUES SEMÂNTICOS ====== */
+      --org:#1e3a8a;        /* órgãos/instâncias */
+      --prazo:#b45309;      /* prazos */
+      --exc:#dc2626;        /* exceções/alerta */
+      --num:#334155;        /* números/frações/quóruns */
+      --mark: rgba(15, 23, 42, .08);
+
+      /* acentos estruturais (navy suave) */
+      --accentA: rgba(36, 59, 83, .48);
+      --accentB: rgba(51, 65, 85, .40);
+      --accentC: rgba(36, 59, 83, .32);
+      --accentD: rgba(51, 65, 85, .32);
+
+      --serif: "Literata", ui-serif, Georgia, "Times New Roman", Times, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--serif);
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.55;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:26px 18px 70px; }
+
+    /* Header */
+    .hero{
+      border-radius:var(--radius-xl);
+      padding:26px 22px 18px;
+      background:
+        radial-gradient(900px 280px at 18% 0%, rgba(36, 59, 83, .16), transparent 62%),
+        radial-gradient(900px 280px at 82% 0%, rgba(51, 65, 85, .14), transparent 60%),
+        linear-gradient(180deg, #ecf3ff 0%, #f7fafc 60%, #f6f8fb 100%);
+      border:1px solid rgba(15, 23, 42, .06);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    .kicker{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(30, 58, 138, .06);
+      border: 1px solid rgba(30, 58, 138, .10);
+      color:#1e3a8a;
+      font-weight:650;
+      letter-spacing:.2px;
+      font-size:12.5px;
+      font-family: var(--sans);
+    }
+    h1{
+      margin:12px 0 8px;
+      font-size:clamp(25px, 3.1vw, 37px);
+      line-height:1.08;
+      letter-spacing:-0.6px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      max-width:110ch;
+      font-size:14.5px;
+      font-family: var(--sans);
+    }
+
+    /* Top actions */
+    .top-actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.70);
+      color: var(--ink);
+      padding:10px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:750;
+      font-size:13px;
+      box-shadow: 0 1px 0 rgba(15, 23, 42, .03);
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-family: var(--sans);
+    }
+    .btn:hover{ box-shadow: 0 10px 18px rgba(15,23,42,.10); transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0px); }
+    .btn .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: rgba(15,23,42,.35);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.65);
+    }
+    .btn.primary{
+      background: rgba(15, 23, 42, .92);
+      color: #fff;
+      border-color: rgba(15, 23, 42, .92);
+    }
+    .btn.primary .dot{ background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 2px rgba(15,23,42,.55); }
+    .btn.danger{
+      background: rgba(220,38,38,.06);
+      border-color: rgba(220,38,38,.18);
+      color: #7f1d1d;
+    }
+
+    /* Chips */
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+      font-family: var(--sans);
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.70);
+      border:1px solid rgba(15,23,42,.10);
+      color:var(--slate);
+      font-size:13px;
+      box-shadow:0 1px 0 rgba(15, 23, 42, .03);
+      transition: transform .08s ease, box-shadow .08s ease;
+      white-space:nowrap;
+    }
+    .chip:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(15,23,42,.08); }
+    .chip b{ font-weight:800; }
+    .chip small{ color:var(--muted2); font-weight:650; }
+
+    /* Sections */
+    .section{
+      margin-top:18px;
+      border-radius:var(--radius-xl);
+      background:rgba(255,255,255,.55);
+      border:1px solid rgba(15, 23, 42, .07);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+    }
+    .section-head{
+      padding:16px 18px 14px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.55));
+      border-bottom:1px solid rgba(15, 23, 42, .06);
+      font-family: var(--sans);
+    }
+    .section-head h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-0.2px;
+    }
+    .meta{
+      color:var(--muted2);
+      font-size:12.5px;
+      font-weight:650;
+      white-space:nowrap;
+    }
+    .grid{
+      padding:16px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+
+    /* Cards */
+    .card{
+      grid-column: span 12;
+      background:var(--card);
+      border:1px solid rgba(15, 23, 42, .08);
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    @media (min-width: 860px){
+      .card.half{ grid-column: span 6; }
+      .card.third{ grid-column: span 4; }
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:6px;
+      background: rgba(15,23,42,.10);
+    }
+    .accent-1::before{ background: var(--accentA); }
+    .accent-2::before{ background: var(--accentB); }
+    .accent-3::before{ background: var(--accentC); }
+    .accent-4::before{ background: var(--accentD); }
+
+    .card-inner{ padding:14px 14px 14px; }
+    .card-top{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      margin-bottom:8px;
+      font-family: var(--sans);
+    }
+    .roman{
+      width:38px; height:38px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      letter-spacing:.5px;
+      font-size:13px;
+      color:#0b1220;
+      background:#f1f5f9;
+      border:1px solid rgba(15, 23, 42, .10);
+      flex:0 0 auto;
+      user-select:none;
+    }
+    .accent-1 .roman{ background: rgba(36,59,83,.10); border-color: rgba(36,59,83,.22); }
+    .accent-2 .roman{ background: rgba(51,65,85,.10); border-color: rgba(51,65,85,.22); }
+    .accent-3 .roman{ background: rgba(36,59,83,.08); border-color: rgba(36,59,83,.18); }
+    .accent-4 .roman{ background: rgba(51,65,85,.08); border-color: rgba(51,65,85,.18); }
+
+    .title{
+      margin:0;
+      font-weight:820;
+      letter-spacing:-0.25px;
+      font-size:15.5px;
+      line-height:1.22;
+    }
+    .lead{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13.8px;
+      font-family: var(--sans);
+    }
+    .list{
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      font-family: var(--sans);
+    }
+    .li{
+      padding:10px 10px;
+      border-radius:12px;
+      background:#f8fafc;
+      border:1px solid rgba(15, 23, 42, .06);
+      color:var(--slate);
+      font-size:13.7px;
+    }
+    .li b{ font-weight:900; }
+    .note{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background: rgba(30,58,138,.05);
+      border: 1px solid rgba(30,58,138,.10);
+      color:#1f2a44;
+      font-size:13.2px;
+      font-family: var(--sans);
+    }
+    .note b{ font-weight:900; }
+
+    /* Destaques */
+    .k{
+      font-weight:900;
+      color:var(--navy);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, var(--mark) 55%);
+    }
+    .org{
+      font-weight:900;
+      color:var(--org);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(30,58,138,.10) 55%);
+    }
+    .prazo{
+      font-weight:950;
+      color:var(--prazo);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(180,83,9,.12) 55%);
+      white-space:nowrap;
+    }
+    .exc{
+      font-weight:950;
+      color:var(--exc);
+      padding:0 .20em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(220,38,38,.14) 55%);
+    }
+    .num{
+      font-weight:950;
+      color:var(--num);
+      letter-spacing:.2px;
+      white-space:nowrap;
+    }
+    .uc{ text-transform:uppercase; letter-spacing:.55px; font-weight:950; }
+
+    /* Drawer: Anotações */
+    .drawer{
+      position: fixed;
+      inset: 0;
+      display:none;
+      background: rgba(15,23,42,.35);
+      backdrop-filter: blur(3px);
+      z-index: 50;
+      padding: 18px;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .drawer.open{ display:flex; }
+    .drawer-panel{
+      width: min(880px, 100%);
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: 0 24px 50px rgba(15,23,42,.20);
+      overflow:hidden;
+    }
+    .drawer-head{
+      padding: 14px 16px 12px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      background:
+        radial-gradient(820px 220px at 10% 0%, rgba(36, 59, 83, .12), transparent 62%),
+        radial-gradient(820px 220px at 90% 0%, rgba(51, 65, 85, .10), transparent 58%),
+        linear-gradient(180deg, rgba(248,250,252,.92), rgba(255,255,255,.75));
+      border-bottom: 1px solid rgba(15,23,42,.08);
+      font-family: var(--sans);
+    }
+    .drawer-head h2{
+      margin:0;
+      font-size: 15px;
+      letter-spacing: .1px;
+    }
+    .drawer-head p{
+      margin:4px 0 0;
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.35;
+      max-width: 78ch;
+    }
+    .drawer-body{
+      padding: 12px 14px 14px;
+      font-family: var(--sans);
+    }
+    textarea{
+      width:100%;
+      min-height: 240px;
+      resize: vertical;
+      border-radius: 16px;
+      border: 1px solid rgba(15,23,42,.14);
+      padding: 12px 12px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      outline:none;
+      background: #fbfcfe;
+    }
+    textarea:focus{
+      border-color: rgba(30,58,138,.35);
+      box-shadow: 0 0 0 3px rgba(30,58,138,.12);
+      background: #ffffff;
+    }
+    .drawer-actions{
+      margin-top: 10px;
+      display:flex;
+      gap: 10px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    footer{
+      margin-top:14px;
+      color:var(--muted2);
+      font-size:12.5px;
+      text-align:center;
+      font-family: var(--sans);
+    }
+
+    @media print{
+      body{ background:#fff; }
+      .hero,.section{ box-shadow:none; }
+      .chips, .top-actions{ display:none !important; }
+      .wrap{ padding:0; }
+      .grid{ padding:10px; }
+      .drawer{ display:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="hero" id="topo">
+      <span class="kicker">RICD • Resumo Visual (Material de Revisão)</span>
+      <h1>Capítulo II-B — Da Secretaria da Primeira Infância, Infância, Adolescência e Juventude</h1>
+
+      <p class="sub">
+        Estrutura, escolha e mandato (<span class="k">Art. 20-G</span>), atuação política e prerrogativas
+        (<span class="k">Art. 20-H</span>, incisos <span class="k">V</span> e <span class="k">VI</span>),
+        competências técnicas e institucionais (<span class="k">Art. 20-H</span>, incisos <span class="k">I</span>, <span class="k">II</span>, <span class="k">III</span>, <span class="k">IV</span> e <span class="k">VII</span>),
+        e fomento/capacitação/premiação (<span class="k">Art. 20-H</span>, incisos <span class="k">IX</span> e <span class="k">X</span>),
+        com artigos correlatos sobre base constitucional (<span class="k">Art. 20-F</span>) e comunicações de liderança (<span class="k">Art. 89</span>).
+      </p>
+
+      <div class="top-actions" role="group" aria-label="Ações principais">
+        <a class="btn" href="titulo2.html" title="Voltar ao Título II (página principal)">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Voltar</b> (Título II)</span>
+        </a>
+
+        <a class="btn" href="index.html" title="Voltar ao índice">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Menu principal</b> (index)</span>
+        </a>
+
+        <button class="btn primary" id="btnNotes" type="button" title="Abrir bloco de anotações">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Anotações</b> (salvar e fechar)</span>
+        </button>
+      </div>
+
+      <nav class="chips" aria-label="Navegação por tópicos">
+        <a class="chip" href="#estr"><b>Art. 20-G</b> <small>Estrutura</small></a>
+        <a class="chip" href="#polit"><b>20-H</b> <small>Prerrogativas</small></a>
+        <a class="chip" href="#comp"><b>20-H</b> <small>Competências</small></a>
+        <a class="chip" href="#fomento"><b>IX–X</b> <small>Fomento</small></a>
+        <a class="chip" href="#correl"><b>Correlatos</b> <small>Base/Art. 89</small></a>
+      </nav>
+    </header>
+
+    <!-- 1) Estrutura, escolha e mandato -->
+    <section class="section" id="estr">
+      <div class="section-head">
+        <h2>Estrutura, escolha e mandato (Art. 20-G)</h2>
+        <div class="meta">Mesa • indicação • recondução</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-1 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">20-G</div>
+              <div>
+                <p class="title">Composição e investidura</p>
+                <p class="lead">
+                  Estrutura com <span class="num">1</span> Secretário e <span class="num">3</span> adjuntos, com formas distintas de provimento.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Composição:</b> <span class="num">1</span> <span class="org">SECRETÁRIO</span> + <span class="num">3</span> <span class="org">SECRETÁRIOS-ADJUNTOS</span>.</li>
+              <li class="li"><b>Secretário:</b> escolhido pela <span class="org">MESA</span>.</li>
+              <li class="li"><b>Quando:</b> na <span class="k">PRIMEIRA QUINZENA</span> da <span class="k">PRIMEIRA</span> e da <span class="k">TERCEIRA</span> sessões legislativas.</li>
+              <li class="li"><b>Adjuntos:</b> indicados pelo <span class="org">SECRETÁRIO</span> da pasta.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-2 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">⏳</div>
+              <div>
+                <p class="title">Mandato e recondução</p>
+                <p class="lead">
+                  Regra de duração e vedação de recondução <span class="k">para o mesmo cargo</span> no período subsequente.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Duração:</b> <span class="prazo">2 (DOIS) ANOS</span>.</li>
+              <li class="li"><b>Vedação:</b> <span class="exc uc">VEDADA</span> a recondução para o <span class="k">MESMO CARGO</span> no período subsequente.</li>
+            </ul>
+
+            <div class="note">
+              <b>Comparativo (correlato):</b> nos Arts. <span class="num">20-B</span> e <span class="num">20-C</span> (Secretaria da Mulher),
+              há <span class="k">eleição direta</span> pelas deputadas; aqui, há <span class="org">escolha pela Mesa</span> e <span class="k">indicação</span> pelo Secretário.
+            </div>
+          </div>
+        </article>
+
+        <article class="card accent-3">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">§1º</div>
+              <div>
+                <p class="title">Regras dos adjuntos</p>
+                <p class="lead">
+                  Requisito partidário, designação ordinal e funções típicas (substituição, colaboração, delegações).
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Requisito:</b> adjuntos devem pertencer a <span class="k">PARTIDOS DISTINTOS</span>.</li>
+              <li class="li"><b>Designação:</b> <span class="k">Primeiro</span>, <span class="k">Segundo</span> e <span class="k">Terceiro</span>.</li>
+              <li class="li"><b>Função:</b> <span class="k">substituição</span> (nessa ordem), colaboração e recebimento de <span class="k">DELEGAÇÕES</span>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-4">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">§2º</div>
+              <div>
+                <p class="title">Vacância (marco temporal: 30 de novembro)</p>
+                <p class="lead">
+                  Regra de nova escolha pela Mesa Diretora se a vacância ocorrer até a data-limite do biênio.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li">
+                <b>Vacância:</b> se vagar o cargo de Secretário <span class="exc">até</span> <span class="prazo">30 DE NOVEMBRO</span> do último ano do biênio
+                ➜ proceder-se-á à <span class="k">NOVA ESCOLHA</span> pela <span class="org">MESA DIRETORA</span>.
+              </li>
+            </ul>
+
+            <div class="note">
+              <b>Ponto de prova:</b> guarde o “marco” <span class="prazo">30 DE NOVEMBRO</span> (último ano do biênio) como gatilho para <span class="k">nova escolha</span>.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 2) Atuação política e prerrogativas -->
+    <section class="section" id="polit">
+      <div class="section-head">
+        <h2>Atuação política e prerrogativas (Art. 20-H, incisos V e VI)</h2>
+        <div class="meta">Colégio • Plenário</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-1 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">V</div>
+              <div>
+                <p class="title">Colégio de Líderes — voz e voto</p>
+                <p class="lead">
+                  Participação em reuniões convocadas pelo Presidente, com prerrogativa expressa de <span class="k">VOZ</span> e <span class="k">VOTO</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Competência:</b> participar das reuniões convocadas pelo <span class="org">PRESIDENTE</span> no Colégio de Líderes.</li>
+              <li class="li"><b>Prerrogativa:</b> <span class="k">VOZ</span> e <span class="k">VOTO</span>.</li>
+              <li class="li"><b>Finalidade:</b> <span class="k">representatividade</span> das crianças, adolescentes e jovens.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-2 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">VI</div>
+              <div>
+                <p class="title">Uso da palavra em Plenário — Comunicações de Liderança</p>
+                <p class="lead">
+                  Frequência semanal e tempo fixo, com possibilidade de delegação.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Período:</b> durante as <span class="org">COMUNICAÇÕES DE LIDERANÇA</span>.</li>
+              <li class="li"><b>Periodicidade:</b> <span class="k">SEMANALMENTE</span>.</li>
+              <li class="li"><b>Tempo:</b> <span class="prazo">5 MINUTOS</span>.</li>
+              <li class="li"><b>Forma:</b> pessoalmente ou por <span class="k">delegação</span>.</li>
+            </ul>
+
+            <div class="note">
+              <b>Correlato (Art. 89):</b> regra geral é tempo proporcional (<span class="num">3</span> a <span class="num">10</span> min),
+              mas aqui há <span class="prazo">tempo fixo de 5 min</span> (como na Coordenadoria da Mulher — Art. 20-E).
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3) Competências técnicas e institucionais -->
+    <section class="section" id="comp">
+      <div class="section-head">
+        <h2>Competências técnicas e institucionais (Art. 20-H, incisos I, II, III, IV e VII)</h2>
+        <div class="meta">fiscalizar • cooperar • estudar • atender</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-3">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">I–IV</div>
+              <div>
+                <p class="title">Fiscalização, cooperação, estudos e atendimento</p>
+                <p class="lead">
+                  Rol de competências com foco em <span class="k">prioridade absoluta</span>, cooperação institucional e fortalecimento de representatividade.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>I:</b> <span class="k">FISCALIZAR</span>, apoiar e acompanhar projetos/programas do governo e sociedade civil (foco: <span class="k">PRIORIDADE ABSOLUTA</span>).</li>
+              <li class="li"><b>II:</b> <span class="k">COOPERAR</span> com organismos nacionais/internacionais.</li>
+              <li class="li"><b>III:</b> promover <span class="k">ESTUDOS</span> sobre formas de escuta e sobre o <span class="k">DÉFICIT</span> de representação política.</li>
+              <li class="li"><b>IV:</b> <span class="k">ATENDER</span> autoridades e encaminhar demandas aos órgãos competentes.</li>
+            </ul>
+
+            <div class="note">
+              <b>Leitura dirigida:</b> o inciso III amarra “escuta” + “déficit de representação” como justificativa instrucional para atuação.
+            </div>
+          </div>
+        </article>
+
+        <article class="card accent-4">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">VII</div>
+              <div>
+                <p class="title">Organização interna</p>
+                <p class="lead">
+                  Estruturação de grupos de trabalho temáticos como ferramenta operacional do órgão.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>VII:</b> constituir e organizar <span class="k">GRUPOS DE TRABALHO</span> temáticos.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4) Fomento, capacitação e premiação -->
+    <section class="section" id="fomento">
+      <div class="section-head">
+        <h2>Fomento, capacitação e premiação (Art. 20-H, incisos IX e X)</h2>
+        <div class="meta">seminários • medalha</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-1 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">IX</div>
+              <div>
+                <p class="title">Capacitação</p>
+                <p class="lead">
+                  Seminários e fomento à capacitação continuada.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>IX:</b> realizar <span class="k">SEMINÁRIOS</span> com especialistas (brasileiros/estrangeiros).</li>
+              <li class="li"><b>IX:</b> fomentar <span class="k">capacitação continuada</span> pelas instâncias formativas da Câmara.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-2 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">X</div>
+              <div>
+                <p class="title">Prêmio</p>
+                <p class="lead">
+                  Concessão de prêmio com competência conjunta e atores específicos.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>X:</b> conceder o <span class="k">PRÊMIO MEDALHA AMIGO DA PRIMEIRA INFÂNCIA</span>.</li>
+              <li class="li"><b>Competência conjunta:</b> Secretaria + <span class="org">PRESIDÊNCIA</span> + <span class="org">SEGUNDO-SECRETÁRIO</span>.</li>
+            </ul>
+
+            <div class="note">
+              <b>Pegadinha:</b> banca pode trocar “Segundo-Secretário” por outro cargo da Mesa. Aqui é <span class="org">SEGUNDO-SECRETÁRIO</span>.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5) Correlatos -->
+    <section class="section" id="correl">
+      <div class="section-head">
+        <h2>Artigos correlatos (base constitucional e comunicações)</h2>
+        <div class="meta">Art. 20-F • Art. 89</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-3 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">20-F</div>
+              <div>
+                <p class="title">Base constitucional (prioridade absoluta)</p>
+                <p class="lead">
+                  A atuação baseia-se na determinação da <span class="k">PRIORIDADE ABSOLUTA</span> prevista no
+                  <span class="k">Art. 227</span> da Constituição Federal.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Fundamento:</b> <span class="k">PRIORIDADE ABSOLUTA</span> (CF, <span class="k">Art. 227</span>).</li>
+              <li class="li"><b>Efeito didático:</b> dá o “porquê” jurídico para fiscalizar, apoiar e acompanhar (Art. 20-H, I).</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-4 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">89</div>
+              <div>
+                <p class="title">Comunicações de liderança (regra geral x exceção)</p>
+                <p class="lead">
+                  Regra geral é tempo proporcional; aqui, e também na Coordenadoria da Mulher, há <span class="k">tempo fixo</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Regra geral:</b> tempo proporcional de <span class="num">3</span> a <span class="num">10</span> minutos (Art. 89, no seu resumo).</li>
+              <li class="li"><b>Exceção:</b> Secretaria da Infância e Coordenadoria da Mulher têm <span class="prazo">5 MINUTOS</span> (tempo fixo).</li>
+              <li class="li"><b>Periodicidade:</b> uso da palavra <span class="k">SEMANALMENTE</span> (Art. 20-H, VI).</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      HTML único • Salve como <b>titulo2-cap2b-secretaria-infancia.html</b> • Identidade visual + Menu principal + Anotações (Salvar e fechar).
+    </footer>
+
+  </div>
+
+  <!-- Drawer: Anotações -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="drawer-head">
+        <div>
+          <h2 id="drawerTitle">Anotações — Capítulo II-B (Secretaria da Primeira Infância…)</h2>
+          <p>
+            Ao clicar em <b>Salvar e fechar</b>, as notas ficam guardadas no <b>seu navegador</b>.
+            Sugestões: marque o “<span class="prazo">30 DE NOVEMBRO</span>” (vacância), a forma de investidura
+            (<span class="org">Mesa</span> x <span class="k">indicação</span>) e o bloco “<span class="k">VOZ E VOTO</span> + <span class="prazo">5 MIN</span> semanal”.
+          </p>
+        </div>
+        <button class="btn" type="button" id="btnCloseTop" title="Fechar">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Fechar</b></span>
+        </button>
+      </div>
+
+      <div class="drawer-body">
+        <textarea id="notes" placeholder="Escreva aqui…"></textarea>
+
+        <div class="drawer-actions">
+          <button class="btn danger" type="button" id="btnClear">Limpar</button>
+          <button class="btn primary" type="button" id="btnSaveClose">Salvar e fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const KEY = "notes_titulo2_cap2b_secretaria_infancia";
+      const btnNotes = document.getElementById("btnNotes");
+      const drawer = document.getElementById("drawer");
+      const notes = document.getElementById("notes");
+      const btnSaveClose = document.getElementById("btnSaveClose");
+      const btnClear = document.getElementById("btnClear");
+      const btnCloseTop = document.getElementById("btnCloseTop");
+
+      function openDrawer(){
+        drawer.classList.add("open");
+        drawer.setAttribute("aria-hidden","false");
+        notes.value = localStorage.getItem(KEY) || "";
+        notes.focus();
+      }
+      function closeDrawer(){
+        drawer.classList.remove("open");
+        drawer.setAttribute("aria-hidden","true");
+      }
+      function saveNotes(){
+        localStorage.setItem(KEY, notes.value || "");
+      }
+
+      btnNotes.addEventListener("click", openDrawer);
+      btnCloseTop.addEventListener("click", closeDrawer);
+
+      btnSaveClose.addEventListener("click", function(){
+        saveNotes();
+        closeDrawer();
+      });
+
+      btnClear.addEventListener("click", function(){
+        if(confirm("Tem certeza que deseja limpar suas anotações deste capítulo?")){
+          notes.value = "";
+          localStorage.removeItem(KEY);
+          notes.focus();
+        }
+      });
+
+      drawer.addEventListener("click", function(e){
+        if(e.target === drawer){ closeDrawer(); }
+      });
+
+      window.addEventListener("keydown", function(e){
+        if(e.key === "Escape" && drawer.classList.contains("open")){
+          closeDrawer();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
