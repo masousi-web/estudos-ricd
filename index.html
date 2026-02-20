@@ -6,88 +6,80 @@
   <title>RICD — Painel de Estudos</title>
   <style>
     :root{
-      --bg: #f0f4f8;
-      --card: #ffffff;
-      --ink: #0f172a;
-      --muted: #475569;
-      --navy:#0b1b2a;
-      --accent-primary:#1e40af; /* Azul forte para os títulos */
-      --accent-especial:#7f1d1d; /* Vinho para módulos transversais */
-      --shadow: 0 10px 24px rgba(15, 23, 42, .08);
-      --radius-lg: 14px;
-      --max: 1060px;
+      --bg: #f6f8fb; --card: #ffffff; --ink: #0f172a; --muted: #475569;
+      --navy:#0b1b2a; --shadow: 0 10px 24px rgba(15, 23, 42, .08);
+      --radius-lg: 14px; --max: 1060px;
     }
-
     *{ box-sizing: border-box; }
-    body{ margin:0; font-family: ui-sans-serif, system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; }
+    body{ margin:0; font-family: sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; }
     .wrap{ max-width: var(--max); margin: 0 auto; padding: 40px 18px; }
-
-    header { margin-bottom: 40px; text-align: center; border-bottom: 3px solid var(--navy); padding-bottom: 20px; }
+    header { margin-bottom: 40px; text-align: center; }
     h1 { font-size: 32px; letter-spacing: -1px; margin-bottom: 10px; color: var(--navy); }
-    .sub { color: var(--muted); font-size: 16px; font-weight: 600; }
+    .sub { color: var(--muted); font-size: 16px; }
 
-    /* ALTERAÇÃO DE CORES DOS TÍTULOS DE SEÇÃO */
-    h2 { 
-      font-size: 20px; 
-      text-transform: uppercase; 
-      letter-spacing: 1.5px; 
-      color: var(--accent-primary); /* Agora em Azul */
-      margin: 40px 0 20px; 
-      border-bottom: 2px solid var(--accent-primary); 
-      padding-bottom: 8px;
-    }
+    /* Estilo dos Títulos de Seção */
+    h2 { font-size: 18px; text-transform: uppercase; letter-spacing: 1px; color: #1e40af; margin: 40px 0 20px; border-bottom: 2px solid #1e40af; padding-bottom: 8px;}
+    .secao-outros { color: #0d9488; border-bottom-color: #0d9488; } /* Cor verde água para Outros Módulos */
 
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
 
     .card {
-      background: var(--card);
-      text-decoration: none;
-      color: inherit;
-      padding: 20px;
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(15, 23, 42, .1);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      transition: all 0.2s ease;
-      display: flex;
-      flex-direction: column;
-      border-left: 6px solid var(--accent-primary);
+      background: var(--card); text-decoration: none; color: inherit; padding: 20px;
+      border-radius: var(--radius-lg); border: 1px solid rgba(15, 23, 42, .08);
+      box-shadow: 0 2px 10px rgba(15, 23, 42, .04); transition: all 0.2s ease;
+      display: flex; flex-direction: column; position: relative; overflow: hidden;
     }
-
     .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; }
 
-    .card.especial { border-left-color: var(--accent-especial); }
-    .card.especial h2_card { color: var(--accent-especial); }
+    /* CORES INDIVIDUAIS POR CARD */
+    .t1::before { background: #1e40af; } .t1 span { color: #1e40af; }
+    .t2::before { background: #0284c7; } .t2 span { color: #0284c7; }
+    .t3::before { background: #0891b2; } .t3 span { color: #0891b2; }
+    .t4::before { background: #059669; } .t4 span { color: #059669; }
+    .t5::before { background: #7c3aed; } .t5 span { color: #7c3aed; }
+    .t6::before { background: #db2777; } .t6 span { color: #db2777; }
+    .t7::before { background: #ea580c; } .t7 span { color: #ea580c; }
+    .t8::before { background: #4f46e5; } .t8 span { color: #4f46e5; }
+    .t9::before { background: #be123c; } .t9 span { color: #be123c; }
+    .t10::before { background: #374151; } .t10 span { color: #374151; }
+    .esp::before { background: #0d9488; } .esp span { color: #0d9488; }
 
-    .card span { font-weight: 800; font-size: 12px; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
-    .card p { margin: 0; font-weight: 700; font-size: 15px; color: var(--navy); }
-    
-    footer { margin-top: 60px; text-align: center; font-size: 13px; color: var(--muted); border-top: 1px solid #ccc; padding-top: 20px; }
+    .card span { font-weight: 800; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+    .card p { margin: 0; font-weight: 700; font-size: 15px; color: var(--navy); line-height: 1.2; }
+    footer { margin-top: 60px; text-align: center; font-size: 13px; color: var(--muted); }
   </style>
 </head>
 <body>
-
 <div class="wrap">
   <header>
-    <h1>Regimento Interno - Câmara</h1>
-    <p class="sub">Painel de Memorização Literal</p>
+    <h1>Regimento Interno da Câmara</h1>
+    <p class="sub">Gestão de Resumos Literais e Mapas de Padrões</p>
   </header>
 
   <h2>Títulos do Regimento</h2>
   <div class="grid">
-    <a href="titulo1.html" class="card"><span>Título I</span><p>Deputados e Órgãos</p></a>
-    <a href="titulo2.html" class="card"><span>Título II</span><p>Sessões e Reuniões</p></a>
-    <a href="titulo8.html" class="card"><span>Título VIII</span><p>Sociedade Civil</p></a>
+    <a href="titulo1.html" class="card t1"><span>Título I</span><p>Deputados, Órgãos e Funcionamento</p></a>
+    <a href="titulo2.html" class="card t2"><span>Título II</span><p>Das Sessões e Reuniões</p></a>
+    <a href="titulo3.html" class="card t3"><span>Título III</span><p>Proposições</p></a>
+    <a href="titulo4.html" class="card t4"><span>Título IV</span><p>Debates e Deliberações</p></a>
+    <a href="titulo5.html" class="card t5"><span>Título V</span><p>Regras de Votação</p></a>
+    <a href="titulo6.html" class="card t6"><span>Título VI</span><p>Tramitação e Prazos</p></a>
+    <a href="titulo7.html" class="card t7"><span>Título VII</span><p>Fiscalização e Controle</p></a>
+    <a href="titulo8.html" class="card t8"><span>Título VIII</span><p>Participação da Sociedade Civil</p></a>
+    <a href="titulo9.html" class="card t9"><span>Título IX</span><p>Ética e Decoro Parlamentar</p></a>
+    <a href="titulo10.html" class="card t10"><span>Título X</span><p>Disposições Gerais</p></a>
   </div>
 
-  <h2>Módulos de Confronto</h2>
+  <h2 class="secao-outros">Outros Módulos</h2>
   <div class="grid">
-    <a href="confronto-comissoes.html" class="card especial"><span>Comparativo</span><p>Comissões vs. Plenário</p></a>
+    <a href="confronto-comissoes.html" class="card esp"><span>Comparativo</span><p>Comissões (Reuniões) vs. Plenário (Sessões)</p></a>
+    <a href="prazos.html" class="card esp"><span>Tabela</span><p>Prazos e Interstícios</p></a>
   </div>
 
   <footer>
-    <b>Uso Pessoal</b> • Foco na Aprovação
+    <b>Repositório Pessoal</b> • Atualizado conforme Práticas da Mesa.
   </footer>
 </div>
-
 </body>
 </html>
