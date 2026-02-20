@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RICD — Capítulo IV • Seção III (Comissões Temporárias)</title>
+
+  <!-- Literata (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --ink:#0f172a;
+      --muted:#475569;
+      --muted2:#64748b;
+      --slate:#2b3442;
+      --navy:#0b1b2a;
+
+      --shadow: 0 10px 24px rgba(15, 23, 42, .08);
+      --shadow2: 0 2px 10px rgba(15, 23, 42, .06);
+
+      --radius-xl:18px;
+      --radius-lg:14px;
+
+      --max:1100px;
+
+      /* ====== DESTAQUES SEMÂNTICOS ====== */
+      --org:#1e3a8a;        /* órgãos/instâncias */
+      --prazo:#b45309;      /* prazos */
+      --exc:#dc2626;        /* exceções/alerta */
+      --num:#334155;        /* números/frações/quóruns */
+      --mark: rgba(15, 23, 42, .08);
+
+      /* acento da seção (temporárias) */
+      --accent: rgba(30, 64, 175, .62);       /* blue */
+      --accent-soft: rgba(30, 64, 175, .10);
+
+      --serif: "Literata", ui-serif, Georgia, "Times New Roman", Times, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--serif);
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.55;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:26px 18px 70px; }
+
+    /* Header */
+    .hero{
+      border-radius:var(--radius-xl);
+      padding:26px 22px 18px;
+      background:
+        radial-gradient(900px 280px at 18% 0%, rgba(30, 64, 175, .16), transparent 62%),
+        radial-gradient(900px 280px at 82% 0%, rgba(36, 59, 83, .12), transparent 60%),
+        linear-gradient(180deg, #eff6ff 0%, #f7fafc 60%, #f6f8fb 100%);
+      border:1px solid rgba(15, 23, 42, .06);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    .kicker{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(30, 64, 175, .20);
+      color: #1e40af;
+      font-weight:650;
+      letter-spacing:.2px;
+      font-size:12.5px;
+      font-family: var(--sans);
+    }
+    h1{
+      margin:12px 0 8px;
+      font-size:clamp(25px, 3.1vw, 37px);
+      line-height:1.08;
+      letter-spacing:-0.6px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      max-width:120ch;
+      font-size:14.5px;
+      font-family: var(--sans);
+    }
+
+    .top-actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.70);
+      color: var(--ink);
+      padding:10px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:750;
+      font-size:13px;
+      box-shadow: 0 1px 0 rgba(15, 23, 42, .03);
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-family: var(--sans);
+      transition: transform .10s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .btn:hover{ box-shadow: 0 10px 18px rgba(15,23,42,.10); transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0px); }
+    .btn .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: rgba(15,23,42,.35);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.65);
+    }
+    .btn.primary{
+      background: rgba(15, 23, 42, .92);
+      color: #fff;
+      border-color: rgba(15, 23, 42, .92);
+    }
+    .btn.primary .dot{ background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 2px rgba(15,23,42,.55); }
+    .btn.blue{
+      background: rgba(30,64,175,.10);
+      border-color: rgba(30,64,175,.20);
+      color: #1e40af;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+      font-family: var(--sans);
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.70);
+      border:1px solid rgba(15,23,42,.10);
+      color:var(--slate);
+      font-size:13px;
+      box-shadow:0 1px 0 rgba(15, 23, 42, .03);
+      transition: transform .08s ease, box-shadow .08s ease;
+      white-space:nowrap;
+    }
+    .chip:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(15,23,42,.08); }
+    .chip b{ font-weight:800; }
+    .chip small{ color:var(--muted2); font-weight:650; }
+
+    .section{
+      margin-top:18px;
+      border-radius:var(--radius-xl);
+      background:rgba(255,255,255,.55);
+      border:1px solid rgba(15, 23, 42, .07);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+    }
+    .section-head{
+      padding:16px 18px 14px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.55));
+      border-bottom:1px solid rgba(15, 23, 42, .06);
+      font-family: var(--sans);
+    }
+    .section-head h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-0.2px;
+    }
+    .meta{
+      color:var(--muted2);
+      font-size:12.5px;
+      font-weight:650;
+      white-space:nowrap;
+    }
+    .grid{
+      padding:16px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+
+    .card{
+      grid-column: span 12;
+      background:var(--card);
+      border:1px solid rgba(15, 23, 42, .08);
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    @media (min-width: 860px){
+      .card.half{ grid-column: span 6; }
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:6px;
+      background: var(--accent);
+    }
+
+    .card-inner{ padding:14px 14px 14px; }
+    .card-top{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      margin-bottom:8px;
+      font-family: var(--sans);
+    }
+    .tag{
+      width:44px; height:44px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      letter-spacing:.6px;
+      font-size:13px;
+      color:#1e40af;
+      background: rgba(30,64,175,.10);
+      border:1px solid rgba(30,64,175,.20);
+      flex:0 0 auto;
+      user-select:none;
+    }
+
+    .title{
+      margin:0;
+      font-weight:820;
+      letter-spacing:-0.25px;
+      font-size:15.5px;
+      line-height:1.22;
+    }
+    .lead{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13.8px;
+      font-family: var(--sans);
+    }
+
+    .list{
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      font-family: var(--sans);
+    }
+    .li{
+      padding:10px 10px;
+      border-radius:12px;
+      background:#f8fafc;
+      border:1px solid rgba(15, 23, 42, .06);
+      color:var(--slate);
+      font-size:13.7px;
+    }
+    .li b{ font-weight:900; }
+
+    .k{
+      font-weight:900;
+      color:var(--navy);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, var(--mark) 55%);
+    }
+    .org{
+      font-weight:900;
+      color:var(--org);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(30,64,175,.10) 55%);
+      white-space:nowrap;
+    }
+    .prazo{
+      font-weight:950;
+      color:var(--prazo);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(180,83,9,.12) 55%);
+      white-space:nowrap;
+    }
+    .exc{
+      font-weight:950;
+      color:var(--exc);
+      padding:0 .20em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(220,38,38,.14) 55%);
+    }
+    .num{ font-weight:950; color:var(--num); white-space:nowrap; letter-spacing:.2px; }
+
+    .note{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background: rgba(30,64,175,.06);
+      border: 1px solid rgba(30,64,175,.12);
+      color:#1e40af;
+      font-size:13.2px;
+      font-family: var(--sans);
+    }
+
+    .refs{
+      margin-top:10px;
+      padding:12px 12px;
+      border-radius:14px;
+      background: rgba(15,23,42,.03);
+      border: 1px solid rgba(15,23,42,.08);
+      font-family: var(--sans);
+      color: var(--slate);
+    }
+    .refs h3{
+      margin:0 0 8px;
+      font-size:13.5px;
+      letter-spacing:.1px;
+    }
+    .refs ul{ margin:0; padding-left:18px; }
+    .refs li{ margin:6px 0; font-size:13.2px; line-height:1.45; }
+
+    footer{
+      margin-top:14px;
+      color:var(--muted2);
+      font-size:12.5px;
+      text-align:center;
+      font-family: var(--sans);
+    }
+
+    /* Drawer: Anotações */
+    .drawer{
+      position: fixed;
+      inset: 0;
+      display:none;
+      background: rgba(15,23,42,.35);
+      backdrop-filter: blur(3px);
+      z-index: 50;
+      padding: 18px;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .drawer.open{ display:flex; }
+    .drawer-panel{
+      width: min(880px, 100%);
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: 0 24px 50px rgba(15,23,42,.20);
+      overflow:hidden;
+    }
+    .drawer-head{
+      padding: 14px 16px 12px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      background:
+        radial-gradient(820px 220px at 10% 0%, rgba(30,64,175,.16), transparent 62%),
+        radial-gradient(820px 220px at 90% 0%, rgba(36, 59, 83, .10), transparent 58%),
+        linear-gradient(180deg, rgba(248,250,252,.92), rgba(255,255,255,.75));
+      border-bottom: 1px solid rgba(15,23,42,.08);
+      font-family: var(--sans);
+    }
+    .drawer-head h2{ margin:0; font-size: 15px; letter-spacing: .1px; }
+    .drawer-head p{
+      margin:4px 0 0;
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.35;
+      max-width: 78ch;
+    }
+    .drawer-body{ padding: 12px 14px 14px; font-family: var(--sans); }
+    textarea{
+      width:100%;
+      min-height: 240px;
+      resize: vertical;
+      border-radius: 16px;
+      border: 1px solid rgba(15,23,42,.14);
+      padding: 12px 12px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      outline:none;
+      background: #fbfcfe;
+    }
+    textarea:focus{
+      border-color: rgba(30,64,175,.40);
+      box-shadow: 0 0 0 3px rgba(30,64,175,.12);
+      background: #ffffff;
+    }
+    .drawer-actions{
+      margin-top: 10px;
+      display:flex;
+      gap: 10px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    @media print{
+      body{ background:#fff; }
+      .hero,.section{ box-shadow:none; }
+      .chips, .top-actions{ display:none !important; }
+      .wrap{ padding:0; }
+      .grid{ padding:10px; }
+      .drawer{ display:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="hero" id="topo">
+      <span class="kicker">RICD • Capítulo IV • Seção III</span>
+      <h1>Seção III — Das Comissões Temporárias</h1>
+
+      <p class="sub">
+        Art. <span class="k">33</span> (espécies e regras gerais),
+        Art. <span class="k">34</span> (Comissões Especiais),
+        Arts. <span class="k">35 a 37</span> (CPI: instauração, poderes, relatório e encaminhamentos),
+        Art. <span class="k">38</span> (Comissões Externas).
+        Foco em <span class="k">prazos</span>, <span class="k">quóruns</span>, <span class="k">limites</span> e <span class="k">encaminhamentos</span>.
+      </p>
+
+      <div class="top-actions" role="group" aria-label="Ações principais">
+        <a class="btn" href="titulo2-cap4.html" title="Voltar ao Capítulo IV (Título II)">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Voltar</b> (Cap. IV)</span>
+        </a>
+
+        <a class="btn" href="index.html" title="Voltar ao índice">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Menu principal</b> (index)</span>
+        </a>
+
+        <button class="btn primary" id="btnNotes" type="button" title="Abrir bloco de anotações">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Anotações</b> (salvar e fechar)</span>
+        </button>
+      </div>
+
+      <nav class="chips" aria-label="Navegação por tópicos">
+        <a class="chip" href="#art33"><b>Art. 33</b> <small>temporárias (geral)</small></a>
+        <a class="chip" href="#art34"><b>Art. 34</b> <small>especiais</small></a>
+        <a class="chip" href="#art35"><b>Art. 35</b> <small>CPI (requisitos)</small></a>
+        <a class="chip" href="#art36"><b>Art. 36</b> <small>CPI (poderes)</small></a>
+        <a class="chip" href="#art37"><b>Art. 37</b> <small>relatório & remessas</small></a>
+        <a class="chip" href="#art38"><b>Art. 38</b> <small>externas</small></a>
+      </nav>
+    </header>
+
+    <!-- Art. 33 -->
+    <section class="section" id="art33">
+      <div class="section-head">
+        <h2>Comissões Temporárias — Art. 33</h2>
+        <div class="meta">espécies • designação • rodízio • 48h</div>
+      </div>
+
+      <div class="grid">
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">33</div>
+              <div>
+                <p class="title">Espécies</p>
+                <p class="lead">
+                  As Comissões Temporárias são: <span class="k">I</span> — <span class="k">Especiais</span>;
+                  <span class="k">II</span> — <span class="k">de Inquérito</span>;
+                  <span class="k">III</span> — <span class="k">Externas</span>.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Três espécies:</b> especiais, inquérito, externas.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">REG</div>
+              <div>
+                <p class="title">Regras de constituição</p>
+                <p class="lead">
+                  <b>Número de membros</b> previsto no ato/requerimento. <b>Designação</b> pelo <span class="org">Presidente</span>,
+                  por indicação dos <span class="org">Líderes</span>.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Nº de membros:</b> ato/requerimento de constituição.</li>
+              <li class="li"><b>Designação:</b> <span class="org">Presidente</span> (com indicação dos <span class="org">Líderes</span>).</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">§1º</div>
+              <div>
+                <p class="title">Omissão na escolha (48h)</p>
+                <p class="lead">
+                  Se não fizer a escolha em <span class="prazo">48 (quarenta e oito) horas</span> após a criação,
+                  haverá <span class="k">designação independente</span> da indicação dos <span class="org">Líderes</span>.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Gatilho:</b> <span class="prazo">48h</span> contadas da <span class="k">criação</span> da Comissão.</li>
+              <li class="li"><b>Efeito:</b> designação pode ocorrer <span class="k">mesmo sem</span> indicação.</li>
+            </ul>
+
+            <div class="note">
+              <b>Pegadinha:</b> não é “48 sessões”, é <span class="prazo">48 horas</span>.
+            </div>
+          </div>
+        </article>
+
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">§2º</div>
+              <div>
+                <p class="title">Critério de distribuição (rodízio)</p>
+                <p class="lead">
+                  Observar-se-á o <span class="k">RODÍZIO</span> entre as bancadas não contempladas,
+                  para que <span class="k">todos</span> os Partidos/Blocos possam fazer-se representar.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Ideia-chave:</b> inclusão/representação ampla por <span class="k">rodízio</span>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">§3º</div>
+              <div>
+                <p class="title">Acumulação</p>
+                <p class="lead">
+                  A participação em Temporária cumpre-se <span class="k">sem prejuízo</span> das funções nas
+                  <span class="k">Comissões Permanentes</span>.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li"><b>Regra:</b> temporária não “anula” atuação nas permanentes.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Art. 34 -->
+    <section class="section" id="art34">
+      <div class="section-head">
+        <h2>SubSeção I — Comissões Especiais — Art. 34</h2>
+        <div class="meta">parecer • PEC/código • +4 comissões • admissibilidade/mérito</div>
+      </div>
+
+      <div class="grid">
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">34</div>
+              <div>
+                <p class="title">Hipóteses de constituição</p>
+                <p class="lead">
+                  Constituídas para dar <span class="k">PARECER</span> sobre:
+                  <span class="k">I</span> — <span class="k">PEC</span> e <span class="k">Projeto de Código</span>;
+                  <span class="k">II</span> — proposições cuja matéria seja de competência de <span class="num">mais de 4</span> Comissões de mérito.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Inciso I:</b> PEC e Código.</li>
+              <li class="li"><b>Inciso II:</b> matéria em <span class="exc">+4</span> comissões de mérito.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">INIT</div>
+              <div>
+                <p class="title">Legitimidade para iniciativa (Inciso II)</p>
+                <p class="lead">
+                  Pode ser: <span class="org">PCD</span>; requerimento de <span class="org">Líder</span>; ou requerimento de
+                  <span class="org">Presidente de Comissão</span> interessada.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Quem pode pedir:</b> PCD, Líder, Presidente de Comissão interessada.</li>
+            </ul>
+
+            <div class="refs">
+              <h3>Artigos correlatos</h3>
+              <ul>
+                <li><span class="k">Art. 139, V</span>: evita distribuição a mais de 4 comissões (gatilho para Comissão Especial).</li>
+                <li><span class="k">Art. 202</span>: Comissão Especial de PEC — prazo de <span class="k">40 sessões</span> para parecer.</li>
+                <li><span class="k">Art. 205</span>: Comissão Especial de Código — Relator-Geral e Relatores-Parciais.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">§2º</div>
+              <div>
+                <p class="title">Abrangência da análise (competência plena)</p>
+                <p class="lead">
+                  A Comissão Especial examina <span class="k">ADMISSIBILIDADE</span> e <span class="k">MÉRITO</span>
+                  da proposição principal e das <span class="k">EMENDAS</span>, observando Art. <span class="k">49</span> e
+                  §1º do Art. <span class="k">24</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Exame:</b> admissibilidade + mérito.</li>
+              <li class="li"><b>Objeto:</b> principal + emendas apresentadas.</li>
+              <li class="li"><b>Rito:</b> Art. 49 e Art. 24, §1º (regras de tramitação “no que couber”).</li>
+            </ul>
+
+            <div class="refs">
+              <h3>Artigos correlatos</h3>
+              <ul>
+                <li><span class="k">Art. 49</span>: reunião conjunta; relator único; relator-geral e parciais em matéria complexa.</li>
+                <li><span class="k">Art. 24, § 1º</span>: aplicam-se, no que couber, disposições das matérias do Plenário.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Art. 35 -->
+    <section class="section" id="art35">
+      <div class="section-head">
+        <h2>SubSeção II — CPI — Instauração e prazos — Art. 35</h2>
+        <div class="meta">1/3 • fato determinado • prazo certo • 120 dias</div>
+      </div>
+
+      <div class="grid">
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">35</div>
+              <div>
+                <p class="title">Requisitos</p>
+                <p class="lead">
+                  CPI mediante requerimento de <span class="num">1/3</span> dos membros, para apuração de
+                  <span class="k">FATO DETERMINADO</span> e por <span class="k">PRAZO CERTO</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Quórum de requerimento:</b> <span class="num">1/3</span>.</li>
+              <li class="li"><b>Objeto:</b> fato determinado.</li>
+              <li class="li"><b>Duração:</b> prazo certo.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">§3º</div>
+              <div>
+                <p class="title">Prazo e prorrogação</p>
+                <p class="lead">
+                  Prazo: <span class="num">120 (cento e vinte) dias</span>.
+                  Prorrogação: por <span class="k">até metade</span>, mediante deliberação do <span class="org">Plenário</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Prazo:</b> <span class="num">120 dias</span>.</li>
+              <li class="li"><b>Prorrogação:</b> até metade (precisa <span class="org">Plenário</span>).</li>
+              <li class="li"><b>Atuação:</b> pode atuar durante <span class="k">recesso parlamentar</span>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">§4º</div>
+              <div>
+                <p class="title">Limite quantitativo (máximo em funcionamento)</p>
+                <p class="lead">
+                  Não será criada CPI enquanto estiverem funcionando <span class="k">pelo menos</span>
+                  <span class="num">5</span> na Câmara.
+                  <span class="exc">Exceção:</span> por <span class="k">Projeto de Resolução</span> (com mesmo quórum de apresentação: <span class="num">1/3</span>).
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Regra:</b> trava se já há <span class="num">5</span> em funcionamento.</li>
+              <li class="li"><b>Exceção:</b> Projeto de Resolução (apresentação com <span class="num">1/3</span>).</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card" id="art35_2">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">§2º</div>
+              <div>
+                <p class="title">Controle de admissibilidade (recurso)</p>
+                <p class="lead">
+                  Recebido o requerimento, o <span class="org">Presidente</span> manda à <span class="k">publicação</span> se atendidos os requisitos;
+                  caso contrário, <span class="k">devolve</span> ao autor. Da devolução cabe <span class="k">recurso</span> ao <span class="org">Plenário</span>
+                  em <span class="prazo">5 sessões</span>, ouvida a <span class="org">CCJC</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Se ok:</b> manda publicar.</li>
+              <li class="li"><b>Se não:</b> devolve ao autor.</li>
+              <li class="li"><b>Recurso:</b> ao Plenário em <span class="prazo">5 sessões</span>, com oitiva da <span class="org">CCJC</span>.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Art. 36 -->
+    <section class="section" id="art36">
+      <div class="section-head">
+        <h2>CPI — Poderes instrutórios e diligências — Art. 36</h2>
+        <div class="meta">requisição • diligências • deslocamento • prazos</div>
+      </div>
+
+      <div class="grid">
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">36</div>
+              <div>
+                <p class="title">Competências específicas (núcleo)</p>
+                <p class="lead">
+                  A CPI pode <span class="k">requisitar</span> servidores e <span class="k">determinar diligências</span>,
+                  ouvir/inquirir, requisitar informações/documentos.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>I</b> — requisitar funcionários da Câmara e de órgãos/entidades (Adm. Direta/Indireta/Fundacional/Judiciário).</li>
+              <li class="li"><b>II</b> — determinar diligências; ouvir indiciados; inquirir testemunhas (sob compromisso); requisitar informações e documentos.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">IV/V</div>
+              <div>
+                <p class="title">Deslocamento e prazos</p>
+                <p class="lead">
+                  Pode <span class="k">deslocar-se</span> pelo território nacional e <span class="k">estipular prazo</span> para providências,
+                  sob penas da lei (salvo quando da alçada de autoridade judicial).
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>IV</b> — deslocar-se a qualquer ponto do território nacional (investigações/audiências públicas).</li>
+              <li class="li"><b>V</b> — estipular prazo para atendimento (sob penas da lei).</li>
+              <li class="li"><b>Exceção:</b> quando for da alçada de autoridade <span class="k">judiciária</span>.</li>
+            </ul>
+
+            <div class="note">
+              <b>Aplicação subsidiária:</b> CPIs valem-se, subsidiariamente, do <span class="k">Código de Processo Penal</span>.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Art. 37 -->
+    <section class="section" id="art37">
+      <div class="section-head">
+        <h2>Relatório final e encaminhamentos — Art. 37</h2>
+        <div class="meta">DCD • ordem do dia • mesa • MP/AGU • executivo • CMO/TCU</div>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">37</div>
+              <div>
+                <p class="title">Relatório circunstanciado (conclusão)</p>
+                <p class="lead">
+                  Ao final, a CPI apresenta <span class="k">RELATÓRIO CIRCUNSTANCIADO</span>, publicado no <span class="k">DCD</span>,
+                  e encaminha conforme os incisos.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>I</b> — à <span class="org">Mesa</span>: providências (PL, decreto legislativo, resolução, indicação). Inclusão em Ordem do Dia em <span class="prazo">5 sessões</span>.</li>
+              <li class="li"><b>II</b> — ao <span class="org">Ministério Público</span> ou <span class="org">AGU</span>: responsabilidade civil/criminal (com cópia da documentação).</li>
+              <li class="li"><b>III</b> — ao <span class="org">Poder Executivo</span>: providências saneadoras (disciplinar/administrativo), com <span class="k">prazo hábil</span> para cumprimento.</li>
+              <li class="li"><b>IV</b> — à <span class="k">Comissão Permanente</span> de maior pertinência: fiscalizar atendimento do inciso III.</li>
+              <li class="li"><b>V</b> — à <span class="org">CMO</span> e ao <span class="org">TCU</span>: providências do art. 71 da CF.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">PU</div>
+              <div>
+                <p class="title">Encaminhamentos externos e prazo (Parágrafo único)</p>
+                <p class="lead">
+                  Nos casos externos (II, III e V), a remessa será feita pelo <span class="org">PCD</span>, no prazo de <span class="prazo">5 sessões</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Quem remete:</b> <span class="org">PCD</span>.</li>
+              <li class="li"><b>Quando:</b> <span class="prazo">5 sessões</span>.</li>
+              <li class="li"><b>Quais incisos:</b> II, III e V.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Art. 38 -->
+    <section class="section" id="art38">
+      <div class="section-head">
+        <h2>SubSeção III — Comissões Externas — Art. 38</h2>
+        <div class="meta">ônus • plenário • afastamento • 8/30 sessões</div>
+      </div>
+
+      <div class="grid">
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">38</div>
+              <div>
+                <p class="title">Instituição e deliberação</p>
+                <p class="lead">
+                  Instituídas pelo <span class="org">PCD</span> (de ofício ou a requerimento de Deputado).
+                  Se importarem <span class="k">ônus</span> para a Casa, sujeitam-se à deliberação do <span class="org">Plenário</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Quem institui:</b> <span class="org">PCD</span> (de ofício ou a requerimento).</li>
+              <li class="li"><b>Se houver ônus:</b> precisa <span class="org">Plenário</span>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">Prazos</div>
+              <div>
+                <p class="title">Missão autorizada (afastamento)</p>
+                <p class="lead">
+                  Afastamento para representar a Câmara por prazo máximo de:
+                  <span class="k">8 sessões</span> (no país) ou <span class="k">30 sessões</span> (no exterior).
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>No país:</b> máximo de <span class="num">8 sessões</span>.</li>
+              <li class="li"><b>No exterior:</b> máximo de <span class="num">30 sessões</span>.</li>
+            </ul>
+
+            <div class="refs">
+              <h3>Artigos correlatos</h3>
+              <ul>
+                <li><span class="k">Art. 117, I</span>: requerimento de representação por Comissão Externa depende de deliberação do Plenário.</li>
+                <li><span class="k">Art. 228</span>: afastamento do território nacional exige prévia ciência à Câmara (natureza e duração).</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      Próximo arquivo sugerido: <b>cap4_sec4.html</b> (Presidência das Comissões)
+    </footer>
+
+  </div>
+
+  <!-- Drawer: Anotações -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="drawer-head">
+        <div>
+          <h2 id="drawerTitle">Anotações — Capítulo IV • Seção III</h2>
+          <p>
+            <span class="k">Art. 33</span>: espécies (Especiais/CPI/Externas), designação (Presidente + Líderes), omissão em <span class="prazo">48h</span>, rodízio, sem prejuízo das permanentes.
+            <span class="k">Art. 34</span>: Especial para <span class="k">PEC/Código</span> e matéria em <span class="exc">+4</span> comissões; iniciativa (PCD/Líder/Pres. Comissão); exame de <span class="k">admissibilidade</span> e <span class="k">mérito</span>.
+            <span class="k">Art. 35</span>: CPI — <span class="num">1/3</span> + fato determinado + prazo certo; prazo <span class="num">120 dias</span> (prorroga até metade); limite de <span class="num">5</span> CPIs; recurso em <span class="prazo">5 sessões</span> com oitiva da CCJC.
+            <span class="k">Art. 36</span>: poderes instrutórios + CPP subsidiário.
+            <span class="k">Art. 37</span>: relatório + remessas; externos por PCD em <span class="prazo">5 sessões</span>.
+            <span class="k">Art. 38</span>: externas; ônus → Plenário; afastamento <span class="num">8</span>/<span class="num">30</span> sessões.
+          </p>
+        </div>
+        <button class="btn" type="button" id="btnCloseTop" title="Fechar">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Fechar</b></span>
+        </button>
+      </div>
+
+      <div class="drawer-body">
+        <textarea id="notes" placeholder="Escreva aqui…"></textarea>
+
+        <div class="drawer-actions">
+          <button class="btn blue" type="button" id="btnClear">Limpar</button>
+          <button class="btn primary" type="button" id="btnSaveClose">Salvar e fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const KEY = "notes_cap4_sec3_comissoes_temporarias";
+      const btnNotes = document.getElementById("btnNotes");
+      const drawer = document.getElementById("drawer");
+      const notes = document.getElementById("notes");
+      const btnSaveClose = document.getElementById("btnSaveClose");
+      const btnClear = document.getElementById("btnClear");
+      const btnCloseTop = document.getElementById("btnCloseTop");
+
+      function openDrawer(){
+        drawer.classList.add("open");
+        drawer.setAttribute("aria-hidden","false");
+        notes.value = localStorage.getItem(KEY) || "";
+        notes.focus();
+      }
+      function closeDrawer(){
+        drawer.classList.remove("open");
+        drawer.setAttribute("aria-hidden","true");
+      }
+      function saveNotes(){
+        localStorage.setItem(KEY, notes.value || "");
+      }
+
+      btnNotes.addEventListener("click", openDrawer);
+      btnCloseTop.addEventListener("click", closeDrawer);
+
+      btnSaveClose.addEventListener("click", function(){
+        saveNotes();
+        closeDrawer();
+      });
+
+      btnClear.addEventListener("click", function(){
+        if(confirm("Tem certeza que deseja limpar suas anotações desta seção?")){
+          notes.value = "";
+          localStorage.removeItem(KEY);
+          notes.focus();
+        }
+      });
+
+      drawer.addEventListener("click", function(e){
+        if(e.target === drawer){ closeDrawer(); }
+      });
+
+      window.addEventListener("keydown", function(e){
+        if(e.key === "Escape" && drawer.classList.contains("open")){
+          closeDrawer();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
