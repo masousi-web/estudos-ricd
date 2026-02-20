@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RICD — Capítulo IV (Comissões) • Menu</title>
+
+  <!-- Literata (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --ink:#0f172a;
+      --muted:#475569;
+      --muted2:#64748b;
+      --slate:#2b3442;
+      --navy:#0b1b2a;
+
+      --shadow2: 0 2px 10px rgba(15, 23, 42, .06);
+      --radius-xl:18px;
+      --radius-lg:14px;
+
+      --max:1100px;
+
+      /* Destaques semânticos */
+      --org:#1e3a8a;
+      --prazo:#b45309;
+      --exc:#dc2626;
+      --num:#334155;
+      --mark: rgba(15, 23, 42, .08);
+
+      /* Acento do Capítulo IV (azul-marinho mais forte) */
+      --accent: rgba(30, 58, 138, .62);
+      --accent-soft: rgba(30, 58, 138, .10);
+
+      --serif: "Literata", ui-serif, Georgia, "Times New Roman", Times, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--serif);
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.55;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:26px 18px 70px; }
+
+    .hero{
+      border-radius:var(--radius-xl);
+      padding:26px 22px 18px;
+      background:
+        radial-gradient(900px 280px at 18% 0%, rgba(30,58,138,.18), transparent 62%),
+        radial-gradient(900px 280px at 82% 0%, rgba(36, 59, 83, .12), transparent 60%),
+        linear-gradient(180deg, #eff6ff 0%, #f7fafc 60%, #f6f8fb 100%);
+      border:1px solid rgba(15, 23, 42, .06);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    .kicker{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(30,58,138,.22);
+      color: #1e3a8a;
+      font-weight:650;
+      letter-spacing:.2px;
+      font-size:12.5px;
+      font-family: var(--sans);
+    }
+    h1{
+      margin:12px 0 8px;
+      font-size:clamp(25px, 3.1vw, 37px);
+      line-height:1.08;
+      letter-spacing:-0.6px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      max-width:110ch;
+      font-size:14.5px;
+      font-family: var(--sans);
+    }
+
+    .top-actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.70);
+      color: var(--ink);
+      padding:10px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:750;
+      font-size:13px;
+      box-shadow: 0 1px 0 rgba(15, 23, 42, .03);
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-family: var(--sans);
+      transition: transform .10s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .btn:hover{ box-shadow: 0 10px 18px rgba(15,23,42,.10); transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0px); }
+    .btn .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: rgba(15,23,42,.35);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.65);
+    }
+    .btn.primary{
+      background: rgba(15, 23, 42, .92);
+      color: #fff;
+      border-color: rgba(15, 23, 42, .92);
+    }
+    .btn.primary .dot{ background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 2px rgba(15,23,42,.55); }
+
+    .section{
+      margin-top:18px;
+      border-radius:var(--radius-xl);
+      background:rgba(255,255,255,.55);
+      border:1px solid rgba(15, 23, 42, .07);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+    }
+    .section-head{
+      padding:16px 18px 14px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.55));
+      border-bottom:1px solid rgba(15, 23, 42, .06);
+      font-family: var(--sans);
+    }
+    .section-head h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-0.2px;
+    }
+    .meta{
+      color:var(--muted2);
+      font-size:12.5px;
+      font-weight:650;
+      white-space:nowrap;
+    }
+
+    .grid{
+      padding:16px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+
+    .card{
+      grid-column: span 12;
+      background:var(--card);
+      border:1px solid rgba(15, 23, 42, .08);
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+      transition: transform .10s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 16px 28px rgba(15,23,42,.10);
+      border-color: rgba(15,23,42,.14);
+    }
+    @media (min-width: 860px){
+      .card.half{ grid-column: span 6; }
+      .card.third{ grid-column: span 4; }
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:6px;
+      background: var(--accent);
+    }
+    .card-inner{ padding:14px 14px 14px; }
+
+    .card-top{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      margin-bottom:8px;
+      font-family: var(--sans);
+    }
+    .tag{
+      width:44px; height:44px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      letter-spacing:.6px;
+      font-size:13px;
+      color:#1e3a8a;
+      background: rgba(30,58,138,.10);
+      border:1px solid rgba(30,58,138,.22);
+      flex:0 0 auto;
+      user-select:none;
+    }
+    .title{
+      margin:0;
+      font-weight:820;
+      letter-spacing:-0.25px;
+      font-size:15.5px;
+      line-height:1.22;
+    }
+    .lead{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13.8px;
+      font-family: var(--sans);
+    }
+
+    .k{
+      font-weight:900;
+      color:var(--navy);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, var(--mark) 55%);
+      white-space:nowrap;
+    }
+
+    footer{
+      margin-top:14px;
+      color:var(--muted2);
+      font-size:12.5px;
+      text-align:center;
+      font-family: var(--sans);
+    }
+
+    @media print{
+      body{ background:#fff; }
+      .hero,.section{ box-shadow:none; }
+      .top-actions{ display:none !important; }
+      .wrap{ padding:0; }
+      .grid{ padding:10px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="hero" id="topo">
+      <span class="kicker">RICD • Título II • Capítulo IV</span>
+      <h1>Capítulo IV — Das Comissões</h1>
+
+      <p class="sub">
+        Este capítulo é extenso. Para facilitar o estudo, ele foi organizado em <span class="k">páginas por Seção</span>.
+        Você pode abrir cada Seção como um “bloco de revisão”, mantendo a mesma identidade visual e com navegação rápida.
+      </p>
+
+      <div class="top-actions" role="group" aria-label="Ações principais">
+        <a class="btn" href="titulo2.html" title="Voltar ao Título II (página principal)">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Voltar</b> (Título II)</span>
+        </a>
+
+        <a class="btn" href="index.html" title="Voltar ao índice">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Menu principal</b> (index)</span>
+        </a>
+
+        <a class="btn primary" href="cap4_sec1.html" title="Começar pela Seção I">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Começar</b> (Seção I)</span>
+        </a>
+      </div>
+    </header>
+
+    <section class="section" id="secoes">
+      <div class="section-head">
+        <h2>Mapa de estudo — Seções do Capítulo IV</h2>
+        <div class="meta">páginas independentes • leitura leve</div>
+      </div>
+
+      <div class="grid">
+
+        <a class="card half" href="cap4_sec1.html" aria-label="Abrir Seção I">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">I</div>
+              <div>
+                <p class="title">Seção I — Disposições Gerais</p>
+                <p class="lead">
+                  Classificação das Comissões (Art. 22), proporcionalidade/garantia da minoria (Art. 23),
+                  perda de vaga, poder conclusivo e exceções (Art. 24), competências fiscalizatórias, prazos, rito.
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="card half" href="cap4_sec2.html" aria-label="Abrir Seção II">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">II</div>
+              <div>
+                <p class="title">Seção II — Comissões Permanentes</p>
+                <p class="lead">
+                  Composição/instalação (Arts. 25–28), subcomissões e turmas (Arts. 29–31).
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="card half" href="cap4_sec3.html" aria-label="Abrir Seção III">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">III</div>
+              <div>
+                <p class="title">Seção III — Comissões Temporárias</p>
+                <p class="lead">
+                  Espécies (Art. 33), comissões especiais (Art. 34), CPI (Arts. 35–37), comissões externas (Art. 38).
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="card half" href="cap4_sec4.html" aria-label="Abrir Seção IV">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">IV</div>
+              <div>
+                <p class="title">Seção IV — Presidência das Comissões</p>
+                <p class="lead">
+                  Eleição e mandato (Art. 39), substituição/vacância e perda do cargo (Art. 40),
+                  competências do presidente (Arts. 41–42).
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="card half" href="cap4_sec5.html" aria-label="Abrir Seção V">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">V</div>
+              <div>
+                <p class="title">Seção V — Impedimentos e Ausências</p>
+                <p class="lead">
+                  Impedimentos (Art. 43) e substituição temporária por ausência (Art. 44).
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="card half" href="cap4_sec6.html" aria-label="Abrir Seção VI">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">VI</div>
+              <div>
+                <p class="title">Seção VI — Vagas</p>
+                <p class="lead">
+                  Vacância/perda do lugar e faltas (Art. 45), preenchimento de vaga (Art. 45, § 3º).
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="card half" href="cap4_sec7.html" aria-label="Abrir Seção VII">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">VII</div>
+              <div>
+                <p class="title">Seção VII — Reuniões</p>
+                <p class="lead">
+                  Ordinárias/extraordinárias (Art. 46), pauta e prazos (Art. 47), publicidade/sigilo (Art. 48).
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="card half" href="cap4_sec8.html" aria-label="Abrir Seção VIII">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">VIII</div>
+              <div>
+                <p class="title">Seção VIII — Trabalhos</p>
+                <p class="lead">
+                  Reunião conjunta (Art. 49) e quórum/ordem dos trabalhos (Arts. 50–51).
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="card half" href="cap4_sec9.html" aria-label="Abrir Seção IX">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">IX</div>
+              <div>
+                <p class="title">Seção IX — Admissibilidade e Apreciação</p>
+                <p class="lead">
+                  Distribuição de competências (Arts. 53–56), tramitação e poderes (Art. 57),
+                  recurso ao Plenário (Art. 58), fluxo final (Arts. 59–60).
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="card half" href="cap4_sec10.html" aria-label="Abrir Seção X">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">X</div>
+              <div>
+                <p class="title">Seção X — Fiscalização e Controle</p>
+                <p class="lead">
+                  Objeto (Art. 60), etapas (Art. 61), prazos/sigilo (Art. 61) e PAFC/RAFC (Art. 61-A).
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="card half" href="cap4_sec11.html" aria-label="Abrir Seção XI">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="tag">XI</div>
+              <div>
+                <p class="title">Seção XI — Secretaria e Atas</p>
+                <p class="lead">
+                  Secretaria das Comissões (Art. 62), formalidades da ata (Art. 63) e assessoramento (Art. 64).
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <footer>
+      Dica: mantenha todos os arquivos na mesma pasta para os links funcionarem sem dor de cabeça.
+    </footer>
+
+  </div>
+</body>
+</html>
