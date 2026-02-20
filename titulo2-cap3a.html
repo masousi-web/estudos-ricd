@@ -1,0 +1,909 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RICD — Título II (Cap. III-A — Ouvidoria Parlamentar)</title>
+
+  <!-- Literata (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --ink:#0f172a;
+      --muted:#475569;
+      --muted2:#64748b;
+      --slate:#2b3442;
+      --navy:#0b1b2a;
+
+      --shadow: 0 10px 24px rgba(15, 23, 42, .08);
+      --shadow2: 0 2px 10px rgba(15, 23, 42, .06);
+
+      --radius-xl:18px;
+      --radius-lg:14px;
+
+      --max:1100px;
+
+      /* ====== DESTAQUES SEMÂNTICOS ====== */
+      --org:#1e3a8a;        /* órgãos/instâncias */
+      --prazo:#b45309;      /* prazos */
+      --exc:#dc2626;        /* exceções/alerta */
+      --num:#334155;        /* números/frações/quóruns */
+      --mark: rgba(15, 23, 42, .08);
+
+      /* acentos estruturais (navy suave) */
+      --accentA: rgba(36, 59, 83, .48);
+      --accentB: rgba(51, 65, 85, .40);
+      --accentC: rgba(36, 59, 83, .32);
+      --accentD: rgba(51, 65, 85, .32);
+
+      --serif: "Literata", ui-serif, Georgia, "Times New Roman", Times, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--serif);
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.55;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:26px 18px 70px; }
+
+    /* Header */
+    .hero{
+      border-radius:var(--radius-xl);
+      padding:26px 22px 18px;
+      background:
+        radial-gradient(900px 280px at 18% 0%, rgba(36, 59, 83, .16), transparent 62%),
+        radial-gradient(900px 280px at 82% 0%, rgba(51, 65, 85, .14), transparent 60%),
+        linear-gradient(180deg, #ecf3ff 0%, #f7fafc 60%, #f6f8fb 100%);
+      border:1px solid rgba(15, 23, 42, .06);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    .kicker{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(30, 58, 138, .06);
+      border: 1px solid rgba(30, 58, 138, .10);
+      color:#1e3a8a;
+      font-weight:650;
+      letter-spacing:.2px;
+      font-size:12.5px;
+      font-family: var(--sans);
+    }
+    h1{
+      margin:12px 0 8px;
+      font-size:clamp(25px, 3.1vw, 37px);
+      line-height:1.08;
+      letter-spacing:-0.6px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      max-width:120ch;
+      font-size:14.5px;
+      font-family: var(--sans);
+    }
+
+    /* Top actions */
+    .top-actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.70);
+      color: var(--ink);
+      padding:10px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:750;
+      font-size:13px;
+      box-shadow: 0 1px 0 rgba(15, 23, 42, .03);
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-family: var(--sans);
+      transition: transform .10s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .btn:hover{ box-shadow: 0 10px 18px rgba(15,23,42,.10); transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0px); }
+    .btn .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: rgba(15,23,42,.35);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.65);
+    }
+    .btn.primary{
+      background: rgba(15, 23, 42, .92);
+      color: #fff;
+      border-color: rgba(15, 23, 42, .92);
+    }
+    .btn.primary .dot{ background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 2px rgba(15,23,42,.55); }
+    .btn.danger{
+      background: rgba(220,38,38,.06);
+      border-color: rgba(220,38,38,.18);
+      color: #7f1d1d;
+    }
+
+    /* Chips */
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+      font-family: var(--sans);
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.70);
+      border:1px solid rgba(15,23,42,.10);
+      color:var(--slate);
+      font-size:13px;
+      box-shadow:0 1px 0 rgba(15, 23, 42, .03);
+      transition: transform .08s ease, box-shadow .08s ease;
+      white-space:nowrap;
+    }
+    .chip:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(15,23,42,.08); }
+    .chip b{ font-weight:800; }
+    .chip small{ color:var(--muted2); font-weight:650; }
+
+    /* Sections */
+    .section{
+      margin-top:18px;
+      border-radius:var(--radius-xl);
+      background:rgba(255,255,255,.55);
+      border:1px solid rgba(15, 23, 42, .07);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+    }
+    .section-head{
+      padding:16px 18px 14px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.55));
+      border-bottom:1px solid rgba(15, 23, 42, .06);
+      font-family: var(--sans);
+    }
+    .section-head h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-0.2px;
+    }
+    .meta{
+      color:var(--muted2);
+      font-size:12.5px;
+      font-weight:650;
+      white-space:nowrap;
+    }
+    .grid{
+      padding:16px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+
+    /* Cards */
+    .card{
+      grid-column: span 12;
+      background:var(--card);
+      border:1px solid rgba(15, 23, 42, .08);
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    @media (min-width: 860px){
+      .card.half{ grid-column: span 6; }
+      .card.third{ grid-column: span 4; }
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:6px;
+      background: rgba(15,23,42,.10);
+    }
+    .accent-1::before{ background: var(--accentA); }
+    .accent-2::before{ background: var(--accentB); }
+    .accent-3::before{ background: var(--accentC); }
+    .accent-4::before{ background: var(--accentD); }
+
+    .card-inner{ padding:14px 14px 14px; }
+    .card-top{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      margin-bottom:8px;
+      font-family: var(--sans);
+    }
+    .roman{
+      width:40px; height:40px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      letter-spacing:.5px;
+      font-size:13px;
+      color:#0b1220;
+      background:#f1f5f9;
+      border:1px solid rgba(15, 23, 42, .10);
+      flex:0 0 auto;
+      user-select:none;
+    }
+    .accent-1 .roman{ background: rgba(36,59,83,.10); border-color: rgba(36,59,83,.22); }
+    .accent-2 .roman{ background: rgba(51,65,85,.10); border-color: rgba(51,65,85,.22); }
+    .accent-3 .roman{ background: rgba(36,59,83,.08); border-color: rgba(36,59,83,.18); }
+    .accent-4 .roman{ background: rgba(51,65,85,.08); border-color: rgba(51,65,85,.18); }
+
+    .title{
+      margin:0;
+      font-weight:820;
+      letter-spacing:-0.25px;
+      font-size:15.5px;
+      line-height:1.22;
+    }
+    .lead{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13.8px;
+      font-family: var(--sans);
+    }
+
+    .list{
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      font-family: var(--sans);
+    }
+    .li{
+      padding:10px 10px;
+      border-radius:12px;
+      background:#f8fafc;
+      border:1px solid rgba(15, 23, 42, .06);
+      color:var(--slate);
+      font-size:13.7px;
+    }
+    .li b{ font-weight:900; }
+
+    /* Destaques */
+    .k{
+      font-weight:900;
+      color:var(--navy);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, var(--mark) 55%);
+    }
+    .org{
+      font-weight:900;
+      color:var(--org);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(30,58,138,.10) 55%);
+    }
+    .prazo{
+      font-weight:950;
+      color:var(--prazo);
+      padding:0 .18em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(180,83,9,.12) 55%);
+      white-space:nowrap;
+    }
+    .exc{
+      font-weight:950;
+      color:var(--exc);
+      padding:0 .20em;
+      border-radius:.45em;
+      background: linear-gradient(180deg, transparent 55%, rgba(220,38,38,.14) 55%);
+    }
+    .num{
+      font-weight:950;
+      color:var(--num);
+      letter-spacing:.2px;
+      white-space:nowrap;
+    }
+    .uc{ text-transform:uppercase; letter-spacing:.55px; font-weight:950; }
+
+    .note{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background: rgba(30,58,138,.05);
+      border: 1px solid rgba(30,58,138,.10);
+      color:#1f2a44;
+      font-size:13.2px;
+      font-family: var(--sans);
+    }
+    .note b{ font-weight:900; }
+
+    /* Drawer: Anotações */
+    .drawer{
+      position: fixed;
+      inset: 0;
+      display:none;
+      background: rgba(15,23,42,.35);
+      backdrop-filter: blur(3px);
+      z-index: 50;
+      padding: 18px;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .drawer.open{ display:flex; }
+    .drawer-panel{
+      width: min(880px, 100%);
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: 0 24px 50px rgba(15,23,42,.20);
+      overflow:hidden;
+    }
+    .drawer-head{
+      padding: 14px 16px 12px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      background:
+        radial-gradient(820px 220px at 10% 0%, rgba(36, 59, 83, .12), transparent 62%),
+        radial-gradient(820px 220px at 90% 0%, rgba(51, 65, 85, .10), transparent 58%),
+        linear-gradient(180deg, rgba(248,250,252,.92), rgba(255,255,255,.75));
+      border-bottom: 1px solid rgba(15,23,42,.08);
+      font-family: var(--sans);
+    }
+    .drawer-head h2{
+      margin:0;
+      font-size: 15px;
+      letter-spacing: .1px;
+    }
+    .drawer-head p{
+      margin:4px 0 0;
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.35;
+      max-width: 78ch;
+    }
+    .drawer-body{
+      padding: 12px 14px 14px;
+      font-family: var(--sans);
+    }
+    textarea{
+      width:100%;
+      min-height: 240px;
+      resize: vertical;
+      border-radius: 16px;
+      border: 1px solid rgba(15,23,42,.14);
+      padding: 12px 12px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      outline:none;
+      background: #fbfcfe;
+    }
+    textarea:focus{
+      border-color: rgba(30,58,138,.35);
+      box-shadow: 0 0 0 3px rgba(30,58,138,.12);
+      background: #ffffff;
+    }
+    .drawer-actions{
+      margin-top: 10px;
+      display:flex;
+      gap: 10px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    footer{
+      margin-top:14px;
+      color:var(--muted2);
+      font-size:12.5px;
+      text-align:center;
+      font-family: var(--sans);
+    }
+
+    @media print{
+      body{ background:#fff; }
+      .hero,.section{ box-shadow:none; }
+      .chips, .top-actions{ display:none !important; }
+      .wrap{ padding:0; }
+      .grid{ padding:10px; }
+      .drawer{ display:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="hero" id="topo">
+      <span class="kicker">RICD • Título II • Capítulo III-A</span>
+      <h1>Capítulo III-A — Da Ouvidoria Parlamentar</h1>
+
+      <p class="sub">
+        Competências (<span class="k">Art. 21-A</span>), composição e mandato (<span class="k">Art. 21-B</span>), prerrogativas do Ouvidor-Geral
+        (<span class="k">Art. 21-C</span>) e publicidade dos atos (<span class="k">Art. 21-D</span>), com artigos correlatos relevantes
+        (<span class="k">Art. 253</span>; <span class="k">Art. 254</span>, § <span class="k">4º</span>; <span class="k">Art. 243</span>).
+      </p>
+
+      <div class="top-actions" role="group" aria-label="Ações principais">
+        <a class="btn" href="titulo2.html" title="Voltar ao Título II (página principal)">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Voltar</b> (Título II)</span>
+        </a>
+
+        <a class="btn" href="index.html" title="Voltar ao índice">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Menu principal</b> (index)</span>
+        </a>
+
+        <button class="btn primary" id="btnNotes" type="button" title="Abrir bloco de anotações">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Anotações</b> (salvar e fechar)</span>
+        </button>
+      </div>
+
+      <nav class="chips" aria-label="Navegação por tópicos">
+        <a class="chip" href="#a21a"><b>Art. 21-A</b> <small>Competências</small></a>
+        <a class="chip" href="#a21b"><b>Art. 21-B</b> <small>Composição</small></a>
+        <a class="chip" href="#a21c"><b>Art. 21-C</b> <small>Prerrogativas</small></a>
+        <a class="chip" href="#a21d"><b>Art. 21-D</b> <small>Publicidade</small></a>
+        <a class="chip" href="#correl"><b>Correlatos</b> <small>253/254/243</small></a>
+      </nav>
+    </header>
+
+    <!-- Art. 21-A -->
+    <section class="section" id="a21a">
+      <div class="section-head">
+        <h2>Competências da Ouvidoria Parlamentar (Art. 21-A)</h2>
+        <div class="meta">receber • encaminhar • melhorar</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-1">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">21-A</div>
+              <div>
+                <p class="title">Receber, examinar e encaminhar reclamações/representações</p>
+                <p class="lead">
+                  Compete à <span class="org">OUVIDORIA PARLAMENTAR</span> receber, examinar e encaminhar aos órgãos competentes
+                  <span class="k">RECLAMAÇÕES</span> ou <span class="k">REPRESENTAÇÕES</span> (pessoas físicas ou jurídicas) sobre hipóteses expressas.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li">
+                <b>I — Receber, examinar e encaminhar:</b> reclamações/representações (<span class="k">PF</span> ou <span class="k">PJ</span>) sobre:
+              </li>
+              <li class="li">
+                <b>a)</b> <span class="k">violação</span> ou <span class="k">discriminação</span> atentatória dos <span class="k">DIREITOS</span> e <span class="k">LIBERDADES</span> fundamentais;
+              </li>
+              <li class="li">
+                <b>b)</b> <span class="k">ILEGALIDADES</span> ou <span class="k">ABUSO DE PODER</span>;
+              </li>
+              <li class="li">
+                <b>c)</b> <span class="k">MAU FUNCIONAMENTO</span> dos serviços legislativos e administrativos;
+              </li>
+              <li class="li">
+                <b>d)</b> assuntos do sistema <span class="k">0800</span>.
+              </li>
+            </ul>
+
+            <div class="note">
+              <b>Estratégia de prova:</b> memorize o “núcleo” do inciso I (<span class="k">receber → examinar → encaminhar</span>) e as 4 alíneas (<span class="k">a</span> a <span class="k">d</span>).
+            </div>
+          </div>
+        </article>
+
+        <article class="card accent-2 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">II</div>
+              <div>
+                <p class="title">Sanar violações, ilegalidades e abusos</p>
+                <p class="lead">
+                  Propor medidas para <span class="k">SANAR</span> violações, ilegalidades e abusos.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li">
+                <b>II — Propor medidas:</b> para <span class="k">SANAR</span> violações, ilegalidades e abusos.
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-3 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">III</div>
+              <div>
+                <p class="title">Melhoria dos serviços ao cidadão</p>
+                <p class="lead">
+                  Propor e supervisionar medidas de <span class="k">MELHORIA</span> dos serviços prestados ao cidadão,
+                  garantindo <span class="k">efetividade</span> e <span class="k">aperfeiçoamento</span>.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li">
+                <b>III — Propor e supervisionar:</b> medidas de <span class="k">MELHORIA</span> (efetividade/aperfeiçoamento).
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-4 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">IV</div>
+              <div>
+                <p class="title">Sindicância ou inquérito</p>
+                <p class="lead">
+                  Propor, quando cabível, abertura de <span class="k">SINDICÂNCIA</span> ou <span class="k">INQUÉRITO</span>.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li">
+                <b>IV — Propor:</b> abertura de <span class="k">SINDICÂNCIA</span> ou <span class="k">INQUÉRITO</span> (quando cabível).
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-1 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">V</div>
+              <div>
+                <p class="title">Encaminhar denúncias a órgãos externos</p>
+                <p class="lead">
+                  Encaminhar denúncias ao <span class="org">TCU</span>, <span class="org">POLÍCIA FEDERAL</span>,
+                  <span class="org">MINISTÉRIO PÚBLICO</span> ou órgão competente.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li">
+                <b>V — Encaminhar denúncias:</b> <span class="org">TCU</span> • <span class="org">PF</span> • <span class="org">MP</span> • órgão competente.
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-2 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">VI</div>
+              <div>
+                <p class="title">Responder ao cidadão</p>
+                <p class="lead">
+                  <span class="k">RESPONDER</span> aos cidadãos/entidades sobre as providências tomadas.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li">
+                <b>VI — Responder:</b> aos cidadãos/entidades sobre providências adotadas.
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-3">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">VII</div>
+              <div>
+                <p class="title">Audiências públicas</p>
+                <p class="lead">
+                  Realizar <span class="k">AUDIÊNCIAS PÚBLICAS</span> com segmentos da sociedade civil.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li">
+                <b>VII — Realizar:</b> <span class="k">AUDIÊNCIAS PÚBLICAS</span> com segmentos da sociedade civil.
+              </li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Correlatos (21-A) -->
+    <section class="section" id="correl">
+      <div class="section-head">
+        <h2>Artigos correlatos (Art. 253 e Art. 254, § 4º)</h2>
+        <div class="meta">petições • queixas • CLP</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-4 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">253</div>
+              <div>
+                <p class="title">Recebimento e exame</p>
+                <p class="lead">
+                  As petições, reclamações ou queixas contra atos/omissões de autoridades ou imputados a membros da Casa
+                  serão recebidas e examinadas pela <span class="org">OUVIDORIA</span>, pelas <span class="org">COMISSÕES</span> ou pela <span class="org">MESA</span>.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li">
+                <b>Art. 253:</b> <span class="org">Ouvidoria</span> / <span class="org">Comissões</span> / <span class="org">Mesa</span> (tríplice via).
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-3 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">254</div>
+              <div>
+                <p class="title">Encaminhamento pela CLP</p>
+                <p class="lead">
+                  As formas de participação recebidas pela <span class="org">CLP</span> que <span class="exc">não</span> forem sugestões legislativas
+                  serão encaminhadas à <span class="org">OUVIDORIA</span>, conforme o caso.
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="li">
+                <b>Art. 254, § 4º:</b> CLP ➜ <span class="org">Ouvidoria</span> (se não for sugestão legislativa).
+              </li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Art. 21-B -->
+    <section class="section" id="a21b">
+      <div class="section-head">
+        <h2>Composição e mandato (Art. 21-B)</h2>
+        <div class="meta">PCD • 2 anos • vedação</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-2 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">21-B</div>
+              <div>
+                <p class="title">Estrutura</p>
+                <p class="lead">
+                  A Ouvidoria é composta de <span class="num">1</span> <span class="k">OUVIDOR-GERAL</span> e <span class="num">2 (DOIS)</span> <span class="k">OUVIDORES SUBSTITUTOS</span>.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li"><b>Composição:</b> <span class="num">1</span> <span class="k">Ouvidor-Geral</span> + <span class="num">2</span> <span class="k">Ouvidores Substitutos</span>.</li>
+              <li class="li"><b>Designação:</b> dentre os membros da Casa, pelo <span class="org">PCD</span>.</li>
+              <li class="li">
+                <b>Periodicidade:</b> a cada <span class="prazo">2 (DOIS) ANOS</span> (<span class="k">início</span> da sessão legislativa).
+              </li>
+              <li class="li">
+                <b>Vedação:</b> <span class="exc">vedada a RECONDUÇÃO</span> no período subsequente.
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card accent-4 half">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">243</div>
+              <div>
+                <p class="title">Correlato: vedação ao suplente</p>
+                <p class="lead">
+                  O <span class="k">SUPLENTE</span> de Deputado convocado em substituição <span class="exc">NÃO PODERÁ</span> ser escolhido para Ouvidor-Geral ou Ouvidor-Substituto.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li">
+                <b>Art. 243:</b> suplente convocado ➜ <span class="exc">não pode</span> Ouvidor-Geral / Ouvidor-Substituto.
+              </li>
+            </ul>
+
+            <div class="note">
+              <b>Pegadinha típica:</b> trocar “designação pelo <span class="org">PCD</span>” por “eleição” — no seu resumo, é <span class="k">designação</span>.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Art. 21-C -->
+    <section class="section" id="a21c">
+      <div class="section-head">
+        <h2>Prerrogativas do Ouvidor-Geral (Art. 21-C)</h2>
+        <div class="meta">solicitar • vista • diligências</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-1">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">21-C</div>
+              <div>
+                <p class="title">Poderes de instrução e acesso</p>
+                <p class="lead">
+                  O Ouvidor-Geral, no exercício de suas funções, <span class="k">PODERÁ</span> solicitar informações/documentos, ter vista e promover diligências e investigações.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li">
+                <b>Solicitar:</b> informações ou cópia de documentos a qualquer <span class="org">órgão</span> ou <span class="org">servidor</span> da Câmara.
+              </li>
+              <li class="li">
+                <b>Ter vista</b> (no recinto da Casa) de:
+                <span class="k">proposições legislativas</span> • <span class="k">atos e contratos administrativos</span> • outros necessários.
+              </li>
+              <li class="li">
+                <b>Requerer ou promover:</b> <span class="k">DILIGÊNCIAS</span> e <span class="k">INVESTIGAÇÕES</span>.
+              </li>
+            </ul>
+
+            <div class="note">
+              <b>Parágrafo único — Responsabilização:</b> a <span class="exc">DEMORA INJUSTIFICADA</span> na resposta ou na adoção das providências requeridas
+              poderá ensejar a <span class="k">RESPONSABILIZAÇÃO</span> da autoridade ou do servidor.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Art. 21-D -->
+    <section class="section" id="a21d">
+      <div class="section-head">
+        <h2>Publicidade dos atos (Art. 21-D)</h2>
+        <div class="meta">ampla divulgação</div>
+      </div>
+
+      <div class="grid">
+        <article class="card accent-3">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="roman">21-D</div>
+              <div>
+                <p class="title">Ampla divulgação institucional</p>
+                <p class="lead">
+                  Toda iniciativa provocada ou implementada pela Ouvidoria Parlamentar terá <span class="k">AMPLA DIVULGAÇÃO</span>
+                  pelo órgão de comunicação ou de imprensa da Casa.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li class="li">
+                <b>Regra:</b> <span class="k">ampla divulgação</span> por órgão de comunicação/imprensa da Casa.
+              </li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      HTML único • Salve como <b>titulo2-cap3a-ouvidoria-parlamentar.html</b> • Identidade visual + Menu principal + Anotações (Salvar e fechar).
+    </footer>
+
+  </div>
+
+  <!-- Drawer: Anotações -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="drawer-head">
+        <div>
+          <h2 id="drawerTitle">Anotações — Capítulo III-A (Ouvidoria Parlamentar)</h2>
+          <p>
+            Dica rápida: fixe <span class="k">Art. 21-A</span> (incisos I–VII), a estrutura <span class="num">1 + 2</span> do <span class="k">Art. 21-B</span>,
+            e o parágrafo único do <span class="k">Art. 21-C</span> (<span class="exc">demora injustificada</span> ➜ <span class="k">responsabilização</span>).
+          </p>
+        </div>
+        <button class="btn" type="button" id="btnCloseTop" title="Fechar">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>Fechar</b></span>
+        </button>
+      </div>
+
+      <div class="drawer-body">
+        <textarea id="notes" placeholder="Escreva aqui…"></textarea>
+
+        <div class="drawer-actions">
+          <button class="btn danger" type="button" id="btnClear">Limpar</button>
+          <button class="btn primary" type="button" id="btnSaveClose">Salvar e fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const KEY = "notes_titulo2_cap3a_ouvidoria_parlamentar";
+      const btnNotes = document.getElementById("btnNotes");
+      const drawer = document.getElementById("drawer");
+      const notes = document.getElementById("notes");
+      const btnSaveClose = document.getElementById("btnSaveClose");
+      const btnClear = document.getElementById("btnClear");
+      const btnCloseTop = document.getElementById("btnCloseTop");
+
+      function openDrawer(){
+        drawer.classList.add("open");
+        drawer.setAttribute("aria-hidden","false");
+        notes.value = localStorage.getItem(KEY) || "";
+        notes.focus();
+      }
+      function closeDrawer(){
+        drawer.classList.remove("open");
+        drawer.setAttribute("aria-hidden","true");
+      }
+      function saveNotes(){
+        localStorage.setItem(KEY, notes.value || "");
+      }
+
+      btnNotes.addEventListener("click", openDrawer);
+      btnCloseTop.addEventListener("click", closeDrawer);
+
+      btnSaveClose.addEventListener("click", function(){
+        saveNotes();
+        closeDrawer();
+      });
+
+      btnClear.addEventListener("click", function(){
+        if(confirm("Tem certeza que deseja limpar suas anotações deste capítulo?")){
+          notes.value = "";
+          localStorage.removeItem(KEY);
+          notes.focus();
+        }
+      });
+
+      drawer.addEventListener("click", function(e){
+        if(e.target === drawer){ closeDrawer(); }
+      });
+
+      window.addEventListener("keydown", function(e){
+        if(e.key === "Escape" && drawer.classList.contains("open")){
+          closeDrawer();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
