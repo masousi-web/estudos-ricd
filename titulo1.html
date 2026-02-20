@@ -5,1143 +5,152 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RICD — Resumo Visual (Título I)</title>
 
-  <!-- Literata (igual ao index) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#f6f8fb;
-      --card:#ffffff;
-      --ink:#0f172a;
-      --muted:#475569;
-      --muted2:#64748b;
-      --slate:#2b3442;
-
-      --navy:#0b1b2a;
-
+      --bg:#f6f8fb; --card:#ffffff; --ink:#0f172a; --muted:#475569;
+      --muted2:#64748b; --slate:#2b3442; --navy:#0b1b2a;
       --shadow: 0 10px 24px rgba(15, 23, 42, .08);
       --shadow2: 0 2px 10px rgba(15, 23, 42, .06);
+      --radius-xl:18px; --radius-lg:14px; --max:1060px;
 
-      --radius-xl:18px;
-      --radius-lg:14px;
-
-      --max:1060px;
-
-      /* ====== DESTAQUES SEMÂNTICOS ====== */
-      --org:#1e3a8a;        /* órgãos/instâncias */
-      --prazo:#b45309;      /* prazos */
-      --exc:#dc2626;        /* exceções/vedações (vermelho clássico) */
-      --num:#334155;        /* números/frações/quóruns */
+      /* DESTAQUES SEMÂNTICOS */
+      --org:#1e3a8a; --prazo:#b45309; --exc:#dc2626; --num:#334155;
       --mark: rgba(15, 23, 42, .08);
+      --accentA: rgba(36, 59, 83, .48); --accentB: rgba(51, 65, 85, .40);
 
-      /* acentos estruturais (navy suave) */
-      --accentA: rgba(36, 59, 83, .48);
-      --accentB: rgba(51, 65, 85, .40);
-      --accentC: rgba(36, 59, 83, .32);
-      --accentD: rgba(51, 65, 85, .32);
-
-      --serif: "Literata", ui-serif, Georgia, "Times New Roman", Times, serif;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      --serif: "Literata", serif;
+      --sans: ui-sans-serif, system-ui, sans-serif;
     }
 
     *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: var(--serif);
-      background:var(--bg);
-      color:var(--ink);
-      line-height:1.52;
-    }
-
+    body{ margin:0; font-family: var(--serif); background:var(--bg); color:var(--ink); line-height:1.52; }
     .wrap{ max-width:var(--max); margin:0 auto; padding:26px 18px 46px; }
 
     /* Header */
     .hero{
-      border-radius:var(--radius-xl);
-      padding:26px 22px 22px;
-      background:
-        radial-gradient(900px 280px at 18% 0%, rgba(36, 59, 83, .16), transparent 62%),
-        radial-gradient(900px 280px at 82% 0%, rgba(51, 65, 85, .14), transparent 60%),
-        linear-gradient(180deg, #ecf3ff 0%, #f7fafc 60%, #f6f8fb 100%);
-      border:1px solid rgba(15, 23, 42, .06);
-      box-shadow:var(--shadow2);
-      overflow:hidden;
+      border-radius:var(--radius-xl); padding:26px 22px 22px;
+      background: linear-gradient(180deg, #ecf3ff 0%, #f7fafc 60%, #f6f8fb 100%);
+      border:1px solid rgba(15, 23, 42, .06); box-shadow:var(--shadow2);
     }
-    .kicker{
-      display:inline-block;
-      padding:6px 10px;
-      border-radius:999px;
-      background: rgba(30, 58, 138, .06);
-      border: 1px solid rgba(30, 58, 138, .10);
-      color:#1e3a8a;
-      font-weight:650;
-      letter-spacing:.2px;
-      font-size:12.5px;
-      font-family: var(--sans);
-    }
-    h1{
-      margin:12px 0 8px;
-      font-size:clamp(26px, 3.2vw, 38px);
-      line-height:1.06;
-      letter-spacing:-0.6px;
-    }
-    .sub{
-      margin:0;
-      color:var(--muted);
-      max-width:88ch;
-      font-size:14.5px;
-      font-family: var(--sans);
-    }
-
-    /* Top actions */
-    .top-actions{
-      margin-top:14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-      font-family: var(--sans);
-    }
-
+    .kicker{ display:inline-block; padding:6px 10px; border-radius:999px; background: rgba(30, 58, 138, .06); border: 1px solid rgba(30, 58, 138, .10); color:#1e3a8a; font-weight:650; font-size:12.5px; font-family: var(--sans); }
+    h1{ margin:12px 0 8px; font-size:clamp(26px, 3.2vw, 38px); line-height:1.06; letter-spacing:-0.6px; }
+    
+    /* Botões abaixo do Título */
+    .btn-container { margin-top: 15px; display: flex; gap: 10px; font-family: var(--sans); }
     .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.75);
-      border:1px solid rgba(15,23,42,.12);
-      color:var(--navy);
-      font-weight:800;
-      font-size:13px;
-      text-decoration:none;
-      box-shadow:0 2px 10px rgba(15,23,42,.06);
-      transition: transform .08s ease, box-shadow .10s ease, border-color .10s ease;
-      white-space:nowrap;
-      cursor:pointer;
+      display:inline-flex; align-items:center; gap:10px; padding:10px 16px;
+      border-radius:999px; background:#fff; border:1px solid rgba(15,23,42,.12);
+      color:var(--navy); font-weight:800; font-size:13px; text-decoration:none;
+      cursor:pointer; transition: 0.2s;
     }
-    .btn:hover{
-      transform: translateY(-1px);
-      box-shadow:0 12px 22px rgba(15,23,42,.10);
-      border-color: rgba(15,23,42,.18);
-    }
-    .btn:active{ transform: translateY(0); }
-    .btn .dot{
-      width:10px;height:10px;border-radius:999px;
-      background: rgba(30,58,138,.65);
-      box-shadow:0 0 0 4px rgba(30,58,138,.10);
-    }
+    .btn:hover{ background: #f1f5f9; transform: translateY(-1px); }
+    .btn .dot{ width:8px; height:8px; border-radius:50%; background: #1e3a8a; }
+
+    /* Área de Notas */
+    .notes{ display:none; margin-top:20px; animation: slideIn 0.3s ease-out; }
+    .notes.is-open{ display:block; }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .notes-card{ background: #fff; border-radius: var(--radius-xl); border: 1px solid #e2e8f0; padding: 20px; box-shadow: var(--shadow); }
+    .notearea{ width:100%; min-height:150px; border: 1px solid #cbd5e1; border-radius: 12px; padding: 15px; font-family: var(--sans); font-size: 14px; outline: none; }
+    .notearea:focus { border-color: #1e3a8a; }
+    .notes-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; }
 
     /* Chips */
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:12px;
-      font-family: var(--sans);
-    }
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:9px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.70);
-      border:1px solid rgba(15,23,42,.10);
-      color:var(--slate);
-      font-size:13px;
-      text-decoration:none;
-      box-shadow:0 1px 0 rgba(15, 23, 42, .03);
-      transition: transform .08s ease, box-shadow .08s ease;
-    }
-    .chip:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(15,23,42,.08); }
-    .chip b{ font-weight:800; }
-    .chip small{ color:var(--muted2); font-weight:650; }
-
-    /* Sections */
-    .section{
-      margin-top:18px;
-      border-radius:var(--radius-xl);
-      background:rgba(255,255,255,.55);
-      border:1px solid rgba(15, 23, 42, .07);
-      box-shadow:var(--shadow2);
-      overflow:hidden;
-    }
-    .section-head{
-      padding:16px 18px 14px;
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:12px;
-      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.55));
-      border-bottom:1px solid rgba(15, 23, 42, .06);
-      font-family: var(--sans);
-    }
-    .section-head h2{
-      margin:0;
-      font-size:18px;
-      letter-spacing:-0.2px;
-    }
-    .meta{
-      color:var(--muted2);
-      font-size:12.5px;
-      font-weight:650;
-      white-space:nowrap;
-    }
-
-    .grid{
-      padding:16px;
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:14px;
-    }
-
-    /* Cards */
-    .card{
-      grid-column: span 12;
-      background:var(--card);
-      border:1px solid rgba(15, 23, 42, .08);
-      border-radius:var(--radius-lg);
-      box-shadow:var(--shadow2);
-      overflow:hidden;
-      position:relative;
-    }
-    @media (min-width: 860px){
-      .card.half{ grid-column: span 6; }
-      .card.third{ grid-column: span 4; }
-    }
-
-    .card::before{
-      content:"";
-      position:absolute;
-      left:0; top:0; bottom:0;
-      width:6px;
-      background: rgba(15,23,42,.10);
-    }
-    .accent-1::before{ background: var(--accentA); }
-    .accent-2::before{ background: var(--accentB); }
-    .accent-3::before{ background: var(--accentC); }
-    .accent-4::before{ background: var(--accentD); }
-
-    .card-inner{ padding:14px 14px 14px; }
-    .card-top{
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-      margin-bottom:8px;
-      font-family: var(--sans);
-    }
-    .roman{
-      width:38px; height:38px;
-      border-radius:12px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:900;
-      letter-spacing:.5px;
-      font-size:13px;
-      color:#0b1220;
-      background:#f1f5f9;
-      border:1px solid rgba(15, 23, 42, .10);
-      flex:0 0 auto;
-    }
-    .accent-1 .roman{ background: rgba(36,59,83,.10); border-color: rgba(36,59,83,.22); }
-    .accent-2 .roman{ background: rgba(51,65,85,.10); border-color: rgba(51,65,85,.22); }
-    .accent-3 .roman{ background: rgba(36,59,83,.08); border-color: rgba(36,59,83,.18); }
-    .accent-4 .roman{ background: rgba(51,65,85,.08); border-color: rgba(51,65,85,.18); }
-
-    .title{
-      margin:0;
-      font-weight:820;
-      letter-spacing:-0.25px;
-      font-size:15.5px;
-      line-height:1.22;
-      font-family: var(--serif);
-    }
-    .lead{
-      margin:6px 0 0;
-      color:var(--muted);
-      font-size:13.8px;
-      font-family: var(--sans);
-    }
-
-    .list{
-      margin:10px 0 0;
-      padding:0;
-      list-style:none;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      font-family: var(--sans);
-    }
-    .li{
-      padding:10px 10px;
-      border-radius:12px;
-      background:#f8fafc;
-      border:1px solid rgba(15, 23, 42, .06);
-      color:var(--slate);
-      font-size:13.7px;
-    }
-    .li b{ font-weight:900; }
-
-    .note{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:12px;
-      background: rgba(30,58,138,.05);
-      border: 1px solid rgba(30,58,138,.10);
-      color:#1f2a44;
-      font-size:13.2px;
-      font-family: var(--sans);
-    }
-    .note b{ font-weight:900; }
-
-    /* Analysis */
-    .analysis{
-      margin-top:18px;
-      border-radius:var(--radius-xl);
-      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.60));
-      border:1px solid rgba(15, 23, 42, .08);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-    .analysis-head{
-      padding:16px 18px 12px;
-      border-bottom:1px solid rgba(15, 23, 42, .06);
-      background:
-        radial-gradient(820px 240px at 10% 0%, rgba(36, 59, 83, .14), transparent 62%),
-        radial-gradient(820px 240px at 90% 0%, rgba(51, 65, 85, .12), transparent 58%),
-        linear-gradient(180deg, rgba(248,250,252,.92), rgba(255,255,255,.65));
-      font-family: var(--sans);
-    }
-    .analysis-head h2{ margin:0; font-size:18px; letter-spacing:-0.25px; }
-    .analysis-body{
-      padding:14px 16px 18px;
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:14px;
-      font-family: var(--sans);
-    }
-    .panel{
-      grid-column: span 12;
-      background:#fff;
-      border:1px solid rgba(15, 23, 42, .08);
-      border-radius:var(--radius-lg);
-      box-shadow:var(--shadow2);
-      padding:14px 14px;
-    }
-    @media (min-width: 860px){
-      .panel.half{ grid-column: span 6; }
-    }
-    .panel h3{
-      margin:0 0 10px;
-      font-size:14.8px;
-      letter-spacing:-0.15px;
-    }
-    .bul{
-      margin:0;
-      padding-left:18px;
-      color:var(--slate);
-      font-size:13.6px;
-    }
-    .bul li{ margin:6px 0; }
-    .bul b{ font-weight:900; }
-
-    footer{
-      margin-top:14px;
-      color:var(--muted2);
-      font-size:12.5px;
-      text-align:center;
-      font-family: var(--sans);
-    }
-
-    /* ====== DESTAQUES EM PALAVRAS ====== */
-    .k{
-      font-weight:900;
-      color:var(--navy);
-      padding:0 .18em;
-      border-radius:.45em;
-      background: linear-gradient(180deg, transparent 55%, var(--mark) 55%);
-    }
-    .org{
-      font-weight:900;
-      color:var(--org);
-      padding:0 .18em;
-      border-radius:.45em;
-      background: linear-gradient(180deg, transparent 55%, rgba(30,58,138,.10) 55%);
-    }
-    .prazo{
-      font-weight:950;
-      color:var(--prazo);
-      padding:0 .18em;
-      border-radius:.45em;
-      background: linear-gradient(180deg, transparent 55%, rgba(180,83,9,.12) 55%);
-    }
-    .exc{
-      font-weight:950;
-      color:var(--exc);
-      padding:0 .20em;
-      border-radius:.45em;
-      background: linear-gradient(180deg, transparent 55%, rgba(220,38,38,.14) 55%);
-    }
-    .num{
-      font-weight:950;
-      color:var(--num);
-      letter-spacing:.2px;
-    }
-    .tech{
-      font-style:italic;
-      font-weight:750;
-      color:var(--navy);
-      border-bottom:1px dotted rgba(15,23,42,.25);
-    }
-    .uc{
-      text-transform:uppercase;
-      letter-spacing:.55px;
-      font-weight:950;
-    }
-    .alert{
-      font-weight:900;
-      color:var(--navy);
-      padding:.05em .35em;
-      border-radius:999px;
-      border:1px solid rgba(15,23,42,.14);
-      background:rgba(15,23,42,.04);
-      white-space:nowrap;
-    }
-
-    /* ====== NOTAS (ABRIR/FECHAR) ====== */
-    .notes{ display:none; margin-top:16px; }
-    .notes.is-open{ display:block; }
-
-    .notes-card{
-      border-radius:var(--radius-xl);
-      background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.62));
-      border:1px solid rgba(15,23,42,.08);
-      box-shadow:var(--shadow2);
-      overflow:hidden;
-    }
-    .notes-head{
-      padding:14px 16px 10px;
-      border-bottom:1px solid rgba(15,23,42,.06);
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      font-family: var(--sans);
-    }
-    .notes-head h2{
-      margin:0;
-      font-size:16px;
-      letter-spacing:-0.2px;
-    }
-    .notes-head .hint{
-      margin:0;
-      font-size:12.5px;
-      color:var(--muted2);
-      font-weight:650;
-      font-family: var(--sans);
-    }
-    .notes-body{ padding:12px 14px 14px; font-family: var(--sans); }
-
-    textarea.notearea{
-      width:100%;
-      min-height:160px;
-      resize:vertical;
-      border-radius:14px;
-      border:1px solid rgba(15,23,42,.12);
-      background:#ffffff;
-      padding:12px 12px;
-      color:var(--slate);
-      font-size:13.6px;
-      line-height:1.5;
-      outline:none;
-      box-shadow: inset 0 0 0 1px rgba(15,23,42,.03);
-      font-family: var(--sans);
-    }
-    textarea.notearea:focus{
-      border-color: rgba(30,58,138,.25);
-      box-shadow:0 0 0 3px rgba(30,58,138,.12), inset 0 0 0 1px rgba(15,23,42,.03);
-    }
-
-    .notes-actions{
-      margin-top:10px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:flex-end;
-    }
-    .smallbtn{
-      padding:9px 12px;
-      border-radius:999px;
-      border:1px solid rgba(15,23,42,.12);
-      background:rgba(255,255,255,.70);
-      color:var(--navy);
-      font-weight:850;
-      font-size:12.8px;
-      cursor:pointer;
-      box-shadow:0 2px 10px rgba(15,23,42,.05);
-      transition: transform .08s ease, box-shadow .10s ease, border-color .10s ease;
-      font-family: var(--sans);
-    }
-    .smallbtn:hover{
-      transform: translateY(-1px);
-      box-shadow:0 12px 22px rgba(15,23,42,.10);
-      border-color: rgba(15,23,42,.18);
-    }
-
-    @media print{
-      body{ background:#fff; }
-      .hero,.section,.analysis{ box-shadow:none; }
-      .chips, .top-actions, .notes, textarea, .smallbtn{ display:none !important; }
-      .wrap{ padding:0; }
-      .grid,.analysis-body{ padding:10px; }
-    }
+    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; font-family: var(--sans); }
+    .chip{ padding:8px 12px; border-radius:999px; background:#fff; border:1px solid #e2e8f0; color:var(--slate); font-size:13px; text-decoration:none; }
+    
+    /* Cards de Conteúdo */
+    .section { margin-top: 30px; }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 15px; margin-top: 15px; }
+    .card { grid-column: span 12; background: #fff; border-radius: var(--radius-lg); padding: 20px; border: 1px solid #e2e8f0; position: relative; border-left: 6px solid #1e3a8a; }
+    @media (min-width: 860px) { .card.half { grid-column: span 6; } }
+    .title { font-weight: 800; font-size: 16px; margin: 0 0 10px 0; }
+    .list { list-style: none; padding: 0; font-family: var(--sans); font-size: 14px; }
+    .li { background: #f8fafc; padding: 8px; border-radius: 8px; margin-bottom: 5px; border: 1px solid #f1f5f9; }
+    
+    .k { font-weight: 900; background: rgba(15, 23, 42, .08); padding: 2px 4px; border-radius: 4px; }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-
-    <header class="hero" id="topo">
-      <span class="kicker">RICD • Resumo Visual (Material de Revisão)</span>
+    <header class="hero">
+      <span class="kicker">RICD • Resumo Visual</span>
       <h1>Título I — Disposições Preliminares</h1>
-      <p class="sub">
-        Organização visual em <span class="k">cards</span> do conteúdo do PDF do <span class="k">Título I</span>:
-        <span class="k">Sede</span>, <span class="k">Sessões Legislativas</span>, <span class="k">Sessões Preparatórias</span>
-        (posse e eleição da Mesa), <span class="k">Líderes</span>, <span class="k">Blocos Parlamentares</span>,
-        <span class="k">Maioria/Minoria</span> e <span class="k">Bancada Negra</span>.
-      </p>
-
-      <div class="top-actions">
-        <a class="btn" href="index.html" aria-label="Voltar ao menu principal (index)">
-          <span class="dot" aria-hidden="true"></span>
-          Menu principal
-        </a>
-
-        <button class="btn" type="button" id="toggleNotes" aria-expanded="false" aria-controls="notasWrap">
-          <span class="dot" aria-hidden="true"></span>
-          Anotações
-        </button>
+      
+      <div class="btn-container">
+        <a href="index.html" class="btn"><span class="dot"></span> Menu Principal</a>
+        <button class="btn" id="toggleNotes"><span class="dot"></span> Anotações</button>
       </div>
 
-      <nav class="chips" aria-label="Navegação por seções">
-        <a class="chip" href="#cap1"><b>Cap. I</b> <small>Sede</small></a>
-        <a class="chip" href="#cap2"><b>Cap. II</b> <small>Sessões Legislativas</small></a>
-        <a class="chip" href="#cap3"><b>Cap. III</b> <small>Preparatórias</small></a>
-        <a class="chip" href="#cap4"><b>Cap. IV</b> <small>Líderes</small></a>
-        <a class="chip" href="#cap5"><b>Cap. V</b> <small>Blocos</small></a>
-        <a class="chip" href="#majmin"><b>Art. 13</b> <small>Maioria/Minoria</small></a>
-        <a class="chip" href="#bn"><b>Arts. 13-A/13-B</b> <small>Bancada Negra</small></a>
-        <a class="chip" href="#analise"><b>Análise</b> <small>Pontos de atenção</small></a>
+      <nav class="chips">
+        <a class="chip" href="#cap1"><b>Cap. I</b> Sede</a>
+        <a class="chip" href="#cap2"><b>Cap. II</b> Sessões Legislativas</a>
       </nav>
     </header>
 
-    <!-- NOTAS (recolhidas por padrão) -->
-    <div class="notes" id="notasWrap" aria-label="Anotações do Título I">
-      <div class="notes-card" id="notas">
-        <div class="notes-head">
-          <h2>Anotações do Título I</h2>
-          <p class="hint">Salva automaticamente neste navegador. Use para erros, bizus, pegadinhas e revisões.</p>
-        </div>
-
-        <div class="notes-body">
-          <textarea class="notearea" id="notesBox" placeholder="• Erros que cometi
-• Pegadinhas que caíram
-• Bizus (prazos, quóruns, competências)
-• Dúvidas para revisar depois..."></textarea>
-
-          <div class="notes-actions">
-            <button class="smallbtn" type="button" id="clearNotes">Limpar</button>
-            <button class="smallbtn" type="button" id="copyNotes">Copiar</button>
-            <button class="smallbtn" type="button" id="saveCloseNotes">Salvar e fechar</button>
-          </div>
+    <div class="notes" id="notasWrap">
+      <div class="notes-card">
+        <h3 style="margin-top:0; font-family: var(--sans);">Minhas Anotações</h3>
+        <textarea class="notearea" id="notesBox" placeholder="Escreva seus bizus aqui..."></textarea>
+        <div class="notes-actions">
+          <button class="btn" id="clearNotes" style="font-size:12px;">Limpar</button>
+          <button class="btn" id="saveCloseNotes" style="font-size:12px; background: #1e3a8a; color: #fff;">Salvar e Fechar</button>
         </div>
       </div>
     </div>
 
-    <!-- CAPÍTULO I -->
     <section class="section" id="cap1">
-      <div class="section-head">
-        <h2>Capítulo I — Da Sede</h2>
-        <div class="meta">Sede e funcionamento</div>
-      </div>
-
+      <h2 style="font-family: var(--sans); font-size: 18px; color: #1e3a8a; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px;">Capítulo I — Da Sede</h2>
       <div class="grid">
-        <article class="card accent-1 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">I</div>
-              <div>
-                <p class="title">Sede e funcionamento</p>
-                <p class="lead">Definições diretas sobre onde a Câmara está sediada e onde funciona.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Sede:</b> <span class="k">Capital Federal</span>.</li>
-              <li class="li"><b>Funcionamento:</b> <span class="k">Palácio do Congresso Nacional</span>.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-2 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">II</div>
-              <div>
-                <p class="title">Funcionamento em outro edifício/ponto diverso</p>
-                <p class="lead">Hipótese excepcional condicionada a requisitos <span class="k">cumulativos</span>.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><span class="k">Requisitos cumulativos:</span></li>
-              <li class="li">• <span class="k">Motivo relevante</span> ou <span class="k">força maior</span>.</li>
-              <li class="li">• <span class="org">Deliberação da Mesa</span>.</li>
-              <li class="li">• <span class="tech">Ad referendum</span> da <span class="k">MA</span> dos Deputados.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- CAPÍTULO II -->
-    <section class="section" id="cap2">
-      <div class="section-head">
-        <h2>Capítulo II — Das Sessões Legislativas</h2>
-        <div class="meta">SLO, SLE e sessões preparatórias</div>
-      </div>
-
-      <div class="grid">
-        <article class="card accent-1 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">I</div>
-              <div>
-                <p class="title">Sessão Legislativa Ordinária (SLO)</p>
-                <p class="lead">Períodos anuais e datas-chave.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>1º período:</b> <span class="prazo">2/fev</span> ➜ <span class="prazo">17/jul</span>.</li>
-              <li class="li"><b>2º período:</b> <span class="prazo">1º/ago</span> ➜ <span class="prazo">22/dez</span>.</li>
-              <li class="li"><span class="alert">Atenção</span>: <span class="prazo">17/jul</span> <span class="exc">não interrompe</span> sem <span class="k">LDO aprovada</span> pelo <span class="org">Congresso Nacional</span>.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-2 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">II</div>
-              <div>
-                <p class="title">Sessão Legislativa Extraordinária (SLE)</p>
-                <p class="lead">Convocação do CN e limites temáticos, com exceção relevante.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Convocação:</b> do <span class="org">Congresso Nacional</span> (com este caráter).</li>
-              <li class="li"><b>Regra:</b> delibera <span class="exc">somente</span> matéria da <span class="k">convocação</span>.</li>
-              <li class="li">
-                <b>Exceção:</b> <span class="k">MPs em vigor</span> ➜ <span class="k">inclusão automática</span> na pauta
-                (<span class="k">Art. 57, § 8º, CF</span>).
-              </li>
-              <li class="li"><b>Conseq. prática:</b> <span class="org">PCD</span> fixa pauta, mas é <span class="exc">obrigado</span> a incluir MPs.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-3">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">III</div>
-              <div>
-                <p class="title">Sessões preparatórias (marco temporal)</p>
-                <p class="lead">Regras gerais e ajuste quando cair em final de semana/feriado.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Quando:</b> precedem a <span class="num">1ª</span> e <span class="num">3ª</span> SLO da legislatura.</li>
-              <li class="li"><b>Sáb/Dom/Feriado:</b> transfere para o <span class="prazo">1º dia útil subsequente</span>.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- CAPÍTULO III -->
-    <section class="section" id="cap3">
-      <div class="section-head">
-        <h2>Capítulo III — Das Sessões Preparatórias</h2>
-        <div class="meta">Posse e eleição da Mesa</div>
-      </div>
-
-      <div class="grid">
-        <article class="card accent-1 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">I</div>
-              <div>
-                <p class="title">Seção I — Posse dos Deputados (o que apresentar)</p>
-                <p class="lead">Itens informados à <span class="org">Mesa</span> e prazos de apresentação do diploma.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Apresentar à Mesa:</b> <span class="k">Diploma</span> (<span class="org">Justiça Eleitoral</span>), <span class="k">nome parlamentar</span>, <span class="k">legenda partidária</span>, <span class="k">UF de origem</span>.</li>
-              <li class="li"><b>Diploma:</b> até <span class="prazo">31 de janeiro</span> do ano de instalação da legislatura.</li>
-              <li class="li"><b>Forma:</b> Deputado apresenta <span class="k">pessoalmente</span> ou por intermédio do <span class="k">Partido</span>.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-2 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">II</div>
-              <div>
-                <p class="title">Nome parlamentar (regras)</p>
-                <p class="lead">Limites de composição e poder do Presidente para evitar confusões.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Máximo:</b> <span class="num">2</span> elementos, combinando:</li>
-              <li class="li">• <span class="k">Prenome + Nome</span> | • <span class="k">2 nomes</span> | • <span class="k">2 prenomes</span></li>
-              <li class="li"><b>Observação:</b> o Presidente <span class="k">pode</span> exigir alteração para evitar confusões.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-3">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">III</div>
-              <div>
-                <p class="title">Relação de Deputados diplomados (organização)</p>
-                <p class="lead">Competência da Secretaria-Geral da Mesa e ordenação da relação.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Competência:</b> <span class="org">Secretaria-Geral da Mesa</span>.</li>
-              <li class="li"><b>Prazo interno:</b> concluída <span class="k">antes</span> da instalação da sessão de posse.</li>
-              <li class="li"><b>Ordem:</b> Estado/DF/Territórios de <span class="k">norte ➜ sul</span> (ordem geográfica das capitais).</li>
-              <li class="li"><b>Em cada UF:</b> ordem alfabética dos <span class="k">nomes parlamentares</span> + legendas.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-1 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">IV</div>
-              <div>
-                <p class="title">Sessão preparatória de posse</p>
-                <p class="lead">Data, local, direção dos trabalhos e abertura.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Data:</b> <span class="prazo">1º de fevereiro</span> do <span class="num">1º</span> ano de cada legislatura.</li>
-              <li class="li"><b>Local:</b> sede da <span class="org">Câmara dos Deputados</span>.</li>
-              <li class="li"><b>Direção:</b> último Presidente (se reeleito Deputado). Na falta: Deputado mais idoso dentre os de maior nº de legislaturas.</li>
-              <li class="li"><b>Abertura:</b> Presidente convida <span class="num">4</span> Deputados (preferência por partidos diferentes) como Secretários e proclama os nomes da relação.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-2 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">V</div>
-              <div>
-                <p class="title">Compromisso solene e vedações</p>
-                <p class="lead">Ritual do compromisso e o que é expressamente vedado.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Compromisso:</b> após decididas reclamações, toma-se o compromisso solene. Chamada: cada Deputado de pé diz <span class="k">“Assim o prometo”</span>.</li>
-              <li class="li"><b>Vedações:</b> <span class="exc">modificar conteúdo ou ritual</span>; <span class="exc">declaração oral/escrita no ato</span>; <span class="exc">posse por procurador</span>.</li>
-              <li class="li"><span class="exc uc">SEM COMPROMISSO = SEM MANDATO</span> (não investido no mandato).</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-3">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">VI</div>
-              <div>
-                <p class="title">Posse posterior e por videoconferência</p>
-                <p class="lead">Hipóteses, prazos e requisitos para posse virtual.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Posse posterior:</b> durante sessão, junto à Mesa; no recesso do CN, perante o Presidente.</li>
-              <li class="li"><b>Prazo:</b> <span class="prazo">30 dias</span> + <span class="prazo">30 dias</span> (a requerimento do interessado).</li>
-              <li class="li"><b>Exceção:</b> <span class="k">força maior</span> ou <span class="k">enfermidade</span> comprovadas (contagem conforme a hipótese: 1ª sessão preparatória; diplomação durante a legislatura; fato que ensejar convocação do Presidente).</li>
-              <li class="li"><b>Posse por videoconferência:</b> hipóteses excepcionais + requerimento + autorização do Presidente; durante sessão preparatória ou no mesmo dia (acompanhada pela <span class="org">Secretaria-Geral da Mesa</span>, com termo).</li>
-              <li class="li"><b>Licença-gestante:</b> requerimento + declaração de parto em período <span class="exc">inferior a</span> <span class="prazo">120 dias</span> ➜ direito à posse virtual assegurado.</li>
-              <li class="li"><b>Dispensa de novo compromisso:</b> suplente já empossado; e o Deputado ao reassumir (comunicação pela <span class="org">PCD</span>).</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-2">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">VII</div>
-              <div>
-                <p class="title">Publicação e efeitos operacionais</p>
-                <p class="lead">Diário da Câmara e utilidades práticas para quórum e votações.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Publicação:</b> <span class="org">Diário da Câmara dos Deputados</span> (no <span class="prazo">dia seguinte</span>) com a relação dos investidos.</li>
-              <li class="li"><b>Serve para:</b> registro de comparecimento; verificação de quórum; votações nominais e escrutínio secreto.</li>
-            </ul>
-            <div class="note">
-              <b>Pegadinha típica:</b> <span class="k">posse virtual</span> (regras específicas, p.ex. <span class="prazo">120 dias</span>) <span class="exc">≠</span> <span class="k">participação remota</span> durante o mandato (regras próprias).
-            </div>
-          </div>
-        </article>
-
-        <article class="card accent-1">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">VIII</div>
-              <div>
-                <p class="title">Seção II — Eleição da Mesa (quando, mandato e ordem)</p>
-                <p class="lead">Datas, direção, vedação de recondução e ordem das votações.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Quando ocorre:</b> no <span class="k">1º biênio</span>, <span class="prazo">1º de fevereiro</span>; no <span class="k">2º biênio</span>, data/hora designadas pelo <span class="org">PCD</span>.</li>
-              <li class="li"><b>Mandato:</b> <span class="prazo">2 anos</span>. <span class="exc">Vedada recondução</span> ao mesmo cargo na eleição imediatamente subsequente.</li>
-              <li class="li"><b>Ordem:</b> Presidente <span class="k">primeiro</span>; demais cargos <span class="k">somente após</span> a escolha do Presidente.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-2 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">IX</div>
-              <div>
-                <p class="title">Sistema de votação (eletrônico)</p>
-                <p class="lead">Escrutínio secreto, quóruns e desempate.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Regra:</b> <span class="k">escrutínio secreto</span> + <span class="k">sistema eletrônico</span>.</li>
-              <li class="li"><b>Quórum de presença:</b> <span class="k">MA</span> dos Deputados.</li>
-              <li class="li"><b>Desempate:</b> mais idoso dentre os de maior nº de legislaturas.</li>
-              <li class="li"><span class="exc">Enquanto não eleito</span> novo Presidente ➜ <span class="org">Mesa anterior</span> dirige os trabalhos.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-3 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">X</div>
-              <div>
-                <p class="title">Avaria do sistema eletrônico (cédulas)</p>
-                <p class="lead">Formalidades de sigilo e logística de urnas/apuração.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Urnas:</b> <span class="num">4</span> urnas à vista do Plenário.</li>
-              <li class="li"><b>Cédula inválida:</b> quando <span class="exc">não atende</span> requisitos.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-2">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">XI</div>
-              <div>
-                <p class="title">Composição, candidaturas e vacância</p>
-                <p class="lead">Proporcionalidade, mudança de legenda e prazos.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Mudança de legenda:</b> membro da Mesa muda de partido ➜ <span class="exc">perde automaticamente</span> o cargo (salvo acordo).</li>
-              <li class="li"><b>Vacância:</b> até <span class="prazo">30/nov</span> do <span class="num">2º ano</span> ➜ eleição em <span class="prazo">5 sessões</span>. Após ➜ Mesa designa substituto.</li>
-              <li class="li"><b>Garantia da minoria:</b> <span class="num">1</span> membro assegurado.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="cap4">
-      <div class="section-head">
-        <h2>Capítulo IV — Dos Líderes</h2>
-        <div class="meta">Escolha, vice-lideranças e incompatibilidades</div>
-      </div>
-
-      <div class="grid">
-        <article class="card accent-1 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">I</div>
-              <div>
-                <p class="title">Escolha e vice-líderes</p>
-                <p class="lead">Representações escolhem líder e regras de indicação.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Vice-líderes:</b> até <span class="num">1/4</span> dos Deputados (ou fração); pode designar um como <span class="k">Primeiro Vice-Líder</span>.</li>
-              <li class="li"><b>Formalização:</b> enviada à <span class="org">Mesa Diretora</span>, subscrita pela <span class="k">MA</span> dos integrantes.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-2 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">II</div>
-              <div>
-                <p class="title">Liderança do Governo e partidos sem liderança</p>
-                <p class="lead">Designação presidencial e fala em comunicações.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Governo:</b> PR pode indicar <span class="k">Líder +</span> <span class="num">20</span> Vice-Líderes.</li>
-              <li class="li"><b>Sem liderança:</b> podem falar <span class="prazo">1x/semana</span>, por <span class="prazo">5 minutos</span>.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-3">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">III</div>
-              <div>
-                <p class="title">Incompatibilidades</p>
-                <p class="lead">Vedações para líderes/vice-líderes em relação à Mesa.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><span class="exc">Líderes e Vice-Líderes NÃO PODEM</span> integrar a <span class="org">Mesa Diretora</span>.</li>
-              <li class="li">Para concorrer à Mesa, deve <span class="exc">renunciar</span> à liderança.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="cap5">
-      <div class="section-head">
-        <h2>Capítulo V — Dos Blocos Parlamentares</h2>
-        <div class="meta">Criação, quórum e vedações</div>
-      </div>
-
-      <div class="grid">
-        <article class="card accent-1 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">I</div>
-              <div>
-                <p class="title">Conceito, regime e requisitos</p>
-                <p class="lead">Criação por 2+ partidos, liderança comum e regras essenciais.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Conceito:</b> representações de <span class="num">2</span> ou mais Partidos podem constituir <span class="k">Bloco Parlamentar</span>.</li>
-              <li class="li"><b>Quórum mínimo:</b> <span class="exc">não admitido</span> com menos de <span class="num">3/100</span> dos membros.</li>
-              <li class="li"><b>Duração:</b> circunscrita à <span class="k">LEGISLATURA</span>.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-2 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">II</div>
-              <div>
-                <p class="title">Vedações e prazos</p>
-                <p class="lead">Restrições para troca/dupla vinculação e efeitos para composição.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><span class="exc uc">VEDADO</span> fazer parte de outro bloco concomitantemente.</li>
-              <li class="li"><b>Efeitos para composição:</b> até <span class="prazo">1º de fevereiro</span> (1º e 3º ano, conforme o caso).</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="majmin">
-      <div class="section-head">
-        <h2>Art. 13 — Maioria e Minoria</h2>
-        <div class="meta">Definições e substituição</div>
-      </div>
-
-      <div class="grid">
-        <article class="card accent-1 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">I</div>
-              <div>
-                <p class="title">Maioria</p>
-                <p class="lead">Conceito regimental de Maioria na Casa.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>MAIORIA:</b> Partido ou Bloco integrado pela <span class="k">MAIORIA ABSOLUTA</span> dos membros da Casa.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-2 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">II</div>
-              <div>
-                <p class="title">Minoria e substituição</p>
-                <p class="lead">Regra quando ninguém atinge MA absoluta.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>MINORIA:</b> representação imediatamente inferior que expresse posição <span class="k">DIVERSA</span> da Maioria.</li>
-              <li class="li"><b>Se ninguém tiver MA absoluta:</b> assume o Partido/Bloco com <span class="k">MAIOR NÚMERO</span> de representantes.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="bn">
-      <div class="section-head">
-        <h2>Capítulo VI — Bancada Negra</h2>
-        <div class="meta">Arts. 13-A e 13-B</div>
-      </div>
-
-      <div class="grid">
-        <article class="card accent-1 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">I</div>
-              <div>
-                <p class="title">Composição e substituição (Art. 13-A)</p>
-                <p class="lead">Estrutura interna e substituição nos impedimentos/ausência.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Composição:</b> <span class="num">1</span> Coordenação-Geral + <span class="num">3</span> Vice-Coordenações.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-2 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">II</div>
-              <div>
-                <p class="title">Processo eleitoral (Art. 13-A)</p>
-                <p class="lead">Data, modalidade, quóruns e exceção por chapa única.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Data:</b> <span class="prazo">20 de novembro</span>.</li>
-              <li class="li"><b>Modalidade:</b> <span class="k">ESCRUTÍNIO SECRETO</span>.</li>
-              <li class="li"><b>Exceção:</b> <span class="exc">CHAPA ÚNICA</span> ➜ <span class="k">ACLAMAÇÃO</span>.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-3">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">III</div>
-              <div>
-                <p class="title">Competências (Art. 13-B)</p>
-                <p class="lead">Prerrogativas relevantes para prova.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Colégio de Líderes:</b> participa com <span class="k">VOZ E VOTO</span>.</li>
-              <li class="li"><b>Uso da palavra:</b> <span class="prazo">5 minutos</span> <span class="k">semanalmente</span> em Comunicações.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="analysis" id="analise">
-      <div class="analysis-head">
-        <h2>Análise de Padrões e Pontos de Atenção</h2>
-      </div>
-
-      <div class="analysis-body">
-        <div class="panel half">
-          <h3>1) Termos semelhantes com conteúdos distintos</h3>
-          <ul class="bul">
-            <li><b>Sessões preparatórias</b> vs <b>SLO</b>: preparatórias <span class="k">precedem</span> a 1ª e 3ª SLO; não confundir com o calendário (<span class="prazo">2/fev–17/jul</span> e <span class="prazo">1º/ago–22/dez</span>).</li>
-            <li><b>Maioria</b> (Art. 13) é <span class="k">maioria absoluta</span> da Casa; já “maioria simples” aparece como critério em eleições específicas.</li>
+        <article class="card half">
+          <p class="title">Sede e Funcionamento</p>
+          <ul class="list">
+            <li class="li"><b>Sede:</b> <span class="k">Capital Federal</span>.</li>
+            <li class="li"><b>Funcionamento:</b> <span class="k">Palácio do Congresso</span>.</li>
           </ul>
-        </div>
-
-        <div class="panel half">
-          <h3>2) Pegadinhas clássicas</h3>
-          <ul class="bul">
-            <li><b>SLE</b>: regra “<span class="exc">somente</span> matéria da convocação”, mas <span class="k">MP em vigor</span> entra automaticamente.</li>
-            <li><b>Eleição da Mesa</b>: não apura demais cargos antes do Presidente; <span class="exc">vedada recondução</span> ao mesmo cargo na eleição subsequente.</li>
-            <li><b>Bloco Parlamentar</b>: quórum mínimo de <span class="num">3/100</span> + vedações de simultaneidade.</li>
-          </ul>
-        </div>
-
-        <div class="panel half">
-          <h3>3) Números e datas que mais caem</h3>
-          <ul class="bul">
-            <li><b>SLO</b>: <span class="prazo">2/fev–17/jul</span> e <span class="prazo">1º/ago–22/dez</span>.</li>
-            <li><b>Diploma</b>: até <span class="prazo">31/jan</span>.</li>
-            <li><b>Posse</b>: <span class="prazo">30 + 30</span> dias (com exceções).</li>
-          </ul>
-        </div>
-
-        <div class="panel half">
-          <h3>4) Competências que costumam ser trocadas</h3>
-          <ul class="bul">
-            <li><b>Secretaria-Geral da Mesa</b> organiza relação de diplomados; <b>Mesa</b> delibera funcionamento em outro local; <b>PCD</b> define eleição do 2º biênio.</li>
-            <li><b>Colégio de Líderes</b>: casos de “<span class="k">voz</span> sem <span class="exc">voto</span>” vs “<span class="k">voz e voto</span>” (Bancada Negra).</li>
-          </ul>
-        </div>
+        </article>
       </div>
     </section>
-
-    <footer>
-      HTML único • Salve como <b>.html</b> e abra no navegador • Para imprimir: “Salvar como PDF”.
-    </footer>
 
   </div>
 
   <script>
-    (function(){
-      const key = "RICD_NOTES_titulo1";
+    // Gerenciamento de Notas
+    const key = "RICD_NOTES_T1";
+    const notesWrap = document.getElementById("notasWrap");
+    const toggleBtn = document.getElementById("toggleNotes");
+    const box = document.getElementById("notesBox");
+    const btnSave = document.getElementById("saveCloseNotes");
+    const btnClear = document.getElementById("clearNotes");
 
-      const notesWrap = document.getElementById("notasWrap");
-      const toggleBtn = document.getElementById("toggleNotes");
-      const box = document.getElementById("notesBox");
+    // Carregar notas salvas
+    box.value = localStorage.getItem(key) || "";
 
-      const btnClear = document.getElementById("clearNotes");
-      const btnCopy = document.getElementById("copyNotes");
-      const btnSaveClose = document.getElementById("saveCloseNotes");
+    // Abrir/Fechar
+    toggleBtn.addEventListener("click", () => {
+      notesWrap.classList.toggle("is-open");
+    });
 
-      if(!notesWrap || !toggleBtn || !box) return;
+    // Salvar e Fechar
+    btnSave.addEventListener("click", () => {
+      localStorage.setItem(key, box.value);
+      notesWrap.classList.remove("is-open");
+      alert("Anotações salvas com sucesso!");
+    });
 
-      function save(){
-        try{ localStorage.setItem(key, box.value || ""); }catch(e){}
+    // Limpar
+    btnClear.addEventListener("click", () => {
+      if(confirm("Deseja apagar todas as anotações deste título?")) {
+        box.value = "";
+        localStorage.removeItem(key);
       }
-
-      function openNotes(){
-        notesWrap.classList.add("is-open");
-        toggleBtn.setAttribute("aria-expanded","true");
-        notesWrap.scrollIntoView({ behavior: "smooth", block: "start" });
-        setTimeout(()=> box
+    });
+  </script>
+</body>
+</html>
