@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RICD — Cap. IV • Seção I (Disposições Gerais)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --ink:#0f172a;
+      --muted:#475569;
+      --muted2:#64748b;
+      --navy:#0b1b2a;
+
+      --accent:#1e3a8a;
+      --accent-soft:rgba(30,58,138,.08);
+
+      --org:#1e3a8a;
+      --prazo:#b45309;
+      --exc:#dc2626;
+      --num:#334155;
+      --mark: rgba(15,23,42,.08);
+
+      --radius:18px;
+      --shadow:0 12px 28px rgba(15,23,42,.08);
+
+      --serif:"Literata", Georgia, serif;
+      --sans:system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--serif);
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+    }
+
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 60px;}
+
+    .hero{
+      background:linear-gradient(180deg,#eef2ff,#f8fafc);
+      border-radius:var(--radius);
+      padding:26px 22px 18px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(15,23,42,.06);
+    }
+
+    .kicker{
+      display:inline-block;
+      font-family:var(--sans);
+      font-size:12px;
+      font-weight:600;
+      padding:6px 10px;
+      border-radius:999px;
+      background:var(--accent-soft);
+      color:var(--accent);
+      border:1px solid rgba(30,58,138,.2);
+    }
+
+    h1{
+      margin:12px 0 8px;
+      font-size:32px;
+      letter-spacing:-.5px;
+    }
+
+    .sub{
+      font-family:var(--sans);
+      font-size:14px;
+      color:var(--muted);
+      max-width:100ch;
+    }
+
+    .actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      font-family:var(--sans);
+      font-size:13px;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid rgba(15,23,42,.12);
+      background:#fff;
+      cursor:pointer;
+      text-decoration:none;
+      color:var(--ink);
+      font-weight:600;
+    }
+
+    .btn.primary{
+      background:#0f172a;
+      color:#fff;
+      border-color:#0f172a;
+    }
+
+    .section{
+      margin-top:22px;
+      background:rgba(255,255,255,.6);
+      border-radius:var(--radius);
+      border:1px solid rgba(15,23,42,.07);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .section-head{
+      padding:16px 18px;
+      border-bottom:1px solid rgba(15,23,42,.06);
+      font-family:var(--sans);
+      font-weight:600;
+      background:linear-gradient(180deg,#ffffff,#f8fafc);
+    }
+
+    .grid{
+      padding:18px;
+      display:grid;
+      gap:16px;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:14px;
+      border:1px solid rgba(15,23,42,.08);
+      box-shadow:0 6px 16px rgba(15,23,42,.06);
+      padding:16px;
+    }
+
+    .card h3{
+      margin:0 0 8px;
+      font-size:17px;
+      font-family:var(--sans);
+      letter-spacing:-.2px;
+    }
+
+    .list{margin:0;padding-left:18px}
+    .list li{margin:6px 0}
+
+    .k{
+      font-weight:700;
+      background:linear-gradient(transparent 60%, var(--mark) 60%);
+      padding:0 .2em;
+    }
+
+    .org{font-weight:700;color:var(--org)}
+    .prazo{font-weight:700;color:var(--prazo)}
+    .exc{font-weight:700;color:var(--exc)}
+    .num{font-weight:700;color:var(--num)}
+
+    textarea{
+      width:100%;
+      min-height:160px;
+      border-radius:12px;
+      border:1px solid rgba(15,23,42,.15);
+      padding:10px;
+      font-family:var(--sans);
+      margin-top:12px;
+    }
+
+    footer{
+      margin-top:18px;
+      text-align:center;
+      font-family:var(--sans);
+      font-size:13px;
+      color:var(--muted2);
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <span class="kicker">RICD • Capítulo IV • Seção I</span>
+  <h1>Seção I — Das Disposições Gerais</h1>
+  <p class="sub">
+    Estrutura das Comissões (Arts. <span class="k">22 a 24</span>): classificação, proporcionalidade,
+    perda de vaga, <span class="k">poder conclusivo</span> e competências fiscalizatórias.
+  </p>
+
+  <div class="actions">
+    <a href="capitulo4.html" class="btn">Voltar (Cap. IV)</a>
+    <a href="index.html" class="btn">Menu principal</a>
+    <button class="btn primary" onclick="saveNotes()">Salvar anotações</button>
+  </div>
+</header>
+
+<section class="section">
+<div class="section-head">Classificação das Comissões — Art. 22</div>
+<div class="grid">
+
+<div class="card">
+<h3>I — Permanentes</h3>
+<ul class="list">
+<li>Caráter <span class="k">técnico-legislativo</span> ou especializado.</li>
+<li>Integram a estrutura institucional e são <span class="k">co-partícipes do processo legiferante</span>.</li>
+<li>Competência: apreciar <span class="k">assuntos</span> e <span class="k">proposições</span> e sobre eles <span class="k">deliberar</span>.</li>
+<li>Exercem <span class="k">acompanhamento</span> de planos/programas e <span class="k">fiscalização orçamentária</span> da União.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>II — Temporárias</h3>
+<ul class="list">
+<li>Criadas para apreciar <span class="k">determinado assunto</span>.</li>
+<li>Extinguem-se:
+<ul>
+<li>Ao <span class="k">término da legislatura</span>; ou</li>
+<li>Quando <span class="k">alcançado o fim</span> ou <span class="k">expirado o prazo</span>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Espécies (Art. 33):</strong> <span class="k">Especiais</span>, <span class="k">de Inquérito</span> e <span class="k">Externas</span>.</p>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="section-head">Constituição e Proporcionalidade — Art. 23</div>
+<div class="grid">
+
+<div class="card">
+<ul class="list">
+<li>Representação <span class="k">proporcional</span> dos Partidos e Blocos.</li>
+<li>Garantia de inclusão <span class="k">sempre</span> de membro da <span class="k">Minoria</span>.</li>
+<li>Limites numéricos (Art. 25 §2º):
+<ul>
+<li>Máximo: <span class="num">13/100</span> do total;</li>
+<li>Mínimo: <span class="num">3,5/100</span>.</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Perda da Vaga — Art. 23, Parágrafo Único</h3>
+<p>
+Deputado que se <span class="k">desvincular</span> da bancada
+<span class="exc">perde automaticamente</span> a vaga ocupada.
+</p>
+<p><strong>Exceção:</strong> membros do <span class="org">Conselho de Ética</span> (Art. 21-E §2º).</p>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="section-head">Poder Conclusivo — Art. 24</div>
+<div class="grid">
+
+<div class="card">
+<p>
+As Comissões podem <span class="k">discutir e votar</span> projetos de lei,
+<span class="k">dispensada</span> a competência do Plenário.
+</p>
+
+<h3>Exceções (Rol Taxativo)</h3>
+<ul class="list">
+<li>Lei complementar;</li>
+<li>Código;</li>
+<li>Iniciativa popular;</li>
+<li>Projeto de Comissão;</li>
+<li>Matéria <span class="k">indelegável</span> (Art. 68 §1º CF);</li>
+<li>Oriundos do Senado aprovados pelo Plenário;</li>
+<li><span class="k">Pareceres divergentes</span>;</li>
+<li>Regime de <span class="k">urgência</span>.</li>
+</ul>
+
+<p><strong>Recurso:</strong> em até <span class="prazo">5 sessões</span>, subscrito por <span class="num">1/10</span> dos membros.</p>
+<p><strong>PEC:</strong> nunca se sujeita a poder conclusivo (Art. 202 §6º).</p>
+</div>
+
+<div class="card">
+<h3>Não confundir</h3>
+<ul class="list">
+<li><strong>Poder conclusivo:</strong> rito abreviado.</li>
+<li><strong>Poder terminativo:</strong> admissibilidade (CCJC/CFT).</li>
+<li><strong>Urgência:</strong> vai direto ao Plenário.</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="section-head">Competências Fiscalizatórias — Art. 24</div>
+<div class="grid">
+
+<div class="card">
+<h3>Fiscalização Direta</h3>
+<ul class="list">
+<li><span class="k">Convocar Ministro</span> ou conceder audiência.</li>
+<li>Encaminhar pedidos de <span class="k">informação</span> via Mesa.</li>
+<li>Fiscalizar atos do <span class="k">Poder Executivo</span>.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Controle e Auditoria</h3>
+<ul class="list">
+<li>Diligências com auxílio do <span class="org">TCU</span>.</li>
+<li>Propor <span class="k">sustação</span> de ato normativo.</li>
+<li>Iniciativa concorrente: Comissão ou <span class="k">Deputado</span>.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Participação Social</h3>
+<ul class="list">
+<li><span class="k">Audiências públicas</span>.</li>
+<li>Petições e representações.</li>
+<li>Solicitação de depoimentos.</li>
+<li>Diligência <span class="exc">não dilata prazo</span>.</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="section-head">Anotações</div>
+<div class="grid">
+<div class="card">
+<textarea id="notes" placeholder="Escreva seus pontos de revisão aqui..."></textarea>
+</div>
+</div>
+</section>
+
+<footer>
+Bons estudos!</footer>
+
+</div>
+
+<script>
+function saveNotes(){
+  localStorage.setItem("cap4_sec1_notes", document.getElementById("notes").value);
+  alert("Anotações salvas.");
+}
+document.getElementById("notes").value =
+  localStorage.getItem("cap4_sec1_notes") || "";
+</script>
+
+</body>
+</html>
