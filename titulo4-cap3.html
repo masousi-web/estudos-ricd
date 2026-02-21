@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RICD — Título IV — Capítulo III — Das Indicações</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root,[data-theme="light"]{
+  --bg:#f3f6fb;--bg2:#eaeff8;--surface:#ffffff;--surface2:#f7faff;
+  --border:rgba(15,39,66,.09);--border-hard:rgba(15,39,66,.16);
+  --ink:#0d1f35;--ink2:#2b4060;--muted:#526a88;--faint:#8fa8c2;
+  --gold:#b86b1a;--gold-soft:rgba(184,107,26,.10);
+  --blue:#1a4d8a;--blue-soft:rgba(26,77,138,.08);
+  --green:#186347;--green-soft:rgba(24,99,71,.09);
+  --red:#a81f2a;--red-soft:rgba(168,31,42,.09);
+  --hero-from:#102a4a;--hero-to:#1a4d8a;--hero-text:#ffffff;--hero-sub:rgba(255,255,255,.82);
+  --sh-sm:0 2px 8px rgba(12,26,43,.06);
+  --sh-md:0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:0 14px 34px rgba(12,26,43,.11);
+  --sh-hov:0 10px 28px rgba(12,26,43,.14);
+  --toggle-bg:#d8e2f0;--toggle-knob:#ffffff;
+}
+[data-theme="dark"]{
+  --bg:#0c1120;--bg2:#101728;--surface:#161d2f;--surface2:#1b2238;
+  --border:rgba(255,255,255,.06);--border-hard:rgba(255,255,255,.12);
+  --ink:#dce8fa;--ink2:#94b0d4;--muted:#627ea6;--faint:#374e6a;
+  --gold:#f0b84a;--gold-soft:rgba(240,184,74,.11);
+  --blue:#5b96f0;--blue-soft:rgba(91,150,240,.11);
+  --green:#38c882;--green-soft:rgba(56,200,130,.09);
+  --red:#f46862;--red-soft:rgba(244,104,98,.11);
+  --hero-from:#08111e;--hero-to:#0f1e30;--hero-text:#e4f0ff;--hero-sub:rgba(210,228,255,.70);
+  --sh-sm:0 2px 8px rgba(0,0,0,.28);
+  --sh-md:0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:0 14px 34px rgba(0,0,0,.40);
+  --sh-hov:0 10px 28px rgba(0,0,0,.46);
+  --toggle-bg:#243350;--toggle-knob:#f0b84a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',sans-serif;font-size:15px;line-height:1.68;
+  color:var(--ink);background:var(--bg);
+  transition:background .25s,color .25s;min-height:100vh;
+}
+#prog{position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--blue));z-index:300;border-radius:0 2px 2px 0}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px 90px}
+.hero{
+  background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);
+  border-radius:0 0 28px 28px;padding:38px 36px 30px;margin-bottom:22px;
+  position:relative;overflow:hidden;box-shadow:var(--sh-lg);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.10),transparent 58%),
+             radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.07),transparent 55%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'IV • III';position:absolute;right:30px;top:50%;transform:translateY(-50%);
+  font-family:'Crimson Pro',serif;font-size:76px;font-weight:700;
+  color:rgba(255,255,255,.06);line-height:1;pointer-events:none;user-select:none;
+}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.hero-title{font-family:'Crimson Pro',serif;font-size:clamp(26px,3.2vw,40px);font-weight:700;color:var(--hero-text);line-height:1.12;margin-bottom:10px}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:92ch;line-height:1.58}
+
+.section{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;box-shadow:var(--sh-sm);overflow:hidden;margin-top:14px;
+  opacity:0;animation:fadeUp .35s ease forwards;
+}
+.section:nth-of-type(1){animation-delay:.04s}
+.section:nth-of-type(2){animation-delay:.09s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+.s-head{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:16px 18px 12px 18px;
+  background:linear-gradient(180deg,var(--surface2),var(--surface));
+  border-bottom:1px solid var(--border);
+}
+.pill{
+  flex-shrink:0;padding:7px 10px;border-radius:999px;border:1px solid var(--border-hard);
+  background:var(--blue-soft);color:var(--blue);
+  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;
+}
+.hgroup{min-width:0}
+.h-title{font-family:'Crimson Pro',serif;font-size:19px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:2px}
+.h-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.tag{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:100px;
+  border:1px solid var(--border-hard);
+  background:color-mix(in srgb, var(--blue) 6%, var(--surface) 94%);
+  font-size:12px;color:var(--ink2);
+}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.tag{background:var(--surface2)}}
+.tag b{color:var(--blue);font-weight:800}
+
+.s-body{padding:14px 18px 18px 18px}
+.kv{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:860px){.kv{grid-template-columns:1fr 1fr}}
+.box{
+  border:1px solid var(--border);background:var(--surface2);
+  border-radius:14px;padding:14px 14px 12px 14px;
+}
+.box h4{
+  font-size:12px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--muted);margin-bottom:10px;
+}
+.ul{list-style:none;display:grid;gap:8px}
+.li{display:flex;gap:10px;align-items:flex-start;color:var(--ink2)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0}
+.note{
+  margin-top:10px;border:1px solid var(--border);
+  background:var(--surface);border-radius:12px;padding:12px;
+}
+.note b{color:var(--red)}
+.note p{color:var(--ink2)}
+kbd{font-family:'JetBrains Mono',monospace;font-size:12px;padding:2px 6px;border-radius:8px;background:var(--surface);border:1px solid var(--border-hard);color:var(--ink2)}
+
+.nav{
+  margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;
+  padding:14px 0 0 0;border-top:1px solid var(--border-hard);
+}
+.nav a{
+  display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;
+  border:1px solid var(--border-hard);background:var(--surface);box-shadow:var(--sh-sm);
+  font-weight:650;color:var(--ink2);transition:transform .12s,box-shadow .15s;
+}
+.nav a:hover{transform:translateY(-1px);box-shadow:var(--sh-md)}
+.nav .hint{color:var(--faint);font-size:12.5px}
+
+.fab-wrap{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+#theme-btn{
+  background:var(--surface);border:1px solid var(--border-hard);box-shadow:var(--sh-md);
+  border-radius:50px;padding:8px 14px;cursor:pointer;display:flex;align-items:center;gap:9px;
+  font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--muted);transition:all .2s;user-select:none;
+}
+#theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
+.t-track{width:38px;height:20px;background:var(--toggle-bg);border-radius:20px;position:relative;transition:background .25s}
+.t-knob{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--toggle-knob);transition:transform .25s,background .25s;box-shadow:0 1px 4px rgba(0,0,0,.22)}
+[data-theme="dark"] .t-knob{transform:translateX(18px)}
+#back-top{
+  width:44px;height:44px;background:var(--surface);border:1px solid var(--border-hard);
+  border-radius:50%;box-shadow:var(--sh-md);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:19px;color:var(--muted);transition:all .2s;opacity:0;pointer-events:none;transform:translateY(10px);
+}
+#back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
+
+@media(max-width:600px){
+  .hero{padding:28px 22px 24px;border-radius:0 0 20px 20px}
+  .hero::after{display:none}
+  .wrap{padding:0 14px 90px}
+  .nav{justify-content:center}
+}
+</style>
+</head>
+
+<body>
+<div id="prog"></div>
+
+<header class="hero" id="topo">
+  <div class="wrap" style="padding:0">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">RICD • Título IV • Capítulo III</div>
+      <h1 class="hero-title">Das Indicações</h1>
+      <p class="hero-sub">
+        Art. 113 — conceito, espécies, vedações e tramitação (quando a indicação sugere providência a outro Poder
+        ou sugere manifestação de Comissão).
+      </p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- Art. 113 — Conceito, espécies e vedações -->
+  <section class="section" id="art113-conceito">
+    <div class="s-head">
+      <div class="pill">Art. 113</div>
+      <div class="hgroup">
+        <div class="h-title">Indicação — conceito, espécies e vedações</div>
+        <div class="h-meta">
+          <span class="tag"><b>I</b> sugestão a outro Poder</span>
+          <span class="tag"><b>II</b> sugestão à Comissão</span>
+          <span class="tag"><b>Vedação</b> “consultas”</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-body">
+      <div class="kv">
+        <div class="box">
+          <h4>Definição</h4>
+          <p style="color:var(--ink2)">
+            Indicação é proposição pela qual o Deputado <b>sugere</b> providências — seja a <b>outro Poder</b>, seja a uma
+            <b>Comissão</b> (para que esta se manifeste sobre assunto visando à elaboração de projeto de iniciativa da Câmara).
+          </p>
+
+          <h4>Espécies (incisos I e II)</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span>
+              <b>I</b> — Sugere a outro Poder a adoção de providência, a realização de ato administrativo/gestão ou o envio de
+              <b>projeto</b> (quando a iniciativa for <b>exclusiva</b> desse Poder).
+            </li>
+            <li class="li"><span class="dot"></span>
+              <b>II</b> — Sugere manifestação de <b>Comissão</b> sobre determinado assunto, visando à elaboração de projeto de iniciativa da Câmara.
+            </li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h4>Vedações (inciso V)</h4>
+          <div class="note">
+            <p><b>Não serão aceitas</b> indicações que objetivem:</p>
+            <ul class="ul" style="margin-top:10px">
+              <li class="li"><span class="dot"></span> <b>consulta</b> a Comissão sobre interpretação/aplicação de lei;</li>
+              <li class="li"><span class="dot"></span> <b>consulta</b> a Comissão sobre atos de qualquer Poder/órgãos/autoridades.</li>
+            </ul>
+          </div>
+          <p style="margin-top:10px;color:var(--ink2)">
+            Em outras palavras: indicação é para <b>sugerir providência</b>, não para “pedir parecer interpretativo” ou “consultar atos” de autoridades.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Art. 113 — Tramitação -->
+  <section class="section" id="art113-tramitacao">
+    <div class="s-head">
+      <div class="pill">Art. 113</div>
+      <div class="hgroup">
+        <div class="h-title">Tramitação da indicação (§§ 1º e 2º)</div>
+        <div class="h-meta">
+          <span class="tag"><b>§ 1º</b> outro Poder</span>
+          <span class="tag"><b>§ 2º</b> Comissão</span>
+          <span class="tag"><b>Prazo</b> 20 sessões</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-body">
+      <div class="kv">
+        <div class="box">
+          <h4>Sugestão a outro Poder (§ 1º)</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> objeto de <b>requerimento escrito</b></li>
+            <li class="li"><span class="dot"></span> <b>despachado</b> pelo Presidente</li>
+            <li class="li"><span class="dot"></span> <b>publicado</b> no <kbd>DCD</kbd></li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h4>Sugestão à Comissão (§ 2º)</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> recebimento: lidas em <b>súmula</b> → publicadas → encaminhadas às Comissões competentes</li>
+            <li class="li"><span class="dot"></span> <b>parecer</b>: no prazo de <b>20 sessões</b> (prorrogação a critério da Presidência da Comissão)</li>
+          </ul>
+
+          <h4 style="margin-top:10px">Conclusão</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> se opinar pelo <b>projeto</b>: segue os trâmites das proposições congêneres</li>
+            <li class="li"><span class="dot"></span> se nenhuma opinar: Presidente determina o <b>arquivamento</b> (Autor cientificado; se quiser, oferece <b>projeto próprio</b>)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <div class="nav" aria-label="Navegação entre capítulos">
+    <a href="titulo4-cap2.html">← Voltar (Capítulo II)</a>
+    <div class="hint">Próximo: Capítulo IV — Dos Requerimentos</div>
+    <a href="titulo4-cap4.html">Avançar →</a>
+  </div>
+
+</div>
+
+<div class="fab-wrap">
+  <button id="theme-btn" title="Alternar tema">
+    <span id="t-icon">🌙</span>
+    <div class="t-track"><div class="t-knob"></div></div>
+    <span id="t-label">Escuro</span>
+  </button>
+  <button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function(){
+  const root=document.documentElement,btn=document.getElementById('theme-btn'),
+        icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
+  let dark=localStorage.getItem('ricd-theme')==='dark';
+  if(!localStorage.getItem('ricd-theme')) dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function apply(){
+    root.setAttribute('data-theme',dark?'dark':'light');
+    icon.textContent=dark?'☀️':'🌙';
+    lbl.textContent=dark?'Claro':'Escuro';
+    localStorage.setItem('ricd-theme',dark?'dark':'light');
+  }
+  apply();
+  btn.addEventListener('click',()=>{dark=!dark;apply()});
+})();
+(function(){
+  const bar=document.getElementById('prog'),top=document.getElementById('back-top');
+  window.addEventListener('scroll',function(){
+    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(s/h*100)+'%';
+    top.classList.toggle('show',s>280);
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
