@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RICD — Título II — Capítulo IV — Seção X</title>
+  <style>
+    :root{
+      --bg1:#0b1220;
+      --bg2:#122b3e;
+      --text:#e9f2ff;
+      --muted:#b9c7dc;
+      --line:rgba(255,255,255,.12);
+      --accent:#8dd7ff;
+      --accent2:#a8ffcf;
+      --warn:#ffd08a;
+      --danger:#ff9aa8;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 12% 10%, rgba(141,215,255,.18), transparent 55%),
+        radial-gradient(1000px 700px at 88% 18%, rgba(168,255,207,.14), transparent 60%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+    }
+    .wrap{max-width:1040px;margin:0 auto;padding:28px 18px 44px}
+    header{
+      display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+    .titleBlock{min-width:280px;flex:1}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 10px;border-radius:999px;
+      background:rgba(141,215,255,.10);
+      border:1px solid rgba(141,215,255,.22);
+      color:var(--text);font-size:12px;font-weight:700;
+    }
+    h1{font-size:22px;margin:8px 0 6px;letter-spacing:.2px}
+    .subtitle{color:var(--muted);font-size:13px;line-height:1.35;max-width:72ch}
+    .topActions{display:flex;gap:10px;align-items:center}
+    a.btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 12px;border-radius:12px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      color:var(--text);text-decoration:none;font-weight:650;font-size:13px;
+      transition:.15s ease;
+      user-select:none;
+    }
+    a.btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.10)}
+    a.btn:active{transform:translateY(0px)}
+    .grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+    @media (min-width:920px){ .grid{grid-template-columns:1fr 1fr} }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 14px 40px rgba(0,0,0,.22);
+    }
+    .cardHeader{
+      padding:14px 14px 10px;
+      border-bottom:1px solid var(--line);
+      background:rgba(0,0,0,.14);
+    }
+    .cardHeader h2{font-size:15px;margin:0 0 4px;letter-spacing:.2px}
+    .cardHeader .ref{color:var(--muted);font-size:12px}
+    .cardBody{padding:14px}
+    .k{
+      display:inline-block;
+      padding:3px 9px;border-radius:999px;
+      border:1px solid rgba(168,255,207,.25);
+      background:rgba(168,255,207,.10);
+      color:var(--text);
+      font-size:12px;font-weight:800;
+      margin:0 0 10px;
+      letter-spacing:.2px;
+    }
+    .k.warn{
+      border:1px solid rgba(255,208,138,.35);
+      background:rgba(255,208,138,.10);
+    }
+    .k.danger{
+      border:1px solid rgba(255,154,168,.35);
+      background:rgba(255,154,168,.10);
+    }
+    ul{margin:10px 0 0 18px;padding:0}
+    li{margin:8px 0;color:var(--text);line-height:1.35}
+    li span.m{color:var(--muted)}
+    .note{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px dashed rgba(255,255,255,.18);
+      background:rgba(141,215,255,.06);
+      color:var(--text);
+      font-size:13px;
+      line-height:1.35;
+    }
+    .note b{color:var(--accent)}
+    .note.warn{background:rgba(255,208,138,.08)}
+    .note.warn b{color:var(--warn)}
+    .note.danger{background:rgba(255,154,168,.08)}
+    .note.danger b{color:var(--danger)}
+    .links{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+    .links h3{font-size:13px;margin:0 0 8px;color:var(--muted);font-weight:800;letter-spacing:.2px}
+    .links .tag{
+      display:inline-block;margin:6px 8px 0 0;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(141,215,255,.22);
+      background:rgba(141,215,255,.10);
+      font-size:12px;color:var(--text);
+    }
+    hr.sep{border:none;height:1px;background:var(--line);margin:14px 0}
+    code.inline{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      padding:2px 6px;border-radius:10px;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      font-size:12px;
+    }
+    .footer{margin-top:18px;color:var(--muted);font-size:12px;line-height:1.35}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="titleBlock">
+        <div class="pill">Capítulo IV — Seção X — Fiscalização e Controle</div>
+        <h1>Fiscalização e Controle: objeto, etapas, prazos, sigilo e PAFC</h1>
+        <div class="subtitle">
+          O que pode ser fiscalizado (Art. 60), o passo a passo do procedimento (Art. 61),
+          regras de diligências/prazos/sigilo (Art. 61, §§) e o Plano Anual da CFFC (Art. 61-A).
+        </div>
+      </div>
+
+      <div class="topActions">
+        <a class="btn" href="titulo2-cap4.html" aria-label="Voltar para o menu do Capítulo IV">⟵ Voltar</a>
+        <a class="btn" href="#topo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Topo</a>
+      </div>
+    </header>
+
+    <div id="topo" class="grid">
+
+      <!-- Art. 60 -->
+      <section class="card">
+        <div class="cardHeader">
+          <h2>Objeto da fiscalização e controle</h2>
+          <div class="ref">Art. 60</div>
+        </div>
+        <div class="cardBody">
+          <div class="k">ATOS/FATOS SUJEITOS</div>
+          <ul>
+            <li><b>I — COFOP</b> (contábil, financeira, orçamentária, operacional e patrimonial) <span class="m">(referência: Art. 70 da CF)</span>.</li>
+            <li><b>II — Gestão administrativa</b> do Poder Executivo, incluindo <b>Administração Indireta</b>.</li>
+            <li><b>III — Atos típicos de crime de responsabilidade</b> <span class="m">(Presidente, Vice, Ministros de Estado/STF, PGR, AGU)</span>.</li>
+            <li><b>IV — Petições e reclamações da sociedade</b> (casos do Art. 253).</li>
+          </ul>
+
+          <div class="note">
+            <b>Ideia-chave:</b> o Art. 60 “abre o guarda-chuva” do que entra em fiscalização e controle:
+            desde COFOP (Art. 70 CF) até gestão do Executivo, crimes de responsabilidade e demandas da sociedade.
+          </div>
+
+          <div class="links">
+            <h3>Correlato</h3>
+            <span class="tag">Art. 253 (petições/reclamações/representações)</span>
+            <span class="tag">CF, Art. 70 (COFOP)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Art. 61 (I a IV) -->
+      <section class="card">
+        <div class="cardHeader">
+          <h2>Procedimento de fiscalização: etapas</h2>
+          <div class="ref">Art. 61, incisos I a IV</div>
+        </div>
+        <div class="cardBody">
+          <div class="k">FLUXO EM 4 ETAPAS</div>
+          <ul>
+            <li><b>I — Proposta:</b> apresentada por membro ou Deputado, com <b>indicação específica</b> do ato e <b>fundamentação</b>.</li>
+            <li><b>II — Relatório prévio:</b> avalia <b>oportunidade e conveniência</b>, alcance jurídico/político e define o <b>plano de execução</b>.</li>
+            <li><b>III — Implementação:</b> aprovado o prévio, o <b>mesmo Relator</b> executa a fiscalização.</li>
+            <li><b>IV — Relatório final:</b> avalia <b>legalidade</b>, <b>eficácia</b> e <b>gestão</b>.</li>
+          </ul>
+
+          <div class="note warn">
+            <b>Pegadinha:</b> quem executa a fiscalização é o <b>mesmo Relator</b> do relatório prévio (Inc. III).
+          </div>
+
+          <div class="links">
+            <h3>Aplicação subsidiária</h3>
+            <span class="tag">Art. 35, § 6º (meios/recursos/assessoramento — lógica de CPI)</span>
+            <span class="tag">Art. 37 (encaminhamentos do relatório final)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Art. 61 §§ 1º a 4º -->
+      <section class="card">
+        <div class="cardHeader">
+          <h2>Diligências, prazos e sigilo</h2>
+          <div class="ref">Art. 61, §§ 1º a 4º</div>
+        </div>
+        <div class="cardBody">
+          <div class="k">PODERES INSTRUTÓRIOS</div>
+          <ul>
+            <li>A Comissão pode solicitar ao <b>TCU</b> providências/informações do art. 71, IV e VII, da CF.</li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k warn">PRAZOS (MÍNIMO)</div>
+          <ul>
+            <li>Serão fixados prazos <b>não inferiores a 10 dias</b> para:</li>
+            <li>
+              <ul>
+                <li>cumprimento de convocações;</li>
+                <li>prestação de informações;</li>
+                <li>atendimento a requisições.</li>
+              </ul>
+            </li>
+          </ul>
+
+          <div class="note warn">
+            <b>Fixação para prova:</b> o “número mágico” aqui é <b>10 dias</b> como prazo mínimo.
+          </div>
+
+          <hr class="sep" />
+
+          <div class="k danger">SANÇÃO</div>
+          <ul>
+            <li>O descumprimento enseja apuração da <b>responsabilidade</b> do infrator.</li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k">SIGILO</div>
+          <ul>
+            <li>Documentos sigilosos/reservados/confidenciais: observar o § 5º do Art. 98.</li>
+          </ul>
+
+          <div class="links">
+            <h3>Correlato</h3>
+            <span class="tag">Art. 98, § 5º (leitura aos pares + invólucro lacrado + arquivo)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Art. 61-A -->
+      <section class="card">
+        <div class="cardHeader">
+          <h2>Plano anual da CFFC (PAFC) e relatório anual (RAFC)</h2>
+          <div class="ref">Art. 61-A</div>
+        </div>
+        <div class="cardBody">
+          <div class="k">COMPETÊNCIA EXCLUSIVA</div>
+          <ul>
+            <li>A <b>CFFC</b> implementa, em cada sessão legislativa, o <b>Plano Anual de Fiscalização e Controle (PAFC)</b>.</li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k warn">PRAZOS</div>
+          <ul>
+            <li><b>Aprovação do PAFC:</b> até <b>5 sessões</b> (contadas da reinstalação da Comissão).</li>
+            <li><b>Relatório Anual (RAFC):</b> aprovado até o <b>fim</b> da sessão legislativa.</li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k">DESTINATÁRIOS DO RAFC</div>
+          <ul>
+            <li>Encaminhado ao <b>TCU</b> e ao órgão de <b>controle interno</b> do Poder Executivo.</li>
+          </ul>
+
+          <div class="note">
+            <b>Mapa mental:</b> PAFC (planeja) → RAFC (presta contas) → TCU + controle interno (recebem).
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="footer">
+      Dica de memorização: <b>Art. 60</b> (o que entra) → <b>Art. 61</b> (como faz: proposta → prévio → execução → final) →
+      <b>§§</b> (TCU + mínimo <code class="inline">10 dias</code> + sigilo) → <b>61-A</b> (PAFC em 5 sessões; RAFC até fim do ano).
+    </div>
+  </div>
+</body>
+</html>
