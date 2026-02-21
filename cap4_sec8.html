@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RICD — Título II — Capítulo IV — Seção VIII (Dos Trabalhos)</title>
+  <style>
+    :root{
+      --bg1:#0b1220;
+      --bg2:#122b3e;
+      --card:#0f1c2b;
+      --card2:#0c1724;
+      --text:#e9f2ff;
+      --muted:#b9c7dc;
+      --line:rgba(255,255,255,.12);
+      --accent:#8dd7ff;
+      --accent2:#a8ffcf;
+      --warn:#ffd08a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 10% 10%, rgba(141,215,255,.18), transparent 55%),
+        radial-gradient(1000px 700px at 90% 20%, rgba(168,255,207,.14), transparent 60%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:28px 18px 40px}
+    header{
+      display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+    .titleBlock{min-width:260px;flex:1}
+    h1{font-size:22px;margin:0 0 6px;letter-spacing:.2px}
+    .subtitle{color:var(--muted);font-size:13px;line-height:1.35}
+    .topActions{display:flex;gap:10px;align-items:center}
+    a.btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 12px;border-radius:12px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      color:var(--text);text-decoration:none;font-weight:600;font-size:13px;
+      transition:.15s ease;
+      user-select:none;
+    }
+    a.btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.10)}
+    a.btn:active{transform:translateY(0px)}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 10px;border-radius:999px;
+      background:rgba(141,215,255,.10);
+      border:1px solid rgba(141,215,255,.22);
+      color:var(--text);font-size:12px;font-weight:650;
+    }
+
+    .grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+    @media (min-width:880px){ .grid{grid-template-columns:1fr 1fr} }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 14px 40px rgba(0,0,0,.22);
+    }
+    .cardHeader{
+      padding:14px 14px 10px;
+      border-bottom:1px solid var(--line);
+      background:rgba(0,0,0,.14);
+    }
+    .cardHeader h2{
+      font-size:15px;margin:0 0 4px;letter-spacing:.2px
+    }
+    .cardHeader .ref{color:var(--muted);font-size:12px}
+    .cardBody{padding:14px}
+    .k{
+      display:inline-block;
+      padding:3px 9px;border-radius:999px;
+      border:1px solid rgba(168,255,207,.25);
+      background:rgba(168,255,207,.10);
+      color:var(--text);
+      font-size:12px;font-weight:700;
+      margin:0 0 10px;
+    }
+    ul{margin:10px 0 0 18px;padding:0}
+    li{margin:8px 0;color:var(--text);line-height:1.35}
+    li span.m{color:var(--muted)}
+    .note{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px dashed rgba(255,255,255,.18);
+      background:rgba(255,208,138,.08);
+      color:var(--text);
+      font-size:13px;
+      line-height:1.35;
+    }
+    .note b{color:var(--warn)}
+    .links{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+    .links h3{font-size:13px;margin:0 0 8px;color:var(--muted);font-weight:700;letter-spacing:.2px}
+    .links .tag{
+      display:inline-block;margin:6px 8px 0 0;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(141,215,255,.22);
+      background:rgba(141,215,255,.10);
+      font-size:12px;color:var(--text);text-decoration:none;
+    }
+    .footer{
+      margin-top:18px;color:var(--muted);font-size:12px;line-height:1.35
+    }
+    hr.sep{
+      border:none;height:1px;background:var(--line);
+      margin:14px 0;
+    }
+    code.inline{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      padding:2px 6px;border-radius:10px;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      font-size:12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="titleBlock">
+        <div class="pill">Capítulo IV — Seção VIII — Dos Trabalhos</div>
+        <h1>Comissões — Ordem dos Trabalhos e Prazos</h1>
+        <div class="subtitle">
+          Subsequência: <b>Subseção I</b> (Ordem dos Trabalhos) e <b>Subseção II</b> (Prazos).
+          Estrutura em “cards” para leitura rápida e revisão.
+        </div>
+      </div>
+
+      <div class="topActions">
+        <a class="btn" href="titulo2-cap4.html" aria-label="Voltar para o menu do Capítulo IV">⟵ Voltar</a>
+        <a class="btn" href="#topo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Topo</a>
+      </div>
+    </header>
+
+    <div id="topo" class="grid">
+
+      <!-- Art. 49 -->
+      <section class="card">
+        <div class="cardHeader">
+          <h2>Reunião conjunta de Comissões</h2>
+          <div class="ref">Art. 49</div>
+        </div>
+        <div class="cardBody">
+          <div class="k">IDEIA-CHAVE</div>
+          <ul>
+            <li><b>Regra geral:</b> Comissões que receberam a proposição podem estudá-la em <b>reunião conjunta</b>.</li>
+            <li><b>Requisito:</b> acordo dos respectivos <b>Presidentes</b>.</li>
+            <li><b>Relatoria:</b> <b>um só Relator</b> (ou substituto).</li>
+            <li><b>Direção:</b> Presidente <b>mais idoso</b> (entre os de maior nº de legislaturas).</li>
+          </ul>
+
+          <div class="note">
+            <b>Obrigatória</b> (§ 1º) quando:
+            <ul>
+              <li>Proposição distribuída à <b>Comissão Especial</b> (Art. 34, II).</li>
+              <li>Proposição aprovada <b>com emendas</b> por mais de uma Comissão (para <b>harmonizar texto/redação final</b> — iniciativa da <b>CCJC</b>).</li>
+            </ul>
+          </div>
+
+          <div class="links">
+            <h3>Artigos correlatos</h3>
+            <span class="tag">Art. 34, II (Comissão Especial)</span>
+          </div>
+
+          <hr class="sep" />
+
+          <div class="note">
+            <b>Estrutura complexa</b> (§ 2º): pode haver <b>Relator-Geral</b> e <b>Relatores-Parciais</b>.
+            <br/>
+            <span class="m">Prazo dos parciais: metade do prazo do Relator-Geral. Emendas são encaminhadas conforme a matéria.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Art. 50 e 51 -->
+      <section class="card">
+        <div class="cardHeader">
+          <h2>Quórum e ordem dos trabalhos</h2>
+          <div class="ref">Art. 50 (caput e §§ 1º a 3º) + Art. 51</div>
+        </div>
+        <div class="cardBody">
+          <div class="k">ABERTURA & VOTAÇÃO</div>
+          <ul>
+            <li><b>Quórum de abertura (regra):</b> presença de <b>pelo menos metade</b> dos membros.</li>
+            <li><b>Exceção:</b> <b>qualquer número</b> se não houver matéria para deliberação ou se for só conhecimento/instrução.</li>
+            <li><b>Verificação de presença (§ 2º):</b>
+              <ul>
+                <li>para <b>abertura</b>: presença na <b>Casa</b>;</li>
+                <li>para <b>votação</b>: presença no <b>recinto</b> da reunião.</li>
+              </ul>
+            </li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k">ORDEM SEQUENCIAL</div>
+          <ul>
+            <li>Discussão e votação da <b>ata</b>.</li>
+            <li><b>Expediente</b> (sinopse, correspondência, comunicação de distribuição).</li>
+            <li><b>Ordem do Dia</b> (prioridade):
+              <ul>
+                <li>a) conhecimento/instrução;</li>
+                <li>b) requerimentos e relatórios;</li>
+                <li>c) proposições sujeitas ao Plenário;</li>
+                <li>d) proposições de caráter conclusivo (Art. 24, II).</li>
+              </ul>
+            </li>
+          </ul>
+
+          <div class="note">
+            § 1º — A pauta pode ser alterada por requerimento de <b>qualquer membro</b> para tratar de:
+            <ul>
+              <li>regime de <b>urgência</b>, <b>prioridade</b> ou tramitação ordinária;</li>
+              <li>comparecimento de <b>Ministro</b> ou autoridade;</li>
+              <li><b>audiência pública</b>.</li>
+            </ul>
+          </div>
+
+          <hr class="sep" />
+
+          <div class="k">NÃO-MEMBROS & AUTONOMIA</div>
+          <ul>
+            <li><b>Deputados não-membros</b> podem participar dos debates, <b>sem voto</b> (Art. 50, § 3º).</li>
+            <li>Comissões permanentes podem criar regras de organização e ter <b>relatores por assunto</b> (Art. 51).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Art. 52 -->
+      <section class="card">
+        <div class="cardHeader">
+          <h2>Prazos gerais, do relator e “plano B” por esgotamento</h2>
+          <div class="ref">Art. 52 (incisos I a IV + §§ 1º a 6º)</div>
+        </div>
+        <div class="cardBody">
+          <div class="k">PRAZOS GERAIS</div>
+          <ul>
+            <li><b>Urgência:</b> 5 sessões.</li>
+            <li><b>Prioridade:</b> 10 sessões.</li>
+            <li><b>Tramitação ordinária:</b> 40 sessões.</li>
+            <li><b>Emendas de Plenário:</b> mesmo prazo da proposição principal (correndo em conjunto).</li>
+          </ul>
+
+          <div class="links">
+            <h3>Correlato</h3>
+            <span class="tag">Art. 121, p. único (parecer oral em Plenário para emendas)</span>
+          </div>
+
+          <hr class="sep" />
+
+          <div class="k">RELATOR & PRORROGAÇÃO</div>
+          <ul>
+            <li><b>Relator:</b> tem <b>metade</b> do prazo da Comissão para oferecer parecer.</li>
+            <li><b>Prorrogação:</b> Presidente pode conceder até <b>metade</b> dos prazos, mediante requerimento fundamentado.</li>
+            <li><b>Vedação:</b> em <b>urgência</b>, não há prorrogação.</li>
+            <li><b>Esgotado o prazo:</b> Presidente <b>avoca</b> ou designa <b>outro membro</b> (Relator Substituto).</li>
+            <li><b>Prazo improrrogável do substituto:</b>
+              <ul>
+                <li>prioridade: 2 sessões</li>
+                <li>ordinária: 5 sessões</li>
+              </ul>
+            </li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k">ESGOTAMENTO: COMO ANDA MESMO ASSIM</div>
+          <ul>
+            <li>§ 4º — Autor pode pedir inclusão na Ordem do Dia da reunião imediata (mesmo sem parecer).</li>
+            <li>Sem parecer: Presidente designa membro para relatá-la na <b>mesma reunião</b> ou até a <b>seguinte</b>.</li>
+            <li>§ 5º — Apreciação imediata (independente de prazos) exige:
+              <ul>
+                <li>requerimento de 1/3 dos membros +</li>
+                <li>aprovação da maioria absoluta +</li>
+                <li>matéria publicada e distribuída.</li>
+              </ul>
+            </li>
+            <li>Se não houver parecer: Relator pode proferir <b>parecer oral</b>.</li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k">AVOCAÇÃO PELO PCD</div>
+          <ul>
+            <li>§ 6º — Esgotados os prazos, o <b>PCD</b> pode determinar envio:
+              <ul>
+                <li>à <b>comissão seguinte</b>; ou</li>
+                <li>ao <b>Plenário</b> (conforme o caso).</li>
+              </ul>
+            </li>
+            <li><b>Iniciativa:</b> de ofício ou a requerimento de qualquer Deputado.</li>
+            <li><b>Alcance:</b> vale inclusive para matérias conclusivas (Art. 24, II), mesmo sem recurso.</li>
+          </ul>
+
+          <div class="links">
+            <h3>Artigos correlatos</h3>
+            <span class="tag">Art. 24, II (conclusivo)</span>
+            <span class="tag">Art. 132, § 2º (recurso 1/10)</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="footer">
+      Dica de estudo: esta seção é perfeita para “pegadinha” de prova sobre (1) reunião conjunta obrigatória, (2) quórum de abertura vs quórum para votação, e (3) o que acontece quando o prazo estoura (<code class="inline">avocação</code>, <code class="inline">relator substituto</code> e <code class="inline">PCD</code>).
+    </div>
+  </div>
+</body>
+</html>
