@@ -1,1063 +1,526 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RICD — Resumo Visual (Título II)</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RICD — Título II — Dos Órgãos da Câmara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
 
-  <!-- Literata (Google Fonts) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&display=swap" rel="stylesheet">
+/* ═══════════════ TOKENS LIGHT ═══════════════ */
+:root,[data-theme="light"]{
+  --bg:#f3f6fb; --bg2:#eaeff8;
+  --surface:#ffffff; --surface2:#f7faff;
+  --border:rgba(15,39,66,.09); --border-hard:rgba(15,39,66,.16);
+  --ink:#0d1f35; --ink2:#2b4060; --muted:#526a88; --faint:#8fa8c2;
+  --gold:#b86b1a; --gold-soft:rgba(184,107,26,.10);
+  --blue:#1a4d8a; --blue-soft:rgba(26,77,138,.08);
+  --green:#186347; --green-soft:rgba(24,99,71,.09);
+  --red:#a81f2a; --red-soft:rgba(168,31,42,.09);
+  --purple:#5a3d8a; --purple-soft:rgba(90,61,138,.08);
+  --mark-bg:rgba(15,23,42,.07);
+  --hero-from:#0c2240; --hero-to:#153558;
+  --hero-text:#ffffff; --hero-sub:rgba(255,255,255,.80);
+  --sh-sm:0 2px 8px rgba(12,26,43,.06);
+  --sh-md:0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:0 14px 34px rgba(12,26,43,.11);
+  --sh-hov:0 10px 28px rgba(12,26,43,.14);
+  --list-bg:#f7fafc; --note-bg:rgba(26,77,138,.05);
+  --note-border:rgba(26,77,138,.12); --note-text:#1a2e44;
+  --toggle-bg:#d8e2f0; --toggle-knob:#ffffff;
+  --drawer-bg:#ffffff; --drawer-overlay:rgba(15,23,42,.38);
+  --textarea-bg:#fbfcfe;
+}
+/* ═══════════════ TOKENS DARK ═══════════════ */
+[data-theme="dark"]{
+  --bg:#0c1120; --bg2:#101728;
+  --surface:#161d2f; --surface2:#1b2238;
+  --border:rgba(255,255,255,.06); --border-hard:rgba(255,255,255,.12);
+  --ink:#dce8fa; --ink2:#94b0d4; --muted:#627ea6; --faint:#374e6a;
+  --gold:#f0b84a; --gold-soft:rgba(240,184,74,.11);
+  --blue:#5b96f0; --blue-soft:rgba(91,150,240,.11);
+  --green:#38c882; --green-soft:rgba(56,200,130,.09);
+  --red:#f46862; --red-soft:rgba(244,104,98,.11);
+  --purple:#a07af5; --purple-soft:rgba(160,122,245,.10);
+  --mark-bg:rgba(220,232,250,.09);
+  --hero-from:#08111e; --hero-to:#0f1e30;
+  --hero-text:#e4f0ff; --hero-sub:rgba(210,228,255,.70);
+  --sh-sm:0 2px 8px rgba(0,0,0,.28);
+  --sh-md:0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:0 14px 34px rgba(0,0,0,.40);
+  --sh-hov:0 10px 28px rgba(0,0,0,.46);
+  --list-bg:rgba(255,255,255,.03); --note-bg:rgba(91,150,240,.09);
+  --note-border:rgba(91,150,240,.20); --note-text:#b0ccf0;
+  --toggle-bg:#243350; --toggle-knob:#f0b84a;
+  --drawer-bg:#161d2f; --drawer-overlay:rgba(0,0,0,.65);
+  --textarea-bg:#111828;
+}
 
-  <style>
-    :root{
-      --bg:#f6f8fb;
-      --card:#ffffff;
-      --ink:#0f172a;
-      --muted:#475569;
-      --muted2:#64748b;
-      --slate:#2b3442;
+/* ═══════════════ BASE ═══════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;font-size:15px;line-height:1.68;color:var(--ink);background:var(--bg);transition:background .25s,color .25s;min-height:100vh}
+a{color:inherit;text-decoration:none}
 
-      --navy:#0b1b2a;
+/* ═══════════════ PROGRESS ═══════════════ */
+#prog{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--gold),var(--blue));z-index:300;transition:width .08s linear;border-radius:0 2px 2px 0}
 
-      --shadow: 0 10px 24px rgba(15, 23, 42, .08);
-      --shadow2: 0 2px 10px rgba(15, 23, 42, .06);
+/* ═══════════════ FABs ═══════════════ */
+.fab-wrap{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+#theme-btn{background:var(--surface);border:1px solid var(--border-hard);box-shadow:var(--sh-md);border-radius:50px;padding:8px 14px;cursor:pointer;display:flex;align-items:center;gap:9px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--muted);transition:all .2s;user-select:none}
+#theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
+.t-track{width:38px;height:20px;background:var(--toggle-bg);border-radius:20px;position:relative;transition:background .25s}
+.t-knob{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--toggle-knob);transition:transform .25s,background .25s;box-shadow:0 1px 4px rgba(0,0,0,.22)}
+[data-theme="dark"] .t-knob{transform:translateX(18px)}
+#back-top{width:44px;height:44px;background:var(--surface);border:1px solid var(--border-hard);border-radius:50%;box-shadow:var(--sh-md);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--muted);transition:all .2s;opacity:0;pointer-events:none;transform:translateY(10px)}
+#back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
 
-      --radius-xl:18px;
-      --radius-lg:14px;
+/* ═══════════════ WRAP ═══════════════ */
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px 80px}
 
-      --max:1100px;
+/* ═══════════════ HERO ═══════════════ */
+.hero{background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);border-radius:0 0 28px 28px;padding:38px 36px 34px;margin-bottom:32px;position:relative;overflow:hidden;box-shadow:var(--sh-lg)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);pointer-events:none}
+.hero::after{content:'II';position:absolute;right:36px;top:50%;transform:translateY(-50%);font-family:'Crimson Pro',serif;font-size:160px;font-weight:700;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.hero-title{font-family:'Crimson Pro',serif;font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--hero-text);line-height:1.12;margin-bottom:10px}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:72ch;line-height:1.58;margin-bottom:18px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.hero-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;border:1px solid}
+.hero-btn-ghost{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18);color:rgba(255,255,255,.88)}
+.hero-btn-ghost:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.hero-btn-primary{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);color:#fff;font-weight:700}
+.hero-btn-primary:hover{background:rgba(255,255,255,.22);transform:translateY(-1px)}
+.nav-chips{display:flex;flex-wrap:wrap;gap:8px}
+.nav-chips a{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:100px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.88);font-size:12.5px;font-weight:500;transition:background .15s,transform .1s}
+.nav-chips a:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.nav-chips a b{font-weight:700;color:var(--gold)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.10)}
+.lchip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:rgba(255,255,255,.78);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;font-weight:600;text-transform:uppercase}
+.ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 
-      /* ====== DESTAQUES SEMÂNTICOS ====== */
-      --org:#1e3a8a;        /* órgãos/instâncias */
-      --prazo:#b45309;      /* prazos */
-      --exc:#dc2626;        /* exceções/vedações (vermelho clássico) */
-      --num:#334155;        /* números/frações/quóruns */
-      --mark: rgba(15, 23, 42, .08);
+/* ═══════════════ SECTION DIVIDER ═══════════════ */
+.sec-head{display:flex;align-items:center;gap:14px;margin:36px 0 18px}
+.sec-line{flex:1;height:1px;background:var(--border-hard)}
+.sec-title{font-family:'Crimson Pro',serif;font-size:21px;font-weight:700;color:var(--ink);white-space:nowrap}
+.sec-badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
 
-      /* acentos estruturais (navy suave) */
-      --accentA: rgba(36, 59, 83, .48);
-      --accentB: rgba(51, 65, 85, .40);
-      --accentC: rgba(36, 59, 83, .32);
-      --accentD: rgba(51, 65, 85, .32);
+/* ═══════════════ GRID ═══════════════ */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.c12{grid-column:span 12}.c6{grid-column:span 12}.c4{grid-column:span 12}
+@media(min-width:760px){.c6{grid-column:span 6}.c4{grid-column:span 4}}
 
-      --serif: "Literata", ui-serif, Georgia, "Times New Roman", Times, serif;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
-    }
+/* ═══════════════ CARD ═══════════════ */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--sh-sm);overflow:hidden;position:relative;transition:transform .14s,box-shadow .14s;opacity:0;animation:fadeUp .35s ease forwards}
+.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.07s}.card:nth-child(3){animation-delay:.11s}.card:nth-child(4){animation-delay:.15s}.card:nth-child(5){animation-delay:.19s}.card:nth-child(6){animation-delay:.23s}.card:nth-child(7){animation-delay:.27s}.card:nth-child(8){animation-delay:.31s}.card:nth-child(9){animation-delay:.35s}.card:nth-child(10){animation-delay:.39s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{transform:translateY(-2px);box-shadow:var(--sh-hov)}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,#1c3f63);border-radius:14px 0 0 14px}
+.card-inner{padding:16px 16px 16px 18px}
+.card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.c-badge{flex-shrink:0;width:36px;height:36px;border-radius:9px;background:var(--bg2);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;color:var(--c,#1c3f63);margin-top:1px}
+[data-theme="dark"] .c-badge{background:color-mix(in srgb,var(--c,#1c3f63) 14%,var(--surface2) 86%);color:color-mix(in srgb,var(--c,#1c3f63) 55%,#ffffff 45%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){[data-theme="dark"] .c-badge{background:var(--surface2);color:var(--ink2)}}
+.c-title{font-family:'Crimson Pro',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:3px}
+.c-lead{font-size:13px;color:var(--muted);line-height:1.45}
+.kp-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.kp-list li{padding:9px 11px;border-radius:9px;background:var(--list-bg);border:1px solid var(--border);font-size:13.5px;color:var(--ink2);line-height:1.52}
+.kp-list li b{font-weight:700;color:var(--ink)}
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: var(--serif);
-      background:var(--bg);
-      color:var(--ink);
-      line-height:1.55;
-    }
+/* ═══════════════ SEMANTIC HIGHLIGHTS ═══════════════ */
+.k{font-weight:700;color:var(--ink);background:var(--mark-bg);padding:0 .22em;border-radius:.4em}
+.org{font-weight:700;color:var(--blue);background:var(--blue-soft);padding:0 .22em;border-radius:.4em}
+.prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em;white-space:nowrap}
+.exc{font-weight:700;color:var(--red);background:var(--red-soft);padding:0 .22em;border-radius:.4em}
+.num{font-weight:700;color:var(--ink2)}
+.tech{font-style:italic;font-weight:600;color:var(--ink)}
+.uc{text-transform:uppercase;letter-spacing:.04em}
 
-    .wrap{ max-width:var(--max); margin:0 auto; padding:26px 18px 70px; }
+/* ═══════════════ NOTE / TRAP / CORRELATOS ═══════════════ */
+.note{margin-top:10px;padding:10px 13px;border-radius:10px;background:var(--note-bg);border:1px solid var(--note-border);color:var(--note-text);font-size:13px;line-height:1.55}
+.note b{font-weight:700}
+.trap{margin-top:10px;display:flex;gap:10px;align-items:flex-start;background:var(--red-soft);border:1px solid color-mix(in srgb,var(--red) 25%,transparent 75%);border-radius:10px;padding:11px 13px}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.trap{border-color:rgba(168,31,42,.2)}}
+.trap-icon{font-size:16px;line-height:1.5;flex-shrink:0}
+.trap-text{font-size:13px;color:var(--red);font-weight:500;line-height:1.5}
+.trap-text b{font-weight:700}
+.correlatos{margin-top:10px;padding:11px 13px;border-radius:10px;background:var(--purple-soft);border:1px solid rgba(90,61,138,.16)}
+[data-theme="dark"] .correlatos{border-color:rgba(160,122,245,.18)}
+.corr-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);font-weight:700;margin-bottom:6px}
+.corr-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+.corr-list li{font-size:13px;color:var(--ink2);padding-left:16px;position:relative;line-height:1.5}
+.corr-list li::before{content:'↗';position:absolute;left:0;color:var(--purple);font-size:12px}
 
-    /* Header */
-    .hero{
-      border-radius:var(--radius-xl);
-      padding:26px 22px 18px;
-      background:
-        radial-gradient(900px 280px at 18% 0%, rgba(36, 59, 83, .16), transparent 62%),
-        radial-gradient(900px 280px at 82% 0%, rgba(51, 65, 85, .14), transparent 60%),
-        linear-gradient(180deg, #ecf3ff 0%, #f7fafc 60%, #f6f8fb 100%);
-      border:1px solid rgba(15, 23, 42, .06);
-      box-shadow:var(--shadow2);
-      overflow:hidden;
-      position:relative;
-    }
-    .kicker{
-      display:inline-block;
-      padding:6px 10px;
-      border-radius:999px;
-      background: rgba(30, 58, 138, .06);
-      border: 1px solid rgba(30, 58, 138, .10);
-      color:#1e3a8a;
-      font-weight:650;
-      letter-spacing:.2px;
-      font-size:12.5px;
-      font-family: var(--sans);
-    }
-    h1{
-      margin:12px 0 8px;
-      font-size:clamp(26px, 3.2vw, 38px);
-      line-height:1.08;
-      letter-spacing:-0.6px;
-    }
-    .sub{
-      margin:0;
-      color:var(--muted);
-      max-width:92ch;
-      font-size:14.5px;
-      font-family: var(--sans);
-    }
+/* ═══════════════ CAPÍTULO BUTTONS ═══════════════ */
+.cap-grid{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.capbtn{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px 14px 20px;border-radius:12px;background:var(--surface2);border:1px solid var(--border);box-shadow:var(--sh-sm);position:relative;overflow:hidden;transition:transform .12s,box-shadow .12s,border-color .12s}
+.capbtn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,#1c3f63)}
+.capbtn:hover{transform:translateY(-2px);box-shadow:var(--sh-hov);border-color:var(--border-hard)}
+.capbtn-text{min-width:0;padding-left:6px}
+.capbtn-title{font-family:'Crimson Pro',serif;font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:4px}
+.capbtn-desc{font-size:13px;color:var(--muted);line-height:1.4}
+.capbtn-arrow{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--bg2);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);transition:color .15s,background .15s}
+.capbtn:hover .capbtn-arrow{color:var(--ink);background:var(--surface)}
 
-    /* Top actions */
-    .top-actions{
-      margin-top:14px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
-    }
-    .btn{
-      appearance:none;
-      border:1px solid rgba(15,23,42,.12);
-      background: rgba(255,255,255,.70);
-      color: var(--ink);
-      padding:10px 12px;
-      border-radius:999px;
-      cursor:pointer;
-      font-weight:750;
-      font-size:13px;
-      box-shadow: 0 1px 0 rgba(15, 23, 42, .03);
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-family: var(--sans);
-      text-decoration:none;
-    }
-    .btn:hover{ box-shadow: 0 10px 18px rgba(15,23,42,.10); transform: translateY(-1px); }
-    .btn:active{ transform: translateY(0px); }
-    .btn .dot{
-      width:10px; height:10px; border-radius:99px;
-      background: rgba(15,23,42,.35);
-      box-shadow: inset 0 0 0 2px rgba(255,255,255,.65);
-    }
-    .btn.primary{
-      background: rgba(15, 23, 42, .92);
-      color: #fff;
-      border-color: rgba(15, 23, 42, .92);
-    }
-    .btn.primary .dot{ background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 2px rgba(15,23,42,.55); }
+/* ═══════════════ FOOTER ═══════════════ */
+.page-footer{text-align:center;font-size:12.5px;color:var(--faint);margin-top:48px;padding-top:20px;border-top:1px solid var(--border-hard);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px}
+.page-footer a{color:var(--blue);font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid var(--border-hard);background:var(--surface);font-size:13px;transition:box-shadow .15s}
+.page-footer a:hover{box-shadow:var(--sh-md)}
 
-    /* Chips nav */
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:14px;
-      font-family: var(--sans);
-    }
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:9px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.70);
-      border:1px solid rgba(15,23,42,.10);
-      color:var(--slate);
-      font-size:13px;
-      text-decoration:none;
-      box-shadow:0 1px 0 rgba(15, 23, 42, .03);
-      transition: transform .08s ease, box-shadow .08s ease;
-      white-space:nowrap;
-    }
-    .chip:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(15,23,42,.08); }
-    .chip b{ font-weight:800; }
-    .chip small{ color:var(--muted2); font-weight:650; }
+/* ═══════════════ NOTES DRAWER ═══════════════ */
+.drawer-overlay{position:fixed;inset:0;background:var(--drawer-overlay);backdrop-filter:blur(4px);z-index:400;display:none;align-items:flex-end;justify-content:center;padding:16px}
+.drawer-overlay.open{display:flex}
+.drawer-panel{width:min(900px,100%);background:var(--drawer-bg);border:1px solid var(--border-hard);border-radius:20px;box-shadow:var(--sh-lg);overflow:hidden;transition:background .25s}
+.drawer-head{padding:16px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;background:linear-gradient(180deg,var(--surface2),var(--surface));border-bottom:1px solid var(--border-hard)}
+.drawer-head-info h2{font-family:'Crimson Pro',serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.drawer-head-info p{font-size:13px;color:var(--muted);line-height:1.45;max-width:70ch}
+.drawer-close{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--bg2);border:1px solid var(--border-hard);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);transition:all .15s}
+.drawer-close:hover{color:var(--red);border-color:var(--red)}
+.drawer-body{padding:16px 20px 20px}
+#notes-area{width:100%;min-height:220px;resize:vertical;border-radius:12px;border:1px solid var(--border-hard);padding:12px 14px;font-family:'Outfit',sans-serif;font-size:14px;line-height:1.6;outline:none;background:var(--textarea-bg);color:var(--ink);transition:border-color .15s,background .25s,color .25s}
+#notes-area:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+#notes-area::placeholder{color:var(--faint)}
+.drawer-actions{margin-top:12px;display:flex;gap:10px;justify-content:flex-end}
+.d-btn{font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;padding:8px 18px;border-radius:8px;cursor:pointer;border:1px solid;transition:all .15s}
+.d-btn-clear{background:transparent;color:var(--red);border-color:color-mix(in srgb,var(--red) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-clear{border-color:rgba(168,31,42,.3)}}
+.d-btn-clear:hover{background:var(--red-soft)}
+.d-btn-save{background:var(--green-soft);color:var(--green);border-color:color-mix(in srgb,var(--green) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-save{border-color:rgba(24,99,71,.3)}}
+.d-btn-save:hover{background:rgba(24,99,71,.18)}
 
-    /* Sections */
-    .section{
-      margin-top:18px;
-      border-radius:var(--radius-xl);
-      background:rgba(255,255,255,.55);
-      border:1px solid rgba(15, 23, 42, .07);
-      box-shadow:var(--shadow2);
-      overflow:hidden;
-    }
-    .section-head{
-      padding:16px 18px 14px;
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:12px;
-      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.55));
-      border-bottom:1px solid rgba(15, 23, 42, .06);
-      font-family: var(--sans);
-    }
-    .section-head h2{
-      margin:0;
-      font-size:18px;
-      letter-spacing:-0.2px;
-    }
-    .meta{
-      color:var(--muted2);
-      font-size:12.5px;
-      font-weight:650;
-      white-space:nowrap;
-    }
-
-    .grid{
-      padding:16px;
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:14px;
-    }
-
-    /* Cards */
-    .card{
-      grid-column: span 12;
-      background:var(--card);
-      border:1px solid rgba(15, 23, 42, .08);
-      border-radius:var(--radius-lg);
-      box-shadow:var(--shadow2);
-      overflow:hidden;
-      position:relative;
-    }
-    @media (min-width: 860px){
-      .card.half{ grid-column: span 6; }
-      .card.third{ grid-column: span 4; }
-    }
-
-    .card::before{
-      content:"";
-      position:absolute;
-      left:0; top:0; bottom:0;
-      width:6px;
-      background: rgba(15,23,42,.10);
-    }
-    .accent-1::before{ background: var(--accentA); }
-    .accent-2::before{ background: var(--accentB); }
-    .accent-3::before{ background: var(--accentC); }
-    .accent-4::before{ background: var(--accentD); }
-
-    .card-inner{ padding:14px 14px 14px; }
-    .card-top{
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-      margin-bottom:8px;
-      font-family: var(--sans);
-    }
-    .roman{
-      width:38px; height:38px;
-      border-radius:12px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:900;
-      letter-spacing:.5px;
-      font-size:13px;
-      color:#0b1220;
-      background:#f1f5f9;
-      border:1px solid rgba(15, 23, 42, .10);
-      flex:0 0 auto;
-      user-select:none;
-    }
-    .accent-1 .roman{ background: rgba(36,59,83,.10); border-color: rgba(36,59,83,.22); }
-    .accent-2 .roman{ background: rgba(51,65,85,.10); border-color: rgba(51,65,85,.22); }
-    .accent-3 .roman{ background: rgba(36,59,83,.08); border-color: rgba(36,59,83,.18); }
-    .accent-4 .roman{ background: rgba(51,65,85,.08); border-color: rgba(51,65,85,.18); }
-
-    .title{
-      margin:0;
-      font-weight:820;
-      letter-spacing:-0.25px;
-      font-size:15.5px;
-      line-height:1.22;
-    }
-    .lead{
-      margin:6px 0 0;
-      color:var(--muted);
-      font-size:13.8px;
-      font-family: var(--sans);
-    }
-
-    .list{
-      margin:10px 0 0;
-      padding:0;
-      list-style:none;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      font-family: var(--sans);
-    }
-    .li{
-      padding:10px 10px;
-      border-radius:12px;
-      background:#f8fafc;
-      border:1px solid rgba(15, 23, 42, .06);
-      color:var(--slate);
-      font-size:13.7px;
-    }
-    .li b{ font-weight:900; }
-
-    .note{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:12px;
-      background: rgba(30,58,138,.05);
-      border: 1px solid rgba(30,58,138,.10);
-      color:#1f2a44;
-      font-size:13.2px;
-      font-family: var(--sans);
-    }
-    .note b{ font-weight:900; }
-
-    /* Buttons grid (capítulos em novas páginas) */
-    .btn-grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:12px;
-    }
-    .capbtn{
-      grid-column: span 12;
-      border-radius:16px;
-      padding:14px 14px;
-      background:#ffffff;
-      border:1px solid rgba(15,23,42,.10);
-      box-shadow:var(--shadow2);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      font-family: var(--sans);
-      text-decoration:none;
-      transition: transform .10s ease, box-shadow .12s ease;
-      position:relative;
-      overflow:hidden;
-    }
-    .capbtn:hover{ transform: translateY(-1px); box-shadow: 0 16px 28px rgba(15,23,42,.10); }
-    .capbtn::before{
-      content:"";
-      position:absolute; left:0; top:0; bottom:0;
-      width:8px;
-      background: rgba(15,23,42,.12);
-    }
-    .capbtn[data-tone="a"]::before{ background: rgba(36,59,83,.42); }
-    .capbtn[data-tone="b"]::before{ background: rgba(51,65,85,.36); }
-    .capbtn[data-tone="c"]::before{ background: rgba(30,58,138,.28); }
-    .capbtn .captext{ padding-left:10px; min-width:0; }
-    .capbtn .captext h3{
-      margin:0 0 6px;
-      font-size:14.5px;
-      letter-spacing:.18px;
-      text-transform:uppercase;
-      font-weight:850;
-      color:var(--ink);
-      line-height:1.2;
-    }
-    .capbtn .captext p{
-      margin:0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.4;
-    }
-    .capbtn .go{
-      flex:0 0 auto;
-      width:40px; height:40px;
-      border-radius:999px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: rgba(15,23,42,.06);
-      border:1px solid rgba(15,23,42,.12);
-      font-weight:900;
-      color:var(--navy);
-      user-select:none;
-    }
-
-    footer{
-      margin-top:14px;
-      color:var(--muted2);
-      font-size:12.5px;
-      text-align:center;
-      font-family: var(--sans);
-    }
-
-    /* ====== DESTAQUES EM PALAVRAS ====== */
-    .k{
-      font-weight:900;
-      color:var(--navy);
-      padding:0 .18em;
-      border-radius:.45em;
-      background: linear-gradient(180deg, transparent 55%, var(--mark) 55%);
-    }
-    .org{
-      font-weight:900;
-      color:var(--org);
-      padding:0 .18em;
-      border-radius:.45em;
-      background: linear-gradient(180deg, transparent 55%, rgba(30,58,138,.10) 55%);
-    }
-    .prazo{
-      font-weight:950;
-      color:var(--prazo);
-      padding:0 .18em;
-      border-radius:.45em;
-      background: linear-gradient(180deg, transparent 55%, rgba(180,83,9,.12) 55%);
-      white-space:nowrap;
-    }
-    .exc{
-      font-weight:950;
-      color:var(--exc);
-      padding:0 .20em;
-      border-radius:.45em;
-      background: linear-gradient(180deg, transparent 55%, rgba(220,38,38,.14) 55%);
-    }
-    .num{
-      font-weight:950;
-      color:var(--num);
-      letter-spacing:.2px;
-      white-space:nowrap;
-    }
-    .tech{
-      font-style:italic;
-      font-weight:750;
-      color:var(--navy);
-      border-bottom:1px dotted rgba(15,23,42,.25);
-    }
-    .uc{
-      text-transform:uppercase;
-      letter-spacing:.55px;
-      font-weight:950;
-    }
-    .alert{
-      font-weight:900;
-      color:var(--navy);
-      padding:.05em .35em;
-      border-radius:999px;
-      border:1px solid rgba(15,23,42,.14);
-      background:rgba(15,23,42,.04);
-      white-space:nowrap;
-    }
-
-    /* ===== Notes drawer ===== */
-    .drawer{
-      position: fixed;
-      inset: 0;
-      display:none;
-      background: rgba(15,23,42,.35);
-      backdrop-filter: blur(3px);
-      z-index: 50;
-      padding: 18px;
-      align-items: flex-end;
-      justify-content: center;
-    }
-    .drawer.open{ display:flex; }
-    .drawer-panel{
-      width: min(880px, 100%);
-      background: #fff;
-      border-radius: 20px;
-      border: 1px solid rgba(15,23,42,.10);
-      box-shadow: 0 24px 50px rgba(15,23,42,.20);
-      overflow:hidden;
-    }
-    .drawer-head{
-      padding: 14px 16px 12px;
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 12px;
-      background:
-        radial-gradient(820px 220px at 10% 0%, rgba(36, 59, 83, .12), transparent 62%),
-        radial-gradient(820px 220px at 90% 0%, rgba(51, 65, 85, .10), transparent 58%),
-        linear-gradient(180deg, rgba(248,250,252,.92), rgba(255,255,255,.75));
-      border-bottom: 1px solid rgba(15,23,42,.08);
-      font-family: var(--sans);
-    }
-    .drawer-head h2{
-      margin:0;
-      font-size: 15px;
-      letter-spacing: .1px;
-    }
-    .drawer-head p{
-      margin:4px 0 0;
-      color: var(--muted);
-      font-size: 12.8px;
-      line-height: 1.35;
-      max-width: 78ch;
-    }
-    .drawer-body{
-      padding: 12px 14px 14px;
-      font-family: var(--sans);
-    }
-    textarea{
-      width:100%;
-      min-height: 240px;
-      resize: vertical;
-      border-radius: 16px;
-      border: 1px solid rgba(15,23,42,.14);
-      padding: 12px 12px;
-      font-size: 13.5px;
-      line-height: 1.5;
-      outline:none;
-      background: #fbfcfe;
-    }
-    textarea:focus{
-      border-color: rgba(30,58,138,.35);
-      box-shadow: 0 0 0 3px rgba(30,58,138,.12);
-      background: #ffffff;
-    }
-    .drawer-actions{
-      margin-top: 10px;
-      display:flex;
-      gap: 10px;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-    }
-    .btn.danger{
-      background: rgba(220,38,38,.06);
-      border-color: rgba(220,38,38,.18);
-      color: #7f1d1d;
-    }
-
-    @media print{
-      body{ background:#fff; }
-      .hero,.section{ box-shadow:none; }
-      .chips, .top-actions{ display:none !important; }
-      .wrap{ padding:0; }
-      .grid{ padding:10px; }
-      .drawer{ display:none !important; }
-    }
-  </style>
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
+@media(max-width:600px){.hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}.hero::after{display:none}.wrap{padding:0 14px 80px}}
+</style>
 </head>
-
 <body>
-  <div class="wrap">
 
-    <header class="hero" id="topo">
-      <span class="kicker">RICD • Resumo Visual (Material de Revisão)</span>
-      <h1>Título II — Dos Órgãos da Câmara</h1>
-      <p class="sub">
-        Nesta página: <span class="k">Capítulo I — Da Mesa</span> (com <span class="k">Seções</span> e artigos correlatos do material).
-        Os <span class="k">Capítulos II, III e IV</span> (e seus desdobramentos) aparecem como <span class="k">botões</span> para abrir em novas páginas.
-      </p>
+<div id="prog"></div>
 
-      <div class="top-actions" role="group" aria-label="Ações principais">
-        <a class="btn" href="index.html" title="Voltar ao índice">
-          <span class="dot" aria-hidden="true"></span>
-          <span><b>Menu principal</b> (index)</span>
-        </a>
-
-        <button class="btn primary" id="btnNotes" type="button" title="Abrir bloco de anotações">
-          <span class="dot" aria-hidden="true"></span>
-          <span><b>Anotações</b> (salvas neste navegador)</span>
-        </button>
+<!-- ══════════════ HERO ══════════════ -->
+<header class="hero" id="topo">
+  <div class="wrap" style="padding:0">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">RICD • Resumo Visual • Material de Revisão</div>
+      <h1 class="hero-title">Título II — Dos Órgãos da Câmara</h1>
+      <p class="hero-sub">Nesta página: <strong>Capítulo I — Da Mesa</strong> (composição, reuniões, atribuições, Presidência e Secretaria). Os Capítulos II, III e IV aparecem como botões de navegação ao final.</p>
+      <div class="hero-actions">
+        <a class="hero-btn hero-btn-ghost" href="index.html">⌂ Voltar ao Índice</a>
+        <button class="hero-btn hero-btn-primary" id="btn-notes" type="button">✏️ Anotações</button>
       </div>
-
-      <nav class="chips" aria-label="Navegação por seções">
-        <a class="chip" href="#cap1"><b>Cap. I</b> <small>Mesa</small></a>
-        <a class="chip" href="#sec-gerais"><b>Seção I</b> <small>Disposições gerais</small></a>
-        <a class="chip" href="#art15"><b>Art. 15</b> <small>Atribuições</small></a>
-        <a class="chip" href="#susp"><b>Suspensão</b> <small>Cautelar</small></a>
-        <a class="chip" href="#pres"><b>Seção II</b> <small>Presidência</small></a>
-        <a class="chip" href="#vice-sec"><b>Arts. 18–19</b> <small>Substituições</small></a>
-        <a class="chip" href="#secret"><b>Seção III</b> <small>Secretaria</small></a>
-        <a class="chip" href="#outros"><b>Cap. II–IV</b> <small>Outras páginas</small></a>
+      <nav class="nav-chips" aria-label="Seções">
+        <a href="#cap1"><b>Cap. I</b> Mesa</a>
+        <a href="#sec-gerais"><b>Sec. I</b> Disposições Gerais</a>
+        <a href="#art15"><b>Art. 15</b> Atribuições</a>
+        <a href="#susp"><b>Cautelar</b> Suspensão</a>
+        <a href="#pres"><b>Sec. II</b> Presidência</a>
+        <a href="#vice-sec"><b>Arts. 18–19</b> Substituições</a>
+        <a href="#secret"><b>Sec. III</b> Secretaria</a>
+        <a href="#outros"><b>Cap. II–IV</b> Outras páginas</a>
       </nav>
-    </header>
-
-    <!-- CAPÍTULO I -->
-    <section class="section" id="cap1">
-      <div class="section-head">
-        <h2>Capítulo I — Da Mesa</h2>
-        <div class="meta">Estrutura • reuniões • competências</div>
-      </div>
-
-      <div class="grid">
-
-        <!-- Seção I — Disposições Gerais -->
-        <article class="card accent-1 half" id="sec-gerais">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">I</div>
-              <div>
-                <p class="title">Seção I — Disposições Gerais (composição e direção)</p>
-                <p class="lead">
-                  A <span class="org">Mesa</span> (como <span class="k">Comissão Diretora</span>) dirige <span class="k">trabalhos legislativos</span> e <span class="k">serviços administrativos</span>.
-                </p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Presidência:</b> <span class="k">Presidente</span> + <span class="num">2</span> <span class="k">Vice-Presidentes</span>.</li>
-              <li class="li"><b>Secretaria:</b> <span class="num">4</span> <span class="k">Secretários</span> + <span class="num">4</span> <span class="k">Suplentes de Secretário</span> (<span class="k">substituem apenas os Secretários</span>).</li>
-              <li class="li"><b>Estrutura:</b> <span class="num">7</span> membros + <span class="num">4</span> suplentes.</li>
-              <li class="li"><b>Maioria (MA) da Mesa:</b> <span class="num">4</span> membros (dos <span class="num">7</span> efetivos).</li>
-              <li class="li"><b>PCD (Presidente da Câmara):</b> representa a Câmara; <span class="k">só vota</span> em <span class="k">escrutínio secreto</span> ou para <span class="k">desempatar</span>.</li>
-              <li class="li"><b>Discussão:</b> se o Presidente quiser discutir, <span class="k">transmite a presidência</span>.</li>
-              <li class="li"><b>Censura verbal:</b> Presidente <span class="k">pode</span> aplicar a Deputado (atenção à diferença: Mesa aplica <span class="k">censura escrita</span>).</li>
-              <li class="li"><b>Delegação:</b> Presidente <span class="k">pode delegar</span> competências aos Vice-Presidentes.</li>
-            </ul>
-            <div class="note">
-              <b>⚠ Ponto contraintuitivo (do material):</b> o <span class="k">Primeiro-Secretário</span> dá posse ao <span class="k">Diretor-Geral (DG)</span> da Câmara e ao <span class="k">Secretário-Geral da Mesa (SGM)</span> — <span class="exc">não</span> é o Presidente.
-            </div>
-          </div>
-        </article>
-
-        <article class="card accent-2 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">II</div>
-              <div>
-                <p class="title">Incompatibilidades (membros efetivos)</p>
-                <p class="lead">
-                  Regras do § <span class="num">5º</span>: vedações relevantes para prova e exceção expressa.
-                </p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><span class="exc uc">Membros efetivos da Mesa NÃO PODEM</span>:</li>
-              <li class="li">• Fazer parte de <span class="k">Liderança</span>.</li>
-              <li class="li">• Integrar <span class="k">Comissão Permanente</span>, <span class="k">Especial</span> ou <span class="k">CPI</span>.</li>
-              <li class="li"><b>Exceção:</b> <span class="k">Comissão Especial</span> que reforma/modifica o <span class="k">RICD</span>.</li>
-              <li class="li"><b>Observação (do material):</b> <span class="k">Suplentes</span> podem integrar comissões (inclusive como relatores).</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-3" id="reunioes">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">III</div>
-              <div>
-                <p class="title">Reuniões da Mesa (ordinária e extraordinária)</p>
-                <p class="lead">Periodicidade, convocação e consequência por ausência injustificada.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Ordinária:</b> <span class="prazo">1 vez por quinzena</span> (dia/hora prefixados).</li>
-              <li class="li">
-                <b>Extraordinária:</b> sempre que convocada pelo <span class="org">Presidente</span> ou por <span class="num">4</span> membros efetivos
-                (<span class="k">MA</span> dos <span class="num">7</span>).
-              </li>
-              <li class="li">
-                <b>Perda do lugar:</b> <span class="num">5</span> reuniões ordinárias consecutivas <span class="exc">sem causa justificada</span> ⇒ <span class="k">perde o lugar</span> na Mesa.
-              </li>
-              <li class="li">
-                <b>Detalhe do material:</b> a lei seca <span class="k">não</span> usa “automaticamente” nesse ponto (diferente de outros casos em que a expressão aparece).
-              </li>
-            </ul>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- ART. 15 -->
-    <section class="section" id="art15">
-      <div class="section-head">
-        <h2>Art. 15 — Atribuições da Mesa</h2>
-        <div class="meta">Legislativas • administrativas • decoro</div>
-      </div>
-
-      <div class="grid">
-        <article class="card accent-1">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">I</div>
-              <div>
-                <p class="title">Competências principais (visão geral do material)</p>
-                <p class="lead">A Mesa atua em frentes <span class="k">legislativas</span>, <span class="k">constitucionais</span>, <span class="k">administrativas</span> e de <span class="k">decoro</span>.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Legislativas:</b> dirigir serviços da Casa durante as <span class="k">sessões legislativas</span> e nos <span class="k">interregnos</span>; providências para a <span class="k">regularidade</span> dos trabalhos (ressalvada a competência da Comissão Representativa do CN).</li>
-              <li class="li"><b>Constitucionais:</b> promulgar <span class="k">Emendas à Constituição</span> junto com a <span class="org">Mesa do Senado</span>; propor <span class="k">ADI</span> (iniciativa própria ou a requerimento).</li>
-              <li class="li"><b>Administrativas:</b> propor projeto de resolução sobre organização/funcionamento/polícia/regime do pessoal; prover cargos; aprovar proposta orçamentária; autorizar licitações; encaminhar prestações de contas ao <span class="org">TCU</span>.</li>
-              <li class="li"><b>Decoro:</b> aplicar <span class="k">censura escrita</span> e propor <span class="k">suspensão cautelar</span> (com prazos e rito específicos).</li>
-              <li class="li"><b>Ad referendum:</b> Presidente pode decidir matéria <span class="k">inadiável</span> da competência da Mesa, <span class="exc">exceto</span> no caso de <span class="k">suspensão cautelar</span>.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-2 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">II</div>
-              <div>
-                <p class="title">Censura escrita x censura verbal</p>
-                <p class="lead">Diferença recorrente em prova (autoridade competente).</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Censura verbal:</b> <span class="org">Presidente</span> <span class="k">pode</span> aplicar a Deputado.</li>
-              <li class="li"><b>Censura escrita:</b> <span class="org">Mesa</span> aplica a Deputado.</li>
-              <li class="li"><span class="alert">Atenção</span>: o enunciado costuma trocar os sujeitos.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-3 half" id="susp">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">III</div>
-              <div>
-                <p class="title">Suspensão cautelar (novidade do material)</p>
-                <p class="lead">Rito com <span class="prazo">prazos</span>, natureza cautelar e “cheiro de prova”.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Natureza:</b> medida <span class="k">CAUTELAR</span> (não é punição definitiva; visa afastar preventivamente durante o processo).</li>
-              <li class="li"><b>Prazo máximo:</b> até <span class="prazo">6 meses</span> (referência no material ao <span class="k">art. 10</span> do CEDP).</li>
-              <li class="li"><b>Quem propõe:</b> <span class="exc uc">SOMENTE A MESA</span> pode propor (Art. <span class="num">15</span>, <span class="k">XXX</span>, no material).</li>
-              <li class="li"><b>Prazo decadencial da Mesa:</b> <span class="prazo">5 dias úteis</span> (conta do recebimento/conhecimento do fato que ensejou a representação, conforme o material).</li>
-              <li class="li"><b>Exceção expressa:</b> Presidente <span class="exc">não pode</span> decidir sozinho (nem ad referendum) sobre suspensão cautelar, <span class="exc">mesmo</span> em matéria inadiável.</li>
-            </ul>
-            <div class="note">
-              <b>Fluxo (material):</b> Conselho de Ética decide em <span class="prazo">3 dias úteis</span> (votação <span class="k">ostensiva</span>, com prioridade). Da decisão cabe <span class="k">recurso ao Plenário</span>, apreciado na <span class="k">sessão imediatamente subsequente</span>, exigida <span class="k">MAIORIA ABSOLUTA</span>.
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- SEÇÃO II — PRESIDÊNCIA -->
-    <section class="section" id="pres">
-      <div class="section-head">
-        <h2>Seção II — Da Presidência (Art. 17)</h2>
-        <div class="meta">Sessões • ordem • condução</div>
-      </div>
-
-      <div class="grid">
-        <article class="card accent-1">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">I</div>
-              <div>
-                <p class="title">Atribuições do Presidente (núcleo do material)</p>
-                <p class="lead">Competências ligadas à condução dos trabalhos em sessão e ao controle de ordem.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Sessões:</b> <span class="k">abrir</span>, <span class="k">presidir</span> e <span class="k">encerrar</span> sessões; <span class="k">manter a ordem</span>.</li>
-              <li class="li"><b>Palavra:</b> conceder/cassar; advertir o orador para não ultrapassar o <span class="k">tempo regimental</span>.</li>
-              <li class="li"><b>Desvio do tema:</b> pode interromper o orador que se desviar do ponto (ou falar do “vencido”); se insistir, <span class="k">retira a palavra</span>.</li>
-              <li class="li"><b>Esclarecimento de posição:</b> pode convidar o orador a declarar se falará a favor/contra proposição (quando for o caso).</li>
-              <li class="li"><b>Fala da bancada:</b> pode autorizar o Deputado a falar da bancada.</li>
-              <li class="li"><b>Registros/publicações:</b> pode determinar o não apanhamento de discurso/aparte, conforme hipóteses regimentais (conforme material).</li>
-            </ul>
-            <div class="note">
-              <b>Regra do voto do Presidente:</b> reforço do material — <span class="k">só vota</span> em <span class="k">escrutínio secreto</span> ou para <span class="k">desempatar</span> votação ostensiva.
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- VICE-PRESIDENTES E SECRETÁRIOS -->
-    <section class="section" id="vice-sec">
-      <div class="section-head">
-        <h2>Vice-Presidentes e Secretários (Arts. 18–19)</h2>
-        <div class="meta">Substituições e ordem</div>
-      </div>
-
-      <div class="grid">
-        <article class="card accent-2 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">I</div>
-              <div>
-                <p class="title">Substituição para presidir a sessão</p>
-                <p class="lead">Ordem sucessória e ponto de atenção do material.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Ordem geral:</b> <span class="k">Vice</span> ➜ <span class="k">Secretário</span> ➜ <span class="k">Suplente</span> ➜ <span class="k">Deputado mais idoso</span> (dentre os de maior nº de legislaturas).</li>
-              <li class="li"><b>Detalhe:</b> <span class="k">Secretários</span> só presidem na <span class="exc">falta</span> dos Vice-Presidentes.</li>
-              <li class="li"><b>Ausência +</b> <span class="prazo">48h</span>: Presidente passa o exercício ao Vice (conforme material).</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card accent-3 half">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">II</div>
-              <div>
-                <p class="title">Substituição para secretariar a sessão</p>
-                <p class="lead">Quando ninguém puder, o Presidente convida qualquer Deputado.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Ordem:</b> <span class="k">Vice</span> ➜ <span class="k">Secretário</span> ➜ <span class="k">Suplente</span> ➜ <span class="k">qualquer Deputado</span> (a convite do Presidente).</li>
-              <li class="li"><b>Suplentes:</b> designação pela ordem <span class="k">decrescente</span> de votação (conforme material).</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- SEÇÃO III — SECRETARIA -->
-    <section class="section" id="secret">
-      <div class="section-head">
-        <h2>Seção III — Da Secretaria (Art. 19)</h2>
-        <div class="meta">Foco no 1º Secretário</div>
-      </div>
-
-      <div class="grid">
-        <article class="card accent-1">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">I</div>
-              <div>
-                <p class="title">Atribuições dos Secretários (ênfase no 1º Secretário)</p>
-                <p class="lead">Os Secretários têm designações: <span class="k">1º</span>, <span class="k">2º</span>, <span class="k">3º</span> e <span class="k">4º</span>.</p>
-              </div>
-            </div>
-            <ul class="list">
-              <li class="li"><b>Competência específica do 1º Secretário:</b> <span class="k">superintender</span> os serviços administrativos e:</li>
-              <li class="li">• <b>I</b> — receber <span class="k">convites</span>, <span class="k">representações</span>, <span class="k">petições</span> e <span class="k">memoriais</span>.</li>
-              <li class="li">• <b>II</b> — receber e fazer a <span class="k">correspondência oficial</span> (exceção: a das Comissões).</li>
-              <li class="li">• <b>III</b> — decidir, em <span class="k">primeira instância</span>, recursos contra atos do <span class="k">Diretor-Geral</span>.</li>
-              <li class="li">• <b>IV</b> — interpretar e fazer observar o ordenamento jurídico de <span class="k">pessoal</span> e <span class="k">serviços</span> administrativos.</li>
-              <li class="li">• <b>V</b> — dar <span class="k">posse</span> ao <span class="k">DG</span> da Câmara e ao <span class="k">SGM</span>.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- OUTROS CAPÍTULOS (BOTÕES) -->
-    <section class="section" id="outros">
-      <div class="section-head">
-        <h2>Capítulos II, III e IV</h2>
-        <div class="meta">Navegação por botões</div>
-      </div>
-
-      <div class="grid">
-        <div class="card accent-2">
-          <div class="card-inner">
-            <div class="card-top">
-              <div class="roman">↗</div>
-              <div>
-                <p class="title">Estrutura do Título II (atalhos)</p>
-                <p class="lead">
-                  Aqui ficam os <span class="k">capítulos seguintes</span> como <span class="k">"botões"</span> para você clicar e ler.
-                </p>
-              </div>
-            </div>
-
-            <div class="btn-grid" role="list">
-              <!-- Capítulo II -->
-              <a class="capbtn" role="listitem" data-tone="a" href="titulo2-cap2.html">
-                <div class="captext">
-                  <h3>Capítulo II — Do Colégio de Líderes</h3>
-                  <p>Abra a página específica do <span class="k">Colégio de Líderes</span>.</p>
-                </div>
-                <div class="go">→</div>
-              </a>
-
-              <!-- Capítulo II-A -->
-              <a class="capbtn" role="listitem" data-tone="b" href="titulo2-cap2a.html">
-                <div class="captext">
-                  <h3>Capítulo II-A — Da Secretaria da Mulher</h3>
-                  <p>Página dedicada à <span class="k">Secretaria da Mulher</span>.</p>
-                </div>
-                <div class="go">→</div>
-              </a>
-
-              <!-- Capítulo II-B -->
-              <a class="capbtn" role="listitem" data-tone="c" href="titulo2-cap2b.html">
-                <div class="captext">
-                  <h3>Capítulo II-B — Secretaria da Primeira Infância, Infância, Adolescência e Juventude</h3>
-                  <p>Página dedicada à <span class="k">Secretaria da Primeira Infância</span> e correlatos.</p>
-                </div>
-                <div class="go">→</div>
-              </a>
-
-              <!-- Capítulo III -->
-              <a class="capbtn" role="listitem" data-tone="a" href="titulo2-cap3.html">
-                <div class="captext">
-                  <h3>Capítulo III — Da Procuradoria Parlamentar</h3>
-                  <p>Abra a página da <span class="k">Procuradoria Parlamentar</span>.</p>
-                </div>
-                <div class="go">→</div>
-              </a>
-
-              <!-- Capítulo III-A a III-J (lista) -->
-              <a class="capbtn" role="listitem" data-tone="b" href="titulo2-cap3a.html">
-                <div class="captext">
-                  <h3>Capítulo III-A — Da Ouvidoria Parlamentar</h3>
-                  <p>Desdobramentos III-A … III-J: páginas por órgão (A, B, C… J).</p>
-                </div>
-                <div class="go">→</div>
-              </a>
-
-              <a class="capbtn" role="listitem" data-tone="c" href="titulo2-cap3b.html">
-                <div class="captext">
-                  <h3>Capítulo III-B — Conselho de Ética e Decoro Parlamentar</h3>
-                  <p>Página específica do <span class="k">CEDP</span> (e conexões com o Art. 15).</p>
-                </div>
-                <div class="go">→</div>
-              </a>
-
-              <a class="capbtn" role="listitem" data-tone="a" href="titulo2-cap3c.html">
-                <div class="captext">
-                  <h3>Capítulo III-C — Corregedoria Parlamentar</h3>
-                  <p>Página dedicada à <span class="k">Corregedoria</span>.</p>
-                </div>
-                <div class="go">→</div>
-              </a>
-
-              <a class="capbtn" role="listitem" data-tone="b" href="titulo2-cap3d.html">
-                <div class="captext">
-                  <h3>Capítulo III-D — Secretaria de Relações Internacionais</h3>
-                  <p>Página dedicada a <span class="k">Relações Internacionais</span>.</p>
-                </div>
-                <div class="go">→</div>
-              </a>
-
-              <a class="capbtn" role="listitem" data-tone="c" href="titulo2-cap3e.html">
-                <div class="captext">
-                  <h3>Capítulo III-E — Secretaria de Comunicação Social</h3>
-                  <p>Página dedicada à <span class="k">Comunicação Social</span>.</p>
-                </div>
-                <div class="go">→</div>
-              </a>
-
-              <a class="capbtn" role="listitem" data-tone="a" href="titulo2-cap3f.html">
-                <div class="captext">
-                  <h3>Capítulo III-F — Participação, Interação e Mídias Digitais</h3>
-                  <p>Página dedicada a <span class="k">Participação</span> e <span class="k">Mídias Digitais</span>.</p>
-                </div>
-                <div class="go">→</div>
-              </a>
-
-              <a class="capbtn" role="listitem" data-tone="b" href="titulo2-cap3g.html">
-                <div class="captext">
-                  <h3>Capítulo III-G — Transparência</h3>
-                  <p>Página dedicada à <span class="k">Transparência</span>.</p>
-                </div>
-                <div class="go">→</div>
-              </a>
-
-              <a class="capbtn" role="listitem" data-tone="c" href="titulo2-cap3h.html">
-                <div class="captext">
-                  <h3>Capítulo III-H — Empreendedorismo Legislativo</h3>
-                  <p>Página dedicada ao <span class="k">Empreendedorismo Legislativo</span>.</p>
-                </div>
-                <div class="go">→</div>
-              </a>
-
-              <a class="capbtn" role="listitem" data-tone="a" href="titulo2-cap3i.html">
-                <div class="captext">
-                  <h3>Capítulo III-I — Inovação Legislativa</h3>
-                  <p>Página dedicada à <span class="k">Inovação Legislativa</span>.</p>
-                </div>
-                <div class="go">→</div>
-              </a>
-
-              <a class="capbtn" role="listitem" data-tone="b" href="titulo2-cap3j.html">
-                <div class="captext">
-                  <h3>Capítulo III-J — Defesa das Prerrogativas Parlamentares</h3>
-                  <p>Página dedicada à <span class="k">Defesa das Prerrogativas</span>.</p>
-                </div>
-                <div class="go">→</div>
-              </a>
-
-              <!-- Capítulo IV -->
-              <a class="capbtn" role="listitem" data-tone="a" href="titulo2-cap4.html">
-                <div class="captext">
-                  <h3>Capítulo IV — Das Comissões</h3>
-                  <p>Página macro: seções, subseções, prazos e competências das Comissões.</p>
-                </div>
-                <div class="go">→</div>
-              </a>
-
-            </div>
-
-           <p></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      HTML único • Salve como <b>titulo2.html</b> • Abra no navegador • Para imprimir: “Salvar como PDF”.
-    </footer>
-
-  </div>
-
-  <!-- Drawer: Anotações -->
-  <div class="drawer" id="drawer" aria-hidden="true">
-    <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
-      <div class="drawer-head">
-        <div>
-          <h2 id="drawerTitle">Anotações — Título II</h2>
-          <p>
-            Use para <b>erros</b>, <b>bizus</b>, <b>pegadinhas</b> e lembretes. Ao clicar em <b>Salvar e fechar</b>,
-            as notas ficam guardadas no <b>seu navegador</b> (localStorage).
-          </p>
-        </div>
-        <button class="btn" type="button" id="btnCloseTop" title="Fechar">
-          <span class="dot" aria-hidden="true"></span>
-          <span><b>Fechar</b></span>
-        </button>
-      </div>
-
-      <div class="drawer-body">
-        <textarea id="notes" placeholder="Escreva aqui… (ex.: '⚠ Mesa: 5 reuniões ordinárias consecutivas sem justificativa = perde lugar' / 'Pegadinha: Presidente não decide suspensão cautelar ad referendum')"></textarea>
-
-        <div class="drawer-actions">
-          <button class="btn danger" type="button" id="btnClear">Limpar</button>
-          <button class="btn primary" type="button" id="btnSaveClose">Salvar e fechar</button>
-        </div>
+      <div class="legend">
+        <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Órgãos</span>
+        <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Prazos</span>
+        <span class="lchip"><span class="ldot" style="background:#f46862"></span>Exceções/Vedações</span>
+        <span class="lchip"><span class="ldot" style="background:rgba(255,255,255,.4)"></span>Palavras-chave</span>
       </div>
     </div>
   </div>
+</header>
 
-  <script>
-    (function(){
-      const KEY = "notes_titulo2";
-      const btnNotes = document.getElementById("btnNotes");
-      const drawer = document.getElementById("drawer");
-      const notes = document.getElementById("notes");
-      const btnSaveClose = document.getElementById("btnSaveClose");
-      const btnClear = document.getElementById("btnClear");
-      const btnCloseTop = document.getElementById("btnCloseTop");
+<div class="wrap">
 
-      function openDrawer(){
-        drawer.classList.add("open");
-        drawer.setAttribute("aria-hidden","false");
-        notes.value = localStorage.getItem(KEY) || "";
-        notes.focus();
-      }
-      function closeDrawer(){
-        drawer.classList.remove("open");
-        drawer.setAttribute("aria-hidden","true");
-      }
-      function saveNotes(){
-        localStorage.setItem(KEY, notes.value || "");
-      }
+<!-- ══════════════ CAP. I — SEÇÃO I ══════════════ -->
+<div class="sec-head" id="cap1">
+  <div class="sec-line"></div><div class="sec-title">Capítulo I — Da Mesa</div>
+  <div class="sec-badge">Estrutura • reuniões • competências</div><div class="sec-line"></div>
+</div>
 
-      btnNotes.addEventListener("click", openDrawer);
-      btnCloseTop.addEventListener("click", closeDrawer);
+<div class="grid" id="sec-gerais">
 
-      btnSaveClose.addEventListener("click", function(){
-        saveNotes();
-        closeDrawer();
-      });
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Seção I — Disposições Gerais (composição)</div><div class="c-lead">A <span class="org">Mesa</span> como <span class="k">Comissão Diretora</span> dos trabalhos legislativos e administrativos.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Presidência:</b> <span class="k">Presidente</span> + <span class="num">2</span> Vice-Presidentes</li>
+        <li><b>Secretaria:</b> <span class="num">4</span> Secretários + <span class="num">4</span> Suplentes de Secretário (suplentes substituem <span class="k">apenas</span> os Secretários)</li>
+        <li><b>Total:</b> <span class="num">7</span> membros efetivos + <span class="num">4</span> suplentes</li>
+        <li><b>Maioria absoluta da Mesa:</b> <span class="num">4</span> membros (dos 7 efetivos)</li>
+        <li><b>Voto do PCD:</b> <span class="k">só</span> em <span class="k">escrutínio secreto</span> ou para <span class="k">desempate</span></li>
+        <li><b>Para discutir:</b> PCD <span class="k">transmite a Presidência</span> ao Vice</li>
+        <li><b>Censura verbal:</b> aplicada pelo <span class="org">Presidente</span> ao Deputado</li>
+        <li><b>Delegação:</b> PCD pode delegar competências aos Vice-Presidentes</li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text"><b>Pegadinha:</b> quem dá posse ao <b>DG</b> e ao <b>SGM</b> é o <span class="org">Primeiro-Secretário</span>, <b>não</b> o Presidente da Câmara.</div></div>
+    </div>
+  </div>
 
-      btnClear.addEventListener("click", function(){
-        if(confirm("Tem certeza que deseja limpar suas anotações deste título?")){
-          notes.value = "";
-          localStorage.removeItem(KEY);
-          notes.focus();
-        }
-      });
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Incompatibilidades (membros efetivos)</div><div class="c-lead">Vedações do §5º e exceção expressa.</div></div></div>
+      <ul class="kp-list">
+        <li><span class="exc uc">Membros efetivos NÃO PODEM:</span></li>
+        <li>• Integrar <span class="k">Liderança</span> (Líder ou Vice-Líder)</li>
+        <li>• Integrar <span class="k">Comissão Permanente</span>, <span class="k">Especial</span> ou <span class="k">CPI</span></li>
+        <li><b>Exceção:</b> Comissão Especial que <span class="k">reforma ou modifica o RICD</span></li>
+        <li><b>Suplentes:</b> <span class="green-soft">podem</span> integrar comissões (inclusive como relatores)</li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A exceção da Comissão Especial vale só para reforma do <b>RICD</b> — não para qualquer Comissão Especial.</div></div>
+    </div>
+  </div>
 
-      // fechar clicando fora
-      drawer.addEventListener("click", function(e){
-        if(e.target === drawer){ closeDrawer(); }
-      });
+  <div class="card c12" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">III</div><div><div class="c-title">Reuniões da Mesa (ordinária e extraordinária)</div><div class="c-lead">Periodicidade, quórum de convocação e consequência por ausência.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Ordinária:</b> <span class="prazo">1 vez por quinzena</span> — dia e hora prefixados</li>
+        <li><b>Extraordinária:</b> convocada pelo <span class="org">Presidente</span> ou por <span class="num">4</span> membros efetivos (maioria absoluta dos 7)</li>
+        <li><b>Perda do lugar:</b> <span class="num">5</span> reuniões ordinárias consecutivas <span class="exc">sem causa justificada</span> → perde o lugar na Mesa</li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A lei seca <b>não usa "automaticamente"</b> nesse ponto — diferente de outros casos em que a perda é automática.</div></div>
+    </div>
+  </div>
 
-      // ESC fecha
-      window.addEventListener("keydown", function(e){
-        if(e.key === "Escape" && drawer.classList.contains("open")){
-          closeDrawer();
-        }
-      });
-    })();
-  </script>
+</div>
+
+<!-- ══════════════ ART. 15 ══════════════ -->
+<div class="sec-head" id="art15">
+  <div class="sec-line"></div><div class="sec-title">Art. 15 — Atribuições da Mesa</div>
+  <div class="sec-badge">Legislativas • constitucionais • administrativas • decoro</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+
+  <div class="card c12" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Competências principais — visão geral</div><div class="c-lead">A Mesa atua em quatro frentes: <span class="k">legislativa</span>, <span class="k">constitucional</span>, <span class="k">administrativa</span> e de <span class="k">decoro</span>.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Legislativas:</b> dirigir serviços da Casa nas sessões e nos interregnos; providências para a <span class="k">regularidade dos trabalhos</span> (ressalvada a competência da Comissão Representativa do CN)</li>
+        <li><b>Constitucionais:</b> promulgar <span class="k">Emendas à Constituição</span> com a <span class="org">Mesa do Senado</span>; propor <span class="k">ADI</span> (por iniciativa própria ou a requerimento)</li>
+        <li><b>Administrativas:</b> propor PRL sobre organização/funcionamento/polícia/regime do pessoal; prover cargos; aprovar proposta orçamentária; autorizar licitações; encaminhar prestações de contas ao <span class="org">TCU</span></li>
+        <li><b>Decoro:</b> aplicar <span class="k">censura escrita</span> e propor <span class="k">suspensão cautelar</span> (com prazos e rito específicos)</li>
+        <li><b>Ad referendum:</b> PCD pode decidir matéria <span class="k">inadiável</span> da competência da Mesa — <span class="exc">exceto</span> suspensão cautelar</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Censura escrita × censura verbal</div><div class="c-lead">Diferença clássica de prova — quem aplica cada uma.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Censura verbal:</b> <span class="org">Presidente</span> aplica ao Deputado</li>
+        <li><b>Censura escrita:</b> <span class="org">Mesa</span> aplica ao Deputado</li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A prova troca os sujeitos das censuras com frequência. Verbal → Presidente; Escrita → Mesa.</div></div>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#2f5f6e" id="susp">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">III</div><div><div class="c-title">Suspensão cautelar</div><div class="c-lead">Natureza, quem propõe, prazos e fluxo do rito.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Natureza:</b> medida <span class="k">cautelar</span> — afastamento preventivo, não punição definitiva</li>
+        <li><b>Prazo máximo:</b> até <span class="prazo">6 meses</span> (art. 10 do CEDP)</li>
+        <li><span class="exc">Somente a Mesa</span> pode propor — PCD <span class="exc">não pode</span> decidir ad referendum neste caso</li>
+        <li><b>Prazo decadencial da Mesa:</b> <span class="prazo">5 dias úteis</span> do recebimento/conhecimento do fato</li>
+        <li><b>Conselho de Ética:</b> decide em <span class="prazo">3 dias úteis</span> (votação ostensiva, com prioridade)</li>
+        <li><b>Recurso ao Plenário:</b> apreciado na sessão <span class="k">imediatamente subsequente</span> — exige <span class="k">maioria absoluta</span></li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">É a <b>única</b> hipótese em que o PCD <b>não pode</b> agir ad referendum — mesmo em matéria inadiável.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════ SEÇÃO II — PRESIDÊNCIA ══════════════ -->
+<div class="sec-head" id="pres">
+  <div class="sec-line"></div><div class="sec-title">Seção II — Da Presidência</div>
+  <div class="sec-badge">Art. 17 — condução dos trabalhos</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c12" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Atribuições do Presidente — núcleo</div><div class="c-lead">Competências de condução de sessão e controle da ordem.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Sessões:</b> abrir, presidir e encerrar; manter a <span class="k">ordem</span></li>
+        <li><b>Palavra:</b> conceder e cassar; advertir o orador que ultrapasse o tempo regimental</li>
+        <li><b>Desvio do tema:</b> pode interromper; se insistir → <span class="exc">retira a palavra</span></li>
+        <li><b>Posição do orador:</b> pode convidá-lo a declarar se fala a favor ou contra</li>
+        <li><b>Fala da bancada:</b> pode autorizar o Deputado a falar da bancada</li>
+        <li><b>Voto:</b> reforço — <span class="k">só</span> em escrutínio secreto ou para <span class="k">desempatar</span> votação ostensiva</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ VICE-PRESIDENTES E SECRETÁRIOS ══════════════ -->
+<div class="sec-head" id="vice-sec">
+  <div class="sec-line"></div><div class="sec-title">Vice-Presidentes e Secretários</div>
+  <div class="sec-badge">Arts. 18–19 — substituições e ordem</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Substituição para presidir a sessão</div><div class="c-lead">Ordem sucessória para a cadeira da Presidência.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Ordem:</b> <span class="k">Vice</span> → <span class="k">Secretário</span> → <span class="k">Suplente</span> → <span class="k">Deputado mais idoso</span> (dentre os de maior nº de legislaturas)</li>
+        <li><b>Secretários:</b> presidem apenas na <span class="exc">falta</span> dos Vice-Presidentes</li>
+        <li><b>Ausência &gt; <span class="prazo">48h</span>:</b> Presidente passa o exercício ao Vice</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card c6" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Substituição para secretariar a sessão</div><div class="c-lead">Qualquer Deputado pode ser convidado como último recurso.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Ordem:</b> <span class="k">Vice</span> → <span class="k">Secretário</span> → <span class="k">Suplente</span> → <span class="k">qualquer Deputado</span> (a convite do Presidente)</li>
+        <li><b>Suplentes:</b> designados por ordem <span class="k">decrescente</span> de votação</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ SEÇÃO III — SECRETARIA ══════════════ -->
+<div class="sec-head" id="secret">
+  <div class="sec-line"></div><div class="sec-title">Seção III — Da Secretaria</div>
+  <div class="sec-badge">Art. 19 — foco no 1º Secretário</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c12" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Atribuições dos Secretários — ênfase no 1º Secretário</div><div class="c-lead">Secretários designados como 1º, 2º, 3º e 4º.</div></div></div>
+      <ul class="kp-list">
+        <li><b>1º Secretário superintende</b> os serviços administrativos e:</li>
+        <li><b>I —</b> receber <span class="k">convites</span>, <span class="k">representações</span>, <span class="k">petições</span> e <span class="k">memoriais</span></li>
+        <li><b>II —</b> receber e fazer a <span class="k">correspondência oficial</span> (exceto a das Comissões)</li>
+        <li><b>III —</b> decidir em <span class="k">primeira instância</span> recursos contra atos do <span class="org">Diretor-Geral</span></li>
+        <li><b>IV —</b> interpretar e fazer observar o ordenamento de <span class="k">pessoal</span> e serviços administrativos</li>
+        <li><b>V —</b> dar <span class="k">posse</span> ao <span class="org">DG</span> da Câmara e ao <span class="org">SGM</span></li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A posse do <b>DG</b> e do <b>SGM</b> é dada pelo <b>1º Secretário</b> — não pelo Presidente da Câmara.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ OUTROS CAPÍTULOS ══════════════ -->
+<div class="sec-head" id="outros">
+  <div class="sec-line"></div><div class="sec-title">Capítulos II, III e IV</div>
+  <div class="sec-badge">Navegação por páginas</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c12" style="--c:#3a5c8a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">↗</div><div><div class="c-title">Atalhos para os capítulos seguintes</div><div class="c-lead">Cada botão abre a página dedicada ao capítulo/órgão.</div></div></div>
+      <div class="cap-grid">
+        <a class="capbtn" href="titulo2-cap2.html" style="--c:#254a78"><div class="capbtn-text"><div class="capbtn-title">Capítulo II — Do Colégio de Líderes</div><div class="capbtn-desc">Composição, competências e votação no Colégio de Líderes.</div></div><div class="capbtn-arrow">→</div></a>
+        <a class="capbtn" href="titulo2-cap2a.html" style="--c:#2f5f6e"><div class="capbtn-text"><div class="capbtn-title">Capítulo II-A — Da Secretaria da Mulher</div><div class="capbtn-desc">Estrutura e atribuições da Secretaria da Mulher.</div></div><div class="capbtn-arrow">→</div></a>
+        <a class="capbtn" href="titulo2-cap2b.html" style="--c:#406d7a"><div class="capbtn-text"><div class="capbtn-title">Capítulo II-B — Secretaria da Primeira Infância, Infância, Adolescência e Juventude</div><div class="capbtn-desc">Estrutura e competências do órgão.</div></div><div class="capbtn-arrow">→</div></a>
+        <a class="capbtn" href="titulo2-cap3.html" style="--c:#1c3f63"><div class="capbtn-text"><div class="capbtn-title">Capítulo III — Da Procuradoria Parlamentar</div><div class="capbtn-desc">Atribuições e funcionamento da Procuradoria.</div></div><div class="capbtn-arrow">→</div></a>
+        <a class="capbtn" href="titulo2-cap3a.html" style="--c:#254a78"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-A — Da Ouvidoria Parlamentar</div><div class="capbtn-desc">Capítulos III-A a III-J: páginas por órgão.</div></div><div class="capbtn-arrow">→</div></a>
+        <a class="capbtn" href="titulo2-cap3b.html" style="--c:#2f5f6e"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-B — Conselho de Ética e Decoro Parlamentar</div><div class="capbtn-desc">CEDP — conexões com Art. 15 e suspensão cautelar.</div></div><div class="capbtn-arrow">→</div></a>
+        <a class="capbtn" href="titulo2-cap3c.html" style="--c:#3a5c8a"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-C — Corregedoria Parlamentar</div><div class="capbtn-desc">Atribuições e rito da Corregedoria.</div></div><div class="capbtn-arrow">→</div></a>
+        <a class="capbtn" href="titulo2-cap3d.html" style="--c:#566a86"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-D — Secretaria de Relações Internacionais</div><div class="capbtn-desc">Representação e acordos internacionais.</div></div><div class="capbtn-arrow">→</div></a>
+        <a class="capbtn" href="titulo2-cap3e.html" style="--c:#5a4b6e"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-E — Secretaria de Comunicação Social</div><div class="capbtn-desc">Comunicação e publicidade institucional.</div></div><div class="capbtn-arrow">→</div></a>
+        <a class="capbtn" href="titulo2-cap3f.html" style="--c:#1c3f63"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-F — Participação, Interação e Mídias Digitais</div><div class="capbtn-desc">Mecanismos de participação popular e canais digitais.</div></div><div class="capbtn-arrow">→</div></a>
+        <a class="capbtn" href="titulo2-cap3g.html" style="--c:#254a78"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-G — Transparência</div><div class="capbtn-desc">Obrigações e instrumentos de transparência.</div></div><div class="capbtn-arrow">→</div></a>
+        <a class="capbtn" href="titulo2-cap3h.html" style="--c:#2f5f6e"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-H — Empreendedorismo Legislativo</div><div class="capbtn-desc">Iniciativas de inovação e empreendedorismo.</div></div><div class="capbtn-arrow">→</div></a>
+        <a class="capbtn" href="titulo2-cap3i.html" style="--c:#3a5c8a"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-I — Inovação Legislativa</div><div class="capbtn-desc">Estrutura e competências do órgão.</div></div><div class="capbtn-arrow">→</div></a>
+        <a class="capbtn" href="titulo2-cap3j.html" style="--c:#566a86"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-J — Defesa das Prerrogativas Parlamentares</div><div class="capbtn-desc">Garantias e mecanismos de defesa das prerrogativas.</div></div><div class="capbtn-arrow">→</div></a>
+        <a class="capbtn" href="titulo2-cap4.html" style="--c:#1c3f63"><div class="capbtn-text"><div class="capbtn-title">Capítulo IV — Das Comissões</div><div class="capbtn-desc">Página macro: seções, subseções, prazos e competências das Comissões.</div></div><div class="capbtn-arrow">→</div></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <span>RICD • Título II • Dos Órgãos da Câmara</span>
+  <a href="index.html">⌂ Voltar ao Índice</a>
+  <a href="titulo1.html">← Título I</a>
+  <a href="titulo3.html">Título III →</a>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- ══════════════ FABs ══════════════ -->
+<div class="fab-wrap">
+  <button id="theme-btn" title="Alternar tema">
+    <span id="t-icon">🌙</span>
+    <div class="t-track"><div class="t-knob"></div></div>
+    <span id="t-label">Escuro</span>
+  </button>
+  <button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<!-- ══════════════ NOTES DRAWER ══════════════ -->
+<div class="drawer-overlay" id="drawer" aria-hidden="true">
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+    <div class="drawer-head">
+      <div class="drawer-head-info">
+        <h2 id="drawer-title">Anotações — Título II</h2>
+        <p>Use para erros, bizus e pegadinhas. As notas ficam salvas no <strong>seu navegador</strong> (localStorage).</p>
+      </div>
+      <button class="drawer-close" id="btn-close-drawer" title="Fechar">✕</button>
+    </div>
+    <div class="drawer-body">
+      <textarea id="notes-area" placeholder="Ex.: ⚠ Mesa: 5 reuniões ordinárias consecutivas sem justificativa = perde o lugar&#10;⚠ Censura verbal → Presidente; Censura escrita → Mesa&#10;⚠ PCD não pode agir ad referendum em suspensão cautelar"></textarea>
+      <div class="drawer-actions">
+        <button class="d-btn d-btn-clear" id="btn-clear-notes" type="button">Limpar</button>
+        <button class="d-btn d-btn-save" id="btn-save-notes" type="button">Salvar e fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Tema ──────────────────────────────────────────
+(function(){
+  const root=document.documentElement,btn=document.getElementById('theme-btn'),
+        icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
+  let dark=localStorage.getItem('ricd-theme')==='dark';
+  if(!localStorage.getItem('ricd-theme'))dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function apply(){root.setAttribute('data-theme',dark?'dark':'light');icon.textContent=dark?'☀️':'🌙';lbl.textContent=dark?'Claro':'Escuro';localStorage.setItem('ricd-theme',dark?'dark':'light')}
+  apply();
+  btn.addEventListener('click',()=>{dark=!dark;apply()});
+})();
+
+// ── Progresso + Back-to-top ───────────────────────
+(function(){
+  const bar=document.getElementById('prog'),top=document.getElementById('back-top');
+  window.addEventListener('scroll',function(){
+    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(s/h*100)+'%';
+    top.classList.toggle('show',s>280);
+  },{passive:true});
+})();
+
+// ── Anotações ─────────────────────────────────────
+(function(){
+  const KEY='notes_titulo2';
+  const overlay=document.getElementById('drawer');
+  const area=document.getElementById('notes-area');
+  const btnOpen=document.getElementById('btn-notes');
+  const btnClose=document.getElementById('btn-close-drawer');
+  const btnSave=document.getElementById('btn-save-notes');
+  const btnClear=document.getElementById('btn-clear-notes');
+  function open(){overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');area.value=localStorage.getItem(KEY)||'';area.focus()}
+  function close(){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true')}
+  btnOpen.addEventListener('click',open);
+  btnClose.addEventListener('click',close);
+  btnSave.addEventListener('click',()=>{localStorage.setItem(KEY,area.value);close()});
+  btnClear.addEventListener('click',()=>{if(confirm('Limpar anotações do Título II?')){area.value='';localStorage.removeItem(KEY);area.focus()}});
+  overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
+  window.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))close()});
+})();
+</script>
 </body>
 </html>
