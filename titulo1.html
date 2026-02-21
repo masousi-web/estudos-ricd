@@ -59,6 +59,11 @@
 
   --toggle-bg:   #d8e2f0;
   --toggle-knob: #ffffff;
+
+  /* Notes Drawer */
+  --drawer-bg:      #ffffff;
+  --drawer-overlay: rgba(15,23,42,.38);
+  --textarea-bg:    #fbfcfe;
 }
 
 /* ═══════════════════════════════════════════════
@@ -111,6 +116,11 @@
 
   --toggle-bg:   #243350;
   --toggle-knob: #f0b84a;
+
+  /* Notes Drawer */
+  --drawer-bg:      #161d2f;
+  --drawer-overlay: rgba(0,0,0,.65);
+  --textarea-bg:    #111828;
 }
 
 /* ═══════════════════════════════════════════════
@@ -238,8 +248,15 @@ a{color:inherit;text-decoration:none}
 }
 .hero-sub{
   font-size:14px;color:var(--hero-sub);
-  max-width:70ch;line-height:1.58;margin-bottom:20px;
+  max-width:70ch;line-height:1.58;margin-bottom:18px;
 }
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.hero-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;border:1px solid}
+.hero-btn-ghost{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18);color:rgba(255,255,255,.88)}
+.hero-btn-ghost:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.hero-btn-primary{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);color:#fff;font-weight:700}
+.hero-btn-primary:hover{background:rgba(255,255,255,.22);transform:translateY(-1px)}
+
 .nav-chips{display:flex;flex-wrap:wrap;gap:8px}
 .nav-chips a{
   display:inline-flex;align-items:center;gap:7px;
@@ -360,10 +377,11 @@ a{color:inherit;text-decoration:none}
 /* Destaques semânticos */
 .k{font-weight:700;color:var(--ink);background:var(--mark-bg);padding:0 .22em;border-radius:.4em}
 .org{font-weight:700;color:var(--blue);background:var(--blue-soft);padding:0 .22em;border-radius:.4em}
-.prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em}
+.prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em;white-space:nowrap}
 .exc{font-weight:700;color:var(--red);background:var(--red-soft);padding:0 .22em;border-radius:.4em}
 .num{font-weight:700;color:var(--ink2)}
 .tech{font-style:italic;font-weight:600;color:var(--ink)}
+.green-soft{font-weight:700;color:var(--green);background:var(--green-soft);padding:0 .22em;border-radius:.4em}
 
 /* Nota */
 .note{
@@ -436,6 +454,97 @@ a{color:inherit;text-decoration:none}
 }
 .page-footer a:hover{box-shadow:var(--sh-md)}
 
+/* ═══════════════ NOTES DRAWER ═══════════════ */
+.drawer-overlay{
+  position:fixed;inset:0;
+  background:var(--drawer-overlay);
+  backdrop-filter:blur(4px);
+  z-index:400;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  padding:16px;
+}
+.drawer-overlay.open{display:flex}
+.drawer-panel{
+  width:min(900px,100%);
+  background:var(--drawer-bg);
+  border:1px solid var(--border-hard);
+  border-radius:20px;
+  box-shadow:var(--sh-lg);
+  overflow:hidden;
+  transition:background .25s;
+}
+.drawer-head{
+  padding:16px 20px;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  background:linear-gradient(180deg,var(--surface2),var(--surface));
+  border-bottom:1px solid var(--border-hard);
+}
+.drawer-head-info h2{
+  font-family:'Crimson Pro',serif;
+  font-size:18px;font-weight:700;color:var(--ink);
+  margin-bottom:4px;
+}
+.drawer-head-info p{
+  font-size:13px;color:var(--muted);
+  line-height:1.45;max-width:70ch;
+}
+.drawer-close{
+  flex-shrink:0;width:36px;height:36px;border-radius:50%;
+  background:var(--bg2);border:1px solid var(--border-hard);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:16px;color:var(--muted);
+  transition:all .15s;
+}
+.drawer-close:hover{color:var(--red);border-color:var(--red)}
+.drawer-body{padding:16px 20px 20px}
+#notes-area{
+  width:100%;
+  min-height:220px;
+  resize:vertical;
+  border-radius:12px;
+  border:1px solid var(--border-hard);
+  padding:12px 14px;
+  font-family:'Outfit',sans-serif;
+  font-size:14px;
+  line-height:1.6;
+  outline:none;
+  background:var(--textarea-bg);
+  color:var(--ink);
+  transition:border-color .15s,background .25s,color .25s;
+}
+#notes-area:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+#notes-area::placeholder{color:var(--faint)}
+.drawer-actions{
+  margin-top:12px;
+  display:flex;
+  gap:10px;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+}
+.d-btn{
+  font-family:'Outfit',sans-serif;
+  font-size:13px;font-weight:600;
+  padding:8px 18px;border-radius:8px;
+  cursor:pointer;border:1px solid;
+  transition:all .15s;
+}
+.d-btn-clear{
+  background:transparent;
+  color:var(--red);
+  border-color:color-mix(in srgb,var(--red) 30%,transparent 70%);
+}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-clear{border-color:rgba(168,31,42,.3)}}
+.d-btn-clear:hover{background:var(--red-soft)}
+.d-btn-save{
+  background:var(--green-soft);
+  color:var(--green);
+  border-color:color-mix(in srgb,var(--green) 30%,transparent 70%);
+}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-save{border-color:rgba(24,99,71,.3)}}
+.d-btn-save:hover{background:rgba(24,99,71,.18)}
+
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
@@ -457,6 +566,13 @@ a{color:inherit;text-decoration:none}
       <div class="hero-eyebrow">RICD • Resumo Visual • Material de Revisão</div>
       <h1 class="hero-title">Título I — Disposições Preliminares</h1>
       <p class="hero-sub">Sede, Sessões Legislativas, Sessões Preparatórias, Líderes, Blocos Parlamentares, Maioria/Minoria e Bancada Negra. Foco em prazos, quóruns, vedações e pegadinhas de prova.</p>
+
+      <!-- AÇÕES (inclui Voltar ao Índice + Anotações) -->
+      <div class="hero-actions" role="group" aria-label="Ações">
+        <a class="hero-btn hero-btn-ghost" href="index.html">⌂ Voltar ao Índice</a>
+        <button class="hero-btn hero-btn-primary" id="btn-notes" type="button">✏️ Anotações</button>
+      </div>
+
       <nav class="nav-chips" aria-label="Seções">
         <a href="#cap1"><b>Cap. I</b> Sede</a>
         <a href="#cap2"><b>Cap. II</b> Sessões Legislativas</a>
@@ -467,7 +583,8 @@ a{color:inherit;text-decoration:none}
         <a href="#bn"><b>Arts. 13-A/B</b> Bancada Negra</a>
         <a href="#analise"><b>Análise</b> Pegadinhas</a>
       </nav>
-      <div class="legend">
+
+      <div class="legend" aria-label="Legenda">
         <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Órgãos</span>
         <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Prazos</span>
         <span class="lchip"><span class="ldot" style="background:#f46862"></span>Exceções/Vedações</span>
@@ -669,12 +786,16 @@ a{color:inherit;text-decoration:none}
         <li><b>Vacância após 30/nov:</b> Mesa <span class="k">designa titular</span> para responder pelo cargo</li>
         <li><b>Minoria:</b> <span class="num">1</span> membro assegurado mesmo sem direito pela proporcionalidade</li>
       </ul>
-    </div>
-     <div class="corr-title">Atenção</div>
+
+      <!-- FIX: correlatos estava fora do bloco correto -->
+      <div class="correlatos">
+        <div class="corr-title">Atenção</div>
         <ul class="corr-list">
-          <li>Se mudar legenda partidária ou se desvincular de sua bancada >> NÃO perde o cargo no <b>CEDP</b> (garantia de independência)</li>
+          <li>Se mudar legenda partidária ou se desvincular de sua bancada &gt;&gt; NÃO perde o cargo no <b>CEDP</b> (garantia de independência)</li>
         </ul>
       </div>
+
+    </div>
   </div>
 </div>
 
@@ -689,7 +810,7 @@ a{color:inherit;text-decoration:none}
       <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Escolha e vice-líderes</div><div class="c-lead">Cláusula de barreira, indicação e formalização.</div></div></div>
       <ul class="kp-list">
         <li><b>Escolha:</b> representações partidárias ou de BP que atendam à <span class="k">cláusula de barreira</span></li>
-        <li><b>Vice-líderes:</b><span class="num">1/4</span> dos Deputados da bancada ("na proporção de 1 para cada 4 Deputados, ou fração, que constitua a representação." > termos exatos do RICD; pode designar um como <span class="k">Primeiro Vice-Líder</span></li>
+        <li><b>Vice-líderes:</b><span class="num">1/4</span> dos Deputados da bancada ("na proporção de 1 para cada 4 Deputados, ou fração, que constitua a representação." &gt; termos exatos do RICD; pode designar um como <span class="k">Primeiro Vice-Líder</span></li>
         <li><b>Formalização:</b> à <span class="org">Mesa Diretora</span>, subscrita pela <span class="k">maioria absoluta</span> dos integrantes</li>
       </ul>
     </div>
@@ -845,8 +966,9 @@ a{color:inherit;text-decoration:none}
       <li><b>Eleição da Mesa:</b> demais cargos não se apuram antes do Presidente; <span class="exc">vedada recondução</span> ao mesmo cargo na imediatamente subsequente</li>
       <li><b>Bloco Parlamentar:</b> quórum mínimo de <span class="num">3/100</span>; <span class="exc">vedação</span> de criar/integrar outro bloco na mesma sessão legislativa após dissolução</li>
       <li><b>Bancada Negra x Bloco:</b> líderes de partido dentro de bloco têm só voz; Bancada Negra tem <span class="k">voz e voto</span></li>
-    <li><b>Base de Cálculo para Distribuição de Poder (Mesa, Comissões e Vice-Líderes):</b> utiliza-se o número de deputados eleitos, conforme resultado final proclamado pela JE (TSE). A pegadinha: são desconsideradas as mudanças de filiação partidária posteriores à eleição para fins de cálculo de vagas na Mesa.</li>
-       <li><b>Distribuição das Vagas na Mesa:</b> A regra geral é que a escolha dos cargos é feita pelas Lideranças, seguindo rigorosamente a ordem de tamanho da bancada (do maior partido/bloco para o menor), mas há uma exceção: as bancadas PODEM fazer um acordo político para dividir os cargos de uma maneira diferente, ignorando essa ordem estrita de "maior para o menor". Portanto, a distribuição das vagas na Mesa é do maior para o menor partido/bloco, SALVO acordo entre as bancadas. Membro da Mesa perde o cargo AUTOMATICAMENTE se trocar de partido (não cabe acordo).</li>    </ul>
+      <li><b>Base de Cálculo para Distribuição de Poder (Mesa, Comissões e Vice-Líderes):</b> utiliza-se o número de deputados eleitos, conforme resultado final proclamado pela JE (TSE). A pegadinha: são desconsideradas as mudanças de filiação partidária posteriores à eleição para fins de cálculo de vagas na Mesa.</li>
+      <li><b>Distribuição das Vagas na Mesa:</b> A regra geral é que a escolha dos cargos é feita pelas Lideranças, seguindo rigorosamente a ordem de tamanho da bancada (do maior partido/bloco para o menor), mas há uma exceção: as bancadas PODEM fazer um acordo político para dividir os cargos de uma maneira diferente, ignorando essa ordem estrita de "maior para o menor". Portanto, a distribuição das vagas na Mesa é do maior para o menor partido/bloco, SALVO acordo entre as bancadas. Membro da Mesa perde o cargo AUTOMATICAMENTE se trocar de partido (não cabe acordo).</li>
+    </ul>
   </div>
   <div class="panel p6">
     <h3>3 — Números e datas que mais caem</h3>
@@ -880,13 +1002,33 @@ a{color:inherit;text-decoration:none}
 
 </div><!-- /wrap -->
 
+<!-- NOTES DRAWER (novo) -->
+<div class="drawer-overlay" id="notes-overlay" aria-hidden="true">
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="notes-title" aria-describedby="notes-desc">
+    <div class="drawer-head">
+      <div class="drawer-head-info">
+        <h2 id="notes-title">Anotações — Título I</h2>
+        <p id="notes-desc">Suas anotações ficam salvas no navegador (localStorage) e são específicas desta página.</p>
+      </div>
+      <button class="drawer-close" id="notes-close" type="button" aria-label="Fechar">✕</button>
+    </div>
+    <div class="drawer-body">
+      <textarea id="notes-area" placeholder="Escreva aqui suas anotações…"></textarea>
+      <div class="drawer-actions">
+        <button class="d-btn d-btn-clear" id="notes-clear" type="button">Limpar</button>
+        <button class="d-btn d-btn-save" id="notes-save" type="button">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="fab-wrap">
-  <button id="theme-btn" title="Alternar tema">
+  <button id="theme-btn" title="Alternar tema" type="button">
     <span id="t-icon">🌙</span>
     <div class="t-track"><div class="t-knob"></div></div>
     <span id="t-label">Escuro</span>
   </button>
-  <button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <button id="back-top" title="Voltar ao topo" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 </div>
 
 <script>
@@ -904,13 +1046,66 @@ a{color:inherit;text-decoration:none}
   apply();
   btn.addEventListener('click',()=>{dark=!dark;apply()});
 })();
+
 (function(){
   const bar=document.getElementById('prog'),top=document.getElementById('back-top');
   window.addEventListener('scroll',function(){
     const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
-    bar.style.width=(s/h*100)+'%';
+    bar.style.width=(h>0?(s/h*100):0)+'%';
     top.classList.toggle('show',s>280);
   },{passive:true});
+})();
+
+/* Notes Drawer */
+(function(){
+  const KEY='ricd-notes::titulo1';
+  const btnOpen=document.getElementById('btn-notes');
+  const overlay=document.getElementById('notes-overlay');
+  const btnClose=document.getElementById('notes-close');
+  const area=document.getElementById('notes-area');
+  const btnSave=document.getElementById('notes-save');
+  const btnClear=document.getElementById('notes-clear');
+
+  if(!btnOpen || !overlay || !btnClose || !area || !btnSave || !btnClear) return;
+
+  function open(){
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden','false');
+    area.value=localStorage.getItem(KEY)||'';
+    setTimeout(()=>area.focus(),0);
+    document.addEventListener('keydown',onKey);
+  }
+  function close(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden','true');
+    document.removeEventListener('keydown',onKey);
+    btnOpen.focus();
+  }
+  function onKey(e){
+    if(e.key==='Escape') close();
+    if((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='s'){
+      e.preventDefault();
+      localStorage.setItem(KEY, area.value);
+    }
+  }
+
+  btnOpen.addEventListener('click',open);
+  btnClose.addEventListener('click',close);
+
+  overlay.addEventListener('click',(e)=>{
+    if(e.target===overlay) close();
+  });
+
+  btnSave.addEventListener('click',()=>{
+    localStorage.setItem(KEY, area.value);
+    close();
+  });
+
+  btnClear.addEventListener('click',()=>{
+    area.value='';
+    localStorage.removeItem(KEY);
+    area.focus();
+  });
 })();
 </script>
 </body>
