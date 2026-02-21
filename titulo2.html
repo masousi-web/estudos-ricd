@@ -3,228 +3,588 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RICD — Título II — Dos Órgãos da Câmara</title>
+<title>RICD — Título I — Disposições Preliminares</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 
-/* ═══════════════ TOKENS LIGHT ═══════════════ */
-:root,[data-theme="light"]{
-  --bg:#f3f6fb; --bg2:#eaeff8;
-  --surface:#ffffff; --surface2:#f7faff;
-  --border:rgba(15,39,66,.09); --border-hard:rgba(15,39,66,.16);
-  --ink:#0d1f35; --ink2:#2b4060; --muted:#526a88; --faint:#8fa8c2;
-  --gold:#b86b1a; --gold-soft:rgba(184,107,26,.10);
-  --blue:#1a4d8a; --blue-soft:rgba(26,77,138,.08);
-  --green:#186347; --green-soft:rgba(24,99,71,.09);
-  --red:#a81f2a; --red-soft:rgba(168,31,42,.09);
-  --purple:#5a3d8a; --purple-soft:rgba(90,61,138,.08);
-  --mark-bg:rgba(15,23,42,.07);
-  --hero-from:#0c2240; --hero-to:#153558;
-  --hero-text:#ffffff; --hero-sub:rgba(255,255,255,.80);
-  --sh-sm:0 2px 8px rgba(12,26,43,.06);
-  --sh-md:0 6px 20px rgba(12,26,43,.09);
-  --sh-lg:0 14px 34px rgba(12,26,43,.11);
-  --sh-hov:0 10px 28px rgba(12,26,43,.14);
-  --list-bg:#f7fafc; --note-bg:rgba(26,77,138,.05);
-  --note-border:rgba(26,77,138,.12); --note-text:#1a2e44;
-  --toggle-bg:#d8e2f0; --toggle-knob:#ffffff;
-  --drawer-bg:#ffffff; --drawer-overlay:rgba(15,23,42,.38);
-  --textarea-bg:#fbfcfe;
-}
-/* ═══════════════ TOKENS DARK ═══════════════ */
-[data-theme="dark"]{
-  --bg:#0c1120; --bg2:#101728;
-  --surface:#161d2f; --surface2:#1b2238;
-  --border:rgba(255,255,255,.06); --border-hard:rgba(255,255,255,.12);
-  --ink:#dce8fa; --ink2:#94b0d4; --muted:#627ea6; --faint:#374e6a;
-  --gold:#f0b84a; --gold-soft:rgba(240,184,74,.11);
-  --blue:#5b96f0; --blue-soft:rgba(91,150,240,.11);
-  --green:#38c882; --green-soft:rgba(56,200,130,.09);
-  --red:#f46862; --red-soft:rgba(244,104,98,.11);
-  --purple:#a07af5; --purple-soft:rgba(160,122,245,.10);
-  --mark-bg:rgba(220,232,250,.09);
-  --hero-from:#08111e; --hero-to:#0f1e30;
-  --hero-text:#e4f0ff; --hero-sub:rgba(210,228,255,.70);
-  --sh-sm:0 2px 8px rgba(0,0,0,.28);
-  --sh-md:0 6px 20px rgba(0,0,0,.34);
-  --sh-lg:0 14px 34px rgba(0,0,0,.40);
-  --sh-hov:0 10px 28px rgba(0,0,0,.46);
-  --list-bg:rgba(255,255,255,.03); --note-bg:rgba(91,150,240,.09);
-  --note-border:rgba(91,150,240,.20); --note-text:#b0ccf0;
-  --toggle-bg:#243350; --toggle-knob:#f0b84a;
-  --drawer-bg:#161d2f; --drawer-overlay:rgba(0,0,0,.65);
-  --textarea-bg:#111828;
+/* ═══════════════════════════════════════════════
+   TOKENS — LIGHT
+═══════════════════════════════════════════════ */
+:root, [data-theme="light"] {
+  --bg:          #f3f6fb;
+  --bg2:         #eaeff8;
+  --surface:     #ffffff;
+  --surface2:    #f7faff;
+  --border:      rgba(15,39,66,.09);
+  --border-hard: rgba(15,39,66,.16);
+
+  --ink:         #0d1f35;
+  --ink2:        #2b4060;
+  --muted:       #526a88;
+  --faint:       #8fa8c2;
+
+  --gold:        #b86b1a;
+  --gold-soft:   rgba(184,107,26,.10);
+  --blue:        #1a4d8a;
+  --blue-soft:   rgba(26,77,138,.08);
+  --green:       #186347;
+  --green-soft:  rgba(24,99,71,.09);
+  --red:         #a81f2a;
+  --red-soft:    rgba(168,31,42,.09);
+  --purple:      #5a3d8a;
+  --purple-soft: rgba(90,61,138,.08);
+
+  --mark-bg:     rgba(15,23,42,.07);
+
+  --hero-from:   #0c2240;
+  --hero-to:     #153558;
+  --hero-text:   #ffffff;
+  --hero-sub:    rgba(255,255,255,.80);
+
+  --sh-sm:  0 2px 8px rgba(12,26,43,.06);
+  --sh-md:  0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:  0 14px 34px rgba(12,26,43,.11);
+  --sh-hov: 0 10px 28px rgba(12,26,43,.14);
+
+  --chip-bg:     rgba(255,255,255,.72);
+  --chip-border: rgba(15,23,42,.10);
+  --chip-text:   #2b4060;
+
+  --list-bg:     #f7fafc;
+  --note-bg:     rgba(26,77,138,.05);
+  --note-border: rgba(26,77,138,.12);
+  --note-text:   #1a2e44;
+
+  --toggle-bg:   #d8e2f0;
+  --toggle-knob: #ffffff;
+
+  /* Notes Drawer */
+  --drawer-bg:      #ffffff;
+  --drawer-overlay: rgba(15,23,42,.38);
+  --textarea-bg:    #fbfcfe;
 }
 
-/* ═══════════════ BASE ═══════════════ */
+/* ═══════════════════════════════════════════════
+   TOKENS — DARK
+═══════════════════════════════════════════════ */
+[data-theme="dark"] {
+  --bg:          #0c1120;
+  --bg2:         #101728;
+  --surface:     #161d2f;
+  --surface2:    #1b2238;
+  --border:      rgba(255,255,255,.06);
+  --border-hard: rgba(255,255,255,.12);
+
+  --ink:         #dce8fa;
+  --ink2:        #94b0d4;
+  --muted:       #627ea6;
+  --faint:       #374e6a;
+
+  --gold:        #f0b84a;
+  --gold-soft:   rgba(240,184,74,.11);
+  --blue:        #5b96f0;
+  --blue-soft:   rgba(91,150,240,.11);
+  --green:       #38c882;
+  --green-soft:  rgba(56,200,130,.09);
+  --red:         #f46862;
+  --red-soft:    rgba(244,104,98,.11);
+  --purple:      #a07af5;
+  --purple-soft: rgba(160,122,245,.10);
+
+  --mark-bg:     rgba(220,232,250,.09);
+
+  --hero-from:   #08111e;
+  --hero-to:     #0f1e30;
+  --hero-text:   #e4f0ff;
+  --hero-sub:    rgba(210,228,255,.70);
+
+  --sh-sm:  0 2px 8px rgba(0,0,0,.28);
+  --sh-md:  0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:  0 14px 34px rgba(0,0,0,.40);
+  --sh-hov: 0 10px 28px rgba(0,0,0,.46);
+
+  --chip-bg:     rgba(255,255,255,.06);
+  --chip-border: rgba(255,255,255,.12);
+  --chip-text:   rgba(220,232,255,.82);
+
+  --list-bg:     rgba(255,255,255,.03);
+  --note-bg:     rgba(91,150,240,.09);
+  --note-border: rgba(91,150,240,.20);
+  --note-text:   #b0ccf0;
+
+  --toggle-bg:   #243350;
+  --toggle-knob: #f0b84a;
+
+  /* Notes Drawer */
+  --drawer-bg:      #161d2f;
+  --drawer-overlay: rgba(0,0,0,.65);
+  --textarea-bg:    #111828;
+}
+
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Outfit',sans-serif;font-size:15px;line-height:1.68;color:var(--ink);background:var(--bg);transition:background .25s,color .25s;min-height:100vh}
+body{
+  font-family:'Outfit',sans-serif;
+  font-size:15px;
+  line-height:1.68;
+  color:var(--ink);
+  background:var(--bg);
+  transition:background .25s,color .25s;
+  min-height:100vh;
+}
 a{color:inherit;text-decoration:none}
 
-/* ═══════════════ PROGRESS ═══════════════ */
-#prog{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--gold),var(--blue));z-index:300;transition:width .08s linear;border-radius:0 2px 2px 0}
+/* ═══════════════════════════════════════════════
+   PROGRESS BAR
+═══════════════════════════════════════════════ */
+#prog{
+  position:fixed;top:0;left:0;
+  height:3px;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--blue));
+  z-index:300;transition:width .08s linear;
+  border-radius:0 2px 2px 0;
+}
 
-/* ═══════════════ FABs ═══════════════ */
-.fab-wrap{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
-#theme-btn{background:var(--surface);border:1px solid var(--border-hard);box-shadow:var(--sh-md);border-radius:50px;padding:8px 14px;cursor:pointer;display:flex;align-items:center;gap:9px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--muted);transition:all .2s;user-select:none}
+/* ═══════════════════════════════════════════════
+   FAB — THEME TOGGLE + BACK TO TOP
+═══════════════════════════════════════════════ */
+.fab-wrap{
+  position:fixed;bottom:24px;right:24px;
+  z-index:200;
+  display:flex;flex-direction:column;gap:10px;align-items:flex-end;
+}
+#theme-btn{
+  background:var(--surface);
+  border:1px solid var(--border-hard);
+  box-shadow:var(--sh-md);
+  border-radius:50px;
+  padding:8px 14px;
+  cursor:pointer;
+  display:flex;align-items:center;gap:9px;
+  font-family:'Outfit',sans-serif;
+  font-size:13px;font-weight:600;
+  color:var(--muted);
+  transition:all .2s;user-select:none;
+}
 #theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
-.t-track{width:38px;height:20px;background:var(--toggle-bg);border-radius:20px;position:relative;transition:background .25s}
-.t-knob{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--toggle-knob);transition:transform .25s,background .25s;box-shadow:0 1px 4px rgba(0,0,0,.22)}
+.t-track{
+  width:38px;height:20px;
+  background:var(--toggle-bg);
+  border-radius:20px;position:relative;
+  transition:background .25s;
+}
+.t-knob{
+  position:absolute;top:2px;left:2px;
+  width:16px;height:16px;
+  border-radius:50%;
+  background:var(--toggle-knob);
+  transition:transform .25s,background .25s;
+  box-shadow:0 1px 4px rgba(0,0,0,.22);
+}
 [data-theme="dark"] .t-knob{transform:translateX(18px)}
-#back-top{width:44px;height:44px;background:var(--surface);border:1px solid var(--border-hard);border-radius:50%;box-shadow:var(--sh-md);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--muted);transition:all .2s;opacity:0;pointer-events:none;transform:translateY(10px)}
+#back-top{
+  width:44px;height:44px;
+  background:var(--surface);
+  border:1px solid var(--border-hard);
+  border-radius:50%;
+  box-shadow:var(--sh-md);
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;color:var(--muted);
+  transition:all .2s;
+  opacity:0;pointer-events:none;
+  transform:translateY(10px);
+}
 #back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
 #back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
 
-/* ═══════════════ WRAP ═══════════════ */
-.wrap{max-width:1100px;margin:0 auto;padding:0 20px 80px}
+/* ═══════════════════════════════════════════════
+   WRAP
+═══════════════════════════════════════════════ */
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px 80px}
 
-/* ═══════════════ HERO ═══════════════ */
-.hero{background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);border-radius:0 0 28px 28px;padding:38px 36px 34px;margin-bottom:32px;position:relative;overflow:hidden;box-shadow:var(--sh-lg)}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);pointer-events:none}
-.hero::after{content:'II';position:absolute;right:36px;top:50%;transform:translateY(-50%);font-family:'Crimson Pro',serif;font-size:160px;font-weight:700;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none}
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+.hero{
+  background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);
+  border-radius:0 0 28px 28px;
+  padding:38px 36px 34px;
+  margin-bottom:32px;
+  position:relative;overflow:hidden;
+  box-shadow:var(--sh-lg);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),
+    radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'I';
+  position:absolute;right:36px;top:50%;transform:translateY(-50%);
+  font-family:'Crimson Pro',serif;
+  font-size:160px;font-weight:700;
+  color:rgba(255,255,255,.04);
+  line-height:1;pointer-events:none;user-select:none;
+}
 .hero-inner{position:relative;z-index:1}
-.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-.hero-title{font-family:'Crimson Pro',serif;font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--hero-text);line-height:1.12;margin-bottom:10px}
-.hero-sub{font-size:14px;color:var(--hero-sub);max-width:72ch;line-height:1.58;margin-bottom:18px}
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;
+}
+.hero-title{
+  font-family:'Crimson Pro',serif;
+  font-size:clamp(28px,3.5vw,42px);
+  font-weight:700;color:var(--hero-text);
+  line-height:1.12;margin-bottom:10px;
+}
+.hero-sub{
+  font-size:14px;color:var(--hero-sub);
+  max-width:70ch;line-height:1.58;margin-bottom:18px;
+}
 .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
 .hero-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;border:1px solid}
 .hero-btn-ghost{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18);color:rgba(255,255,255,.88)}
 .hero-btn-ghost:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
 .hero-btn-primary{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);color:#fff;font-weight:700}
 .hero-btn-primary:hover{background:rgba(255,255,255,.22);transform:translateY(-1px)}
+
 .nav-chips{display:flex;flex-wrap:wrap;gap:8px}
-.nav-chips a{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:100px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.88);font-size:12.5px;font-weight:500;transition:background .15s,transform .1s}
+.nav-chips a{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:7px 13px;border-radius:100px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.16);
+  color:rgba(255,255,255,.88);
+  font-size:12.5px;font-weight:500;
+  transition:background .15s,transform .1s;
+}
 .nav-chips a:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
 .nav-chips a b{font-weight:700;color:var(--gold)}
-.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.10)}
-.lchip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:rgba(255,255,255,.78);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;font-weight:600;text-transform:uppercase}
+.legend{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-top:18px;padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.10);
+}
+.lchip{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:100px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.07);
+  color:rgba(255,255,255,.78);
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:.06em;font-weight:600;text-transform:uppercase;
+}
 .ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 
-/* ═══════════════ SECTION DIVIDER ═══════════════ */
-.sec-head{display:flex;align-items:center;gap:14px;margin:36px 0 18px}
+/* ═══════════════════════════════════════════════
+   SECTION DIVIDER
+═══════════════════════════════════════════════ */
+.sec-head{
+  display:flex;align-items:center;gap:14px;
+  margin:36px 0 18px;
+}
 .sec-line{flex:1;height:1px;background:var(--border-hard)}
-.sec-title{font-family:'Crimson Pro',serif;font-size:21px;font-weight:700;color:var(--ink);white-space:nowrap}
-.sec-badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+.sec-title{
+  font-family:'Crimson Pro',serif;
+  font-size:21px;font-weight:700;
+  color:var(--ink);white-space:nowrap;
+}
+.sec-badge{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);white-space:nowrap;
+}
 
-/* ═══════════════ GRID ═══════════════ */
+/* ═══════════════════════════════════════════════
+   GRID
+═══════════════════════════════════════════════ */
 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-.c12{grid-column:span 12}.c6{grid-column:span 12}.c4{grid-column:span 12}
+.c12{grid-column:span 12}
+.c6{grid-column:span 12}
+.c4{grid-column:span 12}
 @media(min-width:760px){.c6{grid-column:span 6}.c4{grid-column:span 4}}
 
-/* ═══════════════ CARD ═══════════════ */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--sh-sm);overflow:hidden;position:relative;transition:transform .14s,box-shadow .14s;opacity:0;animation:fadeUp .35s ease forwards}
-.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.07s}.card:nth-child(3){animation-delay:.11s}.card:nth-child(4){animation-delay:.15s}.card:nth-child(5){animation-delay:.19s}.card:nth-child(6){animation-delay:.23s}.card:nth-child(7){animation-delay:.27s}.card:nth-child(8){animation-delay:.31s}.card:nth-child(9){animation-delay:.35s}.card:nth-child(10){animation-delay:.39s}
+/* ═══════════════════════════════════════════════
+   CARD
+═══════════════════════════════════════════════ */
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:var(--sh-sm);
+  overflow:hidden;position:relative;
+  transition:transform .14s,box-shadow .14s,border-color .14s;
+  opacity:0;
+  animation:fadeUp .35s ease forwards;
+}
+.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.07s}
+.card:nth-child(3){animation-delay:.11s}.card:nth-child(4){animation-delay:.15s}
+.card:nth-child(5){animation-delay:.19s}.card:nth-child(6){animation-delay:.23s}
+.card:nth-child(7){animation-delay:.27s}.card:nth-child(8){animation-delay:.31s}
+.card:nth-child(9){animation-delay:.35s}.card:nth-child(10){animation-delay:.39s}
+.card:nth-child(11){animation-delay:.43s}.card:nth-child(12){animation-delay:.47s}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .card:hover{transform:translateY(-2px);box-shadow:var(--sh-hov)}
-.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,#1c3f63);border-radius:14px 0 0 14px}
+.card::before{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;
+  width:4px;background:var(--c,#1c3f63);
+  border-radius:14px 0 0 14px;
+}
 .card-inner{padding:16px 16px 16px 18px}
 .card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
-.c-badge{flex-shrink:0;width:36px;height:36px;border-radius:9px;background:var(--bg2);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;color:var(--c,#1c3f63);margin-top:1px}
-[data-theme="dark"] .c-badge{background:color-mix(in srgb,var(--c,#1c3f63) 14%,var(--surface2) 86%);color:color-mix(in srgb,var(--c,#1c3f63) 55%,#ffffff 45%)}
-@supports not (color:color-mix(in srgb,red 50%,blue 50%)){[data-theme="dark"] .c-badge{background:var(--surface2);color:var(--ink2)}}
-.c-title{font-family:'Crimson Pro',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:3px}
+.c-badge{
+  flex-shrink:0;width:36px;height:36px;
+  border-radius:9px;background:var(--bg2);
+  border:1px solid var(--border-hard);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11.5px;font-weight:700;
+  color:var(--c,#1c3f63);margin-top:1px;
+}
+[data-theme="dark"] .c-badge{
+  background:color-mix(in srgb,var(--c,#1c3f63) 14%,var(--surface2) 86%);
+  color:color-mix(in srgb,var(--c,#1c3f63) 55%,#ffffff 45%);
+}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){
+  [data-theme="dark"] .c-badge{background:var(--surface2);color:var(--ink2)}
+}
+.c-title{
+  font-family:'Crimson Pro',serif;
+  font-size:17px;font-weight:700;
+  color:var(--ink);line-height:1.2;margin-bottom:3px;
+}
 .c-lead{font-size:13px;color:var(--muted);line-height:1.45}
+
+/* Lista */
 .kp-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:10px}
-.kp-list li{padding:9px 11px;border-radius:9px;background:var(--list-bg);border:1px solid var(--border);font-size:13.5px;color:var(--ink2);line-height:1.52}
+.kp-list li{
+  padding:9px 11px;border-radius:9px;
+  background:var(--list-bg);border:1px solid var(--border);
+  font-size:13.5px;color:var(--ink2);line-height:1.52;
+}
 .kp-list li b{font-weight:700;color:var(--ink)}
 
-/* ═══════════════ SEMANTIC HIGHLIGHTS ═══════════════ */
+/* Destaques semânticos */
 .k{font-weight:700;color:var(--ink);background:var(--mark-bg);padding:0 .22em;border-radius:.4em}
 .org{font-weight:700;color:var(--blue);background:var(--blue-soft);padding:0 .22em;border-radius:.4em}
 .prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em;white-space:nowrap}
 .exc{font-weight:700;color:var(--red);background:var(--red-soft);padding:0 .22em;border-radius:.4em}
 .num{font-weight:700;color:var(--ink2)}
 .tech{font-style:italic;font-weight:600;color:var(--ink)}
-.uc{text-transform:uppercase;letter-spacing:.04em}
+.green-soft{font-weight:700;color:var(--green);background:var(--green-soft);padding:0 .22em;border-radius:.4em}
 
-/* ═══════════════ NOTE / TRAP / CORRELATOS ═══════════════ */
-.note{margin-top:10px;padding:10px 13px;border-radius:10px;background:var(--note-bg);border:1px solid var(--note-border);color:var(--note-text);font-size:13px;line-height:1.55}
+/* Nota */
+.note{
+  margin-top:10px;padding:10px 13px;border-radius:10px;
+  background:var(--note-bg);border:1px solid var(--note-border);
+  color:var(--note-text);font-size:13px;line-height:1.55;
+}
 .note b{font-weight:700}
-.trap{margin-top:10px;display:flex;gap:10px;align-items:flex-start;background:var(--red-soft);border:1px solid color-mix(in srgb,var(--red) 25%,transparent 75%);border-radius:10px;padding:11px 13px}
+
+/* Pegadinha */
+.trap{
+  margin-top:10px;display:flex;gap:10px;align-items:flex-start;
+  background:var(--red-soft);
+  border:1px solid color-mix(in srgb,var(--red) 25%,transparent 75%);
+  border-radius:10px;padding:11px 13px;
+}
 @supports not (color:color-mix(in srgb,red 50%,blue 50%)){.trap{border-color:rgba(168,31,42,.2)}}
 .trap-icon{font-size:16px;line-height:1.5;flex-shrink:0}
 .trap-text{font-size:13px;color:var(--red);font-weight:500;line-height:1.5}
-.trap-text b{font-weight:700}
-.correlatos{margin-top:10px;padding:11px 13px;border-radius:10px;background:var(--purple-soft);border:1px solid rgba(90,61,138,.16)}
+.trap-text b{font-weight:700;color:var(--red)}
+
+/* Correlatos */
+.correlatos{
+  margin-top:10px;padding:11px 13px;border-radius:10px;
+  background:var(--purple-soft);
+  border:1px solid rgba(90,61,138,.16);
+}
 [data-theme="dark"] .correlatos{border-color:rgba(160,122,245,.18)}
-.corr-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);font-weight:700;margin-bottom:6px}
+.corr-title{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--purple);font-weight:700;margin-bottom:6px;
+}
 .corr-list{list-style:none;display:flex;flex-direction:column;gap:4px}
 .corr-list li{font-size:13px;color:var(--ink2);padding-left:16px;position:relative;line-height:1.5}
 .corr-list li::before{content:'↗';position:absolute;left:0;color:var(--purple);font-size:12px}
 
-/* ═══════════════ CAPÍTULO BUTTONS ═══════════════ */
-.cap-grid{display:flex;flex-direction:column;gap:10px;margin-top:10px}
-.capbtn{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px 14px 20px;border-radius:12px;background:var(--surface2);border:1px solid var(--border);box-shadow:var(--sh-sm);position:relative;overflow:hidden;transition:transform .12s,box-shadow .12s,border-color .12s}
-.capbtn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,#1c3f63)}
-.capbtn:hover{transform:translateY(-2px);box-shadow:var(--sh-hov);border-color:var(--border-hard)}
-.capbtn-text{min-width:0;padding-left:6px}
-.capbtn-title{font-family:'Crimson Pro',serif;font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:4px}
-.capbtn-desc{font-size:13px;color:var(--muted);line-height:1.4}
-.capbtn-arrow{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--bg2);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);transition:color .15s,background .15s}
-.capbtn:hover .capbtn-arrow{color:var(--ink);background:var(--surface)}
+/* ═══════════════════════════════════════════════
+   ANALYSIS PANELS
+═══════════════════════════════════════════════ */
+.analysis-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:4px}
+.panel{
+  grid-column:span 12;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;box-shadow:var(--sh-sm);padding:16px 18px;
+}
+@media(min-width:760px){.panel.p6{grid-column:span 6}}
+.panel h3{
+  font-family:'Crimson Pro',serif;font-size:17px;font-weight:700;
+  color:var(--ink);margin-bottom:10px;
+}
+.panel ul{padding-left:18px;display:flex;flex-direction:column;gap:7px}
+.panel ul li{font-size:13.5px;color:var(--ink2);line-height:1.55}
+.panel ul li b{font-weight:700;color:var(--ink)}
 
-/* ═══════════════ FOOTER ═══════════════ */
-.page-footer{text-align:center;font-size:12.5px;color:var(--faint);margin-top:48px;padding-top:20px;border-top:1px solid var(--border-hard);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px}
-.page-footer a{color:var(--blue);font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid var(--border-hard);background:var(--surface);font-size:13px;transition:box-shadow .15s}
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+.page-footer{
+  text-align:center;font-size:12.5px;color:var(--faint);
+  margin-top:48px;padding-top:20px;
+  border-top:1px solid var(--border-hard);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;
+}
+.page-footer a{
+  color:var(--blue);font-weight:600;
+  padding:6px 14px;border-radius:8px;
+  border:1px solid var(--border-hard);background:var(--surface);
+  font-size:13px;transition:box-shadow .15s;
+}
 .page-footer a:hover{box-shadow:var(--sh-md)}
 
 /* ═══════════════ NOTES DRAWER ═══════════════ */
-.drawer-overlay{position:fixed;inset:0;background:var(--drawer-overlay);backdrop-filter:blur(4px);z-index:400;display:none;align-items:flex-end;justify-content:center;padding:16px}
+.drawer-overlay{
+  position:fixed;inset:0;
+  background:var(--drawer-overlay);
+  backdrop-filter:blur(4px);
+  z-index:400;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  padding:16px;
+}
 .drawer-overlay.open{display:flex}
-.drawer-panel{width:min(900px,100%);background:var(--drawer-bg);border:1px solid var(--border-hard);border-radius:20px;box-shadow:var(--sh-lg);overflow:hidden;transition:background .25s}
-.drawer-head{padding:16px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;background:linear-gradient(180deg,var(--surface2),var(--surface));border-bottom:1px solid var(--border-hard)}
-.drawer-head-info h2{font-family:'Crimson Pro',serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px}
-.drawer-head-info p{font-size:13px;color:var(--muted);line-height:1.45;max-width:70ch}
-.drawer-close{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--bg2);border:1px solid var(--border-hard);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);transition:all .15s}
+.drawer-panel{
+  width:min(900px,100%);
+  background:var(--drawer-bg);
+  border:1px solid var(--border-hard);
+  border-radius:20px;
+  box-shadow:var(--sh-lg);
+  overflow:hidden;
+  transition:background .25s;
+}
+.drawer-head{
+  padding:16px 20px;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  background:linear-gradient(180deg,var(--surface2),var(--surface));
+  border-bottom:1px solid var(--border-hard);
+}
+.drawer-head-info h2{
+  font-family:'Crimson Pro',serif;
+  font-size:18px;font-weight:700;color:var(--ink);
+  margin-bottom:4px;
+}
+.drawer-head-info p{
+  font-size:13px;color:var(--muted);
+  line-height:1.45;max-width:70ch;
+}
+.drawer-close{
+  flex-shrink:0;width:36px;height:36px;border-radius:50%;
+  background:var(--bg2);border:1px solid var(--border-hard);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:16px;color:var(--muted);
+  transition:all .15s;
+}
 .drawer-close:hover{color:var(--red);border-color:var(--red)}
 .drawer-body{padding:16px 20px 20px}
-#notes-area{width:100%;min-height:220px;resize:vertical;border-radius:12px;border:1px solid var(--border-hard);padding:12px 14px;font-family:'Outfit',sans-serif;font-size:14px;line-height:1.6;outline:none;background:var(--textarea-bg);color:var(--ink);transition:border-color .15s,background .25s,color .25s}
+#notes-area{
+  width:100%;
+  min-height:220px;
+  resize:vertical;
+  border-radius:12px;
+  border:1px solid var(--border-hard);
+  padding:12px 14px;
+  font-family:'Outfit',sans-serif;
+  font-size:14px;
+  line-height:1.6;
+  outline:none;
+  background:var(--textarea-bg);
+  color:var(--ink);
+  transition:border-color .15s,background .25s,color .25s;
+}
 #notes-area:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
 #notes-area::placeholder{color:var(--faint)}
-.drawer-actions{margin-top:12px;display:flex;gap:10px;justify-content:flex-end}
-.d-btn{font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;padding:8px 18px;border-radius:8px;cursor:pointer;border:1px solid;transition:all .15s}
-.d-btn-clear{background:transparent;color:var(--red);border-color:color-mix(in srgb,var(--red) 30%,transparent 70%)}
+.drawer-actions{
+  margin-top:12px;
+  display:flex;
+  gap:10px;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+}
+.d-btn{
+  font-family:'Outfit',sans-serif;
+  font-size:13px;font-weight:600;
+  padding:8px 18px;border-radius:8px;
+  cursor:pointer;border:1px solid;
+  transition:all .15s;
+}
+.d-btn-clear{
+  background:transparent;
+  color:var(--red);
+  border-color:color-mix(in srgb,var(--red) 30%,transparent 70%);
+}
 @supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-clear{border-color:rgba(168,31,42,.3)}}
 .d-btn-clear:hover{background:var(--red-soft)}
-.d-btn-save{background:var(--green-soft);color:var(--green);border-color:color-mix(in srgb,var(--green) 30%,transparent 70%)}
+.d-btn-save{
+  background:var(--green-soft);
+  color:var(--green);
+  border-color:color-mix(in srgb,var(--green) 30%,transparent 70%);
+}
 @supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-save{border-color:rgba(24,99,71,.3)}}
 .d-btn-save:hover{background:rgba(24,99,71,.18)}
 
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
-@media(max-width:600px){.hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}.hero::after{display:none}.wrap{padding:0 14px 80px}}
+
+@media(max-width:600px){
+  .hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}
+  .hero::after{display:none}
+  .wrap{padding:0 14px 80px}
+}
 </style>
 </head>
 <body>
 
 <div id="prog"></div>
 
-<!-- ══════════════ HERO ══════════════ -->
 <header class="hero" id="topo">
   <div class="wrap" style="padding:0">
     <div class="hero-inner">
       <div class="hero-eyebrow">RICD • Resumo Visual • Material de Revisão</div>
-      <h1 class="hero-title">Título II — Dos Órgãos da Câmara</h1>
-      <p class="hero-sub">Nesta página: <strong>Capítulo I — Da Mesa</strong> (composição, reuniões, atribuições, Presidência e Secretaria). Os Capítulos II, III e IV aparecem como botões de navegação ao final.</p>
-      <div class="hero-actions">
+      <h1 class="hero-title">Título I — Disposições Preliminares</h1>
+      <p class="hero-sub">Sede, Sessões Legislativas, Sessões Preparatórias, Líderes, Blocos Parlamentares, Maioria/Minoria e Bancada Negra. Foco em prazos, quóruns, vedações e pegadinhas de prova.</p>
+
+      <!-- AÇÕES (inclui Voltar ao Índice + Anotações) -->
+      <div class="hero-actions" role="group" aria-label="Ações">
         <a class="hero-btn hero-btn-ghost" href="index.html">⌂ Voltar ao Índice</a>
         <button class="hero-btn hero-btn-primary" id="btn-notes" type="button">✏️ Anotações</button>
       </div>
+
       <nav class="nav-chips" aria-label="Seções">
-        <a href="#cap1"><b>Cap. I</b> Mesa</a>
-        <a href="#sec-gerais"><b>Sec. I</b> Disposições Gerais</a>
-        <a href="#art15"><b>Art. 15</b> Atribuições</a>
-        <a href="#susp"><b>Cautelar</b> Suspensão</a>
-        <a href="#pres"><b>Sec. II</b> Presidência</a>
-        <a href="#vice-sec"><b>Arts. 18–19</b> Substituições</a>
-        <a href="#secret"><b>Sec. III</b> Secretaria</a>
-        <a href="#outros"><b>Cap. II–IV</b> Outras páginas</a>
+        <a href="#cap1"><b>Cap. I</b> Sede</a>
+        <a href="#cap2"><b>Cap. II</b> Sessões Legislativas</a>
+        <a href="#cap3"><b>Cap. III</b> Preparatórias</a>
+        <a href="#cap4"><b>Cap. IV</b> Líderes</a>
+        <a href="#cap5"><b>Cap. V</b> Blocos</a>
+        <a href="#majmin"><b>Art. 13</b> Maioria/Minoria</a>
+        <a href="#bn"><b>Arts. 13-A/B</b> Bancada Negra</a>
+        <a href="#analise"><b>Análise</b> Pegadinhas</a>
       </nav>
-      <div class="legend">
+
+      <div class="legend" aria-label="Legenda">
         <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Órgãos</span>
         <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Prazos</span>
         <span class="lchip"><span class="ldot" style="background:#f46862"></span>Exceções/Vedações</span>
@@ -236,290 +596,516 @@ a{color:inherit;text-decoration:none}
 
 <div class="wrap">
 
-<!-- ══════════════ CAP. I — SEÇÃO I ══════════════ -->
+<!-- CAP. I -->
 <div class="sec-head" id="cap1">
-  <div class="sec-line"></div><div class="sec-title">Capítulo I — Da Mesa</div>
-  <div class="sec-badge">Estrutura • reuniões • competências</div><div class="sec-line"></div>
+  <div class="sec-line"></div><div class="sec-title">Capítulo I — Da Sede</div>
+  <div class="sec-badge">Sede e funcionamento</div><div class="sec-line"></div>
 </div>
-
-<div class="grid" id="sec-gerais">
-
+<div class="grid">
   <div class="card c6" style="--c:#1c3f63">
     <div class="card-inner">
-      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Seção I — Disposições Gerais (composição)</div><div class="c-lead">A <span class="org">Mesa</span> como <span class="k">Comissão Diretora</span> dos trabalhos legislativos e administrativos.</div></div></div>
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Sede e funcionamento</div><div class="c-lead">Localização e edifício de funcionamento.</div></div></div>
       <ul class="kp-list">
-        <li><b>Presidência:</b> <span class="k">Presidente</span> + <span class="num">2</span> Vice-Presidentes</li>
-        <li><b>Secretaria:</b> <span class="num">4</span> Secretários + <span class="num">4</span> Suplentes de Secretário (suplentes substituem <span class="k">apenas</span> os Secretários, mas atenção: a banca pode usar a literalidade do título do cargo para tentar nos convencer de que a função dos suplentes se resume a isso, mas o RICD é claro em dois momentos: 1. Suplente pode presidir a sessão na falta de Secretários, Vice-Presidente e Presidente; 2. O art. 19-A dá aos suplentes funções próprias que não dependem da ausência de ninguém, como relatar matérias. Ou seja, a regra principal e o motivo da criação do cargo é, de fato, substituir os Secretários em suas faltas, MAS, excepcionalmente, eles entram na linha de sucessão da Presidência da Mesa no Plenário. Então, aténção, a banca pode usar isso contra a gente)</li>
-        <li><b>Total:</b> <span class="num">7</span> membros efetivos + <span class="num">4</span> suplentes</li>
-        <li><b>Maioria absoluta da Mesa:</b> <span class="num">4</span> membros (dos 7 efetivos)</li>
-        <li><b>Voto do PCD:</b> <span class="k">só</span> em <span class="k">escrutínio secreto</span> ou para <span class="k">desempate</span></li>
-        <li><b>Para discutir:</b> PCD <span class="k">transmite a Presidência</span> ao Vice</li>
-        <li><b>Censura verbal:</b> aplicada pelo <span class="org">Presidente</span> ao Deputado</li>
-        <li><b>Delegação:</b> PCD pode delegar competências aos Vice-Presidentes</li>
+        <li><b>Sede:</b> <span class="k">Capital Federal</span></li>
+        <li><b>Funcionamento:</b> <span class="k">Palácio do Congresso Nacional</span></li>
       </ul>
-      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text"><b>Pegadinha:</b> quem dá posse ao <b>DG</b> e ao <b>SGM</b> é o <span class="org">Primeiro-Secretário</span>, <b>não</b> o Presidente da Câmara.</div></div>
     </div>
   </div>
-
   <div class="card c6" style="--c:#254a78">
     <div class="card-inner">
-      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Incompatibilidades (membros efetivos)</div><div class="c-lead">Vedações do §5º e exceção expressa.</div></div></div>
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Funcionamento em local diverso</div><div class="c-lead">Hipótese excepcional — requisitos cumulativos.</div></div></div>
       <ul class="kp-list">
-        <li><span class="exc uc">Membros efetivos NÃO PODEM:</span></li>
-        <li>• Integrar <span class="k">Liderança</span> (Líder ou Vice-Líder)</li>
-        <li>• Integrar <span class="k">Comissão Permanente</span>, <span class="k">Especial</span> ou <span class="k">CPI</span></li>
-        <li><b>Exceção:</b> Comissão Especial que <span class="k">reforma ou modifica o RICD</span></li>
-        <li><b>Suplentes:</b> <span class="green-soft">podem</span> integrar comissões (inclusive como relatores)</li>
+        <li><b>Requisitos cumulativos:</b> <span class="k">motivo relevante</span> ou <span class="k">força maior</span></li>
+        <li><b>Deliberação:</b> <span class="org">Mesa Diretora</span></li>
+        <li><b>Referendo:</b> <span class="tech">ad referendum</span> da <span class="k">maioria absoluta</span> dos Deputados</li>
       </ul>
-      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A exceção da Comissão Especial vale só para reforma do <b>RICD</b> — não para qualquer Comissão Especial.</div></div>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text"><b>Cumulativo:</b> os três requisitos são obrigatórios — motivo/força maior + Mesa + MA dos Deputados.</div></div>
     </div>
   </div>
+</div>
 
+<!-- CAP. II -->
+<div class="sec-head" id="cap2">
+  <div class="sec-line"></div><div class="sec-title">Capítulo II — Das Sessões Legislativas</div>
+  <div class="sec-badge">SLO, SLE e sessões preparatórias</div><div class="sec-line"></div>
+</div>
+<div class="grid">
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Sessão Legislativa Ordinária (SLO)</div><div class="c-lead">Dois períodos anuais e a exceção da LDO.</div></div></div>
+      <ul class="kp-list">
+        <li><b>1º período:</b> <span class="prazo">2/fev</span> → <span class="prazo">17/jul</span></li>
+        <li><b>2º período:</b> <span class="prazo">1º/ago</span> → <span class="prazo">22/dez</span></li>
+        <li><b>Exceção:</b> <span class="prazo">17/jul</span> <span class="exc">não interrompe</span> se a <span class="k">LDO</span> não foi aprovada pelo <span class="org">Congresso Nacional</span></li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A interrupção de <b>17/jul</b> é <b>condicionada</b> à aprovação da LDO — sem ela, o período continua.</div></div>
+    </div>
+  </div>
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Sessão Legislativa Extraordinária (SLE)</div><div class="c-lead">Convocação e limites temáticos com exceção das MPs.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Convocação:</b> <span class="org">Congresso Nacional</span></li>
+        <li><b>Regra:</b> delibera <span class="exc">somente</span> matéria da <span class="k">convocação</span></li>
+        <li><b>Exceção:</b> <span class="k">MPs em vigor</span> → <span class="k">inclusão automática</span> na pauta (Art. 57, §8º, CF)</li>
+        <li><b>Consequência:</b> <span class="org">PCD</span> é <span class="exc">obrigado</span> a incluir MPs vigentes</li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A palavra <b>"somente"</b> é armadilha clássica — a exceção das <b>MPs em vigor</b> sempre afasta o exclusivismo da pauta.</div></div>
+    </div>
+  </div>
   <div class="card c12" style="--c:#2f5f6e">
     <div class="card-inner">
-      <div class="card-top"><div class="c-badge">III</div><div><div class="c-title">Reuniões da Mesa (ordinária e extraordinária)</div><div class="c-lead">Periodicidade, quórum de convocação e consequência por ausência.</div></div></div>
+      <div class="card-top"><div class="c-badge">III</div><div><div class="c-title">Sessões preparatórias — marco temporal</div><div class="c-lead">Quando ocorrem e ajuste por final de semana/feriado.</div></div></div>
       <ul class="kp-list">
-        <li><b>Ordinária:</b> <span class="prazo">1 vez por quinzena</span> — dia e hora prefixados</li>
-        <li><b>Extraordinária:</b> convocada pelo <span class="org">Presidente</span> ou por <span class="num">4</span> membros efetivos (maioria absoluta dos 7)</li>
-        <li><b>Perda do lugar:</b> <span class="num">5</span> reuniões ordinárias consecutivas <span class="exc">sem causa justificada</span> → perde o lugar na Mesa</li>
+        <li><b>Quando:</b> precedem a <span class="num">1ª</span> e a <span class="num">3ª</span> SLO da legislatura</li>
+        <li><b>Sáb / Dom / Feriado:</b> transfere para o <span class="prazo">1º dia útil subsequente</span></li>
       </ul>
-      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A lei seca <b>não usa "automaticamente"</b> nesse ponto — diferente de outros casos em que a perda é automática.</div></div>
     </div>
   </div>
-
 </div>
 
-<!-- ══════════════ ART. 15 ══════════════ -->
-<div class="sec-head" id="art15">
-  <div class="sec-line"></div><div class="sec-title">Art. 15 — Atribuições da Mesa</div>
-  <div class="sec-badge">Legislativas • constitucionais • administrativas • decoro</div><div class="sec-line"></div>
+<!-- CAP. III -->
+<div class="sec-head" id="cap3">
+  <div class="sec-line"></div><div class="sec-title">Capítulo III — Das Sessões Preparatórias</div>
+  <div class="sec-badge">Posse e eleição da Mesa</div><div class="sec-line"></div>
 </div>
-
 <div class="grid">
-
-  <div class="card c12" style="--c:#1c3f63">
+  <div class="card c6" style="--c:#1c3f63">
     <div class="card-inner">
-      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Competências principais — visão geral</div><div class="c-lead">A Mesa atua em quatro frentes: <span class="k">legislativa</span>, <span class="k">constitucional</span>, <span class="k">administrativa</span> e de <span class="k">decoro</span>.</div></div></div>
+      <div class="card-top"><div class="c-badge">IV</div><div><div class="c-title">Posse — o que apresentar à Mesa</div><div class="c-lead">Documentos, prazos e forma de apresentação.</div></div></div>
       <ul class="kp-list">
-        <li><b>Legislativas:</b> dirigir serviços da Casa nas sessões e nos interregnos; providências para a <span class="k">regularidade dos trabalhos</span> (ressalvada a competência da Comissão Representativa do CN)</li>
-        <li><b>Constitucionais:</b> promulgar <span class="k">Emendas à Constituição</span> com a <span class="org">Mesa do Senado</span>; propor <span class="k">ADI</span> (por iniciativa própria ou a requerimento)</li>
-        <li><b>Administrativas:</b> propor PRL sobre organização/funcionamento/polícia/regime do pessoal; prover cargos; aprovar proposta orçamentária; autorizar licitações; encaminhar prestações de contas ao <span class="org">TCU</span></li>
-        <li><b>Decoro:</b> aplicar <span class="k">censura escrita</span> e propor <span class="k">suspensão cautelar</span> (com prazos e rito específicos)</li>
-        <li><b>Ad referendum da Mesa:</b> PCD ou quem o estiver substituindo PODE decidir matéria <span class="k">inadiável</span> da competência da Mesa — <span class="exc">exceto</span> suspensão cautelar</li>
+        <li><b>Apresentar:</b> <span class="k">diploma</span> (<span class="org">Justiça Eleitoral</span>), <span class="k">nome parlamentar</span>, <span class="k">legenda</span>, <span class="k">UF</span></li>
+        <li><b>Prazo do diploma:</b> até <span class="prazo">31 de janeiro</span> do ano de instalação</li>
+        <li><b>Forma:</b> <span class="k">pessoalmente</span> ou por intermédio do <span class="k">Partido</span></li>
       </ul>
     </div>
   </div>
-
   <div class="card c6" style="--c:#254a78">
     <div class="card-inner">
-      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Censura escrita × censura verbal</div><div class="c-lead">Diferença clássica de prova — quem aplica cada uma.</div></div></div>
+      <div class="card-top"><div class="c-badge">V</div><div><div class="c-title">Nome parlamentar — regras</div><div class="c-lead">Limite de elementos e poder do Presidente.</div></div></div>
       <ul class="kp-list">
-        <li><b>Censura verbal:</b> <span class="org">Presidente</span> aplica ao Deputado</li>
-        <li><b>Censura escrita:</b> <span class="org">Mesa</span> aplica ao Deputado</li>
-      </ul>
-      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A prova troca os sujeitos das censuras com frequência. Verbal → Presidente; Escrita → Mesa.</div></div>
-    </div>
-  </div>
-
-  <div class="card c6" style="--c:#2f5f6e" id="susp">
-    <div class="card-inner">
-      <div class="card-top"><div class="c-badge">III</div><div><div class="c-title">Suspensão cautelar</div><div class="c-lead">Natureza, quem propõe, prazos e fluxo do rito.</div></div></div>
-      <ul class="kp-list">
-        <li><b>Natureza:</b> medida <span class="k">cautelar</span> — afastamento preventivo, não punição definitiva</li>
-        <li><b>Prazo máximo:</b> até <span class="prazo">6 meses</span> (art. 10 do CEDP)</li>
-        <li><span class="exc">Somente a Mesa</span> pode propor — PCD <span class="exc">não pode</span> decidir ad referendum neste caso</li>
-        <li><b>Prazo decadencial da Mesa:</b> <span class="prazo">5 dias úteis</span> do conhecimento do fato</li>
-        <li><b>Conselho de Ética:</b> decide em <span class="prazo">3 dias úteis</span> (votação ostensiva, com prioridade)</li>
-        <li><b>Recurso ao Plenário:</b> apreciado na sessão <span class="k">imediatamente subsequente</span> — exige <span class="k">maioria absoluta</span></li>
-      </ul>
-      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">É a <b>única</b> hipótese em que o PCD <b>não pode</b> agir ad referendum — mesmo em matéria inadiável.</div></div>
-    </div>
-  </div>
-
-</div>
-
-<!-- ══════════════ SEÇÃO II — PRESIDÊNCIA ══════════════ -->
-<div class="sec-head" id="pres">
-  <div class="sec-line"></div><div class="sec-title">Seção II — Da Presidência</div>
-  <div class="sec-badge">Art. 17 — condução dos trabalhos</div><div class="sec-line"></div>
-</div>
-
-<div class="grid">
-  <div class="card c12" style="--c:#1c3f63">
-    <div class="card-inner">
-      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Atribuições do Presidente — núcleo</div><div class="c-lead">Competências de condução de sessão e controle da ordem.</div></div></div>
-      <ul class="kp-list">
-        <li><b>Sessões:</b> abrir, presidir e encerrar; manter a <span class="k">ordem</span></li>
-        <li><b>Palavra:</b> conceder e cassar; advertir o orador que ultrapasse o tempo regimental</li>
-        <li><b>Desvio do tema:</b> pode interromper; se insistir → <span class="exc">retira a palavra</span></li>
-        <li><b>Posição do orador:</b> pode convidá-lo a declarar se fala a favor ou contra</li>
-        <li><b>Fala da bancada:</b> pode autorizar o Deputado a falar da bancada</li>
-        <li><b>Voto:</b> reforço — <span class="k">só</span> em escrutínio secreto ou para <span class="k">desempatar</span> votação ostensiva</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════ VICE-PRESIDENTES E SECRETÁRIOS ══════════════ -->
-<div class="sec-head" id="vice-sec">
-  <div class="sec-line"></div><div class="sec-title">Vice-Presidentes e Secretários</div>
-  <div class="sec-badge">Arts. 18–19 — substituições e ordem</div><div class="sec-line"></div>
-</div>
-
-<div class="grid">
-  <div class="card c6" style="--c:#254a78">
-    <div class="card-inner">
-      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Substituição para presidir a sessão</div><div class="c-lead">Ordem sucessória para a cadeira da Presidência.</div></div></div>
-      <ul class="kp-list">
-        <li><b>Ordem:</b> <span class="k">Vice</span> → <span class="k">Secretário</span> → <span class="k">Suplente (sucessivamente e na série ordinal)</span> → <span class="k">Deputado mais idoso</span> (dentre os de maior nº de legislaturas). LEMBRE-SE: Os suplentes da Mesa entrem na linha de sucessão para substituir Presidente, se não houver nenhum Vice-Presidente nem Secretário presente. Além disso, para substituir Presidente, na falta de suplentes, assume o Deputado mais idoso (com mais legislaturas), mas para substituir Secretário, na falta de suplentes, assume QUALQUER Deputado. Os suplentes não ficam apenas "esperando" alguém faltar, pois possuem atribuições próprias, como atuar como relatores de matérias não reservadas a outros membros da Mesa e representar a Câmara, quando se verificar impossibilidade (além de outras atribuições de suplentes).</li>
-        <li><b>Secretários:</b> presidem apenas na <span class="exc">falta</span> dos Vice-Presidentes</li>
-        <li><b>Ausência &gt; <span class="prazo">48h</span>:</b> Presidente passa o exercício ao Vice</li>
+        <li><b>Máximo:</b> <span class="num">2</span> elementos (prenome + nome | 2 nomes | 2 prenomes)</li>
+        <li><b>Alteração:</b> Presidente <span class="k">pode exigir</span> para evitar confusões</li>
       </ul>
     </div>
   </div>
   <div class="card c6" style="--c:#2f5f6e">
     <div class="card-inner">
-      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Substituição para secretariar a sessão</div><div class="c-lead">Qualquer Deputado pode ser convidado como último recurso.</div></div></div>
+      <div class="card-top"><div class="c-badge">VI</div><div><div class="c-title">Relação dos diplomados</div><div class="c-lead">Competência, prazo interno e critério de ordenação.</div></div></div>
       <ul class="kp-list">
-        <li><b>Ordem:</b> <span class="k">Vice</span> → <span class="k">Secretário</span> → <span class="k">Suplente</span> → <span class="k">qualquer Deputado</span> (a convite do Presidente)</li>
-        <li><b>Suplentes:</b> designados por ordem <span class="k">decrescente</span> de votação</li>
+        <li><b>Competência:</b> <span class="org">Secretaria-Geral da Mesa</span></li>
+        <li><b>Prazo:</b> concluída <span class="k">antes</span> da instalação da sessão de posse</li>
+        <li><b>Ordem:</b> norte → sul (geográfico das capitais); em cada UF: <span class="k">ordem alfabética</span> + legendas</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card c6" style="--c:#3a5c8a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">VII</div><div><div class="c-title">Sessão preparatória de posse</div><div class="c-lead">Data, local, direção e abertura dos trabalhos.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Data:</b> <span class="prazo">1º de fevereiro</span> do <span class="num">1º</span> ano de cada legislatura</li>
+        <li><b>Direção:</b> último Presidente (se reeleito); na falta: mais idoso dentre os de maior nº de legislaturas</li>
+        <li><b>Abertura:</b> convida <span class="num">4</span> Deputados (preferência por partidos diferentes) como secretários; proclama a relação</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">VIII</div><div><div class="c-title">Compromisso solene e vedações</div><div class="c-lead">Ritual, frase e proibições expressas.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Frase:</b> cada Deputado de pé diz <span class="k">"Assim o prometo"</span></li>
+        <li><span class="exc">VEDADO:</span> modificar o conteúdo/ritual; declaração oral ou escrita no ato; posse por procurador</li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text"><b>Sem compromisso = sem mandato.</b> O Deputado não é investido sem prestar o compromisso.</div></div>
+    </div>
+  </div>
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">IX</div><div><div class="c-title">Posse posterior e por videoconferência</div><div class="c-lead">Prazos, hipóteses e requisitos para posse virtual.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Prazo:</b> <span class="prazo">30 dias</span> + <span class="prazo">30 dias</span> (a requerimento); exceção: <span class="k">força maior</span> ou <span class="k">enfermidade comprovadas</span></li>
+        <li><b>Videoconferência:</b> hipóteses excepcionais + requerimento + autorização do Presidente; com termo lavrado pela <span class="org">SGM</span></li>
+        <li><b>Licença-gestante:</b> parto em período <span class="exc">inferior a</span> <span class="prazo">120 dias</span> → direito à posse virtual assegurado</li>
+        <li><b>Dispensa de novo compromisso:</b> suplente já empossado; Deputado ao reassumir (comunicação pelo <span class="org">PCD</span>)</li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text"><b>Posse virtual ≠ participação remota no mandato.</b> Regimes distintos com prazos próprios.</div></div>
+    </div>
+  </div>
+  <div class="card c12" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">X</div><div><div class="c-title">Publicação e efeitos operacionais</div><div class="c-lead">DCD e utilidade prática da relação de investidos.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Publicação:</b> <span class="org">Diário da Câmara dos Deputados</span> no <span class="prazo">dia seguinte</span>, com relação dos investidos</li>
+        <li><b>Serve para:</b> registro de comparecimento; verificação de quórum; votações nominais e escrutínio secreto</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Eleição da Mesa -->
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">XI</div><div><div class="c-title">Eleição da Mesa — quando, mandato e vedação</div><div class="c-lead">Datas, direção e recondução.</div></div></div>
+      <ul class="kp-list">
+        <li><b>1º biênio:</b> <span class="prazo">1º de fevereiro</span> (2ª sessão preparatória da 1ª SLO)</li>
+        <li><b>2º biênio:</b> data/hora designadas pelo <span class="org">PCD</span> antes da sessão do 3º ano</li>
+        <li><b>Mandato:</b> <span class="prazo">2 anos</span>; <span class="exc">vedada recondução</span> ao mesmo cargo na eleição <span class="k">imediatamente subsequente</span></li>
+        <li><b>Exceção:</b> em legislaturas diferentes (ainda que sucessivas) <span class="exc">não</span> se considera recondução</li>
+        <li><b>Ordem:</b> Presidente <span class="k">primeiro</span>; demais cargos <span class="k">somente após</span> sua escolha</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">XII</div><div><div class="c-title">Escrutínio secreto — quóruns e desempate</div><div class="c-lead">Sistema eletrônico e critérios de eleição.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Regra:</b> <span class="k">escrutínio secreto</span> + sistema eletrônico</li>
+        <li><b>1º escrutínio:</b> <span class="k">maioria absoluta</span> — <b>2º escrutínio:</b> <span class="k">maioria simples</span> (entre os 2 mais votados)</li>
+        <li><b>Quórum de presença:</b> <span class="k">maioria absoluta</span> dos Deputados</li>
+        <li><b>Desempate:</b> mais idoso dentre os de maior nº de legislaturas</li>
+        <li><span class="exc">Enquanto não eleito</span> o Presidente → <span class="org">Mesa anterior</span> dirige; demais cargos <span class="exc">não</span> se apuram antes</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card c6" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">XIII</div><div><div class="c-title">Avaria do sistema — votação por cédulas</div><div class="c-lead">Formalidades de sigilo, urnas e apuração manual.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Cédulas:</b> nome + cargo; um ato para todos os cargos (ou chapa completa)</li>
+        <li><b>Sigilo:</b> cabina indevassável + sobrecartas</li>
+        <li><b>Urnas:</b> <span class="num">4</span> à vista do Plenário (2 para Presidente; 2 para demais)</li>
+        <li><b>Apuração:</b> secretário retira sobrecartas (Presidente primeiro), confere, abre, separa, lê e proclama</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card c6" style="--c:#3a5c8a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">XIV</div><div><div class="c-title">Composição da Mesa, candidaturas e vacância</div><div class="c-lead">Proporcionalidade, mudança de legenda e prazos.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Composição:</b> proporcional (<span class="tech">tanto quanto possível</span>); candidaturas avulsas permitidas</li>
+        <li><b>Mudança de legenda:</b> membro muda de partido → <span class="exc">perde automaticamente</span> o cargo na Mesa (sem ressalvas)</li>
+        <li><b>Vacância até <span class="prazo">30/nov do 2º ano</span>:</b> eleição em <span class="prazo">5 sessões</span></li>
+        <li><b>Vacância após 30/nov:</b> Mesa <span class="k">designa titular</span> para responder pelo cargo</li>
+        <li><b>Minoria:</b> <span class="num">1</span> membro assegurado mesmo sem direito pela proporcionalidade</li>
+      </ul>
+
+      <!-- FIX: correlatos estava fora do bloco correto -->
+      <div class="correlatos">
+        <div class="corr-title">Atenção</div>
+        <ul class="corr-list">
+          <li>Se mudar legenda partidária ou se desvincular de sua bancada &gt;&gt; NÃO perde o cargo no <b>CEDP</b> (garantia de independência)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CAP. IV -->
+<div class="sec-head" id="cap4">
+  <div class="sec-line"></div><div class="sec-title">Capítulo IV — Dos Líderes</div>
+  <div class="sec-badge">Escolha, vice-lideranças e incompatibilidades</div><div class="sec-line"></div>
+</div>
+<div class="grid">
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Escolha e vice-líderes</div><div class="c-lead">Cláusula de barreira, indicação e formalização.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Escolha:</b> representações partidárias ou de BP que atendam à <span class="k">cláusula de barreira</span></li>
+        <li><b>Vice-líderes:</b><span class="num">1/4</span> dos Deputados da bancada ("na proporção de 1 para cada 4 Deputados, ou fração, que constitua a representação." &gt; termos exatos do RICD; pode designar um como <span class="k">Primeiro Vice-Líder</span></li>
+        <li><b>Formalização:</b> à <span class="org">Mesa Diretora</span>, subscrita pela <span class="k">maioria absoluta</span> dos integrantes</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Liderança do Governo e partidos sem liderança</div><div class="c-lead">Designação presidencial e representante sem liderança.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Governo:</b> Presidente da República indica Líder + <span class="num">20</span> Vice-Líderes (substituíveis a qualquer momento)</li>
+        <li><b>Partidos sem liderança:</b> representante em <span class="k">Comunicações de Liderança</span>: <span class="prazo">1x/semana</span>, <span class="prazo">5 minutos</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="card c12" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">III</div><div><div class="c-title">Incompatibilidades</div><div class="c-lead">Vedações para líderes e vice-líderes.</div></div></div>
+      <ul class="kp-list">
+        <li><span class="exc">Líderes e Vice-Líderes NÃO PODEM</span> integrar a <span class="org">Mesa Diretora</span></li>
+        <li>Para concorrer à Mesa, deve <span class="exc">renunciar</span> à liderança previamente</li>
       </ul>
     </div>
   </div>
 </div>
 
-<!-- ══════════════ SEÇÃO III — SECRETARIA ══════════════ -->
-<div class="sec-head" id="secret">
-  <div class="sec-line"></div><div class="sec-title">Seção III — Da Secretaria</div>
-  <div class="sec-badge">Art. 19 — foco no 1º Secretário</div><div class="sec-line"></div>
+<!-- CAP. V -->
+<div class="sec-head" id="cap5">
+  <div class="sec-line"></div><div class="sec-title">Capítulo V — Dos Blocos Parlamentares</div>
+  <div class="sec-badge">Art. 12 — Criação, vedações e prazos</div><div class="sec-line"></div>
 </div>
-
 <div class="grid">
-  <div class="card c12" style="--c:#1c3f63">
+  <div class="card c6" style="--c:#1c3f63">
     <div class="card-inner">
-      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Atribuições dos Secretários — ênfase no 1º Secretário</div><div class="c-lead">Secretários designados como 1º, 2º, 3º e 4º.</div></div></div>
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Conceito, regime e requisitos</div><div class="c-lead">Criação, tratamento regimental e extinção.</div></div></div>
       <ul class="kp-list">
-        <li><b>1º Secretário superintende</b> os serviços administrativos e:</li>
-        <li><b>I —</b> receber <span class="k">convites</span>, <span class="k">representações</span>, <span class="k">petições</span> e <span class="k">memoriais</span></li>
-        <li><b>II —</b> receber e fazer a <span class="k">correspondência oficial</span> (exceto a das Comissões)</li>
-        <li><b>III —</b> decidir em <span class="k">primeira instância</span> recursos contra atos do <span class="org">Diretor-Geral</span></li>
-        <li><b>IV —</b> interpretar e fazer observar o ordenamento jurídico de <span class="k">pessoal</span> e dos serviços administrativos</li>
-        <li><b>V —</b> dar <span class="k">posse</span> ao <span class="org">DG</span> da Câmara e ao <span class="org">SGM</span></li>
+        <li><b>Criação:</b> <span class="num">2</span> ou mais Partidos sob <span class="k">liderança comum</span></li>
+        <li><b>Tratamento (§1º):</b> como organização partidária com representação na Casa</li>
+        <li><b>Efeito (§2º):</b> Partidos coligados <span class="exc">perdem</span> atribuições/prerrogativas individuais</li>
+        <li><b>Quórum mínimo (§3º):</b> <span class="exc">não admitido</span> com menos de <span class="num">3/100</span> dos membros</li>
+        <li><b>Extinção (§4º):</b> desligamento que cause perda do quórum → bloco <span class="exc">extingue-se automaticamente</span></li>
+        <li><b>Duração (§5º):</b> circunscrita à <span class="k">legislatura</span> (registro e publicação pela <span class="org">Mesa</span>)</li>
       </ul>
-      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A posse do <b>DG</b> e do <b>SGM</b> é dada pelo <b>1º Secretário</b> — não pelo Presidente da Câmara.</div></div>
     </div>
   </div>
-</div>
-
-<!-- ══════════════ OUTROS CAPÍTULOS ══════════════ -->
-<div class="sec-head" id="outros">
-  <div class="sec-line"></div><div class="sec-title">Capítulos II, III e IV</div>
-  <div class="sec-badge">Navegação por páginas</div><div class="sec-line"></div>
-</div>
-
-<div class="grid">
-  <div class="card c12" style="--c:#3a5c8a">
+  <div class="card c6" style="--c:#254a78">
     <div class="card-inner">
-      <div class="card-top"><div class="c-badge">↗</div><div><div class="c-title">Atalhos para os capítulos seguintes</div><div class="c-lead">Cada botão abre a página dedicada ao capítulo/órgão.</div></div></div>
-      <div class="cap-grid">
-        <a class="capbtn" href="titulo2-cap2.html" style="--c:#254a78"><div class="capbtn-text"><div class="capbtn-title">Capítulo II — Do Colégio de Líderes</div><div class="capbtn-desc">Composição, competências e votação no Colégio de Líderes.</div></div><div class="capbtn-arrow">→</div></a>
-        <a class="capbtn" href="titulo2-cap2a.html" style="--c:#2f5f6e"><div class="capbtn-text"><div class="capbtn-title">Capítulo II-A — Da Secretaria da Mulher</div><div class="capbtn-desc">Estrutura e atribuições da Secretaria da Mulher.</div></div><div class="capbtn-arrow">→</div></a>
-        <a class="capbtn" href="titulo2-cap2b.html" style="--c:#406d7a"><div class="capbtn-text"><div class="capbtn-title">Capítulo II-B — Secretaria da Primeira Infância, Infância, Adolescência e Juventude</div><div class="capbtn-desc">Estrutura e competências do órgão.</div></div><div class="capbtn-arrow">→</div></a>
-        <a class="capbtn" href="titulo2-cap3.html" style="--c:#1c3f63"><div class="capbtn-text"><div class="capbtn-title">Capítulo III — Da Procuradoria Parlamentar</div><div class="capbtn-desc">Atribuições e funcionamento da Procuradoria.</div></div><div class="capbtn-arrow">→</div></a>
-        <a class="capbtn" href="titulo2-cap3a.html" style="--c:#254a78"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-A — Da Ouvidoria Parlamentar</div><div class="capbtn-desc">Capítulos III-A a III-J: páginas por órgão.</div></div><div class="capbtn-arrow">→</div></a>
-        <a class="capbtn" href="titulo2-cap3b.html" style="--c:#2f5f6e"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-B — Conselho de Ética e Decoro Parlamentar</div><div class="capbtn-desc">CEDP — conexões com Art. 15 e suspensão cautelar.</div></div><div class="capbtn-arrow">→</div></a>
-        <a class="capbtn" href="titulo2-cap3c.html" style="--c:#3a5c8a"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-C — Corregedoria Parlamentar</div><div class="capbtn-desc">Atribuições e rito da Corregedoria.</div></div><div class="capbtn-arrow">→</div></a>
-        <a class="capbtn" href="titulo2-cap3d.html" style="--c:#566a86"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-D — Secretaria de Relações Internacionais</div><div class="capbtn-desc">Representação e acordos internacionais.</div></div><div class="capbtn-arrow">→</div></a>
-        <a class="capbtn" href="titulo2-cap3e.html" style="--c:#5a4b6e"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-E — Secretaria de Comunicação Social</div><div class="capbtn-desc">Comunicação e publicidade institucional.</div></div><div class="capbtn-arrow">→</div></a>
-        <a class="capbtn" href="titulo2-cap3f.html" style="--c:#1c3f63"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-F — Participação, Interação e Mídias Digitais</div><div class="capbtn-desc">Mecanismos de participação popular e canais digitais.</div></div><div class="capbtn-arrow">→</div></a>
-        <a class="capbtn" href="titulo2-cap3g.html" style="--c:#254a78"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-G — Transparência</div><div class="capbtn-desc">Obrigações e instrumentos de transparência.</div></div><div class="capbtn-arrow">→</div></a>
-        <a class="capbtn" href="titulo2-cap3h.html" style="--c:#2f5f6e"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-H — Empreendedorismo Legislativo</div><div class="capbtn-desc">Iniciativas de inovação e empreendedorismo.</div></div><div class="capbtn-arrow">→</div></a>
-        <a class="capbtn" href="titulo2-cap3i.html" style="--c:#3a5c8a"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-I — Inovação Legislativa</div><div class="capbtn-desc">Estrutura e competências do órgão.</div></div><div class="capbtn-arrow">→</div></a>
-        <a class="capbtn" href="titulo2-cap3j.html" style="--c:#566a86"><div class="capbtn-text"><div class="capbtn-title">Capítulo III-J — Defesa das Prerrogativas Parlamentares</div><div class="capbtn-desc">Garantias e mecanismos de defesa das prerrogativas.</div></div><div class="capbtn-arrow">→</div></a>
-        <a class="capbtn" href="titulo2-cap4.html" style="--c:#1c3f63"><div class="capbtn-text"><div class="capbtn-title">Capítulo IV — Das Comissões</div><div class="capbtn-desc">Página macro: seções, subseções, prazos e competências das Comissões.</div></div><div class="capbtn-arrow">→</div></a>
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Vedações e prazos de comunicação</div><div class="c-lead">Restrições para troca de bloco e datas para órgãos.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Dissolução/Desvinculação (§§8º–9º):</b> <span class="exc">NÃO PODERÁ</span> constituir ou integrar outro bloco na <span class="k">mesma sessão legislativa</span></li>
+        <li><span class="exc">VEDADO</span> integrar dois blocos concomitantemente</li>
+        <li><b>1º biênio — Mesa e Comissões:</b> até <span class="prazo">1º/fev do 1º ano</span></li>
+        <li><b>2º biênio — Mesa:</b> até <span class="prazo">1º/fev do 3º ano</span></li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">Quórum mínimo: <b>3/100</b> — a prova costuma testar com valores diferentes como "5%" ou "1/10".</div></div>
+      <div class="correlatos">
+        <div class="corr-title">Correlatos</div>
+        <ul class="corr-list">
+          <li>Art. 9º — Deputados agrupados por representações partidárias ou de Blocos</li>
+          <li>Art. 20, §1º — líderes de partido dentro de bloco: <span class="k">voz</span>, sem voto no Colégio de Líderes</li>
+          <li>Art. 26 — vagas nas Comissões após fixação da composição numérica</li>
+        </ul>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ART. 13 -->
+<div class="sec-head" id="majmin">
+  <div class="sec-line"></div><div class="sec-title">Art. 13 — Maioria e Minoria</div>
+  <div class="sec-badge">Definições e substituição</div><div class="sec-line"></div>
+</div>
+<div class="grid">
+  <div class="card c4" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Maioria</div><div class="c-lead">Conceito regimental.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Maioria:</b> Partido ou Bloco integrado pela <span class="k">maioria absoluta</span> dos membros da Casa</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card c4" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Minoria e substituição</div><div class="c-lead">Conceito e regra de substituição.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Minoria:</b> representação imediatamente inferior com posição <span class="k">diversa</span> da Maioria em relação ao Governo</li>
+        <li><b>Substituição:</b> ninguém atinge MA → assume o Partido/Bloco com <span class="k">maior número</span> de representantes</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card c4" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">III</div><div><div class="c-title">Correlatos</div><div class="c-lead">Garantias de representação da Minoria.</div></div></div>
+      <ul class="kp-list">
+        <li>Art. 11-A → Liderança da Minoria: Líder + <span class="num">9</span> Vice-Líderes</li>
+        <li>Art. 23 → <span class="num">1</span> membro da Minoria assegurado nas <span class="k">Comissões</span></li>
+        <li>Art. 8º, §3º → <span class="num">1</span> membro da Minoria assegurado na <span class="org">Mesa</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- BANCADA NEGRA -->
+<div class="sec-head" id="bn">
+  <div class="sec-line"></div><div class="sec-title">Capítulo VI — Bancada Negra</div>
+  <div class="sec-badge">Arts. 13-A e 13-B</div><div class="sec-line"></div>
+</div>
+<div class="grid">
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Composição e processo eleitoral (Art. 13-A)</div><div class="c-lead">Estrutura, data e quóruns da eleição.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Composição:</b> <span class="num">1</span> Coordenação-Geral + <span class="num">3</span> Vice-Coordenações (1ª, 2ª e 3ª substituem em impedimentos)</li>
+        <li><b>Data:</b> <span class="prazo">20 de novembro</span> de cada sessão legislativa</li>
+        <li><b>Modalidade:</b> <span class="k">escrutínio secreto</span></li>
+        <li><b>Quórum de aprovação:</b> 1º escrutínio → <span class="k">maioria absoluta</span>; 2º escrutínio → <span class="k">maioria simples</span></li>
+        <li><b>Quórum de presença:</b> <span class="k">maioria absoluta</span> dos parlamentares negros e negras</li>
+        <li><b>Chapa única:</b> eleição por <span class="k">aclamação</span></li>
+        <li><b>Critério (§3º):</b> <span class="k">autodeclaração racial</span> no registro da eleição geral</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Competências (Art. 13-B)</div><div class="c-lead">Finalidade e prerrogativas no Colégio de Líderes.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Finalidade:</b> zelar pela participação dos Deputados nos órgãos e atividades da Câmara</li>
+        <li><b>Colégio de Líderes (I):</b> <span class="k">voz E voto</span> nas reuniões convocadas pelo <span class="org">Presidente</span></li>
+        <li><b>Comunicações de Liderança (II):</b> <span class="prazo">5 minutos semanais</span> (pessoalmente ou por delegação)</li>
+      </ul>
+      <div class="note"><b>Correlato:</b> Art. 89 — comunicações gerais têm tempo proporcional (3–10 min), mas a Bancada Negra tem <span class="prazo">tempo fixo de 5 minutos</span> independentemente do tamanho da bancada.</div>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">Líderes de partido <em>dentro de bloco</em>: <b>só voz</b> (sem voto). Bancada Negra: <b>voz e voto</b>. Diferença clássica de prova.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ANÁLISE -->
+<div class="sec-head" id="analise">
+  <div class="sec-line"></div><div class="sec-title">Análise e Pontos de Atenção</div>
+  <div class="sec-badge">Padrões CEBRASPE</div><div class="sec-line"></div>
+</div>
+<div class="analysis-grid">
+  <div class="panel p6">
+    <h3>1 — Termos semelhantes, conteúdos distintos</h3>
+    <ul>
+      <li><b>Sessões preparatórias</b> vs <b>SLO:</b> preparatórias precedem a 1ª e 3ª SLO; não confundir com o calendário (<span class="prazo">2/fev–17/jul</span> e <span class="prazo">1º/ago–22/dez</span>)</li>
+      <li><b>Posse virtual</b> vs <b>participação remota:</b> marcos distintos — <span class="prazo">120 dias</span> (gestante, posse virtual); prazos próprios para participação no mandato</li>
+      <li><b>Maioria</b> (Art. 13) é <span class="k">maioria absoluta</span> da Casa; "maioria simples" aparece como critério de 2º escrutínio nas eleições</li>
+    </ul>
+  </div>
+  <div class="panel p6">
+    <h3>2 — Pegadinhas clássicas e pontos de atenção</h3>
+    <ul>
+      <li><b>SLE:</b> "somente" a matéria da convocação — exceto <span class="k">MPs em vigor</span> (inclusão automática)</li>
+      <li><b>Eleição da Mesa:</b> demais cargos não se apuram antes do Presidente; <span class="exc">vedada recondução</span> ao mesmo cargo na imediatamente subsequente</li>
+      <li><b>Bloco Parlamentar:</b> quórum mínimo de <span class="num">3/100</span>; <span class="exc">vedação</span> de criar/integrar outro bloco na mesma sessão legislativa após dissolução</li>
+      <li><b>Bancada Negra x Bloco:</b> líderes de partido dentro de bloco têm só voz; Bancada Negra tem <span class="k">voz e voto</span></li>
+      <li><b>Base de Cálculo para Distribuição de Poder (Mesa, Comissões e Vice-Líderes):</b> utiliza-se o número de deputados eleitos, conforme resultado final proclamado pela JE (TSE). A pegadinha: são desconsideradas as mudanças de filiação partidária posteriores à eleição para fins de cálculo de vagas na Mesa.</li>
+      <li><b>Distribuição das Vagas na Mesa:</b> A regra geral é que a escolha dos cargos é feita pelas Lideranças, seguindo rigorosamente a ordem de tamanho da bancada (do maior partido/bloco para o menor), mas há uma exceção: as bancadas PODEM fazer um acordo político para dividir os cargos de uma maneira diferente, ignorando essa ordem estrita de "maior para o menor". Portanto, a distribuição das vagas na Mesa é do maior para o menor partido/bloco, SALVO acordo entre as bancadas. Membro da Mesa perde o cargo AUTOMATICAMENTE se trocar de partido (não cabe acordo).</li>
+    </ul>
+  </div>
+  <div class="panel p6">
+    <h3>3 — Números e datas que mais caem</h3>
+    <ul>
+      <li>SLO: <span class="prazo">2/fev–17/jul</span> e <span class="prazo">1º/ago–22/dez</span></li>
+      <li>Diploma: até <span class="prazo">31/jan</span></li>
+      <li>Posse: <span class="prazo">30 + 30 dias</span> (com exceções por força maior/enfermidade). Lembre-se que a prorrogação NÃO É automática, e sim condicionada a um pedido formal "prorrogável por igual período a <b>requerimento do interessado</b>. Se o Deputado estiver internado, por exemplo, e esse prazo de 30 + 30 se esgotar, ele NÃO perde o direito de assumir o mandato posteriormente, desde que a doença ou a força maior seja devidamente comprovada. É a única forma de superar esse limite temporal. Então, o limite máximo é de 60 dias (se houver requerimento do interessado), salvo motivo de força maior ou enfermidade.</li>
+      <li>Licença-gestante: parto &lt; <span class="prazo">120 dias</span> → posse virtual assegurada</li>
+      <li>Vacância na Mesa: até <span class="prazo">30/nov do 2º ano</span> → eleição em <span class="prazo">5 sessões</span></li>
+      <li>Bancada Negra: <span class="prazo">20/nov</span>; <span class="prazo">5 min</span> semanais; <span class="num">3</span> vice-coordenações</li>
+      <li>Bloco: quórum <span class="num">3/100</span>; prazos até <span class="prazo">1º/fev</span> para órgãos</li>
+    </ul>
+  </div>
+  <div class="panel p6">
+    <h3>4 — Competências que costumam ser trocadas</h3>
+    <ul>
+      <li><span class="org">Secretaria-Geral da Mesa</span> prepara a relação dos diplomados</li>
+      <li><span class="org">Mesa Diretora</span> delibera sobre funcionamento em local diverso</li>
+      <li><span class="org">PCD</span> designa data/hora da eleição da Mesa no 3º ano (2º biênio)</li>
+      <li>Partidos sem liderança: indicam representante com <span class="prazo">5 min</span> de Comunicações, mas sem "Líder" formal</li>
+      <li>Bancada Negra: <span class="k">voz e voto</span> no Colégio de Líderes (líderes de partido em bloco têm só voz)</li>
+    </ul>
   </div>
 </div>
 
 <div class="page-footer">
-  <span>RICD • Título II • Dos Órgãos da Câmara</span>
-  <a href="index.html">⌂ Voltar ao Índice</a>
-  <a href="titulo1.html">← Título I</a>
-  <a href="titulo3.html">Título III →</a>
+  <span>RICD • Título I • Disposições Preliminares</span>
+  <a href="index.html">← Voltar ao Índice</a>
+  <a href="titulo2.html">Título II →</a>
 </div>
 
 </div><!-- /wrap -->
 
-<!-- ══════════════ FABs ══════════════ -->
-<div class="fab-wrap">
-  <button id="theme-btn" title="Alternar tema">
-    <span id="t-icon">🌙</span>
-    <div class="t-track"><div class="t-knob"></div></div>
-    <span id="t-label">Escuro</span>
-  </button>
-  <button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-</div>
-
-<!-- ══════════════ NOTES DRAWER ══════════════ -->
-<div class="drawer-overlay" id="drawer" aria-hidden="true">
-  <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+<!-- NOTES DRAWER (novo) -->
+<div class="drawer-overlay" id="notes-overlay" aria-hidden="true">
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="notes-title" aria-describedby="notes-desc">
     <div class="drawer-head">
       <div class="drawer-head-info">
-        <h2 id="drawer-title">Anotações — Título II</h2>
-        <p>Use para erros, bizus e pegadinhas. As notas ficam salvas no <strong>seu navegador</strong> (localStorage).</p>
+        <h2 id="notes-title">Anotações — Título I</h2>
+        <p id="notes-desc">Suas anotações ficam salvas no navegador (localStorage) e são específicas desta página.</p>
       </div>
-      <button class="drawer-close" id="btn-close-drawer" title="Fechar">✕</button>
+      <button class="drawer-close" id="notes-close" type="button" aria-label="Fechar">✕</button>
     </div>
     <div class="drawer-body">
-      <textarea id="notes-area" placeholder="Ex.: ⚠ Mesa: 5 reuniões ordinárias consecutivas sem justificativa = perde o lugar&#10;⚠ Censura verbal → Presidente; Censura escrita → Mesa&#10;⚠ PCD não pode agir ad referendum em suspensão cautelar"></textarea>
+      <textarea id="notes-area" placeholder="Escreva aqui suas anotações…"></textarea>
       <div class="drawer-actions">
-        <button class="d-btn d-btn-clear" id="btn-clear-notes" type="button">Limpar</button>
-        <button class="d-btn d-btn-save" id="btn-save-notes" type="button">Salvar e fechar</button>
+        <button class="d-btn d-btn-clear" id="notes-clear" type="button">Limpar</button>
+        <button class="d-btn d-btn-save" id="notes-save" type="button">Salvar</button>
       </div>
     </div>
   </div>
 </div>
 
+<div class="fab-wrap">
+  <button id="theme-btn" title="Alternar tema" type="button">
+    <span id="t-icon">🌙</span>
+    <div class="t-track"><div class="t-knob"></div></div>
+    <span id="t-label">Escuro</span>
+  </button>
+  <button id="back-top" title="Voltar ao topo" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
 <script>
-// ── Tema ──────────────────────────────────────────
 (function(){
   const root=document.documentElement,btn=document.getElementById('theme-btn'),
         icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
   let dark=localStorage.getItem('ricd-theme')==='dark';
   if(!localStorage.getItem('ricd-theme'))dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
-  function apply(){root.setAttribute('data-theme',dark?'dark':'light');icon.textContent=dark?'☀️':'🌙';lbl.textContent=dark?'Claro':'Escuro';localStorage.setItem('ricd-theme',dark?'dark':'light')}
+  function apply(){
+    root.setAttribute('data-theme',dark?'dark':'light');
+    icon.textContent=dark?'☀️':'🌙';
+    lbl.textContent=dark?'Claro':'Escuro';
+    localStorage.setItem('ricd-theme',dark?'dark':'light');
+  }
   apply();
   btn.addEventListener('click',()=>{dark=!dark;apply()});
 })();
 
-// ── Progresso + Back-to-top ───────────────────────
 (function(){
   const bar=document.getElementById('prog'),top=document.getElementById('back-top');
   window.addEventListener('scroll',function(){
     const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
-    bar.style.width=(s/h*100)+'%';
+    bar.style.width=(h>0?(s/h*100):0)+'%';
     top.classList.toggle('show',s>280);
   },{passive:true});
 })();
 
-// ── Anotações ─────────────────────────────────────
+/* Notes Drawer */
 (function(){
-  const KEY='notes_titulo2';
-  const overlay=document.getElementById('drawer');
-  const area=document.getElementById('notes-area');
+  const KEY='ricd-notes::titulo1';
   const btnOpen=document.getElementById('btn-notes');
-  const btnClose=document.getElementById('btn-close-drawer');
-  const btnSave=document.getElementById('btn-save-notes');
-  const btnClear=document.getElementById('btn-clear-notes');
-  function open(){overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');area.value=localStorage.getItem(KEY)||'';area.focus()}
-  function close(){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true')}
+  const overlay=document.getElementById('notes-overlay');
+  const btnClose=document.getElementById('notes-close');
+  const area=document.getElementById('notes-area');
+  const btnSave=document.getElementById('notes-save');
+  const btnClear=document.getElementById('notes-clear');
+
+  if(!btnOpen || !overlay || !btnClose || !area || !btnSave || !btnClear) return;
+
+  function open(){
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden','false');
+    area.value=localStorage.getItem(KEY)||'';
+    setTimeout(()=>area.focus(),0);
+    document.addEventListener('keydown',onKey);
+  }
+  function close(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden','true');
+    document.removeEventListener('keydown',onKey);
+    btnOpen.focus();
+  }
+  function onKey(e){
+    if(e.key==='Escape') close();
+    if((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='s'){
+      e.preventDefault();
+      localStorage.setItem(KEY, area.value);
+    }
+  }
+
   btnOpen.addEventListener('click',open);
   btnClose.addEventListener('click',close);
-  btnSave.addEventListener('click',()=>{localStorage.setItem(KEY,area.value);close()});
-  btnClear.addEventListener('click',()=>{if(confirm('Limpar anotações do Título II?')){area.value='';localStorage.removeItem(KEY);area.focus()}});
-  overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
-  window.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))close()});
+
+  overlay.addEventListener('click',(e)=>{
+    if(e.target===overlay) close();
+  });
+
+  btnSave.addEventListener('click',()=>{
+    localStorage.setItem(KEY, area.value);
+    close();
+  });
+
+  btnClear.addEventListener('click',()=>{
+    area.value='';
+    localStorage.removeItem(KEY);
+    area.focus();
+  });
 })();
 </script>
 </body>
