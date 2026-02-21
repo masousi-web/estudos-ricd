@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RICD — Título III — Cap. IV — Interpretação e Observância do Regimento</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   TOKENS — LIGHT
+═══════════════════════════════════════════════ */
+:root,[data-theme="light"]{
+  --bg:#f3f6fb;--bg2:#eaeff8;--surface:#ffffff;--surface2:#f7faff;
+  --border:rgba(15,39,66,.09);--border-hard:rgba(15,39,66,.16);
+
+  --ink:#0d1f35;--ink2:#2b4060;--muted:#526a88;--faint:#8fa8c2;
+
+  --gold:#b86b1a;--gold-soft:rgba(184,107,26,.10);
+  --blue:#1a4d8a;--blue-soft:rgba(26,77,138,.08);
+  --green:#186347;--green-soft:rgba(24,99,71,.09);
+  --red:#a81f2a;--red-soft:rgba(168,31,42,.09);
+  --purple:#5a3d8a;--purple-soft:rgba(90,61,138,.08);
+
+  --mark-bg:rgba(15,23,42,.07);
+
+  --hero-from:#0c2240;--hero-to:#153558;--hero-text:#ffffff;--hero-sub:rgba(255,255,255,.80);
+
+  --sh-sm:0 2px 8px rgba(12,26,43,.06);
+  --sh-md:0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:0 14px 34px rgba(12,26,43,.11);
+  --sh-hov:0 10px 28px rgba(12,26,43,.14);
+
+  --toggle-bg:#d8e2f0;--toggle-knob:#ffffff;
+
+  --list-bg:#f7fafc;
+  --note-bg:rgba(26,77,138,.05);--note-border:rgba(26,77,138,.12);--note-text:#1a2e44;
+}
+
+/* ═══════════════════════════════════════════════
+   TOKENS — DARK
+═══════════════════════════════════════════════ */
+[data-theme="dark"]{
+  --bg:#0c1120;--bg2:#101728;--surface:#161d2f;--surface2:#1b2238;
+  --border:rgba(255,255,255,.06);--border-hard:rgba(255,255,255,.12);
+
+  --ink:#dce8fa;--ink2:#94b0d4;--muted:#627ea6;--faint:#374e6a;
+
+  --gold:#f0b84a;--gold-soft:rgba(240,184,74,.11);
+  --blue:#5b96f0;--blue-soft:rgba(91,150,240,.11);
+  --green:#38c882;--green-soft:rgba(56,200,130,.09);
+  --red:#f46862;--red-soft:rgba(244,104,98,.11);
+  --purple:#a07af5;--purple-soft:rgba(160,122,245,.10);
+
+  --mark-bg:rgba(220,232,250,.09);
+
+  --hero-from:#08111e;--hero-to:#0f1e30;--hero-text:#e4f0ff;--hero-sub:rgba(210,228,255,.70);
+
+  --sh-sm:0 2px 8px rgba(0,0,0,.28);
+  --sh-md:0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:0 14px 34px rgba(0,0,0,.40);
+  --sh-hov:0 10px 28px rgba(0,0,0,.46);
+
+  --toggle-bg:#243350;--toggle-knob:#f0b84a;
+
+  --list-bg:rgba(255,255,255,.03);
+  --note-bg:rgba(91,150,240,.09);--note-border:rgba(91,150,240,.20);--note-text:#b0ccf0;
+}
+
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',sans-serif;
+  font-size:15px;line-height:1.68;
+  color:var(--ink);
+  background:var(--bg);
+  transition:background .25s,color .25s;
+  min-height:100vh;
+}
+a{color:inherit;text-decoration:none}
+
+/* ═══════════════════════════════════════════════
+   PROGRESS BAR
+═══════════════════════════════════════════════ */
+#prog{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--blue));
+  z-index:300;transition:width .08s linear;border-radius:0 2px 2px 0;
+}
+
+/* ═══════════════════════════════════════════════
+   FAB — THEME TOGGLE + BACK TO TOP
+═══════════════════════════════════════════════ */
+.fab-wrap{
+  position:fixed;bottom:24px;right:24px;z-index:200;
+  display:flex;flex-direction:column;gap:10px;align-items:flex-end;
+}
+#theme-btn{
+  background:var(--surface);border:1px solid var(--border-hard);
+  box-shadow:var(--sh-md);border-radius:50px;padding:8px 14px;
+  cursor:pointer;display:flex;align-items:center;gap:9px;
+  font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--muted);
+  transition:all .2s;user-select:none;
+}
+#theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
+.t-track{width:38px;height:20px;background:var(--toggle-bg);border-radius:20px;position:relative;transition:background .25s}
+.t-knob{
+  position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;
+  background:var(--toggle-knob);transition:transform .25s,background .25s;
+  box-shadow:0 1px 4px rgba(0,0,0,.22);
+}
+[data-theme="dark"] .t-knob{transform:translateX(18px)}
+#back-top{
+  width:44px;height:44px;background:var(--surface);
+  border:1px solid var(--border-hard);border-radius:50%;
+  box-shadow:var(--sh-md);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;color:var(--muted);transition:all .2s;
+  opacity:0;pointer-events:none;transform:translateY(10px);
+}
+#back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
+
+/* ═══════════════════════════════════════════════
+   WRAP
+═══════════════════════════════════════════════ */
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px 80px}
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+.hero{
+  background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);
+  border-radius:0 0 28px 28px;
+  padding:38px 36px 34px;margin-bottom:32px;
+  position:relative;overflow:hidden;box-shadow:var(--sh-lg);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),
+    radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'III';
+  position:absolute;right:36px;top:50%;transform:translateY(-50%);
+  font-family:'Crimson Pro',serif;font-size:160px;font-weight:700;
+  color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none;
+}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:10px;
+}
+.hero-title{
+  font-family:'Crimson Pro',serif;
+  font-size:clamp(28px,3.5vw,42px);
+  font-weight:700;color:var(--hero-text);
+  line-height:1.12;margin-bottom:10px;
+}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:78ch;line-height:1.58;margin-bottom:20px}
+.nav-chips{display:flex;flex-wrap:wrap;gap:8px}
+.nav-chips a{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:7px 13px;border-radius:100px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.16);
+  color:rgba(255,255,255,.88);
+  font-size:12.5px;font-weight:500;
+  transition:background .15s,transform .1s;
+}
+.nav-chips a:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.nav-chips a b{font-weight:700;color:var(--gold)}
+.legend{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.10);
+}
+.lchip{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:100px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.07);
+  color:rgba(255,255,255,.78);
+  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;font-weight:600;text-transform:uppercase;
+}
+.ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ═══════════════════════════════════════════════
+   SECTION DIVIDER
+═══════════════════════════════════════════════ */
+.sec-head{display:flex;align-items:center;gap:14px;margin:36px 0 18px}
+.sec-line{flex:1;height:1px;background:var(--border-hard)}
+.sec-title{font-family:'Crimson Pro',serif;font-size:21px;font-weight:700;color:var(--ink);white-space:nowrap}
+.sec-badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+
+/* ═══════════════════════════════════════════════
+   GRID
+═══════════════════════════════════════════════ */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.c12{grid-column:span 12}
+.c6{grid-column:span 12}
+@media(min-width:760px){.c6{grid-column:span 6}}
+
+/* ═══════════════════════════════════════════════
+   CARD
+═══════════════════════════════════════════════ */
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:var(--sh-sm);
+  overflow:hidden;position:relative;
+  transition:transform .14s,box-shadow .14s,border-color .14s;
+  opacity:0;
+  animation:fadeUp .35s ease forwards;
+}
+.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.07s}
+.card:nth-child(3){animation-delay:.11s}.card:nth-child(4){animation-delay:.15s}
+.card:nth-child(5){animation-delay:.19s}.card:nth-child(6){animation-delay:.23s}
+.card:nth-child(7){animation-delay:.27s}.card:nth-child(8){animation-delay:.31s}
+.card:nth-child(9){animation-delay:.35s}.card:nth-child(10){animation-delay:.39s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{transform:translateY(-2px);box-shadow:var(--sh-hov)}
+.card::before{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:var(--c,#1c3f63);
+  border-radius:14px 0 0 14px;
+}
+.card-inner{padding:16px 16px 16px 18px}
+.card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.c-badge{
+  flex-shrink:0;width:36px;height:36px;border-radius:9px;
+  background:var(--bg2);border:1px solid var(--border-hard);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;
+  color:var(--c,#1c3f63);margin-top:1px;
+}
+[data-theme="dark"] .c-badge{
+  background:color-mix(in srgb,var(--c,#1c3f63) 14%,var(--surface2) 86%);
+  color:color-mix(in srgb,var(--c,#1c3f63) 55%,#ffffff 45%);
+}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){
+  [data-theme="dark"] .c-badge{background:var(--surface2);color:var(--ink2)}
+}
+.c-title{
+  font-family:'Crimson Pro',serif;font-size:17px;font-weight:700;
+  color:var(--ink);line-height:1.2;margin-bottom:3px;
+}
+.c-lead{font-size:13px;color:var(--muted);line-height:1.45}
+
+/* Lista */
+.kp-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.kp-list li{
+  padding:9px 11px;border-radius:9px;
+  background:var(--list-bg);border:1px solid var(--border);
+  font-size:13.5px;color:var(--ink2);line-height:1.52;
+}
+.kp-list li b{font-weight:700;color:var(--ink)}
+
+/* Destaques semânticos */
+.k{font-weight:700;color:var(--ink);background:var(--mark-bg);padding:0 .22em;border-radius:.4em}
+.org{font-weight:700;color:var(--blue);background:var(--blue-soft);padding:0 .22em;border-radius:.4em}
+.prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em}
+.exc{font-weight:700;color:var(--red);background:var(--red-soft);padding:0 .22em;border-radius:.4em}
+.num{font-weight:700;color:var(--ink2)}
+.tech{font-style:italic;font-weight:600;color:var(--ink)}
+
+/* Nota */
+.note{
+  margin-top:10px;padding:10px 13px;border-radius:10px;
+  background:var(--note-bg);border:1px solid var(--note-border);
+  color:var(--note-text);font-size:13px;line-height:1.55;
+}
+.note b{font-weight:700}
+
+/* Pegadinha */
+.trap{
+  margin-top:10px;display:flex;gap:10px;align-items:flex-start;
+  background:var(--red-soft);
+  border:1px solid rgba(168,31,42,.20);
+  border-radius:10px;padding:11px 13px;
+}
+[data-theme="dark"] .trap{border-color:rgba(244,104,98,.22)}
+.trap-icon{font-size:16px;line-height:1.5;flex-shrink:0}
+.trap-text{font-size:13px;color:var(--red);font-weight:500;line-height:1.5}
+.trap-text b{font-weight:700;color:var(--red)}
+
+/* Correlatos */
+.correlatos{
+  margin-top:10px;padding:11px 13px;border-radius:10px;
+  background:var(--purple-soft);
+  border:1px solid rgba(90,61,138,.16);
+}
+[data-theme="dark"] .correlatos{border-color:rgba(160,122,245,.18)}
+.corr-title{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--purple);font-weight:700;margin-bottom:6px;
+}
+.corr-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+.corr-list li{font-size:13px;color:var(--ink2);padding-left:16px;position:relative;line-height:1.5}
+.corr-list li::before{content:'↗';position:absolute;left:0;color:var(--purple);font-size:12px}
+
+/* Footer */
+.page-footer{
+  text-align:center;font-size:12.5px;color:var(--faint);
+  margin-top:48px;padding-top:20px;border-top:1px solid var(--border-hard);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;
+}
+.page-footer a{
+  color:var(--blue);font-weight:600;
+  padding:6px 14px;border-radius:8px;
+  border:1px solid var(--border-hard);background:var(--surface);
+  font-size:13px;transition:box-shadow .15s;
+}
+.page-footer a:hover{box-shadow:var(--sh-md)}
+
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
+
+@media(max-width:600px){
+  .hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}
+  .hero::after{display:none}
+  .wrap{padding:0 14px 80px}
+}
+</style>
+</head>
+
+<body>
+<div id="prog"></div>
+
+<header class="hero" id="topo">
+  <div class="wrap" style="padding:0">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">RICD • Título III • Capítulo IV</div>
+      <h1 class="hero-title">Interpretação e Observância do Regimento</h1>
+      <p class="hero-sub">Questões de ordem, reclamações, ata, publicidade e revisão de discursos, sigilo/censura e divulgação radiofônica — com foco em prazos, quóruns e vedações que “caem” em prova.</p>
+
+      <nav class="nav-chips" aria-label="Seções">
+        <a href="#s1"><b>Seção I</b> Questões de Ordem</a>
+        <a href="#art95a"><b>Art. 95</b> Conceito & requisitos</a>
+        <a href="#art95b"><b>Art. 95</b> Votação, decisão & jurisprudência</a>
+        <a href="#art95c"><b>Art. 95</b> Recurso</a>
+        <a href="#s2"><b>Seção II</b> Reclamações</a>
+        <a href="#art96"><b>Art. 96</b> Cabimento & rito</a>
+        <a href="#s3"><b>Seção III</b> Ata</a>
+        <a href="#art97"><b>Art. 97</b> Conteúdo & última ata</a>
+        <a href="#art98"><b>Art. 98</b> Publicidade, revisão, sigilo</a>
+        <a href="#art99"><b>Art. 99</b> Divulgação radiofônica</a>
+        <a href="#analise"><b>Análise</b> Pegadinhas</a>
+      </nav>
+
+      <div class="legend">
+        <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Prazos</span>
+        <span class="lchip"><span class="ldot" style="background:#f46862"></span>Vedações/Sanções</span>
+        <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Órgãos/Fluxos</span>
+        <span class="lchip"><span class="ldot" style="background:rgba(255,255,255,.4)"></span>Palavras-chave</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- SEÇÃO I -->
+<div class="sec-head" id="s1">
+  <div class="sec-line"></div><div class="sec-title">Seção I — Das Questões de Ordem</div>
+  <div class="sec-badge">Art. 95</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+
+  <div class="card c6" style="--c:#1a4d8a" id="art95a">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">95</div>
+        <div>
+          <div class="c-title">Conceito, requisitos e sanção</div>
+          <div class="c-lead">Interpretação regimental (exclusiva ou ligada à CF) + forma e limites de fala.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Conceito:</b> dúvida sobre a interpretação do <span class="k">Regimento</span>, na prática <span class="k">exclusiva</span> ou relacionada à <span class="k">Constituição Federal</span>.</li>
+        <li><b>Forma:</b> <span class="k">objetiva</span>, <span class="k">clara</span> e com <span class="k">indicação precisa</span> das disposições regimentais/constitucionais.</li>
+        <li><b>Ordem do Dia:</b> somente se <span class="k">atinente diretamente</span> à matéria que nela figure.</li>
+        <li><b>Tempo:</b> máximo <span class="prazo">3 minutos</span>.</li>
+        <li><b>Frequência:</b> não falar sobre a <span class="exc">mesma</span> mais de uma vez.</li>
+        <li><b>Sanção (§5º):</b> se não indicar as disposições inicialmente → Presidente <span class="exc">não permite</span> permanência na tribuna e determina a <span class="exc">exclusão</span> das palavras da ata.</li>
+      </ul>
+      <div class="trap">
+        <div class="trap-icon">⚠️</div>
+        <div class="trap-text"><b>Pegadinha:</b> “posso explicar e depois citar o artigo”. Não: a indicação deve ser <b>inicial</b>; senão, sai da tribuna e as palavras <b>saem da ata</b>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#2f5f6e" id="art95b">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">95</div>
+        <div>
+          <div class="c-title">Votação, decisão e “jurisprudência”</div>
+          <div class="c-lead">Regras específicas durante votação/redação final + vedação de crítica na mesma sessão.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Durante votação/redação final (§3º):</b> palavra concedida <span class="exc">apenas</span>:
+          uma vez ao <span class="org">Relator</span> e uma vez a outro Deputado (preferência: <span class="k">Autor</span>).</li>
+        <li><b>Contraditório (§6º):</b> fala o <span class="k">Autor</span> + outro Deputado (contra-argumento).</li>
+        <li><b>Julgador:</b> resolvida pelo <span class="org">Presidente</span> da sessão.</li>
+        <li><b>Vedação:</b> é <span class="exc">ilícito</span> opor-se ou criticar a decisão na <span class="k">mesma sessão</span>.</li>
+        <li><b>Direito de crítica (§7º):</b> pode comentar/protestar na <span class="k">sessão seguinte</span>, na Hora do Expediente, com preferência durante <span class="prazo">10 minutos</span>.</li>
+        <li><b>Jurisprudência (§10):</b> decisões registradas em livro especial (divulgação anual) → Mesa elabora projeto de resolução para alterações regimentais (apreciação <span class="k">antes de findo o biênio</span>).</li>
+      </ul>
+      <div class="note"><b>Destaque:</b> “crítica” existe, mas tem <span class="k">janela</span> e <span class="prazo">tempo</span>: sessão seguinte, Expediente, 10 min.</div>
+    </div>
+  </div>
+
+  <div class="card c12" style="--c:#b86b1a" id="art95c">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">95</div>
+        <div>
+          <div class="c-title">Recurso em questão de ordem</div>
+          <div class="c-lead">Cabimento, prazos, CCJC e efeito suspensivo (regra/extra).</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Cabimento:</b> da decisão da Presidência cabe <span class="k">recurso</span> ao <span class="org">Plenário</span>.</li>
+        <li><b>Regra:</b> <span class="exc">sem efeito suspensivo</span>.</li>
+        <li><b>Parecer:</b> ouvida a <span class="org">CCJC</span> (prazo máximo: <span class="prazo">3 sessões</span>).</li>
+        <li><b>Julgamento:</b> submetido ao Plenário na <span class="k">sessão seguinte</span> à publicação do parecer.</li>
+        <li><b>Efeito suspensivo (§9º):</b> pode ser requerido decisão <span class="k">imediata</span> do Plenário sobre o efeito suspensivo,
+          com apoiamento de <span class="k">1/3</span> dos <span class="k">presentes</span>.</li>
+      </ul>
+      <div class="trap">
+        <div class="trap-icon">⚠️</div>
+        <div class="trap-text"><b>Armadilha de quórum:</b> efeito suspensivo não é “1/3 da Casa” — é <b>1/3 dos presentes</b>.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SEÇÃO II -->
+<div class="sec-head" id="s2">
+  <div class="sec-line"></div><div class="sec-title">Seção II — Das Reclamações</div>
+  <div class="sec-badge">Art. 96</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c6" style="--c:#1c3f63" id="art96">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">96</div>
+        <div>
+          <div class="c-title">Cabimento, objeto e rito</div>
+          <div class="c-lead">Em qualquer fase; limites na Ordem do Dia; diferenças Plenário x Comissão.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Fase:</b> cabível em <span class="k">qualquer fase</span> da sessão ou reunião.</li>
+        <li><b>Restrição na Ordem do Dia:</b> apenas sobre matéria da <span class="k">pauta</span> ou hipótese do Art. 55, P.U.</li>
+        <li><b>Objeto (Plenário §1º):</b> observância de expressa disposição <span class="k">regimental</span> ou serviços <span class="k">administrativos</span> (Art. 264).</li>
+        <li><b>Objeto (Comissão §2º):</b> sobre <span class="k">ação</span> ou <span class="k">omissão</span> do órgão técnico.</li>
+        <li><b>Recurso em Comissão:</b> só após resolução conclusiva pelo Presidente da Comissão → levar (escrito/oral) ao <span class="org">PCD</span> ou ao <span class="org">Plenário</span>.</li>
+        <li><b>Aplicação subsidiária (§3º):</b> aplicam-se às reclamações as normas das Questões de Ordem (§§ 1º a 7º do Art. 95).</li>
+      </ul>
+
+      <div class="correlatos">
+        <div class="corr-title">Correlatos</div>
+        <ul class="corr-list">
+          <li>Art. 55, P.U.: “não escrito” o parecer/emenda/substitutivo que viole competência/pertinência temática, mediante provimento de <span class="k">reclamação</span>.</li>
+          <li>Art. 264: reclamações sobre serviços administrativos → Mesa (providência em <span class="prazo">72 horas</span>); após, podem ir ao Plenário.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#a81f2a">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">⚠️</div>
+        <div>
+          <div class="c-title">Pegadinha: “qualquer matéria” na O.D.</div>
+          <div class="c-lead">A banca tenta ampliar o cabimento na Ordem do Dia.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Regra:</b> reclamação pode ser em qualquer fase…</li>
+        <li><b>Mas na Ordem do Dia:</b> só se for <span class="k">da pauta</span> ou Art. 55, P.U.</li>
+        <li><b>Bonus:</b> como se aplicam regras do Art. 95, lembre do <span class="prazo">tempo</span> e do dever de <span class="k">objetividade</span>.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SEÇÃO III -->
+<div class="sec-head" id="s3">
+  <div class="sec-line"></div><div class="sec-title">Seção III — Da Ata</div>
+  <div class="sec-badge">Arts. 97–99</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+
+  <div class="card c6" style="--c:#2f5f6e" id="art97">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">97</div>
+        <div>
+          <div class="c-title">Forma, conteúdo e última ata</div>
+          <div class="c-lead">Sinopse, lista nominal, anais e regra especial ao fim da sessão legislativa.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Conteúdo:</b> ata com <span class="k">sinopse</span> dos trabalhos (padrão uniforme da Mesa).</li>
+        <li><b>Lista nominal (§2º):</b> presença e ausência nas sessões <span class="k">ordinárias e extraordinárias</span>.</li>
+        <li><b>Anais (§1º):</b> atas impressas/datilografadas organizadas em <span class="k">ordem cronológica</span>, encadernação por sessão legislativa, recolhidas ao <span class="org">Arquivo</span>.</li>
+        <li><b>Última sessão (§3º):</b> ata em <span class="k">resumo</span>, submetida à discussão e aprovação com <span class="k">qualquer número</span> de Deputados,
+          <span class="k">antes</span> de se levantar a sessão.</li>
+      </ul>
+      <div class="note"><b>Destaque:</b> “qualquer número” é exceção de quórum: só para aprovação da <span class="k">ata da última sessão</span> da sessão legislativa.</div>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#1a4d8a" id="art98">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">98</div>
+        <div>
+          <div class="c-title">Publicação, revisão e retificação</div>
+          <div class="c-lead">DCD, discursos por extenso, “errata” e prazo de devolução na taquigrafia.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Publicação:</b> no <span class="org">DCD</span> (ata do <span class="k">dia anterior</span>).</li>
+        <li><b>Discursos (§1º):</b> publicados <span class="k">por extenso</span> (salvo restrições regimentais).</li>
+        <li><b>Vedação:</b> não se permite reprodução no DCD para corrigir erros/omissões → correção sai em <span class="k">“ERRATA”</span>.</li>
+        <li><b>Revisão (§2º):</b> orador pode retirar discurso na <span class="org">Taquigrafia</span> para revisão (bloqueia publicação na ata respectiva).</li>
+        <li><b>Prazo de devolução:</b> dentro de <span class="prazo">5 sessões</span>; se não devolver → Taquigrafia publica <span class="exc">sem revisão</span>.</li>
+        <li><b>Retificação da ata (§7º):</b> decidida pelo <span class="org">Presidente</span>, na forma do Art. 80, §1º.</li>
+      </ul>
+      <div class="trap">
+        <div class="trap-icon">⚠️</div>
+        <div class="trap-text"><b>Caça-níquel de prova:</b> prazo de revisão é <span class="prazo">5 sessões</span>. Se perder, sai “<b>sem revisão</b>”.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c12" style="--c:#a81f2a">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">98</div>
+        <div>
+          <div class="c-title">Documentos, sigilo e censura na ata</div>
+          <div class="c-lead">O que entra só “indicado”, quando publica integralmente, sigilo (invólucro lacrado) e decoro parlamentar.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Documentos não lidos (§3º):</b> informações/discursos de outro Poder não lidos integralmente → apenas <span class="k">indicados</span> na ata (com objeto).
+          <b>Exceção:</b> publicação integral se autorizada pela <span class="org">Mesa</span> (requerimento do orador).</li>
+        <li><b>Recurso:</b> do indeferimento → recurso ao <span class="org">Plenário</span> (aplica-se Art. 115, P.U.).</li>
+        <li><b>Informações solicitadas (§4º):</b> em regra, publicadas na <span class="k">ata impressa</span> antes de serem entregues ao solicitante.
+          <b>Original:</b> fica no <span class="org">Arquivo</span> (cópia aos interessados).</li>
+        <li><b>Sigilo (§5º):</b> informações/documentos <span class="k">reservados</span> → <span class="exc">não se dará publicidade</span>.
+          Procedimento: lidos pelo <span class="org">PCD</span> ao Presidente da Comissão ou ao Deputado.
+          Arquivamento: invólucro <span class="exc">lacrado</span>, etiquetado, datado e <span class="k">rubricado</span> por <span class="num">2</span> Secretários.</li>
+        <li><b>Censura (§6º):</b> não será autorizada publicação de pronunciamentos atentatórios do <span class="k">decoro parlamentar</span>.
+          <b>Recurso:</b> do orador ao <span class="org">Plenário</span>.</li>
+      </ul>
+
+      <div class="correlatos">
+        <div class="corr-title">Correlatos</div>
+        <ul class="corr-list">
+          <li>Art. 115, P.U.: recurso ao Plenário em <span class="prazo">5 sessões</span>; decisão simbólica, sem discussão; encaminhamento: Autor e Líderes (<span class="prazo">5 min</span> cada).</li>
+          <li>Art. 80, §1º: retificação por declaração escrita; Presidente decide (procedente ou não); cabe recurso ao Plenário.</li>
+        </ul>
+      </div>
+
+      <div class="trap">
+        <div class="trap-icon">🧷</div>
+        <div class="trap-text"><b>Detalhe difícil de esquecer:</b> sigilo na ata = invólucro lacrado + <b>2 Secretários</b> rubricando. A banca adora trocar “2” por “1”.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c12" style="--c:#186347" id="art99">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">99</div>
+        <div>
+          <div class="c-title">Divulgação radiofônica</div>
+          <div class="c-lead">O que entra na Voz do Brasil e a condição de estar em termos regimentais.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Voz do Brasil:</b> divulga atividades das <span class="org">Comissões</span> e do <span class="org">Plenário</span>, e pronunciamentos lidos/proferidos da tribuna.</li>
+        <li><b>Condição:</b> desde que em <span class="k">termos regimentais</span>.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- ANÁLISE -->
+<div class="sec-head" id="analise">
+  <div class="sec-line"></div><div class="sec-title">Análise e Pontos de Atenção</div>
+  <div class="sec-badge">CEBRASPE</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c6" style="--c:#a81f2a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">⚠️</div><div><div class="c-title">Sanções e vedações que caem</div><div class="c-lead">O “não pode” costuma ser trocado por “pode”.</div></div></div>
+      <ul class="kp-list">
+        <li><b>QO sem indicação inicial:</b> Presidente tira da tribuna + <span class="exc">exclusão</span> das palavras da ata.</li>
+        <li><b>Criticar decisão na mesma sessão:</b> <span class="exc">ilícito</span> (a crítica fica para a sessão seguinte).</li>
+        <li><b>Censura:</b> pronunciamento contra o decoro → publicação <span class="exc">não autorizada</span> (com recurso ao Plenário).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#b86b1a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">⏱</div><div><div class="c-title">Prazos e quóruns “matadores”</div><div class="c-lead">Decore como blocos (tempo + sujeito + consequência).</div></div></div>
+      <ul class="kp-list">
+        <li><b>Questão de Ordem:</b> <span class="prazo">3 min</span> (e não repete a mesma).</li>
+        <li><b>Crítica/protesto:</b> sessão seguinte, Expediente, <span class="prazo">10 min</span> (preferência).</li>
+        <li><b>CCJC no recurso:</b> parecer em até <span class="prazo">3 sessões</span>.</li>
+        <li><b>Revisão na Taquigrafia:</b> devolução em <span class="prazo">5 sessões</span> (senão, publica sem revisão).</li>
+        <li><b>Efeito suspensivo:</b> apoiamento de <span class="k">1/3 dos presentes</span> (não da Casa).</li>
+        <li><b>Sigilo (ata):</b> invólucro lacrado rubricado por <span class="num">2</span> Secretários.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <span>RICD • Título III • Cap. IV • Interpretação e Observância do Regimento</span>
+  <a href="titulo3.html">← Voltar ao Título III</a>
+  <a href="titulo3-cap1.html">Cap. I →</a>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="fab-wrap">
+  <button id="theme-btn" title="Alternar tema">
+    <span id="t-icon">🌙</span>
+    <div class="t-track"><div class="t-knob"></div></div>
+    <span id="t-label">Escuro</span>
+  </button>
+  <button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function(){
+  const root=document.documentElement,btn=document.getElementById('theme-btn'),
+        icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
+  let dark=localStorage.getItem('ricd-theme')==='dark';
+  if(!localStorage.getItem('ricd-theme')) dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function apply(){
+    root.setAttribute('data-theme',dark?'dark':'light');
+    icon.textContent=dark?'☀️':'🌙';
+    lbl.textContent=dark?'Claro':'Escuro';
+    localStorage.setItem('ricd-theme',dark?'dark':'light');
+  }
+  apply();
+  btn.addEventListener('click',()=>{dark=!dark;apply()});
+})();
+(function(){
+  const bar=document.getElementById('prog'),top=document.getElementById('back-top');
+  window.addEventListener('scroll',function(){
+    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(s/h*100)+'%';
+    top.classList.toggle('show',s>280);
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
