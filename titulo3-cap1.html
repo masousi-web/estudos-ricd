@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RICD — Título III — Cap. I — Tipos de Sessões</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+/* ═══════════════════════════════════════════════
+   TOKENS — LIGHT
+═══════════════════════════════════════════════ */
+:root, [data-theme="light"] {
+  --bg:          #f3f6fb;
+  --bg2:         #eaeff8;
+  --surface:     #ffffff;
+  --surface2:    #f7faff;
+  --border:      rgba(15,39,66,.09);
+  --border-hard: rgba(15,39,66,.16);
+
+  --ink:         #0d1f35;
+  --ink2:        #2b4060;
+  --muted:       #526a88;
+  --faint:       #8fa8c2;
+
+  --gold:        #b86b1a;
+  --gold-soft:   rgba(184,107,26,.10);
+  --blue:        #1a4d8a;
+  --blue-soft:   rgba(26,77,138,.08);
+  --green:       #186347;
+  --green-soft:  rgba(24,99,71,.09);
+  --red:         #a81f2a;
+  --red-soft:    rgba(168,31,42,.09);
+  --purple:      #5a3d8a;
+  --purple-soft: rgba(90,61,138,.08);
+
+  --mark-bg:     rgba(15,23,42,.07);
+
+  --hero-from:   #0c2240;
+  --hero-to:     #153558;
+  --hero-text:   #ffffff;
+  --hero-sub:    rgba(255,255,255,.80);
+
+  --sh-sm:  0 2px 8px rgba(12,26,43,.06);
+  --sh-md:  0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:  0 14px 34px rgba(12,26,43,.11);
+  --sh-hov: 0 10px 28px rgba(12,26,43,.14);
+
+  --chip-bg:     rgba(255,255,255,.72);
+  --chip-border: rgba(15,23,42,.10);
+  --chip-text:   #2b4060;
+
+  --list-bg:     #f7fafc;
+  --note-bg:     rgba(26,77,138,.05);
+  --note-border: rgba(26,77,138,.12);
+  --note-text:   #1a2e44;
+
+  --toggle-bg:   #d8e2f0;
+  --toggle-knob: #ffffff;
+}
+
+/* ═══════════════════════════════════════════════
+   TOKENS — DARK
+═══════════════════════════════════════════════ */
+[data-theme="dark"] {
+  --bg:          #0c1120;
+  --bg2:         #101728;
+  --surface:     #161d2f;
+  --surface2:    #1b2238;
+  --border:      rgba(255,255,255,.06);
+  --border-hard: rgba(255,255,255,.12);
+
+  --ink:         #dce8fa;
+  --ink2:        #94b0d4;
+  --muted:       #627ea6;
+  --faint:       #374e6a;
+
+  --gold:        #f0b84a;
+  --gold-soft:   rgba(240,184,74,.11);
+  --blue:        #5b96f0;
+  --blue-soft:   rgba(91,150,240,.11);
+  --green:       #38c882;
+  --green-soft:  rgba(56,200,130,.09);
+  --red:         #f46862;
+  --red-soft:    rgba(244,104,98,.11);
+  --purple:      #a07af5;
+  --purple-soft: rgba(160,122,245,.10);
+
+  --mark-bg:     rgba(220,232,250,.09);
+
+  --hero-from:   #08111e;
+  --hero-to:     #0f1e30;
+  --hero-text:   #e4f0ff;
+  --hero-sub:    rgba(210,228,255,.70);
+
+  --sh-sm:  0 2px 8px rgba(0,0,0,.28);
+  --sh-md:  0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:  0 14px 34px rgba(0,0,0,.40);
+  --sh-hov: 0 10px 28px rgba(0,0,0,.46);
+
+  --chip-bg:     rgba(255,255,255,.06);
+  --chip-border: rgba(255,255,255,.12);
+  --chip-text:   rgba(220,232,255,.82);
+
+  --list-bg:     rgba(255,255,255,.03);
+  --note-bg:     rgba(91,150,240,.09);
+  --note-border: rgba(91,150,240,.20);
+  --note-text:   #b0ccf0;
+
+  --toggle-bg:   #243350;
+  --toggle-knob: #f0b84a;
+}
+
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',sans-serif;
+  font-size:15px;
+  line-height:1.68;
+  color:var(--ink);
+  background:var(--bg);
+  transition:background .25s,color .25s;
+  min-height:100vh;
+}
+a{color:inherit;text-decoration:none}
+
+/* ═══════════════════════════════════════════════
+   PROGRESS BAR
+═══════════════════════════════════════════════ */
+#prog{
+  position:fixed;top:0;left:0;
+  height:3px;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--blue));
+  z-index:300;transition:width .08s linear;
+  border-radius:0 2px 2px 0;
+}
+
+/* ═══════════════════════════════════════════════
+   FAB — THEME TOGGLE + BACK TO TOP
+═══════════════════════════════════════════════ */
+.fab-wrap{
+  position:fixed;bottom:24px;right:24px;
+  z-index:200;
+  display:flex;flex-direction:column;gap:10px;align-items:flex-end;
+}
+#theme-btn{
+  background:var(--surface);
+  border:1px solid var(--border-hard);
+  box-shadow:var(--sh-md);
+  border-radius:50px;
+  padding:8px 14px;
+  cursor:pointer;
+  display:flex;align-items:center;gap:9px;
+  font-family:'Outfit',sans-serif;
+  font-size:13px;font-weight:600;
+  color:var(--muted);
+  transition:all .2s;user-select:none;
+}
+#theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
+.t-track{
+  width:38px;height:20px;
+  background:var(--toggle-bg);
+  border-radius:20px;position:relative;
+  transition:background .25s;
+}
+.t-knob{
+  position:absolute;top:2px;left:2px;
+  width:16px;height:16px;
+  border-radius:50%;
+  background:var(--toggle-knob);
+  transition:transform .25s,background .25s;
+  box-shadow:0 1px 4px rgba(0,0,0,.22);
+}
+[data-theme="dark"] .t-knob{transform:translateX(18px)}
+#back-top{
+  width:44px;height:44px;
+  background:var(--surface);
+  border:1px solid var(--border-hard);
+  border-radius:50%;
+  box-shadow:var(--sh-md);
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;color:var(--muted);
+  transition:all .2s;
+  opacity:0;pointer-events:none;
+  transform:translateY(10px);
+}
+#back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
+
+/* ═══════════════════════════════════════════════
+   WRAP
+═══════════════════════════════════════════════ */
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px 80px}
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+.hero{
+  background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);
+  border-radius:0 0 28px 28px;
+  padding:38px 36px 34px;
+  margin-bottom:32px;
+  position:relative;overflow:hidden;
+  box-shadow:var(--sh-lg);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),
+    radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'III';
+  position:absolute;right:36px;top:50%;transform:translateY(-50%);
+  font-family:'Crimson Pro',serif;
+  font-size:160px;font-weight:700;
+  color:rgba(255,255,255,.04);
+  line-height:1;pointer-events:none;user-select:none;
+}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;
+}
+.hero-title{
+  font-family:'Crimson Pro',serif;
+  font-size:clamp(28px,3.5vw,42px);
+  font-weight:700;color:var(--hero-text);
+  line-height:1.12;margin-bottom:10px;
+}
+.hero-sub{
+  font-size:14px;color:var(--hero-sub);
+  max-width:70ch;line-height:1.58;margin-bottom:20px;
+}
+.nav-chips{display:flex;flex-wrap:wrap;gap:8px}
+.nav-chips a{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:7px 13px;border-radius:100px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.16);
+  color:rgba(255,255,255,.88);
+  font-size:12.5px;font-weight:500;
+  transition:background .15s,transform .1s;
+}
+.nav-chips a:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.nav-chips a b{font-weight:700;color:var(--gold)}
+.legend{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-top:18px;padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.10);
+}
+.lchip{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:100px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.07);
+  color:rgba(255,255,255,.78);
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:.06em;font-weight:600;text-transform:uppercase;
+}
+.ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ═══════════════════════════════════════════════
+   SECTION DIVIDER
+═══════════════════════════════════════════════ */
+.sec-head{
+  display:flex;align-items:center;gap:14px;
+  margin:36px 0 18px;
+}
+.sec-line{flex:1;height:1px;background:var(--border-hard)}
+.sec-title{
+  font-family:'Crimson Pro',serif;
+  font-size:21px;font-weight:700;
+  color:var(--ink);white-space:nowrap;
+}
+.sec-badge{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);white-space:nowrap;
+}
+
+/* ═══════════════════════════════════════════════
+   GRID
+═══════════════════════════════════════════════ */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.c12{grid-column:span 12}
+.c6{grid-column:span 12}
+.c4{grid-column:span 12}
+@media(min-width:760px){.c6{grid-column:span 6}.c4{grid-column:span 4}}
+
+/* ═══════════════════════════════════════════════
+   CARD
+═══════════════════════════════════════════════ */
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:var(--sh-sm);
+  overflow:hidden;position:relative;
+  transition:transform .14s,box-shadow .14s,border-color .14s;
+  opacity:0;
+  animation:fadeUp .35s ease forwards;
+}
+.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.07s}
+.card:nth-child(3){animation-delay:.11s}.card:nth-child(4){animation-delay:.15s}
+.card:nth-child(5){animation-delay:.19s}.card:nth-child(6){animation-delay:.23s}
+.card:nth-child(7){animation-delay:.27s}.card:nth-child(8){animation-delay:.31s}
+.card:nth-child(9){animation-delay:.35s}.card:nth-child(10){animation-delay:.39s}
+.card:nth-child(11){animation-delay:.43s}.card:nth-child(12){animation-delay:.47s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{transform:translateY(-2px);box-shadow:var(--sh-hov)}
+.card::before{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;
+  width:4px;background:var(--c,#1c3f63);
+  border-radius:14px 0 0 14px;
+}
+.card-inner{padding:16px 16px 16px 18px}
+.card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.c-badge{
+  flex-shrink:0;width:36px;height:36px;
+  border-radius:9px;background:var(--bg2);
+  border:1px solid var(--border-hard);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11.5px;font-weight:700;
+  color:var(--c,#1c3f63);margin-top:1px;
+}
+[data-theme="dark"] .c-badge{
+  background:color-mix(in srgb,var(--c,#1c3f63) 14%,var(--surface2) 86%);
+  color:color-mix(in srgb,var(--c,#1c3f63) 55%,#ffffff 45%);
+}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){
+  [data-theme="dark"] .c-badge{background:var(--surface2);color:var(--ink2)}
+}
+.c-title{
+  font-family:'Crimson Pro',serif;
+  font-size:17px;font-weight:700;
+  color:var(--ink);line-height:1.2;margin-bottom:3px;
+}
+.c-lead{font-size:13px;color:var(--muted);line-height:1.45}
+
+/* Lista */
+.kp-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.kp-list li{
+  padding:9px 11px;border-radius:9px;
+  background:var(--list-bg);border:1px solid var(--border);
+  font-size:13.5px;color:var(--ink2);line-height:1.52;
+}
+.kp-list li b{font-weight:700;color:var(--ink)}
+
+/* Destaques semânticos */
+.k{font-weight:700;color:var(--ink);background:var(--mark-bg);padding:0 .22em;border-radius:.4em}
+.org{font-weight:700;color:var(--blue);background:var(--blue-soft);padding:0 .22em;border-radius:.4em}
+.prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em}
+.exc{font-weight:700;color:var(--red);background:var(--red-soft);padding:0 .22em;border-radius:.4em}
+.num{font-weight:700;color:var(--ink2)}
+.tech{font-style:italic;font-weight:600;color:var(--ink)}
+
+/* Nota */
+.note{
+  margin-top:10px;padding:10px 13px;border-radius:10px;
+  background:var(--note-bg);border:1px solid var(--note-border);
+  color:var(--note-text);font-size:13px;line-height:1.55;
+}
+.note b{font-weight:700}
+
+/* Pegadinha */
+.trap{
+  margin-top:10px;display:flex;gap:10px;align-items:flex-start;
+  background:var(--red-soft);
+  border:1px solid color-mix(in srgb,var(--red) 25%,transparent 75%);
+  border-radius:10px;padding:11px 13px;
+}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.trap{border-color:rgba(168,31,42,.2)}}
+.trap-icon{font-size:16px;line-height:1.5;flex-shrink:0}
+.trap-text{font-size:13px;color:var(--red);font-weight:500;line-height:1.5}
+.trap-text b{font-weight:700;color:var(--red)}
+
+/* Correlatos */
+.correlatos{
+  margin-top:10px;padding:11px 13px;border-radius:10px;
+  background:var(--purple-soft);
+  border:1px solid rgba(90,61,138,.16);
+}
+[data-theme="dark"] .correlatos{border-color:rgba(160,122,245,.18)}
+.corr-title{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--purple);font-weight:700;margin-bottom:6px;
+}
+.corr-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+.corr-list li{font-size:13px;color:var(--ink2);padding-left:16px;position:relative;line-height:1.5}
+.corr-list li::before{content:'↗';position:absolute;left:0;color:var(--purple);font-size:12px}
+
+/* ═══════════════════════════════════════════════
+   ANALYSIS PANELS
+═══════════════════════════════════════════════ */
+.analysis-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:4px}
+.panel{
+  grid-column:span 12;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;box-shadow:var(--sh-sm);padding:16px 18px;
+}
+@media(min-width:760px){.panel.p6{grid-column:span 6}}
+.panel h3{
+  font-family:'Crimson Pro',serif;font-size:17px;font-weight:700;
+  color:var(--ink);margin-bottom:10px;
+}
+.panel ul{padding-left:18px;display:flex;flex-direction:column;gap:7px}
+.panel ul li{font-size:13.5px;color:var(--ink2);line-height:1.55}
+.panel ul li b{font-weight:700;color:var(--ink)}
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+.page-footer{
+  text-align:center;font-size:12.5px;color:var(--faint);
+  margin-top:48px;padding-top:20px;
+  border-top:1px solid var(--border-hard);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;
+}
+.page-footer a{
+  color:var(--blue);font-weight:600;
+  padding:6px 14px;border-radius:8px;
+  border:1px solid var(--border-hard);background:var(--surface);
+  font-size:13px;transition:box-shadow .15s;
+}
+.page-footer a:hover{box-shadow:var(--sh-md)}
+
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
+
+@media(max-width:600px){
+  .hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}
+  .hero::after{display:none}
+  .wrap{padding:0 14px 80px}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<header class="hero" id="topo">
+  <div class="wrap" style="padding:0">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">RICD • Resumo Visual • Material de Revisão</div>
+      <h1 class="hero-title">Título III — Capítulo I — Tipos de Sessões</h1>
+      <p class="hero-sub">Espécies de sessões (Art. 65), estrutura da sessão ordinária (Art. 66), esforço concentrado, sessão extraordinária (Art. 67), sessões solenes e homenagens (Art. 68), publicidade/suspensão/levantamento, ordem no Plenário (Arts. 73–78).</p>
+      <nav class="nav-chips" aria-label="Seções">
+        <a href="#art65"><b>Art. 65</b> Espécies</a>
+        <a href="#art66"><b>Art. 66</b> Ordinária</a>
+        <a href="#art67"><b>Art. 67</b> Extra</a>
+        <a href="#art68"><b>Art. 68</b> Solenes</a>
+        <a href="#arts69-71"><b>Arts. 69–71</b> Publicidade</a>
+        <a href="#arts73-78"><b>Arts. 73–78</b> Ordem</a>
+        <a href="#analise"><b>Análise</b> Pegadinhas</a>
+      </nav>
+      <div class="legend">
+        <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Órgãos</span>
+        <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Prazos</span>
+        <span class="lchip"><span class="ldot" style="background:#f46862"></span>Exceções/Vedações</span>
+        <span class="lchip"><span class="ldot" style="background:rgba(255,255,255,.4)"></span>Palavras-chave</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ART. 65 -->
+<div class="sec-head" id="art65">
+  <div class="sec-line"></div><div class="sec-title">Art. 65 — Espécies de Sessões</div>
+  <div class="sec-badge">Preparatórias • Deliberativas • Não deliberativas</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c12" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">Mapa</div><div><div class="c-title">Tipos (visão rápida)</div><div class="c-lead">Tabela-resumo para memorizar dia/horário, duração e se há Ordem do Dia.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Preparatórias:</b> precedem a <span class="num">1ª</span> e a <span class="num">3ª</span> sessões legislativas (posse + eleição da Mesa).</li>
+        <li><b>Ordinárias:</b> <span class="prazo">terça a quinta</span>, início <span class="prazo">14h</span> (<span class="k">deliberativas</span>).</li>
+        <li><b>Extraordinárias:</b> dias/horas diversos (<span class="k">deliberativas</span>).</li>
+        <li><b>De debates:</b> <span class="prazo">segunda 14h</span> e <span class="prazo">sexta 9h</span>, duração <span class="prazo">5 horas</span>, <span class="exc">sem</span> <span class="k">Ordem do Dia</span>.</li>
+        <li><b>Solenes:</b> comemorações/homenagens, duração <span class="prazo">até 4 horas</span> (<span class="k">não deliberativas</span>).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Preparatórias</div><div class="c-lead">Precedem a inauguração dos trabalhos.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Quando:</b> precedem a <span class="num">1ª</span> e a <span class="num">3ª</span> sessões legislativas (<span class="k">posse</span> + <span class="k">eleição da Mesa</span>).</li>
+      </ul>
+      <div class="correlatos">
+        <div class="corr-title">Correlatos</div>
+        <ul class="corr-list">
+          <li>Art. 4º — sessão preparatória de posse em <span class="prazo">1º de fevereiro</span> do 1º ano da legislatura</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Deliberativas</div><div class="c-lead">Ordinárias e extraordinárias.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Ordinárias:</b> <span class="k">1x por dia</span>, <span class="prazo">terça a quinta</span>, início <span class="prazo">14h</span>.</li>
+        <li><b>Extraordinárias:</b> em <span class="k">dias/horas diversos</span> dos prefixados.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">III</div><div><div class="c-title">Não deliberativas — Debates</div><div class="c-lead">Sem Ordem do Dia.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Periodicidade:</b> <span class="prazo">segunda 14h</span> e <span class="prazo">sexta 9h</span>.</li>
+        <li><b>Duração:</b> <span class="prazo">5 horas</span>.</li>
+        <li><span class="exc">Restrição:</span> <span class="k">SEM</span> <span class="k">Ordem do Dia</span>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#3a5c8a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">IV</div><div><div class="c-title">Não deliberativas — Solenes</div><div class="c-lead">Comemorações e homenagens.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Finalidade:</b> grandes comemorações/homenagens.</li>
+        <li><b>Limite:</b> <span class="prazo">não excede 4 horas</span>.</li>
+      </ul>
+      <div class="correlatos">
+        <div class="corr-title">Correlatos</div>
+        <ul class="corr-list">
+          <li>Art. 68, III — até <span class="prazo">2</span> sessões solenes por mês (mediante deliberação do Plenário)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ART. 66 -->
+<div class="sec-head" id="art66">
+  <div class="sec-line"></div><div class="sec-title">Art. 66 — Sessão Ordinária</div>
+  <div class="sec-badge">Estrutura • Flexibilização • Esforço concentrado</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Estrutura (caput)</div><div class="c-lead">Quatro blocos clássicos para prova.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Pequeno Expediente:</b> <span class="prazo">60 min</span> <span class="exc">improrrogáveis</span> (matéria do expediente + oradores inscritos).</li>
+        <li><b>Grande Expediente:</b> <span class="prazo">50 min</span> <span class="exc">improrrogáveis</span> (início às <span class="prazo">10h</span> ou <span class="prazo">15h</span>).</li>
+        <li><b>Ordem do Dia:</b> início às <span class="prazo">16h</span> (discussão e votação).</li>
+        <li><b>Comunicações Parlamentares:</b> para Partidos/Blocos, <span class="k">se houver tempo</span>.</li>
+      </ul>
+      <div class="correlatos">
+        <div class="corr-title">Correlatos</div>
+        <ul class="corr-list">
+          <li>Art. 87 — Grande Expediente: <span class="prazo">25 min</span> por orador (lista por sorteio eletrônico)</li>
+          <li>Art. 90 — Comunicações Parlamentares se OD acabar antes de <span class="prazo">19h</span>; até <span class="prazo">10 min</span> por Deputado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Prerrogativas e flexibilidade (§§1º–3º)</div><div class="c-lead">Comunicação de Liderança e poderes do Presidente.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Comunicação de Líderes (§1º):</b> em <span class="k">qualquer tempo</span> da sessão (Líder ou Vice-Líder delegado).</li>
+        <li><b>Poder do Presidente (§2º):</b> pode determinar que a <span class="k">Ordem do Dia</span> <span class="k">absorva</span> o tempo do <span class="k">Grande Expediente</span>.</li>
+        <li><b>Sem OD (§3º):</b> se o Presidente <span class="exc">não designar</span> Ordem do Dia → sessão <span class="k">converte-se</span> em <span class="k">sessão de debates</span>.</li>
+      </ul>
+      <div class="trap">
+        <div class="trap-icon">⚠️</div>
+        <div class="trap-text"><b>Armadilha:</b> “sessão de debates” pode nascer por calendário (seg/sex) <b>ou</b> por conversão da ordinária (§3º).</div>
+      </div>
+      <div class="correlatos">
+        <div class="corr-title">Correlatos</div>
+        <ul class="corr-list">
+          <li>Art. 89 — Comunicações de Liderança: tempo proporcional (mín. <span class="prazo">3</span> / máx. <span class="prazo">10</span> min); Governo/Minoria/Oposição/Maioria: <span class="prazo">8</span> min</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c12" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">III</div><div><div class="c-title">Período de sessões extraordinárias (esforço concentrado) (§§4º–5º)</div><div class="c-lead">Convocação, finalidade exclusiva e efeitos.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Convocação:</b> pelo <span class="org">Presidente</span> (de ofício, por proposta de Líderes, ou por requerimento de <span class="num">1/10</span> dos Deputados + deliberação do Plenário).</li>
+        <li><b>Finalidade:</b> <span class="exc">exclusivamente</span> discussão e votação das matérias do ato de convocação.</li>
+        <li><b>Efeitos (§5º):</b> durante o período: <span class="exc">não</span> há sessões ordinárias e <span class="exc">não</span> funcionam as <span class="k">Comissões Permanentes</span>.</li>
+      </ul>
+      <div class="trap">
+        <div class="trap-icon">⚠️</div>
+        <div class="trap-text"><b>Esforço concentrado</b> não é “só uma extra”: é <b>período</b> com efeitos (para ordinárias e comissões).</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ART. 67 -->
+<div class="sec-head" id="art67">
+  <div class="sec-line"></div><div class="sec-title">Art. 67 — Sessão Extraordinária (individual)</div>
+  <div class="sec-badge">Convocação • Comunicação • Urgência</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Destinação</div><div class="c-lead">Ordem do Dia como foco único.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Finalidade:</b> <span class="exc">exclusivamente</span> discussão e votação das matérias da <span class="k">Ordem do Dia</span>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Convocação (§1º)</div><div class="c-lead">Três portas de entrada.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Pelo Presidente</b> (de ofício);</li>
+        <li><b>Pelo</b> <span class="org">Colégio de Líderes</span>; ou</li>
+        <li><b>Por deliberação do Plenário</b> (requerimento de Deputado).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card c12" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">III</div><div><div class="c-title">Comunicação (§2º) e urgência</div><div class="c-lead">DCD e aviso reforçado se &lt; 24h.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Comunicação:</b> na sessão ou pelo <span class="org">DCD</span>.</li>
+        <li><b>Urgência:</b> se mediar tempo <span class="exc">inferior a</span> <span class="prazo">24 horas</span> → também por via telegráfica ou telefônica.</li>
+      </ul>
+      <div class="trap">
+        <div class="trap-icon">⚠️</div>
+        <div class="trap-text"><b>Pegadinha:</b> “extraordinária” pode ser <b>período</b> (esforço concentrado, Art. 66) ou <b>sessão isolada</b> (Art. 67). Não misturar.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ART. 68 -->
+<div class="sec-head" id="art68">
+  <div class="sec-line"></div><div class="sec-title">Art. 68 — Sessões Solenes e Homenagens</div>
+  <div class="sec-badge">Requisitos • Rito • Limites mensais</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Sessões solenes (caput e incisos)</div><div class="c-lead">Finalidade, iniciativa e regras específicas.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Finalidade:</b> comemorações especiais ou recepção de <span class="k">altas personalidades</span>.</li>
+        <li><b>Iniciativa:</b> a juízo do <span class="org">Presidente</span> <span class="k">ou</span> por deliberação do Plenário (requerimento de <span class="num">1/10</span> dos Deputados ou Líderes).</li>
+        <li><b>Regras:</b> admissão de convidados à Mesa/Plenário; <span class="exc">independe de quórum</span>; fala só de oradores designados.</li>
+        <li><b>Limite:</b> até <span class="prazo">2</span> por mês (por deliberação do Plenário).</li>
+        <li><b>Requerimento:</b> deve constar no avulso como <span class="k">matéria sobre a mesa</span>; tem preferência o apresentado primeiro.</li>
+      </ul>
+      <div class="correlatos">
+        <div class="corr-title">Correlatos</div>
+        <ul class="corr-list">
+          <li>Art. 65, III, b — solenes são <span class="k">não deliberativas</span> e não excedem <span class="prazo">4 horas</span></li>
+          <li>Art. 77, §2º — lugares determinados para convidados e Deputados em sessões solenes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Homenagens (§§1º–2º)</div><div class="c-lead">Regra geral (debates) e exceção (Grande Expediente).</div></div></div>
+      <ul class="kp-list">
+        <li><b>Regra geral (§1º):</b> durante <span class="k">prorrogação</span> das sessões de debates (seg/sex) → máximo <span class="prazo">30 min</span>.</li>
+        <li><b>Exceção:</b> no <span class="k">Grande Expediente</span> (Congressista da legislatura, Chefe de Poder ou Chefe de Estado estrangeiro com relações diplomáticas).</li>
+        <li><b>Rito (§2º):</b> máx. <span class="prazo">2</span> homenagens/mês; oradores: Autor + <span class="num">1</span> de cada Partido/Bloco (indicado por Líder) → <span class="prazo">5 min</span> cada.</li>
+        <li><b>Encerramento:</b> esgotado o prazo → sessão <span class="k">levantada</span>.</li>
+      </ul>
+      <div class="trap">
+        <div class="trap-icon">⚠️</div>
+        <div class="trap-text"><b>“2 por mês”</b> aparece em dois lugares: sessões solenes (inciso) e homenagens (§2º). A banca adora trocar.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTS. 69–71 -->
+<div class="sec-head" id="arts69-71">
+  <div class="sec-line"></div><div class="sec-title">Arts. 69–71 — Publicidade, Suspensão e Levantamento</div>
+  <div class="sec-badge">Regra/Exceção • Prazos • Hipóteses</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">69</div><div><div class="c-title">Publicidade</div><div class="c-lead">Regra de ouro + exceção formal.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Regra:</b> sessões <span class="k">públicas</span>.</li>
+        <li><b>Exceção:</b> sessões <span class="k">secretas</span> por <span class="k">deliberação do Plenário</span>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">70</div><div><div class="c-title">Suspensão</div><div class="c-lead">Uma vez, por até 1 hora.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Poder:</b> o <span class="org">Presidente</span> pode suspender a sessão <span class="k">por uma única vez</span>.</li>
+        <li><b>Prazo máximo:</b> <span class="prazo">1 hora</span>.</li>
+        <li><b>Efeito:</b> findo o prazo → considera-se <span class="k">encerrada</span>.</li>
+      </ul>
+      <div class="trap">
+        <div class="trap-icon">⚠️</div>
+        <div class="trap-text"><b>1 vez</b> + <b>1 hora</b> + “findo o prazo = encerrada”. Tríade que cai muito.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c12" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">71</div><div><div class="c-title">Levantamento antecipado (antes do prazo)</div><div class="c-lead">Só em hipóteses taxativas.</div></div></div>
+      <ul class="kp-list">
+        <li><b>I —</b> <span class="k">tumulto grave</span>.</li>
+        <li><b>II —</b> <span class="k">falecimento</span> (Congressista, Chefe de Poder ou luto oficial).</li>
+        <li><b>III —</b> presença nos debates de <span class="exc">menos de</span> <span class="num">1/10</span> dos Deputados.</li>
+      </ul>
+      <div class="correlatos">
+        <div class="corr-title">Correlatos</div>
+        <ul class="corr-list">
+          <li>Art. 17, I, j — prerrogativa do Presidente para suspender/levantar quando necessário</li>
+          <li>Art. 92 — sessão secreta: hipóteses e convocações (você vai ver no cap. III)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTS. 73–78 -->
+<div class="sec-head" id="arts73-78">
+  <div class="sec-line"></div><div class="sec-title">Arts. 73–78 — Ordem, Palavra, Acesso e Transmissão</div>
+  <div class="sec-badge">Disciplina • Vedações • Procedimentos</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">73</div><div><div class="c-title">Manutenção da ordem — regras gerais (I–VIII)</div><div class="c-lead">Acesso, postura e uso da tribuna.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Assento:</b> no Plenário, só <span class="k">Deputados</span> e <span class="k">Senadores</span> (ressalva do Art. 77).</li>
+        <li><b>Postura:</b> Presidente fala <span class="k">sentado</span>; demais, <span class="k">de pé</span> (salvo impossibilidade).</li>
+        <li><b>Tribuna:</b> Grande Expediente, Comunicações e Discussões; microfones de aparte permitidos se o Presidente não se opuser.</li>
+        <li><b>Da bancada:</b> <span class="exc">nunca</span> de costas para a Mesa.</li>
+        <li><b>Sem palavra:</b> <span class="exc">vedado</span> falar sem pedir/obter; taquigrafia só inicia após concessão.</li>
+        <li><b>Persistência:</b> antirregimental → Presidente dá discurso por terminado (taquigrafia registra).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">73</div><div><div class="c-title">Disciplina e proibições (IX–XIV)</div><div class="c-lead">Conduta, interrupções e proibição física.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Perturbação:</b> censura oral ou sanções disciplinares.</li>
+        <li><b>Direcionamento:</b> ao <span class="org">Presidente</span> ou aos Deputados em geral.</li>
+        <li><b>Tratamento:</b> “Senhor/Deputado” (referência) e “Excelência” (direto).</li>
+        <li><span class="exc">Vedado</span> referência descortês/injuriosa (Poderes, instituições, Chefes de Estado estrangeiro).</li>
+        <li><span class="exc">Vedado</span> interromper orador — <b>exceção:</b> questão de ordem, aparte ou comunicação relevante do Presidente.</li>
+        <li><span class="exc">Vedado</span> <span class="k">fumar</span> no recinto.</li>
+      </ul>
+      <div class="correlatos">
+        <div class="corr-title">Correlatos</div>
+        <ul class="corr-list">
+          <li>Art. 176 — apartes: várias vedações (ex.: à palavra do Presidente)</li>
+          <li>Art. 77 — público nas galerias com <span class="k">incomunicabilidade</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">74</div><div><div class="c-title">Hipóteses de uso da palavra</div><div class="c-lead">Rol “só poderá” (taxativo).</div></div></div>
+      <ul class="kp-list">
+        <li><b>I</b> apresentar proposição;</li>
+        <li><b>II</b> comunicação/assuntos diversos (Hora do Expediente ou Comunicações Parlamentares);</li>
+        <li><b>III</b> sobre proposição em discussão;</li>
+        <li><b>IV</b> questão de ordem; <b>V</b> reclamação; <b>VI</b> encaminhar votação;</li>
+        <li><b>VII</b> a juízo do Presidente: contestar acusação pessoal ou contradizer atribuição indevida de opinião pessoal.</li>
+      </ul>
+      <div class="correlatos">
+        <div class="corr-title">Correlatos</div>
+        <ul class="corr-list">
+          <li>Art. 95 — questão de ordem: dúvida sobre interpretação; prazo <span class="prazo">3 min</span></li>
+          <li>Art. 96 — reclamação: observância regimental/serviços; prazo <span class="prazo">3 min</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#3a5c8a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">75</div><div><div class="c-title">Discurso escrito (dispensa de fala)</div><div class="c-lead">Entrega para publicação e condições do Pequeno Expediente.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Regra:</b> se não puder falar, entrega discurso escrito à Mesa para publicar (dispensa leitura).</li>
+        <li><b>Pequeno Expediente:</b> só se não resultar em transcrição de matéria; limite de <span class="prazo">3 laudas</span> (espaço dois).</li>
+        <li><b>Publicação:</b> por ordem de entrega; se descumprir condições → discurso devolvido ao autor.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card c12" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">76</div><div><div class="c-title">Interrupção e transferência de discurso</div><div class="c-lead">Regra de vedação + exceções por tempo e remissões regimentais.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Regra:</b> <span class="exc">nenhum</span> discurso pode ser interrompido ou transferido para outra sessão.</li>
+        <li><b>Exceção 1:</b> se findo o tempo destinado ao orador (ou à parte da sessão).</li>
+        <li><b>Exceção 2 (remissões):</b> suspensão (Art. 70), levantamento (Art. 71), comunicação relevante do Presidente (Art. 73, XIII), falta de quórum no Pequeno Expediente (Art. 79, §3º), entrada na OD (Art. 82, §2º), transformação em Comissão Geral (Art. 91).</li>
+      </ul>
+      <div class="trap">
+        <div class="trap-icon">⚠️</div>
+        <div class="trap-text"><b>Ponto de prova:</b> a vedação é forte (“nenhum”), mas as <b>remissões</b> abrem as exceções — decorar o “mapa” das remissões.</div>
+      </div>
+      <div class="correlatos">
+        <div class="corr-title">Correlatos</div>
+        <ul class="corr-list">
+          <li>Art. 82, §2º — entrada na OD pode interromper orador na tribuna</li>
+          <li>Art. 91 — sessão pode virar Comissão Geral (debate relevante / iniciativa popular / Ministro)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">77</div><div><div class="c-title">Acesso ao recinto do Plenário</div><div class="c-lead">Quem entra e regras especiais.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Permitidos:</b> Deputados e Senadores; ex-parlamentares; funcionários em serviço local; jornalistas credenciados.</li>
+        <li><b>Estrangeiro (§1º):</b> admitido se houver <span class="k">reciprocidade</span> no parlamento de origem.</li>
+        <li><b>Solenes (§2º):</b> convites asseguram lugares determinados.</li>
+        <li><b>Tribuna de honra (§3º):</b> convidados, corpo diplomático e jornalistas.</li>
+        <li><b>Público (§4º):</b> galerias circundantes, com <span class="k">incomunicabilidade</span> com o recinto.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">78</div><div><div class="c-title">Transmissão e gravação</div><div class="c-lead">Depende de autorização e normas da Mesa.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Requisito:</b> transmissão (rádio/TV) e gravação dependem de <span class="k">prévia autorização</span> do <span class="org">Presidente</span>.</li>
+        <li><b>Regulamentação:</b> conforme normas fixadas pela <span class="org">Mesa</span>.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ANÁLISE -->
+<div class="sec-head" id="analise">
+  <div class="sec-line"></div><div class="sec-title">Análise e Pontos de Atenção</div>
+  <div class="sec-badge">Padrões CEBRASPE</div><div class="sec-line"></div>
+</div>
+
+<div class="analysis-grid">
+  <div class="panel p6">
+    <h3>1 — “Extraordinária” tem dois sentidos</h3>
+    <ul>
+      <li><b>Art. 66</b>: <b>período</b> de sessões extraordinárias (esforço concentrado) com efeitos — <span class="exc">sem ordinárias</span> e <span class="exc">comissões não funcionam</span>.</li>
+      <li><b>Art. 67</b>: <b>sessão</b> extraordinária isolada, focada na <b>Ordem do Dia</b>.</li>
+    </ul>
+  </div>
+
+  <div class="panel p6">
+    <h3>2 — Datas, horas e números “fixos”</h3>
+    <ul>
+      <li>Ordinária: <span class="prazo">ter–qui, 14h</span>.</li>
+      <li>Debates: <span class="prazo">seg 14h</span> e <span class="prazo">sex 9h</span>, duração <span class="prazo">5 horas</span>, <span class="exc">sem OD</span>.</li>
+      <li>Solenes: até <span class="prazo">4 horas</span> (e <span class="prazo">2</span> por mês, se Plenário deliberar).</li>
+      <li>Suspensão: <span class="k">uma única vez</span>, até <span class="prazo">1 hora</span>.</li>
+      <li>Levantamento por falta de quórum nos debates: <span class="exc">menos de</span> <span class="num">1/10</span>.</li>
+    </ul>
+  </div>
+
+  <div class="panel p6">
+    <h3>3 — “Somente” / “Exclusivamente” = alerta</h3>
+    <ul>
+      <li>Esforço concentrado (Art. 66): <span class="exc">exclusivamente</span> matérias do ato de convocação.</li>
+      <li>Sessão extraordinária isolada (Art. 67): <span class="exc">exclusivamente</span> OD.</li>
+      <li>Uso da palavra (Art. 74): rol “<b>só poderá</b>” — tende a cair como item CERTO/ERRADO.</li>
+    </ul>
+  </div>
+
+  <div class="panel p6">
+    <h3>4 — Ordem no Plenário: vedações clássicas</h3>
+    <ul>
+      <li><b>Vedado</b> falar sem obter palavra (taquigrafia só após concessão).</li>
+      <li><b>Vedado</b> interromper orador (salvo questão de ordem, aparte ou comunicação relevante do Presidente).</li>
+      <li><b>Vedado</b> fumar no recinto.</li>
+      <li>Do púlpito: tribuna para Grande Expediente/Comunicações/Discussões; da bancada, <b>nunca</b> de costas para a Mesa.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="page-footer">
+  <span>RICD • Título III • Cap. I • Tipos de Sessões</span>
+  <a href="titulo3.html">← Título III (índice)</a>
+  <a href="titulo3-cap2.html">Cap. II →</a>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="fab-wrap">
+  <button id="theme-btn" title="Alternar tema">
+    <span id="t-icon">🌙</span>
+    <div class="t-track"><div class="t-knob"></div></div>
+    <span id="t-label">Escuro</span>
+  </button>
+  <button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function(){
+  const root=document.documentElement,btn=document.getElementById('theme-btn'),
+        icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
+  let dark=localStorage.getItem('ricd-theme')==='dark';
+  if(!localStorage.getItem('ricd-theme'))dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function apply(){
+    root.setAttribute('data-theme',dark?'dark':'light');
+    icon.textContent=dark?'☀️':'🌙';
+    lbl.textContent=dark?'Claro':'Escuro';
+    localStorage.setItem('ricd-theme',dark?'dark':'light');
+  }
+  apply();
+  btn.addEventListener('click',()=>{dark=!dark;apply()});
+})();
+(function(){
+  const bar=document.getElementById('prog'),top=document.getElementById('back-top');
+  window.addEventListener('scroll',function(){
+    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(s/h*100)+'%';
+    top.classList.toggle('show',s>280);
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
