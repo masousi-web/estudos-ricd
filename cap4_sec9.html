@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RICD — Título II — Capítulo IV — Seção IX</title>
+  <style>
+    :root{
+      --bg1:#0b1220;
+      --bg2:#122b3e;
+      --text:#e9f2ff;
+      --muted:#b9c7dc;
+      --line:rgba(255,255,255,.12);
+      --accent:#8dd7ff;
+      --accent2:#a8ffcf;
+      --warn:#ffd08a;
+      --danger:#ff9aa8;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 12% 10%, rgba(141,215,255,.18), transparent 55%),
+        radial-gradient(1000px 700px at 88% 18%, rgba(168,255,207,.14), transparent 60%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+    }
+    .wrap{max-width:1040px;margin:0 auto;padding:28px 18px 44px}
+    header{
+      display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+    .titleBlock{min-width:280px;flex:1}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 10px;border-radius:999px;
+      background:rgba(141,215,255,.10);
+      border:1px solid rgba(141,215,255,.22);
+      color:var(--text);font-size:12px;font-weight:700;
+    }
+    h1{font-size:22px;margin:8px 0 6px;letter-spacing:.2px}
+    .subtitle{color:var(--muted);font-size:13px;line-height:1.35;max-width:72ch}
+    .topActions{display:flex;gap:10px;align-items:center}
+    a.btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 12px;border-radius:12px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      color:var(--text);text-decoration:none;font-weight:650;font-size:13px;
+      transition:.15s ease;
+      user-select:none;
+    }
+    a.btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.10)}
+    a.btn:active{transform:translateY(0px)}
+    .grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+    @media (min-width:920px){ .grid{grid-template-columns:1fr 1fr} }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 14px 40px rgba(0,0,0,.22);
+    }
+    .cardHeader{
+      padding:14px 14px 10px;
+      border-bottom:1px solid var(--line);
+      background:rgba(0,0,0,.14);
+    }
+    .cardHeader h2{font-size:15px;margin:0 0 4px;letter-spacing:.2px}
+    .cardHeader .ref{color:var(--muted);font-size:12px}
+    .cardBody{padding:14px}
+    .k{
+      display:inline-block;
+      padding:3px 9px;border-radius:999px;
+      border:1px solid rgba(168,255,207,.25);
+      background:rgba(168,255,207,.10);
+      color:var(--text);
+      font-size:12px;font-weight:800;
+      margin:0 0 10px;
+      letter-spacing:.2px;
+    }
+    .k.warn{
+      border:1px solid rgba(255,208,138,.35);
+      background:rgba(255,208,138,.10);
+    }
+    .k.danger{
+      border:1px solid rgba(255,154,168,.35);
+      background:rgba(255,154,168,.10);
+    }
+    ul{margin:10px 0 0 18px;padding:0}
+    li{margin:8px 0;color:var(--text);line-height:1.35}
+    li span.m{color:var(--muted)}
+    .note{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px dashed rgba(255,255,255,.18);
+      background:rgba(141,215,255,.06);
+      color:var(--text);
+      font-size:13px;
+      line-height:1.35;
+    }
+    .note b{color:var(--accent)}
+    .note.warn{background:rgba(255,208,138,.08)}
+    .note.warn b{color:var(--warn)}
+    .note.danger{background:rgba(255,154,168,.08)}
+    .note.danger b{color:var(--danger)}
+    .links{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+    .links h3{font-size:13px;margin:0 0 8px;color:var(--muted);font-weight:800;letter-spacing:.2px}
+    .links .tag{
+      display:inline-block;margin:6px 8px 0 0;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(141,215,255,.22);
+      background:rgba(141,215,255,.10);
+      font-size:12px;color:var(--text);
+    }
+    hr.sep{border:none;height:1px;background:var(--line);margin:14px 0}
+    code.inline{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      padding:2px 6px;border-radius:10px;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      font-size:12px;
+    }
+    .footer{
+      margin-top:18px;color:var(--muted);font-size:12px;line-height:1.35
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="titleBlock">
+        <div class="pill">Capítulo IV — Seção IX — Admissibilidade e Apreciação</div>
+        <h1>Admissibilidade, Parecer Terminativo e Fluxos nas Comissões</h1>
+        <div class="subtitle">
+          Quem analisa o quê (mérito, orçamento, constitucionalidade), quando o parecer “mata” a matéria,
+          como se discute/vota, e como funciona o fluxo da apreciação conclusiva + recurso ao Plenário.
+        </div>
+      </div>
+
+      <div class="topActions">
+        <a class="btn" href="titulo2-cap4.html" aria-label="Voltar para o menu do Capítulo IV">⟵ Voltar</a>
+        <a class="btn" href="#topo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Topo</a>
+      </div>
+    </header>
+
+    <div id="topo" class="grid">
+
+      <!-- Art. 53 -->
+      <section class="card">
+        <div class="cardHeader">
+          <h2>Apreciação das proposições (quem examina o quê)</h2>
+          <div class="ref">Art. 53</div>
+        </div>
+        <div class="cardBody">
+          <div class="k">MOMENTO & OBJETO</div>
+          <ul>
+            <li><b>Quando:</b> antes da deliberação do Plenário, ou quando ela for <b>dispensada</b>.</li>
+            <li><b>Objeto:</b> proposições <b>(exceto requerimentos)</b>.</li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k">DISTRIBUIÇÃO DE COMPETÊNCIAS</div>
+          <ul>
+            <li><b>I — Comissões de mérito:</b> examinam a matéria que lhes estiver afeta.</li>
+            <li><b>II — CFT:</b> aspectos <b>financeiro e orçamentário públicos</b>; compatibilidade/adequação com <b>PPA, LDO e Orçamento Anual</b>; e <b>mérito</b> (quando for o caso).</li>
+            <li><b>III — CCJC:</b> <b>constitucionalidade</b>, <b>legalidade</b>, <b>juridicidade</b>, <b>regimentalidade</b>, <b>técnica legislativa</b>; e <b>mérito</b> (quando for o caso).</li>
+            <li><b>IV — Comissão Especial (Art. 34, II):</b> <b>admissibilidade</b> (jurídica e legislativa), <b>compatibilidade orçamentária</b> (quando for o caso) e <b>mérito</b>.</li>
+          </ul>
+
+          <div class="links">
+            <h3>Correlato</h3>
+            <span class="tag">Art. 34, II (Comissão Especial: +4 comissões de mérito)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Art. 54 e 55 -->
+      <section class="card">
+        <div class="cardHeader">
+          <h2>Parecer terminativo (admissibilidade) + limite de competência</h2>
+          <div class="ref">Arts. 54 e 55</div>
+        </div>
+        <div class="cardBody">
+          <div class="k danger">PARECER TERMINATIVO</div>
+          <ul>
+            <li><b>I — CCJC:</b> terminativo quanto à <b>constitucionalidade</b> ou <b>juridicidade</b>.</li>
+            <li><b>II — CFT:</b> terminativo quanto à <b>adequação financeira</b> ou <b>orçamentária</b>.</li>
+            <li><b>III — Comissão Especial (Art. 34, II):</b> terminativo sobre <b>ambas</b> as preliminares (constitucionalidade + financeiro).</li>
+          </ul>
+
+          <div class="note danger">
+            <b>Nota técnica:</b> se o parecer concluir por <b>inconstitucionalidade</b> ou <b>inadequação financeira</b>,
+            a matéria é tida como rejeitada/arquivada, <b>salvo recurso ao Plenário</b> (vide Arts. 132 e 133).
+          </div>
+
+          <hr class="sep" />
+
+          <div class="k warn">LIMITAÇÃO DE COMPETÊNCIA</div>
+          <ul>
+            <li><b>Vedação:</b> nenhuma Comissão pode se manifestar sobre o que <b>não for</b> sua atribuição específica.</li>
+            <li><b>Sanção:</b> será considerado <b>“não escrito”</b> o parecer (ou parte) que infringir o art. 55.</li>
+          </ul>
+
+          <div class="note warn">
+            <b>Extensão:</b> vale para <b>emendas</b> ou <b>substitutivos</b> feitos com violação do Art. 119, §§ 2º e 3º,
+            desde que haja <b>reclamação</b> antes da aprovação definitiva (Comissões ou Plenário).
+          </div>
+
+          <div class="links">
+            <h3>Correlatos</h3>
+            <span class="tag">Art. 119, § 2º (emenda só é “da comissão” se for do campo temático)</span>
+            <span class="tag">Art. 119, § 3º (substitutivo: comissão de mérito; CCJC só p/ técnica)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Art. 56 e 57 (I a V) -->
+      <section class="card">
+        <div class="cardHeader">
+          <h2>Exame, deliberação e poderes da Comissão</h2>
+          <div class="ref">Art. 56 + Art. 57 (I a V)</div>
+        </div>
+        <div class="cardBody">
+          <div class="k">EXAME & LOCAL DA DECISÃO</div>
+          <ul>
+            <li>Projetos/proposições são examinados por <b>Relator</b> designado (na Comissão, Subcomissão ou Turma).</li>
+            <li>A <b>discussão e votação</b> ocorrem no <b>Plenário da Comissão</b>.</li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k">QUÓRUM (DELIBERAÇÃO)</div>
+          <ul>
+            <li><b>Regra:</b> maioria dos votos, com presença mínima de <b>maioria absoluta</b> dos membros.</li>
+            <li><b>Empate:</b> prevalece o <b>voto do Relator</b> (salvo disposição constitucional em contrário).</li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k">TRAMITAÇÃO & DIVISÃO</div>
+          <ul>
+            <li><b>Inc. I (dependência/apensados):</b> a Comissão deve se pronunciar sobre <b>todas</b> as proposições apensadas.</li>
+            <li><b>Inc. II (relatores parciais):</b> pode dividir para estudo, com <b>Relatores-Parciais</b> e <b>Relator-Geral</b>; sai <b>um só parecer</b> à Mesa.</li>
+            <li><b>Inc. III (matérias diferentes no mesmo projeto):</b> pode dividir em proposições separadas (remessa à Mesa para renumeração).</li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k">PODERES NA APRECIAÇÃO</div>
+          <ul>
+            <li><b>Inc. IV:</b> propor adoção/rejeição (total/parcial), sugerir arquivamento, formular projeto decorrente, dar substitutivo, apresentar emenda/subemenda.</li>
+            <li><b>Inc. V:</b> arquivar “papéis” (com despacho na ata) — <span class="m">exceto proposições</span>.</li>
+          </ul>
+
+          <div class="links">
+            <h3>Correlatos</h3>
+            <span class="tag">Art. 139 (distribuição e apensação)</span>
+            <span class="tag">Art. 49, § 2º (prazo parciais = metade do geral)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Art. 57 (VI, VII, IX, IX-A a XV, XVI, XX, XVIII, XIX, XXI) -->
+      <section class="card">
+        <div class="cardHeader">
+          <h2>Discussão, votação, vista, autos, publicidade e questão de ordem</h2>
+          <div class="ref">Art. 57 (VI, VII, IX, IX-A a XV, XVI, XX, XVIII, XIX, XXI)</div>
+        </div>
+        <div class="cardBody">
+          <div class="k">DISCUSSÃO & PRAZOS DE FALA</div>
+          <ul>
+            <li><b>Início:</b> após leitura do parecer (ou dispensa se distribuído em avulsos) → discussão imediata.</li>
+            <li><b>15 min (improrrogáveis):</b> Autor, Relator, Membros e Líder.</li>
+            <li><b>10 min:</b> Deputados não-membros.</li>
+            <li><b>Encerramento:</b> pode ser requerido após falarem 10 Deputados.</li>
+            <li><b>Réplica do Relator:</b> 20 min (se for o caso) → depois, votação.</li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k">VOTAÇÃO & FORMALIZAÇÃO</div>
+          <ul>
+            <li><b>Ordem de votos (IX-A):</b> titulares presentes → suplentes do partido dos titulares ausentes.</li>
+            <li><b>Parecer aprovado:</b> assinado por Presidente, Relator (ou substituto) e autores de votos vencidos/em separado/com restrições.</li>
+            <li><b>Alterações aceitas (XI):</b> se Relator concordar, pode refazer redação até a reunião seguinte.</li>
+            <li><b>Relator vencido (XII e XIII):</b> parecer vencedor é redigido pelo Relator Substituto (ou outro) e o voto do relator vira “voto em separado”.</li>
+            <li><b>Contagem (XIV):</b>
+              <ul>
+                <li>favoráveis: “pelas conclusões”, “com restrições” e “em separado” <span class="m">(não divergentes)</span>;</li>
+                <li>contrários: “vencidos” e “em separado” <span class="m">(divergentes)</span>.</li>
+              </ul>
+            </li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k warn">VISTA & RETENÇÃO DE AUTOS</div>
+          <ul>
+            <li><b>Vista (XVI):</b> 2 sessões; se pedidos simultâneos → <b>conjunta</b>; vedados pedidos sucessivos.</li>
+            <li><b>Não cabe vista:</b> matéria em regime de <b>urgência</b>.</li>
+            <li><b>Retenção indevida (XX):</b> reclamação escrita do Presidente (frustrada) → Mesa; PCD fixa 2 sessões; vencido o prazo → designa substituto e manda restaurar autos.</li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k">PUBLICIDADE & QUESTÃO DE ORDEM</div>
+          <ul>
+            <li><b>Publicações (XVIII):</b> exposições escritas, resumos e notas taquigráficas (se a Comissão entender).</li>
+            <li><b>Irradiação/gravação (XIX):</b> depende de autorização prévia do Presidente da Comissão (diretrizes da Mesa).</li>
+            <li><b>Questão de Ordem (XXI):</b> membro pode levantar QO; 1ª instância é o Presidente da Comissão; depois cabe recurso escrito ao PCD, sem travar o andamento.</li>
+          </ul>
+
+          <div class="links">
+            <h3>Correlato</h3>
+            <span class="tag">Art. 45, § 1º (perda do lugar também por retenção de autos)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Art. 58 e 59 -->
+      <section class="card">
+        <div class="cardHeader">
+          <h2>Apreciação conclusiva, recurso e fluxo final</h2>
+          <div class="ref">Arts. 58 e 59</div>
+        </div>
+        <div class="cardBody">
+          <div class="k">PÓS-APRECIAÇÃO CONCLUSIVA</div>
+          <ul>
+            <li>Encerrada a apreciação conclusiva: proposição e pareceres vão à <b>publicação</b> e à <b>Mesa</b> até a sessão subsequente (para anúncio na Ordem do Dia).</li>
+            <li><b>Recurso:</b> pode ser apresentado em <b>5 sessões</b> da publicação.</li>
+            <li>Durante o prazo, o avulso da Ordem do Dia traz a <b>data final</b> para recurso.</li>
+          </ul>
+
+          <div class="note">
+            <b>Requisitos do recurso (§ 3º):</b> dirigido ao PCD; assinado por <b>1/10</b> dos membros; e indicação expressa do que será objeto do Plenário.
+          </div>
+
+          <div class="links">
+            <h3>Correlatos</h3>
+            <span class="tag">Art. 24, II (conclusivo e exceções)</span>
+            <span class="tag">Art. 132, § 2º (recurso 1/10)</span>
+          </div>
+
+          <hr class="sep" />
+
+          <div class="k warn">SEM RECURSO / RECURSO IMPROVIDO</div>
+          <ul>
+            <li>Se o prazo fluir sem recurso, ou se o recurso for improvido: matéria vai à <b>redação final</b> ou é <b>arquivada</b> (conforme o caso).</li>
+            <li>Aprovada a redação final pela comissão competente: projeto retorna à Mesa e segue ao <b>Senado</b> ou à <b>Presidência</b>.</li>
+            <li><b>Prazo:</b> 72 horas.</li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k">MATÉRIA SUJEITA AO PLENÁRIO</div>
+          <ul>
+            <li>Encerrada a apreciação pelas comissões de matéria sujeita ao Plenário, ou se o recurso for <b>provido</b>: proposição vai à Mesa e aguarda inclusão na Ordem do Dia.</li>
+          </ul>
+
+          <div class="note warn">
+            <b>Pegadinha clássica:</b> se houver parte aprovada conclusivamente e o recurso provido for parcial,
+            o Plenário <b>não pode emendar</b> o que não foi objeto do recurso (Art. 120, § 5º).
+          </div>
+
+          <div class="links">
+            <h3>Correlatos</h3>
+            <span class="tag">Art. 120, § 5º (limite da emenda no Plenário)</span>
+            <span class="tag">Art. 133 (pareceres contrários das comissões de mérito)</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="footer">
+      Dica de fixação: em prova, destaque a diferença entre <code class="inline">parecer terminativo (Art. 54)</code>
+      e <code class="inline">apreciação conclusiva (Art. 58)</code>. O primeiro “barra” por preliminares (CCJC/CFT);
+      o segundo é rito em que a comissão decide sem Plenário, mas pode haver recurso em 5 sessões com 1/10.
+    </div>
+  </div>
+</body>
+</html>
