@@ -1,277 +1,511 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RICD — Título II — Capítulo IV — Seção XI</title>
-  <style>
-    :root{
-      --bg1:#0b1220;
-      --bg2:#122b3e;
-      --text:#e9f2ff;
-      --muted:#b9c7dc;
-      --line:rgba(255,255,255,.12);
-      --accent:#8dd7ff;
-      --accent2:#a8ffcf;
-      --warn:#ffd08a;
-      --danger:#ff9aa8;
-      --violet:#c7b3ff;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 800px at 12% 10%, rgba(141,215,255,.18), transparent 55%),
-        radial-gradient(1000px 700px at 88% 18%, rgba(168,255,207,.14), transparent 60%),
-        radial-gradient(900px 650px at 60% 92%, rgba(199,179,255,.12), transparent 55%),
-        linear-gradient(160deg, var(--bg1), var(--bg2));
-      min-height:100vh;
-    }
-    .wrap{max-width:1040px;margin:0 auto;padding:28px 18px 44px}
-    header{
-      display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;
-      margin-bottom:16px;
-    }
-    .titleBlock{min-width:280px;flex:1}
-    .pill{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:8px 10px;border-radius:999px;
-      background:rgba(141,215,255,.10);
-      border:1px solid rgba(141,215,255,.22);
-      color:var(--text);font-size:12px;font-weight:800;
-      letter-spacing:.2px;
-    }
-    h1{font-size:22px;margin:8px 0 6px;letter-spacing:.2px}
-    .subtitle{color:var(--muted);font-size:13px;line-height:1.35;max-width:76ch}
-    .topActions{display:flex;gap:10px;align-items:center}
-    a.btn{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:10px 12px;border-radius:12px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.14);
-      color:var(--text);text-decoration:none;font-weight:650;font-size:13px;
-      transition:.15s ease;
-      user-select:none;
-    }
-    a.btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.10)}
-    a.btn:active{transform:translateY(0px)}
-    .grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
-    @media (min-width:920px){ .grid{grid-template-columns:1fr 1fr} }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RICD — Cap. IV · Seção XI — Secretaria, Atas e Assessoramento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
 
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:16px;
-      overflow:hidden;
-      box-shadow:0 14px 40px rgba(0,0,0,.22);
-    }
-    .cardHeader{
-      padding:14px 14px 10px;
-      border-bottom:1px solid var(--line);
-      background:rgba(0,0,0,.14);
-    }
-    .cardHeader h2{font-size:15px;margin:0 0 4px;letter-spacing:.2px}
-    .cardHeader .ref{color:var(--muted);font-size:12px}
-    .cardBody{padding:14px}
+/* ═══════════════ TOKENS LIGHT ═══════════════ */
+:root,[data-theme="light"]{
+  --bg:#f3f6fb; --bg2:#eaeff8;
+  --surface:#ffffff; --surface2:#f7faff;
+  --border:rgba(15,39,66,.09); --border-hard:rgba(15,39,66,.16);
+  --ink:#0d1f35; --ink2:#2b4060; --muted:#526a88; --faint:#8fa8c2;
+  --gold:#b86b1a; --gold-soft:rgba(184,107,26,.10);
+  --blue:#1a4d8a; --blue-soft:rgba(26,77,138,.08);
+  --green:#186347; --green-soft:rgba(24,99,71,.09);
+  --red:#a81f2a; --red-soft:rgba(168,31,42,.09);
+  --purple:#5a3d8a; --purple-soft:rgba(90,61,138,.08);
+  --mark-bg:rgba(15,23,42,.07);
+  --hero-from:#0c2240; --hero-to:#153558;
+  --hero-text:#ffffff; --hero-sub:rgba(255,255,255,.80);
+  --sh-sm:0 2px 8px rgba(12,26,43,.06);
+  --sh-md:0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:0 14px 34px rgba(12,26,43,.11);
+  --sh-hov:0 10px 28px rgba(12,26,43,.14);
+  --list-bg:#f7fafc; --note-bg:rgba(26,77,138,.05);
+  --note-border:rgba(26,77,138,.12); --note-text:#1a2e44;
+  --toggle-bg:#d8e2f0; --toggle-knob:#ffffff;
+  --drawer-bg:#ffffff; --drawer-overlay:rgba(15,23,42,.38);
+  --textarea-bg:#fbfcfe;
+}
+/* ═══════════════ TOKENS DARK ═══════════════ */
+[data-theme="dark"]{
+  --bg:#0c1120; --bg2:#101728;
+  --surface:#161d2f; --surface2:#1b2238;
+  --border:rgba(255,255,255,.06); --border-hard:rgba(255,255,255,.12);
+  --ink:#dce8fa; --ink2:#94b0d4; --muted:#627ea6; --faint:#374e6a;
+  --gold:#f0b84a; --gold-soft:rgba(240,184,74,.11);
+  --blue:#5b96f0; --blue-soft:rgba(91,150,240,.11);
+  --green:#38c882; --green-soft:rgba(56,200,130,.09);
+  --red:#f46862; --red-soft:rgba(244,104,98,.11);
+  --purple:#a07af5; --purple-soft:rgba(160,122,245,.10);
+  --mark-bg:rgba(220,232,250,.09);
+  --hero-from:#08111e; --hero-to:#0f1e30;
+  --hero-text:#e4f0ff; --hero-sub:rgba(210,228,255,.70);
+  --sh-sm:0 2px 8px rgba(0,0,0,.28);
+  --sh-md:0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:0 14px 34px rgba(0,0,0,.40);
+  --sh-hov:0 10px 28px rgba(0,0,0,.46);
+  --list-bg:rgba(255,255,255,.03); --note-bg:rgba(91,150,240,.09);
+  --note-border:rgba(91,150,240,.20); --note-text:#b0ccf0;
+  --toggle-bg:#243350; --toggle-knob:#f0b84a;
+  --drawer-bg:#161d2f; --drawer-overlay:rgba(0,0,0,.65);
+  --textarea-bg:#111828;
+}
 
-    .k{
-      display:inline-block;
-      padding:3px 9px;border-radius:999px;
-      border:1px solid rgba(168,255,207,.25);
-      background:rgba(168,255,207,.10);
-      color:var(--text);
-      font-size:12px;font-weight:900;
-      margin:0 0 10px;
-      letter-spacing:.2px;
-    }
-    .k.violet{
-      border:1px solid rgba(199,179,255,.30);
-      background:rgba(199,179,255,.10);
-    }
-    .k.warn{
-      border:1px solid rgba(255,208,138,.35);
-      background:rgba(255,208,138,.10);
-    }
+/* ═══════════════ BASE ═══════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;font-size:15px;line-height:1.68;color:var(--ink);background:var(--bg);transition:background .25s,color .25s;min-height:100vh}
+a{color:inherit;text-decoration:none}
 
-    ul{margin:10px 0 0 18px;padding:0}
-    li{margin:8px 0;color:var(--text);line-height:1.35}
-    li span.m{color:var(--muted)}
+/* ═══════════════ PROGRESS ═══════════════ */
+#prog{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--gold),var(--blue));z-index:300;transition:width .08s linear;border-radius:0 2px 2px 0}
 
-    .note{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px dashed rgba(255,255,255,.18);
-      background:rgba(141,215,255,.06);
-      color:var(--text);
-      font-size:13px;
-      line-height:1.35;
-    }
-    .note b{color:var(--accent)}
-    .note.warn{background:rgba(255,208,138,.08)}
-    .note.warn b{color:var(--warn)}
-    .note.violet{background:rgba(199,179,255,.08)}
-    .note.violet b{color:var(--violet)}
+/* ═══════════════ FABs ═══════════════ */
+.fab-wrap{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+#theme-btn{background:var(--surface);border:1px solid var(--border-hard);box-shadow:var(--sh-md);border-radius:50px;padding:8px 14px;cursor:pointer;display:flex;align-items:center;gap:9px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--muted);transition:all .2s;user-select:none}
+#theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
+.t-track{width:38px;height:20px;background:var(--toggle-bg);border-radius:20px;position:relative;transition:background .25s}
+.t-knob{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--toggle-knob);transition:transform .25s;box-shadow:0 1px 4px rgba(0,0,0,.22)}
+[data-theme="dark"] .t-knob{transform:translateX(18px)}
+#back-top{width:44px;height:44px;background:var(--surface);border:1px solid var(--border-hard);border-radius:50%;box-shadow:var(--sh-md);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--muted);transition:all .2s;opacity:0;pointer-events:none;transform:translateY(10px)}
+#back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
 
-    .links{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
-    .links h3{font-size:13px;margin:0 0 8px;color:var(--muted);font-weight:900;letter-spacing:.2px}
-    .links .tag{
-      display:inline-block;margin:6px 8px 0 0;
-      padding:6px 10px;border-radius:999px;
-      border:1px solid rgba(141,215,255,.22);
-      background:rgba(141,215,255,.10);
-      font-size:12px;color:var(--text);
-    }
+/* ═══════════════ WRAP ═══════════════ */
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px 80px}
 
-    hr.sep{border:none;height:1px;background:var(--line);margin:14px 0}
+/* ═══════════════ HERO ═══════════════ */
+.hero{background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);border-radius:0 0 28px 28px;padding:38px 36px 34px;margin-bottom:32px;position:relative;overflow:hidden;box-shadow:var(--sh-lg)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);pointer-events:none}
+.hero::after{content:'XI';position:absolute;right:36px;top:50%;transform:translateY(-50%);font-family:'Crimson Pro',serif;font-size:140px;font-weight:700;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.hero-title{font-family:'Crimson Pro',serif;font-size:clamp(24px,3vw,38px);font-weight:700;color:var(--hero-text);line-height:1.12;margin-bottom:10px}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:72ch;line-height:1.58;margin-bottom:18px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.hero-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;border:1px solid;font-family:'Outfit',sans-serif}
+.hero-btn-ghost{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18);color:rgba(255,255,255,.88)}
+.hero-btn-ghost:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.hero-btn-primary{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);color:#fff;font-weight:700}
+.hero-btn-primary:hover{background:rgba(255,255,255,.22);transform:translateY(-1px)}
+.nav-chips{display:flex;flex-wrap:wrap;gap:8px}
+.nav-chips a{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:100px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.88);font-size:12.5px;font-weight:500;transition:background .15s,transform .1s}
+.nav-chips a:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.nav-chips a b{font-weight:700;color:var(--gold)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.10)}
+.lchip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:rgba(255,255,255,.78);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;font-weight:600;text-transform:uppercase}
+.ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 
-    code.inline{
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
-      padding:2px 6px;border-radius:10px;
-      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-      font-size:12px;
-    }
-    .footer{margin-top:18px;color:var(--muted);font-size:12px;line-height:1.35}
-  </style>
+/* ═══════════════ SECTION DIVIDER ═══════════════ */
+.sec-head{display:flex;align-items:center;gap:14px;margin:36px 0 18px}
+.sec-line{flex:1;height:1px;background:var(--border-hard)}
+.sec-title{font-family:'Crimson Pro',serif;font-size:21px;font-weight:700;color:var(--ink);white-space:nowrap}
+.sec-badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+
+/* ═══════════════ GRID ═══════════════ */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.c12{grid-column:span 12}.c6{grid-column:span 12}.c4{grid-column:span 12}.c8{grid-column:span 12}
+@media(min-width:760px){.c6{grid-column:span 6}.c4{grid-column:span 4}.c8{grid-column:span 8}}
+
+/* ═══════════════ CARD ═══════════════ */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--sh-sm);overflow:hidden;position:relative;transition:transform .14s,box-shadow .14s;opacity:0;animation:fadeUp .35s ease forwards}
+.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.07s}.card:nth-child(3){animation-delay:.11s}.card:nth-child(4){animation-delay:.15s}.card:nth-child(5){animation-delay:.19s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{transform:translateY(-2px);box-shadow:var(--sh-hov)}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,#1c3f63);border-radius:14px 0 0 14px}
+.card-inner{padding:16px 16px 16px 18px}
+.card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.c-badge{flex-shrink:0;width:36px;height:36px;border-radius:9px;background:var(--bg2);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;color:var(--c,#1c3f63);margin-top:1px}
+[data-theme="dark"] .c-badge{background:color-mix(in srgb,var(--c,#1c3f63) 14%,var(--surface2) 86%);color:color-mix(in srgb,var(--c,#1c3f63) 55%,#ffffff 45%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){[data-theme="dark"] .c-badge{background:var(--surface2);color:var(--ink2)}}
+.c-title{font-family:'Crimson Pro',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:3px}
+.c-lead{font-size:13px;color:var(--muted);line-height:1.45}
+.kp-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.kp-list li{padding:9px 11px;border-radius:9px;background:var(--list-bg);border:1px solid var(--border);font-size:13.5px;color:var(--ink2);line-height:1.52}
+.kp-list li b{font-weight:700;color:var(--ink)}
+
+/* ═══════════════ SEMANTIC HIGHLIGHTS ═══════════════ */
+.k{font-weight:700;color:var(--ink);background:var(--mark-bg);padding:0 .22em;border-radius:.4em}
+.org{font-weight:700;color:var(--blue);background:var(--blue-soft);padding:0 .22em;border-radius:.4em}
+.prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em;white-space:nowrap}
+.exc{font-weight:700;color:var(--red);background:var(--red-soft);padding:0 .22em;border-radius:.4em}
+.num{font-weight:700;color:var(--ink2)}
+.purple-hl{font-weight:700;color:var(--purple);background:var(--purple-soft);padding:0 .22em;border-radius:.4em}
+
+/* ═══════════════ NOTE / TRAP / CORRELATOS ═══════════════ */
+.note{margin-top:10px;padding:10px 13px;border-radius:10px;background:var(--note-bg);border:1px solid var(--note-border);color:var(--note-text);font-size:13px;line-height:1.55}
+.note b{font-weight:700}
+.trap{margin-top:10px;display:flex;gap:10px;align-items:flex-start;background:var(--red-soft);border:1px solid color-mix(in srgb,var(--red) 25%,transparent 75%);border-radius:10px;padding:11px 13px}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.trap{border-color:rgba(168,31,42,.2)}}
+.trap-icon{font-size:16px;line-height:1.5;flex-shrink:0}
+.trap-text{font-size:13px;color:var(--red);font-weight:500;line-height:1.5}
+.trap-text b{font-weight:700}
+.correlatos{margin-top:10px;padding:11px 13px;border-radius:10px;background:var(--purple-soft);border:1px solid rgba(90,61,138,.16)}
+[data-theme="dark"] .correlatos{border-color:rgba(160,122,245,.18)}
+.corr-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);font-weight:700;margin-bottom:6px}
+.corr-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+.corr-list li{font-size:13px;color:var(--ink2);padding-left:16px;position:relative;line-height:1.5}
+.corr-list li::before{content:'↗';position:absolute;left:0;color:var(--purple);font-size:12px}
+
+/* ═══════════════ NUMBERED ROL ═══════════════ */
+.rol{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.rol li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ink2);line-height:1.5}
+.rol-num{flex-shrink:0;width:24px;height:24px;border-radius:6px;background:var(--bg2);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--blue);margin-top:1px}
+.rol li b{font-weight:700;color:var(--ink)}
+
+/* ═══════════════ PRAZO PILLS (inline) ═══════════════ */
+.prazo-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:100px;background:var(--gold-soft);border:1px solid color-mix(in srgb,var(--gold) 28%,transparent 72%);font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;color:var(--gold);white-space:nowrap}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.prazo-pill{border-color:rgba(184,107,26,.28)}}
+
+/* ═══════════════ CHECKLIST ═══════════════ */
+.checklist{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.checklist li{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:var(--ink2);line-height:1.48}
+.check-icon{flex-shrink:0;width:20px;height:20px;border-radius:5px;background:var(--green-soft);border:1px solid color-mix(in srgb,var(--green) 25%,transparent 75%);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--green);margin-top:2px}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.check-icon{border-color:rgba(24,99,71,.25)}}
+.checklist li b{font-weight:700;color:var(--ink)}
+
+/* ═══════════════ DISTINÇÃO BOX ═══════════════ */
+.dist-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+@media(max-width:520px){.dist-grid{grid-template-columns:1fr}}
+.dist-col{border-radius:10px;overflow:hidden;border:1px solid var(--border-hard)}
+.dist-head{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.dist-head.admin{background:var(--blue-soft);color:var(--blue);border-bottom:1px solid color-mix(in srgb,var(--blue) 20%,transparent 80%)}
+.dist-head.tec{background:var(--purple-soft);color:var(--purple);border-bottom:1px solid color-mix(in srgb,var(--purple) 20%,transparent 80%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.dist-head.admin{border-color:rgba(26,77,138,.2)}.dist-head.tec{border-color:rgba(90,61,138,.2)}}
+.dist-body{padding:10px 12px;font-size:13px;color:var(--ink2);line-height:1.52;background:var(--surface2)}
+.dist-body b{font-weight:700;color:var(--ink)}
+
+/* ═══════════════ MAPA CHAIN ═══════════════ */
+.chain{display:flex;align-items:stretch;gap:0;border-radius:12px;overflow:hidden;border:1px solid var(--border-hard);margin-top:4px}
+.chain-step{flex:1;padding:12px 14px;background:var(--surface2);border-right:1px solid var(--border-hard);position:relative}
+.chain-step:last-child{border-right:none}
+.chain-art{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.chain-name{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.2}
+.chain-desc{font-size:12px;color:var(--muted);line-height:1.4}
+.chain-arrow{position:absolute;right:-11px;top:50%;transform:translateY(-50%);width:22px;height:22px;background:var(--surface);border:1px solid var(--border-hard);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);font-weight:700;z-index:1}
+.chain-step:last-child .chain-arrow{display:none}
+@media(max-width:600px){.chain{flex-direction:column}.chain-step{border-right:none;border-bottom:1px solid var(--border-hard)}.chain-step:last-child{border-bottom:none}.chain-arrow{right:auto;left:50%;bottom:-11px;top:auto;transform:translateX(-50%) rotate(90deg)}}
+
+/* ═══════════════ NOTES DRAWER ═══════════════ */
+.drawer-overlay{position:fixed;inset:0;background:var(--drawer-overlay);backdrop-filter:blur(4px);z-index:400;display:none;align-items:flex-end;justify-content:center;padding:16px}
+.drawer-overlay.open{display:flex}
+.drawer-panel{width:min(900px,100%);background:var(--drawer-bg);border:1px solid var(--border-hard);border-radius:20px;box-shadow:var(--sh-lg);overflow:hidden;transition:background .25s}
+.drawer-head{padding:16px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;background:linear-gradient(180deg,var(--surface2),var(--surface));border-bottom:1px solid var(--border-hard)}
+.drawer-head-info h2{font-family:'Crimson Pro',serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.drawer-head-info p{font-size:13px;color:var(--muted);line-height:1.45}
+.drawer-close{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--bg2);border:1px solid var(--border-hard);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);transition:all .15s}
+.drawer-close:hover{color:var(--red)}
+.drawer-body{padding:16px 20px 20px}
+#notes-area{width:100%;min-height:220px;resize:vertical;border-radius:12px;border:1px solid var(--border-hard);padding:12px 14px;font-family:'Outfit',sans-serif;font-size:14px;line-height:1.6;outline:none;background:var(--textarea-bg);color:var(--ink);transition:border-color .15s,background .25s,color .25s}
+#notes-area:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+#notes-area::placeholder{color:var(--faint)}
+.drawer-actions{margin-top:12px;display:flex;gap:10px;justify-content:flex-end}
+.d-btn{font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;padding:8px 18px;border-radius:8px;cursor:pointer;border:1px solid;transition:all .15s}
+.d-btn-clear{background:transparent;color:var(--red);border-color:color-mix(in srgb,var(--red) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-clear{border-color:rgba(168,31,42,.3)}}
+.d-btn-clear:hover{background:var(--red-soft)}
+.d-btn-save{background:var(--green-soft);color:var(--green);border-color:color-mix(in srgb,var(--green) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-save{border-color:rgba(24,99,71,.3)}}
+.d-btn-save:hover{background:rgba(24,99,71,.18)}
+
+/* ═══════════════ FOOTER ═══════════════ */
+.page-footer{text-align:center;font-size:12.5px;color:var(--faint);margin-top:48px;padding-top:20px;border-top:1px solid var(--border-hard);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px}
+.page-footer a{color:var(--blue);font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid var(--border-hard);background:var(--surface);font-size:13px;transition:box-shadow .15s}
+.page-footer a:hover{box-shadow:var(--sh-md)}
+
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
+@media(max-width:600px){.hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}.hero::after{display:none}.wrap{padding:0 14px 80px}}
+</style>
 </head>
-
 <body>
-  <div class="wrap">
-    <header>
-      <div class="titleBlock">
-        <div class="pill">Capítulo IV — Seção XI — Secretaria, Atas e Assessoramento</div>
-        <h1>Secretaria das Comissões, formalidades da ata e assessoramento legislativo</h1>
-        <div class="subtitle">
-          Art. 62 (funções da Secretaria), Art. 63 (validação/publicidade/conteúdo da ata)
-          e Art. 64 (assessoramento e consultoria técnico-legislativa).
-        </div>
+
+<div id="prog"></div>
+
+<!-- ══════════════ HERO ══════════════ -->
+<header class="hero" id="topo">
+  <div class="wrap" style="padding:0">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">RICD • Título II • Capítulo IV • Seção XI</div>
+      <h1 class="hero-title">Seção XI — Secretaria, Atas e Assessoramento</h1>
+      <p class="hero-sub">Arts. 62, 63 e 64 — Funções da Secretaria das Comissões, formalidades e conteúdo da ata, e assessoramento técnico-legislativo.</p>
+      <div class="hero-actions">
+        <a class="hero-btn hero-btn-ghost" href="index.html">⌂ Índice</a>
+        <a class="hero-btn hero-btn-ghost" href="titulo2-cap4.html">← Cap. IV</a>
+        <button class="hero-btn hero-btn-primary" id="btn-notes" type="button">✏️ Anotações</button>
       </div>
-
-      <div class="topActions">
-        <a class="btn" href="titulo2-cap4.html" aria-label="Voltar para o menu do Capítulo IV">⟵ Voltar</a>
-        <a class="btn" href="#topo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Topo</a>
+      <nav class="nav-chips" aria-label="Seções">
+        <a href="#art62"><b>Art. 62</b> Secretaria</a>
+        <a href="#art63"><b>Art. 63</b> Ata</a>
+        <a href="#art64"><b>Art. 64</b> Assessoramento</a>
+        <a href="#dist"><b>Distinção</b> Secretaria × Assessoramento</a>
+        <a href="#chain"><b>Fixação</b> 62→63→64</a>
+      </nav>
+      <div class="legend">
+        <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Órgãos</span>
+        <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Prazos</span>
+        <span class="lchip"><span class="ldot" style="background:#f46862"></span>Atenção</span>
+        <span class="lchip"><span class="ldot" style="background:#a07af5"></span>Rol / Conteúdo</span>
       </div>
-    </header>
-
-    <div id="topo" class="grid">
-
-      <!-- Art. 62 -->
-      <section class="card">
-        <div class="cardHeader">
-          <h2>Secretaria das Comissões</h2>
-          <div class="ref">Art. 62, caput e parágrafo único</div>
-        </div>
-        <div class="cardBody">
-          <div class="k">ESTRUTURA</div>
-          <ul>
-            <li><b>Cada Comissão</b> terá uma <b>Secretaria</b> responsável por <b>apoio administrativo</b>.</li>
-          </ul>
-
-          <hr class="sep" />
-
-          <div class="k violet">SERVIÇOS (rol exemplificativo)</div>
-          <ul>
-            <li><b>I</b> — Apoio aos trabalhos e <b>redação da ata</b>.</li>
-            <li><b>II</b> — Organização do <b>protocolo</b> de entrada/saída de matéria.</li>
-            <li><b>III</b> — <b>Sinopse</b> dos trabalhos (andamento de proposições em curso).</li>
-            <li><b>IV</b> — Informações sucintas ao Presidente <b>no último dia de cada mês</b> sobre andamento das proposições.</li>
-            <li><b>V</b> — Organização dos processos legislativos <b>como autos judiciais</b> (numeração cronológica, folhas rubricadas).</li>
-            <li><b>VI</b> — Entrega do processo ao Relator <b>até o dia seguinte</b> à distribuição.</li>
-            <li><b>VII</b> — Acompanhamento da distribuição e dos <b>prazos regimentais</b> (mantendo o Presidente informado).</li>
-            <li><b>VIII</b> — Encaminhar cópia da ata (com distribuições) ao órgão de sinopse.</li>
-            <li><b>IX</b> — Organizar <b>súmula da jurisprudência dominante</b> da Comissão (sob orientação do Presidente).</li>
-            <li><b>X</b> — Outros encargos determinados pelo Presidente.</li>
-          </ul>
-
-          <div class="note violet">
-            <b>Memorização rápida:</b> a Secretaria faz o “backoffice” do processo legislativo:
-            protocolo + sinopse + prazos + organização dos autos + suporte à ata e ao Relator.
-          </div>
-
-          <div class="note warn">
-            <b>Prazos que caem fácil:</b> <code class="inline">último dia de cada mês</code> (info ao Presidente) e
-            <code class="inline">até o dia seguinte</code> (entrega ao Relator).
-          </div>
-        </div>
-      </section>
-
-      <!-- Art. 63 -->
-      <section class="card">
-        <div class="cardHeader">
-          <h2>Ata das reuniões: validação, publicidade e conteúdo</h2>
-          <div class="ref">Art. 63</div>
-        </div>
-        <div class="cardBody">
-          <div class="k">FORMALIDADES</div>
-          <ul>
-            <li>Depois de <b>lida e aprovada</b>, a ata será:</li>
-            <li>
-              <ul>
-                <li><b>assinada</b> pelo Presidente; e</li>
-                <li><b>rubricada em todas as folhas</b>.</li>
-              </ul>
-            </li>
-          </ul>
-
-          <hr class="sep" />
-
-          <div class="k warn">PUBLICIDADE</div>
-          <ul>
-            <li>Publicada no <b>Diário da Câmara dos Deputados</b> <span class="m">(de preferência no dia seguinte)</span>.</li>
-          </ul>
-
-          <hr class="sep" />
-
-          <div class="k violet">CONTEÚDO OBRIGATÓRIO (padrão uniforme)</div>
-          <ul>
-            <li><b>I</b> — Data, hora e local.</li>
-            <li><b>II</b> — Nomes dos membros presentes e ausentes <span class="m">(com referência expressa às faltas justificadas)</span>.</li>
-            <li><b>III</b> — Resumo do expediente.</li>
-            <li><b>IV</b> — Relação das matérias distribuídas <span class="m">(proposições, Relatores e Substitutos)</span>.</li>
-            <li><b>V</b> — Registro das proposições apreciadas e respectivas conclusões.</li>
-          </ul>
-
-          <div class="note">
-            <b>Checklist de prova:</b> ata = “<b>Quem</b> (presentes/ausentes) + <b>Onde/Quando</b> + <b>Expediente</b> +
-            <b>Distribuições</b> + <b>Deliberações/conclusões</b>”.
-          </div>
-        </div>
-      </section>
-
-      <!-- Art. 64 -->
-      <section class="card" style="grid-column:1/-1">
-        <div class="cardHeader">
-          <h2>Assessoramento legislativo</h2>
-          <div class="ref">Art. 64</div>
-        </div>
-        <div class="cardBody">
-          <div class="k">SUPORTE TÉCNICO</div>
-          <ul>
-            <li>As Comissões contam com <b>assessoramento</b> e <b>consultoria técnico-legislativa</b> (e especializada) nas suas áreas.</li>
-            <li>A execução é do órgão de <b>assessoramento institucional</b> da Câmara.</li>
-            <li>Nos termos de resolução específica e do que prevê o <b>§ 1º do Art. 278</b>.</li>
-          </ul>
-
-          <div class="links">
-            <h3>Correlato</h3>
-            <span class="tag">Art. 278, § 1º (núcleo de assessoramento às comissões / núcleos temáticos)</span>
-          </div>
-
-          <div class="note violet">
-            <b>Ideia-chave:</b> “Secretaria” (Art. 62) = apoio administrativo e fluxo documental.
-            “Assessoramento” (Art. 64) = apoio técnico-legislativo e especializado.
-          </div>
-        </div>
-      </section>
-
-    </div>
-
-    <div class="footer">
-      Fixe assim: <b>62</b> (Secretaria faz andar) → <b>63</b> (Ata valida/publica e tem conteúdo padrão) → <b>64</b> (Apoio técnico da Consultoria/assessoramento).
     </div>
   </div>
+</header>
+
+<div class="wrap">
+
+<!-- ══════════════ ART. 62 — SECRETARIA ══════════════ -->
+<div class="sec-head" id="art62">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 62 — Secretaria das Comissões</div>
+  <div class="sec-badge">Apoio administrativo e fluxo documental</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid">
+
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">62</div><div><div class="c-title">Estrutura e prazos que caem em prova</div><div class="c-lead">Cada Comissão tem uma Secretaria de apoio administrativo.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Prazo — Info ao Presidente:</b> informações sucintas sobre andamento das proposições no <span class="prazo">último dia de cada mês</span></li>
+        <li><b>Prazo — Entrega ao Relator:</b> processo entregue ao Relator até o <span class="prazo">dia seguinte</span> à distribuição</li>
+        <li><b>Organização dos processos:</b> como <span class="k">autos judiciais</span> — numeração cronológica, folhas rubricadas</li>
+        <li><b>Súmula de jurisprudência:</b> organizada sob orientação do <span class="org">Presidente</span> da Comissão</li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">Os dois prazos são os mais cobrados: <b>último dia do mês</b> (info ao Presidente) e <b>dia seguinte</b> (entrega ao Relator). A prova inverte ou troca os destinatários.</div></div>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">rol</div><div><div class="c-title">Serviços da Secretaria — rol exemplificativo</div><div class="c-lead">Dez incisos — foco nos que têm prazos e especificidades.</div></div></div>
+      <ol class="rol">
+        <li><div class="rol-num">I</div><div>Apoio aos trabalhos e <b>redação da ata</b></div></li>
+        <li><div class="rol-num">II</div><div>Organização do <b>protocolo</b> de entrada/saída de matéria</div></li>
+        <li><div class="rol-num">III</div><div><b>Sinopse</b> dos trabalhos — andamento das proposições em curso</div></li>
+        <li><div class="rol-num">IV</div><div>Informações sucintas ao Presidente no <span class="prazo">último dia de cada mês</span></div></li>
+        <li><div class="rol-num">V</div><div>Organização dos processos como <span class="k">autos judiciais</span> — numeração cronológica + folhas rubricadas</div></li>
+        <li><div class="rol-num">VI</div><div>Entrega do processo ao Relator até o <span class="prazo">dia seguinte</span> à distribuição</div></li>
+        <li><div class="rol-num">VII</div><div>Acompanhamento da distribuição e dos <b>prazos regimentais</b> (mantendo o Presidente informado)</div></li>
+        <li><div class="rol-num">VIII</div><div>Encaminhar cópia da ata (com distribuições) ao <b>órgão de sinopse</b></div></li>
+        <li><div class="rol-num">IX</div><div>Organizar <b>súmula da jurisprudência dominante</b> da Comissão (sob orientação do Presidente)</div></li>
+        <li><div class="rol-num">X</div><div>Outros encargos determinados pelo <span class="org">Presidente</span></div></li>
+      </ol>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════ ART. 63 — ATA ══════════════ -->
+<div class="sec-head" id="art63">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 63 — Ata das Reuniões</div>
+  <div class="sec-badge">Validação · publicidade · conteúdo obrigatório</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid">
+
+  <div class="card c4" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">val.</div><div><div class="c-title">Validação e publicidade</div><div class="c-lead">Requisitos formais após aprovação da ata.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Após lida e aprovada:</b> <span class="k">assinada</span> pelo Presidente e <span class="k">rubricada em todas as folhas</span></li>
+        <li><b>Publicação:</b> <span class="org">Diário da Câmara dos Deputados</span> — de preferência no <span class="prazo">dia seguinte</span></li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A publicação é <b>"de preferência"</b> no dia seguinte — não é um prazo rígido. A prova pode apresentar como obrigatório.</div></div>
+    </div>
+  </div>
+
+  <div class="card c8" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">cont.</div><div><div class="c-title">Conteúdo obrigatório da ata — padrão uniforme</div><div class="c-lead">Cinco elementos que devem constar em toda ata de reunião.</div></div></div>
+      <ul class="checklist">
+        <li><div class="check-icon">✓</div><div><b>I — Quando e onde:</b> data, hora e local da reunião</div></li>
+        <li><div class="check-icon">✓</div><div><b>II — Quem:</b> nomes dos membros presentes e ausentes, com referência expressa às <span class="purple-hl">faltas justificadas</span></div></li>
+        <li><div class="check-icon">✓</div><div><b>III — Expediente:</b> resumo do expediente</div></li>
+        <li><div class="check-icon">✓</div><div><b>IV — Distribuições:</b> relação das matérias distribuídas — proposições, Relatores e Substitutos</div></li>
+        <li><div class="check-icon">✓</div><div><b>V — Deliberações:</b> registro das proposições apreciadas e respectivas conclusões</div></li>
+      </ul>
+      <div class="note"><b>Mnemônico:</b> <span class="k">Q</span>uando+<span class="k">O</span>nde → <span class="k">Q</span>uem → <span class="k">E</span>xpediente → <span class="k">D</span>istribuições → <span class="k">D</span>eliberações — <b>QO-QE-DD</b>.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════ ART. 64 — ASSESSORAMENTO ══════════════ -->
+<div class="sec-head" id="art64">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 64 — Assessoramento Legislativo</div>
+  <div class="sec-badge">Apoio técnico-legislativo e especializado</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c12" style="--c:#5a3d8a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">64</div><div><div class="c-title">Consultoria técnica às Comissões</div><div class="c-lead">Suporte especializado distinto do apoio administrativo da Secretaria.</div></div></div>
+      <ul class="kp-list">
+        <li>As Comissões contam com <span class="purple-hl">assessoramento</span> e <span class="purple-hl">consultoria técnico-legislativa especializada</span> nas suas respectivas áreas</li>
+        <li><b>Execução:</b> órgão de <span class="k">assessoramento institucional</span> da Câmara dos Deputados</li>
+        <li><b>Base normativa:</b> nos termos de resolução específica e do <span class="k">Art. 278, §1º</span>, do RICD</li>
+      </ul>
+      <div class="correlatos">
+        <div class="corr-title">Correlato</div>
+        <ul class="corr-list">
+          <li>Art. 278, §1º — núcleos de assessoramento temático às comissões</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ DISTINÇÃO SECRETARIA × ASSESSORAMENTO ══════════════ -->
+<div class="sec-head" id="dist">
+  <div class="sec-line"></div>
+  <div class="sec-title">Distinção — Secretaria × Assessoramento</div>
+  <div class="sec-badge">Padrão CEBRASPE</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c12" style="--c:#3a5c8a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">≠</div><div><div class="c-title">Art. 62 versus Art. 64 — não confundir</div><div class="c-lead">A prova frequentemente apresenta funções de um como se fossem do outro.</div></div></div>
+      <div class="dist-grid">
+        <div class="dist-col">
+          <div class="dist-head admin">Art. 62 — Secretaria</div>
+          <div class="dist-body">
+            <b>Apoio administrativo e documental</b><br>
+            Protocolo · sinopse · prazos · ata · autos · distribuição ao Relator · súmula de jurisprudência
+          </div>
+        </div>
+        <div class="dist-col">
+          <div class="dist-head tec">Art. 64 — Assessoramento</div>
+          <div class="dist-body">
+            <b>Apoio técnico-legislativo e especializado</b><br>
+            Consultoria de mérito · análise jurídica e especializada · suporte ao conteúdo das proposições
+          </div>
+        </div>
+      </div>
+      <div class="trap" style="margin-top:12px"><div class="trap-icon">⚠️</div><div class="trap-text">A <b>súmula de jurisprudência</b> (Inc. IX) é função da <b>Secretaria</b> (Art. 62), não do Assessoramento (Art. 64) — ponto contraintuitivo frequente em prova.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ CADEIA DE FIXAÇÃO ══════════════ -->
+<div class="sec-head" id="chain">
+  <div class="sec-line"></div>
+  <div class="sec-title">Cadeia de Fixação — Arts. 62 → 63 → 64</div>
+  <div class="sec-badge">Memorização sequencial</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c12" style="--c:#3a5c8a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">⊞</div><div><div class="c-title">Leitura em cadeia</div><div class="c-lead">Três artigos, cada um com foco diferente.</div></div></div>
+      <div class="chain">
+        <div class="chain-step">
+          <div class="chain-arrow">→</div>
+          <div class="chain-art">Art. 62</div>
+          <div class="chain-name">Secretaria</div>
+          <div class="chain-desc">Faz andar o processo — protocolo, ata, prazos, autos, entrega ao Relator</div>
+        </div>
+        <div class="chain-step">
+          <div class="chain-arrow">→</div>
+          <div class="chain-art">Art. 63</div>
+          <div class="chain-name">Ata</div>
+          <div class="chain-desc">Valida, publica e tem conteúdo padrão — quem + quando/onde + expediente + distribuições + deliberações</div>
+        </div>
+        <div class="chain-step">
+          <div class="chain-art">Art. 64</div>
+          <div class="chain-name">Assessoramento</div>
+          <div class="chain-desc">Apoio técnico-legislativo especializado — distinto do apoio administrativo da Secretaria</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <span>RICD • Cap. IV • Seção XI — Secretaria, Atas e Assessoramento</span>
+  <a href="index.html">⌂ Índice</a>
+  <a href="titulo2-cap4.html">← Cap. IV</a>
+  <a href="cap4_sec10.html">← Seção X</a>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- ══════════════ FABs ══════════════ -->
+<div class="fab-wrap">
+  <button id="theme-btn" title="Alternar tema">
+    <span id="t-icon">🌙</span>
+    <div class="t-track"><div class="t-knob"></div></div>
+    <span id="t-label">Escuro</span>
+  </button>
+  <button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<!-- ══════════════ NOTES DRAWER ══════════════ -->
+<div class="drawer-overlay" id="drawer" aria-hidden="true">
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+    <div class="drawer-head">
+      <div class="drawer-head-info">
+        <h2 id="drawer-title">Anotações — Cap. IV · Seção XI</h2>
+        <p>Erros, bizus e pegadinhas. Salvas no <strong>seu navegador</strong> (localStorage).</p>
+      </div>
+      <button class="drawer-close" id="btn-close-drawer" title="Fechar">✕</button>
+    </div>
+    <div class="drawer-body">
+      <textarea id="notes-area" placeholder="Ex.: ⚠ Art. 62: info ao Presidente = último dia do mês; entrega ao Relator = dia seguinte&#10;⚠ Publicação da ata = 'de preferência' no dia seguinte (não é prazo rígido)&#10;⚠ Súmula de jurisprudência = Secretaria (Art. 62), não Assessoramento (Art. 64)&#10;⚠ Ata: 5 elementos — QO-QE-DD"></textarea>
+      <div class="drawer-actions">
+        <button class="d-btn d-btn-clear" id="btn-clear-notes" type="button">Limpar</button>
+        <button class="d-btn d-btn-save" id="btn-save-notes" type="button">Salvar e fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const root=document.documentElement,btn=document.getElementById('theme-btn'),
+        icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
+  let dark=localStorage.getItem('ricd-theme')==='dark';
+  if(!localStorage.getItem('ricd-theme'))dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function apply(){root.setAttribute('data-theme',dark?'dark':'light');icon.textContent=dark?'☀️':'🌙';lbl.textContent=dark?'Claro':'Escuro';localStorage.setItem('ricd-theme',dark?'dark':'light')}
+  apply();
+  btn.addEventListener('click',()=>{dark=!dark;apply()});
+})();
+(function(){
+  const bar=document.getElementById('prog'),top=document.getElementById('back-top');
+  window.addEventListener('scroll',function(){
+    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(s/h*100)+'%';
+    top.classList.toggle('show',s>280);
+  },{passive:true});
+})();
+(function(){
+  const KEY='notes_cap4_sec11';
+  const overlay=document.getElementById('drawer'),area=document.getElementById('notes-area');
+  const btnOpen=document.getElementById('btn-notes'),btnClose=document.getElementById('btn-close-drawer');
+  const btnSave=document.getElementById('btn-save-notes'),btnClear=document.getElementById('btn-clear-notes');
+  function open(){overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');area.value=localStorage.getItem(KEY)||'';area.focus()}
+  function close(){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true')}
+  btnOpen.addEventListener('click',open);btnClose.addEventListener('click',close);
+  btnSave.addEventListener('click',()=>{localStorage.setItem(KEY,area.value);close()});
+  btnClear.addEventListener('click',()=>{if(confirm('Limpar anotações desta seção?')){area.value='';localStorage.removeItem(KEY);area.focus()}});
+  overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
+  window.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))close()});
+})();
+</script>
 </body>
 </html>
