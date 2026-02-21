@@ -1,299 +1,566 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RICD — Título II — Capítulo IV — Seção X</title>
-  <style>
-    :root{
-      --bg1:#0b1220;
-      --bg2:#122b3e;
-      --text:#e9f2ff;
-      --muted:#b9c7dc;
-      --line:rgba(255,255,255,.12);
-      --accent:#8dd7ff;
-      --accent2:#a8ffcf;
-      --warn:#ffd08a;
-      --danger:#ff9aa8;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 800px at 12% 10%, rgba(141,215,255,.18), transparent 55%),
-        radial-gradient(1000px 700px at 88% 18%, rgba(168,255,207,.14), transparent 60%),
-        linear-gradient(160deg, var(--bg1), var(--bg2));
-      min-height:100vh;
-    }
-    .wrap{max-width:1040px;margin:0 auto;padding:28px 18px 44px}
-    header{
-      display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;
-      margin-bottom:16px;
-    }
-    .titleBlock{min-width:280px;flex:1}
-    .pill{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:8px 10px;border-radius:999px;
-      background:rgba(141,215,255,.10);
-      border:1px solid rgba(141,215,255,.22);
-      color:var(--text);font-size:12px;font-weight:700;
-    }
-    h1{font-size:22px;margin:8px 0 6px;letter-spacing:.2px}
-    .subtitle{color:var(--muted);font-size:13px;line-height:1.35;max-width:72ch}
-    .topActions{display:flex;gap:10px;align-items:center}
-    a.btn{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:10px 12px;border-radius:12px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.14);
-      color:var(--text);text-decoration:none;font-weight:650;font-size:13px;
-      transition:.15s ease;
-      user-select:none;
-    }
-    a.btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.10)}
-    a.btn:active{transform:translateY(0px)}
-    .grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
-    @media (min-width:920px){ .grid{grid-template-columns:1fr 1fr} }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RICD — Cap. IV · Seção X — Fiscalização e Controle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
 
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:16px;
-      overflow:hidden;
-      box-shadow:0 14px 40px rgba(0,0,0,.22);
-    }
-    .cardHeader{
-      padding:14px 14px 10px;
-      border-bottom:1px solid var(--line);
-      background:rgba(0,0,0,.14);
-    }
-    .cardHeader h2{font-size:15px;margin:0 0 4px;letter-spacing:.2px}
-    .cardHeader .ref{color:var(--muted);font-size:12px}
-    .cardBody{padding:14px}
-    .k{
-      display:inline-block;
-      padding:3px 9px;border-radius:999px;
-      border:1px solid rgba(168,255,207,.25);
-      background:rgba(168,255,207,.10);
-      color:var(--text);
-      font-size:12px;font-weight:800;
-      margin:0 0 10px;
-      letter-spacing:.2px;
-    }
-    .k.warn{
-      border:1px solid rgba(255,208,138,.35);
-      background:rgba(255,208,138,.10);
-    }
-    .k.danger{
-      border:1px solid rgba(255,154,168,.35);
-      background:rgba(255,154,168,.10);
-    }
-    ul{margin:10px 0 0 18px;padding:0}
-    li{margin:8px 0;color:var(--text);line-height:1.35}
-    li span.m{color:var(--muted)}
-    .note{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px dashed rgba(255,255,255,.18);
-      background:rgba(141,215,255,.06);
-      color:var(--text);
-      font-size:13px;
-      line-height:1.35;
-    }
-    .note b{color:var(--accent)}
-    .note.warn{background:rgba(255,208,138,.08)}
-    .note.warn b{color:var(--warn)}
-    .note.danger{background:rgba(255,154,168,.08)}
-    .note.danger b{color:var(--danger)}
-    .links{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
-    .links h3{font-size:13px;margin:0 0 8px;color:var(--muted);font-weight:800;letter-spacing:.2px}
-    .links .tag{
-      display:inline-block;margin:6px 8px 0 0;
-      padding:6px 10px;border-radius:999px;
-      border:1px solid rgba(141,215,255,.22);
-      background:rgba(141,215,255,.10);
-      font-size:12px;color:var(--text);
-    }
-    hr.sep{border:none;height:1px;background:var(--line);margin:14px 0}
-    code.inline{
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
-      padding:2px 6px;border-radius:10px;
-      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-      font-size:12px;
-    }
-    .footer{margin-top:18px;color:var(--muted);font-size:12px;line-height:1.35}
-  </style>
+/* ═══════════════ TOKENS LIGHT ═══════════════ */
+:root,[data-theme="light"]{
+  --bg:#f3f6fb; --bg2:#eaeff8;
+  --surface:#ffffff; --surface2:#f7faff;
+  --border:rgba(15,39,66,.09); --border-hard:rgba(15,39,66,.16);
+  --ink:#0d1f35; --ink2:#2b4060; --muted:#526a88; --faint:#8fa8c2;
+  --gold:#b86b1a; --gold-soft:rgba(184,107,26,.10);
+  --blue:#1a4d8a; --blue-soft:rgba(26,77,138,.08);
+  --green:#186347; --green-soft:rgba(24,99,71,.09);
+  --red:#a81f2a; --red-soft:rgba(168,31,42,.09);
+  --purple:#5a3d8a; --purple-soft:rgba(90,61,138,.08);
+  --mark-bg:rgba(15,23,42,.07);
+  --hero-from:#0c2240; --hero-to:#153558;
+  --hero-text:#ffffff; --hero-sub:rgba(255,255,255,.80);
+  --sh-sm:0 2px 8px rgba(12,26,43,.06);
+  --sh-md:0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:0 14px 34px rgba(12,26,43,.11);
+  --sh-hov:0 10px 28px rgba(12,26,43,.14);
+  --list-bg:#f7fafc; --note-bg:rgba(26,77,138,.05);
+  --note-border:rgba(26,77,138,.12); --note-text:#1a2e44;
+  --toggle-bg:#d8e2f0; --toggle-knob:#ffffff;
+  --drawer-bg:#ffffff; --drawer-overlay:rgba(15,23,42,.38);
+  --textarea-bg:#fbfcfe;
+}
+/* ═══════════════ TOKENS DARK ═══════════════ */
+[data-theme="dark"]{
+  --bg:#0c1120; --bg2:#101728;
+  --surface:#161d2f; --surface2:#1b2238;
+  --border:rgba(255,255,255,.06); --border-hard:rgba(255,255,255,.12);
+  --ink:#dce8fa; --ink2:#94b0d4; --muted:#627ea6; --faint:#374e6a;
+  --gold:#f0b84a; --gold-soft:rgba(240,184,74,.11);
+  --blue:#5b96f0; --blue-soft:rgba(91,150,240,.11);
+  --green:#38c882; --green-soft:rgba(56,200,130,.09);
+  --red:#f46862; --red-soft:rgba(244,104,98,.11);
+  --purple:#a07af5; --purple-soft:rgba(160,122,245,.10);
+  --mark-bg:rgba(220,232,250,.09);
+  --hero-from:#08111e; --hero-to:#0f1e30;
+  --hero-text:#e4f0ff; --hero-sub:rgba(210,228,255,.70);
+  --sh-sm:0 2px 8px rgba(0,0,0,.28);
+  --sh-md:0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:0 14px 34px rgba(0,0,0,.40);
+  --sh-hov:0 10px 28px rgba(0,0,0,.46);
+  --list-bg:rgba(255,255,255,.03); --note-bg:rgba(91,150,240,.09);
+  --note-border:rgba(91,150,240,.20); --note-text:#b0ccf0;
+  --toggle-bg:#243350; --toggle-knob:#f0b84a;
+  --drawer-bg:#161d2f; --drawer-overlay:rgba(0,0,0,.65);
+  --textarea-bg:#111828;
+}
+
+/* ═══════════════ BASE ═══════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;font-size:15px;line-height:1.68;color:var(--ink);background:var(--bg);transition:background .25s,color .25s;min-height:100vh}
+a{color:inherit;text-decoration:none}
+
+/* ═══════════════ PROGRESS ═══════════════ */
+#prog{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--gold),var(--blue));z-index:300;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ═══════════════ FABs ═══════════════ */
+.fab-wrap{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+#theme-btn{background:var(--surface);border:1px solid var(--border-hard);box-shadow:var(--sh-md);border-radius:50px;padding:8px 14px;cursor:pointer;display:flex;align-items:center;gap:9px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--muted);transition:all .2s;user-select:none}
+#theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
+.t-track{width:38px;height:20px;background:var(--toggle-bg);border-radius:20px;position:relative;transition:background .25s}
+.t-knob{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--toggle-knob);transition:transform .25s;box-shadow:0 1px 4px rgba(0,0,0,.22)}
+[data-theme="dark"] .t-knob{transform:translateX(18px)}
+#back-top{width:44px;height:44px;background:var(--surface);border:1px solid var(--border-hard);border-radius:50%;box-shadow:var(--sh-md);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--muted);transition:all .2s;opacity:0;pointer-events:none;transform:translateY(10px)}
+#back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
+
+/* ═══════════════ WRAP ═══════════════ */
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px 80px}
+
+/* ═══════════════ HERO ═══════════════ */
+.hero{background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);border-radius:0 0 28px 28px;padding:38px 36px 34px;margin-bottom:32px;position:relative;overflow:hidden;box-shadow:var(--sh-lg)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);pointer-events:none}
+.hero::after{content:'X';position:absolute;right:36px;top:50%;transform:translateY(-50%);font-family:'Crimson Pro',serif;font-size:160px;font-weight:700;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.hero-title{font-family:'Crimson Pro',serif;font-size:clamp(24px,3vw,38px);font-weight:700;color:var(--hero-text);line-height:1.12;margin-bottom:10px}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:72ch;line-height:1.58;margin-bottom:18px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.hero-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;border:1px solid;font-family:'Outfit',sans-serif}
+.hero-btn-ghost{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18);color:rgba(255,255,255,.88)}
+.hero-btn-ghost:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.hero-btn-primary{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);color:#fff;font-weight:700}
+.hero-btn-primary:hover{background:rgba(255,255,255,.22);transform:translateY(-1px)}
+.nav-chips{display:flex;flex-wrap:wrap;gap:8px}
+.nav-chips a{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:100px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.88);font-size:12.5px;font-weight:500;transition:background .15s,transform .1s}
+.nav-chips a:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.nav-chips a b{font-weight:700;color:var(--gold)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.10)}
+.lchip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:rgba(255,255,255,.78);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;font-weight:600;text-transform:uppercase}
+.ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ═══════════════ SECTION DIVIDER ═══════════════ */
+.sec-head{display:flex;align-items:center;gap:14px;margin:36px 0 18px}
+.sec-line{flex:1;height:1px;background:var(--border-hard)}
+.sec-title{font-family:'Crimson Pro',serif;font-size:21px;font-weight:700;color:var(--ink);white-space:nowrap}
+.sec-badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+
+/* ═══════════════ GRID ═══════════════ */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.c12{grid-column:span 12}.c6{grid-column:span 12}.c4{grid-column:span 12}.c8{grid-column:span 12}
+@media(min-width:760px){.c6{grid-column:span 6}.c4{grid-column:span 4}.c8{grid-column:span 8}}
+
+/* ═══════════════ CARD ═══════════════ */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--sh-sm);overflow:hidden;position:relative;transition:transform .14s,box-shadow .14s;opacity:0;animation:fadeUp .35s ease forwards}
+.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.07s}.card:nth-child(3){animation-delay:.11s}.card:nth-child(4){animation-delay:.15s}.card:nth-child(5){animation-delay:.19s}.card:nth-child(6){animation-delay:.23s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{transform:translateY(-2px);box-shadow:var(--sh-hov)}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,#1c3f63);border-radius:14px 0 0 14px}
+.card-inner{padding:16px 16px 16px 18px}
+.card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.c-badge{flex-shrink:0;width:36px;height:36px;border-radius:9px;background:var(--bg2);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;color:var(--c,#1c3f63);margin-top:1px}
+[data-theme="dark"] .c-badge{background:color-mix(in srgb,var(--c,#1c3f63) 14%,var(--surface2) 86%);color:color-mix(in srgb,var(--c,#1c3f63) 55%,#ffffff 45%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){[data-theme="dark"] .c-badge{background:var(--surface2);color:var(--ink2)}}
+.c-title{font-family:'Crimson Pro',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:3px}
+.c-lead{font-size:13px;color:var(--muted);line-height:1.45}
+.kp-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.kp-list li{padding:9px 11px;border-radius:9px;background:var(--list-bg);border:1px solid var(--border);font-size:13.5px;color:var(--ink2);line-height:1.52}
+.kp-list li b{font-weight:700;color:var(--ink)}
+.kp-list li ul{margin-top:6px;padding-left:16px;display:flex;flex-direction:column;gap:3px}
+.kp-list li ul li{padding:0;background:none;border:none;font-size:13px;color:var(--muted)}
+
+/* ═══════════════ SEMANTIC HIGHLIGHTS ═══════════════ */
+.k{font-weight:700;color:var(--ink);background:var(--mark-bg);padding:0 .22em;border-radius:.4em}
+.org{font-weight:700;color:var(--blue);background:var(--blue-soft);padding:0 .22em;border-radius:.4em}
+.prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em;white-space:nowrap}
+.exc{font-weight:700;color:var(--red);background:var(--red-soft);padding:0 .22em;border-radius:.4em}
+.num{font-weight:700;color:var(--ink2)}
+
+/* ═══════════════ NOTE / TRAP / FLOW ═══════════════ */
+.note{margin-top:10px;padding:10px 13px;border-radius:10px;background:var(--note-bg);border:1px solid var(--note-border);color:var(--note-text);font-size:13px;line-height:1.55}
+.note b{font-weight:700}
+.trap{margin-top:10px;display:flex;gap:10px;align-items:flex-start;background:var(--red-soft);border:1px solid color-mix(in srgb,var(--red) 25%,transparent 75%);border-radius:10px;padding:11px 13px}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.trap{border-color:rgba(168,31,42,.2)}}
+.trap-icon{font-size:16px;line-height:1.5;flex-shrink:0}
+.trap-text{font-size:13px;color:var(--red);font-weight:500;line-height:1.5}
+.trap-text b{font-weight:700}
+.correlatos{margin-top:10px;padding:11px 13px;border-radius:10px;background:var(--purple-soft);border:1px solid rgba(90,61,138,.16)}
+[data-theme="dark"] .correlatos{border-color:rgba(160,122,245,.18)}
+.corr-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);font-weight:700;margin-bottom:6px}
+.corr-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+.corr-list li{font-size:13px;color:var(--ink2);padding-left:16px;position:relative;line-height:1.5}
+.corr-list li::before{content:'↗';position:absolute;left:0;color:var(--purple);font-size:12px}
+
+/* ═══════════════ FLOW DIAGRAM ═══════════════ */
+.flow{display:flex;flex-wrap:wrap;gap:0;margin-top:12px;border-radius:12px;overflow:hidden;border:1px solid var(--border-hard)}
+.flow-step{flex:1;min-width:140px;padding:12px 14px;border-right:1px solid var(--border-hard);background:var(--surface2);position:relative}
+.flow-step:last-child{border-right:none}
+.flow-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.flow-label{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.25}
+.flow-desc{font-size:12px;color:var(--muted);line-height:1.4}
+.flow-arrow{position:absolute;right:-10px;top:50%;transform:translateY(-50%);width:20px;height:20px;background:var(--surface);border:1px solid var(--border-hard);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);z-index:1;font-weight:700}
+.flow-step:last-child .flow-arrow{display:none}
+@media(max-width:580px){.flow{flex-direction:column}.flow-step{border-right:none;border-bottom:1px solid var(--border-hard)}.flow-step:last-child{border-bottom:none}.flow-arrow{right:auto;left:50%;bottom:-10px;top:auto;transform:translateX(-50%) rotate(90deg)}}
+
+/* ═══════════════ PRAZO BOX ═══════════════ */
+.prazo-box{margin-top:10px;border-radius:10px;background:var(--gold-soft);border:1px solid color-mix(in srgb,var(--gold) 28%,transparent 72%);overflow:hidden}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.prazo-box{border-color:rgba(184,107,26,.28)}}
+.prazo-box-head{padding:7px 13px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold);border-bottom:1px solid color-mix(in srgb,var(--gold) 20%,transparent 80%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.prazo-box-head{border-color:rgba(184,107,26,.20)}}
+.prazo-box-body{padding:10px 13px 12px;display:flex;flex-direction:column;gap:7px}
+.prazo-row{display:flex;align-items:baseline;gap:10px;font-size:13px}
+.prazo-val{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--gold);flex-shrink:0;line-height:1}
+.prazo-desc{color:var(--ink2);line-height:1.4}
+.prazo-desc b{color:var(--ink);font-weight:700}
+
+/* ═══════════════ MAPA MENTAL ═══════════════ */
+.mapa{margin-top:10px;display:flex;flex-direction:column;gap:6px}
+.mapa-row{display:flex;align-items:stretch;gap:0;border-radius:9px;overflow:hidden;border:1px solid var(--border)}
+.mapa-key{background:var(--bg2);border-right:1px solid var(--border-hard);padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--blue);min-width:110px;display:flex;align-items:center;text-transform:uppercase;letter-spacing:.06em;flex-shrink:0}
+.mapa-val{padding:8px 12px;font-size:13px;color:var(--ink2);display:flex;align-items:center;line-height:1.4}
+.mapa-val b{font-weight:700;color:var(--ink)}
+.mapa-arrow{padding:8px 6px;color:var(--gold);font-weight:700;display:flex;align-items:center;font-size:16px}
+
+/* ═══════════════ NOTES DRAWER ═══════════════ */
+.drawer-overlay{position:fixed;inset:0;background:var(--drawer-overlay);backdrop-filter:blur(4px);z-index:400;display:none;align-items:flex-end;justify-content:center;padding:16px}
+.drawer-overlay.open{display:flex}
+.drawer-panel{width:min(900px,100%);background:var(--drawer-bg);border:1px solid var(--border-hard);border-radius:20px;box-shadow:var(--sh-lg);overflow:hidden;transition:background .25s}
+.drawer-head{padding:16px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;background:linear-gradient(180deg,var(--surface2),var(--surface));border-bottom:1px solid var(--border-hard)}
+.drawer-head-info h2{font-family:'Crimson Pro',serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.drawer-head-info p{font-size:13px;color:var(--muted);line-height:1.45}
+.drawer-close{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--bg2);border:1px solid var(--border-hard);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);transition:all .15s}
+.drawer-close:hover{color:var(--red)}
+.drawer-body{padding:16px 20px 20px}
+#notes-area{width:100%;min-height:220px;resize:vertical;border-radius:12px;border:1px solid var(--border-hard);padding:12px 14px;font-family:'Outfit',sans-serif;font-size:14px;line-height:1.6;outline:none;background:var(--textarea-bg);color:var(--ink);transition:border-color .15s,background .25s,color .25s}
+#notes-area:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+#notes-area::placeholder{color:var(--faint)}
+.drawer-actions{margin-top:12px;display:flex;gap:10px;justify-content:flex-end}
+.d-btn{font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;padding:8px 18px;border-radius:8px;cursor:pointer;border:1px solid;transition:all .15s}
+.d-btn-clear{background:transparent;color:var(--red);border-color:color-mix(in srgb,var(--red) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-clear{border-color:rgba(168,31,42,.3)}}
+.d-btn-clear:hover{background:var(--red-soft)}
+.d-btn-save{background:var(--green-soft);color:var(--green);border-color:color-mix(in srgb,var(--green) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-save{border-color:rgba(24,99,71,.3)}}
+.d-btn-save:hover{background:rgba(24,99,71,.18)}
+
+/* ═══════════════ FOOTER ═══════════════ */
+.page-footer{text-align:center;font-size:12.5px;color:var(--faint);margin-top:48px;padding-top:20px;border-top:1px solid var(--border-hard);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px}
+.page-footer a{color:var(--blue);font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid var(--border-hard);background:var(--surface);font-size:13px;transition:box-shadow .15s}
+.page-footer a:hover{box-shadow:var(--sh-md)}
+
+/* ─── dica final ─── */
+.dica{margin-top:4px;padding:14px 18px;border-radius:12px;background:var(--surface);border:1px solid var(--border-hard);box-shadow:var(--sh-sm);font-size:13.5px;color:var(--ink2);line-height:1.7}
+.dica b{color:var(--gold);font-weight:700}
+.dica .arr{color:var(--blue);font-weight:700}
+
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
+@media(max-width:600px){.hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}.hero::after{display:none}.wrap{padding:0 14px 80px}}
+</style>
 </head>
-
 <body>
-  <div class="wrap">
-    <header>
-      <div class="titleBlock">
-        <div class="pill">Capítulo IV — Seção X — Fiscalização e Controle</div>
-        <h1>Fiscalização e Controle: objeto, etapas, prazos, sigilo e PAFC</h1>
-        <div class="subtitle">
-          O que pode ser fiscalizado (Art. 60), o passo a passo do procedimento (Art. 61),
-          regras de diligências/prazos/sigilo (Art. 61, §§) e o Plano Anual da CFFC (Art. 61-A).
-        </div>
+
+<div id="prog"></div>
+
+<!-- ══════════════ HERO ══════════════ -->
+<header class="hero" id="topo">
+  <div class="wrap" style="padding:0">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">RICD • Título II • Capítulo IV • Seção X</div>
+      <h1 class="hero-title">Seção X — Fiscalização e Controle</h1>
+      <p class="hero-sub">Arts. 60, 61 e 61-A — Objeto da fiscalização, procedimento em 4 etapas, prazos mínimos, sigilo e o Plano Anual da CFFC (PAFC).</p>
+      <div class="hero-actions">
+        <a class="hero-btn hero-btn-ghost" href="index.html">⌂ Índice</a>
+        <a class="hero-btn hero-btn-ghost" href="titulo2-cap4.html">← Cap. IV</a>
+        <button class="hero-btn hero-btn-primary" id="btn-notes" type="button">✏️ Anotações</button>
       </div>
-
-      <div class="topActions">
-        <a class="btn" href="titulo2-cap4.html" aria-label="Voltar para o menu do Capítulo IV">⟵ Voltar</a>
-        <a class="btn" href="#topo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Topo</a>
+      <nav class="nav-chips" aria-label="Seções">
+        <a href="#art60"><b>Art. 60</b> Objeto</a>
+        <a href="#art61"><b>Art. 61</b> Procedimento</a>
+        <a href="#prazos"><b>§§</b> Prazos e sigilo</a>
+        <a href="#pafc"><b>Art. 61-A</b> PAFC / RAFC</a>
+        <a href="#mapa"><b>Mapa</b> Memorização</a>
+      </nav>
+      <div class="legend">
+        <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Órgãos</span>
+        <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Prazos / Números</span>
+        <span class="lchip"><span class="ldot" style="background:#f46862"></span>Exceções / Sanções</span>
+        <span class="lchip"><span class="ldot" style="background:rgba(255,255,255,.4)"></span>Palavras-chave</span>
       </div>
-    </header>
-
-    <div id="topo" class="grid">
-
-      <!-- Art. 60 -->
-      <section class="card">
-        <div class="cardHeader">
-          <h2>Objeto da fiscalização e controle</h2>
-          <div class="ref">Art. 60</div>
-        </div>
-        <div class="cardBody">
-          <div class="k">ATOS/FATOS SUJEITOS</div>
-          <ul>
-            <li><b>I — COFOP</b> (contábil, financeira, orçamentária, operacional e patrimonial) <span class="m">(referência: Art. 70 da CF)</span>.</li>
-            <li><b>II — Gestão administrativa</b> do Poder Executivo, incluindo <b>Administração Indireta</b>.</li>
-            <li><b>III — Atos típicos de crime de responsabilidade</b> <span class="m">(Presidente, Vice, Ministros de Estado/STF, PGR, AGU)</span>.</li>
-            <li><b>IV — Petições e reclamações da sociedade</b> (casos do Art. 253).</li>
-          </ul>
-
-          <div class="note">
-            <b>Ideia-chave:</b> o Art. 60 “abre o guarda-chuva” do que entra em fiscalização e controle:
-            desde COFOP (Art. 70 CF) até gestão do Executivo, crimes de responsabilidade e demandas da sociedade.
-          </div>
-
-          <div class="links">
-            <h3>Correlato</h3>
-            <span class="tag">Art. 253 (petições/reclamações/representações)</span>
-            <span class="tag">CF, Art. 70 (COFOP)</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Art. 61 (I a IV) -->
-      <section class="card">
-        <div class="cardHeader">
-          <h2>Procedimento de fiscalização: etapas</h2>
-          <div class="ref">Art. 61, incisos I a IV</div>
-        </div>
-        <div class="cardBody">
-          <div class="k">FLUXO EM 4 ETAPAS</div>
-          <ul>
-            <li><b>I — Proposta:</b> apresentada por membro ou Deputado, com <b>indicação específica</b> do ato e <b>fundamentação</b>.</li>
-            <li><b>II — Relatório prévio:</b> avalia <b>oportunidade e conveniência</b>, alcance jurídico/político e define o <b>plano de execução</b>.</li>
-            <li><b>III — Implementação:</b> aprovado o prévio, o <b>mesmo Relator</b> executa a fiscalização.</li>
-            <li><b>IV — Relatório final:</b> avalia <b>legalidade</b>, <b>eficácia</b> e <b>gestão</b>.</li>
-          </ul>
-
-          <div class="note warn">
-            <b>Pegadinha:</b> quem executa a fiscalização é o <b>mesmo Relator</b> do relatório prévio (Inc. III).
-          </div>
-
-          <div class="links">
-            <h3>Aplicação subsidiária</h3>
-            <span class="tag">Art. 35, § 6º (meios/recursos/assessoramento — lógica de CPI)</span>
-            <span class="tag">Art. 37 (encaminhamentos do relatório final)</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Art. 61 §§ 1º a 4º -->
-      <section class="card">
-        <div class="cardHeader">
-          <h2>Diligências, prazos e sigilo</h2>
-          <div class="ref">Art. 61, §§ 1º a 4º</div>
-        </div>
-        <div class="cardBody">
-          <div class="k">PODERES INSTRUTÓRIOS</div>
-          <ul>
-            <li>A Comissão pode solicitar ao <b>TCU</b> providências/informações do art. 71, IV e VII, da CF.</li>
-          </ul>
-
-          <hr class="sep" />
-
-          <div class="k warn">PRAZOS (MÍNIMO)</div>
-          <ul>
-            <li>Serão fixados prazos <b>não inferiores a 10 dias</b> para:</li>
-            <li>
-              <ul>
-                <li>cumprimento de convocações;</li>
-                <li>prestação de informações;</li>
-                <li>atendimento a requisições.</li>
-              </ul>
-            </li>
-          </ul>
-
-          <div class="note warn">
-            <b>Fixação para prova:</b> o “número mágico” aqui é <b>10 dias</b> como prazo mínimo.
-          </div>
-
-          <hr class="sep" />
-
-          <div class="k danger">SANÇÃO</div>
-          <ul>
-            <li>O descumprimento enseja apuração da <b>responsabilidade</b> do infrator.</li>
-          </ul>
-
-          <hr class="sep" />
-
-          <div class="k">SIGILO</div>
-          <ul>
-            <li>Documentos sigilosos/reservados/confidenciais: observar o § 5º do Art. 98.</li>
-          </ul>
-
-          <div class="links">
-            <h3>Correlato</h3>
-            <span class="tag">Art. 98, § 5º (leitura aos pares + invólucro lacrado + arquivo)</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Art. 61-A -->
-      <section class="card">
-        <div class="cardHeader">
-          <h2>Plano anual da CFFC (PAFC) e relatório anual (RAFC)</h2>
-          <div class="ref">Art. 61-A</div>
-        </div>
-        <div class="cardBody">
-          <div class="k">COMPETÊNCIA EXCLUSIVA</div>
-          <ul>
-            <li>A <b>CFFC</b> implementa, em cada sessão legislativa, o <b>Plano Anual de Fiscalização e Controle (PAFC)</b>.</li>
-          </ul>
-
-          <hr class="sep" />
-
-          <div class="k warn">PRAZOS</div>
-          <ul>
-            <li><b>Aprovação do PAFC:</b> até <b>5 sessões</b> (contadas da reinstalação da Comissão).</li>
-            <li><b>Relatório Anual (RAFC):</b> aprovado até o <b>fim</b> da sessão legislativa.</li>
-          </ul>
-
-          <hr class="sep" />
-
-          <div class="k">DESTINATÁRIOS DO RAFC</div>
-          <ul>
-            <li>Encaminhado ao <b>TCU</b> e ao órgão de <b>controle interno</b> do Poder Executivo.</li>
-          </ul>
-
-          <div class="note">
-            <b>Mapa mental:</b> PAFC (planeja) → RAFC (presta contas) → TCU + controle interno (recebem).
-          </div>
-        </div>
-      </section>
-
-    </div>
-
-    <div class="footer">
-      Dica de memorização: <b>Art. 60</b> (o que entra) → <b>Art. 61</b> (como faz: proposta → prévio → execução → final) →
-      <b>§§</b> (TCU + mínimo <code class="inline">10 dias</code> + sigilo) → <b>61-A</b> (PAFC em 5 sessões; RAFC até fim do ano).
     </div>
   </div>
+</header>
+
+<div class="wrap">
+
+<!-- ══════════════ ART. 60 ══════════════ -->
+<div class="sec-head" id="art60">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 60 — Objeto da Fiscalização</div>
+  <div class="sec-badge">O que pode ser fiscalizado</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c8" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">60</div><div><div class="c-title">Atos e fatos sujeitos à fiscalização</div><div class="c-lead">Quatro hipóteses que abrem o "guarda-chuva" da fiscalização legislativa.</div></div></div>
+      <ul class="kp-list">
+        <li><b>I — COFOP:</b> contábil, financeira, orçamentária, operacional e patrimonial — referência: <span class="org">Art. 70 da CF</span></li>
+        <li><b>II — Gestão administrativa</b> do <span class="k">Poder Executivo</span>, incluindo <span class="k">Administração Indireta</span></li>
+        <li><b>III — Crimes de responsabilidade:</b> atos típicos do <span class="k">Presidente</span>, <span class="k">Vice</span>, <span class="k">Ministros de Estado/STF</span>, <span class="k">PGR</span> e <span class="k">AGU</span></li>
+        <li><b>IV — Petições e reclamações da sociedade</b> (casos do Art. 253 do RICD)</li>
+      </ul>
+      <div class="correlatos">
+        <div class="corr-title">Correlatos</div>
+        <ul class="corr-list">
+          <li>CF, Art. 70 — base constitucional da fiscalização COFOP</li>
+          <li>Art. 253 — petições, reclamações e representações da sociedade</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c4" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">≡</div><div><div class="c-title">Lógica do Art. 60</div><div class="c-lead">Como visualizar o alcance da norma.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Inc. I:</b> fiscaliza <span class="k">dinheiro</span> (aspecto financeiro-orçamentário)</li>
+        <li><b>Inc. II:</b> fiscaliza <span class="k">gestão</span> (aspecto administrativo — Executivo + indireta)</li>
+        <li><b>Inc. III:</b> fiscaliza <span class="k">pessoas</span> (responsabilidade dos agentes mais altos)</li>
+        <li><b>Inc. IV:</b> fiscaliza por <span class="k">demanda social</span> (petições da sociedade)</li>
+      </ul>
+      <div class="note"><b>Para prova:</b> memorize os quatro incisos pela lógica — dinheiro → gestão → responsabilidade pessoal → sociedade.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ ART. 61 — PROCEDIMENTO ══════════════ -->
+<div class="sec-head" id="art61">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 61 — Procedimento de Fiscalização</div>
+  <div class="sec-badge">Quatro etapas sequenciais</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c12" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">61</div><div><div class="c-title">Fluxo em 4 etapas</div><div class="c-lead">Da proposta ao relatório final — cada etapa tem objeto próprio.</div></div></div>
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-arrow">→</div>
+          <div class="flow-num">Etapa I</div>
+          <div class="flow-label">Proposta</div>
+          <div class="flow-desc">Membro ou Deputado apresenta, com <b>indicação específica</b> do ato e <b>fundamentação</b></div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-arrow">→</div>
+          <div class="flow-num">Etapa II</div>
+          <div class="flow-label">Relatório Prévio</div>
+          <div class="flow-desc">Avalia <b>oportunidade e conveniência</b>, alcance jurídico/político e define o <b>plano de execução</b></div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-arrow">→</div>
+          <div class="flow-num">Etapa III</div>
+          <div class="flow-label">Implementação</div>
+          <div class="flow-desc">Aprovado o prévio, o <b>mesmo Relator</b> executa a fiscalização</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">Etapa IV</div>
+          <div class="flow-label">Relatório Final</div>
+          <div class="flow-desc">Avalia <b>legalidade</b>, <b>eficácia</b> e <b>gestão</b></div>
+        </div>
+      </div>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text"><b>Pegadinha — Inc. III:</b> quem executa a fiscalização é o <b>mesmo Relator</b> do relatório prévio. A prova troca o relator ou inventa uma designação de novo relator para a etapa de implementação.</div></div>
+      <div class="correlatos">
+        <div class="corr-title">Aplicação subsidiária</div>
+        <ul class="corr-list">
+          <li>Art. 35, §6º — meios, recursos e assessoramento (lógica de CPI)</li>
+          <li>Art. 37 — encaminhamentos do relatório final aprovado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ §§ — PRAZOS E SIGILO ══════════════ -->
+<div class="sec-head" id="prazos">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 61, §§ 1º a 4º — Prazos e Sigilo</div>
+  <div class="sec-badge">Poderes instrutórios · prazo mínimo · sanção · sigilo</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c4" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">§1º</div><div><div class="c-title">Poderes instrutórios — TCU</div><div class="c-lead">Auxílio constitucional do Tribunal de Contas.</div></div></div>
+      <ul class="kp-list">
+        <li>A Comissão pode solicitar ao <span class="org">TCU</span> providências e informações previstas no <span class="k">Art. 71, IV e VII, da CF</span></li>
+      </ul>
+      <div class="note"><b>Referência:</b> Art. 71, IV — realização de inspeções; Art. 71, VII — prestação de informações ao Congresso.</div>
+    </div>
+  </div>
+
+  <div class="card c4" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">§2º</div><div><div class="c-title">Prazo mínimo — número para prova</div><div class="c-lead">Piso para cumprimento de convocações e requisições.</div></div></div>
+      <div class="prazo-box">
+        <div class="prazo-box-head">⏱ Prazo mínimo fixado</div>
+        <div class="prazo-box-body">
+          <div class="prazo-row">
+            <div class="prazo-val">10</div>
+            <div class="prazo-desc"><b>dias</b> para cumprimento de convocações, prestação de informações e atendimento a requisições</div>
+          </div>
+        </div>
+      </div>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">O número <b>10 dias</b> é o piso — a prova usa "5 dias", "3 dias" ou "prazo a critério da comissão" como distratores.</div></div>
+    </div>
+  </div>
+
+  <div class="card c4" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">§§ 3–4</div><div><div class="c-title">Sanção e sigilo</div><div class="c-lead">Consequência do descumprimento e trato de documentos sigilosos.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Descumprimento:</b> <span class="exc">apuração da responsabilidade</span> do infrator</li>
+        <li><b>Sigilo:</b> documentos sigilosos, reservados ou confidenciais — observar o <span class="k">Art. 98, §5º, do RICD</span></li>
+      </ul>
+      <div class="correlatos">
+        <div class="corr-title">Correlato</div>
+        <ul class="corr-list">
+          <li>Art. 98, §5º — leitura aos pares + invólucro lacrado + arquivo sigiloso</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ ART. 61-A — PAFC / RAFC ══════════════ -->
+<div class="sec-head" id="pafc">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 61-A — PAFC e RAFC</div>
+  <div class="sec-badge">CFFC · Plano Anual · Relatório Anual</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">61-A</div><div><div class="c-title">Plano Anual de Fiscalização (PAFC)</div><div class="c-lead">Competência exclusiva da CFFC, prazo e destinatários.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Quem implementa:</b> <span class="org">CFFC</span> (Comissão de Fiscalização Financeira e Controle) — competência <span class="k">exclusiva</span></li>
+        <li><b>Quando:</b> em cada <span class="k">sessão legislativa</span></li>
+      </ul>
+      <div class="prazo-box" style="margin-top:10px">
+        <div class="prazo-box-head">⏱ Prazos do Art. 61-A</div>
+        <div class="prazo-box-body">
+          <div class="prazo-row">
+            <div class="prazo-val">5</div>
+            <div class="prazo-desc"><b>sessões</b> para aprovação do PAFC — contadas da reinstalação da CFFC</div>
+          </div>
+          <div class="prazo-row">
+            <div class="prazo-val" style="font-size:14px;padding-top:2px">fim</div>
+            <div class="prazo-desc"><b>da sessão legislativa</b> — prazo para aprovação do RAFC</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">RAFC</div><div><div class="c-title">Relatório Anual de Fiscalização (RAFC)</div><div class="c-lead">Para quem vai e o que representa.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Destinatários:</b> <span class="org">TCU</span> e órgão de <span class="k">controle interno</span> do Poder Executivo</li>
+        <li><b>Prazo:</b> até o <span class="prazo">fim da sessão legislativa</span></li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A prova costuma perguntar: quem recebe o RAFC? <b>TCU + controle interno do Executivo</b> — ambos, não apenas um.</div></div>
+      <div class="correlatos">
+        <div class="corr-title">Distinção entre PAFC e RAFC</div>
+        <ul class="corr-list">
+          <li>PAFC = planeja → aprovado em <b>5 sessões</b> após reinstalação</li>
+          <li>RAFC = presta contas → aprovado até o <b>fim da sessão legislativa</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ MAPA DE MEMORIZAÇÃO ══════════════ -->
+<div class="sec-head" id="mapa">
+  <div class="sec-line"></div>
+  <div class="sec-title">Mapa de Memorização</div>
+  <div class="sec-badge">Sequência lógica para prova</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <div class="card c12" style="--c:#3a5c8a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">⊞</div><div><div class="c-title">Sequência Art. 60 → 61 → 61-A</div><div class="c-lead">Leitura em cadeia: o que entra → como faz → quem planeja e presta contas.</div></div></div>
+      <div class="mapa">
+        <div class="mapa-row">
+          <div class="mapa-key">Art. 60</div>
+          <div class="mapa-arrow">→</div>
+          <div class="mapa-val"><b>O que entra:</b> COFOP · gestão do Executivo · crimes de responsabilidade · demandas da sociedade</div>
+        </div>
+        <div class="mapa-row">
+          <div class="mapa-key">Art. 61 I–IV</div>
+          <div class="mapa-arrow">→</div>
+          <div class="mapa-val"><b>Como faz:</b> proposta → relatório prévio → implementação (mesmo relator!) → relatório final</div>
+        </div>
+        <div class="mapa-row">
+          <div class="mapa-key">Art. 61 §§</div>
+          <div class="mapa-arrow">→</div>
+          <div class="mapa-val"><b>Regras do jogo:</b> TCU auxilia · prazo mínimo <b>10 dias</b> · descumprimento = responsabilidade · sigilo = Art. 98, §5º</div>
+        </div>
+        <div class="mapa-row">
+          <div class="mapa-key">Art. 61-A</div>
+          <div class="mapa-arrow">→</div>
+          <div class="mapa-val"><b>CFFC planeja e presta contas:</b> PAFC em <b>5 sessões</b> · RAFC até o <b>fim da SL</b> → TCU + controle interno</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <span>RICD • Cap. IV • Seção X — Fiscalização e Controle</span>
+  <a href="index.html">⌂ Índice</a>
+  <a href="titulo2-cap4.html">← Cap. IV</a>
+  <a href="cap4_sec1.html">Seção I →</a>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- ══════════════ FABs ══════════════ -->
+<div class="fab-wrap">
+  <button id="theme-btn" title="Alternar tema">
+    <span id="t-icon">🌙</span>
+    <div class="t-track"><div class="t-knob"></div></div>
+    <span id="t-label">Escuro</span>
+  </button>
+  <button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<!-- ══════════════ NOTES DRAWER ══════════════ -->
+<div class="drawer-overlay" id="drawer" aria-hidden="true">
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+    <div class="drawer-head">
+      <div class="drawer-head-info">
+        <h2 id="drawer-title">Anotações — Cap. IV · Seção X</h2>
+        <p>Erros, bizus e pegadinhas. Salvas no <strong>seu navegador</strong> (localStorage).</p>
+      </div>
+      <button class="drawer-close" id="btn-close-drawer" title="Fechar">✕</button>
+    </div>
+    <div class="drawer-body">
+      <textarea id="notes-area" placeholder="Ex.: ⚠ Art. 61, III: mesmo relator do prévio executa a fiscalização&#10;⚠ Prazo mínimo = 10 dias (não 5, não 3)&#10;⚠ RAFC vai para TCU + controle interno (ambos!)&#10;⚠ PAFC aprovado em 5 sessões da reinstalação da CFFC"></textarea>
+      <div class="drawer-actions">
+        <button class="d-btn d-btn-clear" id="btn-clear-notes" type="button">Limpar</button>
+        <button class="d-btn d-btn-save" id="btn-save-notes" type="button">Salvar e fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const root=document.documentElement,btn=document.getElementById('theme-btn'),
+        icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
+  let dark=localStorage.getItem('ricd-theme')==='dark';
+  if(!localStorage.getItem('ricd-theme'))dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function apply(){root.setAttribute('data-theme',dark?'dark':'light');icon.textContent=dark?'☀️':'🌙';lbl.textContent=dark?'Claro':'Escuro';localStorage.setItem('ricd-theme',dark?'dark':'light')}
+  apply();
+  btn.addEventListener('click',()=>{dark=!dark;apply()});
+})();
+(function(){
+  const bar=document.getElementById('prog'),top=document.getElementById('back-top');
+  window.addEventListener('scroll',function(){
+    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(s/h*100)+'%';
+    top.classList.toggle('show',s>280);
+  },{passive:true});
+})();
+(function(){
+  const KEY='notes_cap4_sec10';
+  const overlay=document.getElementById('drawer'),area=document.getElementById('notes-area');
+  const btnOpen=document.getElementById('btn-notes'),btnClose=document.getElementById('btn-close-drawer');
+  const btnSave=document.getElementById('btn-save-notes'),btnClear=document.getElementById('btn-clear-notes');
+  function open(){overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');area.value=localStorage.getItem(KEY)||'';area.focus()}
+  function close(){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true')}
+  btnOpen.addEventListener('click',open);
+  btnClose.addEventListener('click',close);
+  btnSave.addEventListener('click',()=>{localStorage.setItem(KEY,area.value);close()});
+  btnClear.addEventListener('click',()=>{if(confirm('Limpar anotações desta seção?')){area.value='';localStorage.removeItem(KEY);area.focus()}});
+  overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
+  window.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))close()});
+})();
+</script>
 </body>
 </html>
