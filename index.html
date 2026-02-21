@@ -1,492 +1,858 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>RICD — Índice (Títulos 1 a 10)</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RICD — Índice de Estudos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Literata (Google Fonts) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   TOKENS — LIGHT MODE
+═══════════════════════════════════════════ */
+:root,
+[data-theme="light"] {
+  --bg:           #f4f6fb;
+  --bg2:          #edf0f7;
+  --surface:      #ffffff;
+  --surface2:     #f8faff;
+  --border:       rgba(15,39,66,.10);
+  --border-hard:  rgba(15,39,66,.18);
 
-  <style>
-    :root{
-      --ink:#0b1b2b;
-      --navy:#0f2742;
-      --slate:#4a6075;
-      --muted:#6b7f93;
+  --ink:          #0d1f35;
+  --ink2:         #2b4163;
+  --muted:        #5a7291;
+  --faint:        #94aac0;
 
-      --paper:#f6f8fb;
-      --card:#ffffff;
-      --line:rgba(15,39,66,.10);
+  --gold:         #c07428;
+  --gold-soft:    rgba(192,116,40,.10);
+  --blue:         #1d4f8a;
+  --blue-soft:    rgba(29,79,138,.09);
+  --green:        #1a6b4a;
+  --green-soft:   rgba(26,107,74,.09);
+  --red:          #a5212e;
+  --red-soft:     rgba(165,33,46,.09);
 
-      --shadow: 0 10px 26px rgba(12,26,43,.08);
-      --shadow-hover: 0 16px 34px rgba(12,26,43,.12);
+  --hero-bg:      linear-gradient(135deg,#0f2742 0%,#16375a 55%,#0f2742 100%);
+  --hero-text:    #ffffff;
+  --hero-sub:     rgba(255,255,255,.82);
 
-      /* “cores por semântica” (usadas nos resumos, mantidas no index) */
-      --orgao:#1e4f7a;
-      --prazo:#c77819;
-      --alert:#b11f2e;
+  --shadow-sm:    0 2px 8px rgba(12,26,43,.07);
+  --shadow-md:    0 8px 24px rgba(12,26,43,.09);
+  --shadow-lg:    0 16px 36px rgba(12,26,43,.12);
+  --shadow-hover: 0 12px 30px rgba(12,26,43,.14);
 
-      --radius-xl:22px;
-      --radius-lg:18px;
-      --radius-md:14px;
+  --card-radius:  16px;
+  --toggle-bg:    #dde4ef;
+  --toggle-knob:  #ffffff;
+  --toggle-icon-show: "☀️";
+}
 
-      --serif: "Literata", ui-serif, Georgia, "Times New Roman", Times, serif;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-    }
+/* ═══════════════════════════════════════════
+   TOKENS — DARK MODE
+═══════════════════════════════════════════ */
+[data-theme="dark"] {
+  --bg:           #0c1120;
+  --bg2:          #101626;
+  --surface:      #161d2e;
+  --surface2:     #1c2438;
+  --border:       rgba(255,255,255,.07);
+  --border-hard:  rgba(255,255,255,.13);
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+  --ink:          #dde5f5;
+  --ink2:         #9aafd0;
+  --muted:        #6880a8;
+  --faint:        #3a4d6a;
 
-    body{
-      margin:0;
-      font-family:var(--serif);
-      color:var(--ink);
-      background:
-        radial-gradient(1200px 700px at 15% 10%, rgba(23,57,91,.15), transparent 60%),
-        radial-gradient(900px 600px at 85% 20%, rgba(15,39,66,.10), transparent 55%),
-        linear-gradient(180deg, #fbfcff 0%, var(--paper) 70%);
-    }
+  --gold:         #f0c060;
+  --gold-soft:    rgba(240,192,96,.12);
+  --blue:         #5b8dee;
+  --blue-soft:    rgba(91,141,238,.12);
+  --green:        #3ecf8e;
+  --green-soft:   rgba(62,207,142,.10);
+  --red:          #f4715e;
+  --red-soft:     rgba(244,113,94,.12);
 
-    a{color:inherit;text-decoration:none}
-    a:focus{outline:3px solid rgba(30,79,122,.25); outline-offset:3px; border-radius:18px}
+  --hero-bg:      linear-gradient(135deg,#0a1626 0%,#101f36 55%,#0a1626 100%);
+  --hero-text:    #e8f0ff;
+  --hero-sub:     rgba(220,232,255,.72);
 
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding:28px 18px 60px;
-    }
+  --shadow-sm:    0 2px 8px rgba(0,0,0,.25);
+  --shadow-md:    0 8px 24px rgba(0,0,0,.30);
+  --shadow-lg:    0 16px 36px rgba(0,0,0,.38);
+  --shadow-hover: 0 12px 30px rgba(0,0,0,.42);
 
-    /* ===== Header (mais editorial) ===== */
-    .hero{
-      border:1px solid rgba(255,255,255,.14);
-      background:
-        linear-gradient(135deg, rgba(15,39,66,.92) 0%, rgba(22,54,84,.92) 55%, rgba(15,39,66,.90) 100%);
-      color:#fff;
-      border-radius:var(--radius-xl);
-      box-shadow: var(--shadow);
-      padding:26px 24px;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero::after{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(680px 260px at 12% 18%, rgba(255,255,255,.14), transparent 62%),
-        radial-gradient(520px 260px at 86% 10%, rgba(255,255,255,.10), transparent 62%),
-        radial-gradient(520px 280px at 72% 90%, rgba(255,255,255,.08), transparent 60%);
-      pointer-events:none;
-    }
-    .hero-top{
-      display:flex;
-      gap:18px;
-      align-items:flex-start;
-      justify-content:space-between;
-      position:relative;
-      z-index:1;
-      flex-wrap:wrap;
-    }
-    .brand{min-width:260px}
-    .brand h1{
-      margin:0 0 6px;
-      font-size:22px;
-      font-weight:700;
-      letter-spacing:.2px;
-    }
-    .brand p{
-      margin:0;
-      color:rgba(255,255,255,.86);
-      line-height:1.45;
-      max-width:72ch;
-      font-size:13.5px;
-      font-family:var(--sans);
-    }
+  --toggle-bg:    #2a3a5a;
+  --toggle-knob:  #f0c060;
+}
 
-    .meta{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      min-width:270px;
-      flex:1;
-      max-width:430px;
-      align-items:flex-end;
-      font-family:var(--sans);
-    }
+/* ═══════════════════════════════════════════
+   BASE
+═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-    .search{
-      width:100%;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:flex-end;
-    }
-    .search label{
-      font-size:12.5px;
-      opacity:.86;
-      white-space:nowrap;
-    }
-    .search input{
-      width:min(430px, 100%);
-      padding:12px 14px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.18);
-      background:rgba(255,255,255,.10);
-      color:#fff;
-      font-size:13.5px;
-      outline:none;
-      box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);
-      font-family:var(--sans);
-    }
-    .search input::placeholder{color:rgba(255,255,255,.75)}
-    .search input:focus{
-      border-color:rgba(255,255,255,.35);
-      box-shadow:0 0 0 3px rgba(255,255,255,.10), inset 0 0 0 1px rgba(255,255,255,.08);
-    }
+body {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--bg);
+  transition: background .25s, color .25s;
+  min-height: 100vh;
+}
 
-    .legend{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      font-size:12px;
-      background:rgba(255,255,255,.10);
-      border:1px solid rgba(255,255,255,.16);
-      color:rgba(255,255,255,.92);
-      user-select:none;
-    }
-    .dot{width:10px;height:10px;border-radius:99px;display:inline-block}
-    .dot.orgao{background:var(--orgao)}
-    .dot.prazo{background:var(--prazo)}
-    .dot.alert{background:var(--alert)}
-    .dot.keyword{background:#c9d6e6}
+a { color: inherit; text-decoration: none; }
 
-    /* ===== Sections ===== */
-    .section{ margin-top:18px; }
-    .section-head{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:10px;
-      margin:14px 2px 12px;
-      flex-wrap:wrap;
-      font-family:var(--sans);
-    }
-    .section-head h2{
-      margin:0;
-      font-size:16px;
-      letter-spacing:.2px;
-      color:var(--navy);
-      font-weight:800;
-    }
-    .section-head p{
-      margin:0;
-      font-size:12.5px;
-      color:var(--muted);
-      max-width:85ch;
-      line-height:1.4;
-    }
+/* ═══════════════════════════════════════════
+   PROGRESS BAR
+═══════════════════════════════════════════ */
+#progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--gold);
+  z-index: 200;
+  transition: width .08s linear;
+}
 
-    /* ===== Grid & Luxury clean cards ===== */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(12, 1fr);
-      gap:14px;
-    }
+/* ═══════════════════════════════════════════
+   THEME TOGGLE
+═══════════════════════════════════════════ */
+.theme-toggle {
+  position: fixed;
+  bottom: 80px;
+  right: 24px;
+  z-index: 150;
+  background: var(--surface);
+  border: 1px solid var(--border-hard);
+  box-shadow: var(--shadow-md);
+  border-radius: 50px;
+  padding: 8px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: all .2s;
+  user-select: none;
+}
+.theme-toggle:hover { color: var(--ink); box-shadow: var(--shadow-lg); }
+.toggle-track {
+  width: 38px;
+  height: 20px;
+  background: var(--toggle-bg);
+  border-radius: 20px;
+  position: relative;
+  transition: background .25s;
+}
+.toggle-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--toggle-knob);
+  transition: transform .25s, background .25s;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+}
+[data-theme="dark"] .toggle-knob { transform: translateX(18px); }
+.toggle-emoji { font-size: 15px; line-height: 1; }
 
-    .cardlink{
-      grid-column:span 6;
-      display:block;
-      border-radius:var(--radius-lg);
-      background:linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
-      border:1px solid var(--line);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      transition: transform .10s ease, box-shadow .12s ease, border-color .12s ease;
-      position:relative;
-    }
-    @media (max-width:900px){ .cardlink{grid-column:span 12;} }
+/* ═══════════════════════════════════════════
+   BACK TO TOP
+═══════════════════════════════════════════ */
+#back-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 150;
+  width: 44px;
+  height: 44px;
+  background: var(--surface);
+  border: 1px solid var(--border-hard);
+  border-radius: 50%;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--muted);
+  transition: all .2s;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+}
+#back-top.visible {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+#back-top:hover { color: var(--gold); box-shadow: var(--shadow-lg); transform: translateY(-2px); }
 
-    /* barra vertical por “cor do título” */
-    .cardlink::before{
-      content:"";
-      position:absolute;
-      left:0; top:0; bottom:0;
-      width:8px;
-      background: linear-gradient(180deg, color-mix(in srgb, var(--c) 90%, #ffffff 10%), var(--c));
-      opacity:.95;
-    }
+/* ═══════════════════════════════════════════
+   WRAP
+═══════════════════════════════════════════ */
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
 
-    .cardlink:hover{
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-hover);
-      border-color: color-mix(in srgb, var(--c) 22%, rgba(15,39,66,.12));
-    }
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero {
+  background: var(--hero-bg);
+  border-radius: 0 0 28px 28px;
+  padding: 36px 32px 32px;
+  margin-bottom: 36px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(700px 300px at 15% 20%, rgba(255,255,255,.09), transparent 60%),
+    radial-gradient(500px 250px at 85% 10%, rgba(255,255,255,.06), transparent 55%);
+  pointer-events: none;
+}
 
-    .card-inner{
-      padding:16px 16px 16px 18px;
-      display:flex;
-      gap:14px;
-      align-items:flex-start;
-      justify-content:space-between;
-    }
+/* Brasão / ornamento editorial no canto */
+.hero::after {
+  content: '§';
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Crimson Pro', serif;
+  font-size: 140px;
+  font-weight: 700;
+  color: rgba(255,255,255,.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
 
-    .card-text{ min-width:0; padding-left:8px; }
-    .card-text h3{
-      margin:2px 0 8px;
-      font-size:14.6px;
-      line-height:1.22;
-      letter-spacing:.22px;
-      font-weight:700;
-      color:var(--ink);
-      text-transform:uppercase;
-    }
-    .card-text p{
-      margin:0;
-      color:var(--slate);
-      font-size:12.9px;
-      line-height:1.5;
-      max-width:72ch;
-      font-family:var(--sans);
-    }
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
 
-    .badge{
-      flex:0 0 auto;
-      width:38px;
-      height:38px;
-      border-radius:999px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:800;
-      letter-spacing:.8px;
-      font-size:12.8px;
-      color: color-mix(in srgb, var(--c) 70%, #0b1b2b 30%);
-      background: color-mix(in srgb, var(--c) 10%, #ffffff 90%);
-      border:1px solid color-mix(in srgb, var(--c) 28%, rgba(15,39,66,.10));
-      margin-top:2px;
-      user-select:none;
-      font-family:var(--sans);
-    }
+.hero-brand {}
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.hero-title {
+  font-family: 'Crimson Pro', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--hero-text);
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+.hero-sub {
+  font-size: 14px;
+  color: var(--hero-sub);
+  max-width: 52ch;
+  line-height: 1.55;
+}
 
-    /* fallback p/ navegadores sem color-mix */
-    @supports not (color: color-mix(in srgb, #000 50%, #fff 50%)){
-      .cardlink::before{ background: var(--c); }
-      .badge{ color: var(--navy); background: rgba(23,57,91,.08); border-color: rgba(23,57,91,.16); }
-    }
+.hero-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-end;
+  min-width: 260px;
+}
 
-    .note{
-      margin-top:18px;
-      background:rgba(23,57,91,.06);
-      border:1px solid rgba(23,57,91,.12);
-      border-radius:var(--radius-xl);
-      padding:14px 16px;
-      color:rgba(15,39,66,.82);
-      line-height:1.45;
-      font-size:12.8px;
-      font-family:var(--sans);
-    }
-    .mono{
-      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size:12.2px;
-      background:rgba(255,255,255,.70);
-      border:1px solid rgba(15,39,66,.12);
-      padding:2px 8px;
-      border-radius:10px;
-      display:inline-block;
-      margin:2px 0;
-    }
+/* Search */
+.search-wrap {
+  width: 100%;
+  position: relative;
+}
+.search-wrap svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: .6;
+  pointer-events: none;
+}
+#search-input {
+  width: 100%;
+  padding: 11px 14px 11px 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.09);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13.5px;
+  outline: none;
+  transition: border-color .2s, background .2s;
+}
+#search-input::placeholder { color: rgba(255,255,255,.55); }
+#search-input:focus {
+  border-color: rgba(255,255,255,.32);
+  background: rgba(255,255,255,.13);
+}
 
-    .hidden{display:none !important;}
-  </style>
+/* Legend chips */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.lchip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: .06em;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+  color: rgba(255,255,255,.85);
+}
+.ldot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ldot-gold  { background: var(--gold); }
+.ldot-blue  { background: #5ba8f0; }
+.ldot-red   { background: #f47070; }
+.ldot-dim   { background: rgba(255,255,255,.35); }
+
+/* ═══════════════════════════════════════════
+   SECTION
+═══════════════════════════════════════════ */
+.section { margin-bottom: 36px; }
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.section-line { flex: 1; height: 1px; background: var(--border-hard); }
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--faint);
+  white-space: nowrap;
+}
+.section-title {
+  font-family: 'Crimson Pro', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════
+   GRID
+═══════════════════════════════════════════ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+}
+
+/* ═══════════════════════════════════════════
+   CARD
+═══════════════════════════════════════════ */
+.card {
+  grid-column: span 6;
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  position: relative;
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+
+  /* Stagger animation */
+  opacity: 0;
+  animation: cardIn .35s ease forwards;
+}
+.card:nth-child(1)  { animation-delay: .04s }
+.card:nth-child(2)  { animation-delay: .08s }
+.card:nth-child(3)  { animation-delay: .12s }
+.card:nth-child(4)  { animation-delay: .16s }
+.card:nth-child(5)  { animation-delay: .20s }
+.card:nth-child(6)  { animation-delay: .24s }
+.card:nth-child(7)  { animation-delay: .28s }
+.card:nth-child(8)  { animation-delay: .32s }
+.card:nth-child(9)  { animation-delay: .36s }
+.card:nth-child(10) { animation-delay: .40s }
+.card:nth-child(11) { animation-delay: .44s }
+.card:nth-child(12) { animation-delay: .48s }
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Barra lateral colorida */
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--c, #1c3f63);
+  border-radius: 16px 0 0 16px;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: color-mix(in srgb, var(--c, #1c3f63) 30%, var(--border) 70%);
+}
+/* fallback */
+@supports not (color: color-mix(in srgb, red 50%, blue 50%)) {
+  .card:hover { border-color: var(--border-hard); }
+}
+
+.card-inner {
+  padding: 18px 18px 18px 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.card-body { flex: 1; min-width: 0; padding-left: 10px; }
+
+.card-title {
+  font-family: 'Crimson Pro', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 6px;
+  letter-spacing: .1px;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Badge número */
+.card-badge {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--badge-bg, var(--bg2));
+  color: var(--c, #1c3f63);
+  border: 1px solid color-mix(in srgb, var(--c, #1c3f63) 20%, var(--border) 80%);
+  margin-top: 2px;
+  transition: background .2s;
+}
+@supports not (color: color-mix(in srgb, red 50%, blue 50%)) {
+  .card-badge { border-color: var(--border-hard); }
+}
+
+[data-theme="dark"] .card-badge {
+  background: color-mix(in srgb, var(--c, #1c3f63) 15%, var(--surface2) 85%);
+  color: color-mix(in srgb, var(--c, #1c3f63) 60%, #ffffff 40%);
+}
+
+/* Card módulo — destaque diferente */
+.card.mod { grid-column: span 6; }
+
+/* Card destaque (span full) para módulos qndo sozinhos */
+.card.span-full { grid-column: span 12; }
+
+/* ═══════════════════════════════════════════
+   EMPTY STATE
+═══════════════════════════════════════════ */
+.empty-state {
+  grid-column: span 12;
+  text-align: center;
+  padding: 40px;
+  color: var(--muted);
+  font-size: 14px;
+  display: none;
+}
+
+/* ═══════════════════════════════════════════
+   NOTE FOOTER
+═══════════════════════════════════════════ */
+.note {
+  background: var(--blue-soft);
+  border: 1px solid color-mix(in srgb, var(--blue) 20%, var(--border) 80%);
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-top: 8px;
+}
+@supports not (color: color-mix(in srgb, red 50%, blue 50%)) {
+  .note { border-color: var(--border-hard); }
+}
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border-hard);
+  padding: 1px 7px;
+  border-radius: 6px;
+}
+
+/* ═══════════════════════════════════════════
+   HIDDEN
+═══════════════════════════════════════════ */
+.hidden { display: none !important; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media (max-width: 720px) {
+  .card, .card.mod { grid-column: span 12; }
+  .hero-controls { align-items: stretch; width: 100%; min-width: unset; }
+  .legend { justify-content: flex-start; }
+  .hero-title { font-size: 26px; }
+  .hero::after { display: none; }
+}
+@media (max-width: 500px) {
+  .hero { padding: 26px 20px 24px; }
+  .wrap { padding: 0 14px 80px; }
+}
+</style>
 </head>
-
 <body>
-  <div class="wrap">
 
-    <header class="hero">
-      <div class="hero-top">
-        <div class="brand">
-          <h1>RICD — Índice de Estudos</h1>
-          <p>
-            Clique no card para abrir o arquivo do título.
-          </p>
+<div id="progress"></div>
+
+<!-- ═════════════════ HERO ═════════════════ -->
+<header class="hero">
+  <div class="wrap" style="padding-top:0;padding-bottom:0;">
+    <div class="hero-inner">
+
+      <div class="hero-brand">
+        <div class="hero-eyebrow">Câmara dos Deputados — Estudo RICD</div>
+        <h1 class="hero-title">Regimento Interno<br>da Câmara dos Deputados</h1>
+        <p class="hero-sub">Selecione um Título para abrir o arquivo de estudo correspondente.</p>
+      </div>
+
+      <div class="hero-controls">
+        <div class="search-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input id="search-input" type="search" placeholder="Filtrar: comissões, prazos, sessão…" autocomplete="off">
         </div>
 
-        <div class="meta">
-          <div class="search">
-            <label for="q">Filtrar:</label>
-            <input id="q" type="search" placeholder="ex.: comissões, prazos, proposições, sessão…" autocomplete="off" />
-          </div>
-
-          <div class="legend" aria-label="Legenda de cores (usada nos resumos)">
-            <span class="chip"><span class="dot orgao"></span>ÓRGÃOS</span>
-            <span class="chip"><span class="dot prazo"></span>PRAZOS</span>
-            <span class="chip"><span class="dot alert"></span>EXCEÇÕES / ALERTA</span>
-            <span class="chip"><span class="dot keyword"></span>PALAVRAS-CHAVE</span>
-          </div>
+        <div class="legend">
+          <span class="lchip"><span class="ldot ldot-blue"></span>Órgãos</span>
+          <span class="lchip"><span class="ldot ldot-gold"></span>Prazos</span>
+          <span class="lchip"><span class="ldot ldot-red"></span>Exceções</span>
+          <span class="lchip"><span class="ldot ldot-dim"></span>Palavras-chave</span>
         </div>
       </div>
-    </header>
-    <p>&nbsp;</p>
-      <div class="grid" id="cards">
-        <!-- Paleta suave por título (navy/azulado/cinza/vinho/pastel profissional) -->
-        <a class="cardlink" href="titulo1.html" style="--c:#1c3f63" data-keywords="titulo 1 i disposicoes preliminares sede sessoes legislativas sessoes preparatorias posse">
-          <div class="card-inner">
-            <div class="card-text">
-              <h3>TÍTULO I — DISPOSIÇÕES PRELIMINARES</h3>
-              <p>Sede; sessões legislativas; sessões preparatórias; posse e organização inicial.</p>
-            </div>
-            <div class="badge">I</div>
-          </div>
-        </a>
 
-        <a class="cardlink" href="titulo2.html" style="--c:#254a78" data-keywords="titulo 2 ii orgaos da camara mesa comissoes liderancas secretaria">
-          <div class="card-inner">
-            <div class="card-text">
-              <h3>TÍTULO II — DOS ÓRGÃOS DA CÂMARA</h3>
-              <p>Estrutura orgânica: Mesa; lideranças; comissões e demais órgãos internos.</p>
-            </div>
-            <div class="badge">II</div>
-          </div>
-        </a>
-
-        <a class="cardlink" href="titulo3.html" style="--c:#2f5f6e" data-keywords="titulo 3 iii sessoes da camara plenarias ordem do dia expediente ata quoruns">
-          <div class="card-inner">
-            <div class="card-text">
-              <h3>TÍTULO III — DAS SESSÕES DA CÂMARA</h3>
-              <p>Regras de funcionamento das sessões: dinâmica, ordem, debates e registros.</p>
-            </div>
-            <div class="badge">III</div>
-          </div>
-        </a>
-
-        <a class="cardlink" href="titulo4.html" style="--c:#3a5c8a" data-keywords="titulo 4 iv proposicoes pec projeto emenda indicacao requerimento recurso parecer">
-          <div class="card-inner">
-            <div class="card-text">
-              <h3>TÍTULO IV — DAS PROPOSIÇÕES</h3>
-              <p>Espécies de proposições e regras formais de apresentação.</p>
-            </div>
-            <div class="badge">IV</div>
-          </div>
-        </a>
-
-        <a class="cardlink" href="titulo5.html" style="--c:#406d7a" data-keywords="titulo 5 v apreciacao das proposicoes tramitacao urgencia comissoes plenarios prazos pareceres">
-          <div class="card-inner">
-            <div class="card-text">
-              <h3>TÍTULO V — DA APRECIAÇÃO DAS PROPOSIÇÕES</h3>
-              <p>Tramitação, regimes, prazos, pareceres e deliberação.</p>
-            </div>
-            <div class="badge">V</div>
-          </div>
-        </a>
-
-        <a class="cardlink" href="titulo6.html" style="--c:#566a86" data-keywords="titulo 6 vi materias sujeitas disposicoes especiais rito proprio excecoes">
-          <div class="card-inner">
-            <div class="card-text">
-              <h3>TÍTULO VI — DISPOSIÇÕES ESPECIAIS</h3>
-              <p>Matérias com rito próprio e tratamento regimental diferenciado.</p>
-            </div>
-            <div class="badge">VI</div>
-          </div>
-        </a>
-
-        <a class="cardlink" href="titulo7.html" style="--c:#5a4b6e" data-keywords="titulo 7 vii deputados mandato prerrogativas deveres vedacoes licencas decoro">
-          <div class="card-inner">
-            <div class="card-text">
-              <h3>TÍTULO VII — DOS DEPUTADOS</h3>
-              <p>Direitos, deveres, prerrogativas, vedações e hipóteses do mandato.</p>
-            </div>
-            <div class="badge">VII</div>
-          </div>
-        </a>
-
-        <a class="cardlink" href="titulo8.html" style="--c:#7a4a53" data-keywords="titulo 8 viii participacao sociedade civil iniciativa popular peticoes representacoes">
-          <div class="card-inner">
-            <div class="card-text">
-              <h3>TÍTULO VIII — SOCIEDADE CIVIL</h3>
-              <p>Iniciativa popular, petições/representações e outras formas de participação.</p>
-            </div>
-            <div class="badge">VIII</div>
-          </div>
-        </a>
-
-        <a class="cardlink" href="titulo9.html" style="--c:#4c5f73" data-keywords="titulo 9 ix administracao economia interna servicos administrativos transparencia">
-          <div class="card-inner">
-            <div class="card-text">
-              <h3>TÍTULO IX — ADMINISTRAÇÃO INTERNA</h3>
-              <p>Serviços administrativos, regime interno e diretrizes de funcionamento.</p>
-            </div>
-            <div class="badge">IX</div>
-          </div>
-        </a>
-
-        <a class="cardlink" href="titulo10.html" style="--c:#2b3f57" data-keywords="titulo 10 x disposicoes finais transicao vigencia interpretacao">
-          <div class="card-inner">
-            <div class="card-text">
-              <h3>TÍTULO X — DISPOSIÇÕES FINAIS</h3>
-              <p>Regras de encerramento: disposições residuais, ajustes e fechamento.</p>
-            </div>
-            <div class="badge">X</div>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="outros">
-      <div class="section-head">
-        <h2 id="outros">Outros módulos</h2>
-        <p>Área para páginas temáticas e aprofundamentos.</p>
-      </div>
-
-      <div class="grid">
-        <a class="cardlink" href="modulo-padroes.html" style="--c:#1f6b4a" data-keywords="modulo comparativos prazos quoruns competencias pegadinhas">
-          <div class="card-inner">
-            <div class="card-text">
-              <h3>MÓDULO — PADRÕES, PRAZOS E PEGADINHAS</h3>
-              <p>Comparações transversais: prazos, quóruns, competências e exceções.</p>
-            </div>
-            <div class="badge">M</div>
-          </div>
-        </a>
-
-        <a class="cardlink" href="modulo-questoes.html" style="--c:#6b4a1f" data-keywords="modulo questoes exercicios cebraspe certo errado revisao">
-          <div class="card-inner">
-            <div class="card-text">
-              <h3>MÓDULO — QUESTÕES E TREINO (CEBRASPE)</h3>
-              <p>Banco de questões C/E com comentários e pontos de atenção por tema.</p>
-            </div>
-            <div class="badge">M</div>
-          </div>
-        </a>
-      </div>
-    </section>
-
+    </div>
   </div>
+</header>
 
-  <script>
-    (function(){
-      const input = document.getElementById('q');
-      const cards = Array.from(document.querySelectorAll('.cardlink'));
-      const norm = (s)=> (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-      input.addEventListener('input', function(){
-        const q = norm(input.value.trim());
-        if(!q){ cards.forEach(c=>c.classList.remove('hidden')); return; }
-        cards.forEach(card=>{
-          const hay = norm((card.getAttribute('data-keywords')||'') + ' ' + card.innerText);
-          card.classList.toggle('hidden', !hay.includes(q));
-        });
-      });
-    })();
-  </script>
+<!-- ═════════════════ CONTEÚDO ═════════════════ -->
+<div class="wrap">
+
+  <!-- Títulos principais -->
+  <section class="section" id="titulos">
+    <div class="section-head">
+      <div class="section-line"></div>
+      <div class="section-title">Títulos</div>
+      <div class="section-label">I a X</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="grid" id="cards-titulos">
+
+      <a class="card" href="titulo1.html" style="--c:#1c3f63"
+         data-kw="titulo 1 i disposicoes preliminares sede sessoes legislativas preparatorias posse">
+        <div class="card-inner">
+          <div class="card-body">
+            <div class="card-title">Título I — Disposições Preliminares</div>
+            <div class="card-desc">Sede; sessões legislativas; sessões preparatórias; posse e organização inicial.</div>
+          </div>
+          <div class="card-badge">I</div>
+        </div>
+      </a>
+
+      <a class="card" href="titulo2.html" style="--c:#254a78"
+         data-kw="titulo 2 ii orgaos da camara mesa comissoes liderancas secretaria">
+        <div class="card-inner">
+          <div class="card-body">
+            <div class="card-title">Título II — Dos Órgãos da Câmara</div>
+            <div class="card-desc">Estrutura orgânica: Mesa, lideranças, comissões e demais órgãos internos.</div>
+          </div>
+          <div class="card-badge">II</div>
+        </div>
+      </a>
+
+      <a class="card" href="titulo3.html" style="--c:#2f5f6e"
+         data-kw="titulo 3 iii sessoes da camara plenarias ordem do dia expediente ata quoruns">
+        <div class="card-inner">
+          <div class="card-body">
+            <div class="card-title">Título III — Das Sessões da Câmara</div>
+            <div class="card-desc">Regras de funcionamento das sessões: dinâmica, ordem, debates e registros.</div>
+          </div>
+          <div class="card-badge">III</div>
+        </div>
+      </a>
+
+      <a class="card" href="titulo4.html" style="--c:#3a5c8a"
+         data-kw="titulo 4 iv proposicoes pec projeto emenda indicacao requerimento recurso parecer">
+        <div class="card-inner">
+          <div class="card-body">
+            <div class="card-title">Título IV — Das Proposições</div>
+            <div class="card-desc">Espécies de proposições e regras formais de apresentação.</div>
+          </div>
+          <div class="card-badge">IV</div>
+        </div>
+      </a>
+
+      <a class="card" href="titulo5.html" style="--c:#406d7a"
+         data-kw="titulo 5 v apreciacao proposicoes tramitacao urgencia comissoes plenarios prazos pareceres">
+        <div class="card-inner">
+          <div class="card-body">
+            <div class="card-title">Título V — Da Apreciação das Proposições</div>
+            <div class="card-desc">Tramitação, regimes, prazos, pareceres e deliberação.</div>
+          </div>
+          <div class="card-badge">V</div>
+        </div>
+      </a>
+
+      <a class="card" href="titulo6.html" style="--c:#566a86"
+         data-kw="titulo 6 vi materias sujeitas disposicoes especiais rito proprio excecoes">
+        <div class="card-inner">
+          <div class="card-body">
+            <div class="card-title">Título VI — Disposições Especiais</div>
+            <div class="card-desc">Matérias com rito próprio e tratamento regimental diferenciado.</div>
+          </div>
+          <div class="card-badge">VI</div>
+        </div>
+      </a>
+
+      <a class="card" href="titulo7.html" style="--c:#5a4b6e"
+         data-kw="titulo 7 vii deputados mandato prerrogativas deveres vedacoes licencas decoro">
+        <div class="card-inner">
+          <div class="card-body">
+            <div class="card-title">Título VII — Dos Deputados</div>
+            <div class="card-desc">Direitos, deveres, prerrogativas, vedações e hipóteses do mandato.</div>
+          </div>
+          <div class="card-badge">VII</div>
+        </div>
+      </a>
+
+      <a class="card" href="titulo8.html" style="--c:#7a4a53"
+         data-kw="titulo 8 viii participacao sociedade civil iniciativa popular peticoes representacoes">
+        <div class="card-inner">
+          <div class="card-body">
+            <div class="card-title">Título VIII — Sociedade Civil</div>
+            <div class="card-desc">Iniciativa popular, petições, representações e participação social.</div>
+          </div>
+          <div class="card-badge">VIII</div>
+        </div>
+      </a>
+
+      <a class="card" href="titulo9.html" style="--c:#4c5f73"
+         data-kw="titulo 9 ix administracao economia interna servicos administrativos transparencia">
+        <div class="card-inner">
+          <div class="card-body">
+            <div class="card-title">Título IX — Administração Interna</div>
+            <div class="card-desc">Serviços administrativos, regime interno e diretrizes de funcionamento.</div>
+          </div>
+          <div class="card-badge">IX</div>
+        </div>
+      </a>
+
+      <a class="card" href="titulo10.html" style="--c:#2b3f57"
+         data-kw="titulo 10 x disposicoes finais transicao vigencia interpretacao">
+        <div class="card-inner">
+          <div class="card-body">
+            <div class="card-title">Título X — Disposições Finais</div>
+            <div class="card-desc">Disposições residuais, ajustes e encerramento.</div>
+          </div>
+          <div class="card-badge">X</div>
+        </div>
+      </a>
+
+      <div class="empty-state" id="empty-titulos">Nenhum título encontrado para "<span id="q-echo"></span>".</div>
+    </div>
+  </section>
+
+  <!-- Módulos temáticos -->
+  <section class="section" id="modulos">
+    <div class="section-head">
+      <div class="section-line"></div>
+      <div class="section-title">Módulos Temáticos</div>
+      <div class="section-label">Aprofundamento</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="grid" id="cards-modulos">
+
+      <a class="card mod" href="modulo-padroes.html" style="--c:#1f6b4a"
+         data-kw="modulo comparativos prazos quoruns competencias pegadinhas excecoes">
+        <div class="card-inner">
+          <div class="card-body">
+            <div class="card-title">Padrões, Prazos e Pegadinhas</div>
+            <div class="card-desc">Comparações transversais: prazos, quóruns, competências e exceções frequentes em prova.</div>
+          </div>
+          <div class="card-badge">M1</div>
+        </div>
+      </a>
+
+      <a class="card mod" href="modulo-questoes.html" style="--c:#6b4a1f"
+         data-kw="modulo questoes exercicios cebraspe certo errado revisao banco">
+        <div class="card-inner">
+          <div class="card-body">
+            <div class="card-title">Questões e Treino CEBRASPE</div>
+            <div class="card-desc">Banco de questões C/E com comentários e pontos de atenção organizados por tema.</div>
+          </div>
+          <div class="card-badge">M2</div>
+        </div>
+      </a>
+
+      <div class="empty-state" id="empty-modulos">Nenhum módulo encontrado.</div>
+    </div>
+  </section>
+
+  <p class="note">
+    Arquivos nomeados como <span class="mono">titulo1.html</span>, <span class="mono">titulo2.html</span> … e <span class="mono">modulo-*.html</span>.
+    Para filtrar, use a busca no topo — acentos são ignorados.
+  </p>
+
+</div><!-- /wrap -->
+
+<!-- ═════════════════ FAB BUTTONS ═════════════════ -->
+<button class="theme-toggle" id="theme-btn" title="Alternar tema">
+  <span class="toggle-emoji" id="theme-icon">🌙</span>
+  <div class="toggle-track">
+    <div class="toggle-knob"></div>
+  </div>
+  <span id="theme-label">Escuro</span>
+</button>
+
+<button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- ═════════════════ SCRIPTS ═════════════════ -->
+<script>
+// ── Tema ─────────────────────────────────────────────
+(function() {
+  const root  = document.documentElement;
+  const btn   = document.getElementById('theme-btn');
+  const icon  = document.getElementById('theme-icon');
+  const label = document.getElementById('theme-label');
+
+  let dark = localStorage.getItem('ricd-theme') === 'dark';
+
+  function apply() {
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+    icon.textContent  = dark ? '☀️' : '🌙';
+    label.textContent = dark ? 'Claro' : 'Escuro';
+    localStorage.setItem('ricd-theme', dark ? 'dark' : 'light');
+  }
+
+  // Aplicar preferência salva ou do sistema
+  if (!localStorage.getItem('ricd-theme')) {
+    dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  apply();
+
+  btn.addEventListener('click', () => { dark = !dark; apply(); });
+})();
+
+// ── Progresso + Back-to-top ───────────────────────────
+(function() {
+  const bar  = document.getElementById('progress');
+  const btop = document.getElementById('back-top');
+  window.addEventListener('scroll', function() {
+    const scrolled = window.scrollY;
+    const total    = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (scrolled / total * 100) + '%';
+    btop.classList.toggle('visible', scrolled > 240);
+  });
+})();
+
+// ── Busca / Filtro ────────────────────────────────────
+(function() {
+  const input  = document.getElementById('search-input');
+  const allCards = Array.from(document.querySelectorAll('.card'));
+  const emptyT = document.getElementById('empty-titulos');
+  const emptyM = document.getElementById('empty-modulos');
+  const echo   = document.getElementById('q-echo');
+
+  function norm(s) {
+    return (s||'').toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9 ]/g, '');
+  }
+
+  input.addEventListener('input', function() {
+    const q = norm(this.value.trim());
+    echo.textContent = this.value.trim();
+
+    if (!q) {
+      allCards.forEach(c => c.classList.remove('hidden'));
+      emptyT.style.display = emptyM.style.display = 'none';
+      return;
+    }
+
+    let visT = 0, visM = 0;
+    allCards.forEach(card => {
+      const hay = norm((card.dataset.kw||'') + ' ' + card.innerText);
+      const show = hay.includes(q);
+      card.classList.toggle('hidden', !show);
+      if (show && card.closest('#cards-titulos')) visT++;
+      if (show && card.closest('#cards-modulos')) visM++;
+    });
+
+    emptyT.style.display = visT === 0 ? 'block' : 'none';
+    emptyM.style.display = visM === 0 ? 'block' : 'none';
+  });
+})();
+</script>
 </body>
 </html>
