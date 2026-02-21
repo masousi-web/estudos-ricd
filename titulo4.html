@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RICD — Título IV — Das Proposições</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   TOKENS — LIGHT
+═══════════════════════════════════════════════ */
+:root,[data-theme="light"]{
+  --bg:#f3f6fb;--bg2:#eaeff8;--surface:#ffffff;--surface2:#f7faff;
+  --border:rgba(15,39,66,.09);--border-hard:rgba(15,39,66,.16);
+
+  --ink:#0d1f35;--ink2:#2b4060;--muted:#526a88;--faint:#8fa8c2;
+
+  --gold:#b86b1a;--gold-soft:rgba(184,107,26,.10);
+  --blue:#1a4d8a;--blue-soft:rgba(26,77,138,.08);
+  --green:#186347;--green-soft:rgba(24,99,71,.09);
+  --red:#a81f2a;--red-soft:rgba(168,31,42,.09);
+  --purple:#5a3d8a;--purple-soft:rgba(90,61,138,.08);
+
+  --hero-from:#102a4a;--hero-to:#1a4d8a;--hero-text:#ffffff;--hero-sub:rgba(255,255,255,.82);
+
+  --sh-sm:0 2px 8px rgba(12,26,43,.06);
+  --sh-md:0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:0 14px 34px rgba(12,26,43,.11);
+  --sh-hov:0 10px 28px rgba(12,26,43,.14);
+
+  --toggle-bg:#d8e2f0;--toggle-knob:#ffffff;
+}
+
+/* ═══════════════════════════════════════════════
+   TOKENS — DARK
+═══════════════════════════════════════════════ */
+[data-theme="dark"]{
+  --bg:#0c1120;--bg2:#101728;--surface:#161d2f;--surface2:#1b2238;
+  --border:rgba(255,255,255,.06);--border-hard:rgba(255,255,255,.12);
+
+  --ink:#dce8fa;--ink2:#94b0d4;--muted:#627ea6;--faint:#374e6a;
+
+  --gold:#f0b84a;--gold-soft:rgba(240,184,74,.11);
+  --blue:#5b96f0;--blue-soft:rgba(91,150,240,.11);
+  --green:#38c882;--green-soft:rgba(56,200,130,.09);
+  --red:#f46862;--red-soft:rgba(244,104,98,.11);
+  --purple:#a07af5;--purple-soft:rgba(160,122,245,.10);
+
+  --hero-from:#08111e;--hero-to:#0f1e30;--hero-text:#e4f0ff;--hero-sub:rgba(210,228,255,.70);
+
+  --sh-sm:0 2px 8px rgba(0,0,0,.28);
+  --sh-md:0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:0 14px 34px rgba(0,0,0,.40);
+  --sh-hov:0 10px 28px rgba(0,0,0,.46);
+
+  --toggle-bg:#243350;--toggle-knob:#f0b84a;
+}
+
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',sans-serif;
+  font-size:15px;line-height:1.68;
+  color:var(--ink);
+  background:var(--bg);
+  transition:background .25s,color .25s;
+  min-height:100vh;
+}
+a{color:inherit;text-decoration:none}
+
+/* ═══════════════════════════════════════════════
+   PROGRESS BAR
+═══════════════════════════════════════════════ */
+#prog{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--blue));
+  z-index:300;transition:width .08s linear;border-radius:0 2px 2px 0;
+}
+
+/* ═══════════════════════════════════════════════
+   WRAP
+═══════════════════════════════════════════════ */
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px 80px}
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+.hero{
+  background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);
+  border-radius:0 0 28px 28px;
+  padding:38px 36px 34px;margin-bottom:28px;
+  position:relative;overflow:hidden;box-shadow:var(--sh-lg);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.10),transparent 58%),
+    radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.07),transparent 55%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'IV';
+  position:absolute;right:34px;top:50%;transform:translateY(-50%);
+  font-family:'Crimson Pro',serif;font-size:160px;font-weight:700;
+  color:rgba(255,255,255,.05);line-height:1;pointer-events:none;user-select:none;
+}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:10px;
+}
+.hero-title{
+  font-family:'Crimson Pro',serif;
+  font-size:clamp(28px,3.5vw,42px);
+  font-weight:700;color:var(--hero-text);
+  line-height:1.12;margin-bottom:10px;
+}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:86ch;line-height:1.58}
+
+/* ═══════════════════════════════════════════════
+   INDEX GRID
+═══════════════════════════════════════════════ */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:18px}
+.c12{grid-column:span 12}
+.c6{grid-column:span 12}
+@media(min-width:760px){.c6{grid-column:span 6}}
+
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:var(--sh-sm);
+  overflow:hidden;position:relative;
+  transition:transform .14s,box-shadow .14s,border-color .14s;
+  opacity:0;
+  animation:fadeUp .35s ease forwards;
+}
+.card:nth-child(1){animation-delay:.03s}
+.card:nth-child(2){animation-delay:.07s}
+.card:nth-child(3){animation-delay:.11s}
+.card:nth-child(4){animation-delay:.15s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{transform:translateY(-2px);box-shadow:var(--sh-hov)}
+.card::before{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:var(--c,#1c3f63);
+  border-radius:14px 0 0 14px;
+}
+.card-inner{padding:16px 16px 16px 18px}
+.card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.badge{
+  flex-shrink:0;width:38px;height:38px;border-radius:10px;
+  background:var(--bg2);border:1px solid var(--border-hard);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;
+  color:var(--c,#1c3f63);margin-top:1px;
+}
+.c-title{font-family:'Crimson Pro',serif;font-size:18px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:3px}
+.c-lead{font-size:13.5px;color:var(--muted);line-height:1.55}
+.meta{
+  margin-top:10px;
+  display:flex;flex-wrap:wrap;gap:8px;
+}
+.tag{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 10px;border-radius:100px;
+  border:1px solid var(--border-hard);
+  background:color-mix(in srgb, var(--c) 7%, var(--surface) 93%);
+  font-size:12px;color:var(--ink2);
+}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){
+  .tag{background:var(--surface2)}
+}
+.tag b{color:var(--c);font-weight:800}
+
+/* ═══════════════════════════════════════════════
+   NAV FOOTER
+═══════════════════════════════════════════════ */
+.footer{
+  margin-top:28px;
+  padding-top:18px;
+  border-top:1px solid var(--border-hard);
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;
+  color:var(--faint);font-size:12.5px;
+}
+.footer a{
+  color:var(--blue);font-weight:600;
+  padding:6px 14px;border-radius:10px;
+  border:1px solid var(--border-hard);background:var(--surface);
+  font-size:13px;transition:box-shadow .15s,transform .12s;
+}
+.footer a:hover{box-shadow:var(--sh-md);transform:translateY(-1px)}
+
+/* ═══════════════════════════════════════════════
+   FAB — THEME TOGGLE + BACK TO TOP
+═══════════════════════════════════════════════ */
+.fab-wrap{
+  position:fixed;bottom:24px;right:24px;z-index:200;
+  display:flex;flex-direction:column;gap:10px;align-items:flex-end;
+}
+#theme-btn{
+  background:var(--surface);border:1px solid var(--border-hard);
+  box-shadow:var(--sh-md);border-radius:50px;padding:8px 14px;
+  cursor:pointer;display:flex;align-items:center;gap:9px;
+  font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--muted);
+  transition:all .2s;user-select:none;
+}
+#theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
+.t-track{width:38px;height:20px;background:var(--toggle-bg);border-radius:20px;position:relative;transition:background .25s}
+.t-knob{
+  position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;
+  background:var(--toggle-knob);transition:transform .25s,background .25s;
+  box-shadow:0 1px 4px rgba(0,0,0,.22);
+}
+[data-theme="dark"] .t-knob{transform:translateX(18px)}
+#back-top{
+  width:44px;height:44px;background:var(--surface);
+  border:1px solid var(--border-hard);border-radius:50%;
+  box-shadow:var(--sh-md);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;color:var(--muted);transition:all .2s;
+  opacity:0;pointer-events:none;transform:translateY(10px);
+}
+#back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
+
+@media(max-width:600px){
+  .hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}
+  .hero::after{display:none}
+  .wrap{padding:0 14px 80px}
+}
+</style>
+</head>
+
+<body>
+<div id="prog"></div>
+
+<header class="hero" id="topo">
+  <div class="wrap" style="padding:0">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">RICD • Título IV</div>
+      <h1 class="hero-title">Das Proposições</h1>
+      <p class="hero-sub">Índice do Título IV. Cada capítulo abre em uma página própria para facilitar revisão e estudo.</p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="grid" role="list" aria-label="Capítulos do Título IV">
+
+    <a class="card c6" role="listitem" href="titulo4-cap1.html" style="--c:#1a4d8a">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="badge">I</div>
+          <div>
+            <div class="c-title">Capítulo I — Disposições Gerais</div>
+            <div class="c-lead">Conceito e espécies de proposição; processo legislativo digital; autoria; justificação.</div>
+          </div>
+        </div>
+        <div class="meta">
+          <span class="tag"><b>Arts.</b> 100–103</span>
+          <span class="tag"><b>Foco</b> Definição • forma • autoria</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card c6" role="listitem" href="titulo4-cap2.html" style="--c:#b86b1a">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="badge">II</div>
+          <div>
+            <div class="c-title">Capítulo II — Dos Projetos</div>
+            <div class="c-lead">Retirada, arquivamento, publicação e espécies/iniciativa de projetos; requisitos de redação.</div>
+          </div>
+        </div>
+        <div class="meta">
+          <span class="tag"><b>Arts.</b> 104–112</span>
+          <span class="tag"><b>Foco</b> Projeto • iniciativa • tramitação</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card c6" role="listitem" href="titulo4-cap3.html" style="--c:#186347">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="badge">III</div>
+          <div>
+            <div class="c-title">Capítulo III — Das Indicações</div>
+            <div class="c-lead">Conceito, espécies, vedações e tramitação (outro Poder vs Comissão).</div>
+          </div>
+        </div>
+        <div class="meta">
+          <span class="tag"><b>Art.</b> 113</span>
+          <span class="tag"><b>Foco</b> Sugestão • vedação • prazo</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card c6" role="listitem" href="titulo4-cap4.html" style="--c:#5a3d8a">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="badge">IV</div>
+          <div>
+            <div class="c-title">Capítulo IV — Dos Requerimentos</div>
+            <div class="c-lead">Despacho do Presidente, ouvido a Mesa, e deliberação do Plenário (rols, prazos e rito).</div>
+          </div>
+        </div>
+        <div class="meta">
+          <span class="tag"><b>Arts.</b> 114–117</span>
+          <span class="tag"><b>Foco</b> Competência • recurso • rito</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="footer">
+    <span>RICD • Índice do Título IV • Das Proposições</span>
+    <a href="titulo3.html">← Voltar ao Título III</a>
+    <!-- se você tiver título V depois, troque o link abaixo -->
+    <a href="titulo5.html">Ir para o Título V →</a>
+  </div>
+
+</div>
+
+<div class="fab-wrap">
+  <button id="theme-btn" title="Alternar tema">
+    <span id="t-icon">🌙</span>
+    <div class="t-track"><div class="t-knob"></div></div>
+    <span id="t-label">Escuro</span>
+  </button>
+  <button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function(){
+  const root=document.documentElement,btn=document.getElementById('theme-btn'),
+        icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
+  let dark=localStorage.getItem('ricd-theme')==='dark';
+  if(!localStorage.getItem('ricd-theme')) dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function apply(){
+    root.setAttribute('data-theme',dark?'dark':'light');
+    icon.textContent=dark?'☀️':'🌙';
+    lbl.textContent=dark?'Claro':'Escuro';
+    localStorage.setItem('ricd-theme',dark?'dark':'light');
+  }
+  apply();
+  btn.addEventListener('click',()=>{dark=!dark;apply()});
+})();
+(function(){
+  const bar=document.getElementById('prog'),top=document.getElementById('back-top');
+  window.addEventListener('scroll',function(){
+    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(s/h*100)+'%';
+    top.classList.toggle('show',s>280);
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
