@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RICD — Título IV — Capítulo IV — Dos Requerimentos</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root,[data-theme="light"]{
+  --bg:#f3f6fb;--bg2:#eaeff8;--surface:#ffffff;--surface2:#f7faff;
+  --border:rgba(15,39,66,.09);--border-hard:rgba(15,39,66,.16);
+  --ink:#0d1f35;--ink2:#2b4060;--muted:#526a88;--faint:#8fa8c2;
+
+  --gold:#b86b1a;--gold-soft:rgba(184,107,26,.10);
+  --blue:#1a4d8a;--blue-soft:rgba(26,77,138,.08);
+  --green:#186347;--green-soft:rgba(24,99,71,.09);
+  --red:#a81f2a;--red-soft:rgba(168,31,42,.09);
+
+  --hero-from:#102a4a;--hero-to:#1a4d8a;--hero-text:#ffffff;--hero-sub:rgba(255,255,255,.82);
+
+  --sh-sm:0 2px 8px rgba(12,26,43,.06);
+  --sh-md:0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:0 14px 34px rgba(12,26,43,.11);
+  --sh-hov:0 10px 28px rgba(12,26,43,.14);
+
+  --toggle-bg:#d8e2f0;--toggle-knob:#ffffff;
+}
+[data-theme="dark"]{
+  --bg:#0c1120;--bg2:#101728;--surface:#161d2f;--surface2:#1b2238;
+  --border:rgba(255,255,255,.06);--border-hard:rgba(255,255,255,.12);
+  --ink:#dce8fa;--ink2:#94b0d4;--muted:#627ea6;--faint:#374e6a;
+
+  --gold:#f0b84a;--gold-soft:rgba(240,184,74,.11);
+  --blue:#5b96f0;--blue-soft:rgba(91,150,240,.11);
+  --green:#38c882;--green-soft:rgba(56,200,130,.09);
+  --red:#f46862;--red-soft:rgba(244,104,98,.11);
+
+  --hero-from:#08111e;--hero-to:#0f1e30;--hero-text:#e4f0ff;--hero-sub:rgba(210,228,255,.70);
+
+  --sh-sm:0 2px 8px rgba(0,0,0,.28);
+  --sh-md:0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:0 14px 34px rgba(0,0,0,.40);
+  --sh-hov:0 10px 28px rgba(0,0,0,.46);
+
+  --toggle-bg:#243350;--toggle-knob:#f0b84a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',sans-serif;font-size:15px;line-height:1.68;
+  color:var(--ink);background:var(--bg);
+  transition:background .25s,color .25s;min-height:100vh;
+}
+#prog{position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--blue));z-index:300;border-radius:0 2px 2px 0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px 90px}
+
+/* HERO */
+.hero{
+  background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);
+  border-radius:0 0 28px 28px;padding:38px 36px 30px;margin-bottom:22px;
+  position:relative;overflow:hidden;box-shadow:var(--sh-lg);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.10),transparent 58%),
+             radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.07),transparent 55%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'IV • IV';position:absolute;right:30px;top:50%;transform:translateY(-50%);
+  font-family:'Crimson Pro',serif;font-size:76px;font-weight:700;
+  color:rgba(255,255,255,.06);line-height:1;pointer-events:none;user-select:none;
+}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.hero-title{font-family:'Crimson Pro',serif;font-size:clamp(26px,3.2vw,40px);font-weight:700;color:var(--hero-text);line-height:1.12;margin-bottom:10px}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:92ch;line-height:1.58}
+
+/* SECTIONS */
+.section{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;box-shadow:var(--sh-sm);overflow:hidden;margin-top:14px;
+  opacity:0;animation:fadeUp .35s ease forwards;
+}
+.section:nth-of-type(1){animation-delay:.04s}
+.section:nth-of-type(2){animation-delay:.08s}
+.section:nth-of-type(3){animation-delay:.12s}
+.section:nth-of-type(4){animation-delay:.16s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+.s-head{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:16px 18px 12px 18px;
+  background:linear-gradient(180deg,var(--surface2),var(--surface));
+  border-bottom:1px solid var(--border);
+}
+.pill{
+  flex-shrink:0;padding:7px 10px;border-radius:999px;border:1px solid var(--border-hard);
+  background:var(--blue-soft);color:var(--blue);
+  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;
+}
+.pill.green{background:var(--green-soft);color:var(--green)}
+.pill.gold{background:var(--gold-soft);color:var(--gold)}
+.hgroup{min-width:0}
+.h-title{font-family:'Crimson Pro',serif;font-size:19px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:2px}
+.h-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.tag{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:100px;
+  border:1px solid var(--border-hard);
+  background:color-mix(in srgb, var(--blue) 6%, var(--surface) 94%);
+  font-size:12px;color:var(--ink2);
+}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.tag{background:var(--surface2)}}
+.tag b{color:var(--blue);font-weight:800}
+
+.s-body{padding:14px 18px 18px 18px}
+
+.kv{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:900px){.kv.two{grid-template-columns:1fr 1fr}}
+
+.box{
+  border:1px solid var(--border);background:var(--surface2);
+  border-radius:14px;padding:14px 14px 12px 14px;
+}
+.box h4{
+  font-size:12px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--muted);margin-bottom:10px;
+}
+.ul{list-style:none;display:grid;gap:8px}
+.li{display:flex;gap:10px;align-items:flex-start;color:var(--ink2)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0}
+.dot.red{background:var(--red)}
+.dot.green{background:var(--green)}
+.dot.gold{background:var(--gold)}
+.note{
+  margin-top:10px;border:1px solid var(--border);
+  background:var(--surface);border-radius:12px;padding:12px;
+}
+.note b{color:var(--red)}
+.note .ok{color:var(--green);font-weight:800}
+kbd{font-family:'JetBrains Mono',monospace;font-size:12px;padding:2px 6px;border-radius:8px;background:var(--surface);border:1px solid var(--border-hard);color:var(--ink2)}
+
+/* Tiny table (no actual <table> for easy Kindle fallback later) */
+.grid3{
+  display:grid;grid-template-columns:1.1fr 1.6fr 1fr;gap:0;border:1px solid var(--border);
+  border-radius:14px;overflow:hidden;background:var(--surface);
+}
+.cell{padding:10px 12px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);color:var(--ink2)}
+.cell:nth-child(3n){border-right:none}
+.headcell{background:linear-gradient(180deg,var(--surface2),var(--surface));font-weight:700;color:var(--ink)}
+.grid3 .cell:nth-last-child(-n+3){border-bottom:none}
+
+/* NAV */
+.nav{
+  margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;
+  padding:14px 0 0 0;border-top:1px solid var(--border-hard);
+}
+.nav a{
+  display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;
+  border:1px solid var(--border-hard);background:var(--surface);box-shadow:var(--sh-sm);
+  font-weight:650;color:var(--ink2);transition:transform .12s,box-shadow .15s;
+  text-decoration:none;
+}
+.nav a:hover{transform:translateY(-1px);box-shadow:var(--sh-md)}
+.nav .hint{color:var(--faint);font-size:12.5px}
+
+/* Floating controls */
+.fab-wrap{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+#theme-btn{
+  background:var(--surface);border:1px solid var(--border-hard);box-shadow:var(--sh-md);
+  border-radius:50px;padding:8px 14px;cursor:pointer;display:flex;align-items:center;gap:9px;
+  font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--muted);transition:all .2s;user-select:none;
+}
+#theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
+.t-track{width:38px;height:20px;background:var(--toggle-bg);border-radius:20px;position:relative;transition:background .25s}
+.t-knob{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--toggle-knob);transition:transform .25s,background .25s;box-shadow:0 1px 4px rgba(0,0,0,.22)}
+[data-theme="dark"] .t-knob{transform:translateX(18px)}
+#back-top{
+  width:44px;height:44px;background:var(--surface);border:1px solid var(--border-hard);
+  border-radius:50%;box-shadow:var(--sh-md);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:19px;color:var(--muted);transition:all .2s;opacity:0;pointer-events:none;transform:translateY(10px);
+}
+#back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
+
+@media(max-width:650px){
+  .hero{padding:28px 22px 24px;border-radius:0 0 20px 20px}
+  .hero::after{display:none}
+  .wrap{padding:0 14px 90px}
+  .nav{justify-content:center}
+  .grid3{grid-template-columns:1fr}
+  .cell{border-right:none}
+  .headcell{border-right:none}
+}
+</style>
+</head>
+
+<body>
+<div id="prog"></div>
+
+<header class="hero" id="topo">
+  <div class="wrap" style="padding:0">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">RICD • Título IV • Capítulo IV</div>
+      <h1 class="hero-title">Dos Requerimentos</h1>
+      <p class="hero-sub">
+        Art. 114 (despacho imediato do Presidente), Art. 115 (ouvida a Mesa), Art. 116 (pedido de informação a Ministro)
+        e Art. 117 (requerimentos sujeitos ao Plenário).
+      </p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- Seção I — Art. 114 -->
+  <section class="section" id="sec1-art114">
+    <div class="s-head">
+      <div class="pill">Art. 114</div>
+      <div class="hgroup">
+        <div class="h-title">Seção I — Despacho apenas do Presidente</div>
+        <div class="h-meta">
+          <span class="tag"><b>Forma</b> verbal ou escrita</span>
+          <span class="tag"><b>Despacho</b> imediato</span>
+          <span class="tag"><b>Rol</b> taxativo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-body">
+      <div class="kv two">
+        <div class="box">
+          <h4>Regra (caput)</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> requerimentos <b>verbais</b> ou <b>escritos</b></li>
+            <li class="li"><span class="dot"></span> <b>imediatamente</b> despachados pelo <b>Presidente</b></li>
+          </ul>
+
+          <div class="note" style="margin-top:12px">
+            <p><b>Parágrafo Único — Recurso</b></p>
+            <p style="margin-top:6px;color:var(--ink2)">
+              Em caso de <b>indeferimento</b> e a pedido do Autor: o <b>Plenário</b> é consultado,
+              <b>sem discussão</b> e <b>sem encaminhamento</b>, por <b>votação simbólica</b>.
+            </p>
+          </div>
+        </div>
+
+        <div class="box">
+          <h4>Principais hipóteses (incisos)</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> I/II — <b>a palavra</b> (ou desistência); falar <b>sentado</b> ou <b>da bancada</b></li>
+            <li class="li"><span class="dot"></span> III/IV — <b>leitura</b> de matéria; observância de disposição <b>regimental</b></li>
+            <li class="li"><span class="dot"></span> V/VII — <b>retirada</b> de requerimento ou de <b>proposição</b> (pelo Autor) <span style="color:var(--muted)">(parecer contrário/sem parecer/só admissibilidade)</span></li>
+            <li class="li"><span class="dot"></span> VIII — <b>verificação</b> de votação</li>
+            <li class="li"><span class="dot"></span> X/XI — <b>prorrogação</b> de prazo (tribuna); <b>dispensa</b> do avulso (redação final publicada)</li>
+            <li class="li"><span class="dot"></span> XII/XIII — <b>requisição</b> de documentos; preenchimento de lugar em <b>Comissão</b></li>
+            <li class="li"><span class="dot"></span> XIV — <b>inclusão</b> na Ordem do Dia (com parecer/condições regimentais)</li>
+            <li class="li"><span class="dot"></span> XV — <b>reabertura</b> de discussão (encerrada em sessão legislativa anterior)</li>
+            <li class="li"><span class="dot"></span> XVII — <b>licença</b> a Deputado (Art. 235, § 3º)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top:12px">
+        <p><b>Artigos correlatos</b></p>
+        <p style="margin-top:6px;color:var(--ink2)">
+          Art. 235, § 3º — suspensão da contagem do prazo da licença iniciada antes do encerramento do semestre legislativo
+          (contagem suspensa no recesso, <b>exceto</b> licença para tratamento de saúde — inciso II — quando houve assunção de suplente).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção II — Art. 115 -->
+  <section class="section" id="sec2-art115">
+    <div class="s-head">
+      <div class="pill gold">Art. 115</div>
+      <div class="hgroup">
+        <div class="h-title">Seção II — Despacho do Presidente, ouvida a Mesa</div>
+        <div class="h-meta">
+          <span class="tag"><b>Prazo</b> 5 sessões</span>
+          <span class="tag"><b>Processo</b> simbólico</span>
+          <span class="tag"><b>Rito</b> sem discussão</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-body">
+      <div class="kv two">
+        <div class="box">
+          <h4>Competência e prazo</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot gold"></span> requerimentos <b>escritos</b></li>
+            <li class="li"><span class="dot gold"></span> despachados no prazo de <b>5 sessões</b></li>
+            <li class="li"><span class="dot gold"></span> pelo <b>Presidente</b>, <b>ouvida a Mesa</b></li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h4>Hipóteses</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot gold"></span> I — <b>informação</b> a Ministro de Estado</li>
+            <li class="li"><span class="dot gold"></span> II — <b>inserção nos Anais</b> de informações/documentos/discurso de outro Poder (quando <b>não lidos integralmente</b>)</li>
+          </ul>
+
+          <div class="note" style="margin-top:12px">
+            <p><b>Parágrafo Único — Recurso</b></p>
+            <ul class="ul" style="margin-top:10px">
+              <li class="li"><span class="dot red"></span> do indeferimento cabe <b>recurso ao Plenário</b> em <b>5 sessões</b> (da publicação)</li>
+              <li class="li"><span class="dot red"></span> votação <b>simbólica</b>, <b>sem discussão</b></li>
+              <li class="li"><span class="dot red"></span> encaminhamento: Autor e <b>Líderes</b> — <b>5 min</b> cada</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Art. 116 -->
+  <section class="section" id="art116">
+    <div class="s-head">
+      <div class="pill gold">Art. 116</div>
+      <div class="hgroup">
+        <div class="h-title">Pedido de informação a Ministro — tramitação, sanção e admissibilidade</div>
+        <div class="h-meta">
+          <span class="tag"><b>Prazo</b> 30 dias</span>
+          <span class="tag"><b>Sanção</b> crime de responsabilidade</span>
+          <span class="tag"><b>Controle</b> Mesa</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-body">
+      <div class="kv two">
+        <div class="box">
+          <h4>Trâmite e sanção</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot gold"></span> encaminhados pelo <b>Primeiro-Secretário</b></li>
+            <li class="li"><span class="dot red"></span> recusa / não atendimento em <b>30 dias</b> ou prestação <b>falsa</b> → <b>crime de responsabilidade</b></li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h4>Regras de admissibilidade (incisos)</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> <b>I — Prejudicialidade:</b> se a informação chegar espontaneamente ou já tiver sido prestada/publicada → proposição <b>prejudicada</b></li>
+            <li class="li"><span class="dot"></span> <b>II — Objeto:</b> ato/fato na competência do Ministério (inclui Adm. Indireta) relacionado a:
+              <div style="margin-top:6px">
+                <div style="color:var(--muted)">• matéria legislativa em trâmite</div>
+                <div style="color:var(--muted)">• fiscalização e controle (Art. 60)</div>
+                <div style="color:var(--muted)">• atribuições do Congresso</div>
+              </div>
+            </li>
+            <li class="li"><span class="dot red"></span> <b>III — Vedações:</b> não cabem providências a tomar, consulta, sugestão, conselho ou interrogação sobre propósitos</li>
+            <li class="li"><span class="dot gold"></span> <b>IV — Controle da Mesa:</b> pode <b>recusar</b> requerimento inconveniente ou contrário ao artigo → cabe recurso do Art. 115, P.U.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top:12px">
+        <p><b>Artigo correlato</b></p>
+        <p style="margin-top:6px;color:var(--ink2)">
+          Art. 60 — define atos sujeitos à fiscalização: gestão administrativa, crimes de responsabilidade, contas e petições/reclamações da sociedade.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção III — Art. 117 -->
+  <section class="section" id="sec3-art117">
+    <div class="s-head">
+      <div class="pill green">Art. 117</div>
+      <div class="hgroup">
+        <div class="h-title">Seção III — Requerimentos sujeitos à deliberação do Plenário</div>
+        <div class="h-meta">
+          <span class="tag"><b>Formalidade</b> escritos</span>
+          <span class="tag"><b>Rito</b> sem discussão</span>
+          <span class="tag"><b>Enc.</b> 1 a favor + 1 contra</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-body">
+      <div class="kv two">
+        <div class="box">
+          <h4>Regra e rito (§ 1º)</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot green"></span> escritos e dependentes de <b>deliberação do Plenário</b></li>
+            <li class="li"><span class="dot green"></span> <b>não sofrem discussão</b></li>
+            <li class="li"><span class="dot green"></span> encaminhamento: <b>1</b> orador favorável e <b>1</b> contrário</li>
+            <li class="li"><span class="dot green"></span> tempo: <b>3 minutos</b> cada</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h4>Hipóteses principais (rol exemplificativo)</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> I/II — Comissão <b>externa</b>; <b>convocação</b> de Ministro (Plenário)</li>
+            <li class="li"><span class="dot"></span> III/IV — sessão <b>extraordinária</b> ou <b>secreta</b></li>
+            <li class="li"><span class="dot"></span> VI — retirada de proposição da Ordem do Dia (antes do anúncio)</li>
+            <li class="li"><span class="dot"></span> VII — prorrogação de prazo de Comissão</li>
+            <li class="li"><span class="dot"></span> IX — <b>destaque</b> (Art. 161)</li>
+            <li class="li"><span class="dot"></span> X/XI — adiamento (discussão/votação); encerramento de discussão</li>
+            <li class="li"><span class="dot"></span> XIV — dispensa de publicação (redação final)</li>
+            <li class="li"><span class="dot"></span> XV/XVI/XVII — urgência, preferência, prioridade</li>
+            <li class="li"><span class="dot"></span> XVIII/XIX — voto de pesar, regozijo ou louvor</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top:12px">
+        <p><b>Artigo correlato</b></p>
+        <p style="margin-top:6px;color:var(--ink2)">
+          Art. 161 — destaques para votação em separado (parte de proposição, emenda ou para constituir projeto autônomo).
+        </p>
+      </div>
+
+      <div class="box" style="margin-top:12px">
+        <h4>Votos de pesar e regozijo (Art. 117, §§ 2º a 4º)</h4>
+        <div class="kv two">
+          <div class="note" style="margin:0">
+            <p><b>§ 2º — Voto de pesar (admissível apenas)</b></p>
+            <ul class="ul" style="margin-top:10px">
+              <li class="li"><span class="dot red"></span> falecimento de: Chefe de Estado estrangeiro, Congressista, Presidente/Vice, Min. Estado, STF/Tribunal Superior, Governador</li>
+              <li class="li"><span class="dot red"></span> luto nacional <b>oficialmente declarado</b></li>
+            </ul>
+          </div>
+
+          <div class="note" style="margin:0">
+            <p><b>§ 3º e § 4º — Regozijo/Louvor</b></p>
+            <ul class="ul" style="margin-top:10px">
+              <li class="li"><span class="dot green"></span> limitar-se a acontecimentos de <b>alta significação nacional</b> (§ 3º)</li>
+              <li class="li"><span class="dot green"></span> se internacional: só autoria da <b>CREDN</b> + aprovação prévia por <b>maioria absoluta</b> de seus membros (§ 4º)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <div class="nav" aria-label="Navegação entre capítulos">
+    <a href="titulo4-cap3.html">← Voltar (Capítulo III)</a>
+    <div class="hint">Título IV continua nos próximos capítulos.</div>
+    <a href="titulo4.html">Ir ao índice do Título IV →</a>
+  </div>
+
+</div>
+
+<div class="fab-wrap">
+  <button id="theme-btn" title="Alternar tema">
+    <span id="t-icon">🌙</span>
+    <div class="t-track"><div class="t-knob"></div></div>
+    <span id="t-label">Escuro</span>
+  </button>
+  <button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function(){
+  const root=document.documentElement,btn=document.getElementById('theme-btn'),
+        icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
+  let dark=localStorage.getItem('ricd-theme')==='dark';
+  if(!localStorage.getItem('ricd-theme')) dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function apply(){
+    root.setAttribute('data-theme',dark?'dark':'light');
+    icon.textContent=dark?'☀️':'🌙';
+    lbl.textContent=dark?'Claro':'Escuro';
+    localStorage.setItem('ricd-theme',dark?'dark':'light');
+  }
+  apply();
+  btn.addEventListener('click',()=>{dark=!dark;apply()});
+})();
+(function(){
+  const bar=document.getElementById('prog'),top=document.getElementById('back-top');
+  window.addEventListener('scroll',function(){
+    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(s/h*100)+'%';
+    top.classList.toggle('show',s>280);
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
