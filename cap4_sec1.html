@@ -1,354 +1,535 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>RICD — Cap. IV • Seção I (Disposições Gerais)</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RICD — Cap. IV · Seção I — Disposições Gerais das Comissões</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700&display=swap" rel="stylesheet">
+/* ═══════════════ TOKENS LIGHT ═══════════════ */
+:root,[data-theme="light"]{
+  --bg:#f3f6fb; --bg2:#eaeff8;
+  --surface:#ffffff; --surface2:#f7faff;
+  --border:rgba(15,39,66,.09); --border-hard:rgba(15,39,66,.16);
+  --ink:#0d1f35; --ink2:#2b4060; --muted:#526a88; --faint:#8fa8c2;
+  --gold:#b86b1a; --gold-soft:rgba(184,107,26,.10);
+  --blue:#1a4d8a; --blue-soft:rgba(26,77,138,.08);
+  --green:#186347; --green-soft:rgba(24,99,71,.09);
+  --red:#a81f2a; --red-soft:rgba(168,31,42,.09);
+  --purple:#5a3d8a; --purple-soft:rgba(90,61,138,.08);
+  --mark-bg:rgba(15,23,42,.07);
+  --hero-from:#0c2240; --hero-to:#153558;
+  --hero-text:#ffffff; --hero-sub:rgba(255,255,255,.80);
+  --sh-sm:0 2px 8px rgba(12,26,43,.06);
+  --sh-md:0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:0 14px 34px rgba(12,26,43,.11);
+  --sh-hov:0 10px 28px rgba(12,26,43,.14);
+  --list-bg:#f7fafc; --note-bg:rgba(26,77,138,.05);
+  --note-border:rgba(26,77,138,.12); --note-text:#1a2e44;
+  --toggle-bg:#d8e2f0; --toggle-knob:#ffffff;
+  --drawer-bg:#ffffff; --drawer-overlay:rgba(15,23,42,.38);
+  --textarea-bg:#fbfcfe;
+}
+/* ═══════════════ TOKENS DARK ═══════════════ */
+[data-theme="dark"]{
+  --bg:#0c1120; --bg2:#101728;
+  --surface:#161d2f; --surface2:#1b2238;
+  --border:rgba(255,255,255,.06); --border-hard:rgba(255,255,255,.12);
+  --ink:#dce8fa; --ink2:#94b0d4; --muted:#627ea6; --faint:#374e6a;
+  --gold:#f0b84a; --gold-soft:rgba(240,184,74,.11);
+  --blue:#5b96f0; --blue-soft:rgba(91,150,240,.11);
+  --green:#38c882; --green-soft:rgba(56,200,130,.09);
+  --red:#f46862; --red-soft:rgba(244,104,98,.11);
+  --purple:#a07af5; --purple-soft:rgba(160,122,245,.10);
+  --mark-bg:rgba(220,232,250,.09);
+  --hero-from:#08111e; --hero-to:#0f1e30;
+  --hero-text:#e4f0ff; --hero-sub:rgba(210,228,255,.70);
+  --sh-sm:0 2px 8px rgba(0,0,0,.28);
+  --sh-md:0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:0 14px 34px rgba(0,0,0,.40);
+  --sh-hov:0 10px 28px rgba(0,0,0,.46);
+  --list-bg:rgba(255,255,255,.03); --note-bg:rgba(91,150,240,.09);
+  --note-border:rgba(91,150,240,.20); --note-text:#b0ccf0;
+  --toggle-bg:#243350; --toggle-knob:#f0b84a;
+  --drawer-bg:#161d2f; --drawer-overlay:rgba(0,0,0,.65);
+  --textarea-bg:#111828;
+}
 
-  <style>
-    :root{
-      --bg:#f6f8fb;
-      --card:#ffffff;
-      --ink:#0f172a;
-      --muted:#475569;
-      --muted2:#64748b;
-      --navy:#0b1b2a;
+/* ═══════════════ BASE ═══════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;font-size:15px;line-height:1.68;color:var(--ink);background:var(--bg);transition:background .25s,color .25s;min-height:100vh}
+a{color:inherit;text-decoration:none}
 
-      --accent:#1e3a8a;
-      --accent-soft:rgba(30,58,138,.08);
+/* ═══════════════ PROGRESS ═══════════════ */
+#prog{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--gold),var(--blue));z-index:300;transition:width .08s linear;border-radius:0 2px 2px 0}
 
-      --org:#1e3a8a;
-      --prazo:#b45309;
-      --exc:#dc2626;
-      --num:#334155;
-      --mark: rgba(15,23,42,.08);
+/* ═══════════════ FABs ═══════════════ */
+.fab-wrap{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+#theme-btn{background:var(--surface);border:1px solid var(--border-hard);box-shadow:var(--sh-md);border-radius:50px;padding:8px 14px;cursor:pointer;display:flex;align-items:center;gap:9px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--muted);transition:all .2s;user-select:none}
+#theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
+.t-track{width:38px;height:20px;background:var(--toggle-bg);border-radius:20px;position:relative;transition:background .25s}
+.t-knob{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--toggle-knob);transition:transform .25s;box-shadow:0 1px 4px rgba(0,0,0,.22)}
+[data-theme="dark"] .t-knob{transform:translateX(18px)}
+#back-top{width:44px;height:44px;background:var(--surface);border:1px solid var(--border-hard);border-radius:50%;box-shadow:var(--sh-md);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--muted);transition:all .2s;opacity:0;pointer-events:none;transform:translateY(10px)}
+#back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
 
-      --radius:18px;
-      --shadow:0 12px 28px rgba(15,23,42,.08);
+/* ═══════════════ WRAP ═══════════════ */
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px 80px}
 
-      --serif:"Literata", Georgia, serif;
-      --sans:system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-    }
+/* ═══════════════ HERO ═══════════════ */
+.hero{background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);border-radius:0 0 28px 28px;padding:38px 36px 34px;margin-bottom:32px;position:relative;overflow:hidden;box-shadow:var(--sh-lg)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);pointer-events:none}
+.hero::after{content:'IV';position:absolute;right:36px;top:50%;transform:translateY(-50%);font-family:'Crimson Pro',serif;font-size:140px;font-weight:700;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.hero-title{font-family:'Crimson Pro',serif;font-size:clamp(26px,3.2vw,40px);font-weight:700;color:var(--hero-text);line-height:1.12;margin-bottom:10px}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:72ch;line-height:1.58;margin-bottom:18px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.hero-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;border:1px solid;font-family:'Outfit',sans-serif}
+.hero-btn-ghost{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18);color:rgba(255,255,255,.88)}
+.hero-btn-ghost:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.hero-btn-primary{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);color:#fff;font-weight:700}
+.hero-btn-primary:hover{background:rgba(255,255,255,.22);transform:translateY(-1px)}
+.nav-chips{display:flex;flex-wrap:wrap;gap:8px}
+.nav-chips a{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:100px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.88);font-size:12.5px;font-weight:500;transition:background .15s,transform .1s}
+.nav-chips a:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.nav-chips a b{font-weight:700;color:var(--gold)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.10)}
+.lchip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:rgba(255,255,255,.78);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;font-weight:600;text-transform:uppercase}
+.ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:var(--serif);
-      background:var(--bg);
-      color:var(--ink);
-      line-height:1.6;
-    }
+/* ═══════════════ SECTION DIVIDER ═══════════════ */
+.sec-head{display:flex;align-items:center;gap:14px;margin:36px 0 18px}
+.sec-line{flex:1;height:1px;background:var(--border-hard)}
+.sec-title{font-family:'Crimson Pro',serif;font-size:21px;font-weight:700;color:var(--ink);white-space:nowrap}
+.sec-badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
 
-    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 60px;}
+/* ═══════════════ GRID ═══════════════ */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.c12{grid-column:span 12}.c6{grid-column:span 12}.c4{grid-column:span 12}.c8{grid-column:span 12}
+@media(min-width:760px){.c6{grid-column:span 6}.c4{grid-column:span 4}.c8{grid-column:span 8}}
 
-    .hero{
-      background:linear-gradient(180deg,#eef2ff,#f8fafc);
-      border-radius:var(--radius);
-      padding:26px 22px 18px;
-      box-shadow:var(--shadow);
-      border:1px solid rgba(15,23,42,.06);
-    }
+/* ═══════════════ CARD ═══════════════ */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--sh-sm);overflow:hidden;position:relative;transition:transform .14s,box-shadow .14s;opacity:0;animation:fadeUp .35s ease forwards}
+.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.07s}.card:nth-child(3){animation-delay:.11s}.card:nth-child(4){animation-delay:.15s}.card:nth-child(5){animation-delay:.19s}.card:nth-child(6){animation-delay:.23s}.card:nth-child(7){animation-delay:.27s}.card:nth-child(8){animation-delay:.31s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{transform:translateY(-2px);box-shadow:var(--sh-hov)}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,#1c3f63);border-radius:14px 0 0 14px}
+.card-inner{padding:16px 16px 16px 18px}
+.card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.c-badge{flex-shrink:0;width:36px;height:36px;border-radius:9px;background:var(--bg2);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;color:var(--c,#1c3f63);margin-top:1px}
+[data-theme="dark"] .c-badge{background:color-mix(in srgb,var(--c,#1c3f63) 14%,var(--surface2) 86%);color:color-mix(in srgb,var(--c,#1c3f63) 55%,#ffffff 45%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){[data-theme="dark"] .c-badge{background:var(--surface2);color:var(--ink2)}}
+.c-title{font-family:'Crimson Pro',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:3px}
+.c-lead{font-size:13px;color:var(--muted);line-height:1.45}
+.kp-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.kp-list li{padding:9px 11px;border-radius:9px;background:var(--list-bg);border:1px solid var(--border);font-size:13.5px;color:var(--ink2);line-height:1.52}
+.kp-list li b{font-weight:700;color:var(--ink)}
+.kp-list li ul{margin-top:6px;padding-left:16px;display:flex;flex-direction:column;gap:4px}
+.kp-list li ul li{padding:0;background:none;border:none;font-size:13px;color:var(--muted)}
 
-    .kicker{
-      display:inline-block;
-      font-family:var(--sans);
-      font-size:12px;
-      font-weight:600;
-      padding:6px 10px;
-      border-radius:999px;
-      background:var(--accent-soft);
-      color:var(--accent);
-      border:1px solid rgba(30,58,138,.2);
-    }
+/* ═══════════════ SEMANTIC HIGHLIGHTS ═══════════════ */
+.k{font-weight:700;color:var(--ink);background:var(--mark-bg);padding:0 .22em;border-radius:.4em}
+.org{font-weight:700;color:var(--blue);background:var(--blue-soft);padding:0 .22em;border-radius:.4em}
+.prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em;white-space:nowrap}
+.exc{font-weight:700;color:var(--red);background:var(--red-soft);padding:0 .22em;border-radius:.4em}
+.num{font-weight:700;color:var(--ink2)}
+.tech{font-style:italic;font-weight:600;color:var(--ink)}
+.uc{text-transform:uppercase;letter-spacing:.04em}
 
-    h1{
-      margin:12px 0 8px;
-      font-size:32px;
-      letter-spacing:-.5px;
-    }
+/* ═══════════════ NOTE / TRAP / TAG BOXES ═══════════════ */
+.note{margin-top:10px;padding:10px 13px;border-radius:10px;background:var(--note-bg);border:1px solid var(--note-border);color:var(--note-text);font-size:13px;line-height:1.55}
+.note b{font-weight:700}
+.trap{margin-top:10px;display:flex;gap:10px;align-items:flex-start;background:var(--red-soft);border:1px solid color-mix(in srgb,var(--red) 25%,transparent 75%);border-radius:10px;padding:11px 13px}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.trap{border-color:rgba(168,31,42,.2)}}
+.trap-icon{font-size:16px;line-height:1.5;flex-shrink:0}
+.trap-text{font-size:13px;color:var(--red);font-weight:500;line-height:1.5}
+.trap-text b{font-weight:700}
+.green-box{margin-top:10px;padding:10px 13px;border-radius:10px;background:var(--green-soft);border:1px solid color-mix(in srgb,var(--green) 22%,transparent 78%);font-size:13px;color:var(--green);line-height:1.55}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.green-box{border-color:rgba(24,99,71,.22)}}
+.green-box b{font-weight:700}
 
-    .sub{
-      font-family:var(--sans);
-      font-size:14px;
-      color:var(--muted);
-      max-width:100ch;
-    }
+/* ═══════════════ COMPARISON TABLE ═══════════════ */
+.cmp-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+.cmp-table th{padding:8px 10px;background:var(--bg2);border:1px solid var(--border-hard);font-weight:700;color:var(--ink);text-align:left;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.cmp-table td{padding:8px 10px;border:1px solid var(--border);color:var(--ink2);vertical-align:top;line-height:1.45}
+.cmp-table tr:nth-child(even) td{background:var(--list-bg)}
+.cmp-table td b{font-weight:700;color:var(--ink)}
 
-    .actions{
-      margin-top:14px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
+/* ═══════════════ TAXATIVO BOX ═══════════════ */
+.taxativo{margin-top:10px;border-radius:10px;background:var(--gold-soft);border:1px solid color-mix(in srgb,var(--gold) 28%,transparent 72%);overflow:hidden}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.taxativo{border-color:rgba(184,107,26,.28)}}
+.taxativo-head{padding:8px 13px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold);background:color-mix(in srgb,var(--gold) 8%,transparent 92%);border-bottom:1px solid color-mix(in srgb,var(--gold) 20%,transparent 80%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.taxativo-head{background:rgba(184,107,26,.08);border-color:rgba(184,107,26,.20)}}
+.taxativo ul{padding:10px 13px 12px 28px;display:flex;flex-direction:column;gap:5px}
+.taxativo ul li{font-size:13px;color:var(--ink2);line-height:1.48}
+.taxativo ul li b{font-weight:700;color:var(--gold)}
 
-    .btn{
-      font-family:var(--sans);
-      font-size:13px;
-      padding:9px 12px;
-      border-radius:999px;
-      border:1px solid rgba(15,23,42,.12);
-      background:#fff;
-      cursor:pointer;
-      text-decoration:none;
-      color:var(--ink);
-      font-weight:600;
-    }
+/* ═══════════════ NOTES DRAWER ═══════════════ */
+.drawer-overlay{position:fixed;inset:0;background:var(--drawer-overlay);backdrop-filter:blur(4px);z-index:400;display:none;align-items:flex-end;justify-content:center;padding:16px}
+.drawer-overlay.open{display:flex}
+.drawer-panel{width:min(900px,100%);background:var(--drawer-bg);border:1px solid var(--border-hard);border-radius:20px;box-shadow:var(--sh-lg);overflow:hidden;transition:background .25s}
+.drawer-head{padding:16px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;background:linear-gradient(180deg,var(--surface2),var(--surface));border-bottom:1px solid var(--border-hard)}
+.drawer-head-info h2{font-family:'Crimson Pro',serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.drawer-head-info p{font-size:13px;color:var(--muted);line-height:1.45;max-width:70ch}
+.drawer-close{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--bg2);border:1px solid var(--border-hard);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);transition:all .15s}
+.drawer-close:hover{color:var(--red)}
+.drawer-body{padding:16px 20px 20px}
+#notes-area{width:100%;min-height:220px;resize:vertical;border-radius:12px;border:1px solid var(--border-hard);padding:12px 14px;font-family:'Outfit',sans-serif;font-size:14px;line-height:1.6;outline:none;background:var(--textarea-bg);color:var(--ink);transition:border-color .15s,background .25s,color .25s}
+#notes-area:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+#notes-area::placeholder{color:var(--faint)}
+.drawer-actions{margin-top:12px;display:flex;gap:10px;justify-content:flex-end}
+.d-btn{font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;padding:8px 18px;border-radius:8px;cursor:pointer;border:1px solid;transition:all .15s}
+.d-btn-clear{background:transparent;color:var(--red);border-color:color-mix(in srgb,var(--red) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-clear{border-color:rgba(168,31,42,.3)}}
+.d-btn-clear:hover{background:var(--red-soft)}
+.d-btn-save{background:var(--green-soft);color:var(--green);border-color:color-mix(in srgb,var(--green) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-save{border-color:rgba(24,99,71,.3)}}
+.d-btn-save:hover{background:rgba(24,99,71,.18)}
 
-    .btn.primary{
-      background:#0f172a;
-      color:#fff;
-      border-color:#0f172a;
-    }
+/* ═══════════════ FOOTER ═══════════════ */
+.page-footer{text-align:center;font-size:12.5px;color:var(--faint);margin-top:48px;padding-top:20px;border-top:1px solid var(--border-hard);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px}
+.page-footer a{color:var(--blue);font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid var(--border-hard);background:var(--surface);font-size:13px;transition:box-shadow .15s}
+.page-footer a:hover{box-shadow:var(--sh-md)}
 
-    .section{
-      margin-top:22px;
-      background:rgba(255,255,255,.6);
-      border-radius:var(--radius);
-      border:1px solid rgba(15,23,42,.07);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-
-    .section-head{
-      padding:16px 18px;
-      border-bottom:1px solid rgba(15,23,42,.06);
-      font-family:var(--sans);
-      font-weight:600;
-      background:linear-gradient(180deg,#ffffff,#f8fafc);
-    }
-
-    .grid{
-      padding:18px;
-      display:grid;
-      gap:16px;
-    }
-
-    .card{
-      background:var(--card);
-      border-radius:14px;
-      border:1px solid rgba(15,23,42,.08);
-      box-shadow:0 6px 16px rgba(15,23,42,.06);
-      padding:16px;
-    }
-
-    .card h3{
-      margin:0 0 8px;
-      font-size:17px;
-      font-family:var(--sans);
-      letter-spacing:-.2px;
-    }
-
-    .list{margin:0;padding-left:18px}
-    .list li{margin:6px 0}
-
-    .k{
-      font-weight:700;
-      background:linear-gradient(transparent 60%, var(--mark) 60%);
-      padding:0 .2em;
-    }
-
-    .org{font-weight:700;color:var(--org)}
-    .prazo{font-weight:700;color:var(--prazo)}
-    .exc{font-weight:700;color:var(--exc)}
-    .num{font-weight:700;color:var(--num)}
-
-    textarea{
-      width:100%;
-      min-height:160px;
-      border-radius:12px;
-      border:1px solid rgba(15,23,42,.15);
-      padding:10px;
-      font-family:var(--sans);
-      margin-top:12px;
-    }
-
-    footer{
-      margin-top:18px;
-      text-align:center;
-      font-family:var(--sans);
-      font-size:13px;
-      color:var(--muted2);
-    }
-  </style>
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
+@media(max-width:600px){.hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}.hero::after{display:none}.wrap{padding:0 14px 80px}}
+</style>
 </head>
-
 <body>
-<div class="wrap">
 
-<header class="hero">
-  <span class="kicker">RICD • Capítulo IV • Seção I</span>
-  <h1>Seção I — Das Disposições Gerais</h1>
-  <p class="sub">
-    Estrutura das Comissões (Arts. <span class="k">22 a 24</span>): classificação, proporcionalidade,
-    perda de vaga, <span class="k">poder conclusivo</span> e competências fiscalizatórias.
-  </p>
+<div id="prog"></div>
 
-  <div class="actions">
-    <a href="titulo2-cap4.html" class="btn">Voltar (Cap. IV)</a>
-    <a href="index.html" class="btn">Menu principal</a>
-    <button class="btn primary" onclick="saveNotes()">Salvar anotações</button>
+<!-- ══════════════ HERO ══════════════ -->
+<header class="hero" id="topo">
+  <div class="wrap" style="padding:0">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">RICD • Título II • Capítulo IV • Seção I</div>
+      <h1 class="hero-title">Seção I — Disposições Gerais das Comissões</h1>
+      <p class="hero-sub">Arts. 22 a 24 — Classificação, proporcionalidade, perda de vaga, <strong>poder conclusivo</strong> e competências fiscalizatórias.</p>
+      <div class="hero-actions">
+        <a class="hero-btn hero-btn-ghost" href="index.html">⌂ Índice</a>
+        <a class="hero-btn hero-btn-ghost" href="titulo2-cap4.html">← Cap. IV</a>
+        <button class="hero-btn hero-btn-primary" id="btn-notes" type="button">✏️ Anotações</button>
+      </div>
+      <nav class="nav-chips" aria-label="Seções">
+        <a href="#class"><b>Art. 22</b> Classificação</a>
+        <a href="#prop"><b>Art. 23</b> Proporcionalidade</a>
+        <a href="#conc"><b>Art. 24</b> Poder Conclusivo</a>
+        <a href="#fisc"><b>Art. 24</b> Fiscalização</a>
+        <a href="#cmp"><b>Comparativo</b> Poderes</a>
+      </nav>
+      <div class="legend">
+        <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Órgãos</span>
+        <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Prazos / Números</span>
+        <span class="lchip"><span class="ldot" style="background:#f46862"></span>Exceções/Vedações</span>
+        <span class="lchip"><span class="ldot" style="background:rgba(255,255,255,.4)"></span>Palavras-chave</span>
+      </div>
+    </div>
   </div>
 </header>
 
-<section class="section">
-<div class="section-head">Classificação das Comissões — Art. 22</div>
+<div class="wrap">
+
+<!-- ══════════════ ART. 22 — CLASSIFICAÇÃO ══════════════ -->
+<div class="sec-head" id="class">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 22 — Classificação das Comissões</div>
+  <div class="sec-badge">Permanentes · Temporárias</div>
+  <div class="sec-line"></div>
+</div>
+
 <div class="grid">
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Comissões Permanentes</div><div class="c-lead">Caráter técnico-legislativo ou especializado — integram a estrutura institucional.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Natureza:</b> <span class="k">co-partícipes do processo legiferante</span></li>
+        <li><b>Competência legislativa:</b> apreciar <span class="k">assuntos</span> e <span class="k">proposições</span> e sobre eles <span class="k">deliberar</span></li>
+        <li><b>Competência fiscalizatória:</b> acompanhar planos/programas de governo e exercer <span class="k">fiscalização orçamentária</span> da União</li>
+        <li><b>Duração:</b> persistem ao longo das legislaturas — <span class="exc">não se extinguem</span> ao fim delas</li>
+      </ul>
+    </div>
+  </div>
 
-<div class="card">
-<h3>I — Permanentes</h3>
-<ul class="list">
-<li>Caráter <span class="k">técnico-legislativo</span> ou especializado.</li>
-<li>Integram a estrutura institucional e são <span class="k">co-partícipes do processo legiferante</span>.</li>
-<li>Competência: apreciar <span class="k">assuntos</span> e <span class="k">proposições</span> e sobre eles <span class="k">deliberar</span>.</li>
-<li>Exercem <span class="k">acompanhamento</span> de planos/programas e <span class="k">fiscalização orçamentária</span> da União.</li>
-</ul>
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Comissões Temporárias</div><div class="c-lead">Criadas para apreciar determinado assunto — extinção por prazo ou objeto.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Criadas para:</b> apreciar <span class="k">determinado assunto</span></li>
+        <li><b>Extinguem-se ao:</b> término da <span class="k">legislatura</span>; ou</li>
+        <li>Alcançado o <span class="k">fim</span> ou expirado o <span class="k">prazo</span> para o qual foram criadas</li>
+        <li><b>Espécies (Art. 33):</b> <span class="k">Especiais</span> · <span class="k">de Inquérito (CPI)</span> · <span class="k">Externas</span></li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">CPIs são <b>temporárias</b>, nunca permanentes — extinção ao término da legislatura ou do objeto/prazo.</div></div>
+    </div>
+  </div>
 </div>
 
-<div class="card">
-<h3>II — Temporárias</h3>
-<ul class="list">
-<li>Criadas para apreciar <span class="k">determinado assunto</span>.</li>
-<li>Extinguem-se:
-<ul>
-<li>Ao <span class="k">término da legislatura</span>; ou</li>
-<li>Quando <span class="k">alcançado o fim</span> ou <span class="k">expirado o prazo</span>.</li>
-</ul>
-</li>
-</ul>
-<p><strong>Espécies (Art. 33):</strong> <span class="k">Especiais</span>, <span class="k">de Inquérito</span> e <span class="k">Externas</span>.</p>
+<!-- ══════════════ ART. 23 — PROPORCIONALIDADE ══════════════ -->
+<div class="sec-head" id="prop">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 23 — Constituição e Proporcionalidade</div>
+  <div class="sec-badge">Representação · Minoria · Perda de vaga</div>
+  <div class="sec-line"></div>
 </div>
 
-</div>
-</section>
-
-<section class="section">
-<div class="section-head">Constituição e Proporcionalidade — Art. 23</div>
 <div class="grid">
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Proporcionalidade e garantia da Minoria</div><div class="c-lead">Composição proporcional com piso e teto numéricos.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Regra:</b> representação <span class="k">proporcional</span> dos Partidos e Blocos</li>
+        <li><b>Garantia expressa:</b> <span class="k">sempre</span> incluir membro da <span class="k">Minoria</span> (mesmo sem direito pela proporcionalidade)</li>
+        <li><b>Teto (Art. 25, §2º):</b> máximo de <span class="num">13/100</span> do total da Casa</li>
+        <li><b>Piso (Art. 25, §2º):</b> mínimo de <span class="num">3,5/100</span> do total da Casa</li>
+      </ul>
+      <div class="note"><b>Correlato — Art. 8º, §3º:</b> mesma garantia da Minoria se aplica à composição da <span class="org">Mesa Diretora</span>.</div>
+    </div>
+  </div>
 
-<div class="card">
-<ul class="list">
-<li>Representação <span class="k">proporcional</span> dos Partidos e Blocos.</li>
-<li>Garantia de inclusão <span class="k">sempre</span> de membro da <span class="k">Minoria</span>.</li>
-<li>Limites numéricos (Art. 25 §2º):
-<ul>
-<li>Máximo: <span class="num">13/100</span> do total;</li>
-<li>Mínimo: <span class="num">3,5/100</span>.</li>
-</ul>
-</li>
-</ul>
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Perda da vaga — Art. 23, § único</div><div class="c-lead">Desvinculação da bancada e exceção expressa.</div></div></div>
+      <ul class="kp-list">
+        <li>Deputado que se <span class="k">desvincular</span> da bancada → <span class="exc">perde automaticamente</span> a vaga na comissão</li>
+        <li><b>Exceção expressa:</b> membros do <span class="org">Conselho de Ética</span> (Art. 21-E, §2º) <span class="exc">não</span> perdem a vaga por desvinculação</li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A exceção do <b>Conselho de Ética</b> é expressa no parágrafo — é a pegadinha mais cobrada neste artigo.</div></div>
+    </div>
+  </div>
 </div>
 
-<div class="card">
-<h3>Perda da Vaga — Art. 23, Parágrafo Único</h3>
-<p>
-Deputado que se <span class="k">desvincular</span> da bancada
-<span class="exc">perde automaticamente</span> a vaga ocupada.
-</p>
-<p><strong>Exceção:</strong> membros do <span class="org">Conselho de Ética</span> (Art. 21-E §2º).</p>
+<!-- ══════════════ ART. 24 — PODER CONCLUSIVO ══════════════ -->
+<div class="sec-head" id="conc">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 24 — Poder Conclusivo</div>
+  <div class="sec-badge">Rito abreviado · Exceções taxativas · Recurso</div>
+  <div class="sec-line"></div>
 </div>
 
-</div>
-</section>
-
-<section class="section">
-<div class="section-head">Poder Conclusivo — Art. 24</div>
 <div class="grid">
+  <div class="card c8" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Poder conclusivo — regra e exceções</div><div class="c-lead">Comissões podem discutir e votar projetos de lei, dispensado o Plenário — salvo rol taxativo.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Regra:</b> aprovação na Comissão <span class="k">dispensa</span> deliberação do <span class="k">Plenário</span></li>
+        <li><b>Recurso:</b> em até <span class="prazo">5 sessões</span>, subscrito por <span class="num">1/10</span> dos membros da Casa — vai ao Plenário</li>
+        <li><b>PEC:</b> <span class="exc">nunca</span> se sujeita a poder conclusivo (Art. 202, §6º)</li>
+      </ul>
+      <div class="taxativo">
+        <div class="taxativo-head">⚠ Exceções — rol taxativo (não sujeito a poder conclusivo)</div>
+        <ul>
+          <li><b>1.</b> Lei complementar</li>
+          <li><b>2.</b> Código</li>
+          <li><b>3.</b> Iniciativa popular</li>
+          <li><b>4.</b> Projeto de Comissão</li>
+          <li><b>5.</b> Matéria indelegável ao legislativo (Art. 68, §1º, CF)</li>
+          <li><b>6.</b> Oriundos do <span class="k">Senado</span> aprovados pelo Plenário da Câmara</li>
+          <li><b>7.</b> Pareceres <span class="k">divergentes</span> entre comissões</li>
+          <li><b>8.</b> Regime de <span class="k">urgência</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-<div class="card">
-<p>
-As Comissões podem <span class="k">discutir e votar</span> projetos de lei,
-<span class="k">dispensada</span> a competência do Plenário.
-</p>
-
-<h3>Exceções (Rol Taxativo)</h3>
-<ul class="list">
-<li>Lei complementar;</li>
-<li>Código;</li>
-<li>Iniciativa popular;</li>
-<li>Projeto de Comissão;</li>
-<li>Matéria <span class="k">indelegável</span> (Art. 68 §1º CF);</li>
-<li>Oriundos do Senado aprovados pelo Plenário;</li>
-<li><span class="k">Pareceres divergentes</span>;</li>
-<li>Regime de <span class="k">urgência</span>.</li>
-</ul>
-
-<p><strong>Recurso:</strong> em até <span class="prazo">5 sessões</span>, subscrito por <span class="num">1/10</span> dos membros.</p>
-<p><strong>PEC:</strong> nunca se sujeita a poder conclusivo (Art. 202 §6º).</p>
+  <div class="card c4" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Não confundir</div><div class="c-lead">Três conceitos distintos que a prova costuma misturar.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Poder conclusivo:</b> <span class="k">rito abreviado</span> — comissão aprova sem o Plenário</li>
+        <li><b>Poder terminativo:</b> <span class="k">admissibilidade</span> — comissão rejeita por inconstitucionalidade ou inad. orçamentária (CCJC/CFT); cabe recurso ao Plenário</li>
+        <li><b>Urgência:</b> matéria vai direto ao <span class="k">Plenário</span>, pulando o rito em comissão</li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A prova troca "conclusivo" e "terminativo". Conclusivo = <b>vota o mérito</b>; Terminativo = <b>decide admissibilidade</b>.</div></div>
+    </div>
+  </div>
 </div>
 
-<div class="card">
-<h3>Não confundir</h3>
-<ul class="list">
-<li><strong>Poder conclusivo:</strong> rito abreviado.</li>
-<li><strong>Poder terminativo:</strong> admissibilidade (CCJC/CFT).</li>
-<li><strong>Urgência:</strong> vai direto ao Plenário.</li>
-</ul>
+<!-- ══════════════ ART. 24 — FISCALIZAÇÃO ══════════════ -->
+<div class="sec-head" id="fisc">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 24 — Competências Fiscalizatórias</div>
+  <div class="sec-badge">Fiscalização · Controle · Participação social</div>
+  <div class="sec-line"></div>
 </div>
 
-</div>
-</section>
-
-<section class="section">
-<div class="section-head">Competências Fiscalizatórias — Art. 24</div>
 <div class="grid">
+  <div class="card c4" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">I</div><div><div class="c-title">Fiscalização direta</div><div class="c-lead">Mecanismos de acompanhamento do Executivo.</div></div></div>
+      <ul class="kp-list">
+        <li><span class="k">Convocar Ministro</span> de Estado ou conceder-lhe audiência</li>
+        <li>Encaminhar pedidos de <span class="k">informação</span> ao Executivo (via <span class="org">Mesa</span>)</li>
+        <li>Fiscalizar e acompanhar atos do <span class="k">Poder Executivo</span></li>
+        <li>Requisitar depoimentos de qualquer autoridade ou cidadão</li>
+      </ul>
+    </div>
+  </div>
 
-<div class="card">
-<h3>Fiscalização Direta</h3>
-<ul class="list">
-<li><span class="k">Convocar Ministro</span> ou conceder audiência.</li>
-<li>Encaminhar pedidos de <span class="k">informação</span> via Mesa.</li>
-<li>Fiscalizar atos do <span class="k">Poder Executivo</span>.</li>
-</ul>
+  <div class="card c4" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">II</div><div><div class="c-title">Controle e auditoria</div><div class="c-lead">Sustação de atos e diligências com auxílio do TCU.</div></div></div>
+      <ul class="kp-list">
+        <li>Diligências com auxílio do <span class="org">TCU</span></li>
+        <li>Propor <span class="k">sustação</span> de ato normativo do Executivo que exceda poder regulamentar</li>
+        <li><b>Iniciativa de sustação:</b> concorrente — <span class="k">Comissão</span> ou <span class="k">Deputado</span></li>
+      </ul>
+      <div class="note"><b>Detalhe:</b> a sustação é <span class="k">proposta</span> pela comissão — a decisão final é do Plenário.</div>
+    </div>
+  </div>
+
+  <div class="card c4" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">III</div><div><div class="c-title">Participação social</div><div class="c-lead">Instrumentos de abertura à sociedade civil.</div></div></div>
+      <ul class="kp-list">
+        <li><span class="k">Audiências públicas</span></li>
+        <li>Receber petições, representações e memórias</li>
+        <li>Solicitação de depoimentos de qualquer cidadão</li>
+        <li><b>Diligência:</b> <span class="exc">não dilata prazo</span> regimental — a comissão não pode usar diligência para ganhar tempo</li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">Diligência <b>não prorroga</b> prazo — pegadinha frequente sobre a instrumentalização das diligências.</div></div>
+    </div>
+  </div>
 </div>
 
-<div class="card">
-<h3>Controle e Auditoria</h3>
-<ul class="list">
-<li>Diligências com auxílio do <span class="org">TCU</span>.</li>
-<li>Propor <span class="k">sustação</span> de ato normativo.</li>
-<li>Iniciativa concorrente: Comissão ou <span class="k">Deputado</span>.</li>
-</ul>
+<!-- ══════════════ COMPARATIVO DE PODERES ══════════════ -->
+<div class="sec-head" id="cmp">
+  <div class="sec-line"></div>
+  <div class="sec-title">Comparativo — Poderes das Comissões</div>
+  <div class="sec-badge">Padrão CEBRASPE</div>
+  <div class="sec-line"></div>
 </div>
 
-<div class="card">
-<h3>Participação Social</h3>
-<ul class="list">
-<li><span class="k">Audiências públicas</span>.</li>
-<li>Petições e representações.</li>
-<li>Solicitação de depoimentos.</li>
-<li>Diligência <span class="exc">não dilata prazo</span>.</li>
-</ul>
-</div>
-
-</div>
-</section>
-
-<section class="section">
-<div class="section-head">Anotações</div>
 <div class="grid">
-<div class="card">
-<textarea id="notes" placeholder="Escreva seus pontos de revisão aqui..."></textarea>
+  <div class="card c12" style="--c:#3a5c8a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">≡</div><div><div class="c-title">Conclusivo × Terminativo × Urgência</div><div class="c-lead">Síntese das três modalidades que a prova mais confunde.</div></div></div>
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th>Poder</th>
+            <th>O que faz</th>
+            <th>Objeto</th>
+            <th>Vai ao Plenário?</th>
+            <th>Recurso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Conclusivo</b></td>
+            <td>Aprova ou rejeita o <span class="k">mérito</span></td>
+            <td>Projetos de lei (exceto rol taxativo)</td>
+            <td><span class="exc">Não</span> (salvo recurso)</td>
+            <td><span class="prazo">5 sessões</span> · <span class="num">1/10</span> dos membros</td>
+          </tr>
+          <tr>
+            <td><b>Terminativo</b></td>
+            <td>Rejeita por <span class="k">inconstitucionalidade</span> ou inadmissibilidade orçamentária</td>
+            <td>Qualquer proposição (CCJC / CFT)</td>
+            <td><span class="exc">Não</span> (salvo recurso)</td>
+            <td>Recurso ao Plenário</td>
+          </tr>
+          <tr>
+            <td><b>Urgência</b></td>
+            <td>—</td>
+            <td>Qualquer matéria urgente</td>
+            <td><span class="k">Sim</span> (direto)</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="green-box"><b>Regra geral de ouro:</b> poder conclusivo = comissão decide o <span class="k">mérito</span> sem Plenário. Terminativo = comissão barra na <span class="k">admissibilidade</span> sem Plenário. Urgência = Plenário decide tudo.</div>
+    </div>
+  </div>
 </div>
+
+<div class="page-footer">
+  <span>RICD • Cap. IV • Seção I — Disposições Gerais</span>
+  <a href="index.html">⌂ Índice</a>
+  <a href="titulo2-cap4.html">← Cap. IV</a>
+  <a href="cap4_sec2.html">Seção II →</a>
 </div>
-</section>
 
-<footer>
-Bons estudos!</footer>
+</div><!-- /wrap -->
 
+<!-- ══════════════ FABs ══════════════ -->
+<div class="fab-wrap">
+  <button id="theme-btn" title="Alternar tema">
+    <span id="t-icon">🌙</span>
+    <div class="t-track"><div class="t-knob"></div></div>
+    <span id="t-label">Escuro</span>
+  </button>
+  <button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<!-- ══════════════ NOTES DRAWER ══════════════ -->
+<div class="drawer-overlay" id="drawer" aria-hidden="true">
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+    <div class="drawer-head">
+      <div class="drawer-head-info">
+        <h2 id="drawer-title">Anotações — Cap. IV · Seção I</h2>
+        <p>Use para erros, bizus e pegadinhas. Salvas no <strong>seu navegador</strong> (localStorage).</p>
+      </div>
+      <button class="drawer-close" id="btn-close-drawer" title="Fechar">✕</button>
+    </div>
+    <div class="drawer-body">
+      <textarea id="notes-area" placeholder="Ex.: ⚠ Exceção poder conclusivo: 8 hipóteses taxativas — memorizar&#10;⚠ Conselho de Ética: única exceção à perda automática de vaga&#10;⚠ Diligência NÃO dilata prazo&#10;⚠ Conclusivo = mérito; Terminativo = admissibilidade"></textarea>
+      <div class="drawer-actions">
+        <button class="d-btn d-btn-clear" id="btn-clear-notes" type="button">Limpar</button>
+        <button class="d-btn d-btn-save" id="btn-save-notes" type="button">Salvar e fechar</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
-function saveNotes(){
-  localStorage.setItem("cap4_sec1_notes", document.getElementById("notes").value);
-  alert("Anotações salvas.");
-}
-document.getElementById("notes").value =
-  localStorage.getItem("cap4_sec1_notes") || "";
-</script>
+// ── Tema ──────────────────────────────────────────
+(function(){
+  const root=document.documentElement,btn=document.getElementById('theme-btn'),
+        icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
+  let dark=localStorage.getItem('ricd-theme')==='dark';
+  if(!localStorage.getItem('ricd-theme'))dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function apply(){root.setAttribute('data-theme',dark?'dark':'light');icon.textContent=dark?'☀️':'🌙';lbl.textContent=dark?'Claro':'Escuro';localStorage.setItem('ricd-theme',dark?'dark':'light')}
+  apply();
+  btn.addEventListener('click',()=>{dark=!dark;apply()});
+})();
 
+// ── Progresso + Back-to-top ───────────────────────
+(function(){
+  const bar=document.getElementById('prog'),top=document.getElementById('back-top');
+  window.addEventListener('scroll',function(){
+    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(s/h*100)+'%';
+    top.classList.toggle('show',s>280);
+  },{passive:true});
+})();
+
+// ── Anotações ─────────────────────────────────────
+(function(){
+  const KEY='notes_cap4_sec1';
+  const overlay=document.getElementById('drawer');
+  const area=document.getElementById('notes-area');
+  const btnOpen=document.getElementById('btn-notes');
+  const btnClose=document.getElementById('btn-close-drawer');
+  const btnSave=document.getElementById('btn-save-notes');
+  const btnClear=document.getElementById('btn-clear-notes');
+  function open(){overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');area.value=localStorage.getItem(KEY)||'';area.focus()}
+  function close(){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true')}
+  btnOpen.addEventListener('click',open);
+  btnClose.addEventListener('click',close);
+  btnSave.addEventListener('click',()=>{localStorage.setItem(KEY,area.value);close()});
+  btnClear.addEventListener('click',()=>{if(confirm('Limpar anotações desta seção?')){area.value='';localStorage.removeItem(KEY);area.focus()}});
+  overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
+  window.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))close()});
+})();
+</script>
 </body>
 </html>
