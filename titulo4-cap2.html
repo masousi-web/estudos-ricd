@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RICD — Título IV — Capítulo II — Dos Projetos</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   TOKENS — LIGHT
+═══════════════════════════════════════════════ */
+:root,[data-theme="light"]{
+  --bg:#f3f6fb;--bg2:#eaeff8;--surface:#ffffff;--surface2:#f7faff;
+  --border:rgba(15,39,66,.09);--border-hard:rgba(15,39,66,.16);
+
+  --ink:#0d1f35;--ink2:#2b4060;--muted:#526a88;--faint:#8fa8c2;
+
+  --gold:#b86b1a;--gold-soft:rgba(184,107,26,.10);
+  --blue:#1a4d8a;--blue-soft:rgba(26,77,138,.08);
+  --green:#186347;--green-soft:rgba(24,99,71,.09);
+  --red:#a81f2a;--red-soft:rgba(168,31,42,.09);
+  --purple:#5a3d8a;--purple-soft:rgba(90,61,138,.08);
+
+  --hero-from:#102a4a;--hero-to:#1a4d8a;--hero-text:#ffffff;--hero-sub:rgba(255,255,255,.82);
+
+  --sh-sm:0 2px 8px rgba(12,26,43,.06);
+  --sh-md:0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:0 14px 34px rgba(12,26,43,.11);
+  --sh-hov:0 10px 28px rgba(12,26,43,.14);
+
+  --toggle-bg:#d8e2f0;--toggle-knob:#ffffff;
+}
+
+/* ═══════════════════════════════════════════════
+   TOKENS — DARK
+═══════════════════════════════════════════════ */
+[data-theme="dark"]{
+  --bg:#0c1120;--bg2:#101728;--surface:#161d2f;--surface2:#1b2238;
+  --border:rgba(255,255,255,.06);--border-hard:rgba(255,255,255,.12);
+
+  --ink:#dce8fa;--ink2:#94b0d4;--muted:#627ea6;--faint:#374e6a;
+
+  --gold:#f0b84a;--gold-soft:rgba(240,184,74,.11);
+  --blue:#5b96f0;--blue-soft:rgba(91,150,240,.11);
+  --green:#38c882;--green-soft:rgba(56,200,130,.09);
+  --red:#f46862;--red-soft:rgba(244,104,98,.11);
+  --purple:#a07af5;--purple-soft:rgba(160,122,245,.10);
+
+  --hero-from:#08111e;--hero-to:#0f1e30;--hero-text:#e4f0ff;--hero-sub:rgba(210,228,255,.70);
+
+  --sh-sm:0 2px 8px rgba(0,0,0,.28);
+  --sh-md:0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:0 14px 34px rgba(0,0,0,.40);
+  --sh-hov:0 10px 28px rgba(0,0,0,.46);
+
+  --toggle-bg:#243350;--toggle-knob:#f0b84a;
+}
+
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',sans-serif;
+  font-size:15px;line-height:1.68;
+  color:var(--ink);
+  background:var(--bg);
+  transition:background .25s,color .25s;
+  min-height:100vh;
+}
+a{color:inherit;text-decoration:none}
+
+/* ═══════════════════════════════════════════════
+   PROGRESS BAR
+═══════════════════════════════════════════════ */
+#prog{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--blue));
+  z-index:300;transition:width .08s linear;border-radius:0 2px 2px 0;
+}
+
+/* ═══════════════════════════════════════════════
+   WRAP
+═══════════════════════════════════════════════ */
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px 90px}
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+.hero{
+  background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);
+  border-radius:0 0 28px 28px;
+  padding:38px 36px 30px;margin-bottom:22px;
+  position:relative;overflow:hidden;box-shadow:var(--sh-lg);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.10),transparent 58%),
+    radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.07),transparent 55%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'IV • II';
+  position:absolute;right:30px;top:50%;transform:translateY(-50%);
+  font-family:'Crimson Pro',serif;font-size:76px;font-weight:700;
+  color:rgba(255,255,255,.06);line-height:1;pointer-events:none;user-select:none;
+}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:10px;
+}
+.hero-title{
+  font-family:'Crimson Pro',serif;
+  font-size:clamp(26px,3.2vw,40px);
+  font-weight:700;color:var(--hero-text);
+  line-height:1.12;margin-bottom:10px;
+}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:92ch;line-height:1.58}
+
+/* ═══════════════════════════════════════════════
+   SECTION / CARD
+═══════════════════════════════════════════════ */
+.section{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:var(--sh-sm);
+  overflow:hidden;
+  margin-top:14px;
+  opacity:0;
+  animation:fadeUp .35s ease forwards;
+}
+.section:nth-of-type(1){animation-delay:.03s}
+.section:nth-of-type(2){animation-delay:.07s}
+.section:nth-of-type(3){animation-delay:.11s}
+.section:nth-of-type(4){animation-delay:.15s}
+.section:nth-of-type(5){animation-delay:.19s}
+.section:nth-of-type(6){animation-delay:.23s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+.s-head{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:16px 18px 12px 18px;
+  background:linear-gradient(180deg,var(--surface2),var(--surface));
+  border-bottom:1px solid var(--border);
+}
+.pill{
+  flex-shrink:0;
+  padding:7px 10px;
+  border-radius:999px;
+  border:1px solid var(--border-hard);
+  background:var(--blue-soft);
+  color:var(--blue);
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;font-weight:700;
+}
+.hgroup{min-width:0}
+.h-title{
+  font-family:'Crimson Pro',serif;
+  font-size:19px;font-weight:700;color:var(--ink);
+  line-height:1.2;margin-bottom:2px;
+}
+.h-meta{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:8px
+}
+.tag{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 10px;border-radius:100px;
+  border:1px solid var(--border-hard);
+  background:color-mix(in srgb, var(--blue) 6%, var(--surface) 94%);
+  font-size:12px;color:var(--ink2);
+}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){
+  .tag{background:var(--surface2)}
+}
+.tag b{color:var(--blue);font-weight:800}
+
+.s-body{padding:14px 18px 18px 18px}
+.kv{
+  display:grid;grid-template-columns:1fr;gap:10px;
+}
+@media(min-width:860px){
+  .kv{grid-template-columns:1.3fr .7fr}
+}
+.box{
+  border:1px solid var(--border);
+  background:var(--surface2);
+  border-radius:14px;
+  padding:14px 14px 12px 14px;
+}
+.box h4{
+  font-size:12px;
+  font-family:'JetBrains Mono',monospace;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+.box p{color:var(--ink);margin-bottom:10px}
+.ul{list-style:none;display:grid;gap:8px}
+.li{
+  display:flex;gap:10px;align-items:flex-start;
+  color:var(--ink2);
+}
+.dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--blue);
+  margin-top:7px;flex-shrink:0;
+}
+kbd{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;padding:2px 6px;border-radius:8px;
+  background:var(--surface);
+  border:1px solid var(--border-hard);
+  color:var(--ink2);
+}
+
+/* Correlatos */
+.correlatos{
+  margin-top:12px;
+  border-top:1px dashed var(--border-hard);
+  padding-top:12px;
+}
+.correlatos h5{
+  font-size:12px;
+  font-family:'JetBrains Mono',monospace;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+.callout{
+  border:1px solid var(--border);
+  background:var(--surface);
+  border-radius:12px;
+  padding:12px 12px 10px 12px;
+  margin-top:8px;
+}
+.callout b{color:var(--blue)}
+.callout p{color:var(--ink2)}
+
+/* Mini tabela */
+.mini{
+  width:100%;
+  border-collapse:separate;border-spacing:0;
+  overflow:hidden;border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  box-shadow:var(--sh-sm);
+  margin-top:12px;
+}
+.mini th,.mini td{
+  padding:10px 12px;
+  border-bottom:1px solid var(--border);
+  vertical-align:top;
+}
+.mini th{
+  text-align:left;
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  color:var(--muted);
+  background:linear-gradient(180deg,var(--surface2),var(--surface));
+}
+.mini tr:last-child td{border-bottom:none}
+
+/* ═══════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════ */
+.nav{
+  margin-top:22px;
+  display:flex;flex-wrap:wrap;gap:10px;
+  align-items:center;justify-content:space-between;
+  padding:14px 0 0 0;
+  border-top:1px solid var(--border-hard);
+}
+.nav a{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:10px 14px;border-radius:14px;
+  border:1px solid var(--border-hard);
+  background:var(--surface);
+  box-shadow:var(--sh-sm);
+  font-weight:650;color:var(--ink2);
+  transition:transform .12s,box-shadow .15s;
+}
+.nav a:hover{transform:translateY(-1px);box-shadow:var(--sh-md)}
+.nav .hint{color:var(--faint);font-size:12.5px}
+
+/* ═══════════════════════════════════════════════
+   FAB — THEME TOGGLE + BACK TO TOP
+═══════════════════════════════════════════════ */
+.fab-wrap{
+  position:fixed;bottom:24px;right:24px;z-index:200;
+  display:flex;flex-direction:column;gap:10px;align-items:flex-end;
+}
+#theme-btn{
+  background:var(--surface);border:1px solid var(--border-hard);
+  box-shadow:var(--sh-md);border-radius:50px;padding:8px 14px;
+  cursor:pointer;display:flex;align-items:center;gap:9px;
+  font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--muted);
+  transition:all .2s;user-select:none;
+}
+#theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
+.t-track{width:38px;height:20px;background:var(--toggle-bg);border-radius:20px;position:relative;transition:background .25s}
+.t-knob{
+  position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;
+  background:var(--toggle-knob);transition:transform .25s,background .25s;
+  box-shadow:0 1px 4px rgba(0,0,0,.22);
+}
+[data-theme="dark"] .t-knob{transform:translateX(18px)}
+#back-top{
+  width:44px;height:44px;background:var(--surface);
+  border:1px solid var(--border-hard);border-radius:50%;
+  box-shadow:var(--sh-md);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;color:var(--muted);transition:all .2s;
+  opacity:0;pointer-events:none;transform:translateY(10px);
+}
+#back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
+
+@media(max-width:600px){
+  .hero{padding:28px 22px 24px;border-radius:0 0 20px 20px}
+  .hero::after{display:none}
+  .wrap{padding:0 14px 90px}
+  .nav{justify-content:center}
+}
+</style>
+</head>
+
+<body>
+<div id="prog"></div>
+
+<header class="hero" id="topo">
+  <div class="wrap" style="padding:0">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">RICD • Título IV • Capítulo II</div>
+      <h1 class="hero-title">Dos Projetos</h1>
+      <p class="hero-sub">
+        Arts. 104 a 112 — retirada, arquivamento, extravio/publicação e regras gerais sobre espécies, iniciativa,
+        reapresentação, redação e instrução dos projetos.
+      </p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- Art. 104 -->
+  <section class="section" id="art104">
+    <div class="s-head">
+      <div class="pill">Art. 104</div>
+      <div class="hgroup">
+        <div class="h-title">Retirada de proposição</div>
+        <div class="h-meta">
+          <span class="tag"><b>Regra</b> autor requer ao PCD</span>
+          <span class="tag"><b>Plenário</b> se houver parecer favorável</span>
+          <span class="tag"><b>Vedação</b> reapresentar na mesma SL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-body">
+      <div class="kv">
+        <div class="box">
+          <h4>Competência para deferimento</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> <b>Regra geral</b>: requerida pelo <b>Autor</b> ao <b>PCD</b> (cabe <b>recurso</b> ao Plenário).</li>
+            <li class="li"><span class="dot"></span> <b>Plenário</b> (§ 1º): se a proposição já tiver ao menos <b>1 parecer favorável</b>.</li>
+          </ul>
+
+          <h4>Regras específicas de autoria</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> <b>Iniciativa coletiva</b> (§ 2º): requerimento de <b>metade + 1</b> dos subscritores.</li>
+            <li class="li"><span class="dot"></span> <b>Comissão ou Mesa</b> (§ 3º): requerimento do <b>Presidente</b> + <b>prévia autorização</b> do colegiado.</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h4>Vedação e exceção</h4>
+          <p><b>Vedação</b> (§ 4º): proposição retirada <b>não pode</b> ser reapresentada na <b>mesma sessão legislativa</b>.</p>
+          <p><b>Exceção</b>: salvo <b>deliberação do Plenário</b>.</p>
+
+          <h4>Abrangência</h4>
+          <p>(§ 5º) Aplica-se também a proposições do <b>Senado</b>, de <b>outros Poderes</b>, <b>PGR</b> ou <b>Cidadãos</b>.</p>
+
+          <div class="correlatos">
+            <h5>Artigos correlatos</h5>
+            <div class="callout">
+              <p><b>Art. 114, VII</b>: retirada com <b>parecer contrário</b>, <b>sem parecer</b> ou só com parecer de <b>admissibilidade</b> → despacho apenas do <b>Presidente</b>.</p>
+            </div>
+            <div class="callout">
+              <p><b>Art. 117, VI</b>: retirada de proposição na <b>Ordem do Dia</b> → deliberação do <b>Plenário</b> (antes do anúncio da matéria).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Art. 105 -->
+  <section class="section" id="art105">
+    <div class="s-head">
+      <div class="pill">Art. 105</div>
+      <div class="hgroup">
+        <div class="h-title">Arquivamento</div>
+        <div class="h-meta">
+          <span class="tag"><b>Regra</b> fim da legislatura</span>
+          <span class="tag"><b>Exceções</b> rol taxativo</span>
+          <span class="tag"><b>Apensadas</b> pareceres continuam válidos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-body">
+      <div class="kv">
+        <div class="box">
+          <h4>Regra geral</h4>
+          <p>Finda a <b>legislatura</b>, arquivam-se todas as proposições em tramitação.</p>
+
+          <h4>Exceções ao arquivamento (rol taxativo)</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> (IV) Iniciativa <b>popular</b></li>
+            <li class="li"><span class="dot"></span> (VI) Espécies do <b>art. 59</b> da CF que <b>não</b> tramitaram por <b>3 legislaturas completas</b></li>
+            <li class="li"><span class="dot"></span> (VII) Projetos de <b>código</b></li>
+            <li class="li"><span class="dot"></span> (VIII) <b>Tratados</b> internacionais e concessão de <b>radiodifusão</b> (som e imagem)</li>
+            <li class="li"><span class="dot"></span> (IX) <b>Contas</b> do Presidente da República</li>
+            <li class="li"><span class="dot"></span> (X) Aprovadas pela Câmara e <b>revisadas</b> pelo Senado Federal</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h4>Tramitação conjunta (§ 2º)</h4>
+          <p>No arquivamento de proposição <b>apensada</b>:</p>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> permanecem <b>válidos</b> os pareceres aprovados (instruem as remanescentes);</li>
+            <li class="li"><span class="dot"></span> mantém-se a <b>distribuição</b> às Comissões.</li>
+          </ul>
+
+          <div class="correlatos">
+            <h5>Artigos correlatos</h5>
+            <div class="callout">
+              <p><b>Art. 133</b>: pareceres contrários (mérito) de <b>todas</b> as Comissões → proposição tida como <b>rejeitada</b> e arquivada definitivamente (salvo recurso do <b>Art. 132, § 2º</b>).</p>
+            </div>
+            <div class="callout">
+              <p><b>Art. 164, § 4º</b>: proposição dada como <b>prejudicada</b> é definitivamente arquivada pelo Presidente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Arts. 106 e 107 -->
+  <section class="section" id="art106-107">
+    <div class="s-head">
+      <div class="pill">Arts. 106–107</div>
+      <div class="hgroup">
+        <div class="h-title">Extravio e publicação</div>
+        <div class="h-meta">
+          <span class="tag"><b>Extravio</b> reconstituição do processo</span>
+          <span class="tag"><b>Publicação</b> DCD + avulsos</span>
+          <span class="tag"><b>Conclusiva</b> destacar prazo de recurso</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-body">
+      <div class="kv">
+        <div class="box">
+          <h4>Extravio (Art. 106)</h4>
+          <p>
+            Por <b>extravio</b> ou <b>retenção indevida</b> (vencidos prazos regimentais),
+            a <b>Mesa</b> fará <b>reconstituir</b> o processo pelos meios ao alcance.
+          </p>
+
+          <h4>Publicação obrigatória (Art. 107)</h4>
+          <p>No <b>DCD</b> e em <b>avulsos</b> (na volta das Comissões), deve constar:</p>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> Autor / número de autores</li>
+            <li class="li"><span class="dot"></span> Turnos</li>
+            <li class="li"><span class="dot"></span> Ementa</li>
+            <li class="li"><span class="dot"></span> Conclusão dos pareceres (favoráveis/contrários/emendas/substitutivos)</li>
+            <li class="li"><span class="dot"></span> Votos em separado / vencidos</li>
+            <li class="li"><span class="dot"></span> Relação de emendas</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h4>Matéria conclusiva (§ 2º do Art. 107)</h4>
+          <p>
+            Projetos aprovados na forma do <b>Art. 24, II</b> (poder conclusivo) devem ter publicação que
+            <b>ressalte</b> a fluência do prazo para eventual <b>recurso</b>
+            (<b>Art. 58, § 2º, I</b>, CF).
+          </p>
+
+          <div class="correlatos">
+            <h5>Artigos correlatos</h5>
+            <div class="callout">
+              <p><b>Art. 58, § 1º</b>: prazo do recurso contra apreciação conclusiva é de <b>5 sessões</b> da publicação.</p>
+            </div>
+            <div class="callout">
+              <p><b>Art. 24, II</b>: lista matérias sujeitas à apreciação conclusiva (com exceções como LC e código).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <table class="mini" aria-label="Espécies e sanção">
+        <thead>
+          <tr>
+            <th>Espécie</th>
+            <th>Finalidade</th>
+            <th>Sanção</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Projeto de Lei</b></td>
+            <td>Matérias de competência do Poder Legislativo</td>
+            <td><b>Com</b> sanção do PR</td>
+          </tr>
+          <tr>
+            <td><b>Decreto Legislativo</b></td>
+            <td>Competência exclusiva do PL</td>
+            <td><b>Sem</b> sanção do PR</td>
+          </tr>
+          <tr>
+            <td><b>Resolução</b></td>
+            <td>Competência privativa da Câmara</td>
+            <td><b>Sem</b> sanção do PR</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Arts. 108 e 109 -->
+  <section class="section" id="art108-109">
+    <div class="s-head">
+      <div class="pill">Arts. 108–109</div>
+      <div class="hgroup">
+        <div class="h-title">Espécies de projetos e destinação</div>
+        <div class="h-meta">
+          <span class="tag"><b>Instrumentos</b> LO/LC/PDL/Res/PEC</span>
+          <span class="tag"><b>Lei</b> com sanção PR</span>
+          <span class="tag"><b>PDL/Res</b> sem sanção</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-body">
+      <div class="kv">
+        <div class="box">
+          <h4>Instrumentos legislativos (Art. 108)</h4>
+          <p>A Câmara exerce função legislativa via <b>projeto de</b>:</p>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> <b>Lei ordinária</b></li>
+            <li class="li"><span class="dot"></span> <b>Lei complementar</b></li>
+            <li class="li"><span class="dot"></span> <b>Decreto legislativo</b></li>
+            <li class="li"><span class="dot"></span> <b>Resolução</b></li>
+            <li class="li"><span class="dot"></span> <b>PEC</b></li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h4>Definições e sanção (Art. 109)</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> <b>Lei</b>: matéria do Legislativo → <b>com sanção</b> do PR.</li>
+            <li class="li"><span class="dot"></span> <b>Decreto legislativo</b>: competência <b>exclusiva</b> do Legislativo → <b>sem sanção</b>.</li>
+            <li class="li"><span class="dot"></span> <b>Resolução</b>: competência <b>privativa</b> da Câmara (caráter político, processual, legislativo, administrativo ou casos concretos).</li>
+          </ul>
+          <p style="margin-top:10px;color:var(--ink2)">
+            Exemplos citados: perda de mandato, criação de CPI, conclusões de fiscalização, economia interna.
+          </p>
+
+          <div class="correlatos">
+            <h5>Artigos correlatos</h5>
+            <div class="callout">
+              <p><b>Art. 200, § 2º</b>: resoluções são <b>promulgadas</b> pelo Presidente da Casa em até <b>2 sessões</b> após recebimento dos autógrafos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Art. 109 §§ 1º e 2º -->
+  <section class="section" id="art109-par">
+    <div class="s-head">
+      <div class="pill">Art. 109</div>
+      <div class="hgroup">
+        <div class="h-title">Iniciativa dos projetos (§§ 1º e 2º)</div>
+        <div class="h-meta">
+          <span class="tag"><b>PL</b> art. 61 CF</span>
+          <span class="tag"><b>PDL/Res</b> qualquer Deputado/Comissão</span>
+          <span class="tag"><b>Exceção</b> iniciativa privativa</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-body">
+      <div class="kv">
+        <div class="box">
+          <h4>Iniciativa de projetos de lei (§ 1º — Art. 61 CF)</h4>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> <b>Deputados</b> (individual ou coletivamente)</li>
+            <li class="li"><span class="dot"></span> <b>Comissão</b> ou <b>Mesa</b></li>
+            <li class="li"><span class="dot"></span> <b>Senado Federal</b></li>
+            <li class="li"><span class="dot"></span> <b>Presidente da República</b></li>
+            <li class="li"><span class="dot"></span> <b>Supremo Tribunal Federal</b></li>
+            <li class="li"><span class="dot"></span> <b>Tribunais Superiores</b></li>
+            <li class="li"><span class="dot"></span> <b>Procurador-Geral da República</b></li>
+            <li class="li"><span class="dot"></span> <b>Cidadãos</b></li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h4>Iniciativa de PDL e Resolução (§ 2º)</h4>
+          <p>Apresentados por <b>qualquer Deputado</b> ou <b>Comissão</b>.</p>
+          <p><b>Exceção</b>: quando sejam de iniciativa <b>privativa</b> da <b>Mesa</b> ou de outro colegiado específico.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Art. 110 -->
+  <section class="section" id="art110">
+    <div class="s-head">
+      <div class="pill">Art. 110</div>
+      <div class="hgroup">
+        <div class="h-title">Reapresentação de matéria rejeitada</div>
+        <div class="h-meta">
+          <span class="tag"><b>Regra</b> só com maioria absoluta</span>
+          <span class="tag"><b>Iniciativa externa</b> autor + MA</span>
+          <span class="tag"><b>Mesma SL</b> requisito reforçado</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-body">
+      <div class="kv">
+        <div class="box">
+          <h4>Regra geral</h4>
+          <p>
+            Matéria de projeto <b>rejeitado</b> só pode virar novo projeto na <b>mesma sessão legislativa</b> mediante:
+            <b>proposta da maioria absoluta</b> dos membros da Câmara.
+          </p>
+        </div>
+
+        <div class="box">
+          <h4>Iniciativa externa</h4>
+          <p>
+            Se a iniciativa for do <b>Senado</b>, do <b>Presidente</b>, do <b>Judiciário</b>, da <b>PGR</b> ou de <b>Cidadãos</b>
+            (incisos III a VIII do Art. 109, § 1º):
+          </p>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> iniciativa do <b>Autor</b> +</li>
+            <li class="li"><span class="dot"></span> aprovação da <b>maioria absoluta</b> dos Deputados.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Art. 111 -->
+  <section class="section" id="art111">
+    <div class="s-head">
+      <div class="pill">Art. 111</div>
+      <div class="hgroup">
+        <div class="h-title">Requisitos de redação e matéria</div>
+        <div class="h-meta">
+          <span class="tag"><b>Forma</b> artigos + ementa</span>
+          <span class="tag"><b>Sanção</b> devolução ou divisão</span>
+          <span class="tag"><b>Jabutis</b> vedados</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-body">
+      <div class="kv">
+        <div class="box">
+          <h4>Forma</h4>
+          <p>
+            Projetos devem ser divididos em <b>artigos numerados</b>, com redação <b>concisa</b> e <b>clara</b>,
+            precedidos sempre de <b>ementa</b>.
+          </p>
+
+          <h4>Conteúdo (§ 2º)</h4>
+          <p>
+            Deve conter <b>simplesmente</b> a enunciação da vontade legislativa (cf. <b>Art. 100, § 3º</b>).
+          </p>
+        </div>
+
+        <div class="box">
+          <h4>Sanção</h4>
+          <p>Aplica-se <b>devolução</b> (Art. 137, § 1º) ou <b>divisão</b> (Art. 57, III).</p>
+
+          <h4>Vedação de “jabutis” (§ 3º)</h4>
+          <p>Nenhum projeto pode conter <b>2 ou mais</b> matérias <b>diversas</b>.</p>
+
+          <div class="correlatos">
+            <h5>Artigos correlatos</h5>
+            <div class="callout">
+              <p><b>Art. 100, § 3º</b>: veda matéria estranha ao enunciado objetivamente declarado na ementa.</p>
+            </div>
+            <div class="callout">
+              <p><b>Art. 57, III</b>: Comissões podem <b>dividir</b> projeto com matérias diferentes em proposições separadas (remessa à Mesa para renumeração).</p>
+            </div>
+            <div class="callout">
+              <p><b>Art. 137, § 1º</b>: Presidência <b>devolve</b> proposição não formalizada, alheia à competência, inconstitucional ou antirregimental.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Art. 112 -->
+  <section class="section" id="art112">
+    <div class="s-head">
+      <div class="pill">Art. 112</div>
+      <div class="hgroup">
+        <div class="h-title">Instrução incompleta e tramitação</div>
+        <div class="h-meta">
+          <span class="tag"><b>Hipóteses</b> forma/refs/incompletos</span>
+          <span class="tag"><b>Efeito</b> só envia após completar</span>
+          <span class="tag"><b>Ciência</b> autores cientes</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-body">
+      <div class="kv">
+        <div class="box">
+          <h4>Hipóteses</h4>
+          <p>Projetos apresentados:</p>
+          <ul class="ul">
+            <li class="li"><span class="dot"></span> sem observância dos preceitos do <b>Art. 111</b>;</li>
+            <li class="li"><span class="dot"></span> com referências a leis/atos <b>sem transcrição</b>;</li>
+            <li class="li"><span class="dot"></span> incompletos ou sem esclarecimentos.</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h4>Consequência</h4>
+          <p>
+            Só serão enviados às Comissões depois de <b>completada</b> sua instrução.
+          </p>
+          <h4>Ciência</h4>
+          <p>
+            Autores ficam <b>cientes</b> do <b>retardamento</b>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <div class="nav" aria-label="Navegação entre capítulos">
+    <a href="titulo4-cap1.html">← Voltar (Capítulo I)</a>
+    <div class="hint">Próximo: Capítulo III — Das Indicações</div>
+    <a href="titulo4-cap3.html">Avançar →</a>
+  </div>
+
+</div>
+
+<div class="fab-wrap">
+  <button id="theme-btn" title="Alternar tema">
+    <span id="t-icon">🌙</span>
+    <div class="t-track"><div class="t-knob"></div></div>
+    <span id="t-label">Escuro</span>
+  </button>
+  <button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function(){
+  const root=document.documentElement,btn=document.getElementById('theme-btn'),
+        icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
+  let dark=localStorage.getItem('ricd-theme')==='dark';
+  if(!localStorage.getItem('ricd-theme')) dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function apply(){
+    root.setAttribute('data-theme',dark?'dark':'light');
+    icon.textContent=dark?'☀️':'🌙';
+    lbl.textContent=dark?'Claro':'Escuro';
+    localStorage.setItem('ricd-theme',dark?'dark':'light');
+  }
+  apply();
+  btn.addEventListener('click',()=>{dark=!dark;apply()});
+})();
+(function(){
+  const bar=document.getElementById('prog'),top=document.getElementById('back-top');
+  window.addEventListener('scroll',function(){
+    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(s/h*100)+'%';
+    top.classList.toggle('show',s>280);
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
