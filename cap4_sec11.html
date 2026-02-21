@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RICD — Título II — Capítulo IV — Seção XI</title>
+  <style>
+    :root{
+      --bg1:#0b1220;
+      --bg2:#122b3e;
+      --text:#e9f2ff;
+      --muted:#b9c7dc;
+      --line:rgba(255,255,255,.12);
+      --accent:#8dd7ff;
+      --accent2:#a8ffcf;
+      --warn:#ffd08a;
+      --danger:#ff9aa8;
+      --violet:#c7b3ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 12% 10%, rgba(141,215,255,.18), transparent 55%),
+        radial-gradient(1000px 700px at 88% 18%, rgba(168,255,207,.14), transparent 60%),
+        radial-gradient(900px 650px at 60% 92%, rgba(199,179,255,.12), transparent 55%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+    }
+    .wrap{max-width:1040px;margin:0 auto;padding:28px 18px 44px}
+    header{
+      display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+    .titleBlock{min-width:280px;flex:1}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 10px;border-radius:999px;
+      background:rgba(141,215,255,.10);
+      border:1px solid rgba(141,215,255,.22);
+      color:var(--text);font-size:12px;font-weight:800;
+      letter-spacing:.2px;
+    }
+    h1{font-size:22px;margin:8px 0 6px;letter-spacing:.2px}
+    .subtitle{color:var(--muted);font-size:13px;line-height:1.35;max-width:76ch}
+    .topActions{display:flex;gap:10px;align-items:center}
+    a.btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 12px;border-radius:12px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      color:var(--text);text-decoration:none;font-weight:650;font-size:13px;
+      transition:.15s ease;
+      user-select:none;
+    }
+    a.btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.10)}
+    a.btn:active{transform:translateY(0px)}
+    .grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+    @media (min-width:920px){ .grid{grid-template-columns:1fr 1fr} }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 14px 40px rgba(0,0,0,.22);
+    }
+    .cardHeader{
+      padding:14px 14px 10px;
+      border-bottom:1px solid var(--line);
+      background:rgba(0,0,0,.14);
+    }
+    .cardHeader h2{font-size:15px;margin:0 0 4px;letter-spacing:.2px}
+    .cardHeader .ref{color:var(--muted);font-size:12px}
+    .cardBody{padding:14px}
+
+    .k{
+      display:inline-block;
+      padding:3px 9px;border-radius:999px;
+      border:1px solid rgba(168,255,207,.25);
+      background:rgba(168,255,207,.10);
+      color:var(--text);
+      font-size:12px;font-weight:900;
+      margin:0 0 10px;
+      letter-spacing:.2px;
+    }
+    .k.violet{
+      border:1px solid rgba(199,179,255,.30);
+      background:rgba(199,179,255,.10);
+    }
+    .k.warn{
+      border:1px solid rgba(255,208,138,.35);
+      background:rgba(255,208,138,.10);
+    }
+
+    ul{margin:10px 0 0 18px;padding:0}
+    li{margin:8px 0;color:var(--text);line-height:1.35}
+    li span.m{color:var(--muted)}
+
+    .note{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px dashed rgba(255,255,255,.18);
+      background:rgba(141,215,255,.06);
+      color:var(--text);
+      font-size:13px;
+      line-height:1.35;
+    }
+    .note b{color:var(--accent)}
+    .note.warn{background:rgba(255,208,138,.08)}
+    .note.warn b{color:var(--warn)}
+    .note.violet{background:rgba(199,179,255,.08)}
+    .note.violet b{color:var(--violet)}
+
+    .links{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+    .links h3{font-size:13px;margin:0 0 8px;color:var(--muted);font-weight:900;letter-spacing:.2px}
+    .links .tag{
+      display:inline-block;margin:6px 8px 0 0;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(141,215,255,.22);
+      background:rgba(141,215,255,.10);
+      font-size:12px;color:var(--text);
+    }
+
+    hr.sep{border:none;height:1px;background:var(--line);margin:14px 0}
+
+    code.inline{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      padding:2px 6px;border-radius:10px;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      font-size:12px;
+    }
+    .footer{margin-top:18px;color:var(--muted);font-size:12px;line-height:1.35}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="titleBlock">
+        <div class="pill">Capítulo IV — Seção XI — Secretaria, Atas e Assessoramento</div>
+        <h1>Secretaria das Comissões, formalidades da ata e assessoramento legislativo</h1>
+        <div class="subtitle">
+          Art. 62 (funções da Secretaria), Art. 63 (validação/publicidade/conteúdo da ata)
+          e Art. 64 (assessoramento e consultoria técnico-legislativa).
+        </div>
+      </div>
+
+      <div class="topActions">
+        <a class="btn" href="titulo2-cap4.html" aria-label="Voltar para o menu do Capítulo IV">⟵ Voltar</a>
+        <a class="btn" href="#topo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Topo</a>
+      </div>
+    </header>
+
+    <div id="topo" class="grid">
+
+      <!-- Art. 62 -->
+      <section class="card">
+        <div class="cardHeader">
+          <h2>Secretaria das Comissões</h2>
+          <div class="ref">Art. 62, caput e parágrafo único</div>
+        </div>
+        <div class="cardBody">
+          <div class="k">ESTRUTURA</div>
+          <ul>
+            <li><b>Cada Comissão</b> terá uma <b>Secretaria</b> responsável por <b>apoio administrativo</b>.</li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k violet">SERVIÇOS (rol exemplificativo)</div>
+          <ul>
+            <li><b>I</b> — Apoio aos trabalhos e <b>redação da ata</b>.</li>
+            <li><b>II</b> — Organização do <b>protocolo</b> de entrada/saída de matéria.</li>
+            <li><b>III</b> — <b>Sinopse</b> dos trabalhos (andamento de proposições em curso).</li>
+            <li><b>IV</b> — Informações sucintas ao Presidente <b>no último dia de cada mês</b> sobre andamento das proposições.</li>
+            <li><b>V</b> — Organização dos processos legislativos <b>como autos judiciais</b> (numeração cronológica, folhas rubricadas).</li>
+            <li><b>VI</b> — Entrega do processo ao Relator <b>até o dia seguinte</b> à distribuição.</li>
+            <li><b>VII</b> — Acompanhamento da distribuição e dos <b>prazos regimentais</b> (mantendo o Presidente informado).</li>
+            <li><b>VIII</b> — Encaminhar cópia da ata (com distribuições) ao órgão de sinopse.</li>
+            <li><b>IX</b> — Organizar <b>súmula da jurisprudência dominante</b> da Comissão (sob orientação do Presidente).</li>
+            <li><b>X</b> — Outros encargos determinados pelo Presidente.</li>
+          </ul>
+
+          <div class="note violet">
+            <b>Memorização rápida:</b> a Secretaria faz o “backoffice” do processo legislativo:
+            protocolo + sinopse + prazos + organização dos autos + suporte à ata e ao Relator.
+          </div>
+
+          <div class="note warn">
+            <b>Prazos que caem fácil:</b> <code class="inline">último dia de cada mês</code> (info ao Presidente) e
+            <code class="inline">até o dia seguinte</code> (entrega ao Relator).
+          </div>
+        </div>
+      </section>
+
+      <!-- Art. 63 -->
+      <section class="card">
+        <div class="cardHeader">
+          <h2>Ata das reuniões: validação, publicidade e conteúdo</h2>
+          <div class="ref">Art. 63</div>
+        </div>
+        <div class="cardBody">
+          <div class="k">FORMALIDADES</div>
+          <ul>
+            <li>Depois de <b>lida e aprovada</b>, a ata será:</li>
+            <li>
+              <ul>
+                <li><b>assinada</b> pelo Presidente; e</li>
+                <li><b>rubricada em todas as folhas</b>.</li>
+              </ul>
+            </li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k warn">PUBLICIDADE</div>
+          <ul>
+            <li>Publicada no <b>Diário da Câmara dos Deputados</b> <span class="m">(de preferência no dia seguinte)</span>.</li>
+          </ul>
+
+          <hr class="sep" />
+
+          <div class="k violet">CONTEÚDO OBRIGATÓRIO (padrão uniforme)</div>
+          <ul>
+            <li><b>I</b> — Data, hora e local.</li>
+            <li><b>II</b> — Nomes dos membros presentes e ausentes <span class="m">(com referência expressa às faltas justificadas)</span>.</li>
+            <li><b>III</b> — Resumo do expediente.</li>
+            <li><b>IV</b> — Relação das matérias distribuídas <span class="m">(proposições, Relatores e Substitutos)</span>.</li>
+            <li><b>V</b> — Registro das proposições apreciadas e respectivas conclusões.</li>
+          </ul>
+
+          <div class="note">
+            <b>Checklist de prova:</b> ata = “<b>Quem</b> (presentes/ausentes) + <b>Onde/Quando</b> + <b>Expediente</b> +
+            <b>Distribuições</b> + <b>Deliberações/conclusões</b>”.
+          </div>
+        </div>
+      </section>
+
+      <!-- Art. 64 -->
+      <section class="card" style="grid-column:1/-1">
+        <div class="cardHeader">
+          <h2>Assessoramento legislativo</h2>
+          <div class="ref">Art. 64</div>
+        </div>
+        <div class="cardBody">
+          <div class="k">SUPORTE TÉCNICO</div>
+          <ul>
+            <li>As Comissões contam com <b>assessoramento</b> e <b>consultoria técnico-legislativa</b> (e especializada) nas suas áreas.</li>
+            <li>A execução é do órgão de <b>assessoramento institucional</b> da Câmara.</li>
+            <li>Nos termos de resolução específica e do que prevê o <b>§ 1º do Art. 278</b>.</li>
+          </ul>
+
+          <div class="links">
+            <h3>Correlato</h3>
+            <span class="tag">Art. 278, § 1º (núcleo de assessoramento às comissões / núcleos temáticos)</span>
+          </div>
+
+          <div class="note violet">
+            <b>Ideia-chave:</b> “Secretaria” (Art. 62) = apoio administrativo e fluxo documental.
+            “Assessoramento” (Art. 64) = apoio técnico-legislativo e especializado.
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="footer">
+      Fixe assim: <b>62</b> (Secretaria faz andar) → <b>63</b> (Ata valida/publica e tem conteúdo padrão) → <b>64</b> (Apoio técnico da Consultoria/assessoramento).
+    </div>
+  </div>
+</body>
+</html>
