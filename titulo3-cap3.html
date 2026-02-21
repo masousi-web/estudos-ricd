@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RICD — Título III — Cap. III — Sessões Secretas</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   TOKENS — LIGHT
+═══════════════════════════════════════════════ */
+:root,[data-theme="light"]{
+  --bg:#f3f6fb;--bg2:#eaeff8;--surface:#ffffff;--surface2:#f7faff;
+  --border:rgba(15,39,66,.09);--border-hard:rgba(15,39,66,.16);
+  --ink:#0d1f35;--ink2:#2b4060;--muted:#526a88;--faint:#8fa8c2;
+  --gold:#b86b1a;--gold-soft:rgba(184,107,26,.10);
+  --blue:#1a4d8a;--blue-soft:rgba(26,77,138,.08);
+  --green:#186347;--green-soft:rgba(24,99,71,.09);
+  --red:#a81f2a;--red-soft:rgba(168,31,42,.09);
+  --purple:#5a3d8a;--purple-soft:rgba(90,61,138,.08);
+  --mark-bg:rgba(15,23,42,.07);
+
+  --hero-from:#0c2240;--hero-to:#153558;--hero-text:#ffffff;--hero-sub:rgba(255,255,255,.80);
+
+  --sh-sm:0 2px 8px rgba(12,26,43,.06);
+  --sh-md:0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:0 14px 34px rgba(12,26,43,.11);
+  --sh-hov:0 10px 28px rgba(12,26,43,.14);
+
+  --toggle-bg:#d8e2f0;--toggle-knob:#ffffff;
+  --list-bg:#f7fafc;
+  --note-bg:rgba(26,77,138,.05);--note-border:rgba(26,77,138,.12);--note-text:#1a2e44;
+}
+/* ═══════════════════════════════════════════════
+   TOKENS — DARK
+═══════════════════════════════════════════════ */
+[data-theme="dark"]{
+  --bg:#0c1120;--bg2:#101728;--surface:#161d2f;--surface2:#1b2238;
+  --border:rgba(255,255,255,.06);--border-hard:rgba(255,255,255,.12);
+  --ink:#dce8fa;--ink2:#94b0d4;--muted:#627ea6;--faint:#374e6a;
+
+  --gold:#f0b84a;--gold-soft:rgba(240,184,74,.11);
+  --blue:#5b96f0;--blue-soft:rgba(91,150,240,.11);
+  --green:#38c882;--green-soft:rgba(56,200,130,.09);
+  --red:#f46862;--red-soft:rgba(244,104,98,.11);
+  --purple:#a07af5;--purple-soft:rgba(160,122,245,.10);
+
+  --mark-bg:rgba(220,232,250,.09);
+  --hero-from:#08111e;--hero-to:#0f1e30;--hero-text:#e4f0ff;--hero-sub:rgba(210,228,255,.70);
+
+  --sh-sm:0 2px 8px rgba(0,0,0,.28);
+  --sh-md:0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:0 14px 34px rgba(0,0,0,.40);
+  --sh-hov:0 10px 28px rgba(0,0,0,.46);
+
+  --toggle-bg:#243350;--toggle-knob:#f0b84a;
+  --list-bg:rgba(255,255,255,.03);
+  --note-bg:rgba(91,150,240,.09);--note-border:rgba(91,150,240,.20);--note-text:#b0ccf0;
+}
+
+/* Base */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',sans-serif;
+  font-size:15px;line-height:1.68;
+  color:var(--ink);background:var(--bg);
+  transition:background .25s,color .25s;
+  min-height:100vh;
+}
+a{color:inherit;text-decoration:none}
+
+/* Progress */
+#prog{position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--blue));
+  z-index:300;border-radius:0 2px 2px 0;transition:width .08s linear}
+
+/* Wrap */
+.wrap{max-width:1020px;margin:0 auto;padding:0 20px 80px}
+
+/* Hero */
+.hero{
+  background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);
+  border-radius:0 0 28px 28px;
+  padding:38px 36px 34px;margin-bottom:32px;
+  position:relative;overflow:hidden;box-shadow:var(--sh-lg);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),
+    radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'III';
+  position:absolute;right:36px;top:50%;transform:translateY(-50%);
+  font-family:'Crimson Pro',serif;font-size:160px;font-weight:700;
+  color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none;
+}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:10px;
+}
+.hero-title{
+  font-family:'Crimson Pro',serif;
+  font-size:clamp(28px,3.5vw,42px);
+  font-weight:700;color:var(--hero-text);line-height:1.12;margin-bottom:10px;
+}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:74ch;line-height:1.58;margin-bottom:20px}
+.nav-chips{display:flex;flex-wrap:wrap;gap:8px}
+.nav-chips a{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:7px 13px;border-radius:100px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.16);
+  color:rgba(255,255,255,.88);
+  font-size:12.5px;font-weight:500;
+  transition:background .15s,transform .1s;
+}
+.nav-chips a:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.nav-chips a b{font-weight:700;color:var(--gold)}
+.legend{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.10);
+}
+.lchip{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:100px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.07);
+  color:rgba(255,255,255,.78);
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:.06em;font-weight:600;text-transform:uppercase;
+}
+.ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* Section head */
+.sec-head{display:flex;align-items:center;gap:14px;margin:36px 0 18px}
+.sec-line{flex:1;height:1px;background:var(--border-hard)}
+.sec-title{font-family:'Crimson Pro',serif;font-size:21px;font-weight:700;color:var(--ink);white-space:nowrap}
+.sec-badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.c12{grid-column:span 12}
+.c6{grid-column:span 12}
+@media(min-width:760px){.c6{grid-column:span 6}}
+
+/* Card */
+.card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;box-shadow:var(--sh-sm);
+  overflow:hidden;position:relative;
+  transition:transform .14s,box-shadow .14s,border-color .14s;
+  opacity:0;animation:fadeUp .35s ease forwards;
+}
+.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.08s}
+.card:nth-child(3){animation-delay:.13s}.card:nth-child(4){animation-delay:.18s}
+.card:nth-child(5){animation-delay:.23s}.card:nth-child(6){animation-delay:.28s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{transform:translateY(-2px);box-shadow:var(--sh-hov)}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,#1c3f63);border-radius:14px 0 0 14px}
+.card-inner{padding:16px 16px 16px 18px}
+.card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.c-badge{
+  flex-shrink:0;width:36px;height:36px;border-radius:9px;
+  background:var(--bg2);border:1px solid var(--border-hard);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;
+  color:var(--c,#1c3f63);margin-top:1px;
+}
+@supports (color:color-mix(in srgb,red 50%,blue 50%)){
+  [data-theme="dark"] .c-badge{
+    background:color-mix(in srgb,var(--c,#1c3f63) 14%,var(--surface2) 86%);
+    color:color-mix(in srgb,var(--c,#1c3f63) 55%,#ffffff 45%);
+  }
+}
+.c-title{font-family:'Crimson Pro',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:3px}
+.c-lead{font-size:13px;color:var(--muted);line-height:1.45}
+
+/* Lists */
+.kp-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.kp-list li{
+  padding:9px 11px;border-radius:9px;
+  background:var(--list-bg);border:1px solid var(--border);
+  font-size:13.5px;color:var(--ink2);line-height:1.52;
+}
+.kp-list li b{font-weight:700;color:var(--ink)}
+
+/* Highlights */
+.k{font-weight:700;color:var(--ink);background:var(--mark-bg);padding:0 .22em;border-radius:.4em}
+.org{font-weight:700;color:var(--blue);background:var(--blue-soft);padding:0 .22em;border-radius:.4em}
+.prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em}
+.exc{font-weight:700;color:var(--red);background:var(--red-soft);padding:0 .22em;border-radius:.4em}
+.num{font-weight:700;color:var(--ink2)}
+
+/* Trap */
+.trap{
+  margin-top:10px;display:flex;gap:10px;align-items:flex-start;
+  background:var(--red-soft);
+  border:1px solid rgba(168,31,42,.20);
+  border-radius:10px;padding:11px 13px;
+}
+[data-theme="dark"] .trap{border-color:rgba(244,104,98,.22)}
+.trap-icon{font-size:16px;line-height:1.5;flex-shrink:0}
+.trap-text{font-size:13px;color:var(--red);font-weight:500;line-height:1.5}
+.trap-text b{font-weight:700}
+
+/* Note */
+.note{
+  margin-top:10px;padding:10px 13px;border-radius:10px;
+  background:var(--note-bg);border:1px solid var(--note-border);
+  color:var(--note-text);font-size:13px;line-height:1.55;
+}
+.note b{font-weight:700}
+
+/* Correlatos */
+.correlatos{
+  margin-top:10px;padding:11px 13px;border-radius:10px;
+  background:var(--purple-soft);
+  border:1px solid rgba(90,61,138,.16);
+}
+[data-theme="dark"] .correlatos{border-color:rgba(160,122,245,.18)}
+.corr-title{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--purple);font-weight:700;margin-bottom:6px;
+}
+.corr-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+.corr-list li{font-size:13px;color:var(--ink2);padding-left:16px;position:relative;line-height:1.5}
+.corr-list li::before{content:'↗';position:absolute;left:0;color:var(--purple);font-size:12px}
+
+/* Footer */
+.page-footer{
+  text-align:center;font-size:12.5px;color:var(--faint);
+  margin-top:48px;padding-top:20px;border-top:1px solid var(--border-hard);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;
+}
+.page-footer a{
+  color:var(--blue);font-weight:600;
+  padding:6px 14px;border-radius:8px;
+  border:1px solid var(--border-hard);background:var(--surface);
+  font-size:13px;transition:box-shadow .15s;
+}
+.page-footer a:hover{box-shadow:var(--sh-md)}
+
+/* FAB */
+.fab-wrap{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+#theme-btn{
+  background:var(--surface);border:1px solid var(--border-hard);
+  box-shadow:var(--sh-md);border-radius:50px;padding:8px 14px;
+  cursor:pointer;display:flex;align-items:center;gap:9px;
+  font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--muted);
+  transition:all .2s;user-select:none;
+}
+#theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
+.t-track{width:38px;height:20px;background:var(--toggle-bg);border-radius:20px;position:relative;transition:background .25s}
+.t-knob{
+  position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;
+  background:var(--toggle-knob);transition:transform .25s,background .25s;
+  box-shadow:0 1px 4px rgba(0,0,0,.22);
+}
+[data-theme="dark"] .t-knob{transform:translateX(18px)}
+#back-top{
+  width:44px;height:44px;background:var(--surface);
+  border:1px solid var(--border-hard);border-radius:50%;
+  box-shadow:var(--sh-md);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;color:var(--muted);transition:all .2s;
+  opacity:0;pointer-events:none;transform:translateY(10px);
+}
+#back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
+
+@media(max-width:600px){
+  .hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}
+  .hero::after{display:none}
+  .wrap{padding:0 14px 80px}
+}
+</style>
+</head>
+
+<body>
+<div id="prog"></div>
+
+<header class="hero" id="topo">
+  <div class="wrap" style="padding:0">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">RICD • Título III • Capítulo III</div>
+      <h1 class="hero-title">Sessões Secretas</h1>
+      <p class="hero-sub">
+        Como convocar, quando é obrigatória, rito de instalação (retirada do público),
+        deliberação preliminar e regras de sigilo/arquivamento.
+      </p>
+
+      <nav class="nav-chips" aria-label="Mapa do capítulo">
+        <a href="#s92"><b>Art. 92</b> Convocação & hipóteses</a>
+        <a href="#s93a"><b>Art. 93</b> Instalação & deliberação preliminar</a>
+        <a href="#s93b"><b>Art. 93</b> Sigilo & arquivamento</a>
+        <a href="#s94"><b>Art. 94</b> Presença de autoridades</a>
+        <a href="#analise"><b>Análise</b> Pegadinhas</a>
+      </nav>
+
+      <div class="legend">
+        <span class="lchip"><span class="ldot" style="background:#f46862"></span>Sigilo/Exceções</span>
+        <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Prazos</span>
+        <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Órgãos/Quóruns</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="sec-head" id="s92">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 92 — Sessão Secreta</div>
+  <div class="sec-badge">Convocação • Quóruns • Hipóteses obrigatórias</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <section class="card c6" style="--c:#a81f2a">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">92</div>
+        <div>
+          <div class="c-title">Modalidades de convocação</div>
+          <div class="c-lead">Automática por requerimento escrito ou por deliberação do Plenário.</div>
+        </div>
+      </div>
+
+      <ul class="kp-list">
+        <li><b>Automaticamente:</b> requerimento <span class="k">escrito</span> de:
+          <span class="org">Comissão</span> (matéria de sua competência),
+          <span class="org">Colégio de Líderes</span> ou
+          <span class="k">1/3</span> da totalidade dos membros.</li>
+        <li><b>Sigilo do documento:</b> o requerimento permanece em <span class="exc">sigilo</span> até deliberação ulterior.</li>
+        <li><b>Por deliberação do Plenário:</b> requerimento de <span class="org">Líder</span> ou de <span class="k">1/5</span> dos membros.</li>
+      </ul>
+
+      <div class="trap">
+        <div class="trap-icon">⚠️</div>
+        <div class="trap-text"><b>Pegadinha clássica:</b> há <b>duas portas</b>. Uma é <b>automática</b> (requerimento escrito de atores específicos), outra depende de <b>deliberação do Plenário</b> (Líder ou 1/5).</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card c6" style="--c:#b86b1a">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">92</div>
+        <div>
+          <div class="c-title">Hipóteses obrigatórias (Parágrafo Único)</div>
+          <div class="c-lead">Em certos temas, a sessão é necessariamente secreta.</div>
+        </div>
+      </div>
+
+      <ul class="kp-list">
+        <li><b>I</b> — <span class="k">Fixação/modificação</span> de <span class="k">efetivos militares</span>.</li>
+        <li><b>II</b> — <span class="k">Declaração de guerra</span> ou <span class="k">acordo de paz</span>.</li>
+        <li><b>III</b> — <span class="k">Passagem/permanência</span> de <span class="k">forças estrangeiras</span> no território nacional.</li>
+      </ul>
+
+      <div class="note"><b>Destaque:</b> nessas hipóteses, a regra não é “decidir se é sigiloso” — <span class="exc">já nasce secreto</span>.</div>
+
+      <div class="correlatos">
+        <div class="corr-title">Correlatos</div>
+        <ul class="corr-list">
+          <li>Art. 69: publicidade é a regra; sessão secreta é <span class="exc">excepcional</span> por deliberação do Plenário.</li>
+          <li>Art. 48, §2º: hipóteses similares para reuniões secretas das comissões.</li>
+          <li>Art. 233: escrutínio secreto (e sessão secreta para debate, por praxe) em suspensão de imunidades no Estado de Sítio.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="sec-head" id="s93a">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 93 — Instalação & Deliberação Preliminar</div>
+  <div class="sec-badge">Retirada do público • 1ª hora • 5 min por Deputado</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <section class="card c12" style="--c:#1a4d8a">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">93</div>
+        <div>
+          <div class="c-title">Rito de instalação e debate preliminar</div>
+          <div class="c-lead">Limpeza do recinto e decisão inicial sobre tratar sigilosamente ou publicamente.</div>
+        </div>
+      </div>
+
+      <ul class="kp-list">
+        <li><b>Saída do recinto:</b> Presidente determina sair <span class="k">pessoas estranhas</span> e <span class="k">funcionários</span> (tribunas, galerias e dependências), sem prejuízo de outras cautelas da Mesa.</li>
+        <li><b>Deliberação preliminar (§1º):</b> a Câmara decide se o assunto deve ser tratado <span class="exc">sigilosamente</span> ou <span class="k">publicamente</span>.</li>
+        <li><b>Exceção:</b> não há deliberação preliminar nas hipóteses obrigatórias do Art. 92, P.U. (efetivos, guerra/paz, forças estrangeiras).</li>
+        <li><b>Limites do debate preliminar:</b> não excede a <span class="prazo">primeira hora</span>; máximo <span class="prazo">5 min</span> por Deputado na tribuna.</li>
+      </ul>
+
+      <div class="trap">
+        <div class="trap-icon">⚠️</div>
+        <div class="trap-text"><b>Troca comum:</b> “a sessão secreta começa com debate livre” — não. O debate preliminar tem <b>teto</b> (<span class="prazo">1 hora</span>) e <b>fala limitada</b> (<span class="prazo">5 min</span>).</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="sec-head" id="s93b">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 93 — Sigilo, Encerramento e Arquivamento</div>
+  <div class="sec-badge">Ata pública ou prazo de sigilo • Invólucro lacrado • Discurso escrito</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <section class="card c6" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">93</div>
+        <div>
+          <div class="c-title">Decisão final sobre publicidade</div>
+          <div class="c-lead">Antes de encerrar, decide-se o que vai para ata pública ou segue sigiloso.</div>
+        </div>
+      </div>
+
+      <ul class="kp-list">
+        <li><b>Decisões finais (§2º):</b> a Câmara resolve se requerimento, debates e deliberações:
+          constarão da <span class="k">ata pública</span> <span class="k">ou</span> se fixará <span class="prazo">prazo</span> de manutenção sob <span class="exc">sigilo</span>.</li>
+      </ul>
+
+      <div class="note"><b>Dica de prova:</b> o sigilo não é “eterno por padrão”: o Plenário pode definir <span class="prazo">prazo</span> ou mandar para ata pública.</div>
+    </div>
+  </section>
+
+  <section class="card c6" style="--c:#a81f2a">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">93</div>
+        <div>
+          <div class="c-title">Arquivamento lacrado (sigilo)</div>
+          <div class="c-lead">Ata + documentos em invólucro lacrado, etiquetado e rubricado pela Mesa.</div>
+        </div>
+      </div>
+
+      <ul class="kp-list">
+        <li><b>Procedimento (§3º):</b> ata aprovada + documentos → invólucro <span class="exc">lacrado</span>, <span class="k">etiquetado</span> e <span class="k">rubricado</span> pelos membros da Mesa → recolhido ao <span class="org">Arquivo</span>.</li>
+      </ul>
+
+      <div class="trap">
+        <div class="trap-icon">🧷</div>
+        <div class="trap-text"><b>Memorização rápida:</b> <b>L</b>acrado + <b>E</b>tiquetado + <b>R</b>ubricado = <b>LER</b> (mas ninguém lê 😅).</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card c12" style="--c:#1a4d8a">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">93</div>
+        <div>
+          <div class="c-title">Discursos escritos (envelope anexo)</div>
+          <div class="c-lead">Deputado e Ministro podem reduzir discurso a escrito, com prazo e duplo envelope.</div>
+        </div>
+      </div>
+
+      <ul class="kp-list">
+        <li><b>Permissão (§4º):</b> Deputado e Ministro podem reduzir discurso a escrito (prazo não excedente de <span class="prazo">uma sessão</span>).</li>
+        <li><b>Arquivamento:</b> discurso vai para <span class="k">segundo envelope</span> lacrado, <span class="k">anexo</span> ao primeiro.</li>
+      </ul>
+
+      <div class="note"><b>Detalhe que cai:</b> não é só “arquivar”; é <b>segundo envelope</b> lacrado, anexo ao invólucro principal.</div>
+    </div>
+  </section>
+</div>
+
+<div class="sec-head" id="s94">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 94 — Presença de Autoridades</div>
+  <div class="sec-badge">Quem pode ficar • Participação temporária • Tempo necessário</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <section class="card c12" style="--c:#186347">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">94</div>
+        <div>
+          <div class="c-title">Assistência e participação</div>
+          <div class="c-lead">Sessão secreta é restrita e admite participação apenas no estritamente necessário.</div>
+        </div>
+      </div>
+
+      <ul class="kp-list">
+        <li><b>Assistência permitida:</b> somente <span class="org">Deputados</span> e <span class="org">Senadores</span>.</li>
+        <li><b>Participação temporária:</b> <span class="org">Ministros de Estado</span> (quando convocados) e <span class="org">testemunhas</span> (chamadas a depor).</li>
+        <li><b>Condição:</b> apenas durante o <span class="prazo">tempo necessário</span>.</li>
+      </ul>
+      <div class="trap">
+        <div class="trap-icon">⚠️</div>
+        <div class="trap-text">Prova tenta “colar” <b>funcionários</b> e <b>assessores</b> — aqui, regra é <b>restrição</b>: só parlamentares; demais, só temporariamente e quando previsto.</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="sec-head" id="analise">
+  <div class="sec-line"></div>
+  <div class="sec-title">Análise e Pegadinhas</div>
+  <div class="sec-badge">Quóruns • Obrigatoriedade • Sigilo documental</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid">
+  <section class="card c6" style="--c:#a81f2a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">⚑</div><div><div class="c-title">Quóruns que você não pode confundir</div><div class="c-lead">“1/3” ≠ “1/5” — e a porta automática é diferente.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Automática:</b> requerimento escrito de Comissão / Colégio de Líderes / <span class="k">1/3</span> dos membros.</li>
+        <li><b>Por deliberação do Plenário:</b> requerimento de Líder ou <span class="k">1/5</span> dos membros.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card c6" style="--c:#b86b1a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">⚠️</div><div><div class="c-title">Obrigatória x deliberável</div><div class="c-lead">Em três temas, não existe “deliberação preliminar”.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Obrigatória (Art. 92, P.U.):</b> efetivos militares; guerra/paz; forças estrangeiras.</li>
+        <li><b>Deliberação preliminar (Art. 93, §1º):</b> ocorre nos demais casos, com limites (<span class="prazo">1h</span>, <span class="prazo">5 min</span>/Dep.).</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<div class="page-footer">
+  <span>RICD • Título III • Cap. III • Sessões Secretas</span>
+  <a href="titulo3.html">← Voltar ao Título III</a>
+  <a href="titulo3-cap4.html">Cap. IV →</a>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="fab-wrap">
+  <button id="theme-btn" title="Alternar tema">
+    <span id="t-icon">🌙</span>
+    <div class="t-track"><div class="t-knob"></div></div>
+    <span id="t-label">Escuro</span>
+  </button>
+  <button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function(){
+  const root=document.documentElement,btn=document.getElementById('theme-btn'),
+        icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
+  let dark=localStorage.getItem('ricd-theme')==='dark';
+  if(!localStorage.getItem('ricd-theme')) dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function apply(){
+    root.setAttribute('data-theme',dark?'dark':'light');
+    icon.textContent=dark?'☀️':'🌙';
+    lbl.textContent=dark?'Claro':'Escuro';
+    localStorage.setItem('ricd-theme',dark?'dark':'light');
+  }
+  apply();
+  btn.addEventListener('click',()=>{dark=!dark;apply()});
+})();
+(function(){
+  const bar=document.getElementById('prog'),top=document.getElementById('back-top');
+  window.addEventListener('scroll',function(){
+    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(s/h*100)+'%';
+    top.classList.toggle('show',s>280);
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
