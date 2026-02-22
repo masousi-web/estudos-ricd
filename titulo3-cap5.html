@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RICD — Título III — Cap. V — Da Ata</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+/* ═══════════════════════════════════════════════
+   TOKENS — LIGHT
+═══════════════════════════════════════════════ */
+:root, [data-theme="light"] {
+  --bg:          #f3f6fb;
+  --bg2:         #eaeff8;
+  --surface:     #ffffff;
+  --surface2:    #f7faff;
+  --border:      rgba(15,39,66,.09);
+  --border-hard: rgba(15,39,66,.16);
+
+  --ink:         #0d1f35;
+  --ink2:        #2b4060;
+  --muted:       #526a88;
+  --faint:       #8fa8c2;
+
+  --gold:        #b86b1a;
+  --gold-soft:   rgba(184,107,26,.10);
+  --blue:        #1a4d8a;
+  --blue-soft:   rgba(26,77,138,.08);
+  --green:       #186347;
+  --green-soft:  rgba(24,99,71,.09);
+  --red:         #a81f2a;
+  --red-soft:    rgba(168,31,42,.09);
+  --purple:      #5a3d8a;
+  --purple-soft: rgba(90,61,138,.08);
+
+  --mark-bg:     rgba(15,23,42,.07);
+
+  --hero-from:   #0c2240;
+  --hero-to:     #153558;
+  --hero-text:   #ffffff;
+  --hero-sub:    rgba(255,255,255,.80);
+
+  --sh-sm:  0 2px 8px rgba(12,26,43,.06);
+  --sh-md:  0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:  0 14px 34px rgba(12,26,43,.11);
+  --sh-hov: 0 10px 28px rgba(12,26,43,.14);
+
+  --chip-bg:     rgba(255,255,255,.72);
+  --chip-border: rgba(15,23,42,.10);
+  --chip-text:   #2b4060;
+
+  --list-bg:     #f7fafc;
+  --note-bg:     rgba(26,77,138,.05);
+  --note-border: rgba(26,77,138,.12);
+  --note-text:   #1a2e44;
+
+  --toggle-bg:   #d8e2f0;
+  --toggle-knob: #ffffff;
+}
+
+/* ═══════════════════════════════════════════════
+   TOKENS — DARK
+═══════════════════════════════════════════════ */
+[data-theme="dark"] {
+  --bg:          #09111d;
+  --bg2:         #0b1625;
+  --surface:     rgba(255,255,255,.055);
+  --surface2:    rgba(255,255,255,.035);
+  --border:      rgba(255,255,255,.08);
+  --border-hard: rgba(255,255,255,.13);
+
+  --ink:         rgba(255,255,255,.92);
+  --ink2:        rgba(255,255,255,.78);
+  --muted:       rgba(255,255,255,.66);
+  --faint:       rgba(255,255,255,.44);
+
+  --gold:        #f0b84a;
+  --gold-soft:   rgba(240,184,74,.10);
+  --blue:        #6aa7ff;
+  --blue-soft:   rgba(106,167,255,.11);
+  --green:       #56d39b;
+  --green-soft:  rgba(86,211,155,.09);
+  --red:         #ff6b6b;
+  --red-soft:    rgba(255,107,107,.09);
+  --purple:      #b59bff;
+  --purple-soft: rgba(181,155,255,.10);
+
+  --mark-bg:     rgba(255,255,255,.08);
+
+  --hero-from:   #0a1a2d;
+  --hero-to:     #0e223b;
+  --hero-text:   rgba(255,255,255,.95);
+  --hero-sub:    rgba(255,255,255,.74);
+
+  --sh-sm:  0 2px 10px rgba(0,0,0,.30);
+  --sh-md:  0 10px 26px rgba(0,0,0,.38);
+  --sh-lg:  0 18px 44px rgba(0,0,0,.45);
+  --sh-hov: 0 14px 38px rgba(0,0,0,.52);
+
+  --chip-bg:     rgba(255,255,255,.08);
+  --chip-border: rgba(255,255,255,.12);
+  --chip-text:   rgba(255,255,255,.80);
+
+  --list-bg:     rgba(255,255,255,.045);
+  --note-bg:     rgba(106,167,255,.08);
+  --note-border: rgba(106,167,255,.16);
+  --note-text:   rgba(255,255,255,.82);
+
+  --toggle-bg:   rgba(255,255,255,.12);
+  --toggle-knob: rgba(255,255,255,.92);
+}
+
+/* ═══════════════════════════════════════════════
+   BASE
+═══════════════════════════════════════════════ */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:radial-gradient(900px 700px at 20% 0%, rgba(26,77,138,.08), transparent 60%),
+             radial-gradient(900px 700px at 80% 0%, rgba(184,107,26,.08), transparent 60%),
+             var(--bg);
+  color:var(--ink);
+  font-family:'Outfit',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+a{color:inherit;text-decoration:none}
+b{font-weight:700}
+.k{background:var(--mark-bg);padding:1px 6px;border-radius:7px}
+.mono{font-family:'JetBrains Mono',monospace;font-size:.95em}
+.org{color:var(--blue);font-weight:700}
+.prazo{color:var(--gold);font-weight:800}
+.exc{color:var(--red);font-weight:800}
+
+/* ═══════════════════════════════════════════════
+   PROGRESS
+═══════════════════════════════════════════════ */
+#prog{
+  position:fixed;left:0;top:0;height:3px;width:0;
+  background:linear-gradient(90deg,var(--blue),var(--gold));
+  z-index:999;transition:width .1s;
+}
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+.hero{
+  position:relative;
+  padding:38px 0 30px;
+  background:linear-gradient(135deg,var(--hero-from),var(--hero-to));
+  color:var(--hero-text);
+  border-bottom:1px solid rgba(255,255,255,.10);
+  box-shadow:var(--sh-md);
+  overflow:hidden;
+}
+.hero::after{
+  content:'III';
+  position:absolute;right:24px;top:16px;
+  font-family:'Crimson Pro',serif;
+  font-size:86px;font-weight:700;
+  color:rgba(255,255,255,.10);
+  letter-spacing:.06em;
+}
+.wrap{
+  width:min(1100px,100%);
+  margin:0 auto;
+  padding:0 22px 88px;
+}
+.hero-inner{padding:0 22px}
+.hero-eyebrow{
+  display:inline-flex;gap
