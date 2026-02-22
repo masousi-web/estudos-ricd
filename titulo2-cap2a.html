@@ -1,240 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RICD — Tít. II · Cap. II-A — Secretaria da Mulher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#eef2f7;
-    --card:#ffffff;
-    --ink:#0f172a;
-    --muted:#475569;
-    --muted2:#64748b;
-    --slate:#334155;
-    --navy:#0f172a;
+:root,[data-theme="light"]{
+  --bg:#f3f6fb;--bg2:#eaeff8;--surface:#fff;--surface2:#f7faff;
+  --border:rgba(15,39,66,.09);--border-hard:rgba(15,39,66,.16);
+  --ink:#0d1f35;--ink2:#2b4060;--muted:#526a88;--faint:#8fa8c2;
+  --gold:#b86b1a;--gold-soft:rgba(184,107,26,.10);
+  --blue:#1a4d8a;--blue-soft:rgba(26,77,138,.08);
+  --green:#186347;--green-soft:rgba(24,99,71,.09);
+  --red:#a81f2a;--red-soft:rgba(168,31,42,.09);
+  --purple:#5a3d8a;--purple-soft:rgba(90,61,138,.08);
+  --rose:#7e1a4a;--rose-soft:rgba(126,26,74,.09);
+  --mark-bg:rgba(15,23,42,.07);
+  --hero-from:#3a0928;--hero-to:#5e1040;--hero-text:#fff;--hero-sub:rgba(255,255,255,.80);
+  --sh-sm:0 2px 8px rgba(12,26,43,.06);--sh-md:0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:0 14px 34px rgba(12,26,43,.11);--sh-hov:0 10px 28px rgba(12,26,43,.14);
+  --list-bg:#f7fafc;--note-bg:rgba(126,26,74,.05);--note-border:rgba(126,26,74,.14);--note-text:#3a0928;
+  --toggle-bg:#d8e2f0;--toggle-knob:#fff;--drawer-bg:#fff;--drawer-overlay:rgba(15,23,42,.38);--textarea-bg:#fbfcfe;
+}
+[data-theme="dark"]{
+  --bg:#0c1120;--bg2:#101728;--surface:#161d2f;--surface2:#1b2238;
+  --border:rgba(255,255,255,.06);--border-hard:rgba(255,255,255,.12);
+  --ink:#dce8fa;--ink2:#94b0d4;--muted:#627ea6;--faint:#374e6a;
+  --gold:#f0b84a;--gold-soft:rgba(240,184,74,.11);
+  --blue:#5b96f0;--blue-soft:rgba(91,150,240,.11);
+  --green:#38c882;--green-soft:rgba(56,200,130,.09);
+  --red:#f46862;--red-soft:rgba(244,104,98,.11);
+  --purple:#a07af5;--purple-soft:rgba(160,122,245,.10);
+  --rose:#f080b4;--rose-soft:rgba(240,128,180,.10);
+  --mark-bg:rgba(220,232,250,.09);
+  --hero-from:#1e0512;--hero-to:#320820;--hero-text:#ffe0f0;--hero-sub:rgba(255,200,220,.70);
+  --sh-sm:0 2px 8px rgba(0,0,0,.28);--sh-md:0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:0 14px 34px rgba(0,0,0,.40);--sh-hov:0 10px 28px rgba(0,0,0,.46);
+  --list-bg:rgba(255,255,255,.03);--note-bg:rgba(240,128,180,.08);--note-border:rgba(240,128,180,.20);--note-text:#f0c0d8;
+  --toggle-bg:#243350;--toggle-knob:#f0b84a;--drawer-bg:#161d2f;--drawer-overlay:rgba(0,0,0,.65);--textarea-bg:#111828;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;font-size:15px;line-height:1.68;color:var(--ink);background:var(--bg);transition:background .25s,color .25s;min-height:100vh}
+a{color:inherit;text-decoration:none}
+#prog{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--rose),var(--gold));z-index:300;transition:width .08s linear;border-radius:0 2px 2px 0}
+.fab-wrap{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+#theme-btn{background:var(--surface);border:1px solid var(--border-hard);box-shadow:var(--sh-md);border-radius:50px;padding:8px 14px;cursor:pointer;display:flex;align-items:center;gap:9px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--muted);transition:all .2s;user-select:none}
+#theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
+.t-track{width:38px;height:20px;background:var(--toggle-bg);border-radius:20px;position:relative;transition:background .25s}
+.t-knob{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--toggle-knob);transition:transform .25s;box-shadow:0 1px 4px rgba(0,0,0,.22)}
+[data-theme="dark"] .t-knob{transform:translateX(18px)}
+#back-top{width:44px;height:44px;background:var(--surface);border:1px solid var(--border-hard);border-radius:50%;box-shadow:var(--sh-md);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--muted);transition:all .2s;opacity:0;pointer-events:none;transform:translateY(10px)}
+#back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#back-top:hover{color:var(--rose);box-shadow:var(--sh-lg);transform:translateY(-2px)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px 80px}
+.hero{background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);border-radius:0 0 28px 28px;padding:38px 36px 34px;margin-bottom:32px;position:relative;overflow:hidden;box-shadow:var(--sh-lg)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);pointer-events:none}
+.hero::after{content:'II-A';position:absolute;right:36px;top:50%;transform:translateY(-50%);font-family:'Crimson Pro',serif;font-size:110px;font-weight:700;color:rgba(255,255,255,.05);line-height:1;pointer-events:none;user-select:none}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#f4a0c8;margin-bottom:10px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,80,120,.22);border:1px solid rgba(255,100,140,.35);color:#ffb0d0;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-bottom:10px}
+.hero-title{font-family:'Crimson Pro',serif;font-size:clamp(24px,3vw,40px);font-weight:700;color:var(--hero-text);line-height:1.12;margin-bottom:10px}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:72ch;line-height:1.58;margin-bottom:18px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.hero-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;border:1px solid;font-family:'Outfit',sans-serif}
+.hero-btn-ghost{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18);color:rgba(255,255,255,.88)}
+.hero-btn-ghost:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.hero-btn-primary{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);color:#fff;font-weight:700}
+.hero-btn-primary:hover{background:rgba(255,255,255,.22);transform:translateY(-1px)}
+.nav-chips{display:flex;flex-wrap:wrap;gap:8px}
+.nav-chips a{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:100px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.88);font-size:12.5px;font-weight:500;transition:background .15s,transform .1s}
+.nav-chips a:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.nav-chips a b{font-weight:700;color:#f4a0c8}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.10)}
+.lchip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:rgba(255,255,255,.78);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;font-weight:600;text-transform:uppercase}
+.ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.sec-head{display:flex;align-items:center;gap:14px;margin:36px 0 18px}
+.sec-line{flex:1;height:1px;background:var(--border-hard)}
+.sec-title{font-family:'Crimson Pro',serif;font-size:20px;font-weight:700;color:var(--ink);white-space:nowrap}
+.sec-badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.c12{grid-column:span 12}.c6{grid-column:span 12}.c5{grid-column:span 12}.c7{grid-column:span 12}
+@media(min-width:760px){.c6{grid-column:span 6}.c5{grid-column:span 5}.c7{grid-column:span 7}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--sh-sm);overflow:hidden;position:relative;transition:transform .14s,box-shadow .14s;opacity:0;animation:fadeUp .35s ease forwards}
+.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.07s}.card:nth-child(3){animation-delay:.11s}.card:nth-child(4){animation-delay:.15s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{transform:translateY(-2px);box-shadow:var(--sh-hov)}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,#7e1a4a);border-radius:14px 0 0 14px}
+.card-inner{padding:16px 16px 16px 18px}
+.card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.c-badge{flex-shrink:0;width:36px;height:36px;border-radius:9px;background:var(--bg2);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--c,#7e1a4a);margin-top:1px}
+.c-title{font-family:'Crimson Pro',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:3px}
+.c-lead{font-size:13px;color:var(--muted);line-height:1.45}
+.kp-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.kp-list li{padding:9px 11px;border-radius:9px;background:var(--list-bg);border:1px solid var(--border);font-size:13.5px;color:var(--ink2);line-height:1.52}
+.kp-list li b{font-weight:700;color:var(--ink)}
+.kp-list li ul{margin-top:5px;padding-left:16px;display:flex;flex-direction:column;gap:3px}
+.kp-list li ul li{padding:0;background:none;border:none;font-size:13px;color:var(--muted)}
+.k{font-weight:700;color:var(--ink);background:var(--mark-bg);padding:0 .22em;border-radius:.4em}
+.org{font-weight:700;color:var(--blue);background:var(--blue-soft);padding:0 .22em;border-radius:.4em}
+.prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em;white-space:nowrap}
+.exc{font-weight:700;color:var(--red);background:var(--red-soft);padding:0 .22em;border-radius:.4em}
+.vert{font-weight:700;color:var(--green);background:var(--green-soft);padding:0 .22em;border-radius:.4em}
+.rs{font-weight:700;color:var(--rose);background:var(--rose-soft);padding:0 .22em;border-radius:.4em}
+.note{margin-top:10px;padding:10px 13px;border-radius:10px;background:var(--note-bg);border:1px solid var(--note-border);color:var(--note-text);font-size:13px;line-height:1.55}
+.note b{font-weight:700}
+.trap{margin-top:10px;display:flex;gap:10px;align-items:flex-start;background:var(--red-soft);border:1px solid color-mix(in srgb,var(--red) 25%,transparent 75%);border-radius:10px;padding:11px 13px}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.trap{border-color:rgba(168,31,42,.2)}}
+.trap-icon{font-size:16px;line-height:1.5;flex-shrink:0}
+.trap-text{font-size:13px;color:var(--red);font-weight:500;line-height:1.5}
+.trap-text b{font-weight:700}
+.diff-box{margin-top:10px;border-radius:10px;overflow:hidden;border:1px solid color-mix(in srgb,var(--rose) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.diff-box{border-color:rgba(126,26,74,.30)}}
+.diff-head{padding:7px 13px;background:var(--rose-soft);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--rose);border-bottom:1px solid color-mix(in srgb,var(--rose) 18%,transparent 82%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.diff-head{border-color:rgba(126,26,74,.18)}}
+.diff-body{display:grid;grid-template-columns:1fr 1fr;background:var(--surface2)}
+@media(max-width:560px){.diff-body{grid-template-columns:1fr}}
+.diff-col{padding:11px 13px;border-right:1px solid var(--border)}
+.diff-col:last-child{border-right:none}
+.diff-col-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.diff-col-label.proc{color:var(--blue)}
+.diff-col-label.coord{color:var(--rose)}
+.diff-col-val{font-size:13px;color:var(--ink2);line-height:1.45}
+.correlatos{margin-top:10px;padding:11px 13px;border-radius:10px;background:var(--purple-soft);border:1px solid rgba(90,61,138,.16)}
+[data-theme="dark"] .correlatos{border-color:rgba(160,122,245,.18)}
+.corr-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);font-weight:700;margin-bottom:6px}
+.corr-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+.corr-list li{font-size:13px;color:var(--ink2);padding-left:16px;position:relative;line-height:1.5}
+.corr-list li::before{content:'↗';position:absolute;left:0;color:var(--purple);font-size:12px}
 
-    --shadow: 0 14px 34px rgba(15, 23, 42, .08);
-    --shadow-soft: 0 6px 18px rgba(15, 23, 42, .06);
+/* 4 ESTRUTURAS PARALELAS */
+.struct-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+@media(max-width:560px){.struct-grid{grid-template-columns:1fr}}
+.struct-item{padding:11px 13px;border-radius:10px;border:1px solid var(--border-hard);background:var(--surface2)}
+.struct-item .s-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--rose);margin-bottom:4px;text-transform:uppercase;letter-spacing:.08em}
+.struct-item .s-name{font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:3px}
+.struct-item .s-sub{font-size:12px;color:var(--muted);line-height:1.4}
+.struct-note{margin-top:8px;padding:8px 12px;background:var(--rose-soft);border-radius:8px;font-size:12px;color:var(--rose);font-weight:600;text-align:center}
 
-    --radius-xl:20px;
-    --radius-lg:16px;
+/* QUÓRUM BOX */
+.quorum-box{margin-top:10px;border-radius:10px;overflow:hidden;border:1px solid var(--border-hard)}
+.quorum-head{padding:7px 13px;background:var(--gold-soft);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold);border-bottom:1px solid rgba(184,107,26,.18)}
+.quorum-body{padding:11px 13px;background:var(--surface2);display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--ink2)}
+.quorum-row{display:flex;gap:10px;align-items:baseline}
+.quorum-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;flex-shrink:0;min-width:100px}
+.quorum-val b{font-weight:700;color:var(--ink)}
 
-    --max:1100px;
+/* FLUXO DENÚNCIA */
+.fl-list{list-style:none;display:flex;flex-direction:column;gap:0;margin-top:10px}
+.fl-row{display:flex;gap:0;align-items:flex-start}
+.fl-num-col{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:34px}
+.fl-circle{width:28px;height:28px;border-radius:50%;background:var(--rose-soft);border:1px solid color-mix(in srgb,var(--rose) 28%,transparent 72%);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--rose)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.fl-circle{border-color:rgba(126,26,74,.28)}}
+.fl-line{width:2px;background:var(--border-hard);flex:1;min-height:20px;margin:3px 0}
+.fl-content{padding:0 0 14px 10px;font-size:13px;color:var(--ink2);line-height:1.5}
+.fl-content b{font-weight:700;color:var(--ink)}
 
-    --org:#1e3a8a;
-    --prazo:#b45309;
-    --exc:#dc2626;
-    --num:#1e293b;
-    --mark: rgba(15, 23, 42, .06);
+/* COMP TABLE */
+.comp-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12.5px}
+.comp-table th{padding:8px 10px;background:var(--bg2);border:1px solid var(--border-hard);font-weight:700;color:var(--ink);text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+.comp-table td{padding:8px 10px;border:1px solid var(--border);color:var(--ink2);vertical-align:top;line-height:1.45}
+.comp-table tr:nth-child(even) td{background:var(--list-bg)}
+.comp-table td b{font-weight:700;color:var(--ink)}
+.comp-table td:first-child{font-weight:700;color:var(--rose);font-size:12px}
 
-    --accentA:#243b53;
-    --accentB:#334155;
-    --accentC:#1e293b;
-    --accentD:#475569;
+/* FOOTER */
+.page-footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border-hard);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px}
+.page-footer a{display:inline-flex;align-items:center;gap:6px;color:var(--rose);font-weight:600;padding:8px 16px;border-radius:10px;border:1px solid var(--border-hard);background:var(--surface);font-size:13px;transition:box-shadow .15s,transform .12s}
+.page-footer a:hover{box-shadow:var(--sh-md);transform:translateY(-1px)}
+.page-footer .divider{width:1px;height:20px;background:var(--border-hard)}
 
-    --serif: "Literata", ui-serif, Georgia, serif;
-    --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  }
-
-  body{
-    margin:0;
-    font-family:var(--serif);
-    background:var(--bg);
-    color:var(--ink);
-    line-height:1.6;
-  }
-
-  .wrap{
-    max-width:var(--max);
-    margin:0 auto;
-    padding:34px 20px 80px;
-  }
-
-  /* HERO */
-  .hero{
-    border-radius:var(--radius-xl);
-    padding:32px 28px 22px;
-    background: linear-gradient(135deg,#e2e8f0,#f8fafc);
-    border:1px solid rgba(15,23,42,.08);
-    box-shadow:var(--shadow-soft);
-  }
-
-  .kicker{
-    background:#e0e7ff;
-    border:1px solid #c7d2fe;
-    color:#1e3a8a;
-    font-weight:700;
-    font-size:12px;
-    padding:6px 12px;
-    border-radius:999px;
-    font-family:var(--sans);
-  }
-
-  h1{
-    margin:16px 0 10px;
-    font-size:clamp(28px,3vw,40px);
-    letter-spacing:-0.6px;
-  }
-
-  .sub{
-    font-size:14px;
-    font-family:var(--sans);
-    color:var(--muted);
-    max-width:100ch;
-  }
-
-  /* CALL OUT */
-  .callout{
-    margin-top:18px;
-    padding:14px 16px;
-    border-radius:16px;
-    background:#fff7ed;
-    border:1px solid #fed7aa;
-    font-family:var(--sans);
-    font-size:13.5px;
-    color:#7c2d12;
-  }
-
-  /* BOTÕES */
-  .btn{
-    border:1px solid rgba(15,23,42,.12);
-    background:#ffffff;
-    padding:10px 16px;
-    border-radius:999px;
-    font-weight:700;
-    font-size:13px;
-    font-family:var(--sans);
-    box-shadow:var(--shadow-soft);
-    transition:.2s;
-  }
-
-  .btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 12px 22px rgba(15,23,42,.12);
-  }
-
-  .btn.primary{
-    background:#0f172a;
-    color:#fff;
-  }
-
-  .btn.danger{
-    background:#fee2e2;
-    border-color:#fecaca;
-    color:#7f1d1d;
-  }
-
-  /* SEÇÕES */
-  .section{
-    margin-top:28px;
-    border-radius:var(--radius-xl);
-    background:#ffffff;
-    border:1px solid rgba(15,23,42,.08);
-    box-shadow:var(--shadow-soft);
-    overflow:hidden;
-  }
-
-  .section-head{
-    padding:20px 22px;
-    background:#f1f5f9;
-    border-bottom:1px solid rgba(15,23,42,.06);
-    font-family:var(--sans);
-  }
-
-  .section-head h2{
-    margin:0;
-    font-size:18px;
-    font-weight:800;
-  }
-
-  .meta{
-    font-size:12px;
-    color:var(--muted2);
-  }
-
-  .grid{
-    padding:22px;
-    display:grid;
-    grid-template-columns:repeat(12,1fr);
-    gap:20px;
-  }
-
-  /* CARDS */
-  .card{
-    grid-column:span 12;
-    background:var(--card);
-    border-radius:var(--radius-lg);
-    border:1px solid rgba(15,23,42,.08);
-    box-shadow:var(--shadow-soft);
-    position:relative;
-  }
-
-  @media (min-width:860px){
-    .card.half{grid-column:span 6;}
-  }
-
-  .card::before{
-    content:"";
-    position:absolute;
-    left:0;
-    top:0;
-    bottom:0;
-    width:6px;
-    border-radius:6px 0 0 6px;
-  }
-
-  .accent-1::before{background:var(--accentA);}
-  .accent-2::before{background:var(--accentB);}
-  .accent-3::before{background:var(--accentC);}
-  .accent-4::before{background:var(--accentD);}
-
-  .card-inner{
-    padding:20px;
-  }
-
-  .roman{
-    width:40px;
-    height:40px;
-    border-radius:12px;
-    background:#e2e8f0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:800;
-    font-family:var(--sans);
-  }
-
-  .title{
-    font-size:15px;
-    font-weight:800;
-    margin:0;
-  }
-
-  .lead{
-    margin-top:6px;
-    font-size:13.5px;
-    color:var(--muted);
-    font-family:var(--sans);
-  }
-
-  .li{
-    padding:10px 12px;
-    background:#f8fafc;
-    border:1px solid rgba(15,23,42,.06);
-    border-radius:12px;
-    font-size:13.5px;
-  }
-
-  .note{
-    margin-top:14px;
-    padding:12px 14px;
-    border-radius:14px;
-    background:#eef2ff;
-    border:1px solid #c7d2fe;
-    font-size:13px;
-    font-family:var(--sans);
-  }
-
-  footer{
-    margin-top:30px;
-    text-align:center;
-    font-size:12px;
-    color:var(--muted2);
-    font-family:var(--sans);
-  }
+/* DRAWER */
+.drawer-overlay{position:fixed;inset:0;background:var(--drawer-overlay);backdrop-filter:blur(4px);z-index:400;display:none;align-items:flex-end;justify-content:center;padding:16px}
+.drawer-overlay.open{display:flex}
+.drawer-panel{width:min(900px,100%);background:var(--drawer-bg);border:1px solid var(--border-hard);border-radius:20px;box-shadow:var(--sh-lg);overflow:hidden;transition:background .25s}
+.drawer-head{padding:16px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;background:linear-gradient(180deg,var(--surface2),var(--surface));border-bottom:1px solid var(--border-hard)}
+.drawer-head-info h2{font-family:'Crimson Pro',serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.drawer-head-info p{font-size:13px;color:var(--muted);line-height:1.45}
+.drawer-close{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--bg2);border:1px solid var(--border-hard);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);transition:all .15s}
+.drawer-close:hover{color:var(--red)}
+.drawer-body{padding:16px 20px 20px}
+#notes-area{width:100%;min-height:220px;resize:vertical;border-radius:12px;border:1px solid var(--border-hard);padding:12px 14px;font-family:'Outfit',sans-serif;font-size:14px;line-height:1.6;outline:none;background:var(--textarea-bg);color:var(--ink);transition:border-color .15s,background .25s,color .25s}
+#notes-area:focus{border-color:var(--rose);box-shadow:0 0 0 3px var(--rose-soft)}
+#notes-area::placeholder{color:var(--faint)}
+.drawer-actions{margin-top:12px;display:flex;gap:10px;justify-content:flex-end}
+.d-btn{font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;padding:8px 18px;border-radius:8px;cursor:pointer;border:1px solid;transition:all .15s}
+.d-btn-clear{background:transparent;color:var(--red);border-color:color-mix(in srgb,var(--red) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-clear{border-color:rgba(168,31,42,.3)}}
+.d-btn-clear:hover{background:var(--red-soft)}
+.d-btn-save{background:var(--green-soft);color:var(--green);border-color:color-mix(in srgb,var(--green) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-save{border-color:rgba(24,99,71,.3)}}
+.d-btn-save:hover{background:rgba(24,99,71,.18)}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
+@media(max-width:600px){.hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}.hero::after{display:none}.wrap{padding:0 14px 80px}}
 </style>
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="hero" id="topo">
+  <div class="wrap" style="padding:0">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">RICD • Título II • Capítulo II-A</div>
+      <div class="hero-badge">★ Novidade 2025</div>
+      <h1 class="hero-title">Capítulo II-A — Da Secretaria da Mulher</h1>
+      <p class="hero-sub">Arts. 20-A a 20-E — Estrutura das 4 unidades paralelas (Procuradoria, Coordenadoria, Comitê de Assédio e Observatório), composição, eleição, mandatos, competências e prerrogativas de liderança.</p>
+      <div class="hero-actions">
+        <a class="hero-btn hero-btn-ghost" href="index.html">⌂ Índice</a>
+        <a class="hero-btn hero-btn-ghost" href="titulo2.html">↑ Título II</a>
+        <button class="hero-btn hero-btn-primary" id="btn-notes" type="button">✏️ Anotações</button>
+      </div>
+      <nav class="nav-chips">
+        <a href="#struct"><b>20-A</b> Estrutura geral</a>
+        <a href="#comite"><b>20-A §§3–7</b> Comitê de assédio</a>
+        <a href="#obs"><b>20-A §§9–11</b> Observatório</a>
+        <a href="#proc"><b>20-B</b> Procuradoria</a>
+        <a href="#coord"><b>20-C</b> Coordenadoria</a>
+        <a href="#comp"><b>20-D/E</b> Competências</a>
+      </nav>
+      <div class="legend">
+        <span class="lchip"><span class="ldot" style="background:#f080b4"></span>Procuradoria</span>
+        <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Coordenadoria</span>
+        <span class="lchip"><span class="ldot" style="background:#f46862"></span>Vedações</span>
+        <span class="lchip"><span class="ldot" style="background:#38c882"></span>Prerrogativas</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ART. 20-A: ESTRUTURA -->
+<div class="sec-head" id="struct">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 20-A — Estrutura da Secretaria da Mulher</div>
+  <div class="sec-badge">4 estruturas paralelas · sem subordinação · órgão político e institucional</div>
+  <div class="sec-line"></div>
+</div>
+<div class="grid">
+  <div class="card c12" style="--c:#7e1a4a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">20-A</div><div><div class="c-title">Definição e composição</div><div class="c-lead">Órgão político e institucional em benefício da população feminina brasileira.</div></div></div>
+      <div class="struct-grid">
+        <div class="struct-item">
+          <div class="s-num">Estrutura 1</div>
+          <div class="s-name">Procuradoria da Mulher</div>
+          <div class="s-sub">1 Procuradora + 3 Adjuntas — Art. 20-B</div>
+        </div>
+        <div class="struct-item">
+          <div class="s-num">Estrutura 2</div>
+          <div class="s-name">Coordenadoria dos Direitos da Mulher</div>
+          <div class="s-sub">1 Coordenadora-Geral + 3 Adjuntas — Art. 20-C</div>
+        </div>
+        <div class="struct-item">
+          <div class="s-num">Estrutura 3 — §2º</div>
+          <div class="s-name">Comitê de Defesa contra Assédio</div>
+          <div class="s-sub">3 Deputadas + 2 Servidoras efetivas</div>
+        </div>
+        <div class="struct-item">
+          <div class="s-num">Estrutura 4 — §8º</div>
+          <div class="s-name">Observatório Nacional da Mulher na Política</div>
+          <div class="s-sub">1 Coordenadora-Geral + 3 Coordenadoras</div>
+        </div>
+      </div>
+      <div class="struct-note">⚖️ As 4 estruturas são PARALELAS — sem relação de subordinação entre nenhuma delas</div>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A prova pode afirmar que a Coordenadoria está subordinada à Procuradoria ou vice-versa — <b>falso</b>. São independentes entre si e das demais estruturas (Comitê e Observatório).</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMITÊ DE ASSÉDIO -->
+<div class="sec-head" id="comite">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 20-A, §§ 3º–7º — Comitê de Defesa contra Assédio</div>
+  <div class="sec-badge">3 deputadas + 2 servidoras · recondução 1 vez · fluxo de denúncias</div>
+  <div class="sec-line"></div>
+</div>
+<div class="grid">
+
+  <div class="card c5" style="--c:#7e1a4a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">§3–6</div><div><div class="c-title">Composição e processo eleitoral</div><div class="c-lead">Estrutura e regras de eleição.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Membros:</b> <span class="prazo">3 Deputadas</span> (mandato <span class="prazo">2 anos</span>, <span class="vert">recondução permitida 1 vez</span>) + <span class="prazo">2 Servidoras</span> efetivas</li>
+        <li><b>Quem vota:</b> deputadas da Casa</li>
+        <li><b>Quando:</b> início da <span class="k">1ª e da 3ª</span> sessão legislativa</li>
+        <li><b>Critérios:</b> <span class="k">pluralidade partidária</span> + participação da <span class="k">minoria</span></li>
+        <li><b>Servidoras:</b> atividades computadas na jornada — sem compensação</li>
+        <li><b>Deputadas:</b> <span class="exc">não podem acumular</span> outro cargo no âmbito da Secretaria</li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">No Comitê, recondução é <b>permitida por uma vez</b>. Nas Procuradora e Coordenadora-Geral (Arts. 20-B e 20-C), a recondução é <b>vedada</b>. São regimes diferentes — armadilha clássica.</div></div>
+    </div>
+  </div>
+
+  <div class="card c7" style="--c:#5a1a3a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">§7</div><div><div class="c-title">Competência e fluxo de denúncias</div><div class="c-lead">Quem pode denunciar e para onde vai cada caso.</div></div></div>
+      <ul class="fl-list">
+        <li class="fl-row">
+          <div class="fl-num-col"><div class="fl-circle">1</div><div class="fl-line"></div></div>
+          <div class="fl-content"><b>Recebimento:</b> denúncias de Parlamentares, servidoras (efetivas/comissionadas), terceirizadas, estagiárias e visitantes — contra <span class="rs">assédio moral ou sexual</span></div>
+        </li>
+        <li class="fl-row">
+          <div class="fl-num-col"><div class="fl-circle">2</div><div class="fl-line"></div></div>
+          <div class="fl-content"><b>Se fundamentada:</b> Comitê produz <span class="k">relatório + documentos</span></div>
+        </li>
+        <li class="fl-row">
+          <div class="fl-num-col"><div class="fl-circle">3A</div><div class="fl-line"></div></div>
+          <div class="fl-content"><b>Contra Parlamentar →</b> encaminhado à <span class="org">Mesa Diretora</span></div>
+        </li>
+        <li class="fl-row">
+          <div class="fl-num-col"><div class="fl-circle">3B</div><div class="fl-line"></div></div>
+          <div class="fl-content"><b>Demais casos →</b> encaminhado ao <span class="org">Diretor-Geral</span></div>
+        </li>
+        <li class="fl-row">
+          <div class="fl-num-col"><div class="fl-circle">✕</div></div>
+          <div class="fl-content"><b>Se sem fundamento →</b> arquivamento</div>
+        </li>
+      </ul>
+      <div class="note"><b>Garantias:</b> preservação da <span class="k">identidade</span> das partes/depoentes. <b>Denunciante homem (Inc. V):</b> Comitê pode receber e designar, a pedido, integrante <span class="k">ad hoc do sexo masculino</span> para compor transitoriamente o colegiado.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- OBSERVATÓRIO -->
+<div class="sec-head" id="obs">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 20-A, §§ 9º–11 — Observatório Nacional da Mulher na Política</div>
+  <div class="sec-badge">Pesquisas · índices analíticos · monitoramento violência política</div>
+  <div class="sec-line"></div>
+</div>
+<div class="grid">
+  <div class="card c12" style="--c:#7e1a4a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">§9–11</div><div><div class="c-title">Direção, finalidade e competências</div><div class="c-lead">Eleito junto com os demais cargos da Secretaria pelas deputadas federais.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Direção (§9º):</b> <span class="prazo">1 Deputada Federal</span> (Coordenadoria-Geral) + <span class="prazo">3 Coordenadoras</span> — eleitas pelas deputadas juntamente com demais cargos da Secretaria</li>
+        <li><b>Finalidade (§10):</b> produzir, agregar e disseminar <span class="k">conhecimento</span> sobre atuação política de mulheres e protagonismo político</li>
+        <li><b>Competências (§11):</b>
+          <ul>
+            <li><b>I —</b> Elaborar e divulgar <span class="k">pesquisas e índices analíticos</span> (participação no poder, aplicação de leis, boas práticas, produção legislativa)</li>
+            <li><b>II —</b> Articular ações para ampliar participação política</li>
+            <li><b>III —</b> Monitorar a <span class="rs">violência política</span> contra a mulher</li>
+            <li><b>IV —</b> Realizar <span class="k">parcerias</span> (ensino, ONGs, governos)</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="correlatos">
+        <div class="corr-title">Correlato — Art. 20-D, V</div>
+        <ul class="corr-list">
+          <li>A Procuradoria promove pesquisas sobre o <b>défice de representação política</b> — em consonância com a finalidade do Observatório (§10)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCURADORIA -->
+<div class="sec-head" id="proc">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 20-B — Procuradoria da Mulher</div>
+  <div class="sec-badge">1 + 3 · partidos distintos · vedada recondução · vacância &lt; 3 meses = substituição</div>
+  <div class="sec-line"></div>
+</div>
+<div class="grid">
+
+  <div class="card c5" style="--c:#1a4d8a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">20-B</div><div><div class="c-title">Composição e eleição</div><div class="c-lead">Caput, §§1º e 2º.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Estrutura:</b> <span class="prazo">1 Procuradora</span> + <span class="prazo">3 Procuradoras Adjuntas</span></li>
+        <li><b>Quem elege:</b> <span class="rs">deputadas da Casa</span></li>
+        <li><b>Quando:</b> <span class="k">primeira quinzena</span> da 1ª e da 3ª sessões legislativas da legislatura</li>
+        <li><b>Mandato:</b> <span class="prazo">2 anos</span> — <span class="exc">vedada recondução</span></li>
+        <li><b>§1º:</b> NÃO é recondução a eleição para o mesmo cargo em <span class="k">legislaturas diferentes</span> (ainda que sucessivas)</li>
+        <li><b>Adjuntas (§2º):</b> devem pertencer a <span class="k">partidos distintos</span> — designadas 1ª, 2ª e 3ª (nessa ordem: substituem, colaboram, recebem delegações)</li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">O requisito de <b>partidos distintos</b> aplica-se somente às <b>adjuntas</b>, não à Procuradora principal. A prova pode generalizar para todas.</div></div>
+    </div>
+  </div>
+
+  <div class="card c7" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">§3–4</div><div><div class="c-title">Quórum e vacância</div><div class="c-lead">Escrutínio secreto · maioria absoluta presença · exceção dos 3 meses.</div></div></div>
+      <div class="quorum-box">
+        <div class="quorum-head">§3º — Eleição por escrutínio secreto</div>
+        <div class="quorum-body">
+          <div class="quorum-row"><div class="quorum-label">Presença</div><div class="quorum-val"><b>Maioria absoluta</b> das deputadas da Casa</div></div>
+          <div class="quorum-row"><div class="quorum-label">1º escrutínio</div><div class="quorum-val"><b>Maioria absoluta</b> de votos</div></div>
+          <div class="quorum-row"><div class="quorum-label">2º escrutínio</div><div class="quorum-val"><b>Maioria simples</b></div></div>
+        </div>
+      </div>
+      <ul class="kp-list" style="margin-top:10px">
+        <li><b>Vacância (§4º):</b> regra = <span class="vert">nova eleição</span> para a sucessora</li>
+        <li><b>Exceção:</b> se faltarem <span class="exc">menos de 3 meses</span> para o fim do mandato → provido por <span class="k">substituição automática</span> (ordem das adjuntas)</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- COORDENADORIA -->
+<div class="sec-head" id="coord">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 20-C — Coordenadoria dos Direitos da Mulher</div>
+  <div class="sec-badge">Idêntica à Procuradoria + voz e voto no Colégio de Líderes + 5 min comunicações</div>
+  <div class="sec-line"></div>
+</div>
+<div class="grid">
+  <div class="card c12" style="--c:#7e1a4a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">20-C</div><div><div class="c-title">Estrutura idêntica à Procuradoria + prerrogativa exclusiva</div><div class="c-lead">Mesmas regras de composição, eleição, mandato, quórum e vacância — com diferença crítica no Colégio de Líderes.</div></div></div>
+      <div class="note"><b>Simetria total com a Procuradoria (Arts. 20-B e 20-C):</b> 1 titular + 3 adjuntas em partidos distintos; eleita pelas deputadas na 1ª quinzena da 1ª e 3ª sessões; mandato 2 anos, vedada recondução (idem §1º); escrutínio secreto com mesmos quóruns; vacância: nova eleição salvo &lt;3 meses (substituição automática).</div>
+      <div class="diff-box" style="margin-top:12px">
+        <div class="diff-head">⚠️ Diferença crítica — Colégio de Líderes e Comunicações (Art. 20-E)</div>
+        <div class="diff-body">
+          <div class="diff-col">
+            <div class="diff-col-label proc">Procuradoria — Art. 20-D</div>
+            <div class="diff-col-val">Não participa do Colégio de Líderes com voz e voto. Não tem tempo fixo nas comunicações de liderança.</div>
+          </div>
+          <div class="diff-col">
+            <div class="diff-col-label coord">Coordenadoria — Art. 20-E</div>
+            <div class="diff-col-val">Participa das reuniões com Líderes com <b>voz e VOTO</b>. Usa da palavra nas Comunicações de Liderança por <b>5 minutos</b> (tempo fixo).</div>
+          </div>
+        </div>
+      </div>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">Líderes de partidos em bloco e Líder do Governo no Colégio de Líderes têm apenas <b>voz</b>. A Coordenadoria da Mulher tem <b>voz e voto</b> — posição mais forte que alguns líderes. A Procuradoria não tem nenhuma das duas prerrogativas no Colégio.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPETÊNCIAS 20-D e 20-E -->
+<div class="sec-head" id="comp">
+  <div class="sec-line"></div>
+  <div class="sec-title">Arts. 20-D e 20-E — Competências da Procuradoria e da Coordenadoria</div>
+  <div class="sec-badge">Competências espelhadas · diferenças no Colégio de Líderes e representação</div>
+  <div class="sec-line"></div>
+</div>
+<div class="grid">
+  <div class="card c12" style="--c:#3a4a8a">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">D/E</div><div><div class="c-title">Comparativo de competências — Procuradoria (20-D) × Coordenadoria (20-E)</div><div class="c-lead">Grande parte das competências é espelhada; as diferenças são os alvos da prova.</div></div></div>
+      <table class="comp-table">
+        <thead><tr><th>Tema</th><th>Procuradoria (20-D)</th><th>Coordenadoria (20-E)</th></tr></thead>
+        <tbody>
+          <tr><td>Imagem / atuação</td><td>Propor medidas de <b>preservação e promoção</b> da imagem da mulher (I)</td><td>Idem (VI — organizar programa de atividades)</td></tr>
+          <tr><td>Denúncias</td><td><b>Receber e examinar</b> denúncias de violência e discriminação (II)</td><td>Receber convites, correspondências e estudos (III)</td></tr>
+          <tr><td>Fiscalização</td><td><b>Fiscalizar e acompanhar</b> programas federais de igualdade de gênero (III)</td><td>—</td></tr>
+          <tr><td>Pesquisas</td><td>Promover pesquisas sobre <b>défice de representação</b> (V)</td><td>Elaborar prioridades e calendário de reuniões (V) — quórum: maioria das deputadas</td></tr>
+          <tr><td>Colégio de Líderes</td><td><b>Não tem</b> voz e voto</td><td><b>Voz e voto</b> (I)</td></tr>
+          <tr><td>Comunicações</td><td>—</td><td><b>5 minutos</b> (II) — pessoalmente ou por delegação</td></tr>
+          <tr><td>Solenidades internas</td><td>Participa juntamente com a Coordenadoria (Art. 20-E, XI)</td><td>Participa juntamente com a Procuradoria (XI)</td></tr>
+          <tr><td>Representação externa</td><td>Representa a Câmara — mediante <b>designação da Presidência</b> (IX)</td><td>Representa a Câmara — mediante <b>designação da Presidência</b> (XII)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <a href="index.html">⌂ Índice geral</a>
+  <a href="titulo2.html">↑ Título II</a>
+  <div class="divider"></div>
+  <a href="titulo2-cap2.html">← Cap. II</a>
+  <a href="titulo2-cap3.html">Cap. III →</a>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="fab-wrap">
+  <button id="theme-btn" title="Alternar tema">
+    <span id="t-icon">🌙</span>
+    <div class="t-track"><div class="t-knob"></div></div>
+    <span id="t-label">Escuro</span>
+  </button>
+  <button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<div class="drawer-overlay" id="drawer" aria-hidden="true">
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+    <div class="drawer-head">
+      <div class="drawer-head-info">
+        <h2 id="drawer-title">Anotações — Tít. II · Cap. II-A</h2>
+        <p>Erros, bizus e pegadinhas. Salvas no <strong>seu navegador</strong>.</p>
+      </div>
+      <button class="drawer-close" id="btn-close-drawer" title="Fechar">✕</button>
+    </div>
+    <div class="drawer-body">
+      <textarea id="notes-area" placeholder="Ex.: ⚠ 4 estruturas PARALELAS — sem subordinação entre nenhuma delas&#10;⚠ Comitê: recondução PERMITIDA 1 vez; Procuradora/Coordenadora: VEDADA&#10;⚠ Adjuntas: partidos DISTINTOS (só as adjuntas, não a titular)&#10;⚠ Coordenadoria: VOZ E VOTO no Colégio de Líderes; Procuradoria NÃO tem&#10;⚠ Coordenadoria: 5 min fixos nas Comunicações de Liderança; Procuradoria: nada&#10;⚠ Vacância: nova eleição; exceção &lt;3 meses = substituição automática&#10;⚠ Recondução: não conta se for em legislatura DIFERENTE (mesmo que sucessiva)"></textarea>
+      <div class="drawer-actions">
+        <button class="d-btn d-btn-clear" id="btn-clear-notes" type="button">Limpar</button>
+        <button class="d-btn d-btn-save" id="btn-save-notes" type="button">Salvar e fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const root=document.documentElement,btn=document.getElementById('theme-btn'),
+        icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
+  let dark=localStorage.getItem('ricd-theme')==='dark';
+  if(!localStorage.getItem('ricd-theme'))dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function apply(){root.setAttribute('data-theme',dark?'dark':'light');icon.textContent=dark?'☀️':'🌙';lbl.textContent=dark?'Claro':'Escuro';localStorage.setItem('ricd-theme',dark?'dark':'light')}
+  apply();btn.addEventListener('click',()=>{dark=!dark;apply()});
+})();
+(function(){
+  const bar=document.getElementById('prog'),top=document.getElementById('back-top');
+  window.addEventListener('scroll',function(){
+    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight||1;
+    bar.style.width=(s/h*100)+'%';top.classList.toggle('show',s>280);
+  },{passive:true});
+})();
+(function(){
+  const KEY='notes_tit2_cap2a';
+  const overlay=document.getElementById('drawer'),area=document.getElementById('notes-area');
+  const btnOpen=document.getElementById('btn-notes'),btnClose=document.getElementById('btn-close-drawer');
+  const btnSave=document.getElementById('btn-save-notes'),btnClear=document.getElementById('btn-clear-notes');
+  function open(){overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');area.value=localStorage.getItem(KEY)||'';area.focus()}
+  function close(){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true')}
+  btnOpen.addEventListener('click',open);btnClose.addEventListener('click',close);
+  btnSave.addEventListener('click',()=>{localStorage.setItem(KEY,area.value);close()});
+  btnClear.addEventListener('click',()=>{if(confirm('Limpar anotações?')){area.value='';localStorage.removeItem(KEY);area.focus()}});
+  overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
+  window.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))close()});
+})();
+</script>
+</body>
+</html>
