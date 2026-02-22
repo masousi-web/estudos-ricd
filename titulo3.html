@@ -1,264 +1,151 @@
 <!DOCTYPE html>
 <html lang="pt-BR" data-theme="light">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>RICD — Título III (Das Sessões da Câmara)</title>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RICD — Título III — Das Sessões da Câmara</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
 <style>
+
 /* ═══════════════════════════════════════════════
    TOKENS — LIGHT
 ═══════════════════════════════════════════════ */
-:root,[data-theme="light"]{
-  --bg:#f3f6fb; --bg2:#eaeff8;
-  --surface:#ffffff; --surface2:#f7faff;
-  --border:rgba(15,39,66,.09); --border-hard:rgba(15,39,66,.16);
+:root, [data-theme="light"] {
+  --bg:          #f3f6fb;
+  --bg2:         #eaeff8;
+  --surface:     #ffffff;
+  --surface2:    #f7faff;
+  --border:      rgba(15,39,66,.09);
+  --border-hard: rgba(15,39,66,.16);
 
-  --ink:#0d1f35; --ink2:#2b4060;
-  --muted:#526a88; --faint:#8fa8c2;
+  --ink:         #0d1f35;
+  --ink2:        #2b4060;
+  --muted:       #526a88;
+  --faint:       #8fa8c2;
 
-  --gold:#b86b1a; --gold-soft:rgba(184,107,26,.10);
-  --blue:#1a4d8a; --blue-soft:rgba(26,77,138,.08);
-  --green:#186347; --green-soft:rgba(24,99,71,.09);
-  --red:#a81f2a; --red-soft:rgba(168,31,42,.09);
-  --purple:#5a3d8a; --purple-soft:rgba(90,61,138,.08);
+  --gold:        #b86b1a;
+  --gold-soft:   rgba(184,107,26,.10);
+  --blue:        #1a4d8a;
+  --blue-soft:   rgba(26,77,138,.08);
+  --green:       #186347;
+  --green-soft:  rgba(24,99,71,.09);
+  --red:         #a81f2a;
+  --red-soft:    rgba(168,31,42,.09);
+  --purple:      #5a3d8a;
+  --purple-soft: rgba(90,61,138,.08);
 
-  --mark-bg:rgba(15,23,42,.07);
+  --mark-bg:     rgba(15,23,42,.07);
 
-  --hero-from:#0c2240; --hero-to:#153558;
-  --hero-text:#ffffff; --hero-sub:rgba(255,255,255,.80);
+  --hero-from:   #0c2240;
+  --hero-to:     #153558;
+  --hero-text:   #ffffff;
+  --hero-sub:    rgba(255,255,255,.80);
 
-  --sh-sm:0 2px 8px rgba(12,26,43,.06);
-  --sh-md:0 6px 20px rgba(12,26,43,.09);
-  --sh-lg:0 14px 34px rgba(12,26,43,.11);
-  --sh-hov:0 10px 28px rgba(12,26,43,.14);
+  --sh-sm:  0 2px 8px rgba(12,26,43,.06);
+  --sh-md:  0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:  0 14px 34px rgba(12,26,43,.11);
+  --sh-hov: 0 10px 28px rgba(12,26,43,.14);
 
-  --toggle-bg:#d8e2f0; --toggle-knob:#ffffff;
+  --chip-bg:     rgba(255,255,255,.72);
+  --chip-border: rgba(15,23,42,.10);
+  --chip-text:   #2b4060;
+
+  --list-bg:     #f7fafc;
+  --note-bg:     rgba(26,77,138,.05);
+  --note-border: rgba(26,77,138,.12);
+  --note-text:   #1a2e44;
+
+  --toggle-bg:   #d8e2f0;
+  --toggle-knob: #ffffff;
 }
 
 /* ═══════════════════════════════════════════════
    TOKENS — DARK
 ═══════════════════════════════════════════════ */
-[data-theme="dark"]{
-  --bg:#0c1120; --bg2:#101728;
-  --surface:#161d2f; --surface2:#1b2238;
-  --border:rgba(255,255,255,.06); --border-hard:rgba(255,255,255,.12);
+[data-theme="dark"] {
+  --bg:          #0c1120;
+  --bg2:         #101728;
+  --surface:     #161d2f;
+  --surface2:    #1b2238;
+  --border:      rgba(255,255,255,.06);
+  --border-hard: rgba(255,255,255,.12);
 
-  --ink:#dce8fa; --ink2:#94b0d4;
-  --muted:#627ea6; --faint:#374e6a;
+  --ink:         #dce8fa;
+  --ink2:        #94b0d4;
+  --muted:       #627ea6;
+  --faint:       #374e6a;
 
-  --gold:#f0b84a; --gold-soft:rgba(240,184,74,.11);
-  --blue:#5b96f0; --blue-soft:rgba(91,150,240,.11);
-  --green:#38c882; --green-soft:rgba(56,200,130,.09);
-  --red:#f46862; --red-soft:rgba(244,104,98,.11);
-  --purple:#a07af5; --purple-soft:rgba(160,122,245,.10);
+  --gold:        #f0b84a;
+  --gold-soft:   rgba(240,184,74,.11);
+  --blue:        #5b96f0;
+  --blue-soft:   rgba(91,150,240,.11);
+  --green:       #38c882;
+  --green-soft:  rgba(56,200,130,.09);
+  --red:         #f46862;
+  --red-soft:    rgba(244,104,98,.11);
+  --purple:      #a07af5;
+  --purple-soft: rgba(160,122,245,.10);
 
-  --mark-bg:rgba(220,232,250,.09);
+  --mark-bg:     rgba(220,232,250,.09);
 
-  --hero-from:#08111e; --hero-to:#0f1e30;
-  --hero-text:#e4f0ff; --hero-sub:rgba(210,228,255,.70);
+  --hero-from:   #08111e;
+  --hero-to:     #0f1e30;
+  --hero-text:   #e4f0ff;
+  --hero-sub:    rgba(210,228,255,.70);
 
-  --sh-sm:0 2px 8px rgba(0,0,0,.28);
-  --sh-md:0 6px 20px rgba(0,0,0,.34);
-  --sh-lg:0 14px 34px rgba(0,0,0,.40);
-  --sh-hov:0 10px 28px rgba(0,0,0,.46);
+  --sh-sm:  0 2px 8px rgba(0,0,0,.28);
+  --sh-md:  0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:  0 14px 34px rgba(0,0,0,.40);
+  --sh-hov: 0 10px 28px rgba(0,0,0,.46);
 
-  --toggle-bg:#243350; --toggle-knob:#f0b84a;
+  --chip-bg:     rgba(255,255,255,.06);
+  --chip-border: rgba(255,255,255,.12);
+  --chip-text:   rgba(220,232,255,.82);
+
+  --list-bg:     rgba(255,255,255,.03);
+  --note-bg:     rgba(91,150,240,.09);
+  --note-border: rgba(91,150,240,.20);
+  --note-text:   #b0ccf0;
+
+  --toggle-bg:   #243350;
+  --toggle-knob: #f0b84a;
 }
 
-/* Base */
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:"Outfit",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  font-size:15px; line-height:1.68;
-  color:var(--ink); background:var(--bg);
-  min-height:100vh;
+  font-family:'Outfit',sans-serif;
+  font-size:15px;
+  line-height:1.68;
+  color:var(--ink);
+  background:var(--bg);
   transition:background .25s,color .25s;
+  min-height:100vh;
 }
 a{color:inherit;text-decoration:none}
 
-/* Progress */
-#prog{position:fixed;top:0;left:0;height:3px;width:0%;
+/* ═══════════════════════════════════════════════
+   PROGRESS BAR
+═══════════════════════════════════════════════ */
+#prog{
+  position:fixed;top:0;left:0;
+  height:3px;width:0%;
   background:linear-gradient(90deg,var(--gold),var(--blue));
-  z-index:300;border-radius:0 2px 2px 0;transition:width .08s linear}
-
-/* Wrap */
-.wrap{max-width:1060px;margin:0 auto;padding:0 20px 80px}
-
-/* Hero */
-.hero{
-  background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);
-  border-radius:0 0 28px 28px;
-  padding:38px 36px 34px;
-  margin-bottom:32px;
-  position:relative;overflow:hidden;
-  box-shadow:var(--sh-lg);
-}
-.hero::before{
-  content:"";position:absolute;inset:0;
-  background:
-    radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),
-    radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);
-  pointer-events:none;
-}
-.hero::after{
-  content:"III";
-  position:absolute;right:36px;top:50%;transform:translateY(-50%);
-  font-family:"Crimson Pro",serif;
-  font-size:160px;font-weight:700;
-  color:rgba(255,255,255,.04);
-  line-height:1;pointer-events:none;user-select:none;
-}
-.hero-inner{position:relative;z-index:1}
-.hero-eyebrow{
-  font-family:"JetBrains Mono",monospace;
-  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:10px;
-}
-.hero-title{
-  font-family:"Crimson Pro",serif;
-  font-size:clamp(28px,3.5vw,42px);
-  font-weight:700;color:var(--hero-text);
-  line-height:1.12;margin-bottom:10px;
-}
-.hero-sub{font-size:14px;color:var(--hero-sub);max-width:78ch;line-height:1.58}
-
-/* Hero actions */
-.hero-actions{
-  display:flex;flex-wrap:wrap;gap:10px;align-items:center;
-  margin:16px 0 0;
-}
-.hero-btn{
-  appearance:none;border:1px solid rgba(255,255,255,.18);
-  background:rgba(255,255,255,.08);
-  color:rgba(255,255,255,.90);
-  padding:8px 12px;border-radius:999px;
-  font-family:"Outfit",sans-serif;font-size:13px;font-weight:650;
-  cursor:pointer;
-  transition:background .15s,transform .1s,box-shadow .15s;
-}
-.hero-btn:hover{background:rgba(255,255,255,.16);transform:translateY(-1px)}
-.hero-btn-primary{
-  background:rgba(240,184,74,.18);
-  border-color:rgba(240,184,74,.30);
-}
-.hero-btn-primary:hover{background:rgba(240,184,74,.24)}
-
-/* Section head */
-.sec-head{display:flex;align-items:center;gap:14px;margin:26px 0 18px}
-.sec-line{flex:1;height:1px;background:var(--border-hard)}
-.sec-title{
-  font-family:"Crimson Pro",serif;
-  font-size:21px;font-weight:700;color:var(--ink);
-  white-space:nowrap;
-}
-.sec-badge{
-  font-family:"JetBrains Mono",monospace;
-  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--faint);white-space:nowrap;
+  z-index:300;transition:width .08s linear;
+  border-radius:0 2px 2px 0;
 }
 
-/* Grid + Cards */
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-.c12{grid-column:span 12}
-.c6{grid-column:span 12}
-@media(min-width:760px){.c6{grid-column:span 6}}
-
-.card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:14px;
-  box-shadow:var(--sh-sm);
-  overflow:hidden;position:relative;
-  transition:transform .14s,box-shadow .14s,border-color .14s;
-  opacity:0; animation:fadeUp .35s ease forwards;
-}
-.card:nth-child(1){animation-delay:.03s}
-.card:nth-child(2){animation-delay:.07s}
-.card:nth-child(3){animation-delay:.11s}
-.card:nth-child(4){animation-delay:.15s}
-.card:nth-child(5){animation-delay:.19s}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.card:hover{transform:translateY(-2px);box-shadow:var(--sh-hov)}
-.card::before{
-  content:""; position:absolute;left:0;top:0;bottom:0;width:4px;
-  background:var(--c,#1c3f63); border-radius:14px 0 0 14px;
-}
-.card-inner{padding:16px 16px 16px 18px}
-.card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
-.c-badge{
-  flex-shrink:0;width:40px;height:40px;border-radius:10px;
-  background:var(--bg2); border:1px solid var(--border-hard);
-  display:flex;align-items:center;justify-content:center;
-  font-family:"JetBrains Mono",monospace;
-  font-size:12px;font-weight:700;color:var(--c,#1c3f63);
-  user-select:none;
-}
-[data-theme="dark"] .c-badge{
-  background:color-mix(in srgb,var(--c,#1c3f63) 14%,var(--surface2) 86%);
-  color:color-mix(in srgb,var(--c,#1c3f63) 55%,#ffffff 45%);
-}
-@supports not (color:color-mix(in srgb,red 50%,blue 50%)){
-  [data-theme="dark"] .c-badge{background:var(--surface2);color:var(--ink2)}
-}
-.c-title{
-  font-family:"Crimson Pro",serif;
-  font-size:18px;font-weight:700;color:var(--ink);
-  line-height:1.2;margin-bottom:3px;
-}
-.c-lead{font-size:13.3px;color:var(--muted);line-height:1.45}
-
-.kp-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:10px}
-.kp-list li{
-  padding:9px 11px;border-radius:9px;
-  background:rgba(255,255,255,.0);
-  border:1px dashed rgba(15,39,66,.14);
-  font-size:13.4px;color:var(--ink2);line-height:1.52;
-}
-[data-theme="dark"] .kp-list li{border-color:rgba(255,255,255,.14)}
-.kp-list li b{font-weight:700;color:var(--ink)}
-
-.card-link{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:10px;margin-top:12px;padding-top:12px;
-  border-top:1px solid var(--border);
-  color:var(--blue);
-  font-weight:650;font-size:13.5px;
-}
-.card-link span{display:inline-flex;align-items:center;gap:8px}
-.pill{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:6px 10px;border-radius:999px;
-  border:1px solid var(--border-hard);
-  background:var(--surface2);
-  color:var(--ink2);
-  font-family:"JetBrains Mono",monospace;
-  font-size:11px;font-weight:700;
-}
-.arrow{opacity:.9}
-
-/* Footer */
-.page-footer{
-  text-align:center;font-size:12.5px;color:var(--faint);
-  margin-top:44px;padding-top:20px;border-top:1px solid var(--border-hard);
-  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;
-}
-.page-footer a{
-  color:var(--blue);font-weight:600;
-  padding:6px 14px;border-radius:8px;
-  border:1px solid var(--border-hard);background:var(--surface);
-  font-size:13px;transition:box-shadow .15s;
-}
-.page-footer a:hover{box-shadow:var(--sh-md)}
-
-/* FABs */
+/* ═══════════════════════════════════════════════
+   FAB — THEME TOGGLE + BACK TO TOP
+═══════════════════════════════════════════════ */
 .fab-wrap{
-  position:fixed;bottom:24px;right:24px;z-index:200;
+  position:fixed;bottom:24px;right:24px;
+  z-index:200;
   display:flex;flex-direction:column;gap:10px;align-items:flex-end;
 }
 #theme-btn{
@@ -269,130 +156,364 @@ a{color:inherit;text-decoration:none}
   padding:8px 14px;
   cursor:pointer;
   display:flex;align-items:center;gap:9px;
-  font-family:"Outfit",sans-serif;
+  font-family:'Outfit',sans-serif;
   font-size:13px;font-weight:600;
   color:var(--muted);
   transition:all .2s;user-select:none;
 }
 #theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
-.t-track{width:38px;height:20px;background:var(--toggle-bg);border-radius:20px;position:relative;transition:background .25s}
+.t-track{
+  width:38px;height:20px;
+  background:var(--toggle-bg);
+  border-radius:20px;position:relative;
+  transition:background .25s;
+}
 .t-knob{
-  position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;
-  background:var(--toggle-knob);transition:transform .25s,background .25s;
+  position:absolute;top:2px;left:2px;
+  width:16px;height:16px;
+  border-radius:50%;
+  background:var(--toggle-knob);
+  transition:transform .25s,background .25s;
   box-shadow:0 1px 4px rgba(0,0,0,.22);
 }
 [data-theme="dark"] .t-knob{transform:translateX(18px)}
 #back-top{
-  width:44px;height:44px;background:var(--surface);
+  width:44px;height:44px;
+  background:var(--surface);
   border:1px solid var(--border-hard);
-  border-radius:50%;box-shadow:var(--sh-md);
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  box-shadow:var(--sh-md);
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
   font-size:19px;color:var(--muted);
   transition:all .2s;
-  opacity:0;pointer-events:none;transform:translateY(10px);
+  opacity:0;pointer-events:none;
+  transform:translateY(10px);
 }
 #back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
 #back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
 
-@media(max-width:600px){
-  .hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}
-  .hero::after{display:none}
-  .wrap{padding:0 14px 80px}
+/* ═══════════════════════════════════════════════
+   WRAP
+═══════════════════════════════════════════════ */
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px 80px}
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+.hero{
+  background:linear-gradient(120deg,var(--hero-from),var(--hero-to));
+  color:var(--hero-text);
+  padding:34px 0 26px;
+  box-shadow:var(--sh-lg);
+}
+.hero-inner{
+  padding:0 20px;
+  max-width:1060px;
+  margin:0 auto;
+}
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.72);
+  margin-bottom:8px;
+}
+.hero-title{
+  font-family:'Crimson Pro',serif;
+  font-size:34px;
+  font-weight:700;
+  color:var(--hero-text);
+  line-height:1.12;
+  margin-bottom:10px;
+}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:72ch;line-height:1.58;margin-bottom:18px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.hero-btn{
+  border:none;cursor:pointer;
+  padding:10px 14px;border-radius:12px;
+  font-weight:700;font-size:13.5px;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:transform .12s,box-shadow .12s,background .12s,opacity .12s;
+  user-select:none;
+}
+.hero-btn-primary{
+  background:rgba(255,255,255,.14);
+  color:#fff;border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+.hero-btn-primary:hover{transform:translateY(-1px);background:rgba(255,255,255,.18)}
+.hero-btn-ghost{
+  background:rgba(255,255,255,.08);
+  color:#fff;border:1px solid rgba(255,255,255,.14);
+}
+.hero-btn-ghost:hover{transform:translateY(-1px);background:rgba(255,255,255,.12)}
+.nav-chips{
+  display:flex;flex-wrap:wrap;gap:8px;
+}
+.nav-chips a{
+  padding:7px 11px;border-radius:999px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.86);
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.7px;
+  letter-spacing:.04em;
+  transition:background .15s,transform .12s,border-color .15s;
+}
+.nav-chips a:hover{background:rgba(255,255,255,.12);transform:translateY(-1px);border-color:rgba(255,255,255,.22)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.lchip{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:5px 11px;border-radius:100px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.5px;
+  letter-spacing:.06em;
+  font-weight:600;
+  text-transform:uppercase;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.85);
+}
+.ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ═══════════════════════════════════════════════
+   SECTION HEAD
+═══════════════════════════════════════════════ */
+.sec-head{
+  display:flex;align-items:center;gap:14px;
+  margin:30px 0 16px;
+}
+.sec-line{height:1px;background:var(--border-hard);flex:1}
+.sec-title{
+  font-family:'Crimson Pro',serif;
+  font-size:20px;font-weight:700;color:var(--ink);
+}
+.sec-badge{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.8px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  padding:6px 10px;border-radius:999px;
+  background:var(--chip-bg);
+  border:1px solid var(--chip-border);
+  color:var(--chip-text);
+  white-space:nowrap;
 }
 
-/* Notes drawer */
-.drawer{
-  position:fixed;inset:0;display:none;
-  background:rgba(15,23,42,.45);
-  backdrop-filter: blur(4px);
-  z-index:400;
-  padding:18px;
-  align-items:flex-end;justify-content:center;
+/* ═══════════════════════════════════════════════
+   GRID + CARDS
+═══════════════════════════════════════════════ */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:14px;
 }
-.drawer.open{display:flex}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--sh-md);overflow:hidden}
+.card-inner{padding:16px 16px 14px}
+.card-top{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px}
+.c-badge{
+  width:34px;height:34px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  color:var(--ink2);
+  flex-shrink:0;
+}
+.c-title{font-weight:800;color:var(--ink);line-height:1.2;margin-bottom:4px}
+.c-lead{color:var(--muted);font-size:13.5px;line-height:1.45}
+.kp-list{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:8px}
+.kp-list li{
+  background:var(--list-bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px 12px;
+  color:var(--ink2);
+  font-size:13.6px;
+  line-height:1.45;
+}
+.kp-list b{color:var(--ink)}
+.k{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--mark-bg);border:1px solid var(--border);font-weight:700}
+.org{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--blue-soft);border:1px solid rgba(26,77,138,.14);font-weight:800;color:var(--blue)}
+.exc{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--red-soft);border:1px solid rgba(168,31,42,.18);font-weight:800;color:var(--red)}
+.num{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--gold-soft);border:1px solid rgba(184,107,26,.18);font-weight:800;color:var(--gold)}
+.prazo{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--gold-soft);border:1px solid rgba(184,107,26,.18);font-weight:800;color:var(--gold)}
+.trap{
+  margin-top:12px;
+  background:var(--note-bg);
+  border:1px solid var(--note-border);
+  border-radius:14px;
+  padding:10px 12px;
+  display:flex;gap:10px;align-items:flex-start;
+  color:var(--note-text);
+}
+.trap-icon{font-size:18px;line-height:1}
+.trap-text{font-size:13.6px;line-height:1.45}
+.uc{text-transform:uppercase;letter-spacing:.04em;font-family:'JetBrains Mono',monospace;font-size:11.2px}
+
+/* col spans */
+.c12{grid-column:span 12}
+.c8{grid-column:span 8}
+.c6{grid-column:span 6}
+.c4{grid-column:span 4}
+@media(max-width:920px){
+  .c8,.c6,.c4{grid-column:span 12}
+}
+
+/* ═══════════════════════════════════════════════
+   CHAPTER BUTTONS (FULL-CARD CLICK)
+═══════════════════════════════════════════════ */
+.cap-grid{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.capbtn{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:14px 16px 14px 20px;border-radius:12px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  box-shadow:var(--sh-sm);
+  position:relative;overflow:hidden;
+  transition:transform .12s,box-shadow .12s,border-color .12s;
+}
+.capbtn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,#1c3f63)}
+.capbtn:hover{transform:translateY(-2px);box-shadow:var(--sh-hov);border-color:var(--border-hard)}
+.capbtn-text{min-width:0;padding-left:6px}
+.capbtn-title{font-family:'Crimson Pro',serif;font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:4px}
+.capbtn-desc{font-size:13px;color:var(--muted);line-height:1.4}
+.capbtn-arrow{
+  flex-shrink:0;width:36px;height:36px;border-radius:50%;
+  background:var(--bg2);border:1px solid var(--border-hard);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;color:var(--muted);
+  transition:color .15s,background .15s;
+}
+.capbtn:hover .capbtn-arrow{color:var(--ink);background:var(--surface)}
+
+/* ═══════════════════════════════════════════════
+   FOOTER NAV
+═══════════════════════════════════════════════ */
+.page-footer{
+  margin-top:28px;
+  display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  padding-top:14px;border-top:1px solid var(--border-hard);
+  color:var(--muted);
+  font-size:13px;
+}
+.page-footer a{
+  padding:8px 10px;border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  box-shadow:var(--sh-sm);
+  color:var(--ink2);
+  transition:transform .12s,box-shadow .12s,border-color .12s;
+}
+.page-footer a:hover{transform:translateY(-1px);box-shadow:var(--sh-hov);border-color:var(--border-hard)}
+
+/* ═══════════════════════════════════════════════
+   NOTES DRAWER
+═══════════════════════════════════════════════ */
+.drawer-overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.45);
+  display:none;
+  align-items:flex-end;
+  z-index:400;
+}
+.drawer-overlay.open{display:flex}
 .drawer-panel{
-  width:min(920px, 100%);
+  width:min(860px,100%);
   background:var(--surface);
   border:1px solid var(--border-hard);
-  border-radius:18px;
+  border-radius:18px 18px 0 0;
   box-shadow:var(--sh-lg);
-  overflow:hidden;
+  max-height:85vh;
+  display:flex;flex-direction:column;
 }
 .drawer-head{
-  padding:14px 16px 12px;
-  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
-  background:
-    radial-gradient(820px 220px at 12% 0%, rgba(255,255,255,.10), transparent 62%),
-    radial-gradient(820px 220px at 88% 0%, rgba(255,255,255,.06), transparent 58%),
-    linear-gradient(180deg, var(--surface2), var(--surface));
+  padding:14px 16px;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
   border-bottom:1px solid var(--border);
 }
-.drawer-head h2{
-  font-family:"Crimson Pro",serif;
-  font-size:16px;font-weight:700;color:var(--ink);
+.drawer-head-info h2{
+  font-family:'Crimson Pro',serif;
+  font-size:18px;font-weight:800;color:var(--ink);
+  margin-bottom:2px;
 }
-.drawer-head p{margin-top:6px;color:var(--muted);font-size:13px;line-height:1.45;max-width:82ch}
-.drawer-x{
-  width:40px;height:40px;border-radius:10px;
-  background:var(--surface2);border:1px solid var(--border-hard);
-  color:var(--muted);cursor:pointer;font-size:20px;line-height:1;
-  display:flex;align-items:center;justify-content:center;
-  transition:all .15s;
+.drawer-head-info p{color:var(--muted);font-size:13px;line-height:1.45}
+.drawer-close{
+  border:1px solid var(--border);
+  background:var(--surface2);
+  color:var(--muted);
+  border-radius:12px;
+  width:40px;height:40px;
+  cursor:pointer;
+  transition:transform .12s,box-shadow .12s,border-color .12s;
 }
-.drawer-x:hover{color:var(--ink);box-shadow:var(--sh-md);transform:translateY(-1px)}
-.drawer-body{padding:12px 14px 14px}
-.drawer-body textarea{
-  width:100%;min-height:240px;resize:vertical;
-  border-radius:14px;border:1px solid var(--border-hard);
+.drawer-close:hover{transform:translateY(-1px);box-shadow:var(--sh-hov);border-color:var(--border-hard)}
+.drawer-body{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+#notes-area{
+  width:100%;
+  min-height:240px;
+  resize:vertical;
   padding:12px 12px;
-  font-family:"Outfit",sans-serif;
-  font-size:13.5px;line-height:1.55;
-  outline:none;background:var(--surface2);color:var(--ink);
-}
-.drawer-body textarea:focus{
-  border-color: color-mix(in srgb, var(--blue) 35%, var(--border-hard) 65%);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 18%, transparent 82%);
-  background:var(--surface);
-}
-@supports not (color:color-mix(in srgb,red 50%,blue 50%)){
-  .drawer-body textarea:focus{box-shadow:0 0 0 3px rgba(26,77,138,.12)}
-}
-.drawer-actions{margin-top:10px;display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
-.drawer-btn{
-  appearance:none;border:1px solid var(--border-hard);
-  background:var(--surface);color:var(--ink2);
-  padding:9px 12px;border-radius:999px;cursor:pointer;
-  font-family:"Outfit",sans-serif;font-size:13px;font-weight:650;
-  transition:all .15s;
-}
-.drawer-btn:hover{box-shadow:var(--sh-md);transform:translateY(-1px);color:var(--ink)}
-.drawer-btn-primary{
-  border-color: color-mix(in srgb, var(--gold) 36%, var(--border-hard) 64%);
-  background: color-mix(in srgb, var(--gold) 14%, var(--surface) 86%);
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:var(--surface2);
   color:var(--ink);
+  font-family:'Outfit',sans-serif;
+  font-size:14px;
+  line-height:1.5;
+  outline:none;
 }
-.drawer-btn-ghost{background:transparent}
-.drawer-btn-ghost:hover{background:var(--surface2)}
+#notes-area:focus{border-color:var(--border-hard);box-shadow:0 0 0 3px rgba(26,77,138,.10)}
+.drawer-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.d-btn{
+  padding:10px 12px;border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  box-shadow:var(--sh-sm);
+  cursor:pointer;
+  font-weight:800;
+  transition:transform .12s,box-shadow .12s,border-color .12s;
+}
+.d-btn:hover{transform:translateY(-1px);box-shadow:var(--sh-hov);border-color:var(--border-hard)}
+.d-btn-clear{color:var(--red);background:var(--red-soft);border-color:rgba(168,31,42,.18)}
+.d-btn-save{color:var(--green);background:var(--green-soft);border-color:rgba(24,99,71,.18)}
+
 </style>
 </head>
-
 <body>
+
 <div id="prog"></div>
 
+<!-- ══════════════ HERO ══════════════ -->
 <header class="hero" id="topo">
   <div class="wrap" style="padding:0">
     <div class="hero-inner">
-      <div class="hero-eyebrow">RICD • Título III • Material de Revisão</div>
+      <div class="hero-eyebrow">RICD • Resumo Visual • Material de Revisão</div>
       <h1 class="hero-title">Título III — Das Sessões da Câmara</h1>
-      <p class="hero-sub">
-        Índice do Título III (5 capítulos). Cada card leva para a página do respectivo capítulo:
-        <b>titulo3-cap1.html</b> a <b>titulo3-cap5.html</b>.
-      </p>
+      <p class="hero-sub">O "esqueleto" das sessões.</p>
+      <div class="hero-actions">
+        <a class="hero-btn hero-btn-ghost" href="index.html">⌂ Voltar ao Índice</a>
+        <button class="hero-btn hero-btn-primary" id="btn-notes" type="button">✏️ Anotações</button>
+      </div>
 
-      <div class="hero-actions" role="group" aria-label="Ações">
-        <a class="hero-btn" href="index.html" title="Voltar ao índice geral">← Índice</a>
-        <a class="hero-btn" href="titulo2.html" title="Voltar ao Título II">← Título II</a>
-        <a class="hero-btn hero-btn-primary" id="notes-open" href="javascript:void(0)" title="Abrir anotações">📝 Anotações</a>
+      <nav class="nav-chips" aria-label="Navegação do Título III">
+        <a href="#visao"><b>Visão</b> Geral</a>
+        <a href="#faixa"><b>Faixa</b> de artigos</a>
+        <a href="#atalhos"><b>Capítulos</b> (links)</a>
+        <a href="#cap-i"><b>Cap. I</b></a>
+        <a href="#cap-ii"><b>Cap. II</b></a>
+        <a href="#cap-iii"><b>Cap. III</b></a>
+        <a href="#cap-iv"><b>Cap. IV</b></a>
+        <a href="#cap-v"><b>Cap. V</b></a>
+      </nav>
+
+      <div class="legend">
+        <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Capítulos</span>
+        <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Estrutura</span>
+        <span class="lchip"><span class="ldot" style="background:#f46862"></span>Exceções/Sigilo</span>
+        <span class="lchip"><span class="ldot" style="background:rgba(255,255,255,.4)"></span>Revisão</span>
       </div>
     </div>
   </div>
@@ -400,239 +521,102 @@ a{color:inherit;text-decoration:none}
 
 <div class="wrap">
 
-  <div class="sec-head">
-    <div class="sec-line"></div>
-    <div class="sec-title">Capítulos do Título III</div>
-    <div class="sec-badge">clique para abrir</div>
-    <div class="sec-line"></div>
-  </div>
+<!-- ══════════════ VISÃO GERAL ══════════════ -->
+<div class="sec-head" id="visao">
+  <div class="sec-line"></div><div class="sec-title">Título III</div>
+ </div>
+   
+<!-- ══════════════ ATALHOS (CARDS CLICÁVEIS) ══════════════ -->
 
-  <div class="grid">
-
-    <!-- CAP 1 -->
-    <a class="card c6" href="titulo3-cap1.html" style="--c:#1c3f63" aria-label="Abrir Capítulo I — Disposições Gerais">
-      <div class="card-inner">
-        <div class="card-top">
-          <div class="c-badge">Cap. I</div>
-          <div>
-            <div class="c-title">Disposições Gerais</div>
-            <div class="c-lead">Regras gerais sobre as sessões e sua condução (conforme o capítulo).</div>
-          </div>
-        </div>
-        <ul class="kp-list">
-          <li><b>Arquivo:</b> <span class="pill">titulo3-cap1.html</span></li>
-          <li><b>Conteúdo:</b> você enviará o texto deste capítulo depois.</li>
-        </ul>
-        <div class="card-link">
-          <span>Ir para o capítulo <span class="arrow">→</span></span>
-          <span class="pill">Abrir</span>
-        </div>
+<div class="grid">
+  <div class="card c12" style="--c:#3a5c8a">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">↗</div>
+        <div>
+          <div class="c-title">Capítulos do Título III</div>
+         </div>
       </div>
-    </a>
 
-    <!-- CAP 2 -->
-    <a class="card c6" href="titulo3-cap2.html" style="--c:#2f5f6e" aria-label="Abrir Capítulo II — Das Sessões Públicas">
-      <div class="card-inner">
-        <div class="card-top">
-          <div class="c-badge">Cap. II</div>
-          <div>
-            <div class="c-title">Das Sessões Públicas</div>
-            <div class="c-lead">Estrutura das sessões públicas e suas partes (pequeno expediente, ordem do dia, etc.).</div>
+      <div class="cap-grid">
+
+        <!-- CAP I -->
+        <a class="capbtn" id="cap-i" href="titulo3-cap1.html" style="--c:#1c3f63" aria-label="Abrir Capítulo I — Disposições Gerais">
+          <div class="capbtn-text">
+            <div class="capbtn-title">Capítulo I — Disposições Gerais</div>
+            <div class="capbtn-desc">
+              Tipos de sessão • regras gerais • ordem no Plenário • suspensão dos trabalhos • proibições.
+              <br>
+            </div>
           </div>
-        </div>
-        <ul class="kp-list">
-          <li><b>Seções internas:</b> Pequeno Expediente • Ordem do Dia • Grande Expediente • Comunicações de Lideranças • Comunicações Parlamentares • Comissão Geral.</li>
-          <li><b>Arquivo:</b> <span class="pill">titulo3-cap2.html</span></li>
-        </ul>
-        <div class="card-link">
-          <span>Ir para o capítulo <span class="arrow">→</span></span>
-          <span class="pill">Abrir</span>
-        </div>
-      </div>
-    </a>
+          <div class="capbtn-arrow">→</div>
+        </a>
 
-    <!-- CAP 3 -->
-    <a class="card c6" href="titulo3-cap3.html" style="--c:#254a78" aria-label="Abrir Capítulo III — Das Sessões Secretas">
-      <div class="card-inner">
-        <div class="card-top">
-          <div class="c-badge">Cap. III</div>
-          <div>
-            <div class="c-title">Das Sessões Secretas</div>
-            <div class="c-lead">Hipóteses e rito das sessões secretas (conforme o capítulo).</div>
+        <!-- CAP II -->
+        <a class="capbtn" id="cap-ii" href="titulo3-cap2.html" style="--c:#2f5f6e" aria-label="Abrir Capítulo II — Das Sessões Públicas">
+          <div class="capbtn-text">
+            <div class="capbtn-title">Capítulo II — Das Sessões Públicas</div>
+            <div class="capbtn-desc">
+              Roteiro da sessão pública • fases da sessão • votações • comunicações • Comissão Geral.
+              <br><span class="k">Seções:</span> Seções <span class="num">I</span> a <span class="num">VI</span> (listadas na página do capítulo)
+            </div>
           </div>
-        </div>
-        <ul class="kp-list">
-          <li><b>Arquivo:</b> <span class="pill">titulo3-cap3.html</span></li>
-          <li><b>Conteúdo:</b> você enviará o texto deste capítulo depois.</li>
-        </ul>
-        <div class="card-link">
-          <span>Ir para o capítulo <span class="arrow">→</span></span>
-          <span class="pill">Abrir</span>
-        </div>
-      </div>
-    </a>
+          <div class="capbtn-arrow">→</div>
+        </a>
 
-    <!-- CAP 4 -->
-    <a class="card c6" href="titulo3-cap4.html" style="--c:#5a3d8a" aria-label="Abrir Capítulo IV — Da Interpretação e Observância do Regimento">
-      <div class="card-inner">
-        <div class="card-top">
-          <div class="c-badge">Cap. IV</div>
-          <div>
-            <div class="c-title">Da Interpretação e Observância do Regimento</div>
-            <div class="c-lead">Questões de ordem e reclamações (mecanismos de interpretação/aplicação regimental).</div>
+        <!-- CAP III -->
+        <a class="capbtn" id="cap-iii" href="titulo3-cap3.html" style="--c:#566a86" aria-label="Abrir Capítulo III — Das Sessões Secretas">
+          <div class="capbtn-text">
+            <div class="capbtn-title">Capítulo III — Das Sessões Secretas</div>
+            <div class="capbtn-desc">
+              Hipóteses de sigilo • quem pode permanecer • preservação do sigilo dos documentos.
+              <br>
+            </div>
           </div>
-        </div>
-        <ul class="kp-list">
-          <li><b>Seções internas:</b> Questões de Ordem • Reclamações.</li>
-          <li><b>Arquivo:</b> <span class="pill">titulo3-cap4.html</span></li>
-        </ul>
-        <div class="card-link">
-          <span>Ir para o capítulo <span class="arrow">→</span></span>
-          <span class="pill">Abrir</span>
-        </div>
-      </div>
-    </a>
+          <div class="capbtn-arrow">→</div>
+        </a>
 
-    <!-- CAP 5 -->
-    <a class="card c12" href="titulo3-cap5.html" style="--c:#186347" aria-label="Abrir Capítulo V — Da Ata">
-      <div class="card-inner">
-        <div class="card-top">
-          <div class="c-badge">Cap. V</div>
-          <div>
-            <div class="c-title">Da Ata</div>
-            <div class="c-lead">Regras sobre a ata: elaboração, conteúdo e dinâmica (conforme o capítulo).</div>
+        <!-- CAP IV -->
+        <a class="capbtn" id="cap-iv" href="titulo3-cap4.html" style="--c:#5a4b6e" aria-label="Abrir Capítulo IV — Da Interpretação e Observância do Regimento">
+          <div class="capbtn-text">
+            <div class="capbtn-title">Capítulo IV — Da Interpretação e Observância do Regimento</div>
+            <div class="capbtn-desc">
+              Solução de conflitos regimentais • Questão de Ordem • Reclamação.
+              <br><span class="k">Seções:</span> Seção <span class="num">I</span> • Seção <span class="num">II</span>
+            </div>
           </div>
-        </div>
-        <ul class="kp-list">
-          <li><b>Arquivo:</b> <span class="pill">titulo3-cap5.html</span></li>
-          <li><b>Conteúdo:</b> você enviará o texto deste capítulo depois.</li>
-        </ul>
-        <div class="card-link">
-          <span>Ir para o capítulo <span class="arrow">→</span></span>
-          <span class="pill">Abrir</span>
-        </div>
+          <div class="capbtn-arrow">→</div>
+        </a>
+
+        <!-- CAP V -->
+        <a class="capbtn" id="cap-v" href="titulo3-cap5.html" style="--c:#254a78" aria-label="Abrir Capítulo V — Da Ata">
+          <div class="capbtn-text">
+            <div class="capbtn-title">Capítulo V — Da Ata</div>
+            <div class="capbtn-desc">
+              Registro oficial • lavratura • leitura • aprovação • retificação • publicação no Diário.
+              <br>
+            </div>
+          </div>
+          <div class="capbtn-arrow">→</div>
+        </a>
+
       </div>
-    </a>
-
-  </div>
-
-  <div class="page-footer">
-    <span>RICD • Título III — Das Sessões da Câmara</span>
-    <a href="index.html">← Voltar ao Índice</a>
-    <a href="titulo2.html">← Título II</a>
+    </div>
   </div>
 </div>
 
-<!-- FABs -->
+<!-- ══════════════ FOOTER NAV ══════════════ -->
+<div class="page-footer">
+  <span>RICD • Título III • Das Sessões da Câmara</span>
+  <a href="index.html">⌂ Voltar ao Índice</a>
+  <a href="titulo2.html">← Título II</a>
+  <a href="titulo4.html">Título IV →</a>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- ══════════════ FABs ══════════════ -->
 <div class="fab-wrap">
-  <button id="theme-btn" type="button" title="Alternar tema">
+  <button id="theme-btn" title="Alternar tema">
     <span id="t-icon">🌙</span>
-    <div class="t-track"><div class="t-knob"></div></div>
-    <span id="t-label">Escuro</span>
-  </button>
-  <button id="back-top" type="button" title="Voltar ao topo">↑</button>
-</div>
-
-<!-- Drawer: Anotações -->
-<div class="drawer" id="drawer" aria-hidden="true">
-  <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
-    <div class="drawer-head">
-      <div>
-        <h2 id="drawerTitle">Anotações — Título III</h2>
-        <p>
-          As anotações ficam salvas <b>neste navegador</b>. Sugestão: anote “pegadinhas” e pontos de cobrança por capítulo
-          (ex.: estrutura de sessão pública, questões de ordem, reclamações, etc.).
-        </p>
-      </div>
-      <button class="drawer-x" type="button" id="drawerClose" aria-label="Fechar">×</button>
-    </div>
-    <div class="drawer-body">
-      <textarea id="notes" placeholder="Escreva aqui…"></textarea>
-      <div class="drawer-actions">
-        <button class="drawer-btn drawer-btn-ghost" type="button" id="clearNotes">Limpar</button>
-        <button class="drawer-btn drawer-btn-primary" type="button" id="saveNotes">Salvar e fechar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-/* Theme */
-(function(){
-  const root=document.documentElement,btn=document.getElementById("theme-btn"),
-        icon=document.getElementById("t-icon"),lbl=document.getElementById("t-label");
-  let dark=localStorage.getItem("ricd-theme")==="dark";
-  if(!localStorage.getItem("ricd-theme")){
-    dark=window.matchMedia && window.matchMedia("(prefers-color-scheme:dark)").matches;
-  }
-  function apply(){
-    root.setAttribute("data-theme", dark ? "dark" : "light");
-    icon.textContent = dark ? "☀️" : "🌙";
-    lbl.textContent  = dark ? "Claro" : "Escuro";
-    localStorage.setItem("ricd-theme", dark ? "dark" : "light");
-  }
-  apply();
-  btn.addEventListener("click", ()=>{dark=!dark;apply();});
-})();
-
-/* Progress + back-to-top */
-(function(){
-  const bar=document.getElementById("prog"),top=document.getElementById("back-top");
-  window.addEventListener("scroll", function(){
-    const s=window.scrollY;
-    const h=document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = (h>0 ? (s/h*100) : 0) + "%";
-    top.classList.toggle("show", s>280);
-  }, {passive:true});
-
-  top.addEventListener("click", ()=>window.scrollTo({top:0, behavior:"smooth"}));
-})();
-
-/* Notes drawer */
-(function(){
-  const KEY="notes_titulo3";
-  const openBtn=document.getElementById("notes-open");
-  const drawer=document.getElementById("drawer");
-  const notes=document.getElementById("notes");
-  const closeBtn=document.getElementById("drawerClose");
-  const saveBtn=document.getElementById("saveNotes");
-  const clearBtn=document.getElementById("clearNotes");
-
-  function open(){
-    drawer.classList.add("open");
-    drawer.setAttribute("aria-hidden","false");
-    notes.value = localStorage.getItem(KEY) || "";
-    notes.focus();
-  }
-  function close(){
-    drawer.classList.remove("open");
-    drawer.setAttribute("aria-hidden","true");
-  }
-  function save(){
-    localStorage.setItem(KEY, notes.value || "");
-  }
-
-  openBtn.addEventListener("click", open);
-  closeBtn.addEventListener("click", close);
-  saveBtn.addEventListener("click", function(){ save(); close(); });
-
-  clearBtn.addEventListener("click", function(){
-    if(confirm("Tem certeza que deseja limpar suas anotações do Título III?")){
-      notes.value="";
-      localStorage.removeItem(KEY);
-      notes.focus();
-    }
-  });
-
-  drawer.addEventListener("click", function(e){
-    if(e.target === drawer) close();
-  });
-
-  window.addEventListener("keydown", function(e){
-    if(e.key === "Escape" && drawer.classList.contains("open")) close();
-  });
-})();
-</script>
-
-</body>
-</html>
+    <div class="t-track"><div class="t-kn
