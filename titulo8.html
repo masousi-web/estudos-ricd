@@ -1,904 +1,696 @@
-<!doctype html>
-<html lang="pt-br" data-theme="light">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Título VIII — Participação da Sociedade Civil (RICD)</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RICD — Título VIII — Da Participação da Sociedade Civil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
 
-  <!-- Fonts (mantido padrão) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+/* ═══════════════ TOKENS LIGHT ═══════════════ */
+:root,[data-theme="light"]{
+  --bg:#f3f6fb; --bg2:#eaeff8;
+  --surface:#ffffff; --surface2:#f7faff;
+  --border:rgba(15,39,66,.09); --border-hard:rgba(15,39,66,.16);
+  --ink:#0d1f35; --ink2:#2b4060; --muted:#526a88; --faint:#8fa8c2;
+  --gold:#b86b1a; --gold-soft:rgba(184,107,26,.10);
+  --blue:#1a4d8a; --blue-soft:rgba(26,77,138,.08);
+  --green:#186347; --green-soft:rgba(24,99,71,.09);
+  --red:#a81f2a; --red-soft:rgba(168,31,42,.09);
+  --purple:#5a3d8a; --purple-soft:rgba(90,61,138,.08);
+  --mark-bg:rgba(15,23,42,.07);
+  --hero-from:#0c2240; --hero-to:#153558;
+  --hero-text:#ffffff; --hero-sub:rgba(255,255,255,.80);
+  --sh-sm:0 2px 8px rgba(12,26,43,.06);
+  --sh-md:0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:0 14px 34px rgba(12,26,43,.11);
+  --sh-hov:0 10px 28px rgba(12,26,43,.14);
+  --list-bg:#f7fafc; --note-bg:rgba(26,77,138,.05);
+  --note-border:rgba(26,77,138,.12); --note-text:#1a2e44;
+  --toggle-bg:#d8e2f0; --toggle-knob:#ffffff;
+  --drawer-bg:#ffffff; --drawer-overlay:rgba(15,23,42,.38);
+  --textarea-bg:#fbfcfe;
+}
+/* ═══════════════ TOKENS DARK ═══════════════ */
+[data-theme="dark"]{
+  --bg:#0c1120; --bg2:#101728;
+  --surface:#161d2f; --surface2:#1b2238;
+  --border:rgba(255,255,255,.06); --border-hard:rgba(255,255,255,.12);
+  --ink:#dce8fa; --ink2:#94b0d4; --muted:#627ea6; --faint:#374e6a;
+  --gold:#f0b84a; --gold-soft:rgba(240,184,74,.11);
+  --blue:#5b96f0; --blue-soft:rgba(91,150,240,.11);
+  --green:#38c882; --green-soft:rgba(56,200,130,.09);
+  --red:#f46862; --red-soft:rgba(244,104,98,.11);
+  --purple:#a07af5; --purple-soft:rgba(160,122,245,.10);
+  --mark-bg:rgba(220,232,250,.09);
+  --hero-from:#08111e; --hero-to:#0f1e30;
+  --hero-text:#e4f0ff; --hero-sub:rgba(210,228,255,.70);
+  --sh-sm:0 2px 8px rgba(0,0,0,.28);
+  --sh-md:0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:0 14px 34px rgba(0,0,0,.40);
+  --sh-hov:0 10px 28px rgba(0,0,0,.46);
+  --list-bg:rgba(255,255,255,.03); --note-bg:rgba(91,150,240,.09);
+  --note-border:rgba(91,150,240,.20); --note-text:#b0ccf0;
+  --toggle-bg:#243350; --toggle-knob:#f0b84a;
+  --drawer-bg:#161d2f; --drawer-overlay:rgba(0,0,0,.65);
+  --textarea-bg:#111828;
+}
 
-  <style>
-    /* ═══════════════════════════════════════════════
-       TOKENS / THEME
-    ═══════════════════════════════════════════════ */
-    :root{
-      --bg:#f5f2ea;
-      --bg2:#efe9db;
-      --surface:#ffffff;
-      --surface2:#fbf9f3;
-      --ink:#1f2430;
-      --muted:#5e6674;
-      --faint:#8a93a3;
-      --blue:#2f6bd6;
-      --gold:#b4872f;
+/* ═══════════════ BASE ═══════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;font-size:15px;line-height:1.68;color:var(--ink);background:var(--bg);transition:background .25s,color .25s;min-height:100vh}
+a{color:inherit;text-decoration:none}
 
-      --border:rgba(23,32,53,.10);
-      --border-hard:rgba(23,32,53,.18);
+/* ═══════════════ PROGRESS ═══════════════ */
+#prog{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--gold),var(--blue));z-index:300;transition:width .08s linear;border-radius:0 2px 2px 0}
 
-      --sh-sm:0 8px 18px rgba(20,24,34,.07);
-      --sh-md:0 12px 28px rgba(20,24,34,.10);
-      --sh-lg:0 18px 42px rgba(20,24,34,.14);
-      --sh-hov:0 16px 36px rgba(20,24,34,.16);
+/* ═══════════════ FABs ═══════════════ */
+.fab-wrap{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+#theme-btn{background:var(--surface);border:1px solid var(--border-hard);box-shadow:var(--sh-md);border-radius:50px;padding:8px 14px;cursor:pointer;display:flex;align-items:center;gap:9px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--muted);transition:all .2s;user-select:none}
+#theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
+.t-track{width:38px;height:20px;background:var(--toggle-bg);border-radius:20px;position:relative;transition:background .25s}
+.t-knob{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--toggle-knob);transition:transform .25s,background .25s;box-shadow:0 1px 4px rgba(0,0,0,.22)}
+[data-theme="dark"] .t-knob{transform:translateX(18px)}
+#back-top{width:44px;height:44px;background:var(--surface);border:1px solid var(--border-hard);border-radius:50%;box-shadow:var(--sh-md);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--muted);transition:all .2s;opacity:0;pointer-events:none;transform:translateY(10px)}
+#back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
 
-      --hero-from:#21415f;
-      --hero-to:#182846;
-      --hero-ink:#ffffff;
-      --hero-sub:rgba(255,255,255,.82);
-      --hero-chip:rgba(255,255,255,.10);
+/* ═══════════════ WRAP ═══════════════ */
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px 80px}
 
-      --toggle-bg:#e6e0d3;
-      --toggle-knob:#ffffff;
+/* ═══════════════ HERO ═══════════════ */
+.hero{background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);border-radius:0 0 28px 28px;padding:38px 36px 34px;margin-bottom:32px;position:relative;overflow:hidden;box-shadow:var(--sh-lg)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);pointer-events:none}
+.hero::after{content:'VIII';position:absolute;right:36px;top:50%;transform:translateY(-50%);font-family:'Crimson Pro',serif;font-size:160px;font-weight:700;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.hero-title{font-family:'Crimson Pro',serif;font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--hero-text);line-height:1.12;margin-bottom:10px}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:82ch;line-height:1.58;margin-bottom:18px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.hero-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;border:1px solid}
+.hero-btn-ghost{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18);color:rgba(255,255,255,.88)}
+.hero-btn-ghost:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.hero-btn-primary{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);color:#fff;font-weight:700}
+.hero-btn-primary:hover{background:rgba(255,255,255,.22);transform:translateY(-1px)}
+.nav-chips{display:flex;flex-wrap:wrap;gap:8px}
+.nav-chips a{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:100px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.88);font-size:12.5px;font-weight:500;transition:background .15s,transform .1s}
+.nav-chips a:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.nav-chips a b{font-weight:700;color:var(--gold)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.10)}
+.lchip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:rgba(255,255,255,.78);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;font-weight:600;text-transform:uppercase}
+.ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 
-      --drawer-overlay:rgba(20,24,34,.35);
-      --drawer-bg:rgba(255,255,255,.92);
-    }
-    [data-theme="dark"]{
-      --bg:#0f1116;
-      --bg2:#10131b;
-      --surface:#151a24;
-      --surface2:#121826;
-      --ink:#eef2ff;
-      --muted:#b9c0d6;
-      --faint:#8f97ad;
-      --blue:#6ea2ff;
-      --gold:#f0c36b;
+/* ═══════════════ SECTION DIVIDER ═══════════════ */
+.sec-head{display:flex;align-items:center;gap:14px;margin:36px 0 18px}
+.sec-line{flex:1;height:1px;background:var(--border-hard)}
+.sec-title{font-family:'Crimson Pro',serif;font-size:21px;font-weight:700;color:var(--ink);white-space:nowrap}
+.sec-badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
 
-      --border:rgba(255,255,255,.10);
-      --border-hard:rgba(255,255,255,.16);
+/* ═══════════════ GRID ═══════════════ */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.c12{grid-column:span 12}.c6{grid-column:span 12}.c4{grid-column:span 12}
+@media(min-width:760px){.c6{grid-column:span 6}.c4{grid-column:span 4}}
 
-      --sh-sm:0 10px 22px rgba(0,0,0,.35);
-      --sh-md:0 16px 34px rgba(0,0,0,.42);
-      --sh-lg:0 22px 52px rgba(0,0,0,.52);
-      --sh-hov:0 18px 46px rgba(0,0,0,.56);
+/* ═══════════════ CARD ═══════════════ */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--sh-sm);overflow:hidden;position:relative;transition:transform .14s,box-shadow .14s;opacity:0;animation:fadeUp .35s ease forwards}
+.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.07s}.card:nth-child(3){animation-delay:.11s}.card:nth-child(4){animation-delay:.15s}.card:nth-child(5){animation-delay:.19s}.card:nth-child(6){animation-delay:.23s}.card:nth-child(7){animation-delay:.27s}.card:nth-child(8){animation-delay:.31s}.card:nth-child(9){animation-delay:.35s}.card:nth-child(10){animation-delay:.39s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{transform:translateY(-2px);box-shadow:var(--sh-hov)}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,#1c3f63);border-radius:14px 0 0 14px}
+.card-inner{padding:16px 16px 16px 18px}
+.card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.c-badge{flex-shrink:0;width:36px;height:36px;border-radius:9px;background:var(--bg2);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;color:var(--c,#1c3f63);margin-top:1px}
+[data-theme="dark"] .c-badge{background:color-mix(in srgb,var(--c,#1c3f63) 14%,var(--surface2) 86%);color:color-mix(in srgb,var(--c,#1c3f63) 55%,#ffffff 45%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){[data-theme="dark"] .c-badge{background:var(--surface2);color:var(--ink2)}}
+.c-title{font-family:'Crimson Pro',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:3px}
+.c-lead{font-size:13px;color:var(--muted);line-height:1.45}
+.kp-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.kp-list li{padding:9px 11px;border-radius:9px;background:var(--list-bg);border:1px solid var(--border);font-size:13.5px;color:var(--ink2);line-height:1.52}
+.kp-list li b{font-weight:700;color:var(--ink)}
 
-      --hero-from:#1a2a43;
-      --hero-to:#0f1524;
-      --hero-ink:#f3f7ff;
-      --hero-sub:rgba(243,247,255,.78);
-      --hero-chip:rgba(243,247,255,.10);
+/* ═══════════════ SEMANTIC HIGHLIGHTS ═══════════════ */
+.k{font-weight:700;color:var(--ink);background:var(--mark-bg);padding:0 .22em;border-radius:.4em}
+.org{font-weight:700;color:var(--blue);background:var(--blue-soft);padding:0 .22em;border-radius:.4em}
+.prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em;white-space:nowrap}
+.exc{font-weight:700;color:var(--red);background:var(--red-soft);padding:0 .22em;border-radius:.4em}
+.num{font-weight:700;color:var(--ink2)}
+.tech{font-style:italic;font-weight:600;color:var(--ink)}
+.uc{text-transform:uppercase;letter-spacing:.04em}
 
-      --toggle-bg:rgba(255,255,255,.12);
-      --toggle-knob:#e9eefc;
+/* ═══════════════ NOTE / TRAP / CORRELATOS ═══════════════ */
+.note{margin-top:10px;padding:10px 13px;border-radius:10px;background:var(--note-bg);border:1px solid var(--note-border);color:var(--note-text);font-size:13px;line-height:1.55}
+.note b{font-weight:700}
+.trap{margin-top:10px;display:flex;gap:10px;align-items:flex-start;background:var(--red-soft);border:1px solid color-mix(in srgb,var(--red) 25%,transparent 75%);border-radius:10px;padding:11px 13px}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.trap{border-color:rgba(168,31,42,.2)}}
+.trap-icon{font-size:16px;line-height:1.5;flex-shrink:0}
+.trap-text{font-size:13px;color:var(--red);font-weight:500;line-height:1.5}
+.trap-text b{font-weight:700}
+.correlatos{margin-top:10px;padding:11px 13px;border-radius:10px;background:var(--purple-soft);border:1px solid rgba(90,61,138,.16)}
+[data-theme="dark"] .correlatos{border-color:rgba(160,122,245,.18)}
+.corr-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);font-weight:700;margin-bottom:6px}
+.corr-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+.corr-list li{font-size:13px;color:var(--ink2);padding-left:16px;position:relative;line-height:1.5}
+.corr-list li::before{content:'↗';position:absolute;left:0;color:var(--purple);font-size:12px}
 
-      --drawer-overlay:rgba(0,0,0,.55);
-      --drawer-bg:rgba(18,24,38,.92);
-    }
+/* ═══════════════ FOOTER ═══════════════ */
+.page-footer{text-align:center;font-size:12.5px;color:var(--faint);margin-top:48px;padding-top:20px;border-top:1px solid var(--border-hard);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px}
+.page-footer a{color:var(--blue);font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid var(--border-hard);background:var(--surface);font-size:13px;transition:box-shadow .15s}
+.page-footer a:hover{box-shadow:var(--sh-md)}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:'Outfit',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:radial-gradient(900px 420px at 20% 0%,rgba(180,135,47,.10),transparent 60%),
-                 radial-gradient(900px 420px at 80% 0%,rgba(47,107,214,.10),transparent 62%),
-                 linear-gradient(180deg,var(--bg) 0%, var(--bg2) 100%);
-      color:var(--ink);
-    }
-    a{color:inherit;text-decoration:none}
-    strong{font-weight:700}
+/* ═══════════════ NOTES DRAWER ═══════════════ */
+.drawer-overlay{position:fixed;inset:0;background:var(--drawer-overlay);backdrop-filter:blur(4px);z-index:400;display:none;align-items:flex-end;justify-content:center;padding:16px}
+.drawer-overlay.open{display:flex}
+.drawer-panel{width:min(900px,100%);background:var(--drawer-bg);border:1px solid var(--border-hard);border-radius:20px;box-shadow:var(--sh-lg);overflow:hidden;transition:background .25s}
+.drawer-head{padding:16px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;background:linear-gradient(180deg,var(--surface2),var(--surface));border-bottom:1px solid var(--border-hard)}
+.drawer-head-info h2{font-family:'Crimson Pro',serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.drawer-head-info p{font-size:13px;color:var(--muted);line-height:1.45;max-width:70ch}
+.drawer-close{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--bg2);border:1px solid var(--border-hard);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);transition:all .15s}
+.drawer-close:hover{color:var(--red);border-color:var(--red)}
+.drawer-body{padding:16px 20px 20px}
+#notes-area{width:100%;min-height:220px;resize:vertical;border-radius:12px;border:1px solid var(--border-hard);padding:12px 14px;font-family:'Outfit',sans-serif;font-size:14px;line-height:1.6;outline:none;background:var(--textarea-bg);color:var(--ink);transition:border-color .15s,background .25s,color .25s}
+#notes-area:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+#notes-area::placeholder{color:var(--faint)}
+.drawer-actions{margin-top:12px;display:flex;gap:10px;justify-content:flex-end}
+.d-btn{font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;padding:8px 18px;border-radius:8px;cursor:pointer;border:1px solid;transition:all .15s}
+.d-btn-clear{background:transparent;color:var(--red);border-color:color-mix(in srgb,var(--red) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-clear{border-color:rgba(168,31,42,.3)}}
+.d-btn-clear:hover{background:var(--red-soft)}
+.d-btn-save{background:var(--green-soft);color:var(--green);border-color:color-mix(in srgb,var(--green) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-save{border-color:rgba(24,99,71,.3)}}
+.d-btn-save:hover{background:rgba(24,99,71,.18)}
 
-    /* Progress bar */
-    #prog{position:fixed;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--blue));z-index:500}
-
-    /* Scrollbar */
-    ::-webkit-scrollbar{width:6px}
-    ::-webkit-scrollbar-track{background:transparent}
-    ::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
-
-    /* ═══════════════════════════════════════════════
-       WRAP
-    ═══════════════════════════════════════════════ */
-    .wrap{max-width:1060px;margin:0 auto;padding:0 20px 80px}
-
-    /* ═══════════════════════════════════════════════
-       HERO
-    ═══════════════════════════════════════════════ */
-    .hero{
-      background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);
-      border-radius:0 0 28px 28px;
-      padding:38px 36px 34px;
-      margin-bottom:32px;
-      position:relative;overflow:hidden;
-      box-shadow:var(--sh-lg);
-    }
-    .hero::before{
-      content:'';position:absolute;inset:0;
-      background:
-        radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),
-        radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 58%),
-        radial-gradient(640px 320px at 70% 92%,rgba(255,255,255,.06),transparent 58%);
-      pointer-events:none;
-    }
-    .hero::after{
-      content:'VIII';
-      position:absolute;right:20px;bottom:-22px;
-      font-family:'Crimson Pro',serif;
-      font-size:140px;font-weight:700;
-      letter-spacing:-2px;
-      color:rgba(255,255,255,.08);
-      pointer-events:none;
-    }
-    .hero-inner{position:relative;z-index:1;max-width:980px}
-    .hero-eyebrow{
-      display:inline-flex;gap:10px;align-items:center;
-      color:rgba(255,255,255,.78);
-      font-size:13px;font-weight:600;
-      letter-spacing:.4px;
-      text-transform:uppercase;
-      margin-bottom:10px;
-    }
-    .hero-title{
-      margin:0 0 10px;
-      font-family:'Crimson Pro',serif;
-      font-size:34px;
-      line-height:1.12;
-      color:var(--hero-ink);
-      letter-spacing:.2px;
-    }
-    .hero-sub{
-      margin:0 0 16px;
-      color:var(--hero-sub);
-      font-size:14.5px;
-      line-height:1.55;
-      max-width:90ch;
-    }
-    .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 18px}
-    .hero-btn{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:10px 14px;border-radius:12px;
-      border:1px solid rgba(255,255,255,.18);
-      background:rgba(255,255,255,.08);
-      color:rgba(255,255,255,.92);
-      font-size:13.5px;font-weight:700;
-      cursor:pointer;
-      transition:transform .12s,box-shadow .12s,background .12s;
-      user-select:none;
-    }
-    .hero-btn:hover{transform:translateY(-1px);box-shadow:0 14px 34px rgba(0,0,0,.18);background:rgba(255,255,255,.10)}
-    .hero-btn-primary{background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.08))}
-    .hero-btn-ghost{background:rgba(255,255,255,.06)}
-    .nav-chips{
-      display:flex;flex-wrap:wrap;gap:8px;
-      margin:0 0 14px;
-    }
-    .nav-chips a{
-      display:inline-flex;gap:8px;align-items:center;
-      padding:8px 12px;border-radius:999px;
-      background:var(--hero-chip);
-      border:1px solid rgba(255,255,255,.14);
-      color:rgba(255,255,255,.86);
-      font-size:12.5px;font-weight:600;
-      transition:background .15s,transform .15s,border-color .15s;
-      white-space:nowrap;
-    }
-    .nav-chips a b{color:#fff;font-weight:800}
-    .nav-chips a:hover{background:rgba(255,255,255,.14);transform:translateY(-1px);border-color:rgba(255,255,255,.22)}
-    .legend{display:flex;flex-wrap:wrap;gap:10px}
-    .lchip{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:7px 10px;border-radius:999px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
-      color:rgba(255,255,255,.82);
-      font-size:12px;font-weight:600;
-    }
-    .ldot{width:10px;height:10px;border-radius:50%}
-
-    /* ═══════════════════════════════════════════════
-       SECTION HEAD
-    ═══════════════════════════════════════════════ */
-    .sec-head{
-      display:flex;align-items:center;gap:12px;
-      margin:26px 0 14px;
-    }
-    .sec-line{flex:1;height:1px;background:var(--border-hard)}
-    .sec-title{
-      font-family:'Crimson Pro',serif;
-      font-size:20px;font-weight:800;
-      color:var(--ink);
-      white-space:nowrap;
-    }
-    .sec-badge{
-      font-size:12.5px;font-weight:800;
-      color:var(--muted);
-      background:var(--surface2);
-      border:1px solid var(--border-hard);
-      padding:7px 10px;border-radius:999px;
-      white-space:nowrap;
-    }
-
-    /* ═══════════════════════════════════════════════
-       CARDS / GRID
-    ═══════════════════════════════════════════════ */
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-    .card{
-      grid-column:span 12;
-      background:linear-gradient(180deg,var(--surface2),var(--surface));
-      border:1px solid var(--border);
-      border-radius:18px;
-      box-shadow:var(--sh-sm);
-      overflow:hidden;
-      transition:transform .12s,box-shadow .12s,border-color .12s;
-    }
-    .card:hover{transform:translateY(-2px);box-shadow:var(--sh-hov);border-color:var(--border-hard)}
-    .card-head{
-      padding:14px 16px 12px;
-      display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:10px;
-      border-bottom:1px solid var(--border-hard);
-      background:linear-gradient(180deg,rgba(180,135,47,.10),transparent 70%);
-    }
-    .kicker{
-      display:inline-flex;align-items:center;gap:10px;
-      font-size:12.5px;font-weight:800;
-      color:var(--muted);
-      letter-spacing:.2px;
-    }
-    .tag{
-      font-size:12px;font-weight:800;
-      padding:6px 10px;border-radius:999px;
-      border:1px solid var(--border-hard);
-      background:var(--surface);
-      color:var(--muted);
-      white-space:nowrap;
-    }
-    .tag.blue{border-color:rgba(47,107,214,.35);color:var(--blue)}
-    .tag.gold{border-color:rgba(180,135,47,.35);color:var(--gold)}
-    .tag.red{border-color:rgba(244,104,98,.35);color:#f46862}
-    .card-body{padding:14px 16px 16px}
-    .h{
-      font-family:'Crimson Pro',serif;
-      font-size:18px;font-weight:800;
-      margin:0 0 10px;
-      color:var(--ink);
-    }
-    .p{margin:0 0 10px;color:var(--muted);line-height:1.55;font-size:14px}
-    .list{margin:0;padding-left:18px;color:var(--muted);line-height:1.55;font-size:14px}
-    .list li{margin:6px 0}
-    .callout{
-      margin-top:12px;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid var(--border-hard);
-      background:rgba(47,107,214,.06);
-      color:var(--muted);
-      font-size:13.5px;
-      line-height:1.55;
-    }
-    .callout b{color:var(--ink)}
-    .callout.red{background:rgba(244,104,98,.07)}
-    .callout.gold{background:rgba(180,135,47,.08)}
-    .mini{
-      display:flex;flex-wrap:wrap;gap:8px;margin-top:10px
-    }
-
-    /* ═══════════════ FOOTER ═══════════════ */
-    .page-footer{
-      text-align:center;font-size:12.5px;color:var(--faint);
-      margin-top:48px;padding-top:20px;border-top:1px solid var(--border-hard);
-      display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px
-    }
-    .page-footer a{
-      color:var(--blue);font-weight:700;padding:6px 14px;border-radius:10px;
-      border:1px solid var(--border-hard);background:var(--surface);font-size:13px;
-      transition:box-shadow .15s,transform .15s
-    }
-    .page-footer a:hover{box-shadow:var(--sh-md);transform:translateY(-1px)}
-
-    /* ═══════════════ NOTES DRAWER ═══════════════ */
-    .drawer-overlay{
-      position:fixed;inset:0;background:var(--drawer-overlay);
-      backdrop-filter:blur(4px);z-index:400;display:none;
-      align-items:flex-end;justify-content:center;padding:16px
-    }
-    .drawer-overlay.open{display:flex}
-    .drawer-panel{
-      width:min(900px,100%);
-      background:var(--drawer-bg);
-      border:1px solid var(--border-hard);
-      border-radius:20px;
-      box-shadow:var(--sh-lg);
-      overflow:hidden;
-      transition:background .25s
-    }
-    .drawer-head{
-      padding:16px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
-      background:linear-gradient(180deg,var(--surface2),var(--surface));
-      border-bottom:1px solid var(--border-hard)
-    }
-    .drawer-head-info h2{
-      font-family:'Crimson Pro',serif;font-size:18px;font-weight:800;color:var(--ink);
-      margin:0 0 4px
-    }
-    .drawer-head-info p{margin:0;font-size:13px;color:var(--muted);line-height:1.45;max-width:70ch}
-    .drawer-close{
-      border:1px solid var(--border-hard);
-      background:var(--surface);
-      color:var(--muted);
-      border-radius:12px;
-      padding:8px 10px;
-      cursor:pointer;
-      font-weight:800;
-      transition:transform .12s,box-shadow .12s,color .12s
-    }
-    .drawer-close:hover{transform:translateY(-1px);box-shadow:var(--sh-md);color:var(--ink)}
-    .drawer-body{padding:16px 20px 18px}
-    .drawer-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:10px}
-    .drawer-row .hint{font-size:12.5px;color:var(--faint)}
-    .d-btn{
-      border:1px solid var(--border-hard);
-      background:var(--surface);
-      color:var(--muted);
-      border-radius:12px;
-      padding:9px 12px;
-      cursor:pointer;
-      font-weight:800;
-      transition:transform .12s,box-shadow .12s,color .12s,background .12s
-    }
-    .d-btn:hover{transform:translateY(-1px);box-shadow:var(--sh-md);color:var(--ink)}
-    .d-btn-save{background:rgba(47,107,214,.08);border-color:rgba(47,107,214,.25)}
-    .d-btn-save:hover{background:rgba(47,107,214,.12)}
-    .d-btn-danger{background:rgba(244,104,98,.08);border-color:rgba(244,104,98,.25)}
-    .d-btn-danger:hover{background:rgba(244,104,98,.12)}
-    textarea{
-      width:100%;min-height:220px;resize:vertical;
-      border-radius:16px;
-      border:1px solid var(--border-hard);
-      background:var(--surface);
-      color:var(--ink);
-      padding:12px 12px;
-      font-family:inherit;
-      line-height:1.55;
-      font-size:14px;
-      outline:none;
-      box-shadow:var(--sh-sm);
-    }
-    textarea:focus{border-color:rgba(47,107,214,.45);box-shadow:var(--sh-md)}
-
-    /* ═══════════════ FABs ═══════════════ */
-    .fab-wrap{
-      position:fixed;bottom:24px;right:24px;
-      z-index:200;
-      display:flex;flex-direction:column;gap:10px;align-items:flex-end;
-    }
-    #theme-btn{
-      background:var(--surface);
-      border:1px solid var(--border-hard);
-      box-shadow:var(--sh-md);
-      border-radius:50px;
-      padding:8px 14px;
-      cursor:pointer;
-      display:flex;align-items:center;gap:9px;
-      font-family:'Outfit',sans-serif;
-      font-size:13px;font-weight:700;
-      color:var(--muted);
-      transition:all .2s;user-select:none;
-    }
-    #theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
-    .t-track{
-      width:38px;height:20px;
-      background:var(--toggle-bg);
-      border-radius:20px;position:relative;
-      transition:background .25s;
-    }
-    .t-knob{
-      position:absolute;top:2px;left:2px;
-      width:16px;height:16px;
-      border-radius:50%;
-      background:var(--toggle-knob);
-      transition:transform .25s,background .25s;
-      box-shadow:0 1px 4px rgba(0,0,0,.22);
-    }
-    [data-theme="dark"] .t-knob{transform:translateX(18px)}
-    #back-top{
-      width:44px;height:44px;
-      background:var(--surface);
-      border:1px solid var(--border-hard);
-      border-radius:50%;
-      box-shadow:var(--sh-md);
-      cursor:pointer;
-      display:flex;align-items:center;justify-content:center;
-      font-size:19px;color:var(--muted);
-      transition:all .2s;
-      opacity:0;pointer-events:none;
-      transform:translateY(10px);
-    }
-    #back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
-    #back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
-
-    @media(max-width:600px){
-      .hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}
-      .hero::after{display:none}
-      .wrap{padding:0 14px 80px}
-    }
-  </style>
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
+@media(max-width:600px){.hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}.hero::after{display:none}.wrap{padding:0 14px 80px}}
+</style>
 </head>
-
 <body>
-  <div id="prog"></div>
 
-  <!-- ══════════════ HERO ══════════════ -->
-  <header class="hero" id="topo">
-    <div class="wrap" style="padding:0">
-      <div class="hero-inner">
-        <div class="hero-eyebrow">RICD • Resumo Visual • Material de Revisão</div>
-        <h1 class="hero-title">Título VIII — Da Participação da Sociedade Civil</h1>
-        <p class="hero-sub">
-          Nesta página: <strong>Cap. I</strong> (Iniciativa Popular), <strong>Cap. II</strong> (Petições/Representações e outras formas),
-          <strong>Cap. III</strong> (Audiência Pública) e <strong>Cap. IV</strong> (Credenciamento de Entidades e Imprensa).
-        </p>
+<div id="prog"></div>
 
-        <div class="hero-actions">
-          <a class="hero-btn hero-btn-ghost" href="index.html">⌂ Índice Geral</a>
-          <a class="hero-btn hero-btn-ghost" href="titulo8.html">☰ Índice do Título VIII</a>
-          <button class="hero-btn hero-btn-primary" id="btn-notes" type="button">✏️ Anotações</button>
-        </div>
-
-        <nav class="nav-chips" aria-label="Seções">
-          <a href="#cap1"><b>Cap. I</b> Iniciativa Popular</a>
-          <a href="#cap2"><b>Cap. II</b> Petições/CLP</a>
-          <a href="#cap3"><b>Cap. III</b> Audiência Pública</a>
-          <a href="#cap4"><b>Cap. IV</b> Credenciamento</a>
-          <a href="#art252"><b>Art. 252</b> Requisitos</a>
-          <a href="#art253"><b>Art. 253</b> Petição</a>
-          <a href="#art256"><b>Art. 256</b> Regras</a>
-          <a href="#art260"><b>Art. 260</b> Imprensa</a>
-        </nav>
-
-        <div class="legend" aria-label="Legenda">
-          <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Órgãos</span>
-          <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Prazos</span>
-          <span class="lchip"><span class="ldot" style="background:#f46862"></span>Exceções/Vedações</span>
-          <span class="lchip"><span class="ldot" style="background:rgba(255,255,255,.4)"></span>Palavras-chave</span>
-        </div>
+<!-- ══════════════ HERO ══════════════ -->
+<header class="hero" id="topo">
+  <div class="wrap" style="padding:0">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">RICD • Resumo Visual • Material de Revisão</div>
+      <h1 class="hero-title">Título VIII — Da Participação da Sociedade Civil</h1>
+      <p class="hero-sub">Nesta página: <strong>Cap. I — Iniciativa popular de lei</strong>; <strong>Cap. II — Petições, representações e outras formas de participação</strong>; <strong>Cap. III — Audiência pública</strong>; <strong>Cap. IV — Credenciamento de entidades e da imprensa</strong>.</p>
+      <div class="hero-actions">
+        <a class="hero-btn hero-btn-ghost" href="index.html">⌂ Voltar ao Índice</a>
+        <button class="hero-btn hero-btn-primary" id="btn-notes" type="button">✏️ Anotações</button>
+      </div>
+      <nav class="nav-chips" aria-label="Seções">
+        <a href="#cap1"><b>Cap. I</b> Iniciativa Popular</a>
+        <a href="#cap2"><b>Cap. II</b> Petições/CLP</a>
+        <a href="#cap3"><b>Cap. III</b> Audiência Pública</a>
+        <a href="#cap4"><b>Cap. IV</b> Credenciamentos</a>
+      </nav>
+      <div class="legend">
+        <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Órgãos/Competências</span>
+        <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Prazos/Quóruns</span>
+        <span class="lchip"><span class="ldot" style="background:#f46862"></span>Vedações/Exceções</span>
+        <span class="lchip"><span class="ldot" style="background:rgba(255,255,255,.4)"></span>Palavras-chave</span>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main class="wrap">
-    <!-- CAPÍTULO I -->
-    <div class="sec-head" id="cap1">
-      <div class="sec-line"></div>
-      <div class="sec-title">Capítulo I — Da Iniciativa Popular de Lei</div>
-      <div class="sec-badge">Art. 252</div>
-      <div class="sec-line"></div>
-    </div>
+<div class="wrap">
 
-    <div class="grid">
-      <section class="card" id="art252">
-        <div class="card-head">
-          <div class="kicker">Art. 252 • Requisitos, tramitação e técnica</div>
-          <div class="mini">
-            <span class="tag gold">Prazos</span>
-            <span class="tag blue">Órgãos</span>
-            <span class="tag red">Vedações/alertas</span>
-          </div>
+<!-- ══════════════ CAP. I ══════════════ -->
+<div class="sec-head" id="cap1">
+  <div class="sec-line"></div><div class="sec-title">Capítulo I — Da Iniciativa Popular de Lei</div>
+  <div class="sec-badge">Art. 252</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">252</div>
+        <div>
+          <div class="c-title">Requisitos de admissibilidade</div>
+          <div class="c-lead"><span class="k">Iniciativa popular</span> exerce-se pela apresentação de <span class="k">projeto de lei</span> subscrito por eleitorado mínimo, com distribuição federativa.</div>
         </div>
-        <div class="card-body">
-          <h3 class="h">Requisitos de admissibilidade (caput e incisos I, II, IV e V)</h3>
-          <ul class="list">
-            <li>Projeto de lei subscrito por <strong>mínimo de 1/100</strong> do eleitorado nacional.</li>
-            <li>Distribuído por pelo menos <strong>5 Estados</strong>.</li>
-            <li>Com não menos de <strong>3/1000</strong> dos eleitores de cada um deles.</li>
-            <li><strong>Formalidades</strong>: assinatura + nome completo + endereço + título eleitoral.</li>
-            <li><strong>Organização</strong>: listas por Município e Estado (formulário padronizado pela Mesa).</li>
-            <li><strong>Instrução</strong>: documento da Justiça Eleitoral (contingente; aceitos dados do ano anterior).</li>
-            <li><strong>Protocolo</strong>: Secretaria-Geral da Mesa (verifica exigências constitucionais).</li>
-          </ul>
-
-          <div class="callout">
-            <b>Tramitação, defesa e patrocínio (incisos III, VI e VII):</b>
-            <ul class="list" style="margin-top:8px">
-              <li><strong>Patrocínio</strong>: é lícito a entidade da sociedade civil patrocinar a apresentação (responsabiliza-se pela coleta de assinaturas).</li>
-              <li><strong>Tramitação</strong>: mesma tramitação dos demais projetos (integra numeração geral).</li>
-              <li><strong>Defesa oral</strong>: nas Comissões ou em Plenário (transformado em Comissão Geral) — por <strong>20 minutos</strong> — primeiro signatário ou indicado.</li>
-            </ul>
-          </div>
-
-          <div class="callout gold">
-            <b>Unicidade temática e vícios formais (incisos VIII e IX):</b>
-            <ul class="list" style="margin-top:8px">
-              <li><strong>Unicidade</strong>: cada projeto deve circunscrever-se a um único assunto; caso contrário, a <strong>CCJC</strong> desdobra em proposições autônomas.</li>
-              <li><strong>Vícios</strong>: não se rejeita liminarmente por linguagem/lapsos/técnica; cabe à <strong>CCJC</strong> escoimar vícios formais.</li>
-            </ul>
-          </div>
-
-          <div class="callout blue">
-            <b>Deputado “padrinho” (autor regimental) — inciso X:</b>
-            a Mesa designará deputado para exercer poderes/atribuições de autor; recairá sobre quem tenha sido previamente indicado (com anuência) pelo primeiro signatário.
-          </div>
-
-          <div class="callout red">
-            <b>Correlato importante (atenção à questão):</b>
-            Art. 91, § 2º menciona 30 minutos em hipótese específica; o Art. 252 menciona 20 minutos.
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- CAPÍTULO II -->
-    <div class="sec-head" id="cap2">
-      <div class="sec-line"></div>
-      <div class="sec-title">Capítulo II — Petições, Representações e Outras Formas</div>
-      <div class="sec-badge">Arts. 253–254</div>
-      <div class="sec-line"></div>
-    </div>
-
-    <div class="grid">
-      <section class="card" id="art253">
-        <div class="card-head">
-          <div class="kicker">Art. 253 • Direito de Petição</div>
-          <div class="mini">
-            <span class="tag blue">Competência</span>
-            <span class="tag red">Admissibilidade</span>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="h">Objeto e recebimento</h3>
-          <p class="p">
-            Petições, reclamações, representações ou queixas (pessoas físicas/jurídicas) contra atos/omissões
-            de autoridades/entidades públicas, ou imputados a membros da Casa: serão recebidas e examinadas
-            pela <strong>Ouvidoria Parlamentar</strong>, pelas <strong>Comissões</strong> ou pela <strong>Mesa</strong> (conforme o caso).
-          </p>
-
-          <h3 class="h">Condições de admissibilidade</h3>
-          <ul class="list">
-            <li>Encaminhadas por escrito ou meio eletrônico (devidamente identificadas) ou por telefone (com identificação do autor).</li>
-            <li>Assunto envolva matéria de competência da Câmara dos Deputados.</li>
-          </ul>
-
-          <div class="callout">
-            <b>Correlatos:</b> Art. 21-A (Ouvidoria) e Art. 24, VI (Comissões — receber petições/reclamações/representações).
-          </div>
-        </div>
-      </section>
-
-      <section class="card" id="art254">
-        <div class="card-head">
-          <div class="kicker">Art. 254 • Sugestões (CLP) e outras formas</div>
-          <div class="mini">
-            <span class="tag blue">CLP</span>
-            <span class="tag red">Arquivo/Distribuição</span>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="h">Sugestões de iniciativa legislativa (caput e §§ 1º a 3º)</h3>
-          <ul class="list">
-            <li>Formas: sugestões de iniciativa legislativa, pareceres técnicos, exposições e propostas oriundas de entidades científicas/culturais e entidades do Art. 32, XII, a.</li>
-            <li><strong>Parecer favorável</strong> (§ 1º): sugestão transformada em proposição legislativa de iniciativa da CLP → encaminhada à Mesa para tramitação.</li>
-            <li><strong>Parecer contrário</strong> (§ 2º): sugestão encaminhada ao arquivo.</li>
-            <li><strong>Regra subsidiária</strong> (§ 3º): aplicam-se disposições relativas ao trâmite dos projetos de lei nas comissões.</li>
-          </ul>
-
-          <div class="callout gold">
-            <b>Outras formas (Art. 254, § 4º):</b>
-            demais formas recebidas pela CLP serão encaminhadas à Mesa para distribuição:
-            à comissão competente para mérito (ou comissões) ou à Ouvidoria (conforme o caso).
-          </div>
-
-          <div class="callout red">
-            <b>Art. 32, XII, a (correlato):</b> rol de legitimados para apresentar sugestões à CLP (sociedade civil) — <strong>exceto partidos políticos</strong>.
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- CAPÍTULO III -->
-    <div class="sec-head" id="cap3">
-      <div class="sec-line"></div>
-      <div class="sec-title">Capítulo III — Da Audiência Pública</div>
-      <div class="sec-badge">Arts. 255–258</div>
-      <div class="sec-line"></div>
-    </div>
-
-    <div class="grid">
-      <section class="card" id="art255">
-        <div class="card-head">
-          <div class="kicker">Art. 255 • Finalidade e iniciativa</div>
-          <div class="mini">
-            <span class="tag blue">Comissões</span>
-            <span class="tag gold">Finalidade</span>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="h">Finalidades</h3>
-          <ul class="list">
-            <li>Instruir matéria legislativa em trâmite.</li>
-            <li>Tratar de assunto de interesse público relevante (na área de atuação da comissão).</li>
-          </ul>
-
-          <h3 class="h">Legitimidade de iniciativa</h3>
-          <ul class="list">
-            <li>Proposta de qualquer membro; ou</li>
-            <li>A pedido de entidade interessada.</li>
-          </ul>
-
-          <div class="callout">
-            <b>Correlatos:</b> Art. 24, III (audiências públicas nas comissões) e Art. 21-A, VII (Ouvidoria).
-          </div>
-        </div>
-      </section>
-
-      <section class="card" id="art256">
-        <div class="card-head">
-          <div class="kicker">Art. 256 • Seleção, contraditório e regras de fala</div>
-          <div class="mini">
-            <span class="tag blue">Presidência</span>
-            <span class="tag gold">Prazos</span>
-            <span class="tag red">Vedações</span>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="h">Seleção de convidados e contraditório (caput e § 1º)</h3>
-          <ul class="list">
-            <li>Aprovada a reunião, a comissão selecionará autoridades, pessoas interessadas e especialistas (ligados às entidades participantes).</li>
-            <li>Convites: expedição pelo presidente da comissão.</li>
-            <li>Se houver defensores e opositores, a comissão deve possibilitar a audiência das diversas correntes de opinião.</li>
-          </ul>
-
-          <div class="callout gold">
-            <b>Regras para o expositor ( §§ 2º, 3º e 4º ):</b>
-            <ul class="list" style="margin-top:8px">
-              <li>Limitar-se ao tema/questão em debate.</li>
-              <li><strong>Prazo:</strong> 20 minutos (prorrogáveis a juízo da comissão).</li>
-              <li><strong>Vedação:</strong> não pode ser aparteado.</li>
-              <li><strong>Poder de polícia do presidente:</strong> advertir, cassar a palavra ou determinar retirada (desvio/perturbação).</li>
-              <li>Assessoria: assessores credenciados (com consentimento do presidente).</li>
-            </ul>
-          </div>
-
-          <div class="callout">
-            <b>Regras para os deputados (§ 5º):</b>
-            inscritos podem interpelar estritamente sobre a exposição.
-            <ul class="list" style="margin-top:8px">
-              <li>Deputado (pergunta): 3 minutos.</li>
-              <li>Interpelado (resposta): igual tempo.</li>
-              <li>Réplica e tréplica: facultadas, pelo mesmo prazo.</li>
-              <li><strong>Vedação:</strong> não interpelar outros presentes — dirigir-se ao expositor.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="card" id="arts257-258">
-        <div class="card-head">
-          <div class="kicker">Arts. 257–258 • Vedação diplomática e registro</div>
-          <div class="mini">
-            <span class="tag red">Vedação</span>
-            <span class="tag blue">Registro</span>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="h">Art. 257 — Vedação absoluta</h3>
-          <p class="p">
-            Não poderão ser convidados a depor em audiência pública membros de representação diplomática estrangeira.
-          </p>
-
-          <h3 class="h">Art. 258 — Documentação</h3>
-          <ul class="list">
-            <li>Lavrar-se-á ata.</li>
-            <li>Arquivamento, no âmbito da comissão: pronunciamentos escritos e documentos.</li>
-            <li>Publicidade (parágrafo único): a qualquer tempo, traslado de peças ou fornecimento de cópias aos interessados.</li>
-          </ul>
-        </div>
-      </section>
-    </div>
-
-    <!-- CAPÍTULO IV -->
-    <div class="sec-head" id="cap4">
-      <div class="sec-line"></div>
-      <div class="sec-title">Capítulo IV — Credenciamento de Entidades e da Imprensa</div>
-      <div class="sec-badge">Arts. 259–261</div>
-      <div class="sec-line"></div>
-    </div>
-
-    <div class="grid">
-      <section class="card" id="art259">
-        <div class="card-head">
-          <div class="kicker">Art. 259 • Entidades da sociedade civil</div>
-          <div class="mini">
-            <span class="tag blue">Mesa</span>
-            <span class="tag red">Vedações</span>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="h">Legitimidade e finalidade</h3>
-          <ul class="list">
-            <li>Além de ministérios e entidades da administração federal indireta, podem credenciar representantes: entidades de classe de grau superior, autarquias profissionais e outras instituições de âmbito nacional.</li>
-            <li>Finalidade: prestar esclarecimentos específicos à Câmara (comissões, lideranças, deputados e órgão de assessoramento institucional).</li>
-          </ul>
-
-          <div class="callout">
-            <b>Regras do representante (§§ 1º e 2º):</b>
-            <ul class="list" style="margin-top:8px">
-              <li>Limite: 1 representante por entidade/ministério.</li>
-              <li>Responsável perante a Casa pelas informações/opiniões.</li>
-              <li>Objeto: fornecer exclusivamente subsídios técnico, documental, informativo e instrutivo.</li>
-            </ul>
-          </div>
-
-          <div class="callout red">
-            <b>Competência e acesso (§ 3º):</b>
-            credenciais pelo Primeiro-Secretário; acesso às dependências da Câmara,
-            <strong>vedadas</strong> as privativas dos deputados.
-          </div>
-        </div>
-      </section>
-
-      <section class="card" id="art260">
-        <div class="card-head">
-          <div class="kicker">Art. 260 • Credenciamento da imprensa</div>
-          <div class="mini">
-            <span class="tag blue">Mesa</span>
-            <span class="tag red">Acesso</span>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="h">Legitimidade e acesso</h3>
-          <ul class="list">
-            <li>Órgãos de imprensa, rádio e TV (inclusive correspondentes estrangeiros) podem credenciar profissionais perante a Mesa.</li>
-            <li>Acesso às dependências privativas (§ 1º): somente jornalistas e profissionais credenciados, salvo exceções em regulamento.</li>
-          </ul>
-
-          <div class="callout gold">
-            <b>Comitê de imprensa (§§ 2º e 3º):</b>
-            profissionais podem congregar-se em comitê (órgão representativo junto à Mesa), regido por regulamento aprovado pela Mesa.
-          </div>
-
-          <div class="callout">
-            <b>Correlatos:</b> Art. 21-J (Secretaria de Comunicação Social) e Art. 272 (acesso geral com traje adequado e crachá — contraste com áreas privativas da imprensa).
-          </div>
-        </div>
-      </section>
-
-      <section class="card" id="art261">
-        <div class="card-head">
-          <div class="kicker">Art. 261 • Natureza do vínculo</div>
-          <div class="mini">
-            <span class="tag red">Sem ônus / sem vínculo</span>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="h">Regra</h3>
-          <p class="p">
-            O credenciamento dos artigos precedentes (entidades e imprensa) será exercido <strong>sem ônus</strong>
-            e <strong>sem vínculo trabalhista</strong> com a Câmara dos Deputados.
-          </p>
-        </div>
-      </section>
-    </div>
-
-    <!-- FOOTER NAV -->
-    <footer class="page-footer" aria-label="Navegação">
-      <a href="index.html">⌂ Índice Geral</a>
-      <a href="titulo7.html">← Título anterior</a>
-      <a href="#topo">↑ Topo</a>
-      <a href="titulo9.html">Próximo Título →</a>
-    </footer>
-  </main>
-
-  <!-- ═══════════════ NOTES DRAWER ═══════════════ -->
-  <div class="drawer-overlay" id="drawer" aria-hidden="true">
-    <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Anotações">
-      <div class="drawer-head">
-        <div class="drawer-head-info">
-          <h2>Anotações do Título VIII</h2>
-          <p>Este bloco salva no seu navegador (localStorage). Use para registrar pegadinhas, prazos e exceções.</p>
-        </div>
-        <button class="drawer-close" id="btn-close" type="button">Fechar ✕</button>
       </div>
-      <div class="drawer-body">
-        <div class="drawer-row">
-          <div class="hint">Dica: use bullets (•) e marque artigos com “Art. xxx”.</div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button class="d-btn d-btn-save" id="btn-save" type="button">Salvar</button>
-            <button class="d-btn d-btn-danger" id="btn-clear" type="button">Limpar</button>
-          </div>
+      <ul class="kp-list">
+        <li><b>Eleitorado nacional:</b> mínimo de <span class="num">1/100</span> (<span class="k">um centésimo</span>)</li>
+        <li><b>Distribuição:</b> por pelo menos <span class="num">5 Estados</span></li>
+        <li><b>Em cada Estado:</b> não menos de <span class="num">3/1000</span> (<span class="k">três milésimos</span>) dos eleitores</li>
+        <li><b>Dados:</b> <span class="k">assinatura</span> + <span class="k">nome completo</span> + <span class="k">endereço</span> + <span class="k">título eleitoral</span></li>
+        <li><b>Organização:</b> listas por <span class="k">Município</span> e <span class="k">Estado</span> (formulário <span class="k">padronizado pela Mesa</span>)</li>
+        <li><b>Instrução:</b> documento da <span class="org">Justiça Eleitoral</span> (contingente de eleitores; aceitos dados do <span class="k">ano anterior</span>)</li>
+        <li><b>Protocolo:</b> <span class="org">Secretaria-Geral da Mesa</span> (verifica cumprimento das exigências constitucionais)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">III</div>
+        <div>
+          <div class="c-title">Tramitação, defesa e patrocínio</div>
+          <div class="c-lead">Art. 252 (incisos <span class="k">III, VI e VII</span>): patrocínio por entidade, tramitação idêntica e defesa oral.</div>
         </div>
-        <textarea id="notes" placeholder="Escreva aqui..."></textarea>
+      </div>
+      <ul class="kp-list">
+        <li><b>Patrocínio (Inc. III):</b> é lícito a <span class="k">entidade da sociedade civil</span> patrocinar a apresentação (responsabilizando-se pela <span class="k">coleta de assinaturas</span>)</li>
+        <li><b>Tramitação (Inc. VI):</b> mesma tramitação dos demais projetos (integra <span class="k">numeração geral</span>)</li>
+        <li><b>Defesa oral (Inc. VII) — onde:</b> nas <span class="org">Comissões</span> ou em <span class="org">Plenário</span> (transformado em <span class="k">Comissão Geral</span>)</li>
+        <li><b>Defesa oral — quem:</b> primeiro signatário ou quem este tiver indicado</li>
+        <li><b>Defesa oral — prazo:</b> <span class="prazo">20 minutos</span></li>
+      </ul>
+
+      <div class="correlatos">
+        <div class="corr-title">Artigos correlatos</div>
+        <ul class="corr-list">
+          <li><b>Art. 91, II</b> (Comissão Geral): sessão transformada em Comissão Geral para discussão de projeto de lei de iniciativa popular, desde que presente o orador que irá defendê-lo</li>
+          <li><b>Art. 91, § 2º</b>: poderá usar da palavra qualquer signatário ou Deputado indicado, por <span class="prazo">30 minutos</span> (atenção à divergência: art. 252 fala em 20 min; art. 91 fala em 30 min — observe o comando da questão)</li>
+        </ul>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════ FABs ═══════════════ -->
-  <div class="fab-wrap" aria-label="Ações rápidas">
-    <button id="theme-btn" type="button" aria-label="Alternar tema">
-      <span>🌗 Tema</span>
-      <span class="t-track" aria-hidden="true"><span class="t-knob"></span></span>
-    </button>
-    <button id="back-top" type="button" aria-label="Voltar ao topo">↑</button>
+  <div class="card c6" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">VIII</div>
+        <div>
+          <div class="c-title">Unicidade temática e vícios formais</div>
+          <div class="c-lead">Art. 252 (incisos <span class="k">VIII e IX</span>): <span class="k">um único assunto</span> e correção de vícios pela CCJC.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Unicidade (Inc. VIII):</b> cada projeto deverá circunscrever-se a <span class="k">um único assunto</span></li>
+        <li><b>Se descumprir:</b> desdobrado pela <span class="org">CCJC</span> em proposições autônomas (tramitação em separado)</li>
+        <li><b>Vícios (Inc. IX):</b> <span class="exc">não se rejeitará liminarmente</span> por vícios de linguagem, lapsos ou imperfeições de técnica</li>
+        <li><b>Correção:</b> incumbe à <span class="org">CCJC</span> <span class="k">escoimar</span> dos vícios formais</li>
+      </ul>
+      <div class="note"><b>Vocabulário:</b> <span class="k">escoimar</span> = livrar/limpar de falha, impureza, censura, etc.</div>
+    </div>
   </div>
 
-  <script>
-    // Progress bar
-    const prog = document.getElementById('prog');
-    const backTop = document.getElementById('back-top');
+  <div class="card c6" style="--c:#3a5c8a">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">X</div>
+        <div>
+          <div class="c-title">Deputado “padrinho” (autor regimental)</div>
+          <div class="c-lead">Art. 252 (Inc. <span class="k">X</span>): Mesa designa Deputado para poderes/atribuições de autor.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Designação:</b> <span class="org">Mesa</span> designará Deputado para exercer poderes/atribuições de <span class="k">autor</span> da proposição</li>
+        <li><b>Critério:</b> deve recair sobre quem tenha sido <span class="k">previamente indicado</span> (com anuência) pelo <span class="k">primeiro signatário</span> do projeto</li>
+      </ul>
+    </div>
+  </div>
 
-    function onScroll(){
-      const h = document.documentElement;
-      const sc = h.scrollTop || document.body.scrollTop;
-      const max = (h.scrollHeight - h.clientHeight) || 1;
-      const pct = Math.min(100, Math.max(0, (sc / max) * 100));
-      prog.style.width = pct + '%';
-      if(sc > 500) backTop.classList.add('show');
-      else backTop.classList.remove('show');
-    }
-    document.addEventListener('scroll', onScroll, {passive:true});
-    onScroll();
+</div>
 
-    backTop.addEventListener('click', () => {
-      window.scrollTo({top:0, behavior:'smooth'});
-    });
+<!-- ══════════════ CAP. II ══════════════ -->
+<div class="sec-head" id="cap2">
+  <div class="sec-line"></div><div class="sec-title">Capítulo II — Das Petições e Representações e Outras Formas de Participação</div>
+  <div class="sec-badge">Arts. 253–254</div><div class="sec-line"></div>
+</div>
 
-    // Theme toggle (persist)
-    const themeBtn = document.getElementById('theme-btn');
-    const root = document.documentElement;
+<div class="grid">
 
-    function setTheme(t){
-      root.setAttribute('data-theme', t);
-      localStorage.setItem('ricd_theme', t);
-    }
-    const savedTheme = localStorage.getItem('ricd_theme');
-    if(savedTheme) setTheme(savedTheme);
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">253</div>
+        <div>
+          <div class="c-title">Direito de petição</div>
+          <div class="c-lead">Petições, reclamações, representações ou queixas (pessoa <span class="k">física</span> ou <span class="k">jurídica</span>) contra atos/omissões de autoridades/entidades públicas, ou imputados a membros da Casa.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Recebimento/exame:</b> pela <span class="org">Ouvidoria Parlamentar</span>, pelas <span class="org">Comissões</span> ou pela <span class="org">Mesa</span> (conforme o caso)</li>
+        <li><b>Admissibilidade (I):</b> por <span class="k">escrito</span> ou <span class="k">meio eletrônico</span> (devidamente identificadas) ou por <span class="k">telefone</span> (com identificação do autor)</li>
+        <li><b>Admissibilidade (II):</b> assunto envolva matéria de competência da <span class="org">Câmara dos Deputados</span></li>
+      </ul>
 
-    themeBtn.addEventListener('click', () => {
-      const cur = root.getAttribute('data-theme') || 'light';
-      setTheme(cur === 'light' ? 'dark' : 'light');
-    });
+      <div class="correlatos">
+        <div class="corr-title">Artigos correlatos</div>
+        <ul class="corr-list">
+          <li><b>Art. 21-A</b> (Ouvidoria): receber, examinar e encaminhar reclamações</li>
+          <li><b>Art. 24, VI</b> (Comissões): receber petições/reclamações/representações contra atos ou omissões de autoridades ou entidades públicas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-    // Notes drawer
-    const drawer = document.getElementById('drawer');
-    const btnNotes = document.getElementById('btn-notes');
-    const btnClose = document.getElementById('btn-close');
-    const btnSave = document.getElementById('btn-save');
-    const btnClear = document.getElementById('btn-clear');
-    const notes = document.getElementById('notes');
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">254</div>
+        <div>
+          <div class="c-title">Sugestões de iniciativa legislativa (CLP)</div>
+          <div class="c-lead">Art. 254 (<span class="k">caput</span> e §§ <span class="k">1º a 3º</span>): sugestões, pareceres técnicos, exposições e propostas oriundas de entidades.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Formas:</b> sugestões de iniciativa legislativa, pareceres técnicos, exposições e propostas oriundas de <span class="k">entidades científicas e culturais</span> e de entidades do <span class="k">art. 32, XII, a</span> (sociedade civil)</li>
+        <li><b>Tramitação na</b> <span class="org">Comissão de Legislação Participativa (CLP)</span></li>
+        <li><b>Parecer favorável (§ 1º):</b> sugestão transformada em <span class="k">proposição legislativa</span> de iniciativa da CLP → encaminhada à <span class="org">Mesa</span> para tramitação</li>
+        <li><b>Parecer contrário (§ 2º):</b> sugestão encaminhada ao <span class="k">arquivo</span></li>
+        <li><b>Regra subsidiária (§ 3º):</b> aplicam-se à apreciação das sugestões as disposições relativas ao trâmite dos <span class="k">projetos de lei</span> nas comissões</li>
+      </ul>
+    </div>
+  </div>
 
-    const KEY = 'ricd_titulo8_notes';
+  <div class="card c12" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">§4º</div>
+        <div>
+          <div class="c-title">Outras formas de participação</div>
+          <div class="c-lead">Art. 254, § 4º: demais formas recebidas pela CLP seguem para distribuição pela Mesa.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Encaminhamento:</b> as demais formas de participação recebidas pela <span class="org">CLP</span> serão encaminhadas à <span class="org">Mesa</span> para distribuição</li>
+        <li><b>Destino:</b> à <span class="org">Comissão</span> (ou comissões) competente para exame do mérito; ou à <span class="org">Ouvidoria</span> (conforme o caso)</li>
+      </ul>
 
-    function openDrawer(){
-      drawer.classList.add('open');
-      drawer.setAttribute('aria-hidden','false');
-      notes.focus();
-    }
-    function closeDrawer(){
-      drawer.classList.remove('open');
-      drawer.setAttribute('aria-hidden','true');
-    }
-    btnNotes.addEventListener('click', openDrawer);
-    btnClose.addEventListener('click', closeDrawer);
-    drawer.addEventListener('click', (e) => {
-      if(e.target === drawer) closeDrawer();
-    });
-    document.addEventListener('keydown', (e) => {
-      if(e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
-    });
+      <div class="correlatos">
+        <div class="corr-title">Artigo correlato</div>
+        <ul class="corr-list">
+          <li><b>Art. 32, XII, a</b>: rol de legitimados para sugestões à CLP: associações e órgãos de classe, sindicatos e entidades organizadas da sociedade civil, <span class="exc">exceto partidos políticos</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-    // Notes persistence
-    notes.value = localStorage.getItem(KEY) || '';
-    btnSave.addEventListener('click', () => {
-      localStorage.setItem(KEY, notes.value || '');
-      btnSave.textContent = 'Salvo ✓';
-      setTimeout(()=>btnSave.textContent='Salvar', 900);
-    });
-    btnClear.addEventListener('click', () => {
-      notes.value = '';
-      localStorage.removeItem(KEY);
-      btnClear.textContent = 'Limpo ✓';
-      setTimeout(()=>btnClear.textContent='Limpar', 900);
-    });
-  </script>
+</div>
+
+<!-- ══════════════ CAP. III ══════════════ -->
+<div class="sec-head" id="cap3">
+  <div class="sec-line"></div><div class="sec-title">Capítulo III — Da Audiência Pública</div>
+  <div class="sec-badge">Arts. 255–258</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">255</div>
+        <div>
+          <div class="c-title">Finalidade e iniciativa</div>
+          <div class="c-lead">Cada <span class="org">Comissão</span> poderá realizar reunião de <span class="k">audiência pública</span> com entidade da sociedade civil.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Finalidade (1):</b> instruir matéria legislativa em trâmite</li>
+        <li><b>Finalidade (2):</b> tratar de assuntos de <span class="k">interesse público relevante</span> (atinentes à área de atuação)</li>
+        <li><b>Iniciativa:</b> proposta de qualquer <span class="k">membro</span> ou a pedido de <span class="k">entidade interessada</span></li>
+      </ul>
+      <div class="correlatos">
+        <div class="corr-title">Artigos correlatos</div>
+        <ul class="corr-list">
+          <li><b>Art. 24, III</b>: comissões permanentes (e demais no que couber) realizam audiências públicas</li>
+          <li><b>Art. 21-A, VII</b>: Ouvidoria Parlamentar realiza audiências públicas com segmentos da sociedade civil</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">256</div>
+        <div>
+          <div class="c-title">Seleção de convidados e contraditório</div>
+          <div class="c-lead">Art. 256 (<span class="k">caput</span> e § <span class="k">1º</span>): escolha de ouvidos e garantia de diversas correntes.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Seleção (aprovada a reunião):</b> Comissão selecionará para serem ouvidas <span class="k">autoridades</span>, <span class="k">pessoas interessadas</span> e <span class="k">especialistas</span></li>
+        <li><b>Convites:</b> expedição de convites cabe ao <span class="org">Presidente da Comissão</span></li>
+        <li><b>Contraditório (§ 1º):</b> havendo defensores e opositores, a Comissão procederá para possibilitar a audiência das <span class="k">diversas correntes de opinião</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">§2–4</div>
+        <div>
+          <div class="c-title">Regras para o expositor (convidado)</div>
+          <div class="c-lead">Art. 256, §§ <span class="k">2º, 3º e 4º</span>: tempo, limites, vedação de apartes e poder de polícia.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Limites (§ 2º):</b> limitar-se ao <span class="k">tema</span> ou <span class="k">questão</span> em debate</li>
+        <li><b>Prazo (§ 2º):</b> <span class="prazo">20 minutos</span> (prorrogáveis a juízo da Comissão)</li>
+        <li><b>Vedação (§ 2º):</b> <span class="exc">não pode</span> ser aparteado</li>
+        <li><b>Poder de polícia (§ 3º):</b> se desviar do assunto ou perturbar a ordem, Presidente pode <span class="k">advertir</span>, <span class="k">cassar a palavra</span> ou determinar <span class="k">retirada</span></li>
+        <li><b>Assessoria (§ 4º):</b> parte convidada pode valer-se de <span class="k">assessores credenciados</span> (com consentimento do Presidente)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#3a5c8a">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">§5</div>
+        <div>
+          <div class="c-title">Regras para os Deputados</div>
+          <div class="c-lead">Art. 256, § <span class="k">5º</span>: interpelação estrita e tempos de fala.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Interpelação:</b> Deputados inscritos podem interpelar <span class="k">estritamente</span> sobre o assunto da exposição</li>
+        <li><b>Deputado (pergunta):</b> <span class="prazo">3 minutos</span></li>
+        <li><b>Interpelado (resposta):</b> <span class="prazo">igual tempo</span></li>
+        <li><b>Réplica e tréplica:</b> facultadas, pelo <span class="prazo">mesmo prazo</span></li>
+        <li><b>Vedação:</b> vedado ao orador interpelar qualquer dos presentes (dirige-se ao <span class="k">expositor</span>)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card c12" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">257–258</div>
+        <div>
+          <div class="c-title">Vedação diplomática e registro</div>
+          <div class="c-lead">Arts. 257 e 258: vedação absoluta de convite e documentação/publicidade.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Vedação (Art. 257):</b> <span class="exc">não poderão</span> ser convidados a depor em audiência pública membros de <span class="k">representação diplomática estrangeira</span></li>
+        <li><b>Documentação (Art. 258):</b> lavrar-se-á <span class="k">ata</span></li>
+        <li><b>Arquivamento:</b> pronunciamentos escritos e documentos (no âmbito da Comissão)</li>
+        <li><b>Publicidade (Parágrafo único):</b> admitido, a qualquer tempo, traslado de peças ou fornecimento de <span class="k">cópias</span> aos interessados</li>
+      </ul>
+      <div class="correlatos">
+        <div class="corr-title">Artigo correlato</div>
+        <ul class="corr-list">
+          <li><b>Art. 21-H, III</b>: Secretaria de Relações Internacionais apoia delegações e comitivas (nota de contraste com a vedação do art. 257)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════ CAP. IV ══════════════ -->
+<div class="sec-head" id="cap4">
+  <div class="sec-line"></div><div class="sec-title">Capítulo IV — Do Credenciamento de Entidades e da Imprensa</div>
+  <div class="sec-badge">Arts. 259–261</div><div class="sec-line"></div>
+</div>
+
+<div class="grid">
+
+  <div class="card c6" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">259</div>
+        <div>
+          <div class="c-title">Credenciamento de entidades da sociedade civil</div>
+          <div class="c-lead">Além de Ministérios e entidades da administração federal indireta, outras entidades podem credenciar representantes junto à <span class="org">Mesa</span>.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Legitimados:</b> entidades de classe de <span class="k">grau superior</span> (empregados/empregadores), <span class="k">autarquias profissionais</span> e outras instituições de <span class="k">âmbito nacional</span> da sociedade civil</li>
+        <li><b>Finalidade:</b> prestar <span class="k">esclarecimentos específicos</span> à Câmara (Comissões, Lideranças, Deputados e órgão de assessoramento institucional)</li>
+        <li><b>Limite (§§ 1º e 2º):</b> apenas <span class="num">1</span> representante por entidade/Ministério</li>
+        <li><b>Responsabilidade:</b> responsável perante a Casa pelas informações/opiniões</li>
+        <li><b>Objeto:</b> fornecer exclusivamente subsídios de caráter <span class="k">técnico</span>, <span class="k">documental</span>, <span class="k">informativo</span> e <span class="k">instrutivo</span></li>
+        <li><b>Credenciais (§ 3º):</b> caberá ao <span class="org">Primeiro-Secretário</span> expedir credenciais</li>
+        <li><b>Acesso (§ 3º):</b> permitido acesso às dependências da Câmara; <span class="exc">vedadas</span> as privativas dos Deputados</li>
+      </ul>
+      <div class="correlatos">
+        <div class="corr-title">Artigo correlato</div>
+        <ul class="corr-list">
+          <li><b>Art. 19</b>: atribuições do 1º Secretário (fundamenta competência de expedir credenciais)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c6" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">260</div>
+        <div>
+          <div class="c-title">Credenciamento da imprensa</div>
+          <div class="c-lead">Órgãos de imprensa, rádio e TV (inclusive correspondentes estrangeiros) podem credenciar profissionais perante a <span class="org">Mesa</span>.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Legitimidade:</b> órgãos de imprensa, rádio e televisão (inclusive correspondentes estrangeiros)</li>
+        <li><b>Acesso (§ 1º):</b> <span class="k">somente</span> terão acesso às <span class="k">dependências privativas</span> da Casa os jornalistas/profissionais credenciados</li>
+        <li><b>Exceção:</b> salvo as exceções previstas em regulamento</li>
+        <li><b>Comitê de imprensa (§§ 2º e 3º):</b> profissionais podem congregar-se em comitê (órgão representativo junto à Mesa); reger-se-á por regulamento aprovado pela Mesa</li>
+      </ul>
+      <div class="correlatos">
+        <div class="corr-title">Artigos correlatos</div>
+        <ul class="corr-list">
+          <li><b>Art. 21-J</b>: Secretaria de Comunicação Social — divulgação dos trabalhos parlamentares e facilitação de alcance dos veículos</li>
+          <li><b>Art. 272</b>: acesso geral ao edifício principal e galerias (contraste com áreas privativas da imprensa)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c12" style="--c:#2f5f6e">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="c-badge">261</div>
+        <div>
+          <div class="c-title">Natureza jurídica do vínculo</div>
+          <div class="c-lead">Art. 261: credenciamento (entidades e imprensa) e seus efeitos.</div>
+        </div>
+      </div>
+      <ul class="kp-list">
+        <li><b>Regra:</b> credenciamento previsto nos artigos precedentes será exercido <span class="k">sem ônus</span></li>
+        <li><b>Ou:</b> sem <span class="exc">vínculo trabalhista</span> com a <span class="org">Câmara dos Deputados</span></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="page-footer">
+  <a href="#topo">↑ Voltar ao topo</a>
+  <a href="index.html">⌂ Índice geral</a>
+</footer>
+
+</div><!-- /wrap -->
+
+<!-- ══════════════ FABs ══════════════ -->
+<div class="fab-wrap" aria-label="Ações rápidas">
+  <button id="theme-btn" type="button" aria-label="Alternar tema">
+    <span class="t-track" aria-hidden="true"><span class="t-knob"></span></span>
+    <span id="theme-label">Tema</span>
+  </button>
+  <button id="back-top" type="button" aria-label="Voltar ao topo">↑</button>
+</div>
+
+<!-- ══════════════ NOTES DRAWER ══════════════ -->
+<div class="drawer-overlay" id="drawer" aria-hidden="true">
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Anotações">
+    <div class="drawer-head">
+      <div class="drawer-head-info">
+        <h2>Anotações</h2>
+        <p>Escreva aqui seus pontos de revisão. O conteúdo fica salvo no seu navegador (localStorage) para esta página (<span class="k">Título VIII</span>).</p>
+      </div>
+      <button class="drawer-close" id="drawer-close" type="button" aria-label="Fechar">✕</button>
+    </div>
+    <div class="drawer-body">
+      <textarea id="notes-area" placeholder="Ex.: Pegadinhas de prazo, competências, exceções..."></textarea>
+      <div class="drawer-actions">
+        <button class="d-btn d-btn-clear" id="notes-clear" type="button">Limpar</button>
+        <button class="d-btn d-btn-save" id="notes-save" type="button">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== Progress bar ===== */
+const prog = document.getElementById('prog');
+const backTop = document.getElementById('back-top');
+function onScroll(){
+  const h = document.documentElement;
+  const sc = h.scrollTop || document.body.scrollTop;
+  const max = (h.scrollHeight - h.clientHeight) || 1;
+  prog.style.width = (sc / max) * 100 + '%';
+  if(sc > 420) backTop.classList.add('show'); else backTop.classList.remove('show');
+}
+document.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* ===== Back to top ===== */
+backTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+/* ===== Theme toggle (persist) ===== */
+const themeBtn = document.getElementById('theme-btn');
+const themeLabel = document.getElementById('theme-label');
+const THEME_KEY = 'ricd_theme';
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  themeLabel.textContent = (t === 'dark') ? 'Dark' : 'Light';
+}
+const savedTheme = localStorage.getItem(THEME_KEY);
+if(savedTheme) applyTheme(savedTheme);
+themeBtn.addEventListener('click', ()=>{
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  const next = (current === 'dark') ? 'light' : 'dark';
+  applyTheme(next);
+  localStorage.setItem(THEME_KEY, next);
+});
+
+/* ===== Notes drawer (persist per page) ===== */
+const btnNotes = document.getElementById('btn-notes');
+const drawer = document.getElementById('drawer');
+const drawerClose = document.getElementById('drawer-close');
+const notesArea = document.getElementById('notes-area');
+const notesSave = document.getElementById('notes-save');
+const notesClear = document.getElementById('notes-clear');
+
+const NOTES_KEY = 'ricd_notes_titulo8';
+
+function openDrawer(){
+  drawer.classList.add('open');
+  drawer.setAttribute('aria-hidden', 'false');
+  setTimeout(()=> notesArea.focus(), 60);
+}
+function closeDrawer(){
+  drawer.classList.remove('open');
+  drawer.setAttribute('aria-hidden', 'true');
+}
+
+btnNotes.addEventListener('click', openDrawer);
+drawerClose.addEventListener('click', closeDrawer);
+drawer.addEventListener('click', (e)=>{ if(e.target === drawer) closeDrawer(); });
+document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer(); });
+
+const savedNotes = localStorage.getItem(NOTES_KEY);
+if(savedNotes) notesArea.value = savedNotes;
+
+notesSave.addEventListener('click', ()=>{
+  localStorage.setItem(NOTES_KEY, notesArea.value || '');
+  closeDrawer();
+});
+notesClear.addEventListener('click', ()=>{
+  notesArea.value = '';
+  localStorage.removeItem(NOTES_KEY);
+  notesArea.focus();
+});
+</script>
+
 </body>
 </html>
