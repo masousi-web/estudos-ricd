@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RICD — Tít. II · Cap. III-C — Corregedoria Parlamentar</title>
+<title>RICD — Tít. II · Cap. III-B — Conselho de Ética</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -57,7 +57,7 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:1100px;margin:0 auto;padding:0 20px 80px}
 .hero{background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);border-radius:0 0 28px 28px;padding:38px 36px 34px;margin-bottom:32px;position:relative;overflow:hidden;box-shadow:var(--sh-lg)}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);pointer-events:none}
-.hero::after{content:'III-C';position:absolute;right:36px;top:50%;transform:translateY(-50%);font-family:'Crimson Pro',serif;font-size:108px;font-weight:700;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none}
+.hero::after{content:'III-B';position:absolute;right:36px;top:50%;transform:translateY(-50%);font-family:'Crimson Pro',serif;font-size:110px;font-weight:700;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none}
 .hero-inner{position:relative;z-index:1}
 .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
 .hero-title{font-family:'Crimson Pro',serif;font-size:clamp(24px,3vw,40px);font-weight:700;color:var(--hero-text);line-height:1.12;margin-bottom:10px}
@@ -83,7 +83,7 @@ a{color:inherit;text-decoration:none}
 .c12{grid-column:span 12}.c6{grid-column:span 12}.c5{grid-column:span 12}.c7{grid-column:span 12}
 @media(min-width:760px){.c6{grid-column:span 6}.c5{grid-column:span 5}.c7{grid-column:span 7}}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--sh-sm);overflow:hidden;position:relative;transition:transform .14s,box-shadow .14s;opacity:0;animation:fadeUp .35s ease forwards}
-.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.07s}.card:nth-child(3){animation-delay:.11s}.card:nth-child(4){animation-delay:.15s}
+.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.07s}.card:nth-child(3){animation-delay:.11s}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .card:hover{transform:translateY(-2px);box-shadow:var(--sh-hov)}
 .card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,#1c3f63);border-radius:14px 0 0 14px}
@@ -97,6 +97,8 @@ a{color:inherit;text-decoration:none}
 .kp-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:10px}
 .kp-list li{padding:9px 11px;border-radius:9px;background:var(--list-bg);border:1px solid var(--border);font-size:13.5px;color:var(--ink2);line-height:1.52}
 .kp-list li b{font-weight:700;color:var(--ink)}
+.kp-list li ul{margin-top:5px;padding-left:16px;display:flex;flex-direction:column;gap:3px}
+.kp-list li ul li{padding:0;background:none;border:none;font-size:13px;color:var(--muted)}
 .k{font-weight:700;color:var(--ink);background:var(--mark-bg);padding:0 .22em;border-radius:.4em}
 .org{font-weight:700;color:var(--blue);background:var(--blue-soft);padding:0 .22em;border-radius:.4em}
 .prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em;white-space:nowrap}
@@ -116,16 +118,13 @@ a{color:inherit;text-decoration:none}
 .corr-list li{font-size:13px;color:var(--ink2);padding-left:16px;position:relative;line-height:1.5}
 .corr-list li::before{content:'↗';position:absolute;left:0;color:var(--purple);font-size:12px}
 
-/* COMP TABLE */
-.comp-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px}
-.comp-table th{padding:8px 10px;background:var(--bg2);border:1px solid var(--border-hard);font-weight:700;color:var(--ink);text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
-.comp-table td{padding:9px 10px;border:1px solid var(--border);color:var(--ink2);vertical-align:middle;line-height:1.45}
-.comp-table tr:hover td{background:var(--list-bg)}
-.comp-table td b{font-weight:700;color:var(--ink)}
-.comp-table td:first-child{font-weight:700;color:var(--blue);font-size:13.5px}
-.comp-table tr.active-row td{background:color-mix(in srgb,var(--gold) 8%,var(--surface) 92%)}
-.comp-table tr.active-row td:first-child{color:var(--gold)}
-@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.comp-table tr.active-row td{background:rgba(184,107,26,.06)}}
+/* EXCEÇÃO TABLE */
+.exc-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+.exc-table th{padding:8px 10px;background:var(--bg2);border:1px solid var(--border-hard);font-weight:700;color:var(--ink);text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+.exc-table td{padding:9px 10px;border:1px solid var(--border);color:var(--ink2);vertical-align:top;line-height:1.45}
+.exc-table tr:nth-child(even) td{background:var(--list-bg)}
+.exc-table td b{font-weight:700;color:var(--ink)}
+.exc-table td:first-child{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--red);white-space:nowrap}
 
 /* FOOTER */
 .page-footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border-hard);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px}
@@ -164,24 +163,22 @@ a{color:inherit;text-decoration:none}
 <header class="hero" id="topo">
   <div class="wrap" style="padding:0">
     <div class="hero-inner">
-      <div class="hero-eyebrow">RICD • Título II • Capítulo III-C</div>
-      <h1 class="hero-title">Capítulo III-C — Da Corregedoria Parlamentar</h1>
-      <p class="hero-sub">Arts. 21-F e 21-G — Três competências (decoro/ordem, segurança da Mesa, sindicância/inquérito), perda de mandato restrita a aspectos formais, e composição (Corregedor + 3 Substitutos, 2 anos, vedada recondução na mesma legislatura).</p>
+      <div class="hero-eyebrow">RICD • Título II • Capítulo III-B</div>
+      <h1 class="hero-title">Capítulo III-B — Do Conselho de Ética e Decoro Parlamentar</h1>
+      <p class="hero-sub">Art. 21-E — Competência (condutas puníveis e penalidades), composição (21 titulares + 21 suplentes), mandato, direção interna e regra de exceção: membro do CEDP não perde a vaga por desvinculação de bancada.</p>
       <div class="hero-actions">
         <a class="hero-btn hero-btn-ghost" href="index.html">⌂ Índice</a>
         <a class="hero-btn hero-btn-ghost" href="titulo2.html">↑ Título II</a>
         <button class="hero-btn hero-btn-primary" id="btn-notes" type="button">✏️ Anotações</button>
       </div>
       <nav class="nav-chips">
-        <a href="#comp"><b>21-F I–III</b> Competências</a>
-        <a href="#perda"><b>21-F §único</b> Perda de mandato</a>
-        <a href="#struct"><b>21-G</b> Composição</a>
-        <a href="#quad"><b>Quadro</b> Órgãos do Tít. II</a>
+        <a href="#comp"><b>21-E caput</b> Competência e composição</a>
+        <a href="#excecao"><b>21-E §2º</b> Regra de exceção</a>
       </nav>
       <div class="legend">
-        <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Competências</span>
         <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Composição</span>
-        <span class="lchip"><span class="ldot" style="background:#f46862"></span>Limitação formal</span>
+        <span class="lchip"><span class="ldot" style="background:#f46862"></span>Regra de exceção</span>
+        <span class="lchip"><span class="ldot" style="background:#38c882"></span>Estabilidade do cargo</span>
       </div>
     </div>
   </div>
@@ -189,119 +186,83 @@ a{color:inherit;text-decoration:none}
 
 <div class="wrap">
 
-<!-- COMPETÊNCIAS -->
+<!-- COMPETÊNCIA E COMPOSIÇÃO -->
 <div class="sec-head" id="comp">
   <div class="sec-line"></div>
-  <div class="sec-title">Art. 21-F, Incs. I–III — Competências</div>
-  <div class="sec-badge">Decoro · segurança da Mesa · sindicância/inquérito (Arts. 267–271)</div>
+  <div class="sec-title">Art. 21-E — Competência, Composição e Direção</div>
+  <div class="sec-badge">21 titulares + 21 suplentes · 2 anos · proporcionalidade · 1 Pres. + 2 Vices</div>
   <div class="sec-line"></div>
 </div>
 <div class="grid">
-  <div class="card c12" style="--c:#1c3f63">
+
+  <div class="card c5" style="--c:#1c3f63">
     <div class="card-inner">
-      <div class="card-top"><div class="c-badge">21-F</div><div><div class="c-title">Compete à Corregedoria Parlamentar</div><div class="c-lead">Observados os Arts. 267, 268, 269 e 271.</div></div></div>
+      <div class="card-top"><div class="c-badge">21-E</div><div><div class="c-title">Finalidade</div><div class="c-lead">Único órgão competente para examinar condutas e propor penalidades.</div></div></div>
       <ul class="kp-list">
-        <li><b>Inc. I —</b> Promover a manutenção do <span class="k">decoro, da ordem e da disciplina</span> no âmbito da Casa</li>
-        <li><b>Inc. II —</b> Dar cumprimento às determinações da <span class="org">Mesa</span> referentes à <span class="k">segurança interna e externa</span></li>
-        <li><b>Inc. III —</b> Promover <span class="k">sindicância ou inquérito</span> para apuração de notícias de <span class="k">ilícitos que envolvam Deputados</span></li>
+        <li>Examinar as <span class="k">condutas puníveis</span> e propor as <span class="k">penalidades aplicáveis</span> aos Deputados submetidos ao processo disciplinar previsto no <span class="k">CEDP</span></li>
       </ul>
-      <div class="correlatos">
-        <div class="corr-title">Correlatos — poderes do Corregedor</div>
-        <ul class="corr-list">
-          <li>Art. 269 — se o indiciado ou preso for membro da Casa, o inquérito será <b>presidido pelo Corregedor</b></li>
-          <li>Art. 271, §único — incumbe ao Corregedor supervisionar a proibição do porte de arma, com poderes para mandar <b>revistar e desarmar</b></li>
-        </ul>
-      </div>
     </div>
   </div>
+
+  <div class="card c7" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">§1º</div><div><div class="c-title">Composição, mandato e direção interna</div><div class="c-lead">21 + 21 · designados por proporcionalidade · eleição interna por escrutínio secreto.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Membros:</b> <span class="prazo">21 titulares</span> + igual número de <span class="prazo">suplentes</span></li>
+        <li><b>Mandato:</b> <span class="prazo">2 anos</span></li>
+        <li><b>Designação:</b> na forma dos Arts. 26 e 28 — <span class="k">proporcionalidade partidária</span></li>
+        <li><b>Direção (dentre os titulares):</b> <span class="prazo">1 Presidente</span> + <span class="prazo">2 Vice-Presidentes</span>
+          <ul>
+            <li>Observados os procedimentos do Art. 7º (votação eletrônica/secreta, maioria absoluta/simples)</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
 </div>
 
-<!-- PERDA DE MANDATO -->
-<div class="sec-head" id="perda">
+<!-- REGRA DE EXCEÇÃO -->
+<div class="sec-head" id="excecao">
   <div class="sec-line"></div>
-  <div class="sec-title">Art. 21-F, § único — Perda de Mandato: Análise Limitada</div>
-  <div class="sec-badge">CF/88 Inc. IV e V · análise restrita aos aspectos formais</div>
+  <div class="sec-title">Art. 21-E, § 2º — Regra de Exceção: Estabilidade do Membro do CEDP</div>
+  <div class="sec-badge">Não perde a vaga por desvinculação de bancada ou mudança de legenda</div>
   <div class="sec-line"></div>
 </div>
 <div class="grid">
   <div class="card c12" style="--c:#a81f2a">
     <div class="card-inner">
-      <div class="card-top"><div class="c-badge">§ún.</div><div><div class="c-title">Perda de mandato — competência restrita da Câmara</div><div class="c-lead">Nas hipóteses dos incs. IV e V da CF/88, a análise da Câmara não entra no mérito.</div></div></div>
-      <ul class="kp-list">
-        <li><b>Inc. IV da CF/88:</b> perda ou suspensão dos direitos políticos</li>
-        <li><b>Inc. V da CF/88:</b> decretação pela Justiça Eleitoral</li>
-      </ul>
-      <div class="trap" style="margin-top:10px"><div class="trap-icon">⚠️</div><div class="trap-text">Nessas duas hipóteses, a análise no âmbito da Câmara <span class="exc">restringir-se-á aos aspectos formais</span> da decisão judicial — a Casa não reexamina o mérito, apenas verifica se os requisitos formais foram cumpridos.</div></div>
-      <div class="note"><b>Lógica:</b> quando a perda decorre de decisão judicial (Justiça Eleitoral, condenação por perda de direitos políticos), o Parlamento não tem competência para rediscutir o fundo da decisão — apenas certifica que a forma foi observada.</div>
-    </div>
-  </div>
-</div>
-
-<!-- COMPOSIÇÃO -->
-<div class="sec-head" id="struct">
-  <div class="sec-line"></div>
-  <div class="sec-title">Art. 21-G — Composição e Mandato</div>
-  <div class="sec-badge">1 + 3 · PCD designa · 2 anos · vedada recondução na mesma legislatura</div>
-  <div class="sec-line"></div>
-</div>
-<div class="grid">
-  <div class="card c12" style="--c:#254a78">
-    <div class="card-inner">
-      <div class="card-top"><div class="c-badge">21-G</div><div><div class="c-title">Estrutura e investidura</div><div class="c-lead">Atenção à vedação: "na mesma legislatura" — diferente dos demais órgãos.</div></div></div>
-      <ul class="kp-list">
-        <li><b>Composição:</b> <span class="prazo">1 Corregedor</span> + <span class="prazo">3 Corregedores Substitutos</span></li>
-        <li><b>Designação:</b> pelo <span class="org">PCD</span></li>
-        <li><b>Mandato:</b> <span class="prazo">2 anos</span></li>
-        <li><b>Vedação de recondução:</b> <span class="exc">vedada no período subsequente, na mesma legislatura</span></li>
-      </ul>
-      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A vedação da Corregedoria inclui o complemento <b>"na mesma legislatura"</b> — ausente nos outros órgãos (Procuradoria Parlamentar, Ouvidoria). Isso significa que é possível reconduzi-lo se for em <b>legislatura diferente</b>. A prova pode omitir essa diferença.</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- QUADRO COMPARATIVO -->
-<div class="sec-head" id="quad">
-  <div class="sec-line"></div>
-  <div class="sec-title">Quadro — Órgãos Auxiliares do Título II</div>
-  <div class="sec-badge">Procuradoria · Ouvidoria · CEDP · Corregedoria</div>
-  <div class="sec-line"></div>
-</div>
-<div class="grid">
-  <div class="card c12" style="--c:#1c3f63">
-    <div class="card-inner">
-      <div class="card-top"><div class="c-badge">≡</div><div><div class="c-title">Comparativo de composição e mandato — quatro órgãos</div><div class="c-lead">Todos designados pelo PCD, mandato de 2 anos — as diferenças estão na composição e na vedação de recondução.</div></div></div>
-      <table class="comp-table">
-        <thead>
-          <tr><th>Órgão</th><th>Composição</th><th>Investidura</th><th>Recondução</th></tr>
-        </thead>
+      <div class="card-top"><div class="c-badge">§2º</div><div><div class="c-title">Três regras gerais afastadas para membros do CEDP</div><div class="c-lead">Proteção à independência funcional do membro durante o mandato.</div></div></div>
+      <table class="exc-table">
+        <thead><tr><th>Regra afastada</th><th>O que diz a regra geral</th><th>Efeito no CEDP</th></tr></thead>
         <tbody>
           <tr>
-            <td><b>Procuradoria Parlamentar</b></td>
-            <td>11 membros</td>
-            <td>PCD designa · 2 anos</td>
-            <td>Vedada (período subs.)</td>
+            <td>Art. 23, §único</td>
+            <td>Deputado que se <b>desvincula da bancada</b> perde automaticamente a vaga que ocupava em razão dela</td>
+            <td><span class="vert">Não se aplica</span> — membro do CEDP mantém a vaga mesmo desvinculado</td>
           </tr>
           <tr>
-            <td><b>Ouvidoria Parlamentar</b></td>
-            <td>1 Ouvidor-Geral + 2 Substitutos</td>
-            <td>PCD designa · 2 anos</td>
-            <td>Vedada (período subs.)</td>
+            <td>Art. 40, §2º</td>
+            <td>Em caso de <b>mudança de legenda</b>, Presidente ou Vice de Comissão perde automaticamente o cargo</td>
+            <td><span class="vert">Não se aplica</span> — direção do CEDP não é perdida por mudança de legenda</td>
           </tr>
           <tr>
-            <td><b>Conselho de Ética (CEDP)</b></td>
-            <td>21 titulares + 21 suplentes</td>
-            <td>Proporcionalidade · 2 anos</td>
-            <td>—</td>
-          </tr>
-          <tr class="active-row">
-            <td><b>Corregedoria Parlamentar</b></td>
-            <td>1 Corregedor + 3 Substitutos</td>
-            <td>PCD designa · 2 anos</td>
-            <td>Vedada <b>na mesma legislatura</b></td>
+            <td>Art. 232</td>
+            <td>Deputado que se <b>desvincula da bancada</b> perde o direito a cargos e funções que ocupa em razão dela</td>
+            <td><span class="vert">Não se aplica</span> — membro do CEDP conserva o cargo</td>
           </tr>
         </tbody>
       </table>
-      <div class="note" style="margin-top:12px"><b>Destaque em dourado</b> = Corregedoria (este capítulo). Único com a restrição de recondução limitada à <b>mesma legislatura</b> — os demais apenas vedam o período subsequente sem esse qualificador.</div>
+      <div class="note" style="margin-top:12px"><b>Regra de fundo (§2º, in fine):</b> o membro do Conselho de Ética <span class="vert">não perde a vaga</span> no colegiado em caso de desvinculação da bancada ou mudança de legenda partidária — independentemente de qual das três regras acima seria aplicável.</div>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A regra de exceção existe para garantir <b>independência</b> ao membro do CEDP: como ele julga condutas de colegas, a lei o protege de pressões partidárias (ameaça de desvinculação para tirá-lo do Conselho). A prova pode afirmar que a mudança de legenda afasta o membro — <b>falso</b>.</div></div>
+      <div class="correlatos">
+        <div class="corr-title">Os três artigos afastados — resumo</div>
+        <ul class="corr-list">
+          <li>Art. 23, §único — desvinculação → perda da vaga (regra geral das comissões)</li>
+          <li>Art. 40, §2º — mudança de legenda → perda do cargo de Pres./Vice de Comissão</li>
+          <li>Art. 232 — desvinculação → perda de cargos e funções obtidos pela bancada</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
@@ -310,8 +271,8 @@ a{color:inherit;text-decoration:none}
   <a href="index.html">⌂ Índice geral</a>
   <a href="titulo2.html">↑ Título II</a>
   <div class="divider"></div>
-  <a href="titulo2-cap3b.html">← Cap. III-B</a>
-  <a href="titulo2-cap3d.html">Cap. III-D →</a>
+  <a href="titulo2-cap3a.html">← Cap. III-A</a>
+  <a href="titulo2-cap3c.html">Cap. III-C →</a>
 </div>
 
 </div><!-- /wrap -->
@@ -329,13 +290,13 @@ a{color:inherit;text-decoration:none}
   <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
     <div class="drawer-head">
       <div class="drawer-head-info">
-        <h2 id="drawer-title">Anotações — Tít. II · Cap. III-C</h2>
+        <h2 id="drawer-title">Anotações — Tít. II · Cap. III-B</h2>
         <p>Erros, bizus e pegadinhas. Salvas no <strong>seu navegador</strong>.</p>
       </div>
       <button class="drawer-close" id="btn-close-drawer" title="Fechar">✕</button>
     </div>
     <div class="drawer-body">
-      <textarea id="notes-area" placeholder="Ex.: ⚠ 1 Corregedor + 3 Substitutos; PCD designa; 2 anos&#10;⚠ Recondução vedada 'na MESMA LEGISLATURA' (≠ Procuradoria e Ouvidoria que só dizem 'período subsequente')&#10;⚠ Inc. III: PROMOVE sindicância/inquérito para ilícitos que ENVOLVAM Deputados&#10;⚠ Art. 271 §único: Corregedor pode mandar REVISTAR E DESARMAR (porte de arma)&#10;⚠ §único: perda mandato (CF Inc. IV e V) = análise restrita aos ASPECTOS FORMAIS&#10;⚠ Art. 269: indiciado membro da Casa → inquérito presidido pelo CORREGEDOR"></textarea>
+      <textarea id="notes-area" placeholder="Ex.: ⚠ CEDP: 21 titulares + 21 suplentes; mandato 2 anos; proporcionalidade&#10;⚠ Direção: 1 Presidente + 2 Vices, eleitos dentre os TITULARES&#10;⚠ §2º: membro do CEDP NÃO PERDE a vaga por desvinculação de bancada ou mudança de legenda&#10;⚠ Arts. afastados: 23 §único (desvinculação), 40 §2º (mudança legenda), 232 (desvinculação)&#10;⚠ Razão: independência funcional para julgamento de pares sem pressão partidária"></textarea>
       <div class="drawer-actions">
         <button class="d-btn d-btn-clear" id="btn-clear-notes" type="button">Limpar</button>
         <button class="d-btn d-btn-save" id="btn-save-notes" type="button">Salvar e fechar</button>
@@ -361,7 +322,7 @@ a{color:inherit;text-decoration:none}
   },{passive:true});
 })();
 (function(){
-  const KEY='notes_tit2_cap3c';
+  const KEY='notes_tit2_cap3b';
   const overlay=document.getElementById('drawer'),area=document.getElementById('notes-area');
   const btnOpen=document.getElementById('btn-notes'),btnClose=document.getElementById('btn-close-drawer');
   const btnSave=document.getElementById('btn-save-notes'),btnClear=document.getElementById('btn-clear-notes');
