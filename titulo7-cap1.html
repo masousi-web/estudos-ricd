@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RICD — Título VII — Cap. I — Exercício do Mandato</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   TOKENS — LIGHT
+═══════════════════════════════════════════════ */
+:root, [data-theme="light"] {
+  --bg:          #f3f6fb;
+  --bg2:         #eaeff8;
+  --surface:     #ffffff;
+  --surface2:    #f7faff;
+  --border:      rgba(15,39,66,.09);
+  --border-hard: rgba(15,39,66,.16);
+
+  --ink:         #0d1f35;
+  --ink2:        #2b4060;
+  --muted:       #526a88;
+  --faint:       #8fa8c2;
+
+  --gold:        #b86b1a;
+  --gold-soft:   rgba(184,107,26,.10);
+  --blue:        #1a4d8a;
+  --blue-soft:   rgba(26,77,138,.08);
+  --green:       #186347;
+  --green-soft:  rgba(24,99,71,.09);
+  --red:         #a81f2a;
+  --red-soft:    rgba(168,31,42,.09);
+  --purple:      #5a3d8a;
+  --purple-soft: rgba(90,61,138,.08);
+
+  --mark-bg:     rgba(15,23,42,.07);
+
+  --hero-from:   #0c2240;
+  --hero-to:     #153558;
+  --hero-text:   #ffffff;
+  --hero-sub:    rgba(255,255,255,.80);
+
+  --sh-sm:  0 2px 8px rgba(12,26,43,.06);
+  --sh-md:  0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:  0 14px 34px rgba(12,26,43,.11);
+  --sh-hov: 0 10px 28px rgba(12,26,43,.14);
+
+  --chip-bg:     rgba(255,255,255,.72);
+  --chip-border: rgba(15,23,42,.10);
+  --chip-text:   #2b4060;
+
+  --list-bg:     #f7fafc;
+  --note-bg:     rgba(26,77,138,.05);
+  --note-border: rgba(26,77,138,.12);
+  --note-text:   #1a2e44;
+
+  --toggle-bg:   #d8e2f0;
+  --toggle-knob: #ffffff;
+}
+
+/* ═══════════════════════════════════════════════
+   TOKENS — DARK
+═══════════════════════════════════════════════ */
+[data-theme="dark"] {
+  --bg:          #0c1120;
+  --bg2:         #101728;
+  --surface:     #161d2f;
+  --surface2:    #1b2238;
+  --border:      rgba(255,255,255,.06);
+  --border-hard: rgba(255,255,255,.12);
+
+  --ink:         #dce8fa;
+  --ink2:        #94b0d4;
+  --muted:       #627ea6;
+  --faint:       #374e6a;
+
+  --gold:        #f0b84a;
+  --gold-soft:   rgba(240,184,74,.11);
+  --blue:        #5b96f0;
+  --blue-soft:   rgba(91,150,240,.11);
+  --green:       #38c882;
+  --green-soft:  rgba(56,200,130,.09);
+  --red:         #f46862;
+  --red-soft:    rgba(244,104,98,.11);
+  --purple:      #a07af5;
+  --purple-soft: rgba(160,122,245,.10);
+
+  --mark-bg:     rgba(220,232,250,.09);
+
+  --hero-from:   #08111e;
+  --hero-to:     #0f1e30;
+  --hero-text:   #e4f0ff;
+  --hero-sub:    rgba(210,228,255,.70);
+
+  --sh-sm:  0 2px 8px rgba(0,0,0,.28);
+  --sh-md:  0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:  0 14px 34px rgba(0,0,0,.40);
+  --sh-hov: 0 10px 28px rgba(0,0,0,.46);
+
+  --chip-bg:     rgba(255,255,255,.06);
+  --chip-border: rgba(255,255,255,.12);
+  --chip-text:   rgba(220,232,255,.82);
+
+  --list-bg:     rgba(255,255,255,.03);
+  --note-bg:     rgba(91,150,240,.09);
+  --note-border: rgba(91,150,240,.20);
+  --note-text:   #b0ccf0;
+
+  --toggle-bg:   #243350;
+  --toggle-knob: #f0b84a;
+}
+
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',sans-serif;
+  font-size:15px;
+  line-height:1.68;
+  color:var(--ink);
+  background:var(--bg);
+  transition:background .25s,color .25s;
+  min-height:100vh;
+}
+a{color:inherit;text-decoration:none}
+
+/* ═══════════════════════════════════════════════
+   PROGRESS BAR
+═══════════════════════════════════════════════ */
+#prog{
+  position:fixed;top:0;left:0;
+  height:3px;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--blue));
+  z-index:300;transition:width .08s linear;
+  border-radius:0 2px 2px 0;
+}
+
+/* ═══════════════════════════════════════════════
+   FAB — THEME TOGGLE + BACK TO TOP
+═══════════════════════════════════════════════ */
+.fab-wrap{
+  position:fixed;bottom:24px;right:24px;
+  z-index:200;
+  display:flex;flex-direction:column;gap:10px;align-items:flex-end;
+}
+#theme-btn{
+  background:var(--surface);
+  border:1px solid var(--border-hard);
+  box-shadow:var(--sh-md);
+  border-radius:50px;
+  padding:8px 14px;
+  cursor:pointer;
+  display:flex;align-items:center;gap:9px;
+  font-family:'Outfit',sans-serif;
+  font-size:13px;font-weight:600;
+  color:var(--muted);
+  transition:all .2s;user-select:none;
+}
+#theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
+.t-track{
+  width:38px;height:20px;
+  background:var(--toggle-bg);
+  border-radius:20px;position:relative;
+  transition:background .25s;
+}
+.t-knob{
+  position:absolute;top:2px;left:2px;
+  width:16px;height:16px;
+  border-radius:50%;
+  background:var(--toggle-knob);
+  transition:transform .25s,background .25s;
+  box-shadow:0 1px 4px rgba(0,0,0,.22);
+}
+[data-theme="dark"] .t-knob{transform:translateX(18px)}
+#back-top{
+  width:44px;height:44px;
+  background:var(--surface);
+  border:1px solid var(--border-hard);
+  border-radius:50%;
+  box-shadow:var(--sh-md);
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;color:var(--muted);
+  transition:all .2s;
+  opacity:0;pointer-events:none;
+  transform:translateY(10px);
+}
+#back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
+
+/* ═══════════════════════════════════════════════
+   WRAP
+═══════════════════════════════════════════════ */
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px 80px}
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+.hero{
+  background:linear-gradient(120deg,var(--hero-from),var(--hero-to));
+  color:var(--hero-text);
+  padding:34px 0 26px;
+  box-shadow:var(--sh-lg);
+}
+.hero-inner{
+  padding:0 20px;
+  max-width:1060px;
+  margin:0 auto;
+}
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.72);
+  margin-bottom:8px;
+}
+.hero-title{
+  font-family:'Crimson Pro',serif;
+  font-size:34px;
+  font-weight:700;
+  color:var(--hero-text);
+  line-height:1.12;
+  margin-bottom:10px;
+}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:72ch;line-height:1.58;margin-bottom:18px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.hero-btn{
+  border:none;cursor:pointer;
+  padding:10px 14px;border-radius:12px;
+  font-weight:700;font-size:13.5px;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:transform .12s,box-shadow .12s,background .12s,opacity .12s;
+  user-select:none;
+}
+.hero-btn-primary{
+  background:rgba(255,255,255,.14);
+  color:#fff;border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+.hero-btn-primary:hover{transform:translateY(-1px);background:rgba(255,255,255,.18)}
+.hero-btn-ghost{
+  background:rgba(255,255,255,.08);
+  color:#fff;border:1px solid rgba(255,255,255,.14);
+}
+.hero-btn-ghost:hover{transform:translateY(-1px);background:rgba(255,255,255,.12)}
+.nav-chips{
+  display:flex;flex-wrap:wrap;gap:8px;
+}
+.nav-chips a{
+  padding:7px 11px;border-radius:999px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.86);
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.7px;
+  letter-spacing:.04em;
+  transition:background .15s,transform .12s,border-color .15s;
+}
+.nav-chips a:hover{background:rgba(255,255,255,.12);transform:translateY(-1px);border-color:rgba(255,255,255,.22)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.lchip{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:5px 11px;border-radius:100px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.5px;
+  letter-spacing:.06em;
+  font-weight:600;
+  text-transform:uppercase;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.85);
+}
+.ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ═══════════════════════════════════════════════
+   SECTION HEAD
+═══════════════════════════════════════════════ */
+.sec-head{
+  display:flex;align-items:center;gap:14px;
+  margin:30px 0 16px;
+}
+.sec-line{height:1px;background:var(--border-hard);flex:1}
+.sec-title{
+  font-family:'Crimson Pro',serif;
+  font-size:20px;font-weight:700;color:var(--ink);
+}
+.sec-badge{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.8px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  padding:6px 10px;border-radius:999px;
+  background:var(--chip-bg);
+  border:1px solid var(--chip-border);
+  color:var(--chip-text);
+  white-space:nowrap;
+}
+
+/* ═══════════════════════════════════════════════
+   GRID + CARDS
+═══════════════════════════════════════════════ */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:14px;
+}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--sh-md);overflow:hidden}
+.card-inner{padding:16px 16px 14px}
+.card-top{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px}
+.c-badge{
+  width:34px;height:34px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  color:var(--ink2);
+  flex-shrink:0;
+}
+.c-title{font-weight:800;color:var(--ink);line-height:1.2;margin-bottom:4px}
+.c-lead{color:var(--muted);font-size:13.5px;line-height:1.45}
+.kp-list{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:8px}
+.kp-list li{
+  background:var(--list-bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px 12px;
+  color:var(--ink2);
+  font-size:13.6px;
+  line-height:1.45;
+}
+.kp-list b{color:var(--ink)}
+.k{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--mark-bg);border:1px solid var(--border);font-weight:700}
+.org{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--blue-soft);border:1px solid rgba(26,77,138,.14);font-weight:800;color:var(--blue)}
+.exc{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--red-soft);border:1px solid rgba(168,31,42,.18);font-weight:800;color:var(--red)}
+.num{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--gold-soft);border:1px solid rgba(184,107,26,.18);font-weight:800;color:var(--gold)}
+.prazo{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--gold-soft);border:1px solid rgba(184,107,26,.18);font-weight:800;color:var(--gold)}
+.trap{
+  margin-top:12px;
+  background:var(--note-bg);
+  border:1px solid var(--note-border);
+  border-radius:14px;
+  padding:10px 12px;
+  display:flex;gap:10px;align-items:flex-start;
+  color:var(--note-text);
+}
+.trap-icon{font-size:18px;line-height:1}
+.trap-text{font-size:13.6px;line-height:1.45}
+.uc{text-transform:uppercase;letter-spacing:.04em;font-family:'JetBrains Mono',monospace;font-size:11.2px}
+
+/* col spans */
+.c12{grid-column:span 12}
+.c8{grid-column:span 8}
+.c6{grid-column:span 6}
+.c4{grid-column:span 4}
+@media(max-width:920px){
+  .c8,.c6,.c4{grid-column:span 12}
+}
+
+/* ═══════════════════════════════════════════════
+   FOOTER NAV
+═══════════════════════════════════════════════ */
+.page-footer{
+  margin-top:28px;
+  display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  padding-top:14px;border-top:1px solid var(--border-hard);
+  color:var(--muted);
+  font-size:13px;
+}
+.page-footer a{
+  padding:8px 10px;border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  box-shadow:var(--sh-sm);
+  color:var(--ink2);
+  transition:transform .12s,box-shadow .12s,border-color .12s;
+}
+.page-footer a:hover{transform:translateY(-1px);box-shadow:var(--sh-hov);border-color:var(--border-hard)}
+
+/* ═══════════════════════════════════════════════
+   NOTES DRAWER
+═══════════════════════════════════════════════ */
+.drawer-overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.45);
+  display:none;
+  align-items:flex-end;
+  z-index:400;
+}
+.drawer-overlay.open{display:flex}
+.drawer-panel{
+  width:min(860px,100%);
+  background:var(--surface);
+  border:1px solid var(--border-hard);
+  border-radius:18px 18px 0 0;
+  box-shadow:var(--sh-lg);
+  max-height:85vh;
+  display:flex;flex-direction:column;
+}
+.drawer-head{
+  padding:14px 16px;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
+  border-bottom:1px solid var(--border);
+}
+.drawer-head-info h2{
+  font-family:'Crimson Pro',serif;
+  font-size:18px;font-weight:800;color:var(--ink);
+  margin-bottom:2px;
+}
+.drawer-head-info p{color:var(--muted);font-size:13px;line-height:1.45}
+.drawer-close{
+  border:1px solid var(--border);
+  background:var(--surface2);
+  color:var(--muted);
+  border-radius:12px;
+  width:40px;height:40px;
+  cursor:pointer;
+  transition:transform .12s,box-shadow .12s,border-color .12s;
+}
+.drawer-close:hover{transform:translateY(-1px);box-shadow:var(--sh-hov);border-color:var(--border-hard)}
+.drawer-body{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+#notes-area{
+  width:100%;
+  min-height:240px;
+  resize:vertical;
+  padding:12px 12px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:var(--surface2);
+  color:var(--ink);
+  font-family:'Outfit',sans-serif;
+  font-size:14px;
+  line-height:1.5;
+  outline:none;
+}
+#notes-area:focus{border-color:var(--border-hard);box-shadow:0 0 0 3px rgba(26,77,138,.10)}
+.drawer-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.d-btn{
+  padding:10px 12px;border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  box-shadow:var(--sh-sm);
+  cursor:pointer;
+  font-weight:800;
+  transition:transform .12s,box-shadow .12s,border-color .12s;
+}
+.d-btn:hover{transform:translateY(-1px);box-shadow:var(--sh-hov);border-color:var(--border-hard)}
+.d-btn-clear{color:var(--red);background:var(--red-soft);border-color:rgba(168,31,42,.18)}
+.d-btn-save{color:var(--green);background:var(--green-soft);border-color:rgba(24,99,71,.18)}
+
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
+
+@media(max-width:600px){
+  .wrap{padding:0 14px 80px}
+  .hero-title{font-size:30px}
+}
+</style>
+</head>
+
+<body>
+<div id="prog"></div>
+
+<header class="hero" id="topo">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">RICD • Resumo Visual • Material de Revisão</div>
+    <h1 class="hero-title">Título VII — Dos Deputados</h1>
+    <p class="hero-sub">
+      <strong>Capítulo I — Do Exercício do Mandato</strong> (arts. 226 a 234): deveres e direitos gerais, presença e votação, participação remota de deputadas gestantes/puérperas, afastamentos, declaração de bens, investidura no Executivo, imunidades, vedações, suspensão de imunidades e serviços aos ex-deputados.
+    </p>
+
+    <div class="hero-actions">
+      <a class="hero-btn hero-btn-ghost" href="index.html">⌂ Índice Geral</a>
+      <a class="hero-btn hero-btn-ghost" href="titulo7.html">↩ Índice do Título VII</a>
+      <button class="hero-btn hero-btn-primary" id="btn-notes" type="button">✏️ Anotações</button>
+    </div>
+
+    <nav class="nav-chips" aria-label="Seções do Capítulo I">
+      <a href="#art226"><b>Art. 226</b> Direitos</a>
+      <a href="#art227"><b>Art. 227</b> Presença</a>
+      <a href="#art227a"><b>Art. 227-A</b> Remoto</a>
+      <a href="#art228"><b>Art. 228</b> Afastamento</a>
+      <a href="#art229"><b>Art. 229</b> Bens</a>
+      <a href="#art230"><b>Art. 230</b> Executivo</a>
+      <a href="#art231"><b>Art. 231</b> Imunidades</a>
+      <a href="#art232"><b>Art. 232</b> Bancada</a>
+      <a href="#art233"><b>Art. 233</b> Sítio</a>
+      <a href="#art234"><b>Art. 234</b> Ex</a>
+    </nav>
+
+    <div class="legend" aria-label="Legenda">
+      <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Organização</span>
+      <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Prazos</span>
+      <span class="lchip"><span class="ldot" style="background:#f46862"></span>Exceções/Vedações</span>
+      <span class="lchip"><span class="ldot" style="background:rgba(255,255,255,.4)"></span>Palavras-chave</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- Art. 226 -->
+  <div class="sec-head" id="art226">
+    <div class="sec-title">Deveres e direitos gerais do Deputado</div>
+    <div class="sec-line"></div>
+    <div class="sec-badge">Art. 226</div>
+  </div>
+
+  <section class="grid">
+    <article class="card c12">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">226</div>
+          <div>
+            <div class="c-title">Dever de apresentação à Câmara</div>
+            <div class="c-lead">
+              O Deputado deve apresentar-se durante a <span class="k">sessão legislativa</span> ordinária ou extraordinária, para participar das sessões do <span class="org">Plenário</span> e das reuniões de <span class="org">Comissão</span> de que seja membro, além das sessões conjuntas do <span class="org">Congresso Nacional</span>.
+            </div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li><b>I</b> ➜ <span class="k">Oferecer proposições</span>, discutir e deliberar; integrar o Plenário e colegiados (votar e ser votado).</li>
+          <li><b>II</b> ➜ Encaminhar (via Mesa) <span class="k">pedidos escritos de informação</span> a Ministro de Estado.</li>
+          <li><b>III</b> ➜ Fazer <span class="k">uso da palavra</span>.</li>
+          <li><b>IV</b> ➜ Integrar Comissões/representações externas e desempenhar <span class="k">missão autorizada</span>.</li>
+          <li><b>V</b> ➜ Promover, perante autoridades/entidades da administração direta/indireta, interesses públicos ou reivindicações coletivas.</li>
+          <li><b>VI</b> ➜ Realizar cometimentos do mandato ou atender obrigações político-partidárias.</li>
+        </ul>
+
+        <div class="trap">
+          <div class="trap-icon">🔎</div>
+          <div class="trap-text">
+            <span class="uc">Artigos correlatos</span><br>
+            • <b>Art. 116</b>: pedido escrito de informação a Ministro de Estado pode configurar <span class="exc">crime de responsabilidade</span> se recusado/não atendido em <span class="prazo">30 dias</span> (ou se houver informação falsa).<br>
+            • <b>Art. 38, parágrafo único</b>: missão autorizada pode implicar afastamento por prazo máximo de <span class="num">8 sessões</span> (no País) e <span class="num">30 sessões</span> (no exterior).
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- Art. 227 -->
+  <div class="sec-head" id="art227">
+    <div class="sec-title">Registro de comparecimento (presença)</div>
+    <div class="sec-line"></div>
+    <div class="sec-badge">Art. 227</div>
+  </div>
+
+  <section class="grid">
+    <article class="card c12">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">227</div>
+          <div>
+            <div class="c-title">Registro efetivo diário</div>
+            <div class="c-lead">
+              O comparecimento efetivo é registrado <span class="k">diariamente</span> (Mesa e presidências das Comissões).
+            </div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li><b>I</b> (Sessões de <span class="k">debates</span>) ➜ lista de presença ou <span class="k">registro eletrônico</span> (postos nas dependências).</li>
+          <li><b>II</b> (Sessões de <span class="k">deliberação</span>) ➜ registro eletrônico até o encerramento da <span class="k">Ordem do Dia</span>.<br>
+            <span class="exc">Exceção</span>: se o sistema não funcionar, por listas de presença em Plenário.
+          </li>
+          <li><b>III</b> (Comissões) ➜ controle de presença às suas reuniões.</li>
+        </ul>
+
+        <div class="trap">
+          <div class="trap-icon">⚠️</div>
+          <div class="trap-text">
+            <span class="uc">Artigo correlato</span><br>
+            • <b>Art. 82, § 6º</b>: ausência às <span class="k">votações</span> equipara-se à ausência às sessões (para todos os efeitos).<br>
+            <span class="exc">Ressalva</span>: obstrução parlamentar legítima (aprovada por bancada/liderança e comunicada à Mesa).
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- Art. 227-A -->
+  <div class="sec-head" id="art227a">
+    <div class="sec-title">Deputadas gestantes e puérperas (participação remota)</div>
+    <div class="sec-line"></div>
+    <div class="sec-badge">Art. 227-A</div>
+  </div>
+
+  <section class="grid">
+    <article class="card c12">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">A</div>
+          <div>
+            <div class="c-title">Beneficiárias e direitos assegurados</div>
+            <div class="c-lead">Participação plena (deliberativas e não deliberativas), com presença e voto remoto.</div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li><b>Beneficiárias</b> ➜ Deputadas <span class="k">gestantes</span>: a partir da <span class="num">30ª semana</span> ou mediante atestado médico.</li>
+          <li><b>Beneficiárias</b> ➜ Deputadas em retorno de <span class="k">licença</span>: até <span class="prazo">180 dias</span> consecutivos após o início da licença.</li>
+          <li><b>Meio</b> ➜ <span class="k">Áudio e vídeo</span> (plataformas de videoconferência).</li>
+          <li><b>Efeitos</b> ➜ registrar presença e <span class="k">votar</span> matérias da Ordem do Dia/Pauta de forma remota.</li>
+        </ul>
+
+        <div class="trap">
+          <div class="trap-icon">🔎</div>
+          <div class="trap-text">
+            <span class="uc">Artigo correlato</span><br>
+            • <b>Art. 4º, § 6º-B</b>: em caso de licença-gestante, requerimento com declaração de parto em período inferior a <span class="prazo">120 dias</span> assegura <span class="k">posse virtual</span>.
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- Art. 228 -->
+  <div class="sec-head" id="art228">
+    <div class="sec-title">Afastamento do País</div>
+    <div class="sec-line"></div>
+    <div class="sec-badge">Art. 228</div>
+  </div>
+
+  <section class="grid">
+    <article class="card c12">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">228</div>
+          <div>
+            <div class="c-title">Prévia ciência à Câmara</div>
+            <div class="c-lead">Para afastar-se do território nacional, o Deputado deve dar prévia ciência, via Presidência, indicando natureza e duração estimada.</div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li>➜ Por intermédio da <span class="org">Presidência</span>.</li>
+          <li>➜ Indicando a <span class="k">natureza</span> do afastamento.</li>
+          <li>➜ Informando a <span class="k">duração estimada</span>.</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- Art. 229 -->
+  <div class="sec-head" id="art229">
+    <div class="sec-title">Declaração de bens e renda</div>
+    <div class="sec-line"></div>
+    <div class="sec-badge">Art. 229</div>
+  </div>
+
+  <section class="grid">
+    <article class="card c12">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">229</div>
+          <div>
+            <div class="c-title">Obrigatoriedade e sanção</div>
+            <div class="c-lead">Declaração à Mesa para posse e antes do término do mandato; inobservância implica infração ao Código de Ética e Decoro Parlamentar.</div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li><b>Quando</b> ➜ para efeito de <span class="k">posse</span>.</li>
+          <li><b>Quando</b> ➜ antes do <span class="k">término</span> do mandato.</li>
+          <li><b>Sanção</b> ➜ inobservância importa <span class="exc">infração</span> ao Código de Ética e Decoro Parlamentar.</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- Art. 230 -->
+  <div class="sec-head" id="art230">
+    <div class="sec-title">Investidura em cargo no Executivo</div>
+    <div class="sec-line"></div>
+    <div class="sec-badge">Art. 230</div>
+  </div>
+
+  <section class="grid">
+    <article class="card c12">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">230</div>
+          <div>
+            <div class="c-title">Comunicação, documentos e retorno</div>
+            <div class="c-lead">Afastamento para cargo do art. 56, I, da CF: comunicação escrita, ato de nomeação e termo de posse; ao reassumir, ato de exoneração e prazo.</div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li><b>Ao afastar-se</b> ➜ comunicação <span class="k">escrita</span> à Casa + <span class="k">ato de nomeação</span> + termo de posse.</li>
+          <li><b>Ao reassumir</b> ➜ apresentar <span class="k">ato de exoneração</span>.</li>
+          <li><b>Prazo</b> ➜ <span class="prazo">15 dias</span> para reassumir após a exoneração.</li>
+          <li><span class="exc">Pena</span> ➜ omissão tipifica <span class="k">falta de decoro parlamentar</span>.</li>
+          <li><b>Suplente (§ 4º)</b> ➜ enquanto não houver comunicação de retorno, o suplente em exercício participa normalmente de debates e votações.</li>
+        </ul>
+
+        <div class="trap">
+          <div class="trap-icon">🔎</div>
+          <div class="trap-text">
+            <span class="uc">Correlato constitucional</span><br>
+            • <b>CF/88, art. 56, I</b>: não perde o mandato se investido em cargos como Ministro de Estado, Secretário de Estado/DF/Território, Prefeito de Capital, chefe de missão diplomática temporária etc.
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- Art. 231 -->
+  <div class="sec-head" id="art231">
+    <div class="sec-title">Imunidades, prerrogativas e vedações</div>
+    <div class="sec-line"></div>
+    <div class="sec-badge">Art. 231</div>
+  </div>
+
+  <section class="grid">
+    <article class="card c6">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">231</div>
+          <div>
+            <div class="c-title">Imunidades (regra geral)</div>
+            <div class="c-lead">Material e formal: inviolabilidade, prisão, foro, testemunho e incorporação.</div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li><b>Inviolabilidade</b> ➜ por opiniões, palavras e votos.</li>
+          <li><b>Prisão</b> ➜ desde a expedição do diploma, salvo flagrante de <span class="exc">crime inafiançável</span>.</li>
+          <li><b>Julgamento</b> ➜ perante o <span class="org">STF</span>.</li>
+          <li><b>Testemunho</b> ➜ não são obrigados a testemunhar sobre informações do mandato e sobre pessoas que lhes confiaram/receberam informações.</li>
+          <li><b>Incorporação militar</b> ➜ mesmo militares e em tempo de guerra: depende de licença da Câmara.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="card c6">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">⚑</div>
+          <div>
+            <div class="c-title">Vedações constitucionais</div>
+            <div class="c-lead">Restrições desde o diploma e desde a posse (contratos, cargos, patrocínio de causa etc.).</div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li><b>I</b> — desde a <span class="k">expedição do diploma</span>:
+            <br>• <b>a</b>) firmar/manter contrato com PJ de direito público/autarquia/EP/SEM/concessionária (salvo cláusulas uniformes);
+            <br>• <b>b</b>) aceitar/exercer cargo/função remunerada nessas entidades (inclusive demissíveis <i>ad nutum</i>).
+          </li>
+          <li><b>II</b> — desde a <span class="k">posse</span>:
+            <br>• <b>a</b>) ser proprietário/diretor de empresa favorecida por contrato com PJ de direito público (ou exercer função remunerada nela);
+            <br>• <b>b</b>) ocupar cargo demissível <i>ad nutum</i> nas entidades do inciso I, “a”;
+            <br>• <b>c</b>) patrocinar causa interessada a essas entidades;
+            <br>• <b>d</b>) ser titular de mais de um cargo/mandato eletivo.
+          </li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- Art. 232 -->
+  <div class="sec-head" id="art232">
+    <div class="sec-title">Perda de direitos (vínculo partidário)</div>
+    <div class="sec-line"></div>
+    <div class="sec-badge">Art. 232</div>
+  </div>
+
+  <section class="grid">
+    <article class="card c12">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">232</div>
+          <div>
+            <div class="c-title">Desvinculação da bancada</div>
+            <div class="c-lead">Perde, para efeitos regimentais, o direito a cargos ou funções ocupados em razão da bancada.</div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li>➜ Desvinculou da bancada? <span class="exc">Perde</span> (para efeitos regimentais) o direito a cargos/funções que ocupa <span class="k">em razão dela</span>.</li>
+        </ul>
+
+        <div class="trap">
+          <div class="trap-icon">🔎</div>
+          <div class="trap-text">
+            <span class="uc">Artigos correlatos</span><br>
+            • <b>Art. 23, parágrafo único</b>: perde automaticamente o direito à vaga em Comissão ocupada por razão da bancada.<br>
+            • <b>Art. 8º, § 5º</b>: em mudança de legenda, membro da Mesa perde automaticamente o cargo.
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- Art. 233 -->
+  <div class="sec-head" id="art233">
+    <div class="sec-title">Suspensão de imunidades</div>
+    <div class="sec-line"></div>
+    <div class="sec-badge">Art. 233</div>
+  </div>
+
+  <section class="grid">
+    <article class="card c12">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">233</div>
+          <div>
+            <div class="c-title">Requisitos e rito em estado de sítio</div>
+            <div class="c-lead">Suspensão condicionada ao estado de sítio; quórum qualificado, escrutínio secreto e tramitação em urgência.</div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li><b>Requisitos</b> ➜ vigência de <span class="k">estado de sítio</span>; atos fora do recinto do Congresso; atos incompatíveis com a execução da medida.</li>
+          <li><b>Quórum</b> ➜ <span class="num">2/3</span> dos membros da Casa.</li>
+          <li><b>Modalidade</b> ➜ <span class="k">escrutínio secreto</span>.</li>
+          <li><b>Rito</b> ➜ após aprovada a decretação do sítio, mensagem presidencial vai à <span class="org">CCJC</span>; CCJC emite parecer e projeto de resolução; tramitação em <span class="k">regime de urgência</span>.</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- Art. 234 -->
+  <div class="sec-head" id="art234">
+    <div class="sec-title">Serviços aos ex-deputados</div>
+    <div class="sec-line"></div>
+    <div class="sec-badge">Art. 234</div>
+  </div>
+
+  <section class="grid">
+    <article class="card c12">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">234</div>
+          <div>
+            <div class="c-title">Acesso e serviços utilizáveis</div>
+            <div class="c-lead">Ex-Deputados Federais: livre acesso ao Plenário e possibilidade de usar serviços internos (com condicionantes).</div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li><b>Direito</b> ➜ <span class="k">livre acesso</span> ao Plenário.</li>
+          <li><b>Serviços</b> ➜ reprografia*, biblioteca, arquivo, processamento de dados*, assistência médica, assistência farmacêutica.</li>
+          <li><span class="exc">Condicional (*)</span> ➜ reprografia e processamento de dados dependem de <span class="k">prévia autorização</span> do PCD.</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- Footer nav -->
+  <footer class="page-footer" aria-label="Navegação de rodapé">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <a href="index.html">⌂ Índice Geral</a>
+      <a href="titulo7.html">↩ Índice do Título VII</a>
+      <a href="#topo">↑ Topo</a>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <span style="color:var(--muted)">Capítulo anterior: —</span>
+      <a href="titulo7-cap02.html">Próximo capítulo →</a>
+    </div>
+  </footer>
+
+</div>
+
+<!-- FAB -->
+<div class="fab-wrap" aria-label="Ações flutuantes">
+  <button id="theme-btn" type="button" aria-label="Alternar tema">
+    <span id="t-icon" aria-hidden="true">🌙</span>
+    <span id="t-label">Escuro</span>
+    <span class="t-track" aria-hidden="true"><span class="t-knob"></span></span>
+  </button>
+  <button id="back-top" type="button" title="Voltar ao topo" aria-label="Voltar ao topo">↑</button>
+</div>
+
+<!-- Drawer -->
+<div class="drawer-overlay" id="drawer" aria-hidden="true">
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Anotações">
+    <div class="drawer-head">
+      <div class="drawer-head-info">
+        <h2>Anotações — Título VII • Capítulo I</h2>
+        <p>As notas ficam salvas no <strong>seu navegador</strong> (localStorage).</p>
+      </div>
+      <button class="drawer-close" id="btn-close-drawer" title="Fechar" aria-label="Fechar">✕</button>
+    </div>
+    <div class="drawer-body">
+      <textarea id="notes-area" placeholder="Ex.:&#10;• Art. 227-A: remoto (30ª semana / 180 dias)&#10;• Art. 230: 15 dias para reassumir (decoro)&#10;• Art. 233: 2/3 + escrutínio secreto"></textarea>
+      <div class="drawer-actions">
+        <button class="d-btn d-btn-clear" id="btn-clear-notes" type="button">Limpar</button>
+        <button class="d-btn d-btn-save" id="btn-save-notes" type="button">Salvar e fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Tema ──────────────────────────────────────────
+(function(){
+  const root=document.documentElement,btn=document.getElementById('theme-btn'),
+        icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
+  let dark=localStorage.getItem('ricd-theme')==='dark';
+  if(!localStorage.getItem('ricd-theme')) dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function apply(){
+    root.setAttribute('data-theme',dark?'dark':'light');
+    icon.textContent=dark?'☀️':'🌙';
+    lbl.textContent=dark?'Claro':'Escuro';
+    localStorage.setItem('ricd-theme',dark?'dark':'light');
+  }
+  apply();
+  btn.addEventListener('click',()=>{dark=!dark;apply()});
+})();
+
+// ── Progresso + Back-to-top ───────────────────────
+(function(){
+  const bar=document.getElementById('prog'),top=document.getElementById('back-top');
+  top.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  window.addEventListener('scroll',function(){
+    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(s/h*100):0)+'%';
+    top.classList.toggle('show',s>280);
+  },{passive:true});
+})();
+
+// ── Anotações ─────────────────────────────────────
+(function(){
+  const KEY='notes_titulo7_cap01';
+  const overlay=document.getElementById('drawer');
+  const area=document.getElementById('notes-area');
+  const btnOpen=document.getElementById('btn-notes');
+  const btnClose=document.getElementById('btn-close-drawer');
+  const btnSave=document.getElementById('btn-save-notes');
+  const btnClear=document.getElementById('btn-clear-notes');
+
+  function open(){
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden','false');
+    area.value=localStorage.getItem(KEY)||'';
+    area.focus();
+  }
+  function close(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden','true');
+  }
+  btnOpen.addEventListener('click',open);
+  btnClose.addEventListener('click',close);
+  btnSave.addEventListener('click',()=>{localStorage.setItem(KEY,area.value);close()});
+  btnClear.addEventListener('click',()=>{
+    if(confirm('Limpar anotações do Título VII — Capítulo I?')){
+      area.value='';
+      localStorage.removeItem(KEY);
+      area.focus();
+    }
+  });
+  overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
+  window.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))close()});
+})();
+</script>
+
+</body>
+</html>
