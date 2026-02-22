@@ -3,537 +3,190 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RICD — Título II (Cap. II-B — Secretaria da Primeira Infância, Infância, Adolescência e Juventude)</title>
-
+<title>RICD — Tít. II · Cap. II-B — Secretaria da Primeira Infância</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
 <style>
-/* ═══════════════════════════════════════════════
-   TOKENS — LIGHT
-═══════════════════════════════════════════════ */
-:root, [data-theme="light"] {
-  --bg:          #f3f6fb;
-  --bg2:         #eaeff8;
-  --surface:     #ffffff;
-  --surface2:    #f7faff;
-  --border:      rgba(15,39,66,.09);
-  --border-hard: rgba(15,39,66,.16);
-
-  --ink:         #0d1f35;
-  --ink2:        #2b4060;
-  --muted:       #526a88;
-  --faint:       #8fa8c2;
-
-  --gold:        #b86b1a;
-  --gold-soft:   rgba(184,107,26,.10);
-  --blue:        #1a4d8a;
-  --blue-soft:   rgba(26,77,138,.08);
-  --green:       #186347;
-  --green-soft:  rgba(24,99,71,.09);
-  --red:         #a81f2a;
-  --red-soft:    rgba(168,31,42,.09);
-  --purple:      #5a3d8a;
-  --purple-soft: rgba(90,61,138,.08);
-
-  --mark-bg:     rgba(15,23,42,.07);
-
-  --hero-from:   #0c2240;
-  --hero-to:     #153558;
-  --hero-text:   #ffffff;
-  --hero-sub:    rgba(255,255,255,.80);
-
-  --sh-sm:  0 2px 8px rgba(12,26,43,.06);
-  --sh-md:  0 6px 20px rgba(12,26,43,.09);
-  --sh-lg:  0 14px 34px rgba(12,26,43,.11);
-  --sh-hov: 0 10px 28px rgba(12,26,43,.14);
-
-  --chip-bg:     rgba(255,255,255,.72);
-  --chip-border: rgba(15,23,42,.10);
-  --chip-text:   #2b4060;
-
-  --list-bg:     #f7fafc;
-  --note-bg:     rgba(26,77,138,.05);
-  --note-border: rgba(26,77,138,.12);
-  --note-text:   #1a2e44;
-
-  --toggle-bg:   #d8e2f0;
-  --toggle-knob: #ffffff;
-
-  --drawer-bg:#ffffff;
-  --drawer-overlay:rgba(15,23,42,.38);
-  --textarea-bg:#fbfcfe;
+:root,[data-theme="light"]{
+  --bg:#f3f6fb;--bg2:#eaeff8;--surface:#fff;--surface2:#f7faff;
+  --border:rgba(15,39,66,.09);--border-hard:rgba(15,39,66,.16);
+  --ink:#0d1f35;--ink2:#2b4060;--muted:#526a88;--faint:#8fa8c2;
+  --gold:#b86b1a;--gold-soft:rgba(184,107,26,.10);
+  --blue:#1a4d8a;--blue-soft:rgba(26,77,138,.08);
+  --green:#186347;--green-soft:rgba(24,99,71,.09);
+  --red:#a81f2a;--red-soft:rgba(168,31,42,.09);
+  --purple:#5a3d8a;--purple-soft:rgba(90,61,138,.08);
+  --teal:#0f5f5a;--teal-soft:rgba(15,95,90,.09);
+  --mark-bg:rgba(15,23,42,.07);
+  --hero-from:#0a3530;--hero-to:#144d47;--hero-text:#fff;--hero-sub:rgba(255,255,255,.80);
+  --sh-sm:0 2px 8px rgba(12,26,43,.06);--sh-md:0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:0 14px 34px rgba(12,26,43,.11);--sh-hov:0 10px 28px rgba(12,26,43,.14);
+  --list-bg:#f7fafc;--note-bg:rgba(15,95,90,.05);--note-border:rgba(15,95,90,.16);--note-text:#0a3530;
+  --toggle-bg:#d8e2f0;--toggle-knob:#fff;--drawer-bg:#fff;--drawer-overlay:rgba(15,23,42,.38);--textarea-bg:#fbfcfe;
 }
-
-/* ═══════════════════════════════════════════════
-   TOKENS — DARK
-═══════════════════════════════════════════════ */
-[data-theme="dark"] {
-  --bg:          #0c1120;
-  --bg2:         #101728;
-  --surface:     #161d2f;
-  --surface2:    #1b2238;
-  --border:      rgba(255,255,255,.06);
-  --border-hard: rgba(255,255,255,.12);
-
-  --ink:         #dce8fa;
-  --ink2:        #94b0d4;
-  --muted:       #627ea6;
-  --faint:       #374e6a;
-
-  --gold:        #f0b84a;
-  --gold-soft:   rgba(240,184,74,.11);
-  --blue:        #5b96f0;
-  --blue-soft:   rgba(91,150,240,.11);
-  --green:       #38c882;
-  --green-soft:  rgba(56,200,130,.09);
-  --red:         #f46862;
-  --red-soft:    rgba(244,104,98,.11);
-  --purple:      #a07af5;
-  --purple-soft: rgba(160,122,245,.10);
-
-  --mark-bg:     rgba(220,232,250,.09);
-
-  --hero-from:   #08111e;
-  --hero-to:     #0f1e30;
-  --hero-text:   #e4f0ff;
-  --hero-sub:    rgba(210,228,255,.70);
-
-  --sh-sm:  0 2px 8px rgba(0,0,0,.28);
-  --sh-md:  0 6px 20px rgba(0,0,0,.34);
-  --sh-lg:  0 14px 34px rgba(0,0,0,.40);
-  --sh-hov: 0 10px 28px rgba(0,0,0,.46);
-
-  --chip-bg:     rgba(255,255,255,.06);
-  --chip-border: rgba(255,255,255,.12);
-  --chip-text:   rgba(220,232,255,.82);
-
-  --list-bg:     rgba(255,255,255,.03);
-  --note-bg:     rgba(91,150,240,.09);
-  --note-border: rgba(91,150,240,.20);
-  --note-text:   #b0ccf0;
-
-  --toggle-bg:   #243350;
-  --toggle-knob: #f0b84a;
-
-  --drawer-bg:#161d2f;
-  --drawer-overlay:rgba(0,0,0,.55);
-  --textarea-bg:#101728;
+[data-theme="dark"]{
+  --bg:#0c1120;--bg2:#101728;--surface:#161d2f;--surface2:#1b2238;
+  --border:rgba(255,255,255,.06);--border-hard:rgba(255,255,255,.12);
+  --ink:#dce8fa;--ink2:#94b0d4;--muted:#627ea6;--faint:#374e6a;
+  --gold:#f0b84a;--gold-soft:rgba(240,184,74,.11);
+  --blue:#5b96f0;--blue-soft:rgba(91,150,240,.11);
+  --green:#38c882;--green-soft:rgba(56,200,130,.09);
+  --red:#f46862;--red-soft:rgba(244,104,98,.11);
+  --purple:#a07af5;--purple-soft:rgba(160,122,245,.10);
+  --teal:#3dd9ce;--teal-soft:rgba(61,217,206,.10);
+  --mark-bg:rgba(220,232,250,.09);
+  --hero-from:#041410;--hero-to:#0a2520;--hero-text:#d0fff8;--hero-sub:rgba(180,240,230,.70);
+  --sh-sm:0 2px 8px rgba(0,0,0,.28);--sh-md:0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:0 14px 34px rgba(0,0,0,.40);--sh-hov:0 10px 28px rgba(0,0,0,.46);
+  --list-bg:rgba(255,255,255,.03);--note-bg:rgba(61,217,206,.08);--note-border:rgba(61,217,206,.20);--note-text:#a0ece6;
+  --toggle-bg:#243350;--toggle-knob:#f0b84a;--drawer-bg:#161d2f;--drawer-overlay:rgba(0,0,0,.65);--textarea-bg:#111828;
 }
-
-/* ═══════════════════════════════════════════════
-   RESET & BASE
-═══════════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{
-  font-family:'Outfit',sans-serif;
-  font-size:15px;
-  line-height:1.68;
-  color:var(--ink);
-  background:var(--bg);
-  transition:background .25s,color .25s;
-  min-height:100vh;
-}
+body{font-family:'Outfit',sans-serif;font-size:15px;line-height:1.68;color:var(--ink);background:var(--bg);transition:background .25s,color .25s;min-height:100vh}
 a{color:inherit;text-decoration:none}
-
-/* ═══════════════════════════════════════════════
-   PROGRESS BAR
-═══════════════════════════════════════════════ */
-#prog{
-  position:fixed;top:0;left:0;
-  height:3px;width:0%;
-  background:linear-gradient(90deg,var(--gold),var(--blue));
-  z-index:300;transition:width .08s linear;
-  border-radius:0 2px 2px 0;
-}
-
-/* ═══════════════════════════════════════════════
-   FAB — THEME TOGGLE + BACK TO TOP
-═══════════════════════════════════════════════ */
-.fab-wrap{
-  position:fixed;bottom:24px;right:24px;
-  z-index:200;
-  display:flex;flex-direction:column;gap:10px;align-items:flex-end;
-}
-#theme-btn{
-  background:var(--surface);
-  border:1px solid var(--border-hard);
-  box-shadow:var(--sh-md);
-  border-radius:50px;
-  padding:8px 14px;
-  cursor:pointer;
-  display:flex;align-items:center;gap:9px;
-  font-family:'Outfit',sans-serif;
-  font-size:13px;font-weight:600;
-  color:var(--muted);
-  transition:all .2s;user-select:none;
-}
+#prog{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--teal),var(--gold));z-index:300;transition:width .08s linear;border-radius:0 2px 2px 0}
+.fab-wrap{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+#theme-btn{background:var(--surface);border:1px solid var(--border-hard);box-shadow:var(--sh-md);border-radius:50px;padding:8px 14px;cursor:pointer;display:flex;align-items:center;gap:9px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--muted);transition:all .2s;user-select:none}
 #theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
-.t-track{
-  width:38px;height:20px;
-  background:var(--toggle-bg);
-  border-radius:20px;position:relative;
-  transition:background .25s;
-}
-.t-knob{
-  position:absolute;top:2px;left:2px;
-  width:16px;height:16px;
-  border-radius:50%;
-  background:var(--toggle-knob);
-  transition:transform .25s,background .25s;
-  box-shadow:0 1px 4px rgba(0,0,0,.22);
-}
+.t-track{width:38px;height:20px;background:var(--toggle-bg);border-radius:20px;position:relative;transition:background .25s}
+.t-knob{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--toggle-knob);transition:transform .25s;box-shadow:0 1px 4px rgba(0,0,0,.22)}
 [data-theme="dark"] .t-knob{transform:translateX(18px)}
-#back-top{
-  width:44px;height:44px;
-  background:var(--surface);
-  border:1px solid var(--border-hard);
-  border-radius:50%;
-  box-shadow:var(--sh-md);
-  cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  font-size:19px;color:var(--muted);
-  transition:all .2s;
-  opacity:0;pointer-events:none;
-  transform:translateY(10px);
-}
+#back-top{width:44px;height:44px;background:var(--surface);border:1px solid var(--border-hard);border-radius:50%;box-shadow:var(--sh-md);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--muted);transition:all .2s;opacity:0;pointer-events:none;transform:translateY(10px)}
 #back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
-#back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
-
-/* ═══════════════════════════════════════════════
-   WRAP
-═══════════════════════════════════════════════ */
-.wrap{max-width:1060px;margin:0 auto;padding:0 20px 80px}
-
-/* ═══════════════════════════════════════════════
-   HERO
-═══════════════════════════════════════════════ */
-.hero{
-  background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);
-  border-radius:0 0 28px 28px;
-  padding:38px 36px 34px;
-  margin-bottom:32px;
-  position:relative;overflow:hidden;
-  box-shadow:var(--sh-lg);
-}
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),
-    radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);
-  pointer-events:none;
-}
-.hero::after{
-  content:'II';
-  position:absolute;right:36px;top:50%;transform:translateY(-50%);
-  font-family:'Crimson Pro',serif;
-  font-size:160px;font-weight:700;
-  color:rgba(255,255,255,.04);
-  line-height:1;pointer-events:none;user-select:none;
-}
+#back-top:hover{color:var(--teal);box-shadow:var(--sh-lg);transform:translateY(-2px)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px 80px}
+.hero{background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);border-radius:0 0 28px 28px;padding:38px 36px 34px;margin-bottom:32px;position:relative;overflow:hidden;box-shadow:var(--sh-lg)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);pointer-events:none}
+.hero::after{content:'II-B';position:absolute;right:36px;top:50%;transform:translateY(-50%);font-family:'Crimson Pro',serif;font-size:110px;font-weight:700;color:rgba(255,255,255,.05);line-height:1;pointer-events:none;user-select:none}
 .hero-inner{position:relative;z-index:1}
-.hero-eyebrow{
-  font-family:'JetBrains Mono',monospace;
-  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:10px;
-}
-.hero-title{
-  font-family:'Crimson Pro',serif;
-  font-size:clamp(28px,3.5vw,42px);
-  font-weight:700;color:var(--hero-text);
-  line-height:1.12;margin-bottom:10px;
-}
-.hero-sub{
-  font-size:14px;color:var(--hero-sub);
-  max-width:78ch;line-height:1.58;margin-bottom:16px;
-}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#80ddd8;margin-bottom:10px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(60,200,190,.22);border:1px solid rgba(80,220,210,.35);color:#b0fff8;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-bottom:10px}
+.hero-title{font-family:'Crimson Pro',serif;font-size:clamp(22px,2.8vw,38px);font-weight:700;color:var(--hero-text);line-height:1.12;margin-bottom:10px}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:72ch;line-height:1.58;margin-bottom:18px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.hero-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;border:1px solid;font-family:'Outfit',sans-serif}
+.hero-btn-ghost{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18);color:rgba(255,255,255,.88)}
+.hero-btn-ghost:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.hero-btn-primary{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);color:#fff;font-weight:700}
+.hero-btn-primary:hover{background:rgba(255,255,255,.22);transform:translateY(-1px)}
 .nav-chips{display:flex;flex-wrap:wrap;gap:8px}
-.nav-chips a, .nav-chips button{
-  display:inline-flex;align-items:center;gap:7px;
-  padding:7px 13px;border-radius:100px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.16);
-  color:rgba(255,255,255,.88);
-  font-size:12.5px;font-weight:500;
-  transition:background .15s,transform .1s;
-  cursor:pointer;
-  font-family:'Outfit',sans-serif;
-}
-.nav-chips a:hover, .nav-chips button:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
-.nav-chips a b{font-weight:700;color:var(--gold)}
-.legend{
-  display:flex;flex-wrap:wrap;gap:8px;
-  margin-top:18px;padding-top:18px;
-  border-top:1px solid rgba(255,255,255,.10);
-}
-.lchip{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:5px 11px;border-radius:100px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.07);
-  color:rgba(255,255,255,.78);
-  font-family:'JetBrains Mono',monospace;
-  font-size:10px;letter-spacing:.06em;font-weight:600;text-transform:uppercase;
-}
+.nav-chips a{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:100px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.88);font-size:12.5px;font-weight:500;transition:background .15s,transform .1s}
+.nav-chips a:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.nav-chips a b{font-weight:700;color:#80ddd8}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.10)}
+.lchip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:rgba(255,255,255,.78);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;font-weight:600;text-transform:uppercase}
 .ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-
-/* ═══════════════════════════════════════════════
-   SECTION DIVIDER
-═══════════════════════════════════════════════ */
-.sec-head{
-  display:flex;align-items:center;gap:14px;
-  margin:36px 0 18px;
-}
+.sec-head{display:flex;align-items:center;gap:14px;margin:36px 0 18px}
 .sec-line{flex:1;height:1px;background:var(--border-hard)}
-.sec-title{
-  font-family:'Crimson Pro',serif;
-  font-size:21px;font-weight:700;
-  color:var(--ink);white-space:nowrap;
-}
-.sec-badge{
-  font-family:'JetBrains Mono',monospace;
-  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--faint);white-space:nowrap;
-}
-
-/* ═══════════════════════════════════════════════
-   GRID
-═══════════════════════════════════════════════ */
+.sec-title{font-family:'Crimson Pro',serif;font-size:20px;font-weight:700;color:var(--ink);white-space:nowrap}
+.sec-badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-.c12{grid-column:span 12}
-.c6{grid-column:span 12}
-.c4{grid-column:span 12}
-@media(min-width:760px){.c6{grid-column:span 6}.c4{grid-column:span 4}}
-
-/* ═══════════════════════════════════════════════
-   CARD
-═══════════════════════════════════════════════ */
-.card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:14px;
-  box-shadow:var(--sh-sm);
-  overflow:hidden;position:relative;
-  transition:transform .14s,box-shadow .14s,border-color .14s;
-  opacity:0;
-  animation:fadeUp .35s ease forwards;
-}
-.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.07s}
-.card:nth-child(3){animation-delay:.11s}.card:nth-child(4){animation-delay:.15s}
-.card:nth-child(5){animation-delay:.19s}.card:nth-child(6){animation-delay:.23s}
-.card:nth-child(7){animation-delay:.27s}.card:nth-child(8){animation-delay:.31s}
-.card:nth-child(9){animation-delay:.35s}.card:nth-child(10){animation-delay:.39s}
+.c12{grid-column:span 12}.c6{grid-column:span 12}.c5{grid-column:span 12}.c7{grid-column:span 12}
+@media(min-width:760px){.c6{grid-column:span 6}.c5{grid-column:span 5}.c7{grid-column:span 7}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--sh-sm);overflow:hidden;position:relative;transition:transform .14s,box-shadow .14s;opacity:0;animation:fadeUp .35s ease forwards}
+.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.07s}.card:nth-child(3){animation-delay:.11s}.card:nth-child(4){animation-delay:.15s}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .card:hover{transform:translateY(-2px);box-shadow:var(--sh-hov)}
-.card::before{
-  content:'';
-  position:absolute;left:0;top:0;bottom:0;
-  width:4px;background:var(--c,#1c3f63);
-  border-radius:14px 0 0 14px;
-}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,#0f5f5a);border-radius:14px 0 0 14px}
 .card-inner{padding:16px 16px 16px 18px}
 .card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
-.c-badge{
-  flex-shrink:0;width:36px;height:36px;
-  border-radius:9px;background:var(--bg2);
-  border:1px solid var(--border-hard);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'JetBrains Mono',monospace;
-  font-size:11.5px;font-weight:700;
-  color:var(--c,#1c3f63);margin-top:1px;
-}
-[data-theme="dark"] .c-badge{
-  background:color-mix(in srgb,var(--c,#1c3f63) 14%,var(--surface2) 86%);
-  color:color-mix(in srgb,var(--c,#1c3f63) 55%,#ffffff 45%);
-}
-@supports not (color:color-mix(in srgb,red 50%,blue 50%)){
-  [data-theme="dark"] .c-badge{background:var(--surface2);color:var(--ink2)}
-}
-.c-title{
-  font-family:'Crimson Pro',serif;
-  font-size:17px;font-weight:700;
-  color:var(--ink);line-height:1.2;margin-bottom:3px;
-}
+.c-badge{flex-shrink:0;width:36px;height:36px;border-radius:9px;background:var(--bg2);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--c,#0f5f5a);margin-top:1px}
+.c-title{font-family:'Crimson Pro',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:3px}
 .c-lead{font-size:13px;color:var(--muted);line-height:1.45}
-
-/* Lista */
 .kp-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:10px}
-.kp-list li{
-  padding:9px 11px;border-radius:9px;
-  background:var(--list-bg);border:1px solid var(--border);
-  font-size:13.5px;color:var(--ink2);line-height:1.52;
-}
+.kp-list li{padding:9px 11px;border-radius:9px;background:var(--list-bg);border:1px solid var(--border);font-size:13.5px;color:var(--ink2);line-height:1.52}
 .kp-list li b{font-weight:700;color:var(--ink)}
-
-/* Destaques semânticos */
+.kp-list li ul{margin-top:5px;padding-left:16px;display:flex;flex-direction:column;gap:3px}
+.kp-list li ul li{padding:0;background:none;border:none;font-size:13px;color:var(--muted)}
 .k{font-weight:700;color:var(--ink);background:var(--mark-bg);padding:0 .22em;border-radius:.4em}
 .org{font-weight:700;color:var(--blue);background:var(--blue-soft);padding:0 .22em;border-radius:.4em}
-.prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em}
+.prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em;white-space:nowrap}
 .exc{font-weight:700;color:var(--red);background:var(--red-soft);padding:0 .22em;border-radius:.4em}
-.num{font-weight:700;color:var(--ink2)}
-.tech{font-style:italic;font-weight:600;color:var(--ink)}
-
-/* Nota */
-.note{
-  margin-top:10px;padding:10px 13px;border-radius:10px;
-  background:var(--note-bg);border:1px solid var(--note-border);
-  color:var(--note-text);font-size:13px;line-height:1.55;
-}
+.vert{font-weight:700;color:var(--green);background:var(--green-soft);padding:0 .22em;border-radius:.4em}
+.tl{font-weight:700;color:var(--teal);background:var(--teal-soft);padding:0 .22em;border-radius:.4em}
+.note{margin-top:10px;padding:10px 13px;border-radius:10px;background:var(--note-bg);border:1px solid var(--note-border);color:var(--note-text);font-size:13px;line-height:1.55}
 .note b{font-weight:700}
-
-/* Correlatos */
-.correlatos{
-  margin-top:10px;padding:11px 13px;border-radius:10px;
-  background:var(--purple-soft);
-  border:1px solid rgba(90,61,138,.16);
-}
+.trap{margin-top:10px;display:flex;gap:10px;align-items:flex-start;background:var(--red-soft);border:1px solid color-mix(in srgb,var(--red) 25%,transparent 75%);border-radius:10px;padding:11px 13px}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.trap{border-color:rgba(168,31,42,.2)}}
+.trap-icon{font-size:16px;line-height:1.5;flex-shrink:0}
+.trap-text{font-size:13px;color:var(--red);font-weight:500;line-height:1.5}
+.trap-text b{font-weight:700}
+.correlatos{margin-top:10px;padding:11px 13px;border-radius:10px;background:var(--purple-soft);border:1px solid rgba(90,61,138,.16)}
 [data-theme="dark"] .correlatos{border-color:rgba(160,122,245,.18)}
-.corr-title{
-  font-family:'JetBrains Mono',monospace;font-size:10px;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:var(--purple);font-weight:700;margin-bottom:6px;
-}
+.corr-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);font-weight:700;margin-bottom:6px}
 .corr-list{list-style:none;display:flex;flex-direction:column;gap:4px}
 .corr-list li{font-size:13px;color:var(--ink2);padding-left:16px;position:relative;line-height:1.5}
 .corr-list li::before{content:'↗';position:absolute;left:0;color:var(--purple);font-size:12px}
 
-/* ═══════════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════════ */
-.page-footer{
-  text-align:center;font-size:12.5px;color:var(--faint);
-  margin-top:48px;padding-top:20px;
-  border-top:1px solid var(--border-hard);
-  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;
-}
-.page-footer a{
-  color:var(--blue);font-weight:600;
-  padding:6px 14px;border-radius:8px;
-  border:1px solid var(--border-hard);background:var(--surface);
-  font-size:13px;transition:box-shadow .15s;
-}
-.page-footer a:hover{box-shadow:var(--sh-md)}
+/* COMPARATIVO INVESTIDURA */
+.inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:12px;overflow:hidden;border:1px solid var(--border-hard);margin-top:12px}
+@media(max-width:560px){.inv-grid{grid-template-columns:1fr}}
+.inv-col{padding:13px 14px;border-right:1px solid var(--border-hard)}
+.inv-col:last-child{border-right:none}
+.inv-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.inv-col.mesa .inv-label{color:var(--blue)}
+.inv-col.ind .inv-label{color:var(--teal)}
+.inv-col.mesa{background:var(--blue-soft)}
+.inv-col.ind{background:var(--teal-soft)}
+.inv-val{font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:4px}
+.inv-sub{font-size:12px;color:var(--muted);line-height:1.4}
 
-/* ═══════════════════════════════════════════════
-   DRAWER (ANOTAÇÕES)
-═══════════════════════════════════════════════ */
-.drawer{
-  position:fixed; inset:0;
-  display:none;
-  background:var(--drawer-overlay);
-  backdrop-filter:blur(3px);
-  z-index:500;
-  padding:18px;
-  align-items:flex-end;
-  justify-content:center;
-}
-.drawer.open{display:flex;}
-.drawer-panel{
-  width:min(920px,100%);
-  background:var(--drawer-bg);
-  border-radius:18px;
-  border:1px solid var(--border-hard);
-  box-shadow:0 24px 50px rgba(0,0,0,.35);
-  overflow:hidden;
-}
-.drawer-head{
-  padding:14px 16px 12px;
-  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
-  background:
-    radial-gradient(820px 220px at 12% 0%, rgba(184,107,26,.18), transparent 60%),
-    radial-gradient(820px 220px at 88% 0%, rgba(26,77,138,.16), transparent 58%),
-    linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.65));
-  border-bottom:1px solid var(--border);
-}
-[data-theme="dark"] .drawer-head{
-  background:
-    radial-gradient(820px 220px at 12% 0%, rgba(240,184,74,.12), transparent 60%),
-    radial-gradient(820px 220px at 88% 0%, rgba(91,150,240,.12), transparent 58%),
-    linear-gradient(180deg, rgba(22,29,47,.95), rgba(22,29,47,.72));
-}
-.drawer-title{
-  font-family:'Crimson Pro',serif;
-  font-size:18px;font-weight:700;color:var(--ink);line-height:1.1;
-}
-.drawer-sub{
-  margin-top:6px;
-  font-size:12.8px;color:var(--muted);line-height:1.4;max-width:86ch;
-}
-.drawer-close{
-  background:var(--surface);
-  border:1px solid var(--border-hard);
-  border-radius:10px;
-  padding:8px 10px;
-  cursor:pointer;
-  font-family:'Outfit',sans-serif;
-  font-size:13px;font-weight:700;
-  color:var(--muted);
-  box-shadow:var(--sh-sm);
-}
-.drawer-close:hover{box-shadow:var(--sh-md);color:var(--ink)}
-.drawer-body{padding:12px 14px 14px}
-.drawer-body textarea{
-  width:100%;
-  min-height:240px;
-  resize:vertical;
-  border-radius:14px;
-  border:1px solid var(--border-hard);
-  padding:12px 12px;
-  font-size:13.5px;
-  line-height:1.55;
-  outline:none;
-  background:var(--textarea-bg);
-  color:var(--ink);
-  font-family:'Outfit',sans-serif;
-}
-.drawer-body textarea:focus{
-  border-color: color-mix(in srgb, var(--blue) 45%, var(--border-hard) 55%);
-  box-shadow:0 0 0 3px color-mix(in srgb, var(--blue) 18%, transparent 82%);
-  background:var(--surface);
-}
-.drawer-actions{
-  margin-top:10px;
-  display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;
-}
-.dbtn{
-  appearance:none;
-  border:1px solid var(--border-hard);
-  background:var(--surface);
-  color:var(--muted);
-  padding:9px 12px;
-  border-radius:12px;
-  cursor:pointer;
-  font-weight:800;
-  font-size:13px;
-  box-shadow:var(--sh-sm);
-  font-family:'Outfit',sans-serif;
-}
-.dbtn:hover{box-shadow:var(--sh-md);color:var(--ink)}
-.dbtn.primary{
-  background:linear-gradient(90deg,var(--blue),color-mix(in srgb, var(--blue) 60%, var(--gold) 40%));
-  border-color:transparent;color:#fff;
-}
-.dbtn.danger{
-  background:var(--red-soft);
-  border-color:color-mix(in srgb, var(--red) 25%, var(--border-hard) 75%);
-  color:var(--red);
-}
+/* DIFF TABLE */
+.diff-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12.5px}
+.diff-table th{padding:8px 10px;background:var(--bg2);border:1px solid var(--border-hard);font-weight:700;color:var(--ink);text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+.diff-table td{padding:9px 10px;border:1px solid var(--border);color:var(--ink2);vertical-align:top;line-height:1.45}
+.diff-table tr:nth-child(even) td{background:var(--list-bg)}
+.diff-table td b{font-weight:700;color:var(--ink)}
+.diff-table td:first-child{font-weight:700;font-size:12px;color:var(--teal)}
 
-/* Scrollbar */
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
+/* COMPETENCIAS GRID */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+@media(max-width:560px){.comp-grid{grid-template-columns:1fr}}
+.comp-item{padding:11px 13px;border-radius:10px;border:1px solid var(--border);background:var(--list-bg)}
+.comp-item .ci-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--teal);margin-bottom:4px;text-transform:uppercase;letter-spacing:.08em}
+.comp-item .ci-text{font-size:13px;color:var(--ink2);line-height:1.45}
+.comp-item .ci-text b{font-weight:700;color:var(--ink)}
 
-@media(max-width:600px){
-  .hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}
-  .hero::after{display:none}
-  .wrap{padding:0 14px 80px}
-}
+/* PREMIO BOX */
+.premio-box{margin-top:10px;border-radius:10px;overflow:hidden;border:1px solid color-mix(in srgb,var(--gold) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.premio-box{border-color:rgba(184,107,26,.30)}}
+.premio-head{padding:8px 13px;background:var(--gold-soft);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold);border-bottom:1px solid rgba(184,107,26,.18)}
+.premio-body{padding:11px 13px;background:var(--surface2);font-size:13px;color:var(--ink2);line-height:1.55}
+.premio-body b{font-weight:700;color:var(--ink)}
+
+/* FOOTER */
+.page-footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border-hard);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px}
+.page-footer a{display:inline-flex;align-items:center;gap:6px;color:var(--teal);font-weight:600;padding:8px 16px;border-radius:10px;border:1px solid var(--border-hard);background:var(--surface);font-size:13px;transition:box-shadow .15s,transform .12s}
+.page-footer a:hover{box-shadow:var(--sh-md);transform:translateY(-1px)}
+.page-footer .divider{width:1px;height:20px;background:var(--border-hard)}
+
+/* DRAWER */
+.drawer-overlay{position:fixed;inset:0;background:var(--drawer-overlay);backdrop-filter:blur(4px);z-index:400;display:none;align-items:flex-end;justify-content:center;padding:16px}
+.drawer-overlay.open{display:flex}
+.drawer-panel{width:min(900px,100%);background:var(--drawer-bg);border:1px solid var(--border-hard);border-radius:20px;box-shadow:var(--sh-lg);overflow:hidden;transition:background .25s}
+.drawer-head{padding:16px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;background:linear-gradient(180deg,var(--surface2),var(--surface));border-bottom:1px solid var(--border-hard)}
+.drawer-head-info h2{font-family:'Crimson Pro',serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.drawer-head-info p{font-size:13px;color:var(--muted);line-height:1.45}
+.drawer-close{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--bg2);border:1px solid var(--border-hard);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);transition:all .15s}
+.drawer-close:hover{color:var(--red)}
+.drawer-body{padding:16px 20px 20px}
+#notes-area{width:100%;min-height:200px;resize:vertical;border-radius:12px;border:1px solid var(--border-hard);padding:12px 14px;font-family:'Outfit',sans-serif;font-size:14px;line-height:1.6;outline:none;background:var(--textarea-bg);color:var(--ink);transition:border-color .15s,background .25s,color .25s}
+#notes-area:focus{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+#notes-area::placeholder{color:var(--faint)}
+.drawer-actions{margin-top:12px;display:flex;gap:10px;justify-content:flex-end}
+.d-btn{font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;padding:8px 18px;border-radius:8px;cursor:pointer;border:1px solid;transition:all .15s}
+.d-btn-clear{background:transparent;color:var(--red);border-color:color-mix(in srgb,var(--red) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-clear{border-color:rgba(168,31,42,.3)}}
+.d-btn-clear:hover{background:var(--red-soft)}
+.d-btn-save{background:var(--green-soft);color:var(--green);border-color:color-mix(in srgb,var(--green) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-save{border-color:rgba(24,99,71,.3)}}
+.d-btn-save:hover{background:rgba(24,99,71,.18)}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
+@media(max-width:600px){.hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}.hero::after{display:none}.wrap{padding:0 14px 80px}}
 </style>
 </head>
-
 <body>
 <div id="prog"></div>
 
@@ -541,32 +194,26 @@ a{color:inherit;text-decoration:none}
   <div class="wrap" style="padding:0">
     <div class="hero-inner">
       <div class="hero-eyebrow">RICD • Título II • Capítulo II-B</div>
-      <h1 class="hero-title">Secretaria da Primeira Infância, Infância, Adolescência e Juventude</h1>
-      <p class="hero-sub">
-        ESTRUTURA, ESCOLHA E MANDATO (Art. 20-G) • ATUAÇÃO POLÍTICA E PRERROGATIVAS (Art. 20-H, Incisos V e VI) •
-        COMPETÊNCIAS TÉCNICAS E INSTITUCIONAIS (Art. 20-H, Incisos I, II, III, IV e VII) •
-        FOMENTO, CAPACITAÇÃO E PREMIAÇÃO (Art. 20-H, Incisos IX e X) • ARTIGOS CORRELATOS
-      </p>
-
-      <nav class="nav-chips" aria-label="Navegação">
-        <a href="index.html"><b>Índice</b> geral</a>
-        <a href="titulo2.html"><b>Título II</b> (voltar)</a>
-        <a href="titulo2-cap2a.html"><b>Anterior</b> (Cap. II-A)</a>
-        <a href="titulo2-cap3.html"><b>Próximo</b> (Cap. III)</a>
-        <a href="#art20f"><b>Art. 20-F</b> Base</a>
-        <a href="#art20g"><b>Art. 20-G</b> Estrutura</a>
-        <a href="#pol"><b>Art. 20-H</b> V–VI</a>
-        <a href="#tec"><b>Art. 20-H</b> I–IV,VII</a>
-        <a href="#fom"><b>Art. 20-H</b> IX–X</a>
-        <a href="#corr"><b>Correlatos</b></a>
-        <button type="button" id="btn-notes" title="Abrir anotações">✏️ Anotações</button>
+      <div class="hero-badge">★ Novidade 2025</div>
+      <h1 class="hero-title">Cap. II-B — Secretaria da Primeira Infância, Infância, Adolescência e Juventude</h1>
+      <p class="hero-sub">Arts. 20-G e 20-H — Estrutura (1 Secretário + 3 Adjuntos), investidura diferenciada (Mesa escolhe titular; adjuntos indicados pelo titular), mandato, prerrogativas de liderança e competências.</p>
+      <div class="hero-actions">
+        <a class="hero-btn hero-btn-ghost" href="index.html">⌂ Índice</a>
+        <a class="hero-btn hero-btn-ghost" href="titulo2.html">↑ Título II</a>
+        <button class="hero-btn hero-btn-primary" id="btn-notes" type="button">✏️ Anotações</button>
+      </div>
+      <nav class="nav-chips">
+        <a href="#struct"><b>20-G</b> Estrutura e investidura</a>
+        <a href="#prerrog"><b>20-H V–VI</b> Colégio e comunicações</a>
+        <a href="#comp"><b>20-H I–IV/VII</b> Competências técnicas</a>
+        <a href="#premio"><b>20-H IX–X</b> Capacitação e prêmio</a>
+        <a href="#comp-sec"><b>Comparativo</b> Cap. II-A × II-B</a>
       </nav>
-
       <div class="legend">
-        <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Órgãos</span>
-        <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Prazos</span>
-        <span class="lchip"><span class="ldot" style="background:#f46862"></span>Exceções/Vedações</span>
-        <span class="lchip"><span class="ldot" style="background:rgba(255,255,255,.4)"></span>Palavras-chave</span>
+        <span class="lchip"><span class="ldot" style="background:#3dd9ce"></span>Secretaria infância</span>
+        <span class="lchip"><span class="ldot" style="background:#f080b4"></span>Secretaria mulher</span>
+        <span class="lchip"><span class="ldot" style="background:#f46862"></span>Vedações</span>
+        <span class="lchip"><span class="ldot" style="background:#38c882"></span>Prerrogativas</span>
       </div>
     </div>
   </div>
@@ -574,289 +221,153 @@ a{color:inherit;text-decoration:none}
 
 <div class="wrap">
 
-<!-- ART. 20-F -->
-<div class="sec-head" id="art20f">
-  <div class="sec-line"></div><div class="sec-title">Art. 20-F — Base Constitucional</div>
-  <div class="sec-badge">prioridade absoluta</div><div class="sec-line"></div>
-</div>
-
-<div class="grid">
-  <div class="card c12" style="--c:#1c3f63">
-    <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">20-F</div>
-        <div>
-          <div class="c-title">ARTIGOS CORRELATOS</div>
-          <div class="c-lead">Base constitucional da atuação da Secretaria.</div>
-        </div>
-      </div>
-      <ul class="kp-list">
-        <li><b>Art. 20-F (Base Constitucional):</b> A atuação da Secretaria baseia-se na determinação da <span class="k">PRIORIDADE ABSOLUTA</span> prevista no <span class="k">ART. 227</span> da <span class="org">CONSTITUIÇÃO FEDERAL</span>.</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
 <!-- ART. 20-G -->
-<div class="sec-head" id="art20g">
-  <div class="sec-line"></div><div class="sec-title">Art. 20-G — Estrutura, escolha e mandato</div>
-  <div class="sec-badge">composição • investidura • vacância</div><div class="sec-line"></div>
+<div class="sec-head" id="struct">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 20-G — Estrutura, Investidura e Mandato</div>
+  <div class="sec-badge">Mesa escolhe titular · titular indica adjuntos · 30/nov regra de vacância</div>
+  <div class="sec-line"></div>
 </div>
-
 <div class="grid">
-  <div class="card c6" style="--c:#254a78">
+
+  <div class="card c5" style="--c:#0f5f5a">
     <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">I</div>
-        <div>
-          <div class="c-title">Composição</div>
-          <div class="c-lead">Estrutura do órgão.</div>
+      <div class="card-top"><div class="c-badge">20-G</div><div><div class="c-title">Composição e forma de investidura</div><div class="c-lead">A grande diferença em relação ao Cap. II-A: não há eleição pelas deputadas.</div></div></div>
+      <div class="inv-grid">
+        <div class="inv-col mesa">
+          <div class="inv-label">Secretário (titular)</div>
+          <div class="inv-val">Escolhido pela Mesa</div>
+          <div class="inv-sub">Na 1ª quinzena da 1ª e da 3ª sessões legislativas</div>
+        </div>
+        <div class="inv-col ind">
+          <div class="inv-label">3 Adjuntos</div>
+          <div class="inv-val">Indicados pelo próprio Secretário</div>
+          <div class="inv-sub">Partidos distintos · 1º, 2º e 3º</div>
         </div>
       </div>
-      <ul class="kp-list">
-        <li>● <span class="num">1</span> <span class="k">SECRETÁRIO</span>;</li>
-        <li>● <span class="num">3</span> <span class="k">SECRETÁRIOS-ADJUNTOS</span>.</li>
+      <ul class="kp-list" style="margin-top:12px">
+        <li><b>Mandato:</b> <span class="prazo">2 anos</span> — <span class="exc">vedada recondução</span> para o mesmo cargo no período subsequente</li>
+        <li><b>Adjuntos (§1º):</b> partidos distintos; substituem (nessa ordem), colaboram, recebem delegações</li>
+        <li><b>Vacância (§2º):</b> se vagar até <span class="exc">30 de novembro</span> do último ano do biênio → <span class="vert">nova escolha</span> pela <span class="org">Mesa Diretora</span></li>
       </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A vacância neste capítulo usa o marco de <b>30 de novembro</b>, não a regra de "menos de 3 meses" do Cap. II-A. E a nova investidura é pela <b>Mesa</b>, não por nova eleição.</div></div>
     </div>
   </div>
 
-  <div class="card c6" style="--c:#2f5f6e">
+  <div class="card c7" style="--c:#1c3f63">
     <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">II</div>
-        <div>
-          <div class="c-title">Forma de Investidura</div>
-          <div class="c-lead">Escolha e indicação.</div>
-        </div>
-      </div>
-      <ul class="kp-list">
-        <li>● <b>SECRETÁRIO:</b> Escolhido pela <span class="org">MESA</span>.</li>
-        <li>○ <b>Quando:</b> Na <span class="k">PRIMEIRA QUINZENA</span> da <span class="k">PRIMEIRA</span> e da <span class="k">TERCEIRA</span> sessões legislativas.</li>
-        <li>● <b>ADJUNTOS:</b> Indicados pelo <span class="k">SECRETÁRIO</span> da Pasta.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card c6" style="--c:#3a5c8a">
-    <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">III</div>
-        <div>
-          <div class="c-title">Mandato e Recondução</div>
-          <div class="c-lead">Duração e vedação.</div>
-        </div>
-      </div>
-      <ul class="kp-list">
-        <li>● <b>Duração:</b> <span class="prazo">2 (DOIS) ANOS</span>.</li>
-        <li>● <b>Vedação:</b> <span class="exc">VEDADA</span> a <span class="k">RECONDUÇÃO</span> para o <span class="k">MESMO CARGO</span> no período subsequente.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card c6" style="--c:#1c3f63">
-    <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">§1º</div>
-        <div>
-          <div class="c-title">Regras dos Adjuntos</div>
-          <div class="c-lead">Requisito, designação e função.</div>
-        </div>
-      </div>
-      <ul class="kp-list">
-        <li>● <b>Requisito:</b> Devem pertencer a <span class="k">PARTIDOS DISTINTOS</span>.</li>
-        <li>● <b>Designação:</b> Primeiro, Segundo e Terceiro.</li>
-        <li>● <b>Função:</b> Substituição (nessa ordem), colaboração e recebimento de <span class="k">DELEGAÇÕES</span>.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card c12" style="--c:#406d7a">
-    <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">§2º</div>
-        <div>
-          <div class="c-title">Vacância</div>
-          <div class="c-lead">Marco temporal e consequência.</div>
-        </div>
-      </div>
-      <ul class="kp-list">
-        <li><b>Vacância (§ 2º):</b> Se vagar o cargo de Secretário até <span class="prazo">30 DE NOVEMBRO</span> do último ano do biênio:</li>
-        <li>○ ➜ Proceder-se-á à <span class="k">NOVA ESCOLHA</span> pela <span class="org">MESA DIRETORA</span>.</li>
-      </ul>
+      <div class="card-top"><div class="c-badge">≠</div><div><div class="c-title">Investidura: Infância × Mulher — diferença crítica</div><div class="c-lead">Os dois capítulos têm composição (1+3) idêntica, mas formas de investidura opostas.</div></div></div>
+      <table class="diff-table">
+        <thead><tr><th>Aspecto</th><th>Cap. II-A (Mulher)</th><th>Cap. II-B (Infância)</th></tr></thead>
+        <tbody>
+          <tr><td>Quem investe o titular</td><td><b>Eleição</b> pelas Deputadas</td><td><b>Escolha</b> pela Mesa Diretora</td></tr>
+          <tr><td>Quem investe adjuntos</td><td><b>Eleição</b> pelas Deputadas</td><td><b>Indicação</b> pelo próprio Secretário</td></tr>
+          <tr><td>Recondução titular</td><td>Vedada (mesma regra)</td><td>Vedada (mesma regra)</td></tr>
+          <tr><td>Recondução adjunto Comitê</td><td>Permitida <b>1 vez</b></td><td>—</td></tr>
+          <tr><td>Vacância</td><td>Nova eleição salvo &lt;3 meses</td><td>Nova escolha até <b>30/nov</b> do biênio</td></tr>
+          <tr><td>Colégio de Líderes</td><td>Coordenadoria: voz e voto</td><td>Secretaria: voz e voto</td></tr>
+          <tr><td>Comunicações</td><td><b>5 min</b> fixos</td><td><b>5 min</b> semanalmente</td></tr>
+        </tbody>
+      </table>
       <div class="correlatos">
-        <div class="corr-title">ARTIGOS CORRELATOS</div>
+        <div class="corr-title">Base constitucional — Art. 20-F</div>
         <ul class="corr-list">
-          <li><span class="k">Art. 20-B</span> e <span class="k">20-C</span> (Secretaria da Mulher): Diferentemente da Secretaria da Infância (escolha pela Mesa /Indicação), a Procuradoria e a Coordenadoria da Mulher são preenchidas por <span class="k">ELEIÇÃO</span> direta das Deputadas.</li>
+          <li>Atuação baseada na <b>prioridade absoluta</b> prevista no Art. 227 da Constituição Federal</li>
         </ul>
       </div>
     </div>
   </div>
+
 </div>
 
-<!-- ART. 20-H (V e VI) -->
-<div class="sec-head" id="pol">
-  <div class="sec-line"></div><div class="sec-title">Art. 20-H — Atuação política e prerrogativas</div>
-  <div class="sec-badge">Incisos V e VI</div><div class="sec-line"></div>
+<!-- PRERROGATIVAS -->
+<div class="sec-head" id="prerrog">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 20-H, Incs. V e VI — Prerrogativas de Liderança</div>
+  <div class="sec-badge">Colégio com voz e voto · 5 min semanais · pessoalmente ou por delegação</div>
+  <div class="sec-line"></div>
 </div>
-
 <div class="grid">
-  <div class="card c6" style="--c:#254a78">
+  <div class="card c12" style="--c:#0f5f5a">
     <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">V</div>
-        <div>
-          <div class="c-title">Colégio de Líderes (Inciso V)</div>
-          <div class="c-lead">Participação, direito e finalidade.</div>
-        </div>
-      </div>
+      <div class="card-top"><div class="c-badge">V–VI</div><div><div class="c-title">Participação no Colégio de Líderes e nas Comunicações de Liderança</div><div class="c-lead">Idêntico à Coordenadoria da Mulher (Art. 20-E) — as duas Secretarias têm as mesmas prerrogativas de Plenário.</div></div></div>
       <ul class="kp-list">
-        <li><b>Colégio de Líderes (Inciso V):</b> Compete participar das reuniões convocadas pelo <span class="org">PRESIDENTE</span>:</li>
-        <li>● ➜ Com direito a <span class="k">VOZ</span> e <span class="k">VOTO</span>.</li>
-        <li>● <b>Finalidade:</b> Representatividade das crianças, adolescentes e jovens.</li>
+        <li><b>Inc. V — Colégio de Líderes:</b> participa das reuniões convocadas pelo Presidente com direito a <span class="tl">voz e voto</span> — finalidade: representatividade de crianças, adolescentes e jovens</li>
+        <li><b>Inc. VI — Comunicações:</b> usa da palavra durante período destinado às <span class="k">Comunicações de Liderança</span> — <span class="prazo">semanalmente</span>, por <span class="prazo">5 minutos</span>, pessoalmente ou por delegação</li>
       </ul>
-    </div>
-  </div>
-
-  <div class="card c6" style="--c:#2f5f6e">
-    <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">VI</div>
-        <div>
-          <div class="c-title">Uso da Palavra em Plenário (Inciso VI)</div>
-          <div class="c-lead">Comunicações de Liderança.</div>
-        </div>
-      </div>
-      <ul class="kp-list">
-        <li><b>Uso da Palavra em Plenário (Inciso VI):</b> Durante o período destinado às <span class="org">COMUNICAÇÕES DE LIDERANÇA</span>:</li>
-        <li>● <b>Periodicidade:</b> <span class="k">SEMANALMENTE</span>.</li>
-        <li>● <b>Tempo:</b> <span class="prazo">5 MINUTOS</span>.</li>
-        <li>● <b>Forma:</b> Pessoalmente ou por delegação.</li>
-      </ul>
-
-      <div class="correlatos">
-        <div class="corr-title">ARTIGOS CORRELATOS</div>
-        <ul class="corr-list">
-          <li><span class="k">Art. 89</span> (Comunicações de Liderança): Regra geral estipula tempo proporcional (<span class="num">3</span> a <span class="num">10</span> min). A Secretaria da Infância, assim como a Coordenadoria da Mulher (Art. 20-E), possui tempo fixo de <span class="prazo">5 MINUTOS</span>.</li>
-        </ul>
-      </div>
+      <div class="note"><b>Art. 89 — regra geral:</b> tempo nas Comunicações de Liderança é proporcional (3 a 10 min). A Secretaria da Infância, assim como a Coordenadoria da Mulher, tem tempo <span class="k">fixo de 5 minutos</span> — independentemente do tamanho de bancada.</div>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text">A Coordenadoria da Mulher e a Secretaria da Infância <b>ambas têm voz e voto</b> no Colégio de Líderes e <b>5 minutos fixos</b> nas Comunicações. A Procuradoria da Mulher <b>não tem</b> nenhuma das duas. A prova pode embaralhar as três.</div></div>
     </div>
   </div>
 </div>
 
-<!-- ART. 20-H (I, II, III, IV e VII) -->
-<div class="sec-head" id="tec">
-  <div class="sec-line"></div><div class="sec-title">Art. 20-H — Competências técnicas e institucionais</div>
-  <div class="sec-badge">Incisos I, II, III, IV e VII</div><div class="sec-line"></div>
+<!-- COMPETÊNCIAS TÉCNICAS -->
+<div class="sec-head" id="comp">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 20-H, Incs. I–IV e VII — Competências Técnicas e Institucionais</div>
+  <div class="sec-badge">Prioridade absoluta · déficit de representação · grupos de trabalho</div>
+  <div class="sec-line"></div>
 </div>
-
 <div class="grid">
-  <div class="card c12" style="--c:#1c3f63">
+  <div class="card c12" style="--c:#0f5f5a">
     <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">I–IV</div>
-        <div>
-          <div class="c-title">Fiscalização e Cooperação • Estudos e Atendimento</div>
-          <div class="c-lead">Rol de competências.</div>
+      <div class="card-top"><div class="c-badge">I–VII</div><div><div class="c-title">Sete competências distribuídas por tema</div><div class="c-lead">Fiscalização, cooperação, estudos, atendimento e organização interna.</div></div></div>
+      <div class="comp-grid">
+        <div class="comp-item">
+          <div class="ci-num">Inc. I</div>
+          <div class="ci-text"><b>Fiscalizar, apoiar e acompanhar</b> projetos e programas do governo e da sociedade civil — foco em <span class="tl">Prioridade Absoluta</span> (CF, art. 227)</div>
+        </div>
+        <div class="comp-item">
+          <div class="ci-num">Inc. II</div>
+          <div class="ci-text"><b>Cooperar</b> com organismos nacionais e internacionais</div>
+        </div>
+        <div class="comp-item">
+          <div class="ci-num">Inc. III</div>
+          <div class="ci-text">Promover <b>estudos</b> sobre formas de escuta e sobre o <b>déficit de representação política</b></div>
+        </div>
+        <div class="comp-item">
+          <div class="ci-num">Inc. IV</div>
+          <div class="ci-text"><b>Atender</b> autoridades e encaminhar demandas aos órgãos competentes</div>
+        </div>
+        <div class="comp-item">
+          <div class="ci-num">Inc. VII</div>
+          <div class="ci-text">Constituir e organizar <b>grupos de trabalho</b> temáticos</div>
         </div>
       </div>
-      <ul class="kp-list">
-        <li><b>Fiscalização e Cooperação:</b></li>
-        <li>● <b>I</b> ➜ <span class="k">FISCALIZAR</span>, apoiar e acompanhar projetos/programas do governo e sociedade civil (Foco: <span class="k">Prioridade Absoluta</span>).</li>
-        <li>● <b>II</b> ➜ <span class="k">COOPERAR</span> com organismos nacionais/internacionais.</li>
-        <li><b>Estudos e Atendimento:</b></li>
-        <li>● <b>III</b> ➜ Promover <span class="k">ESTUDOS</span> sobre formas de escuta e sobre o <span class="k">DÉFICIT</span> de representação política.</li>
-        <li>● <b>IV</b> ➜ <span class="k">ATENDER</span> autoridades e encaminhar demandas aos órgãos competentes.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card c12" style="--c:#3a5c8a">
-    <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">VII</div>
-        <div>
-          <div class="c-title">Organização</div>
-          <div class="c-lead">Grupos de trabalho temáticos.</div>
-        </div>
-      </div>
-      <ul class="kp-list">
-        <li><b>Organização:</b></li>
-        <li>● <b>VII</b> ➜ Constituir e organizar <span class="k">GRUPOS DE TRABALHO</span> temáticos.</li>
-      </ul>
     </div>
   </div>
 </div>
 
-<!-- ART. 20-H (IX e X) -->
-<div class="sec-head" id="fom">
-  <div class="sec-line"></div><div class="sec-title">Art. 20-H — Fomento, capacitação e premiação</div>
-  <div class="sec-badge">Incisos IX e X</div><div class="sec-line"></div>
+<!-- CAPACITAÇÃO E PRÊMIO -->
+<div class="sec-head" id="premio">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 20-H, Incs. IX e X — Capacitação e Prêmio</div>
+  <div class="sec-badge">Seminários · Medalha Amigo da Primeira Infância · competência conjunta</div>
+  <div class="sec-line"></div>
 </div>
-
 <div class="grid">
-  <div class="card c6" style="--c:#2f5f6e">
+  <div class="card c12" style="--c:#b86b1a">
     <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">IX</div>
-        <div>
-          <div class="c-title">Capacitação (Inciso IX)</div>
-          <div class="c-lead">Seminários e instâncias formativas.</div>
+      <div class="card-top"><div class="c-badge">IX–X</div><div><div class="c-title">Fomento, capacitação e premiação</div><div class="c-lead">Duas competências com características próprias.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Inc. IX — Capacitação:</b> realizar <span class="k">seminários com especialistas</span> (brasileiros e estrangeiros) + fomentar capacitação continuada pelas <span class="k">instâncias formativas da Câmara</span></li>
+      </ul>
+      <div class="premio-box" style="margin-top:10px">
+        <div class="premio-head">🏅 Inc. X — Prêmio Medalha Amigo da Primeira Infância</div>
+        <div class="premio-body">
+          Concedido pela Secretaria em <b>competência conjunta</b> com a <b>Presidência</b> e o <b>Segundo-Secretário</b>.<br>
+          <br>
+          <span style="font-size:12px;color:var(--muted)">⚠️ Três atores envolvidos — Secretaria + Presidência + 2º-Secretário. A prova pode omitir um dos três.</span>
         </div>
       </div>
-      <ul class="kp-list">
-        <li><b>Capacitação (Inciso IX):</b></li>
-        <li>● Realizar <span class="k">SEMINÁRIOS</span> com especialistas (brasileiros/estrangeiros).</li>
-        <li>● Fomentar capacitação continuada pelas instâncias formativas da Câmara.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card c6" style="--c:#406d7a">
-    <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">X</div>
-        <div>
-          <div class="c-title">Prêmio (Inciso X)</div>
-          <div class="c-lead">Medalha e competência conjunta.</div>
-        </div>
-      </div>
-      <ul class="kp-list">
-        <li><b>Prêmio (Inciso X):</b> Conceder o <span class="k">PRÊMIO MEDALHA AMIGO DA PRIMEIRA INFÂNCIA</span>.</li>
-        <li>● <b>Competência Conjunta:</b> Secretaria + <span class="org">PRESIDÊNCIA</span> + <span class="org">SEGUNDO-SECRETÁRIO</span>.</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- CORRELATOS (reforço) -->
-<div class="sec-head" id="corr">
-  <div class="sec-line"></div><div class="sec-title">ARTIGOS CORRELATOS</div>
-  <div class="sec-badge">referências cruzadas</div><div class="sec-line"></div>
-</div>
-
-<div class="grid">
-  <div class="card c12" style="--c:#5a3d8a">
-    <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">↗</div>
-        <div>
-          <div class="c-title">ARTIGOS CORRELATOS</div>
-          <div class="c-lead">Conexões indicadas no material.</div>
-        </div>
-      </div>
-      <ul class="kp-list">
-        <li>● <span class="k">Art. 20-B</span> e <span class="k">20-C</span> (Secretaria da Mulher): Diferentemente da Secretaria da Infância (escolha pela Mesa /Indicação), a Procuradoria e a Coordenadoria da Mulher são preenchidas por <span class="k">ELEIÇÃO</span> direta das Deputadas.</li>
-        <li>● <span class="k">Art. 89</span> (Comunicações de Liderança): Regra geral estipula tempo proporcional (<span class="num">3</span> a <span class="num">10</span> min). A Secretaria da Infância, assim como a Coordenadoria da Mulher (Art. 20-E), possui tempo fixo de <span class="prazo">5 MINUTOS</span>.</li>
-        <li>● <span class="k">Art. 20-F</span> (Base Constitucional): A atuação da Secretaria baseia-se na determinação da <span class="k">PRIORIDADE ABSOLUTA</span> prevista no <span class="k">ART. 227</span> da <span class="org">CONSTITUIÇÃO FEDERAL</span>.</li>
-      </ul>
     </div>
   </div>
 </div>
 
 <div class="page-footer">
-  <span>RICD • Título II • Capítulo II-B</span>
-  <a href="index.html">← Voltar ao Índice</a>
-  <a href="titulo2.html">← Voltar ao Título II</a>
+  <a href="index.html">⌂ Índice geral</a>
+  <a href="titulo2.html">↑ Título II</a>
+  <div class="divider"></div>
   <a href="titulo2-cap2a.html">← Cap. II-A</a>
   <a href="titulo2-cap3.html">Cap. III →</a>
 </div>
@@ -872,103 +383,53 @@ a{color:inherit;text-decoration:none}
   <button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 </div>
 
-<!-- Drawer: Anotações -->
-<div class="drawer" id="drawer" aria-hidden="true">
-  <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+<div class="drawer-overlay" id="drawer" aria-hidden="true">
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
     <div class="drawer-head">
-      <div>
-        <div class="drawer-title" id="drawerTitle">Anotações — Capítulo II-B</div>
-        <div class="drawer-sub">
-          Ao clicar em <b>Salvar e fechar</b>, as notas ficam guardadas no <b>seu navegador</b>.
-        </div>
+      <div class="drawer-head-info">
+        <h2 id="drawer-title">Anotações — Tít. II · Cap. II-B</h2>
+        <p>Erros, bizus e pegadinhas. Salvas no <strong>seu navegador</strong>.</p>
       </div>
-      <button class="drawer-close" type="button" id="btnCloseTop" title="Fechar">Fechar</button>
+      <button class="drawer-close" id="btn-close-drawer" title="Fechar">✕</button>
     </div>
     <div class="drawer-body">
-      <textarea id="notes" placeholder="Escreva aqui…"></textarea>
+      <textarea id="notes-area" placeholder="Ex.: ⚠ Titular: escolhido pela MESA (não eleito); adjuntos: indicados pelo titular&#10;⚠ Vacância: até 30/nov do biênio = nova escolha pela Mesa (≠ Cap. II-A que usa &lt;3 meses)&#10;⚠ Colégio de Líderes: VOZ E VOTO (igual Coordenadoria Mulher; diferente da Procuradoria)&#10;⚠ Comunicações: 5 min SEMANALMENTE (tempo fixo, não proporcional)&#10;⚠ Prêmio Medalha: CONJUNTA — Secretaria + Presidência + 2º-Secretário&#10;⚠ Base constitucional: Art. 227 CF (prioridade absoluta)"></textarea>
       <div class="drawer-actions">
-        <button class="dbtn danger" type="button" id="btnClear">Limpar</button>
-        <button class="dbtn primary" type="button" id="btnSaveClose">Salvar e fechar</button>
+        <button class="d-btn d-btn-clear" id="btn-clear-notes" type="button">Limpar</button>
+        <button class="d-btn d-btn-save" id="btn-save-notes" type="button">Salvar e fechar</button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-/* Tema */
 (function(){
   const root=document.documentElement,btn=document.getElementById('theme-btn'),
         icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
   let dark=localStorage.getItem('ricd-theme')==='dark';
-  if(!localStorage.getItem('ricd-theme')) dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
-
-  function apply(){
-    root.setAttribute('data-theme',dark?'dark':'light');
-    icon.textContent=dark?'☀️':'🌙';
-    lbl.textContent=dark?'Claro':'Escuro';
-    localStorage.setItem('ricd-theme',dark?'dark':'light');
-  }
-  apply();
-  btn.addEventListener('click',()=>{dark=!dark;apply()});
+  if(!localStorage.getItem('ricd-theme'))dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function apply(){root.setAttribute('data-theme',dark?'dark':'light');icon.textContent=dark?'☀️':'🌙';lbl.textContent=dark?'Claro':'Escuro';localStorage.setItem('ricd-theme',dark?'dark':'light')}
+  apply();btn.addEventListener('click',()=>{dark=!dark;apply()});
 })();
-
-/* Barra de progresso + topo */
 (function(){
   const bar=document.getElementById('prog'),top=document.getElementById('back-top');
   window.addEventListener('scroll',function(){
-    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
-    bar.style.width=(h>0?(s/h*100):0)+'%';
-    top.classList.toggle('show',s>280);
+    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight||1;
+    bar.style.width=(s/h*100)+'%';top.classList.toggle('show',s>280);
   },{passive:true});
 })();
-
-/* Drawer de anotações */
 (function(){
-  const KEY="notes_titulo2_cap2b_primeira_infancia";
-  const btnOpen=document.getElementById('btn-notes');
-  const drawer=document.getElementById('drawer');
-  const notes=document.getElementById('notes');
-  const btnSaveClose=document.getElementById('btnSaveClose');
-  const btnClear=document.getElementById('btnClear');
-  const btnCloseTop=document.getElementById('btnCloseTop');
-
-  function openDrawer(){
-    drawer.classList.add('open');
-    drawer.setAttribute('aria-hidden','false');
-    notes.value=localStorage.getItem(KEY)||'';
-    setTimeout(()=>notes.focus(),50);
-  }
-  function closeDrawer(){
-    drawer.classList.remove('open');
-    drawer.setAttribute('aria-hidden','true');
-  }
-  function saveNotes(){
-    localStorage.setItem(KEY,notes.value||'');
-  }
-
-  btnOpen.addEventListener('click',openDrawer);
-  btnCloseTop.addEventListener('click',closeDrawer);
-
-  btnSaveClose.addEventListener('click',function(){
-    saveNotes();
-    closeDrawer();
-  });
-
-  btnClear.addEventListener('click',function(){
-    if(confirm('Tem certeza que deseja limpar suas anotações deste capítulo?')){
-      notes.value='';
-      localStorage.removeItem(KEY);
-      notes.focus();
-    }
-  });
-
-  drawer.addEventListener('click',function(e){
-    if(e.target===drawer) closeDrawer();
-  });
-
-  window.addEventListener('keydown',function(e){
-    if(e.key==='Escape' && drawer.classList.contains('open')) closeDrawer();
-  });
+  const KEY='notes_tit2_cap2b';
+  const overlay=document.getElementById('drawer'),area=document.getElementById('notes-area');
+  const btnOpen=document.getElementById('btn-notes'),btnClose=document.getElementById('btn-close-drawer');
+  const btnSave=document.getElementById('btn-save-notes'),btnClear=document.getElementById('btn-clear-notes');
+  function open(){overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');area.value=localStorage.getItem(KEY)||'';area.focus()}
+  function close(){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true')}
+  btnOpen.addEventListener('click',open);btnClose.addEventListener('click',close);
+  btnSave.addEventListener('click',()=>{localStorage.setItem(KEY,area.value);close()});
+  btnClear.addEventListener('click',()=>{if(confirm('Limpar anotações?')){area.value='';localStorage.removeItem(KEY);area.focus()}});
+  overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
+  window.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))close()});
 })();
 </script>
 </body>
