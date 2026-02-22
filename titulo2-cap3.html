@@ -3,589 +3,197 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RICD — Título II (Cap. III — Procuradoria Parlamentar)</title>
+<title>RICD — Tít. II · Cap. III — Procuradoria Parlamentar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════════════
-   TOKENS — LIGHT
-═══════════════════════════════════════════════ */
-:root, [data-theme="light"] {
-  --bg:          #f3f6fb;
-  --bg2:         #eaeff8;
-  --surface:     #ffffff;
-  --surface2:    #f7faff;
-  --border:      rgba(15,39,66,.09);
-  --border-hard: rgba(15,39,66,.16);
-
-  --ink:         #0d1f35;
-  --ink2:        #2b4060;
-  --muted:       #526a88;
-  --faint:       #8fa8c2;
-
-  --gold:        #b86b1a;
-  --gold-soft:   rgba(184,107,26,.10);
-  --blue:        #1a4d8a;
-  --blue-soft:   rgba(26,77,138,.08);
-  --green:       #186347;
-  --green-soft:  rgba(24,99,71,.09);
-  --red:         #a81f2a;
-  --red-soft:    rgba(168,31,42,.09);
-  --purple:      #5a3d8a;
-  --purple-soft: rgba(90,61,138,.08);
-
-  --mark-bg:     rgba(15,23,42,.07);
-
-  --hero-from:   #0c2240;
-  --hero-to:     #153558;
-  --hero-text:   #ffffff;
-  --hero-sub:    rgba(255,255,255,.80);
-
-  --sh-sm:  0 2px 8px rgba(12,26,43,.06);
-  --sh-md:  0 6px 20px rgba(12,26,43,.09);
-  --sh-lg:  0 14px 34px rgba(12,26,43,.11);
-  --sh-hov: 0 10px 28px rgba(12,26,43,.14);
-
-  --chip-bg:     rgba(255,255,255,.72);
-  --chip-border: rgba(15,23,42,.10);
-  --chip-text:   #2b4060;
-
-  --list-bg:     #f7fafc;
-  --note-bg:     rgba(26,77,138,.05);
-  --note-border: rgba(26,77,138,.12);
-  --note-text:   #1a2e44;
-
-  --toggle-bg:   #d8e2f0;
-  --toggle-knob: #ffffff;
+:root,[data-theme="light"]{
+  --bg:#f3f6fb;--bg2:#eaeff8;--surface:#fff;--surface2:#f7faff;
+  --border:rgba(15,39,66,.09);--border-hard:rgba(15,39,66,.16);
+  --ink:#0d1f35;--ink2:#2b4060;--muted:#526a88;--faint:#8fa8c2;
+  --gold:#b86b1a;--gold-soft:rgba(184,107,26,.10);
+  --blue:#1a4d8a;--blue-soft:rgba(26,77,138,.08);
+  --green:#186347;--green-soft:rgba(24,99,71,.09);
+  --red:#a81f2a;--red-soft:rgba(168,31,42,.09);
+  --purple:#5a3d8a;--purple-soft:rgba(90,61,138,.08);
+  --mark-bg:rgba(15,23,42,.07);
+  --hero-from:#0c2240;--hero-to:#153558;--hero-text:#fff;--hero-sub:rgba(255,255,255,.80);
+  --sh-sm:0 2px 8px rgba(12,26,43,.06);--sh-md:0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:0 14px 34px rgba(12,26,43,.11);--sh-hov:0 10px 28px rgba(12,26,43,.14);
+  --list-bg:#f7fafc;--note-bg:rgba(26,77,138,.05);--note-border:rgba(26,77,138,.12);--note-text:#1a2e44;
+  --toggle-bg:#d8e2f0;--toggle-knob:#fff;--drawer-bg:#fff;--drawer-overlay:rgba(15,23,42,.38);--textarea-bg:#fbfcfe;
 }
-
-/* ═══════════════════════════════════════════════
-   TOKENS — DARK
-═══════════════════════════════════════════════ */
-[data-theme="dark"] {
-  --bg:          #0c1120;
-  --bg2:         #101728;
-  --surface:     #161d2f;
-  --surface2:    #1b2238;
-  --border:      rgba(255,255,255,.06);
-  --border-hard: rgba(255,255,255,.12);
-
-  --ink:         #dce8fa;
-  --ink2:        #94b0d4;
-  --muted:       #627ea6;
-  --faint:       #374e6a;
-
-  --gold:        #f0b84a;
-  --gold-soft:   rgba(240,184,74,.11);
-  --blue:        #5b96f0;
-  --blue-soft:   rgba(91,150,240,.11);
-  --green:       #38c882;
-  --green-soft:  rgba(56,200,130,.09);
-  --red:         #f46862;
-  --red-soft:    rgba(244,104,98,.11);
-  --purple:      #a07af5;
-  --purple-soft: rgba(160,122,245,.10);
-
-  --mark-bg:     rgba(220,232,250,.09);
-
-  --hero-from:   #08111e;
-  --hero-to:     #0f1e30;
-  --hero-text:   #e4f0ff;
-  --hero-sub:    rgba(210,228,255,.70);
-
-  --sh-sm:  0 2px 8px rgba(0,0,0,.28);
-  --sh-md:  0 6px 20px rgba(0,0,0,.34);
-  --sh-lg:  0 14px 34px rgba(0,0,0,.40);
-  --sh-hov: 0 10px 28px rgba(0,0,0,.46);
-
-  --chip-bg:     rgba(255,255,255,.06);
-  --chip-border: rgba(255,255,255,.12);
-  --chip-text:   rgba(220,232,255,.82);
-
-  --list-bg:     rgba(255,255,255,.03);
-  --note-bg:     rgba(91,150,240,.09);
-  --note-border: rgba(91,150,240,.20);
-  --note-text:   #b0ccf0;
-
-  --toggle-bg:   #243350;
-  --toggle-knob: #f0b84a;
+[data-theme="dark"]{
+  --bg:#0c1120;--bg2:#101728;--surface:#161d2f;--surface2:#1b2238;
+  --border:rgba(255,255,255,.06);--border-hard:rgba(255,255,255,.12);
+  --ink:#dce8fa;--ink2:#94b0d4;--muted:#627ea6;--faint:#374e6a;
+  --gold:#f0b84a;--gold-soft:rgba(240,184,74,.11);
+  --blue:#5b96f0;--blue-soft:rgba(91,150,240,.11);
+  --green:#38c882;--green-soft:rgba(56,200,130,.09);
+  --red:#f46862;--red-soft:rgba(244,104,98,.11);
+  --purple:#a07af5;--purple-soft:rgba(160,122,245,.10);
+  --mark-bg:rgba(220,232,250,.09);
+  --hero-from:#08111e;--hero-to:#0f1e30;--hero-text:#e4f0ff;--hero-sub:rgba(210,228,255,.70);
+  --sh-sm:0 2px 8px rgba(0,0,0,.28);--sh-md:0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:0 14px 34px rgba(0,0,0,.40);--sh-hov:0 10px 28px rgba(0,0,0,.46);
+  --list-bg:rgba(255,255,255,.03);--note-bg:rgba(91,150,240,.09);--note-border:rgba(91,150,240,.20);--note-text:#b0ccf0;
+  --toggle-bg:#243350;--toggle-knob:#f0b84a;--drawer-bg:#161d2f;--drawer-overlay:rgba(0,0,0,.65);--textarea-bg:#111828;
 }
-
-/* ═══════════════════════════════════════════════
-   RESET & BASE
-═══════════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{
-  font-family:'Outfit',sans-serif;
-  font-size:15px;
-  line-height:1.68;
-  color:var(--ink);
-  background:var(--bg);
-  transition:background .25s,color .25s;
-  min-height:100vh;
-}
+body{font-family:'Outfit',sans-serif;font-size:15px;line-height:1.68;color:var(--ink);background:var(--bg);transition:background .25s,color .25s;min-height:100vh}
 a{color:inherit;text-decoration:none}
-
-/* ═══════════════════════════════════════════════
-   PROGRESS BAR
-═══════════════════════════════════════════════ */
-#prog{
-  position:fixed;top:0;left:0;
-  height:3px;width:0%;
-  background:linear-gradient(90deg,var(--gold),var(--blue));
-  z-index:300;transition:width .08s linear;
-  border-radius:0 2px 2px 0;
-}
-
-/* ═══════════════════════════════════════════════
-   FAB — THEME TOGGLE + BACK TO TOP
-═══════════════════════════════════════════════ */
-.fab-wrap{
-  position:fixed;bottom:24px;right:24px;
-  z-index:200;
-  display:flex;flex-direction:column;gap:10px;align-items:flex-end;
-}
-#theme-btn{
-  background:var(--surface);
-  border:1px solid var(--border-hard);
-  box-shadow:var(--sh-md);
-  border-radius:50px;
-  padding:8px 14px;
-  cursor:pointer;
-  display:flex;align-items:center;gap:9px;
-  font-family:'Outfit',sans-serif;
-  font-size:13px;font-weight:600;
-  color:var(--muted);
-  transition:all .2s;user-select:none;
-}
+#prog{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--gold),var(--blue));z-index:300;transition:width .08s linear;border-radius:0 2px 2px 0}
+.fab-wrap{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+#theme-btn{background:var(--surface);border:1px solid var(--border-hard);box-shadow:var(--sh-md);border-radius:50px;padding:8px 14px;cursor:pointer;display:flex;align-items:center;gap:9px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--muted);transition:all .2s;user-select:none}
 #theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
-.t-track{
-  width:38px;height:20px;
-  background:var(--toggle-bg);
-  border-radius:20px;position:relative;
-  transition:background .25s;
-}
-.t-knob{
-  position:absolute;top:2px;left:2px;
-  width:16px;height:16px;
-  border-radius:50%;
-  background:var(--toggle-knob);
-  transition:transform .25s,background .25s;
-  box-shadow:0 1px 4px rgba(0,0,0,.22);
-}
+.t-track{width:38px;height:20px;background:var(--toggle-bg);border-radius:20px;position:relative;transition:background .25s}
+.t-knob{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--toggle-knob);transition:transform .25s;box-shadow:0 1px 4px rgba(0,0,0,.22)}
 [data-theme="dark"] .t-knob{transform:translateX(18px)}
-#back-top{
-  width:44px;height:44px;
-  background:var(--surface);
-  border:1px solid var(--border-hard);
-  border-radius:50%;
-  box-shadow:var(--sh-md);
-  cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  font-size:19px;color:var(--muted);
-  transition:all .2s;
-  opacity:0;pointer-events:none;
-  transform:translateY(10px);
-}
+#back-top{width:44px;height:44px;background:var(--surface);border:1px solid var(--border-hard);border-radius:50%;box-shadow:var(--sh-md);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--muted);transition:all .2s;opacity:0;pointer-events:none;transform:translateY(10px)}
 #back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
 #back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
-
-/* ═══════════════════════════════════════════════
-   WRAP
-═══════════════════════════════════════════════ */
-.wrap{max-width:1060px;margin:0 auto;padding:0 20px 80px}
-
-/* ═══════════════════════════════════════════════
-   HERO
-═══════════════════════════════════════════════ */
-.hero{
-  background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);
-  border-radius:0 0 28px 28px;
-  padding:38px 36px 34px;
-  margin-bottom:32px;
-  position:relative;overflow:hidden;
-  box-shadow:var(--sh-lg);
-}
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),
-    radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);
-  pointer-events:none;
-}
-.hero::after{
-  content:'II';
-  position:absolute;right:36px;top:50%;transform:translateY(-50%);
-  font-family:'Crimson Pro',serif;
-  font-size:160px;font-weight:700;
-  color:rgba(255,255,255,.04);
-  line-height:1;pointer-events:none;user-select:none;
-}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px 80px}
+.hero{background:linear-gradient(140deg,var(--hero-from) 0%,var(--hero-to) 100%);border-radius:0 0 28px 28px;padding:38px 36px 34px;margin-bottom:32px;position:relative;overflow:hidden;box-shadow:var(--sh-lg)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(720px 280px at 14% 20%,rgba(255,255,255,.09),transparent 58%),radial-gradient(520px 240px at 86% 14%,rgba(255,255,255,.06),transparent 55%);pointer-events:none}
+.hero::after{content:'III';position:absolute;right:36px;top:50%;transform:translateY(-50%);font-family:'Crimson Pro',serif;font-size:150px;font-weight:700;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none}
 .hero-inner{position:relative;z-index:1}
-.hero-eyebrow{
-  font-family:'JetBrains Mono',monospace;
-  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:10px;
-}
-.hero-title{
-  font-family:'Crimson Pro',serif;
-  font-size:clamp(28px,3.5vw,42px);
-  font-weight:700;color:var(--hero-text);
-  line-height:1.12;margin-bottom:10px;
-}
-.hero-sub{
-  font-size:14px;color:var(--hero-sub);
-  max-width:70ch;line-height:1.58;margin-bottom:16px;
-}
-
-/* extra: hero actions (match identity) */
-.hero-actions{
-  display:flex;flex-wrap:wrap;gap:10px;align-items:center;
-  margin:0 0 16px;
-}
-.hero-btn{
-  appearance:none;border:1px solid rgba(255,255,255,.18);
-  background:rgba(255,255,255,.08);
-  color:rgba(255,255,255,.90);
-  padding:8px 12px;border-radius:999px;
-  font-family:'Outfit',sans-serif;font-size:13px;font-weight:650;
-  cursor:pointer;
-  transition:background .15s,transform .1s,box-shadow .15s;
-}
-.hero-btn:hover{background:rgba(255,255,255,.16);transform:translateY(-1px)}
-.hero-btn-primary{
-  background:rgba(240,184,74,.18);
-  border-color:rgba(240,184,74,.30);
-  color:#fff;
-}
-.hero-btn-primary:hover{background:rgba(240,184,74,.24)}
-.hero-btn-ghost{}
-
-/* nav chips */
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.hero-title{font-family:'Crimson Pro',serif;font-size:clamp(24px,3vw,40px);font-weight:700;color:var(--hero-text);line-height:1.12;margin-bottom:10px}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:72ch;line-height:1.58;margin-bottom:18px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.hero-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;border:1px solid;font-family:'Outfit',sans-serif}
+.hero-btn-ghost{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18);color:rgba(255,255,255,.88)}
+.hero-btn-ghost:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
+.hero-btn-primary{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);color:#fff;font-weight:700}
+.hero-btn-primary:hover{background:rgba(255,255,255,.22);transform:translateY(-1px)}
 .nav-chips{display:flex;flex-wrap:wrap;gap:8px}
-.nav-chips a{
-  display:inline-flex;align-items:center;gap:7px;
-  padding:7px 13px;border-radius:100px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.16);
-  color:rgba(255,255,255,.88);
-  font-size:12.5px;font-weight:500;
-  transition:background .15s,transform .1s;
-}
+.nav-chips a{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:100px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.88);font-size:12.5px;font-weight:500;transition:background .15s,transform .1s}
 .nav-chips a:hover{background:rgba(255,255,255,.17);transform:translateY(-1px)}
 .nav-chips a b{font-weight:700;color:var(--gold)}
-.legend{
-  display:flex;flex-wrap:wrap;gap:8px;
-  margin-top:18px;padding-top:18px;
-  border-top:1px solid rgba(255,255,255,.10);
-}
-.lchip{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:5px 11px;border-radius:100px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.07);
-  color:rgba(255,255,255,.78);
-  font-family:'JetBrains Mono',monospace;
-  font-size:10px;letter-spacing:.06em;font-weight:600;text-transform:uppercase;
-}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.10)}
+.lchip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:rgba(255,255,255,.78);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;font-weight:600;text-transform:uppercase}
 .ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-
-/* ═══════════════════════════════════════════════
-   SECTION DIVIDER
-═══════════════════════════════════════════════ */
-.sec-head{
-  display:flex;align-items:center;gap:14px;
-  margin:36px 0 18px;
-}
+.sec-head{display:flex;align-items:center;gap:14px;margin:36px 0 18px}
 .sec-line{flex:1;height:1px;background:var(--border-hard)}
-.sec-title{
-  font-family:'Crimson Pro',serif;
-  font-size:21px;font-weight:700;
-  color:var(--ink);white-space:nowrap;
-}
-.sec-badge{
-  font-family:'JetBrains Mono',monospace;
-  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--faint);white-space:nowrap;
-}
-
-/* ═══════════════════════════════════════════════
-   GRID
-═══════════════════════════════════════════════ */
+.sec-title{font-family:'Crimson Pro',serif;font-size:21px;font-weight:700;color:var(--ink);white-space:nowrap}
+.sec-badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-.c12{grid-column:span 12}
-.c6{grid-column:span 12}
-.c4{grid-column:span 12}
-@media(min-width:760px){.c6{grid-column:span 6}.c4{grid-column:span 4}}
-
-/* ═══════════════════════════════════════════════
-   CARD
-═══════════════════════════════════════════════ */
-.card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:14px;
-  box-shadow:var(--sh-sm);
-  overflow:hidden;position:relative;
-  transition:transform .14s,box-shadow .14s,border-color .14s;
-  opacity:0;
-  animation:fadeUp .35s ease forwards;
-}
-.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.07s}
-.card:nth-child(3){animation-delay:.11s}.card:nth-child(4){animation-delay:.15s}
-.card:nth-child(5){animation-delay:.19s}.card:nth-child(6){animation-delay:.23s}
-.card:nth-child(7){animation-delay:.27s}.card:nth-child(8){animation-delay:.31s}
-.card:nth-child(9){animation-delay:.35s}.card:nth-child(10){animation-delay:.39s}
-.card:nth-child(11){animation-delay:.43s}.card:nth-child(12){animation-delay:.47s}
+.c12{grid-column:span 12}.c6{grid-column:span 12}.c5{grid-column:span 12}.c7{grid-column:span 12}
+@media(min-width:760px){.c6{grid-column:span 6}.c5{grid-column:span 5}.c7{grid-column:span 7}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--sh-sm);overflow:hidden;position:relative;transition:transform .14s,box-shadow .14s;opacity:0;animation:fadeUp .35s ease forwards}
+.card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.07s}.card:nth-child(3){animation-delay:.11s}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .card:hover{transform:translateY(-2px);box-shadow:var(--sh-hov)}
-.card::before{
-  content:'';
-  position:absolute;left:0;top:0;bottom:0;
-  width:4px;background:var(--c,#1c3f63);
-  border-radius:14px 0 0 14px;
-}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,#1c3f63);border-radius:14px 0 0 14px}
 .card-inner{padding:16px 16px 16px 18px}
 .card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
-.c-badge{
-  flex-shrink:0;width:36px;height:36px;
-  border-radius:9px;background:var(--bg2);
-  border:1px solid var(--border-hard);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'JetBrains Mono',monospace;
-  font-size:11.5px;font-weight:700;
-  color:var(--c,#1c3f63);margin-top:1px;
-}
-[data-theme="dark"] .c-badge{
-  background:color-mix(in srgb,var(--c,#1c3f63) 14%,var(--surface2) 86%);
-  color:color-mix(in srgb,var(--c,#1c3f63) 55%,#ffffff 45%);
-}
-@supports not (color:color-mix(in srgb,red 50%,blue 50%)){
-  [data-theme="dark"] .c-badge{background:var(--surface2);color:var(--ink2)}
-}
-.c-title{
-  font-family:'Crimson Pro',serif;
-  font-size:17px;font-weight:700;
-  color:var(--ink);line-height:1.2;margin-bottom:3px;
-}
+.c-badge{flex-shrink:0;width:36px;height:36px;border-radius:9px;background:var(--bg2);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--c,#1c3f63);margin-top:1px}
+[data-theme="dark"] .c-badge{background:color-mix(in srgb,var(--c,#1c3f63) 14%,var(--surface2) 86%);color:color-mix(in srgb,var(--c,#1c3f63) 55%,#ffffff 45%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){[data-theme="dark"] .c-badge{background:var(--surface2);color:var(--ink2)}}
+.c-title{font-family:'Crimson Pro',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:3px}
 .c-lead{font-size:13px;color:var(--muted);line-height:1.45}
-
-/* Lista */
 .kp-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:10px}
-.kp-list li{
-  padding:9px 11px;border-radius:9px;
-  background:var(--list-bg);border:1px solid var(--border);
-  font-size:13.5px;color:var(--ink2);line-height:1.52;
-}
+.kp-list li{padding:9px 11px;border-radius:9px;background:var(--list-bg);border:1px solid var(--border);font-size:13.5px;color:var(--ink2);line-height:1.52}
 .kp-list li b{font-weight:700;color:var(--ink)}
-
-/* Destaques semânticos */
+.kp-list li ul{margin-top:5px;padding-left:16px;display:flex;flex-direction:column;gap:3px}
+.kp-list li ul li{padding:0;background:none;border:none;font-size:13px;color:var(--muted)}
 .k{font-weight:700;color:var(--ink);background:var(--mark-bg);padding:0 .22em;border-radius:.4em}
 .org{font-weight:700;color:var(--blue);background:var(--blue-soft);padding:0 .22em;border-radius:.4em}
-.prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em}
+.prazo{font-weight:700;color:var(--gold);background:var(--gold-soft);padding:0 .22em;border-radius:.4em;white-space:nowrap}
 .exc{font-weight:700;color:var(--red);background:var(--red-soft);padding:0 .22em;border-radius:.4em}
-.num{font-weight:700;color:var(--ink2)}
-.tech{font-style:italic;font-weight:600;color:var(--ink)}
-
-/* Nota */
-.note{
-  margin-top:10px;padding:10px 13px;border-radius:10px;
-  background:var(--note-bg);border:1px solid var(--note-border);
-  color:var(--note-text);font-size:13px;line-height:1.55;
-}
+.vert{font-weight:700;color:var(--green);background:var(--green-soft);padding:0 .22em;border-radius:.4em}
+.note{margin-top:10px;padding:10px 13px;border-radius:10px;background:var(--note-bg);border:1px solid var(--note-border);color:var(--note-text);font-size:13px;line-height:1.55}
 .note b{font-weight:700}
-
-/* Pegadinha */
-.trap{
-  margin-top:10px;display:flex;gap:10px;align-items:flex-start;
-  background:var(--red-soft);
-  border:1px solid color-mix(in srgb,var(--red) 25%,transparent 75%);
-  border-radius:10px;padding:11px 13px;
-}
+.trap{margin-top:10px;display:flex;gap:10px;align-items:flex-start;background:var(--red-soft);border:1px solid color-mix(in srgb,var(--red) 25%,transparent 75%);border-radius:10px;padding:11px 13px}
 @supports not (color:color-mix(in srgb,red 50%,blue 50%)){.trap{border-color:rgba(168,31,42,.2)}}
 .trap-icon{font-size:16px;line-height:1.5;flex-shrink:0}
 .trap-text{font-size:13px;color:var(--red);font-weight:500;line-height:1.5}
-.trap-text b{font-weight:700;color:var(--red)}
-
-/* Correlatos */
-.correlatos{
-  margin-top:10px;padding:11px 13px;border-radius:10px;
-  background:var(--purple-soft);
-  border:1px solid rgba(90,61,138,.16);
-}
+.trap-text b{font-weight:700}
+.correlatos{margin-top:10px;padding:11px 13px;border-radius:10px;background:var(--purple-soft);border:1px solid rgba(90,61,138,.16)}
 [data-theme="dark"] .correlatos{border-color:rgba(160,122,245,.18)}
-.corr-title{
-  font-family:'JetBrains Mono',monospace;font-size:10px;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:var(--purple);font-weight:700;margin-bottom:6px;
-}
+.corr-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);font-weight:700;margin-bottom:6px}
 .corr-list{list-style:none;display:flex;flex-direction:column;gap:4px}
 .corr-list li{font-size:13px;color:var(--ink2);padding-left:16px;position:relative;line-height:1.5}
 .corr-list li::before{content:'↗';position:absolute;left:0;color:var(--purple);font-size:12px}
 
-/* ═══════════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════════ */
-.page-footer{
-  text-align:center;font-size:12.5px;color:var(--faint);
-  margin-top:48px;padding-top:20px;
-  border-top:1px solid var(--border-hard);
-  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;
-}
-.page-footer a{
-  color:var(--blue);font-weight:600;
-  padding:6px 14px;border-radius:8px;
-  border:1px solid var(--border-hard);background:var(--surface);
-  font-size:13px;transition:box-shadow .15s;
-}
-.page-footer a:hover{box-shadow:var(--sh-md)}
+/* DISTINÇÃO BOX */
+.dist-box{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:12px;overflow:hidden;border:1px solid var(--border-hard);margin-top:12px}
+@media(max-width:540px){.dist-box{grid-template-columns:1fr}}
+.dist-col{padding:12px 14px;border-right:1px solid var(--border-hard)}
+.dist-col:last-child{border-right:none}
+.dist-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.dist-col.parl .dist-label{color:var(--blue)}
+.dist-col.mul .dist-label{color:#7e1a4a}
+[data-theme="dark"] .dist-col.mul .dist-label{color:#f080b4}
+.dist-col.parl{background:var(--blue-soft)}
+.dist-col.mul{background:rgba(126,26,74,.07)}
+[data-theme="dark"] .dist-col.mul{background:rgba(240,128,180,.07)}
+.dist-val{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.dist-sub{font-size:12px;color:var(--muted);line-height:1.4}
 
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
+/* REPRESENTAÇÃO LIST */
+.rep-list{list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:10px;counter-reset:rep}
+.rep-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:9px;background:var(--list-bg);border:1px solid var(--border);font-size:13.5px;color:var(--ink2);counter-increment:rep}
+.rep-item::before{content:counter(rep);flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--blue);background:var(--blue-soft);padding:2px 8px;border-radius:5px}
+.rep-item b{font-weight:700;color:var(--ink)}
 
-@media(max-width:600px){
-  .hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}
-  .hero::after{display:none}
-  .wrap{padding:0 14px 80px}
-}
+/* FOOTER */
+.page-footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border-hard);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px}
+.page-footer a{display:inline-flex;align-items:center;gap:6px;color:var(--blue);font-weight:600;padding:8px 16px;border-radius:10px;border:1px solid var(--border-hard);background:var(--surface);font-size:13px;transition:box-shadow .15s,transform .12s}
+.page-footer a:hover{box-shadow:var(--sh-md);transform:translateY(-1px)}
+.page-footer .divider{width:1px;height:20px;background:var(--border-hard)}
 
-/* ═══════════════════════════════════════════════
-   NOTES DRAWER (match identity)
-═══════════════════════════════════════════════ */
-.drawer{
-  position:fixed;inset:0;
-  display:none;
-  background:rgba(15,23,42,.45);
-  backdrop-filter: blur(4px);
-  z-index:400;
-  padding:18px;
-  align-items:flex-end;
-  justify-content:center;
-}
-.drawer.open{display:flex}
-.drawer-panel{
-  width:min(920px, 100%);
-  background:var(--surface);
-  border:1px solid var(--border-hard);
-  border-radius:18px;
-  box-shadow:var(--sh-lg);
-  overflow:hidden;
-}
-.drawer-head{
-  padding:14px 16px 12px;
-  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
-  background:
-    radial-gradient(820px 220px at 12% 0%, rgba(255,255,255,.10), transparent 62%),
-    radial-gradient(820px 220px at 88% 0%, rgba(255,255,255,.06), transparent 58%),
-    linear-gradient(180deg, var(--surface2), var(--surface));
-  border-bottom:1px solid var(--border);
-}
-.drawer-head h2{
-  margin:0;
-  font-family:'Crimson Pro',serif;
-  font-size:16px;font-weight:700;color:var(--ink);
-}
-.drawer-head p{
-  margin:6px 0 0;
-  color:var(--muted);
-  font-size:13px;line-height:1.45;
-  max-width:82ch;
-}
-.drawer-x{
-  width:40px;height:40px;
-  border-radius:10px;
-  background:var(--surface2);
-  border:1px solid var(--border-hard);
-  color:var(--muted);
-  cursor:pointer;
-  font-size:20px;line-height:1;
-  display:flex;align-items:center;justify-content:center;
-  transition:all .15s;
-}
-.drawer-x:hover{color:var(--ink);box-shadow:var(--sh-md);transform:translateY(-1px)}
-.drawer-body{padding:12px 14px 14px}
-.drawer-body textarea{
-  width:100%;
-  min-height:240px;
-  resize:vertical;
-  border-radius:14px;
-  border:1px solid var(--border-hard);
-  padding:12px 12px;
-  font-family:'Outfit',sans-serif;
-  font-size:13.5px;
-  line-height:1.55;
-  outline:none;
-  background:var(--surface2);
-  color:var(--ink);
-}
-.drawer-body textarea:focus{
-  border-color: color-mix(in srgb, var(--blue) 35%, var(--border-hard) 65%);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 18%, transparent 82%);
-  background:var(--surface);
-}
-@supports not (color:color-mix(in srgb,red 50%,blue 50%)){
-  .drawer-body textarea:focus{box-shadow:0 0 0 3px rgba(26,77,138,.12)}
-}
-.drawer-actions{
-  margin-top:10px;
-  display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;
-}
-.drawer-btn{
-  appearance:none;
-  border:1px solid var(--border-hard);
-  background:var(--surface);
-  color:var(--ink2);
-  padding:9px 12px;
-  border-radius:999px;
-  cursor:pointer;
-  font-family:'Outfit',sans-serif;
-  font-size:13px;font-weight:650;
-  transition:all .15s;
-}
-.drawer-btn:hover{box-shadow:var(--sh-md);transform:translateY(-1px);color:var(--ink)}
-.drawer-btn-primary{
-  border-color: color-mix(in srgb, var(--gold) 36%, var(--border-hard) 64%);
-  background: color-mix(in srgb, var(--gold) 14%, var(--surface) 86%);
-  color:var(--ink);
-}
-.drawer-btn-ghost{
-  background:transparent;
-}
-.drawer-btn-ghost:hover{background:var(--surface2)}
+/* DRAWER */
+.drawer-overlay{position:fixed;inset:0;background:var(--drawer-overlay);backdrop-filter:blur(4px);z-index:400;display:none;align-items:flex-end;justify-content:center;padding:16px}
+.drawer-overlay.open{display:flex}
+.drawer-panel{width:min(900px,100%);background:var(--drawer-bg);border:1px solid var(--border-hard);border-radius:20px;box-shadow:var(--sh-lg);overflow:hidden;transition:background .25s}
+.drawer-head{padding:16px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;background:linear-gradient(180deg,var(--surface2),var(--surface));border-bottom:1px solid var(--border-hard)}
+.drawer-head-info h2{font-family:'Crimson Pro',serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.drawer-head-info p{font-size:13px;color:var(--muted);line-height:1.45}
+.drawer-close{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--bg2);border:1px solid var(--border-hard);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);transition:all .15s}
+.drawer-close:hover{color:var(--red)}
+.drawer-body{padding:16px 20px 20px}
+#notes-area{width:100%;min-height:180px;resize:vertical;border-radius:12px;border:1px solid var(--border-hard);padding:12px 14px;font-family:'Outfit',sans-serif;font-size:14px;line-height:1.6;outline:none;background:var(--textarea-bg);color:var(--ink);transition:border-color .15s,background .25s,color .25s}
+#notes-area:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+#notes-area::placeholder{color:var(--faint)}
+.drawer-actions{margin-top:12px;display:flex;gap:10px;justify-content:flex-end}
+.d-btn{font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;padding:8px 18px;border-radius:8px;cursor:pointer;border:1px solid;transition:all .15s}
+.d-btn-clear{background:transparent;color:var(--red);border-color:color-mix(in srgb,var(--red) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-clear{border-color:rgba(168,31,42,.3)}}
+.d-btn-clear:hover{background:var(--red-soft)}
+.d-btn-save{background:var(--green-soft);color:var(--green);border-color:color-mix(in srgb,var(--green) 30%,transparent 70%)}
+@supports not (color:color-mix(in srgb,red 50%,blue 50%)){.d-btn-save{border-color:rgba(24,99,71,.3)}}
+.d-btn-save:hover{background:rgba(24,99,71,.18)}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
+@media(max-width:600px){.hero{padding:28px 22px 26px;border-radius:0 0 20px 20px}.hero::after{display:none}.wrap{padding:0 14px 80px}}
 </style>
 </head>
 <body>
-
 <div id="prog"></div>
 
 <header class="hero" id="topo">
   <div class="wrap" style="padding:0">
     <div class="hero-inner">
-      <div class="hero-eyebrow">RICD • Resumo Visual • Material de Revisão</div>
+      <div class="hero-eyebrow">RICD • Título II • Capítulo III</div>
       <h1 class="hero-title">Capítulo III — Da Procuradoria Parlamentar</h1>
-      <p class="hero-sub">Art. 21 e parágrafos. Finalidade, composição e atuação institucional (inclusive medidas reparadoras, representação e publicidade).</p>
-
-      <div class="hero-actions" role="group" aria-label="Navegação">
-        <a class="hero-btn hero-btn-ghost" href="index.html" title="Voltar ao índice geral">← Índice</a>
-        <a class="hero-btn hero-btn-ghost" href="titulo2.html" title="Voltar ao índice do Título II">← Título II</a>
-        <a class="hero-btn hero-btn-ghost" href="titulo2-cap2b.html" title="Voltar ao capítulo anterior">← Cap. II-B</a>
-        <button class="hero-btn hero-btn-primary" id="notes-open" type="button" title="Abrir anotações">📝 Anotações</button>
+      <p class="hero-sub">Art. 21 — Finalidade (defesa da honra e imagem da Câmara, de seus órgãos e membros), composição (11 membros, designados pelo PCD), publicidade reparadora, medidas judiciais e representação processual.</p>
+      <div class="hero-actions">
+        <a class="hero-btn hero-btn-ghost" href="index.html">⌂ Índice</a>
+        <a class="hero-btn hero-btn-ghost" href="titulo2.html">↑ Título II</a>
+        <button class="hero-btn hero-btn-primary" id="btn-notes" type="button">✏️ Anotações</button>
       </div>
-
-      <nav class="nav-chips" aria-label="Seções">
-        <a href="#pp"><b>Art. 21</b> Finalidade</a>
-        <a href="#medidas"><b>§§ 2º–3º</b> Medidas e representação</a>
-        <a href="#correlatos"><b>Correlatos</b> Referências</a>
+      <nav class="nav-chips">
+        <a href="#fin"><b>Art. 21</b> Finalidade e composição</a>
+        <a href="#med"><b>§§ 2º–3º</b> Medidas reparadoras</a>
+        <a href="#rep"><b>Representação</b> processual</a>
+        <a href="#dist"><b>⚠</b> Parl. × Mulher</a>
       </nav>
-
       <div class="legend">
-        <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Órgãos</span>
-        <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Prazos</span>
-        <span class="lchip"><span class="ldot" style="background:#f46862"></span>Exceções/Vedações</span>
-        <span class="lchip"><span class="ldot" style="background:rgba(255,255,255,.4)"></span>Palavras-chave</span>
+        <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Composição</span>
+        <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Representação processual</span>
+        <span class="lchip"><span class="ldot" style="background:#f46862"></span>Distinção crítica</span>
       </div>
     </div>
   </div>
@@ -593,116 +201,119 @@ a{color:inherit;text-decoration:none}
 
 <div class="wrap">
 
-<div class="sec-head" id="pp">
-  <div class="sec-line"></div><div class="sec-title">Art. 21 — Procuradoria Parlamentar</div>
-  <div class="sec-badge">Finalidade • composição • atuação</div><div class="sec-line"></div>
+<!-- FINALIDADE E COMPOSIÇÃO -->
+<div class="sec-head" id="fin">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 21 — Finalidade e Composição</div>
+  <div class="sec-badge">11 membros · PCD designa · a cada 2 anos · proporcionalidade partidária</div>
+  <div class="sec-line"></div>
+</div>
+<div class="grid">
+
+  <div class="card c5" style="--c:#1c3f63">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">21</div><div><div class="c-title">Finalidade</div><div class="c-lead">Defesa em colaboração com a Mesa.</div></div></div>
+      <ul class="kp-list">
+        <li>Promover, em colaboração com a <span class="org">Mesa</span>, a <span class="k">defesa da Câmara, de seus órgãos e membros</span>:
+          <ul>
+            <li>Quando atingidos em sua <span class="k">honra ou imagem</span> perante a sociedade</li>
+            <li>Em razão do <span class="k">exercício do mandato</span> ou das funções institucionais</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="note"><b>Art. 21-T, §único:</b> a Secretaria de Defesa das Prerrogativas Parlamentares exerce suas atribuições <span class="k">sem prejuízo</span> das competências da Procuradoria Parlamentar — as duas coexistem.</div>
+    </div>
+  </div>
+
+  <div class="card c7" style="--c:#254a78">
+    <div class="card-inner">
+      <div class="card-top"><div class="c-badge">§1º</div><div><div class="c-title">Composição e designação</div><div class="c-lead">Quem integra, quem designa, quando e por qual critério.</div></div></div>
+      <ul class="kp-list">
+        <li><b>Membros:</b> <span class="prazo">11 (onze)</span></li>
+        <li><b>Quem designa:</b> <span class="org">PCD</span> (Presidente da Câmara dos Deputados)</li>
+        <li><b>Periodicidade:</b> a cada <span class="prazo">2 anos</span>, no início da sessão legislativa</li>
+        <li><b>Critério:</b> observância, tanto quanto possível, do princípio da <span class="k">proporcionalidade partidária</span></li>
+      </ul>
+      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text"><b>Art. 243:</b> suplente de Deputado, quando convocado em caráter de substituição, <span class="exc">não poderá</span> ser escolhido para integrar a Procuradoria Parlamentar.</div></div>
+    </div>
+  </div>
+
 </div>
 
+<!-- MEDIDAS REPARADORAS -->
+<div class="sec-head" id="med">
+  <div class="sec-line"></div>
+  <div class="sec-title">Art. 21, §§ 2º e 3º — Medidas Reparadoras</div>
+  <div class="sec-badge">Ampla publicidade · judicial e extrajudicial · reparação inclusive moral</div>
+  <div class="sec-line"></div>
+</div>
 <div class="grid">
   <div class="card c6" style="--c:#1c3f63">
     <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">caput</div>
-        <div>
-          <div class="c-title">Finalidade institucional</div>
-          <div class="c-lead">Defesa da Câmara, de seus órgãos e de seus membros.</div>
-        </div>
-      </div>
+      <div class="card-top"><div class="c-badge">§2º</div><div><div class="c-title">Publicidade reparadora</div><div class="c-lead">Além da divulgação ordinária já imposta por lei ou decisão judicial.</div></div></div>
       <ul class="kp-list">
-        <li><b>Finalidade:</b> promover, em colaboração com a <span class="org">Mesa Diretora</span>, a <span class="k">defesa da Câmara</span>, de seus órgãos e membros, quando atingidos em sua <span class="k">honra</span> ou <span class="k">imagem</span> perante a sociedade.</li>
+        <li>A Procuradoria providenciará <span class="k">ampla publicidade reparadora</span></li>
+        <li>Além da divulgação a que já estiver sujeito (por lei ou decisão judicial) o <span class="k">órgão de imprensa</span> que veicular a matéria ofensiva</li>
       </ul>
-      <div class="note"><b>Leitura-chave:</b> atuação <span class="k">institucional</span> (não é defesa individual privada do parlamentar fora da condição de membro da Casa).</div>
     </div>
   </div>
 
   <div class="card c6" style="--c:#254a78">
     <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">§ 1º</div>
-        <div>
-          <div class="c-title">Composição</div>
-          <div class="c-lead">Estrutura e forma de escolha.</div>
-        </div>
-      </div>
+      <div class="card-top"><div class="c-badge">§3º</div><div><div class="c-title">Medidas judiciais e extrajudiciais</div><div class="c-lead">Reparação inclusive moral — três vias de representação processual.</div></div></div>
       <ul class="kp-list">
-        <li><b>Composição:</b> <span class="num">11</span> membros.</li>
-        <li><b>Designação:</b> pelo <span class="org">Presidente da Câmara</span>.</li>
-        <li><b>Indicação:</b> pelos <span class="k">partidos</span>, respeitada a <span class="k">proporcionalidade</span>.</li>
+        <li>Promoverá medidas <span class="k">judiciais e extrajudiciais</span> para obter <span class="k">ampla reparação</span> (inclusive moral — CF, art. 5º, X)</li>
       </ul>
+      <div class="rep-list">
+        <div class="rep-item"><b>Ministério Público</b></div>
+        <div class="rep-item"><b>Advocacia-Geral da União (AGU)</b></div>
+        <div class="rep-item"><b>Mandatários advocatícios</b></div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="sec-head" id="medidas">
-  <div class="sec-line"></div><div class="sec-title">Medidas reparadoras e representação</div>
-  <div class="sec-badge">§§ 2º–3º</div><div class="sec-line"></div>
+<!-- DISTINÇÃO CRÍTICA -->
+<div class="sec-head" id="dist">
+  <div class="sec-line"></div>
+  <div class="sec-title">Distinção Crítica — Procuradoria Parlamentar × Procuradoria da Mulher</div>
+  <div class="sec-badge">Padrão CEBRASPE — confusão frequente</div>
+  <div class="sec-line"></div>
 </div>
-
 <div class="grid">
-  <div class="card c6" style="--c:#2f5f6e">
+  <div class="card c12" style="--c:#a81f2a">
     <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">§ 2º</div>
-        <div>
-          <div class="c-title">Publicidade e medidas judiciais</div>
-          <div class="c-lead">Ações possíveis quando há ofensa/ameaça.</div>
+      <div class="card-top"><div class="c-badge">≠</div><div><div class="c-title">Dois órgãos com nomes parecidos e funções opostas</div><div class="c-lead">A prova explora a confusão entre as duas Procuradorias.</div></div></div>
+      <div class="dist-box">
+        <div class="dist-col parl">
+          <div class="dist-label">Procuradoria Parlamentar — Cap. III</div>
+          <div class="dist-val">Defende a Casa</div>
+          <div class="dist-sub">Defende a Câmara, seus órgãos e membros quando atingidos em honra ou imagem. 11 membros designados pelo PCD. Atua em colaboração com a Mesa.</div>
+        </div>
+        <div class="dist-col mul">
+          <div class="dist-label">Procuradoria da Mulher — Cap. II-A</div>
+          <div class="dist-val">Defende as mulheres</div>
+          <div class="dist-sub">Promove a defesa dos direitos das deputadas e população feminina. 1 Procuradora + 3 Adjuntas, eleitas pelas deputadas. Sem voz e voto no Colégio de Líderes.</div>
         </div>
       </div>
-      <ul class="kp-list">
-        <li><b>Atuação:</b> deve providenciar a <span class="k">publicidade reparadora</span>.</li>
-        <li><b>Medidas:</b> promover <span class="k">medidas judiciais e extrajudiciais</span> cabíveis.</li>
-        <li><b>Hipótese:</b> em caso de <span class="exc">ofensa</span> ou <span class="exc">ameaça</span> a direitos e interesses da Câmara, de seus órgãos e membros.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card c6" style="--c:#3a5c8a">
-    <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">§ 3º</div>
-        <div>
-          <div class="c-title">Representação processual</div>
-          <div class="c-lead">Quem representa a Câmara e como se dá a atuação em juízo.</div>
-        </div>
+      <div class="correlatos" style="margin-top:12px">
+        <div class="corr-title">Correlatos</div>
+        <ul class="corr-list">
+          <li>Art. 243 — suplente convocado não pode integrar a Procuradoria Parlamentar</li>
+          <li>Art. 21-T, §único — Secretaria de Defesa das Prerrogativas Parlamentares atua sem prejuízo da Procuradoria</li>
+          <li>Código de Ética, Art. 15, §único — representação leviana contra Deputado → autos à Procuradoria Parlamentar para providências reparadoras</li>
+        </ul>
       </div>
-      <ul class="kp-list">
-        <li><b>Representação:</b> a <span class="org">Câmara</span> pode ser representada pela Procuradoria Parlamentar <span class="k">judicial e extrajudicialmente</span>.</li>
-        <li><b>Atuação em juízo:</b> sem prejuízo da competência da <span class="org">Advocacia-Geral da União</span>.</li>
-        <li><b>Designação:</b> por deliberação da <span class="org">Mesa Diretora</span>.</li>
-      </ul>
-      <div class="trap"><div class="trap-icon">⚠️</div><div class="trap-text"><b>Ponto de prova:</b> a atuação em juízo é por <b>designação</b> da Mesa e <b>não exclui</b> a AGU.</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="sec-head" id="correlatos">
-  <div class="sec-line"></div><div class="sec-title">Correlatos</div>
-  <div class="sec-badge">Remissões do material</div><div class="sec-line"></div>
-</div>
-
-<div class="grid">
-  <div class="card c12" style="--c:#5a3d8a">
-    <div class="card-inner">
-      <div class="card-top">
-        <div class="c-badge">↗</div>
-        <div>
-          <div class="c-title">Artigos e referências</div>
-          <div class="c-lead">Conexões destacadas no seu material.</div>
-        </div>
-      </div>
-      <ul class="kp-list">
-        <li><b>Correlatos:</b> <span class="k">Código de Ética e Decoro Parlamentar</span> (Res. CD nº 25/2001) — Arts. <span class="num">3º</span> (deveres), <span class="num">4º</span> (condutas incompatíveis), <span class="num">9º</span> (sujeitos) e <span class="num">13</span> (processo).</li>
-        <li><b>Correlatos:</b> “Ações judiciais (PP)” e “Ações judiciais (CEDP)” — conectar com o fluxo de responsabilização/defesa institucional (conforme seu resumo).</li>
-      </ul>
     </div>
   </div>
 </div>
 
 <div class="page-footer">
-  <span>RICD • Título II • Capítulo III — Procuradoria Parlamentar</span>
-  <a href="index.html">← Voltar ao Índice</a>
-  <a href="titulo2.html">← Voltar ao Título II</a>
+  <a href="index.html">⌂ Índice geral</a>
+  <a href="titulo2.html">↑ Título II</a>
+  <div class="divider"></div>
   <a href="titulo2-cap2b.html">← Cap. II-B</a>
+  <a href="titulo2-cap4.html">Cap. IV →</a>
 </div>
 
 </div><!-- /wrap -->
@@ -713,24 +324,23 @@ a{color:inherit;text-decoration:none}
     <div class="t-track"><div class="t-knob"></div></div>
     <span id="t-label">Escuro</span>
   </button>
-  <button id="back-top" title="Voltar ao topo">↑</button>
+  <button id="back-top" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 </div>
 
-<!-- Drawer: Anotações -->
-<div class="drawer" id="drawer" aria-hidden="true">
-  <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+<div class="drawer-overlay" id="drawer" aria-hidden="true">
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
     <div class="drawer-head">
-      <div>
-        <h2 id="drawerTitle">Anotações — Título II • Capítulo III</h2>
-        <p>As anotações ficam salvas <b>neste navegador</b>. Sugestão: registre pegadinhas sobre <span class="k">designação pela Mesa</span> (representação em juízo) e a regra de <span class="k">publicidade reparadora</span>.</p>
+      <div class="drawer-head-info">
+        <h2 id="drawer-title">Anotações — Tít. II · Cap. III</h2>
+        <p>Erros, bizus e pegadinhas. Salvas no <strong>seu navegador</strong>.</p>
       </div>
-      <button class="drawer-x" type="button" id="drawerClose" aria-label="Fechar">×</button>
+      <button class="drawer-close" id="btn-close-drawer" title="Fechar">✕</button>
     </div>
     <div class="drawer-body">
-      <textarea id="notes" placeholder="Escreva aqui…"></textarea>
+      <textarea id="notes-area" placeholder="Ex.: ⚠ Proc. Parlamentar = 11 membros designados pelo PCD; Proc. Mulher = 1+3 eleitas pelas deputadas&#10;⚠ Suplente convocado NÃO pode integrar a Procuradoria Parlamentar (Art. 243)&#10;⚠ Representação processual: MP, AGU ou mandatários advocatícios&#10;⚠ Proporcionalidade partidária = 'tanto quanto possível' (não absoluta)&#10;⚠ Secretaria de Def. de Prerrogativas atua SEM PREJUÍZO da Procuradoria Parlamentar"></textarea>
       <div class="drawer-actions">
-        <button class="drawer-btn drawer-btn-ghost" type="button" id="clearNotes">Limpar</button>
-        <button class="drawer-btn drawer-btn-primary" type="button" id="saveNotes">Salvar</button>
+        <button class="d-btn d-btn-clear" id="btn-clear-notes" type="button">Limpar</button>
+        <button class="d-btn d-btn-save" id="btn-save-notes" type="button">Salvar e fechar</button>
       </div>
     </div>
   </div>
@@ -742,85 +352,29 @@ a{color:inherit;text-decoration:none}
         icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
   let dark=localStorage.getItem('ricd-theme')==='dark';
   if(!localStorage.getItem('ricd-theme'))dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
-  function apply(){
-    root.setAttribute('data-theme',dark?'dark':'light');
-    icon.textContent=dark?'☀️':'🌙';
-    lbl.textContent=dark?'Claro':'Escuro';
-    localStorage.setItem('ricd-theme',dark?'dark':'light');
-  }
-  apply();
-  btn.addEventListener('click',()=>{dark=!dark;apply()});
+  function apply(){root.setAttribute('data-theme',dark?'dark':'light');icon.textContent=dark?'☀️':'🌙';lbl.textContent=dark?'Claro':'Escuro';localStorage.setItem('ricd-theme',dark?'dark':'light')}
+  apply();btn.addEventListener('click',()=>{dark=!dark;apply()});
 })();
 (function(){
   const bar=document.getElementById('prog'),top=document.getElementById('back-top');
   window.addEventListener('scroll',function(){
-    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
-    bar.style.width=(s/h*100)+'%';
-    if(top) top.classList.toggle('show',s>280);
+    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight||1;
+    bar.style.width=(s/h*100)+'%';top.classList.toggle('show',s>280);
   },{passive:true});
 })();
-</script>
-
-<script>
-/* Back to top behavior */
 (function(){
-  const btn = document.getElementById('back-top');
-  if(btn) btn.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+  const KEY='notes_tit2_cap3';
+  const overlay=document.getElementById('drawer'),area=document.getElementById('notes-area');
+  const btnOpen=document.getElementById('btn-notes'),btnClose=document.getElementById('btn-close-drawer');
+  const btnSave=document.getElementById('btn-save-notes'),btnClear=document.getElementById('btn-clear-notes');
+  function open(){overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');area.value=localStorage.getItem(KEY)||'';area.focus()}
+  function close(){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true')}
+  btnOpen.addEventListener('click',open);btnClose.addEventListener('click',close);
+  btnSave.addEventListener('click',()=>{localStorage.setItem(KEY,area.value);close()});
+  btnClear.addEventListener('click',()=>{if(confirm('Limpar anotações?')){area.value='';localStorage.removeItem(KEY);area.focus()}});
+  overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
+  window.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))close()});
 })();
 </script>
-
-<script>
-/* Notes drawer + storage */
-(function(){
-  const KEY = 'notes_titulo2_cap3_procuradoria_parlamentar';
-  const openBtn = document.getElementById('notes-open');
-  const drawer  = document.getElementById('drawer');
-  const notes   = document.getElementById('notes');
-  const closeBtn= document.getElementById('drawerClose');
-  const saveBtn = document.getElementById('saveNotes');
-  const clearBtn= document.getElementById('clearNotes');
-
-  if(!drawer || !notes || !closeBtn || !saveBtn || !clearBtn) return;
-
-  function open(){
-    drawer.classList.add('open');
-    drawer.setAttribute('aria-hidden','false');
-    notes.value = localStorage.getItem(KEY) || '';
-    notes.focus();
-  }
-  function close(){
-    drawer.classList.remove('open');
-    drawer.setAttribute('aria-hidden','true');
-  }
-  function save(){
-    localStorage.setItem(KEY, notes.value || '');
-  }
-
-  if(openBtn) openBtn.addEventListener('click', open);
-  closeBtn.addEventListener('click', close);
-
-  saveBtn.addEventListener('click', function(){
-    save();
-    close();
-  });
-
-  clearBtn.addEventListener('click', function(){
-    if(confirm('Tem certeza que deseja limpar suas anotações deste capítulo?')){
-      notes.value='';
-      localStorage.removeItem(KEY);
-      notes.focus();
-    }
-  });
-
-  drawer.addEventListener('click', function(e){
-    if(e.target === drawer) close();
-  });
-
-  window.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && drawer.classList.contains('open')) close();
-  });
-})();
-</script>
-
 </body>
 </html>
