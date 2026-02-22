@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RICD — Título VII — Cap. II — Licença</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   TOKENS — LIGHT
+═══════════════════════════════════════════════ */
+:root, [data-theme="light"] {
+  --bg:          #f3f6fb;
+  --bg2:         #eaeff8;
+  --surface:     #ffffff;
+  --surface2:    #f7faff;
+  --border:      rgba(15,39,66,.09);
+  --border-hard: rgba(15,39,66,.16);
+
+  --ink:         #0d1f35;
+  --ink2:        #2b4060;
+  --muted:       #526a88;
+  --faint:       #8fa8c2;
+
+  --gold:        #b86b1a;
+  --gold-soft:   rgba(184,107,26,.10);
+  --blue:        #1a4d8a;
+  --blue-soft:   rgba(26,77,138,.08);
+  --green:       #186347;
+  --green-soft:  rgba(24,99,71,.09);
+  --red:         #a81f2a;
+  --red-soft:    rgba(168,31,42,.09);
+  --purple:      #5a3d8a;
+  --purple-soft: rgba(90,61,138,.08);
+
+  --mark-bg:     rgba(15,23,42,.07);
+
+  --hero-from:   #0c2240;
+  --hero-to:     #153558;
+  --hero-text:   #ffffff;
+  --hero-sub:    rgba(255,255,255,.80);
+
+  --sh-sm:  0 2px 8px rgba(12,26,43,.06);
+  --sh-md:  0 6px 20px rgba(12,26,43,.09);
+  --sh-lg:  0 14px 34px rgba(12,26,43,.11);
+  --sh-hov: 0 10px 28px rgba(12,26,43,.14);
+
+  --chip-bg:     rgba(255,255,255,.72);
+  --chip-border: rgba(15,23,42,.10);
+  --chip-text:   #2b4060;
+
+  --list-bg:     #f7fafc;
+  --note-bg:     rgba(26,77,138,.05);
+  --note-border: rgba(26,77,138,.12);
+  --note-text:   #1a2e44;
+
+  --toggle-bg:   #d8e2f0;
+  --toggle-knob: #ffffff;
+}
+
+/* ═══════════════════════════════════════════════
+   TOKENS — DARK
+═══════════════════════════════════════════════ */
+[data-theme="dark"] {
+  --bg:          #0c1120;
+  --bg2:         #101728;
+  --surface:     #161d2f;
+  --surface2:    #1b2238;
+  --border:      rgba(255,255,255,.06);
+  --border-hard: rgba(255,255,255,.12);
+
+  --ink:         #dce8fa;
+  --ink2:        #94b0d4;
+  --muted:       #627ea6;
+  --faint:       #374e6a;
+
+  --gold:        #f0b84a;
+  --gold-soft:   rgba(240,184,74,.11);
+  --blue:        #5b96f0;
+  --blue-soft:   rgba(91,150,240,.11);
+  --green:       #38c882;
+  --green-soft:  rgba(56,200,130,.09);
+  --red:         #f46862;
+  --red-soft:    rgba(244,104,98,.11);
+  --purple:      #a07af5;
+  --purple-soft: rgba(160,122,245,.10);
+
+  --mark-bg:     rgba(220,232,250,.09);
+
+  --hero-from:   #08111e;
+  --hero-to:     #0f1e30;
+  --hero-text:   #e4f0ff;
+  --hero-sub:    rgba(210,228,255,.70);
+
+  --sh-sm:  0 2px 8px rgba(0,0,0,.28);
+  --sh-md:  0 6px 20px rgba(0,0,0,.34);
+  --sh-lg:  0 14px 34px rgba(0,0,0,.40);
+  --sh-hov: 0 10px 28px rgba(0,0,0,.46);
+
+  --chip-bg:     rgba(255,255,255,.06);
+  --chip-border: rgba(255,255,255,.12);
+  --chip-text:   rgba(220,232,255,.82);
+
+  --list-bg:     rgba(255,255,255,.03);
+  --note-bg:     rgba(91,150,240,.09);
+  --note-border: rgba(91,150,240,.20);
+  --note-text:   #b0ccf0;
+
+  --toggle-bg:   #243350;
+  --toggle-knob: #f0b84a;
+}
+
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',sans-serif;
+  font-size:15px;
+  line-height:1.68;
+  color:var(--ink);
+  background:var(--bg);
+  transition:background .25s,color .25s;
+  min-height:100vh;
+}
+a{color:inherit;text-decoration:none}
+
+/* ═══════════════════════════════════════════════
+   PROGRESS BAR
+═══════════════════════════════════════════════ */
+#prog{
+  position:fixed;top:0;left:0;
+  height:3px;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--blue));
+  z-index:300;transition:width .08s linear;
+  border-radius:0 2px 2px 0;
+}
+
+/* ═══════════════════════════════════════════════
+   FAB — THEME TOGGLE + BACK TO TOP
+═══════════════════════════════════════════════ */
+.fab-wrap{
+  position:fixed;bottom:24px;right:24px;
+  z-index:200;
+  display:flex;flex-direction:column;gap:10px;align-items:flex-end;
+}
+#theme-btn{
+  background:var(--surface);
+  border:1px solid var(--border-hard);
+  box-shadow:var(--sh-md);
+  border-radius:50px;
+  padding:8px 14px;
+  cursor:pointer;
+  display:flex;align-items:center;gap:9px;
+  font-family:'Outfit',sans-serif;
+  font-size:13px;font-weight:600;
+  color:var(--muted);
+  transition:all .2s;user-select:none;
+}
+#theme-btn:hover{color:var(--ink);box-shadow:var(--sh-lg)}
+.t-track{
+  width:38px;height:20px;
+  background:var(--toggle-bg);
+  border-radius:20px;position:relative;
+  transition:background .25s;
+}
+.t-knob{
+  position:absolute;top:2px;left:2px;
+  width:16px;height:16px;
+  border-radius:50%;
+  background:var(--toggle-knob);
+  transition:transform .25s,background .25s;
+  box-shadow:0 1px 4px rgba(0,0,0,.22);
+}
+[data-theme="dark"] .t-knob{transform:translateX(18px)}
+#back-top{
+  width:44px;height:44px;
+  background:var(--surface);
+  border:1px solid var(--border-hard);
+  border-radius:50%;
+  box-shadow:var(--sh-md);
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;color:var(--muted);
+  transition:all .2s;
+  opacity:0;pointer-events:none;
+  transform:translateY(10px);
+}
+#back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#back-top:hover{color:var(--gold);box-shadow:var(--sh-lg);transform:translateY(-2px)}
+
+/* ═══════════════════════════════════════════════
+   WRAP
+═══════════════════════════════════════════════ */
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px 80px}
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+.hero{
+  background:linear-gradient(120deg,var(--hero-from),var(--hero-to));
+  color:var(--hero-text);
+  padding:34px 0 26px;
+  box-shadow:var(--sh-lg);
+}
+.hero-inner{
+  padding:0 20px;
+  max-width:1060px;
+  margin:0 auto;
+}
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.72);
+  margin-bottom:8px;
+}
+.hero-title{
+  font-family:'Crimson Pro',serif;
+  font-size:34px;
+  font-weight:700;
+  color:var(--hero-text);
+  line-height:1.12;
+  margin-bottom:10px;
+}
+.hero-sub{font-size:14px;color:var(--hero-sub);max-width:78ch;line-height:1.58;margin-bottom:18px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.hero-btn{
+  border:none;cursor:pointer;
+  padding:10px 14px;border-radius:12px;
+  font-weight:700;font-size:13.5px;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:transform .12s,box-shadow .12s,background .12s,opacity .12s;
+  user-select:none;
+}
+.hero-btn-primary{
+  background:rgba(255,255,255,.14);
+  color:#fff;border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+.hero-btn-primary:hover{transform:translateY(-1px);background:rgba(255,255,255,.18)}
+.hero-btn-ghost{
+  background:rgba(255,255,255,.08);
+  color:#fff;border:1px solid rgba(255,255,255,.14);
+}
+.hero-btn-ghost:hover{transform:translateY(-1px);background:rgba(255,255,255,.12)}
+.nav-chips{
+  display:flex;flex-wrap:wrap;gap:8px;
+}
+.nav-chips a{
+  padding:7px 11px;border-radius:999px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.86);
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.7px;
+  letter-spacing:.04em;
+  transition:background .15s,transform .12s,border-color .15s;
+}
+.nav-chips a:hover{background:rgba(255,255,255,.12);transform:translateY(-1px);border-color:rgba(255,255,255,.22)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.lchip{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:5px 11px;border-radius:100px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.5px;
+  letter-spacing:.06em;
+  font-weight:600;
+  text-transform:uppercase;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.85);
+}
+.ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ═══════════════════════════════════════════════
+   SECTION HEAD
+═══════════════════════════════════════════════ */
+.sec-head{
+  display:flex;align-items:center;gap:14px;
+  margin:30px 0 16px;
+}
+.sec-line{height:1px;background:var(--border-hard);flex:1}
+.sec-title{
+  font-family:'Crimson Pro',serif;
+  font-size:20px;font-weight:700;color:var(--ink);
+}
+.sec-badge{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.8px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  padding:6px 10px;border-radius:999px;
+  background:var(--chip-bg);
+  border:1px solid var(--chip-border);
+  color:var(--chip-text);
+  white-space:nowrap;
+}
+
+/* ═══════════════════════════════════════════════
+   GRID + CARDS
+═══════════════════════════════════════════════ */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:14px;
+}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--sh-md);overflow:hidden}
+.card-inner{padding:16px 16px 14px}
+.card-top{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px}
+.c-badge{
+  width:34px;height:34px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  color:var(--ink2);
+  flex-shrink:0;
+}
+.c-title{font-weight:800;color:var(--ink);line-height:1.2;margin-bottom:4px}
+.c-lead{color:var(--muted);font-size:13.5px;line-height:1.45}
+.kp-list{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:8px}
+.kp-list li{
+  background:var(--list-bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px 12px;
+  color:var(--ink2);
+  font-size:13.6px;
+  line-height:1.45;
+}
+.kp-list b{color:var(--ink)}
+.k{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--mark-bg);border:1px solid var(--border);font-weight:700}
+.org{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--blue-soft);border:1px solid rgba(26,77,138,.14);font-weight:800;color:var(--blue)}
+.exc{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--red-soft);border:1px solid rgba(168,31,42,.18);font-weight:800;color:var(--red)}
+.num{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--gold-soft);border:1px solid rgba(184,107,26,.18);font-weight:800;color:var(--gold)}
+.prazo{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--gold-soft);border:1px solid rgba(184,107,26,.18);font-weight:800;color:var(--gold)}
+.trap{
+  margin-top:12px;
+  background:var(--note-bg);
+  border:1px solid var(--note-border);
+  border-radius:14px;
+  padding:10px 12px;
+  display:flex;gap:10px;align-items:flex-start;
+  color:var(--note-text);
+}
+.trap-icon{font-size:18px;line-height:1}
+.trap-text{font-size:13.6px;line-height:1.45}
+.uc{text-transform:uppercase;letter-spacing:.04em;font-family:'JetBrains Mono',monospace;font-size:11.2px}
+
+/* col spans */
+.c12{grid-column:span 12}
+.c8{grid-column:span 8}
+.c6{grid-column:span 6}
+.c4{grid-column:span 4}
+@media(max-width:920px){
+  .c8,.c6,.c4{grid-column:span 12}
+}
+
+/* ═══════════════════════════════════════════════
+   FOOTER NAV
+═══════════════════════════════════════════════ */
+.page-footer{
+  margin-top:28px;
+  display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  padding-top:14px;border-top:1px solid var(--border-hard);
+  color:var(--muted);
+  font-size:13px;
+}
+.page-footer a{
+  padding:8px 10px;border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  box-shadow:var(--sh-sm);
+  color:var(--ink2);
+  transition:transform .12s,box-shadow .12s,border-color .12s;
+}
+.page-footer a:hover{transform:translateY(-1px);box-shadow:var(--sh-hov);border-color:var(--border-hard)}
+
+/* ═══════════════════════════════════════════════
+   NOTES DRAWER
+═══════════════════════════════════════════════ */
+.drawer-overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.45);
+  display:none;
+  align-items:flex-end;
+  z-index:400;
+}
+.drawer-overlay.open{display:flex}
+.drawer-panel{
+  width:min(860px,100%);
+  background:var(--surface);
+  border:1px solid var(--border-hard);
+  border-radius:18px 18px 0 0;
+  box-shadow:var(--sh-lg);
+  max-height:85vh;
+  display:flex;flex-direction:column;
+}
+.drawer-head{
+  padding:14px 16px;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
+  border-bottom:1px solid var(--border);
+}
+.drawer-head-info h2{
+  font-family:'Crimson Pro',serif;
+  font-size:18px;font-weight:800;color:var(--ink);
+  margin-bottom:2px;
+}
+.drawer-head-info p{color:var(--muted);font-size:13px;line-height:1.45}
+.drawer-close{
+  border:1px solid var(--border);
+  background:var(--surface2);
+  color:var(--muted);
+  border-radius:12px;
+  width:40px;height:40px;
+  cursor:pointer;
+  transition:transform .12s,box-shadow .12s,border-color .12s;
+}
+.drawer-close:hover{transform:translateY(-1px);box-shadow:var(--sh-hov);border-color:var(--border-hard)}
+.drawer-body{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+#notes-area{
+  width:100%;
+  min-height:240px;
+  resize:vertical;
+  padding:12px 12px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:var(--surface2);
+  color:var(--ink);
+  font-family:'Outfit',sans-serif;
+  font-size:14px;
+  line-height:1.5;
+  outline:none;
+}
+#notes-area:focus{border-color:var(--border-hard);box-shadow:0 0 0 3px rgba(26,77,138,.10)}
+.drawer-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.d-btn{
+  padding:10px 12px;border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  box-shadow:var(--sh-sm);
+  cursor:pointer;
+  font-weight:800;
+  transition:transform .12s,box-shadow .12s,border-color .12s;
+}
+.d-btn:hover{transform:translateY(-1px);box-shadow:var(--sh-hov);border-color:var(--border-hard)}
+.d-btn-clear{color:var(--red);background:var(--red-soft);border-color:rgba(168,31,42,.18)}
+.d-btn-save{color:var(--green);background:var(--green-soft);border-color:rgba(24,99,71,.18)}
+
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border-hard);border-radius:3px}
+
+@media(max-width:600px){
+  .wrap{padding:0 14px 80px}
+  .hero-title{font-size:30px}
+}
+</style>
+</head>
+
+<body>
+<div id="prog"></div>
+
+<header class="hero" id="topo">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">RICD • Resumo Visual • Material de Revisão</div>
+    <h1 class="hero-title">Título VII — Dos Deputados</h1>
+    <p class="hero-sub">
+      <strong>Capítulo II — Da Licença</strong> (arts. 235 a 237): espécies de licença, competência para concessão, regras de prazos (recesso/semiperíodo), suplência, licença por saúde com laudo, e suspensão por incapacidade civil absoluta.
+    </p>
+
+    <div class="hero-actions">
+      <a class="hero-btn hero-btn-ghost" href="index.html">⌂ Índice Geral</a>
+      <a class="hero-btn hero-btn-ghost" href="titulo7.html">↩ Índice do Título VII</a>
+      <button class="hero-btn hero-btn-primary" id="btn-notes" type="button">✏️ Anotações</button>
+    </div>
+
+    <nav class="nav-chips" aria-label="Seções do Capítulo II">
+      <a href="#art235"><b>Art. 235</b> Espécies</a>
+      <a href="#prazos235"><b>Art. 235</b> Prazos</a>
+      <a href="#art236"><b>Art. 236</b> Saúde</a>
+      <a href="#art237"><b>Art. 237</b> Suspensão</a>
+      <a href="#correlatos"><b>Correlatos</b></a>
+    </nav>
+
+    <div class="legend" aria-label="Legenda">
+      <span class="lchip"><span class="ldot" style="background:#5b96f0"></span>Competência/Rito</span>
+      <span class="lchip"><span class="ldot" style="background:#f0b84a"></span>Prazos/Suplência</span>
+      <span class="lchip"><span class="ldot" style="background:#f46862"></span>Vedações/Exceções</span>
+      <span class="lchip"><span class="ldot" style="background:rgba(255,255,255,.4)"></span>Palavras-chave</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- Art. 235 -->
+  <div class="sec-head" id="art235">
+    <div class="sec-title">Espécies de licença e concessão</div>
+    <div class="sec-line"></div>
+    <div class="sec-badge">Art. 235</div>
+  </div>
+
+  <section class="grid">
+    <article class="card c12">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">235</div>
+          <div>
+            <div class="c-title">Hipóteses de licença</div>
+            <div class="c-lead">
+              O Deputado pode licenciar-se nas hipóteses previstas no art. 235 (incisos I a IV), com regras específicas de concessão e procedimento.
+            </div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li><b>I</b> ➜ Desempenhar <span class="k">MISSÃO TEMPORÁRIA</span> de caráter diplomático ou cultural.</li>
+          <li><b>II</b> ➜ <span class="k">TRATAMENTO DE SAÚDE</span>.</li>
+          <li><b>III</b> ➜ Tratar, <span class="exc">SEM REMUNERAÇÃO</span>, de <span class="k">INTERESSE PARTICULAR</span> (máx.: <span class="prazo">120 dias</span> por sessão legislativa).</li>
+          <li><b>IV</b> ➜ <span class="k">INVESTIDURA</span> em cargo do art. 56, I, da CF (Ministro, Secretário de Estado etc.).</li>
+        </ul>
+
+        <div class="trap">
+          <div class="trap-icon">👶</div>
+          <div class="trap-text">
+            <span class="uc">Licença parental (§ 1º)</span><br>
+            • Deputadas: <span class="k">licença-gestante</span> • Deputados: <span class="k">licença-paternidade</span> (nos termos da CF).
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card c6">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">⚖</div>
+          <div>
+            <div class="c-title">Competência para concessão</div>
+            <div class="c-lead">Quem decide depende da hipótese.</div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li><b>MESA</b> ➜ decide na hipótese do <span class="k">inciso I</span> (missão temporária). (§ 4º)</li>
+          <li><b>PRESIDENTE</b> ➜ concede nas <span class="k">demais hipóteses</span>. (§ 4º)</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="card c6">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">🧾</div>
+          <div>
+            <div class="c-title">Procedimento</div>
+            <div class="c-lead">Requerimento fundamentado e publicidade mínima em Plenário.</div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li>➜ Depende de <span class="k">REQUERIMENTO FUNDAMENTADO</span>, dirigido ao Presidente. (§ 5º)</li>
+          <li>➜ O requerimento é lido na <span class="k">PRIMEIRA SESSÃO</span> após o recebimento. (§ 5º)</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- Art. 235 — prazos, recesso e suplência -->
+  <div class="sec-head" id="prazos235">
+    <div class="sec-title">Prazos, recesso e suplência</div>
+    <div class="sec-line"></div>
+    <div class="sec-badge">Art. 235 • §§ 2º, 3º e 6º</div>
+  </div>
+
+  <section class="grid">
+    <article class="card c12">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">⏱</div>
+          <div>
+            <div class="c-title">Regras importantes (semiperíodo/recesso)</div>
+            <div class="c-lead">O art. 235 traz regras de concessão em recesso, contagem de prazos e retorno antecipado quando há suplente.</div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li><b>Regra do recesso (§ 2º)</b> ➜ <span class="exc">NÃO</span> se concedem licenças para <span class="k">SAÚDE (II)</span> e <span class="k">INTERESSE PARTICULAR (III)</span> durante o recesso.</li>
+          <li><b>Exceção (§ 2º)</b> ➜ salvo <span class="k">prorrogação</span> da sessão legislativa ou <span class="k">convocação extraordinária</span>.</li>
+          <li><b>Contagem do prazo (§ 3º)</b> ➜ suspende-se a contagem da licença iniciada antes do encerramento do semiperíodo.</li>
+          <li><b>Exceção (§ 3º)</b> ➜ na licença para <span class="k">tratamento de saúde</span> quando tenha havido <span class="k">ASSUNÇÃO DE SUPLENTE</span>.</li>
+          <li><b>Retorno antecipado (§ 6º)</b> ➜ licenciado com <span class="k">ASSUNÇÃO DE SUPLENTE</span> <span class="exc">NÃO</span> pode reassumir antes de findo o prazo <span class="num">superior a 120 dias</span> (ou prorrogações).</li>
+        </ul>
+
+        <div class="trap">
+          <div class="trap-icon">📌</div>
+          <div class="trap-text">
+            <span class="uc">Quadro prático (espécies/prazos/suplência)</span><br>
+            • Doença (própria): prazo <span class="k">ilimitado</span> • convoca suplente se <span class="num">&gt; 120 dias</span>.<br>
+            • Doença (cônjuge/dependente): até <span class="prazo">6 meses</span> • convoca suplente se <span class="num">&gt; 120 dias</span>.<br>
+            • Gestante/adotante: <span class="prazo">120 dias</span> • <span class="k">sim</span> convoca suplente.<br>
+            • Paternidade: por <span class="k">ato da Mesa</span> • <span class="exc">não</span> convoca suplente.<br>
+            • Interesse particular: até <span class="prazo">120 dias/ano</span> • <span class="exc">não</span> convoca suplente.<br>
+            • Missão temporária: prazo <span class="k">variável</span> • suplência conforme decisão.
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- Art. 236 -->
+  <div class="sec-head" id="art236">
+    <div class="sec-title">Licença para tratamento de saúde</div>
+    <div class="sec-line"></div>
+    <div class="sec-badge">Art. 236</div>
+  </div>
+
+  <section class="grid">
+    <article class="card c12">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">236</div>
+          <div>
+            <div class="c-title">Hipótese e laudo médico</div>
+            <div class="c-lead">
+              Concedida por motivo de doença comprovada que impossibilite atender aos deveres do mandato, com laudo específico.
+            </div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li><b>Hipótese</b> ➜ doença comprovada que <span class="k">impossibilite</span> cumprir os deveres do mandato.</li>
+          <li><b>Laudo (parágrafo único)</b> ➜ <span class="k">LAUDO DE INSPEÇÃO DE SAÚDE</span> firmado por <span class="num">3</span> integrantes do corpo médico da Câmara.</li>
+          <li><b>Conteúdo</b> ➜ indicação <span class="k">expressa</span> de que o paciente <span class="exc">não pode</span> continuar no exercício ativo.</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- Art. 237 -->
+  <div class="sec-head" id="art237">
+    <div class="sec-title">Incapacidade civil absoluta (suspensão)</div>
+    <div class="sec-line"></div>
+    <div class="sec-badge">Art. 237</div>
+  </div>
+
+  <section class="grid">
+    <article class="card c12">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">237</div>
+          <div>
+            <div class="c-title">Suspensão do exercício do mandato</div>
+            <div class="c-lead">
+              Se houver incapacidade civil absoluta (interdição ou laudo de junta médica nomeada), o Deputado é suspenso sem perda de remuneração, enquanto durarem os efeitos.
+            </div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li><b>Hipótese</b> ➜ incapacidade civil absoluta, julgada por <span class="k">sentença de interdição</span> ou comprovada por <span class="k">laudo</span> (junta nomeada pela Mesa).</li>
+          <li><b>Consequência</b> ➜ Deputado será <span class="k">SUSPENSO</span> do exercício do mandato.</li>
+          <li><b>Remuneração</b> ➜ <span class="k">SEM PERDA</span> da remuneração, enquanto durar a causa.</li>
+        </ul>
+
+        <div class="trap">
+          <div class="trap-icon">🧪</div>
+          <div class="trap-text">
+            <span class="uc">Recusa ao exame (§ 1º)</span><br>
+            • Se o Deputado se negar: o <span class="org">Plenário</span> decide a medida suspensiva em <span class="k">sessão secreta</span>, por <span class="num">maioria absoluta</span>.<br>
+            <span class="uc">Composição da junta (§ 2º)</span><br>
+            • Mínimo de <span class="num">3 médicos</span> de reputada idoneidade.<br>
+            • <span class="exc">Vedação</span>: não podem pertencer aos serviços da Câmara ou do Senado.
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- Correlatos -->
+  <div class="sec-head" id="correlatos">
+    <div class="sec-title">Artigos correlatos (amarrando a prova)</div>
+    <div class="sec-line"></div>
+    <div class="sec-badge">Links mentais</div>
+  </div>
+
+  <section class="grid">
+    <article class="card c12">
+      <div class="card-inner">
+        <div class="card-top">
+          <div class="c-badge">↔</div>
+          <div>
+            <div class="c-title">Correlatos citados no capítulo</div>
+            <div class="c-lead">Conexões diretas que costumam aparecer em pegadinhas de prazo e suplência.</div>
+          </div>
+        </div>
+
+        <ul class="kp-list">
+          <li><b>Art. 241</b> (Convocação de Suplente) ➜ Mesa convoca em <span class="prazo">48 horas</span> nos casos de:
+            <br>• investidura em cargo executivo (CF, art. 56, I) <span class="k">OU</span>
+            <br>• licença-saúde <span class="num">superior a 120 dias</span> (<span class="exc">vedada soma</span> de períodos).
+          </li>
+          <li><b>Art. 228</b> (Afastamento do País) ➜ prévia ciência à Câmara (via Presidência), indicando natureza e duração.</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- Footer nav -->
+  <footer class="page-footer" aria-label="Navegação de rodapé">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <a href="index.html">⌂ Índice Geral</a>
+      <a href="titulo7.html">↩ Índice do Título VII</a>
+      <a href="#topo">↑ Topo</a>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <a href="titulo7-cap01.html">← Capítulo anterior</a>
+      <a href="titulo7-cap03.html">Próximo capítulo →</a>
+    </div>
+  </footer>
+
+</div>
+
+<!-- FAB -->
+<div class="fab-wrap" aria-label="Ações flutuantes">
+  <button id="theme-btn" type="button" aria-label="Alternar tema">
+    <span id="t-icon" aria-hidden="true">🌙</span>
+    <span id="t-label">Escuro</span>
+    <span class="t-track" aria-hidden="true"><span class="t-knob"></span></span>
+  </button>
+  <button id="back-top" type="button" title="Voltar ao topo" aria-label="Voltar ao topo">↑</button>
+</div>
+
+<!-- Drawer -->
+<div class="drawer-overlay" id="drawer" aria-hidden="true">
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Anotações">
+    <div class="drawer-head">
+      <div class="drawer-head-info">
+        <h2>Anotações — Título VII • Capítulo II</h2>
+        <p>As notas ficam salvas no <strong>seu navegador</strong> (localStorage).</p>
+      </div>
+      <button class="drawer-close" id="btn-close-drawer" title="Fechar" aria-label="Fechar">✕</button>
+    </div>
+    <div class="drawer-body">
+      <textarea id="notes-area" placeholder="Ex.:&#10;• Art. 235: missão (Mesa) x demais (Presidente)&#10;• Recesso: não concede II/III (salvo convocação)&#10;• Suplente: 48h no art. 241; retorno antes? só se &le;120d (regra do §6º)"></textarea>
+      <div class="drawer-actions">
+        <button class="d-btn d-btn-clear" id="btn-clear-notes" type="button">Limpar</button>
+        <button class="d-btn d-btn-save" id="btn-save-notes" type="button">Salvar e fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Tema ──────────────────────────────────────────
+(function(){
+  const root=document.documentElement,btn=document.getElementById('theme-btn'),
+        icon=document.getElementById('t-icon'),lbl=document.getElementById('t-label');
+  let dark=localStorage.getItem('ricd-theme')==='dark';
+  if(!localStorage.getItem('ricd-theme')) dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function apply(){
+    root.setAttribute('data-theme',dark?'dark':'light');
+    icon.textContent=dark?'☀️':'🌙';
+    lbl.textContent=dark?'Claro':'Escuro';
+    localStorage.setItem('ricd-theme',dark?'dark':'light');
+  }
+  apply();
+  btn.addEventListener('click',()=>{dark=!dark;apply()});
+})();
+
+// ── Progresso + Back-to-top ───────────────────────
+(function(){
+  const bar=document.getElementById('prog'),top=document.getElementById('back-top');
+  top.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  window.addEventListener('scroll',function(){
+    const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(s/h*100):0)+'%';
+    top.classList.toggle('show',s>280);
+  },{passive:true});
+})();
+
+// ── Anotações ─────────────────────────────────────
+(function(){
+  const KEY='notes_titulo7_cap02';
+  const overlay=document.getElementById('drawer');
+  const area=document.getElementById('notes-area');
+  const btnOpen=document.getElementById('btn-notes');
+  const btnClose=document.getElementById('btn-close-drawer');
+  const btnSave=document.getElementById('btn-save-notes');
+  const btnClear=document.getElementById('btn-clear-notes');
+
+  function open(){
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden','false');
+    area.value=localStorage.getItem(KEY)||'';
+    area.focus();
+  }
+  function close(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden','true');
+  }
+  btnOpen.addEventListener('click',open);
+  btnClose.addEventListener('click',close);
+  btnSave.addEventListener('click',()=>{localStorage.setItem(KEY,area.value);close()});
+  btnClear.addEventListener('click',()=>{
+    if(confirm('Limpar anotações do Título VII — Capítulo II?')){
+      area.value='';
+      localStorage.removeItem(KEY);
+      area.focus();
+    }
+  });
+  overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
+  window.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))close()});
+})();
+</script>
+
+</body>
+</html>
